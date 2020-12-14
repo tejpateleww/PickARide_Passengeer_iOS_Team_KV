@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  ApiStructureModule
-//
-//  Created by EWW071 on 13/03/20.
-//  Copyright © 2020 EWW071. All rights reserved.
-//
-
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
@@ -26,10 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 //        FirebaseApp.configure()
         self.navigateToLogin()
+        checkAndSetDefaultLanguage()
         registerForPushNotifications()
         return true
     }
-    
+    func checkAndSetDefaultLanguage() {
+        if userDefault.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
+            setLanguageEnglish()
+        }
+    }
+    func setLanguageEnglish() {
+        userDefault.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
+    }
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
     }
@@ -65,8 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func navigateToLogin(){
         let storyborad = UIStoryboard(name: "Login", bundle: nil)
-        let Login = storyborad.instantiateViewController(withIdentifier: LoginViewController.className) as! LoginViewController
-        let NavHomeVC = UINavigationController(rootViewController: Login)
+        let splash = storyborad.instantiateViewController(withIdentifier: SplashVC.className) as! SplashVC
+        let NavHomeVC = UINavigationController(rootViewController: splash)
+        NavHomeVC.navigationBar.isHidden = true
         self.window?.rootViewController = NavHomeVC
     }
     
@@ -84,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         SingletonClass.sharedInstance.clearSingletonClass()
     }
-    
+   
     func navigateToHomeScreen()
     {
 //        let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MainViewController

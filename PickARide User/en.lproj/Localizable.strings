@@ -1,0 +1,18 @@
+/* 
+  Localize.strings
+  PickARide User
+
+  Created by Apple on 14/12/20.
+  Copyright © 2020 EWW071. All rights reserved.
+*/
+
+// Login Screen
+"lblSignIN" = "Sign In";
+"lblWelcomeBack" = "Welcome Back!";
+"textFieldEmailID" = "Email ID/Phone Number";
+"textFieldPassword" = "Password";
+"btnForgotPassword" = "Forgot Password?";
+"btnSignIN" = "SIGN IN";
+"lblOR" = "OR";
+"lblDontHaveanAccount" = "Don't have an account? ";
+"btnSIgnUP" = "SIGN UP";

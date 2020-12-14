@@ -93,3 +93,12 @@ class customTextField: UITextField {
            }
        }
 }
+class emailPasswordTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(15)
+        self.textColor = colors.black.value
+      //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!,
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.loginPlaceHolderColor.value.withAlphaComponent(0.45)])
+    }
+}

@@ -30,6 +30,13 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>Ubuntu-Bold.ttf</string>
+        <string>Ubuntu-Light.ttf</string>
+        <string>Ubuntu-Regular.ttf</string>
+        <string>Ubuntu-Medium.ttf</string>
+    </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
