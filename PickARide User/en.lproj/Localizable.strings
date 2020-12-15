@@ -6,13 +6,51 @@
   Copyright © 2020 EWW071. All rights reserved.
 */
 
-// Login Screen
-"lblSignIN" = "Sign In";
-"lblWelcomeBack" = "Welcome Back!";
-"textFieldEmailID" = "Email ID/Phone Number";
-"textFieldPassword" = "Password";
-"btnForgotPassword" = "Forgot Password?";
-"btnSignIN" = "SIGN IN";
-"lblOR" = "OR";
-"lblDontHaveanAccount" = "Don't have an account? ";
-"btnSIgnUP" = "SIGN UP";
+// LoginScreen_
+
+"LoginScreen_lblSignIN" = "Sign In";
+"LoginScreen_lblWelcomeBack" = "Welcome Back!";
+"LoginScreen_textFieldEmailID_place" = "Email ID/Phone Number";
+"LoginScreen_textFieldPassword_place" = "Password";
+"LoginScreen_btnForgotPassword" = "Forgot Password?";
+"LoginScreen_btnSignIN" = "SIGN IN";
+"LoginScreen_lblOR" = "OR";
+"LoginScreen_lblDontHaveanAccount" = "Don't have an account? ";
+"LoginScreen_btnSIgnUP" = "SIGN UP";
+
+
+//SignUpPage_
+
+"SignUpPage_lblSignUP" = "Sign up";
+"SignUpPage_textFieldFirstName_place" = "First name";
+"SignUpPage_textFieldLastName_place" = "Last name";
+"SignUpPage_textFieldEmail_place" = "Email";
+"SignUpPage_lblCountryCode" = "COUNTRY CODE";
+"SignUpPage_textFieldPhoneNumbaer_place" = "Phone number";
+"SignUpPage_textFieldPassword_place" = "Password";
+"SignUpPage_textViewText1" = "By clicking \"Sign Up\" you agree to our ";
+"SignUpPage_textViewText2" = "terms and conditions";
+"SignUpPage_textViewText3" = " as well as our ";
+"SignUpPage_textViewText4" = "privacy policy";
+"SignUpPage_btnSIgnUP" = "SIGN UP";
+
+
+//VerifyVC_
+
+"VerifyVC_lblVerifyPhoneNumber" = "Verify Phone \nNumber";
+"VerifyVC_lblCheckSMS" = "Check your SMS messages. We've sent you the PIN at";
+"VerifyVC_lblDontRecive" = "Didn't receive SMS?";
+"VerifyVC_btnResendCode" = "Resend Code";
+"VerifyVC_Verify" = "VERIFY";
+
+//ChangePassword_
+
+"ChangePassword_lblChangePassword" = "Change Password";
+"ChangePassword_oldPassword_Place" = "Old Password";
+"ChangePassword_newPassword_Place" = "New Password";
+"ChangePassword_confirmPassword_Place" = "Confirm Password";
+"ChangePassword_btnSetPassword" = "SET PASSWORD";
+"ChangePassword_btnChangePassword" = "CHANGE PASSWORD";
+
+//Navigation Button
+"NavigationButton_btnLogin" = "Log in";

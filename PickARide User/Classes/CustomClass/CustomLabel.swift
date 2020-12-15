@@ -38,3 +38,32 @@ class registerScreenLabel : UILabel {
         self.textColor = colors.loginPlaceHolderColor.value
     }
 }
+
+class verifyVcLabel : UILabel {
+    @IBInspectable var IsVerifyPhoneNumber : Bool = false
+    @IBInspectable var IsCheckYourPhoneNumber : Bool = false
+    @IBInspectable var IsnotRecive : Bool = false
+    override func awakeFromNib() {
+        if IsVerifyPhoneNumber {
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.font = CustomFont.bold.returnFont(29)
+          
+        } else if IsCheckYourPhoneNumber {
+            self.textColor = colors.phoneNumberColor.value
+
+         
+         
+        } else if IsnotRecive {
+            self.font = CustomFont.medium.returnFont(15)
+                self.textColor = colors.loginPlaceHolderColor.value
+        }
+      
+    }
+}
+
+class changePasswordLabel : UILabel {
+    override func awakeFromNib() {
+        self.textColor = colors.loginPlaceHolderColor.value
+        self.font = CustomFont.medium.returnFont(28)
+    }
+}

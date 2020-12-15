@@ -65,55 +65,32 @@ class BaseViewController: UIViewController {
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
-            } else if leftImage == NavItemsLeft.skip.value {
-//                let LeftView = viewWithClearBg(frame: CGRect(x: 0, y: 0, width: 48, height: 31))
-//                btnNavSkip = themeSubmitBtn(frame: CGRect(x: 0, y: 0, width: 48, height: 31))
-//                btnNavSkip.setImage(UIImage.init(named: "skipArrow"), for: .normal)
-//                btnNavSkip.setTitle("login_btnSkip".Localized(), for: .normal)
-//                btnNavSkip.semanticContentAttribute = .forceRightToLeft
-//                btnNavSkip.isSkipBtn = true
-//                btnNavSkip.addTarget(self, action: #selector(self.btnSkipAction), for: .touchUpInside)
-//                LeftView.addSubview(btnNavSkip)
-//
-//                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
-//                btnLeftBar.style = .plain
-//                controller.navigationItem.leftBarButtonItem = btnLeftBar
             }
         }
         if rightImages.count != 0 {
             var arrButtons = [UIBarButtonItem]()
             rightImages.forEach { (title) in
-                if title == NavItemsRight.notifications.value {
-//                    let vwNotif = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-//
-//                    let btnNotif = UIButton.init()
-//                    btnNotif.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-//                    btnNotif.setImage(UIImage.init(named: "ic_notification"), for: .normal)
-//                    btnNotif.addTarget(self, action: #selector(OpenNotificationsVC(_:)), for: .touchUpInside)
-//                    btnNotif.layer.setValue(controller, forKey: "controller")
-//                    vwNotif.addSubview(btnNotif)
-//
-//                    lblNavNotifBadge = badgeLabel.init(frame: CGRect(x: 26, y: 0, width: 17, height: 17))
-//                    lblNavNotifBadge.isNotifBadge = true
-//                    lblNavNotifBadge.text = "0"
-//                    vwNotif.addSubview(lblNavNotifBadge)
-//
-//                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: vwNotif)
-//                    btnRightBar.style = .plain
-//                    arrButtons.append(btnRightBar)
+                if title == NavItemsRight.login.value {
+                    
+                    
+                    
+                    let viewLogin = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+
+                    let btnLogin = UIButton.init()
+                    btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+                    btnLogin.setTitle("NavigationButton_btnLogin".Localized(), for: .normal)
+                    btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
+                    btnLogin.titleLabel?.textColor = colors.submitButtonColor.value
+                    btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    btnLogin.layer.setValue(controller, forKey: "controller")
+                    viewLogin.addSubview(btnLogin)
+
+                
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewLogin)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
                 }
-//                else if title == NavItemsRight.profile.value {
-//                    let vwProfile = viewfullCornerRadiusForProfile(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-//
-//                    btnNavProfile = buttonForProfile.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-//                    btnNavProfile.addTarget(self, action: #selector(OpenOtherProfileVC(_:)), for: .touchUpInside)
-//                    btnNavProfile.layer.setValue(controller, forKey: "controller")
-//                    vwProfile.addSubview(btnNavProfile)
-//
-//                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: vwProfile)
-//                    btnRightBar.style = .plain
-//                    arrButtons.append(btnRightBar)
-//                }
                
             }
             controller.navigationItem.rightBarButtonItems = arrButtons
@@ -218,7 +195,10 @@ class BaseViewController: UIViewController {
 //        navController.navigationController?.modalTransitionStyle = .crossDissolve
 //        controller?.present(navController, animated: false, completion: nil)
     }
-    
+    @objc func openLoginVC(_ sender: UIButton?) {
+   
+//        controller?.navigationController?.pushViewController(docInfoVc, animated: true)
+    }
     @objc func OpenMailVC(_ sender: UIButton?) {
    
 //        controller?.navigationController?.pushViewController(docInfoVc, animated: true)

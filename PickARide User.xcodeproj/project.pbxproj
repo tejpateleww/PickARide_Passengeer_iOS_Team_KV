@@ -70,6 +70,9 @@
 		181EBDBC258730B300C11C08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD93258730B300C11C08 /* AppDelegate.swift */; };
 		181EBE1D258749AE00C11C08 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBE1B258749AE00C11C08 /* UserInfo.swift */; };
 		181EBE1E258749AE00C11C08 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBE1C258749AE00C11C08 /* Datum.swift */; };
+		18FDF5532588707F0084D40C /* customTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDF5522588707F0084D40C /* customTextView.swift */; };
+		18FDF55625887C530084D40C /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDF55525887C530084D40C /* VerifyViewController.swift */; };
+		18FDF55A25889A0E0084D40C /* ChangePasswordPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDF55925889A0E0084D40C /* ChangePasswordPopUpViewController.swift */; };
 		6A4A9A80E727926791AFA6BB /* Pods_PickARide_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +142,9 @@
 		181EBE1B258749AE00C11C08 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		181EBE1C258749AE00C11C08 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		18621B6B258785C600DECD60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
+		18FDF5522588707F0084D40C /* customTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTextView.swift; sourceTree = "<group>"; };
+		18FDF55525887C530084D40C /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		18FDF55925889A0E0084D40C /* ChangePasswordPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPopUpViewController.swift; sourceTree = "<group>"; };
 		322BDD104EE2F2B25563C413 /* Pods-PickARide User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickARide User.debug.xcconfig"; path = "Target Support Files/Pods-PickARide User/Pods-PickARide User.debug.xcconfig"; sourceTree = "<group>"; };
 		3AF173D9562045C1450A0DEA /* Pods-PickARide User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickARide User.release.xcconfig"; path = "Target Support Files/Pods-PickARide User/Pods-PickARide User.release.xcconfig"; sourceTree = "<group>"; };
 		64C68ADE241BBB2900B97B25 /* PickARide User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PickARide User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +173,7 @@
 				181EBD91258730B300C11C08 /* LoginViewController.swift */,
 				181EBD92258730B300C11C08 /* RegisterViewController.swift */,
 				180979A8258769A2002070A7 /* SplashVC.swift */,
+				18FDF55525887C530084D40C /* VerifyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -362,6 +369,7 @@
 				180979EC25876E77002070A7 /* CustomLabel.swift */,
 				180979EF25876F9A002070A7 /* CustomView.swift */,
 				180979F225876FA7002070A7 /* CustomButton.swift */,
+				18FDF5522588707F0084D40C /* customTextView.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -376,6 +384,7 @@
 		181EBDBF2587310E00C11C08 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18FDF558258899F20084D40C /* PopUP */,
 				1809799C25876896002070A7 /* Login */,
 				181EBD5D258730B300C11C08 /* ViewController.swift */,
 			);
@@ -390,6 +399,14 @@
 				180979F725877CA0002070A7 /* Login.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		18FDF558258899F20084D40C /* PopUP */ = {
+			isa = PBXGroup;
+			children = (
+				18FDF55925889A0E0084D40C /* ChangePasswordPopUpViewController.swift */,
+			);
+			path = PopUP;
 			sourceTree = "<group>";
 		};
 		64C68AD5241BBB2900B97B25 = {
@@ -583,6 +600,7 @@
 				181EBDA5258730B300C11C08 /* Validators.swift in Sources */,
 				181EBDB4258730B300C11C08 /* customTextField.swift in Sources */,
 				180979C525876B25002070A7 /* extension+String.swift in Sources */,
+				18FDF55A25889A0E0084D40C /* ChangePasswordPopUpViewController.swift in Sources */,
 				181EBD97258730B300C11C08 /* Method.swift in Sources */,
 				180979C625876B25002070A7 /* UIViewController+Extension.swift in Sources */,
 				181EBDA3258730B300C11C08 /* WebServicesSubClass.swift in Sources */,
@@ -593,6 +611,7 @@
 				180979F025876F9A002070A7 /* CustomView.swift in Sources */,
 				181EBD9B258730B300C11C08 /* RegisterReqModel.swift in Sources */,
 				180979CD25876B25002070A7 /* UICollectionViewCell+Extension.swift in Sources */,
+				18FDF5532588707F0084D40C /* customTextView.swift in Sources */,
 				181EBDBA258730B300C11C08 /* LoginViewController.swift in Sources */,
 				180979CA25876B25002070A7 /* UITextField+Extension.swift in Sources */,
 				181EBE1E258749AE00C11C08 /* Datum.swift in Sources */,
@@ -601,6 +620,7 @@
 				181EBDA6258730B300C11C08 /* Fonts.swift in Sources */,
 				180979C925876B25002070A7 /* UITapGestureRecognizer+Extension.swift in Sources */,
 				180979AC25876AA2002070A7 /* AppStoryboards.swift in Sources */,
+				18FDF55625887C530084D40C /* VerifyViewController.swift in Sources */,
 				180979C025876B25002070A7 /* UILabel+Extension.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				180979CC25876B25002070A7 /* Data+Extensions.swift in Sources */,

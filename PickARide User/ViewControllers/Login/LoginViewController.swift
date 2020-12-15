@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupLocalization()
         // Do any additional setup after loading the view.
     }
@@ -44,21 +45,21 @@ class LoginViewController: UIViewController {
     //MARK: -Other Methods
     
     func setupLocalization() {
-        lblSignIN.text = "lblSignIN".Localized()
-        lblWelcomeBack.text = "lblWelcomeBack".Localized()
+        lblSignIN.text = "LoginScreen_lblSignIN".Localized()
+        lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
         
-        textFieldEmailID.placeholder = "textFieldEmailID".Localized()
-        textFieldPassword.placeholder = "textFieldPassword".Localized()
+        textFieldEmailID.placeholder = "LoginScreen_textFieldEmailID_place".Localized()
+        textFieldPassword.placeholder = "LoginScreen_textFieldPassword_place".Localized()
         
-        btnForgotPassword.setTitle("btnForgotPassword".Localized(), for: .normal)
+        btnForgotPassword.setTitle("LoginScreen_btnForgotPassword".Localized(), for: .normal)
         
-        btnSignIN.setTitle("btnSignIN".Localized(), for: .normal)
+        btnSignIN.setTitle("LoginScreen_btnSignIN".Localized(), for: .normal)
         
-        lblOR.text = "lblOR".Localized()
+        lblOR.text = "LoginScreen_lblOR".Localized()
         
-        lblDontHaveanAccount.text = "lblDontHaveanAccount".Localized()
+        lblDontHaveanAccount.text = "LoginScreen_lblDontHaveanAccount".Localized()
         
-        btnSIgnUP.setTitle("btnSIgnUP".Localized(), for: .normal)
+        btnSIgnUP.setTitle("LoginScreen_btnSIgnUP".Localized(), for: .normal)
     }
     
     //MARK: -IBActions
@@ -67,7 +68,16 @@ class LoginViewController: UIViewController {
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
+    @IBAction func ForgotPassword(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
+        controller.isChangePassword = true
+        controller.btnSubmitClosure = {
+            self.dismiss(animated: true, completion: nil)
+        }
+        self.present(controller, animated: true, completion: nil)
+        
+    }
     
     //MARK: -API Calls
     

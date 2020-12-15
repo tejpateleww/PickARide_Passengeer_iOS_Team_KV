@@ -8,66 +8,63 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextViewDelegate {
+class RegisterViewController: BaseViewController, UITextViewDelegate {
   
     //MARK: -Properties
     
     //MARK: -IBOutlets
+    @IBOutlet weak var lblSignUP: registerScreenLabel!
+    @IBOutlet weak var textFieldFirstName: UITextField!
+    @IBOutlet weak var textFieldLastName: UITextField!
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var lblCountryCode: UILabel!
+    @IBOutlet weak var textFieldPhoneNumber: UITextField!
+    @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textView: UITextView!
    
+    @IBOutlet weak var btnSignUP: submitButton!
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAttributeText()
+        self.navigationController?.navigationBar.isHidden = false
+       setLocalization()
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true)
+       
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        lblSignUP.text = "SignUpPage_lblSignUP".Localized()
+        textFieldFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
+        textFieldLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
+        textFieldEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
+        lblCountryCode.text = "SignUpPage_lblCountryCode".Localized()
+        textFieldPhoneNumber.placeholder = "SignUpPage_textFieldPhoneNumbaer_place".Localized()
+        textFieldPassword.placeholder = "SignUpPage_textFieldPassword_place".Localized()
+        textView.delegate = self
+        btnSignUP.setTitle("SignUpPage_btnSIgnUP".Localized(), for: .normal)
     }
     
     //MARK: -other methods
-    func setAttributeText()
-    {//""  as well as our privacy policy
-        let text = NSMutableAttributedString(string: "By clicking \"Sign Up\" you agree to our ")
-        text.addAttribute(NSAttributedString.Key.font, value: CustomFont.regular.returnFont(13), range: NSMakeRange(0, text.length))
-
-                let selectablePart = NSMutableAttributedString(string: "terms and conditions")
-                selectablePart.addAttribute(NSAttributedString.Key.font, value: CustomFont.regular.returnFont(13), range: NSMakeRange(0, selectablePart.length))
-                // Add an underline to indicate this portion of text is selectable (optional)
-                selectablePart.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0,selectablePart.length))
-        selectablePart.addAttribute(NSAttributedString.Key.underlineColor, value: colors.loginPlaceHolderColor.value, range: NSMakeRange(0, selectablePart.length))
-                // Add an NSLinkAttributeName with a value of an url or anything else
-                selectablePart.addAttribute(NSAttributedString.Key.link, value: "termsAndConditions", range: NSMakeRange(0,selectablePart.length))
-
-                // Combine the non-selectable string with the selectable string
-                text.append(selectablePart)
-
-                // Center the text (optional)
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = NSTextAlignment.left
-                text.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.length))
-       
-                // To set the link text color (optional)
-        textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor:colors.loginPlaceHolderColor.value, NSAttributedString.Key.font: CustomFont.regular.returnFont(13)]
-                // Set the text view to contain the attributed text
-                textView.attributedText = text
-                // Disable editing, but enable selectable so that the link can be selected
-                textView.isEditable = false
-                textView.isSelectable = true
-                // Set the delegate in order to use textView(_:shouldInteractWithURL:inRange)
-                textView.delegate = self
+    func setLocalization() {
+        
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
 
-            // **Perform sign in action here**
-        print(URL)
+        if ((URL.scheme?.contains("termsAndConditions")) != nil) {
+            print("Print termsAndConditions")
+        } else {
+            print("Print privacypolicy")
+        }
 
             return false
         }
     //MARK: -IBActions
-    
+    @IBAction func signUP(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     //MARK: -API Calls
     

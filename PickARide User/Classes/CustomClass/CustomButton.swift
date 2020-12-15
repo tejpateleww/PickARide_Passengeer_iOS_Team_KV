@@ -34,3 +34,14 @@ class loginScreenButton : UIButton
         }
     }
 }
+class ResendCodeButton : UIButton
+{
+  
+   
+    override func awakeFromNib() {
+      
+            self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(15)
+        
+    }
+}

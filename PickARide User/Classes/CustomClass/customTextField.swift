@@ -102,3 +102,20 @@ class emailPasswordTextField : UITextField {
                                                         attributes: [NSAttributedString.Key.foregroundColor: colors.loginPlaceHolderColor.value.withAlphaComponent(0.45)])
     }
 }
+class verifyPinTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.bold.returnFont(30)
+        self.textColor = colors.loginPlaceHolderColor.value
+      //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+      
+    }
+}
+class ChangePasswordTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.medium.returnFont(15)
+        self.textColor = colors.black.value
+      //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!,
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.confirmPasswordPlaceHolder.value])
+    }
+}
