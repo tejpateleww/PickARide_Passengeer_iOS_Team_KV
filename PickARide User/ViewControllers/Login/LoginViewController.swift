@@ -65,7 +65,8 @@ class LoginViewController: UIViewController {
     //MARK: -IBActions
     
     @IBAction func signUP(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
+        self.navigationController?.navigationBar.isHidden = false
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: NotificationVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func ForgotPassword(_ sender: Any) {

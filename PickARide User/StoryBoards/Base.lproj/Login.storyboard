@@ -730,6 +730,9 @@ Number</string>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-1t-B8O" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                         <state key="normal" title="VERIFY"/>
+                                                        <connections>
+                                                            <action selector="Verify:" destination="NhO-bU-9oJ" eventType="touchUpInside" id="VgV-Id-yvL"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -992,8 +995,145 @@ Number</string>
             </objects>
             <point key="canvasLocation" x="792.75362318840587" y="37.5"/>
         </scene>
+        <!--NotificationVC-->
+        <scene sceneID="uAv-1I-B8e">
+            <objects>
+                <viewController storyboardIdentifier="NotificationVC" id="CiP-LO-ijD" customClass="NotificationVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v0C-aA-zhK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqO-KV-ZG2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sg-fK-FEN" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="32.5" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HpG-ae-gad">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="746"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationCell" rowHeight="88" id="Fph-ox-SRW" customClass="NotificationCell" customModule="Adelante" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="88"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fph-ox-SRW" id="GPU-yn-PKM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IX-kL-3Jb">
+                                                            <rect key="frame" x="16" y="19" width="50" height="50"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-RightShape" translatesAutoresizingMaskIntoConstraints="NO" id="x1B-Eh-dIQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.94510692360000004" green="0.94508653880000004" blue="0.9450905919" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="x1B-Eh-dIQ" secondAttribute="trailing" id="2cB-Z1-5U1"/>
+                                                                <constraint firstItem="x1B-Eh-dIQ" firstAttribute="leading" secondItem="6IX-kL-3Jb" secondAttribute="leading" id="GXt-3G-JqN"/>
+                                                                <constraint firstItem="x1B-Eh-dIQ" firstAttribute="top" secondItem="6IX-kL-3Jb" secondAttribute="top" id="M85-if-gTx"/>
+                                                                <constraint firstAttribute="height" constant="50" id="dIo-Fv-iYi"/>
+                                                                <constraint firstAttribute="width" secondItem="6IX-kL-3Jb" secondAttribute="height" multiplier="1:1" id="gEy-JU-KKU"/>
+                                                                <constraint firstAttribute="bottom" secondItem="x1B-Eh-dIQ" secondAttribute="bottom" id="kbc-xk-QBt"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hgC-LZ-Kjo">
+                                                            <rect key="frame" x="86" y="9.5" width="288" height="69.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gak-3O-r9R" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isNotificatioTitle" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Order #1234 has been Successfully completed " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9r-5o-fBi" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="28.5" width="288" height="41"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isNotificatioDescription" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z17-zD-MrG">
+                                                            <rect key="frame" x="0.0" y="85" width="414" height="1"/>
+                                                            <color key="backgroundColor" red="0.9372935295" green="0.93701571230000003" blue="0.95681506400000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="L5T-Tw-8QG"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Z17-zD-MrG" secondAttribute="bottom" constant="2" id="6jN-3h-lO1"/>
+                                                        <constraint firstItem="hgC-LZ-Kjo" firstAttribute="centerY" secondItem="GPU-yn-PKM" secondAttribute="centerY" id="QV8-wp-lqT"/>
+                                                        <constraint firstItem="Z17-zD-MrG" firstAttribute="leading" secondItem="GPU-yn-PKM" secondAttribute="leading" id="han-2g-ITr"/>
+                                                        <constraint firstItem="6IX-kL-3Jb" firstAttribute="centerY" secondItem="GPU-yn-PKM" secondAttribute="centerY" id="j3j-75-aeq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Z17-zD-MrG" secondAttribute="trailing" id="pWf-C4-ZTV"/>
+                                                        <constraint firstItem="6IX-kL-3Jb" firstAttribute="leading" secondItem="GPU-yn-PKM" secondAttribute="leading" constant="16" id="s2i-g1-HmU"/>
+                                                        <constraint firstItem="hgC-LZ-Kjo" firstAttribute="leading" secondItem="6IX-kL-3Jb" secondAttribute="trailing" constant="20" id="s3b-HM-dOa"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="hgC-LZ-Kjo" secondAttribute="trailing" constant="20" id="tjv-Tt-DZB"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="CiP-LO-ijD" id="q0d-mH-7wd"/>
+                                            <outlet property="delegate" destination="CiP-LO-ijD" id="Be0-s9-GLr"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HpG-ae-gad" secondAttribute="trailing" id="9e5-Gb-YBM"/>
+                                    <constraint firstAttribute="trailing" secondItem="5sg-fK-FEN" secondAttribute="trailing" constant="16" id="BAY-P5-w8a"/>
+                                    <constraint firstItem="HpG-ae-gad" firstAttribute="leading" secondItem="FqO-KV-ZG2" secondAttribute="leading" id="D7Z-Or-QkZ"/>
+                                    <constraint firstItem="HpG-ae-gad" firstAttribute="top" secondItem="5sg-fK-FEN" secondAttribute="bottom" constant="19" id="NnV-YO-YLk"/>
+                                    <constraint firstItem="5sg-fK-FEN" firstAttribute="leading" secondItem="FqO-KV-ZG2" secondAttribute="leading" constant="16" id="OxV-5v-B4a"/>
+                                    <constraint firstItem="5sg-fK-FEN" firstAttribute="top" secondItem="FqO-KV-ZG2" secondAttribute="top" constant="32.5" id="WTq-0H-SQT"/>
+                                    <constraint firstAttribute="bottom" secondItem="HpG-ae-gad" secondAttribute="bottom" id="rxE-bQ-WXe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="olO-ec-dWE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FqO-KV-ZG2" firstAttribute="leading" secondItem="olO-ec-dWE" secondAttribute="leading" id="03p-w8-XWL"/>
+                            <constraint firstItem="FqO-KV-ZG2" firstAttribute="top" secondItem="olO-ec-dWE" secondAttribute="top" id="EoT-6N-Dd0"/>
+                            <constraint firstItem="olO-ec-dWE" firstAttribute="trailing" secondItem="FqO-KV-ZG2" secondAttribute="trailing" id="Fco-Zr-0Ie"/>
+                            <constraint firstItem="olO-ec-dWE" firstAttribute="bottom" secondItem="FqO-KV-ZG2" secondAttribute="bottom" id="qPD-sb-2kq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblNotificationTitle" destination="5sg-fK-FEN" id="RoG-YT-xEw"/>
+                        <outlet property="tbvNotification" destination="HpG-ae-gad" id="I18-Sf-bLe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4HO-2U-vLK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6095.652173913044" y="66.964285714285708"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Dummy-RightShape" width="24" height="24"/>
         <image name="ic_DownReg" width="14" height="8"/>
         <image name="ic_Facebook" width="66" height="66"/>
         <image name="ic_Google" width="66" height="66"/>

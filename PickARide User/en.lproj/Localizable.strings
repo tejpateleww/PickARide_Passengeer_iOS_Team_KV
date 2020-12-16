@@ -52,5 +52,8 @@
 "ChangePassword_btnSetPassword" = "SET PASSWORD";
 "ChangePassword_btnChangePassword" = "CHANGE PASSWORD";
 
+//Notification_
+"Notification_lblTitle" = "Notification";
+
 //Navigation Button
 "NavigationButton_btnLogin" = "Log in";

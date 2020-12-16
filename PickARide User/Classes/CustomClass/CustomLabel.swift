@@ -67,3 +67,24 @@ class changePasswordLabel : UILabel {
         self.font = CustomFont.medium.returnFont(28)
     }
 }
+class NotificationLabel: UILabel {
+    @IBInspectable var isTitle:Bool = false
+    
+    @IBInspectable var isNotificatioTitle:Bool = false
+    @IBInspectable var isNotificatioDescription:Bool = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if isTitle {
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.font = CustomFont.bold.returnFont(40)
+        } else if isNotificatioTitle {
+            self.font = CustomFont.medium.returnFont(17)
+            self.textColor = UIColor(hexString: "#242E42")
+        } else if isNotificatioDescription {
+            self.font = CustomFont.medium.returnFont(17)
+            self.textColor = UIColor(hexString: "#242E42")
+        }
+        
+        
+    }
+}

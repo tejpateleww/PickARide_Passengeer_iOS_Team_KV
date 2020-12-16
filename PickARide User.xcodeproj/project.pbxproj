@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18003585258A381A006BD68A /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18003584258A381A006BD68A /* NotificationVC.swift */; };
 		1809799A25876869002070A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1809799925876869002070A7 /* Assets.xcassets */; };
 		180979A9258769A2002070A7 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180979A8258769A2002070A7 /* SplashVC.swift */; };
 		180979AC25876AA2002070A7 /* AppStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180979AB25876AA2002070A7 /* AppStoryboards.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18003584258A381A006BD68A /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		1809799925876869002070A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180979A8258769A2002070A7 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		180979AB25876AA2002070A7 /* AppStoryboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboards.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				181EBD92258730B300C11C08 /* RegisterViewController.swift */,
 				180979A8258769A2002070A7 /* SplashVC.swift */,
 				18FDF55525887C530084D40C /* VerifyViewController.swift */,
+				18003584258A381A006BD68A /* NotificationVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				181EBD9E258730B300C11C08 /* LoginReqModel.swift in Sources */,
 				181EBDA8258730B300C11C08 /* Colors.swift in Sources */,
 				181EBDB5258730B300C11C08 /* GradientButton.swift in Sources */,
+				18003585258A381A006BD68A /* NotificationVC.swift in Sources */,
 				181EBD9F258730B300C11C08 /* Constants.swift in Sources */,
 				180979C125876B25002070A7 /* String+Extensions.swift in Sources */,
 				180979D125876C45002070A7 /* BaseViewController.swift in Sources */,

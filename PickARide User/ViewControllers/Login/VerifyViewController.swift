@@ -69,7 +69,16 @@ class VerifyViewController: BaseViewController {
         //
     }
     //MARK: -IBActions
-    
+    @IBAction func Verify(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+        controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
+        controller.isChangePassword = false
+        controller.btnSubmitClosure = {
+            appDel.navigateToLogin()
+        }
+        self.present(controller, animated: true, completion: nil)
+       
+    }
     
     //MARK: -API Calls
     

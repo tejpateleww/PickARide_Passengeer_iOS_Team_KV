@@ -50,9 +50,9 @@ class ChangePasswordPopUpViewController: UIViewController {
     }
     func setButtonTitleAndHideView() {
         if isChangePassword {
-            textFieldOldPassword.isHidden = false
+            textFieldOldPassword.superview?.isHidden = false
         } else {
-            textFieldOldPassword.isHidden = true
+            textFieldOldPassword.superview?.isHidden = true
         }
     }
     func setLocalization() {
