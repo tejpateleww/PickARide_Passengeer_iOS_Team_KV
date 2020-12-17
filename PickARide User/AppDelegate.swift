@@ -2,7 +2,8 @@ import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 import UserNotifications
-
+import GoogleMaps
+import GooglePlaces
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate {
     
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 //        FirebaseApp.configure()
+        GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
+        GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
         self.navigateToLogin()
         checkAndSetDefaultLanguage()
         registerForPushNotifications()
@@ -71,6 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         self.window?.rootViewController = NavHomeVC
     }
     
+    func navigateToMain(){
+        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+        let Home = storyborad.instantiateViewController(withIdentifier: HomeViewController.className) as! HomeViewController
+        let HomeVC = UINavigationController(rootViewController: Home)
+        self.window?.rootViewController = HomeVC
+    }
     
     func clearData()
     {

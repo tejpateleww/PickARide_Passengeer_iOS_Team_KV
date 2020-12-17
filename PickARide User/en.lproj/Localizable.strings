@@ -55,5 +55,40 @@
 //Notification_
 "Notification_lblTitle" = "Notification";
 
+//Home_
+"home_Whereareyougoing_place" = "Where are you going ?";
+
+//ChooseDestination_
+"ChooseDestination_startLocation_place" = "Enter Start Location";
+"ChooseDestination_DestinationLocation_place" = "Enter Destionation";
+
+
+//Forgot Password Screen
+"lblForgotPassword" = "Forgot \nPassword";
+"lblQuestion" = "What is your phone number?";
+"lblDescription" = "Tap Get Started to get an SMS confirmation to help you use PICK A RIDE. We would like your phone number.";
+"lblCountryCode" = "COUNTRY CODE";
+"textFieldPhoneNumber" = "Phone number";
+"btnContinue" = "CONTINUE";
+
+//MyOffers Screen
+"lblMyOffers" = "My Offers";
+"textFieldOfferCode" = "Enter your Offer code";
+"btnApply" = "APPLY";
+"lblOffers" = "10% Off the base rate on your next rental";
+"lblValidto" = "Valid to 10/25/2020";
+"btnUsenow" = "Use now";
+
+//MyRides Screen
+"lblMyRides" = "My Rides";
+"lblDate" = "Today, 10:30 AM";
+"lblName" = "RIDEGO";
+"lblAddress" = "Seattle - 280 Hemlock Ln";
+"lblPrice" = "Price";
+"lblTotal" = "$25.50";
+"lblMyride" = "post";
+"btnUpcoming" = "UPCOMING";
+
+
 //Navigation Button
 "NavigationButton_btnLogin" = "Log in";

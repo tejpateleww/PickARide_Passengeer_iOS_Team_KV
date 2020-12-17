@@ -17,9 +17,9 @@ class ChangePasswordPopUpViewController: UIViewController {
     //MARK: -IBOutlets
     
     @IBOutlet weak var lblChangePassword: UILabel!
-    @IBOutlet weak var textFieldOldPassword: UITextField!
-    @IBOutlet weak var textFieldNewPassword: UITextField!
-    @IBOutlet weak var textFieldConfirmPassword: UITextField!
+    @IBOutlet weak var textFieldOldPassword: ChangePasswordTextField!
+    @IBOutlet weak var textFieldNewPassword: ChangePasswordTextField!
+    @IBOutlet weak var textFieldConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
     //MARK: -View Life Cycle Methods
     

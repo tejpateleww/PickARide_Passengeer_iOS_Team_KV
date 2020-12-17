@@ -65,6 +65,24 @@ class BaseViewController: UIViewController {
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
+            } else if leftImage == NavItemsLeft.menu.value {
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                btnLeft.setImage(UIImage.init(named: "ic_menu"), for: .normal)
+                btnLeft.layer.setValue(controller, forKey: "controller")
+                btnLeft.addTarget(self, action: #selector(self.btMenuAction), for: .touchUpInside)
+                
+                btnLeft.layer.shadowColor = colors.black.value.cgColor
+                btnLeft.layer.shadowOffset = CGSize(width: 0, height: 0)
+                btnLeft.layer.shadowRadius = 3
+                btnLeft.layer.shadowOpacity = 0.4
+                
+                
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                LeftView.addSubview(btnLeft)
+            
+                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
+                btnLeftBar.style = .plain
+                controller.navigationItem.leftBarButtonItem = btnLeftBar
             }
         }
         if rightImages.count != 0 {
@@ -88,6 +106,28 @@ class BaseViewController: UIViewController {
                 
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewLogin)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                } else if title == NavItemsRight.userProfile.value {
+                    
+                    
+                    
+                    let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+
+                    let btnProfile = UIButton.init()
+                    btnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    btnProfile.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
+                   
+                   // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    btnProfile.layer.setValue(controller, forKey: "controller")
+                    viewProfile.addSubview(btnProfile)
+
+                    btnProfile.layer.shadowColor = colors.black.value.cgColor
+                    btnProfile.layer.shadowOffset = CGSize(width: 0, height: 0)
+                    btnProfile.layer.shadowRadius = 3
+                    btnProfile.layer.shadowOpacity = 0.4
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfile)
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
                 }
@@ -314,7 +354,11 @@ class BaseViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
+    @objc func btMenuAction() {
+        
+        
+        
+    }
     @objc func btnSkipAction() {
         //appDel.navigateToHome()
     }

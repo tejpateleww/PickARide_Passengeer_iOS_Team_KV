@@ -66,18 +66,20 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUP(_ sender: Any) {
         self.navigationController?.navigationBar.isHidden = false
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: NotificationVC.storyboardID)
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func ForgotPassword(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
-        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
-        controller.isChangePassword = true
-        controller.btnSubmitClosure = {
-            self.dismiss(animated: true, completion: nil)
-        }
-        self.present(controller, animated: true, completion: nil)
-        
+//        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+//        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
+//        controller.isChangePassword = true
+//        controller.btnSubmitClosure = {
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//        self.present(controller, animated: true, completion: nil)
+        self.navigationController?.navigationBar.isHidden = false
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK: -API Calls

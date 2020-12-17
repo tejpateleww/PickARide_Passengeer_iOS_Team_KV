@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 enum NavItemsLeft {
-    case none, back
+    case none, back , menu
     
     var value:String {
         switch self {
@@ -19,13 +19,15 @@ enum NavItemsLeft {
             return ""
         case .back:
             return "back"
+        case .menu:
+            return "menu"
         }
     }
 }
 
 
 enum NavItemsRight {
-    case none,login
+    case none,login,userProfile
     
     var value:String {
         switch self {
@@ -33,6 +35,8 @@ enum NavItemsRight {
             return ""
         case .login:
             return "login"
+        case .userProfile:
+            return "userProfile"
         }
     }
 }

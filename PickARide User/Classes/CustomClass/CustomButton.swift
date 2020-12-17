@@ -45,3 +45,27 @@ class ResendCodeButton : UIButton
         
     }
 }
+class MyofferScreenButton : UIButton
+{
+    @IBInspectable var isApply : Bool = false
+    @IBInspectable var isUseNow : Bool = false
+    override func awakeFromNib() {
+        if isApply {
+            self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.regular.returnFont(18)
+        } else if isUseNow {
+            self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.regular.returnFont(13)
+        }
+    }
+}
+class MyRidesButton : UIButton
+{
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 4
+        self.backgroundColor = colors.submitButtonColor.value
+        self.clipsToBounds = true
+        self.setTitleColor(colors.white.value, for: .normal)
+        self.titleLabel?.font = CustomFont.medium.returnFont(15)
+    }
+}

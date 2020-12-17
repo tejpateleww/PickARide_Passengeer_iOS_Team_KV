@@ -98,7 +98,7 @@ class emailPasswordTextField : UITextField {
         self.font = CustomFont.regular.returnFont(15)
         self.textColor = colors.black.value
       //  self.placeHolderColor = colors.loginPlaceHolderColor.value
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!,
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
                                                         attributes: [NSAttributedString.Key.foregroundColor: colors.loginPlaceHolderColor.value.withAlphaComponent(0.45)])
     }
 }
@@ -115,7 +115,64 @@ class ChangePasswordTextField : UITextField {
         self.font = CustomFont.medium.returnFont(15)
         self.textColor = colors.black.value
       //  self.placeHolderColor = colors.loginPlaceHolderColor.value
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!,
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
                                                         attributes: [NSAttributedString.Key.foregroundColor: colors.confirmPasswordPlaceHolder.value])
+    }
+}
+
+
+class leftSideImageTextField: UITextField {
+    @IBInspectable var leftImage : UIImage? {
+        didSet {
+            if let image = leftImage{
+                leftViewMode = .always
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 33, height: 24))
+                
+                let imageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 14, height: 14))
+                imageView.image = image
+                imageView.tintColor = tintColor
+               
+                view.addSubview(imageView)
+                leftView = view
+            }else {
+                leftViewMode = .never
+            }
+
+        }
+    }
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(17)
+        self.textColor = colors.black.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.confirmPasswordPlaceHolder.value])
+    }
+    
+}
+class chooseLocationTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(18)
+        self.textColor = colors.loginPlaceHolderColor.value
+      //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.phoneNumberColor.value])
+    }
+}
+class phonenumberTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(15)
+        self.textColor = colors.black.value
+        //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.loginPlaceHolderColor.value.withAlphaComponent(0.45)])
+    }
+}
+class MyOfferTextField : UITextField {
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(15)
+        self.textColor = colors.black.value
+        //  self.placeHolderColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.loginPlaceHolderColor.value.withAlphaComponent(0.45)])
+       
     }
 }

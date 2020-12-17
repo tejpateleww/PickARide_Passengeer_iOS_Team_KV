@@ -33,6 +33,16 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.0)
   - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (3.1.0):
+    - GoogleMaps (= 3.1.0)
+    - GooglePlaces (= 3.1.0)
+  - GooglePlaces (3.1.0):
+    - GoogleMaps/Base (= 3.1.0)
   - GoogleUtilities/AppDelegateSwizzler (7.1.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -62,6 +72,9 @@ PODS:
 DEPENDENCIES:
   - Alamofire (= 5.0)
   - Firebase/Messaging
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
   - IQKeyboardManagerSwift (= 6.3.0)
   - SwiftyJSON (= 4.0)
 
@@ -75,6 +88,9 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlacePicker
+    - GooglePlaces
     - GoogleUtilities
     - IQKeyboardManagerSwift
     - nanopb
@@ -90,12 +106,15 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 5ccdee6a84e6b4bb5316de0a8cd88bc749ba490d
   FirebaseMessaging: 68d1bcb14880189558a8ae57167abe0b7e417232
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  GooglePlacePicker: fa975116ac202ac29822c0a79758ea1c4db5a95f
+  GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 785bde1cd49a2a533284aaacd95b415e17f95ae6
+PODFILE CHECKSUM: a228f684caec3577d408acf8faf90e23b2c3b176
 
 COCOAPODS: 1.10.0

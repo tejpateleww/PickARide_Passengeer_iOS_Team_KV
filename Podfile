@@ -8,7 +8,9 @@ target 'PickARide User' do
     pod 'SwiftyJSON', '4.0'
     pod 'IQKeyboardManagerSwift', '6.3.0'
     pod 'Firebase/Messaging'
-
+pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
+    pod 'GoogleMaps'
   # Pods for ApiStructureModulex
 
 end

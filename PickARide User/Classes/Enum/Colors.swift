@@ -10,7 +10,7 @@ import Foundation
 import  UIKit
 
 enum colors{
-    case white,black,appColor,red,btnColor,tableBg,gradient1,gradient2,lightGrey,coresoundThemeColor,loginText,loginViewColor,submitButtonColor,loginPlaceHolderColor, phoneNumberColor, confirmPasswordPlaceHolder
+    case white,black,appColor,red,btnColor,tableBg,gradient1,gradient2,lightGrey,coresoundThemeColor,loginText,loginViewColor,submitButtonColor,loginPlaceHolderColor, phoneNumberColor, confirmPasswordPlaceHolder , seperatorColor
     
     var value:UIColor{
         switch self {
@@ -47,6 +47,8 @@ enum colors{
             return UIColor(hexString: "#ACB1C0")
         case .confirmPasswordPlaceHolder:
             return UIColor(hexString: "#8F9BB3")
+        case .seperatorColor:
+            return UIColor(hexString: "#E4E9F2")
         }
     }
 }

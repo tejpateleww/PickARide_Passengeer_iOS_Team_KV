@@ -1,0 +1,56 @@
+//
+//  ForgotPasswordVC.swift
+//  PickARide User
+//
+//  Created by baps on 15/12/20.
+//  Copyright © 2020 EWW071. All rights reserved.
+//
+
+import UIKit
+
+class ForgotPasswordVC: BaseViewController {
+
+    //MARK: -Properties
+      
+    //MARK: -IBOutlets
+    
+    
+    @IBOutlet weak var lblForgotPassword: ForgotPasswordLabel!
+    @IBOutlet weak var lblQuestion: ForgotPasswordLabel!
+    @IBOutlet weak var lblDescription: ForgotPasswordLabel!
+    @IBOutlet weak var lblCountryCode: ForgotPasswordLabel!
+    
+    
+    @IBOutlet weak var textFieldPhoneNumber: phonenumberTextField!
+    
+    @IBOutlet weak var btnContinue: submitButton!
+    
+    //MARK: -View Life Cycle Methods
+    override func viewDidLoad() {
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        super.viewDidLoad()
+        setupLocalization()
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    //MARK: -Other Methods
+    
+    func setupLocalization(){
+        lblForgotPassword.text = "lblForgotPassword".Localized()
+        lblQuestion.text = "lblQuestion".Localized()
+        lblDescription.text = "lblDescription".Localized()
+        lblCountryCode.text = "lblCountryCode".Localized()
+
+        textFieldPhoneNumber.placeholder = "textFieldPhoneNumber".Localized()
+
+        btnContinue.setTitle("btnContinue".Localized(), for: .normal)
+    }
+    //MARK: -IBActions
+    @IBAction func btnContinue(_ sender: Any) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    //MARK: -API Calls
+}

@@ -22,8 +22,15 @@ class SplashVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: LoginViewController.storyboardID)
-            self.navigationController?.pushViewController(controller, animated: true)
+            
+            if userDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
+                appDel.navigateToMain()
+            } else {
+                let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: LoginViewController.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            
+           
         })
     }
     //MARK: -IBActions
