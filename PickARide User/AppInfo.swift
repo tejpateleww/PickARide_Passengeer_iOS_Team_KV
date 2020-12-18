@@ -50,6 +50,7 @@ struct AppInfo {
     }
     static var Google_API_Key: String {
         return "AIzaSyDZ6MXcM6b-8Oy61CKeQuwMiX71fRkWQgY"
+        //
     }
 }
 

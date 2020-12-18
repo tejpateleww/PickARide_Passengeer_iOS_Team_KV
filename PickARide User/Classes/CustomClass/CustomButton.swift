@@ -69,3 +69,13 @@ class MyRidesButton : UIButton
         self.titleLabel?.font = CustomFont.medium.returnFont(15)
     }
 }
+class SavedPlaceButton : UIButton
+{
+    @IBInspectable var isAddButton : Bool = false
+    override func awakeFromNib() {
+        if isAddButton {
+            self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.regular.returnFont(18)
+        }
+    }
+}

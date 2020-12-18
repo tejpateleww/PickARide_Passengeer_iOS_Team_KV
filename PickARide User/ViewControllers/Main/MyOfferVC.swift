@@ -40,9 +40,9 @@ class MyOfferVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func setupLocalization(){
-        lblMyOffers.text = "lblMyOffers".Localized()
-        textFieldOfferCode.placeholder = "textFieldOfferCode".Localized()
-        btnApply.setTitle("btnApply".Localized(), for: .normal)
+        lblMyOffers.text = "MyOfferVC_lblMyOffers".Localized()
+        textFieldOfferCode.placeholder = "MyOfferVC_textFieldOfferCode".Localized()
+        btnApply.setTitle("MyOfferVC_btnApply".Localized(), for: .normal)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
@@ -60,8 +60,8 @@ class myOfferCell:UITableViewCell{
         setupLocalization()
     }
     func setupLocalization(){
-        lblOffers.text = "lblOffers".Localized()
-        lblValidto.text = "lblValidto".Localized()
-        btnUsenow.setTitle("btnUsenow".Localized(), for: .normal)
+        lblOffers.text = "MyOfferVC_lblOffers".Localized()
+        lblValidto.text = "MyOfferVC_lblValidto".Localized()
+        btnUsenow.setTitle("MyOfferVC_btnUsenow".Localized(), for: .normal)
     }
 }

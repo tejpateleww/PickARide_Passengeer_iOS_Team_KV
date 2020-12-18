@@ -176,3 +176,117 @@ class MyOfferTextField : UITextField {
        
     }
 }
+
+class addCarddetailsTextField : UITextField {
+    @IBInspectable var RightSideImage : UIImage? {
+        didSet {
+            if let image = RightSideImage{
+                rightViewMode = .always
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 33, height: 24))
+                
+                let imageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 14, height: 14))
+                imageView.image = image
+                imageView.tintColor = tintColor
+                imageView.contentMode = .scaleAspectFit
+               
+                view.addSubview(imageView)
+                rightView = view
+            }else {
+                rightViewMode = .never
+            }
+
+        }
+    }
+    override func awakeFromNib() {
+        
+        self.font = CustomFont.regular.returnFont(15)
+        self.textColor = colors.loginPlaceHolderColor.value
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: colors.confirmPasswordPlaceHolder.value])
+        
+        
+    }
+}
+class ProfileTextField: UITextField {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        borderStyle = .none
+    }
+
+ 
+    @IBInspectable var leftImage : UIImage? {
+        didSet {
+            if let image = leftImage{
+                leftViewMode = .always
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+                imageView.image = image
+                imageView.tintColor = tintColor
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 12, height: 16))
+                view.addSubview(imageView)
+                leftView = view
+            }else {
+                leftViewMode = .never
+            }
+
+        }
+    }
+    @IBInspectable var rightImage: UIImage? {
+        didSet {
+            if let image = rightImage {
+                rightViewMode = .always
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+                imageView.image = image
+                imageView.tintColor = tintColor
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 12, height: 16))
+                view.addSubview(imageView)
+                rightView = view
+            }else{
+                rightViewMode = .never
+            }
+        }
+    }
+   @IBInspectable var rightOneImage: UIImage? {
+       didSet {
+           if let image = rightOneImage {
+               rightViewMode = .always
+               let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 8, height: 14))
+               imageView.image = image
+               imageView.tintColor = tintColor
+            let view = UIView(frame : CGRect(x: 0, y: 0, width: 12, height: 14))
+               view.addSubview(imageView)
+               rightView = view
+           }else{
+               rightViewMode = .never
+           }
+       }
+   }
+  
+    func valid(){
+        self.textColor = .white
+           //self.isValid = true
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+          // self.isHighlightedField = false
+           self.layoutSubviews()
+       }
+   
+       func invalid(){
+           //rightImage = #imageLiteral(resourceName: "invalid_field")
+         
+           textColor = UIColor.red
+         //  self.isValid = false
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: colors.red.value])
+          // isHighlightedField = true
+           self.layoutSubviews()
+           
+           DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+            self.textColor = .white
+              // self.rightImage = nil
+               //self.isValid = true
+            self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+           //    self.isHighlightedField = false
+               self.layoutSubviews()
+           }
+       }
+}

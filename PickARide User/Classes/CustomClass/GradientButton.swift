@@ -41,3 +41,25 @@ class GradientButton: UIButton {
         }
     }
 }
+class RidesDetailsButton : UIButton
+{
+    @IBInspectable var isReceipt : Bool = false
+    @IBInspectable var isRepeatRide : Bool = false
+    override func awakeFromNib() {
+        if isReceipt{
+            self.clipsToBounds = true
+            self.layer.cornerRadius = 4
+            self.layer.borderColor = colors.submitButtonColor.value.cgColor
+            self.layer.borderWidth = 1
+            self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(15)
+        }else if isRepeatRide{
+            self.clipsToBounds = true
+            self.layer.cornerRadius = 4
+            self.layer.borderColor = colors.loginPlaceHolderColor.value.cgColor
+            self.layer.borderWidth = 1
+            self.setTitleColor(colors.loginPlaceHolderColor.value, for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(15)
+        }
+    }
+}

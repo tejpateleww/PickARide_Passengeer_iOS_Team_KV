@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+class TitleLabel : UILabel {
+    override func awakeFromNib() {
+        
+            self.font = CustomFont.medium.returnFont(40)
+            self.textColor = colors.loginPlaceHolderColor.value
+       
+    }
+}
+
+
 class loginScreenLabel : UILabel {
     @IBInspectable var isWelcome : Bool = false
     @IBInspectable var istitle : Bool = false
@@ -174,6 +184,176 @@ class myRidesLabel : UILabel{
         } else if isSelectType {
             self.font = CustomFont.medium.returnFont(15)
             self.textColor = colors.loginPlaceHolderColor.value
+        }
+    }
+}
+class addPaymentlable : UILabel {
+    @IBInspectable var isWallet : Bool = false
+    @IBInspectable var isWalletBalance : Bool = false
+    @IBInspectable var isCardNumber : Bool = false
+    @IBInspectable var isExpires : Bool = false
+    override func awakeFromNib() {
+        if isWallet {
+            self.font = CustomFont.bold.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        } else if isWalletBalance {
+            self.font = CustomFont.medium.returnFont(20)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        }  else if isCardNumber {
+            self.font = CustomFont.bold.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        } else if isExpires {
+            self.font = CustomFont.medium.returnFont(13)
+            self.textColor = colors.phoneNumberColor.value
+            self.textAlignment = .left
+        }
+        
+    }
+}
+class walletHistoryLabel : UILabel {
+    @IBInspectable var isAvailableMethod : Bool = false
+    @IBInspectable var isBalance : Bool = false
+    @IBInspectable var ismoneyFrom : Bool = false
+    @IBInspectable var istime : Bool = false
+    @IBInspectable var ismoney : Bool = false
+    override func awakeFromNib() {
+        if isAvailableMethod {
+            self.font = CustomFont.bold.returnFont(18)
+            self.textColor = colors.white.value
+            self.textAlignment = .center
+            self.backgroundColor = colors.submitButtonColor.value
+        } else if isBalance {
+            self.font = CustomFont.medium.returnFont(29)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if ismoneyFrom {
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.font = CustomFont.bold.returnFont(14)
+                   self.textAlignment = .left
+        } else if istime {
+            self.textColor = colors.phoneNumberColor.value
+            self.font = CustomFont.regular.returnFont(13)
+                   self.textAlignment = .left
+        } else if ismoney {
+            self.textColor = colors.submitButtonColor.value
+            self.font = CustomFont.bold.returnFont(15)
+                   self.textAlignment = .center
+        }
+    }
+}
+class addCardLabel : UILabel {
+    @IBInspectable var isDetailsTitle : Bool = false
+    override func awakeFromNib() {
+        self.font = CustomFont.regular.returnFont(11)
+        self.textColor = UIColor(hexString: "#ACB1C0")
+        self.textAlignment = .left
+        if isDetailsTitle {
+            self.font = CustomFont.medium.returnFont(12)
+            self.textColor = colors.AddCardTitleColor.value
+            self.textAlignment = .left
+        }
+        
+    }
+}
+class SavedPlacesLabel : UILabel{
+    @IBInspectable var isSavedPlaces : Bool = false
+    @IBInspectable var isHome: Bool = false
+    
+    override func awakeFromNib() {
+        if isSavedPlaces{
+            self.font = CustomFont.medium.returnFont(40)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isHome{
+            self.font = CustomFont.regular.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }
+    }
+}
+
+
+
+class ProfileLabel : UILabel{
+    @IBInspectable var isProfille : Bool = false
+    @IBInspectable var isProfileLabel : Bool = false
+   
+    
+    override func awakeFromNib() {
+        if isProfille{
+            self.font = CustomFont.medium.returnFont(40)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isProfileLabel{
+            self.font = CustomFont.regular.returnFont(12)
+            self.textColor = UIColor(hexString: "#8F9BB3")
+        }
+    }
+}
+
+class ReasonforLabel : UILabel {
+    @IBInspectable var isLabel : Bool = false
+    
+    override func awakeFromNib() {
+        if isLabel{
+            self.font = CustomFont.regular.returnFont(16)
+            self.textColor = UIColor(hexString: "#7F7F7F")
+        }
+    }
+}
+class RideDetailLabel : UILabel{
+    @IBInspectable var isRideDetails : Bool = false
+    @IBInspectable var isDate : Bool = false
+    @IBInspectable var isPlaceCode : Bool = false
+    @IBInspectable var isPlace : Bool = false
+    @IBInspectable var isAddress: Bool = false
+    @IBInspectable var isPrice : Bool = false
+    @IBInspectable var isTotal: Bool = false
+    @IBInspectable var isPickup : Bool = false
+    @IBInspectable var ispickupAddress: Bool = false
+    @IBInspectable var isDestination : Bool = false
+    @IBInspectable var isdestinationAddress: Bool = false
+    @IBInspectable var isName : Bool = false
+    @IBInspectable var isRating: Bool = false
+    override func awakeFromNib() {
+        if isRideDetails{
+            self.font = CustomFont.medium.returnFont(40)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isDate{
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isPlaceCode{
+            self.font = CustomFont.bold.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isPlace{
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = UIColor(hexString: "#ACB1C0")
+        }else if isAddress{
+            self.font = CustomFont.regular.returnFont(13)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isPrice{
+            self.font = CustomFont.regular.returnFont(13)
+            self.textColor = UIColor(hexString: "#ACB1C0")
+        }else if isTotal{
+            self.font = CustomFont.bold.returnFont(13)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isPickup{
+            self.font = CustomFont.medium.returnFont(11)
+            self.textColor = UIColor(hexString: "#9095A2")
+        }else if ispickupAddress{
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isDestination{
+            self.font = CustomFont.medium.returnFont(11)
+            self.textColor = UIColor(hexString: "#9095A2")
+        }else if isdestinationAddress{
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isName{
+            self.font = CustomFont.bold.returnFont(16)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }else if isRating{
+            self.font = CustomFont.regular.returnFont(11)
+            self.textColor = UIColor(hexString: "#9095A2")
         }
     }
 }

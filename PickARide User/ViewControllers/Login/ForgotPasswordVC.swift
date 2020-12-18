@@ -38,14 +38,14 @@ class ForgotPasswordVC: BaseViewController {
     //MARK: -Other Methods
     
     func setupLocalization(){
-        lblForgotPassword.text = "lblForgotPassword".Localized()
-        lblQuestion.text = "lblQuestion".Localized()
-        lblDescription.text = "lblDescription".Localized()
-        lblCountryCode.text = "lblCountryCode".Localized()
+        lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
+        lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
+        lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
+        lblCountryCode.text = "ForgotPasswordScreen_lblCountryCode".Localized()
 
-        textFieldPhoneNumber.placeholder = "textFieldPhoneNumber".Localized()
+        textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
 
-        btnContinue.setTitle("btnContinue".Localized(), for: .normal)
+        btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
     }
     //MARK: -IBActions
     @IBAction func btnContinue(_ sender: Any) {

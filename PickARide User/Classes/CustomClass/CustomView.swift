@@ -107,3 +107,75 @@ class MyRidesView : UIView {
         }
     }
 }
+class PaymentView : UIView {
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 5
+         self.clipsToBounds = true
+        
+        self.layer.masksToBounds = false
+        
+        self.layer.shadowColor = colors.black.value.cgColor
+        self.layer.shadowOffset = CGSize(width: -1, height: 1.0)
+        self.layer.shadowOpacity = 0.16
+        self.layer.shadowRadius = 3.0
+    }
+}
+class walletHistoryView : UIView {
+  
+    @IBInspectable var isBGView : Bool = false
+    @IBInspectable var isShadowView : Bool = false
+    override func awakeFromNib() {
+        if isBGView {
+            self.layer.cornerRadius = 4
+            self.clipsToBounds = true
+           
+           self.layer.masksToBounds = false
+            self.layer.shadowColor = colors.black.value.cgColor
+            self.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+            self.layer.shadowOpacity = 0.22
+            self.layer.shadowRadius = 11.0
+            
+    
+        } else if isShadowView {
+            self.layer.cornerRadius = 4
+            self.clipsToBounds = true
+           
+           self.layer.masksToBounds = false
+            self.layer.shadowColor = colors.black.value.cgColor
+            self.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+            self.layer.shadowOpacity = 0.2
+            self.layer.shadowRadius = 3.0
+            
+            
+           // self.layer.borderWidth = 1
+           // self.layer.borderColor = UIColor(hexString: "#E4E9F2").withAlphaComponent(0.6).cgColor
+        }
+       
+        
+       
+    }
+}
+class addCardDetailsView : UIView {
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 4
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(hexString: "#707070").withAlphaComponent(0.2).cgColor
+       
+    }
+}
+class savedPlacesView : UIView {
+    @IBInspectable var isShadow : Bool = false
+    override func awakeFromNib() {
+         if isShadow{
+            self.layer.cornerRadius = self.layer.bounds.height / 2
+            self.clipsToBounds = false
+            self.layer.masksToBounds = true;
+            self.backgroundColor = UIColor.white
+            self.layer.shadowColor = colors.loginViewColor.value.cgColor
+            self.layer.shadowOpacity = 1
+            self.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+            self.layer.shadowRadius = 4.0
+            self.layer.masksToBounds = false
+        }
+    }
+}

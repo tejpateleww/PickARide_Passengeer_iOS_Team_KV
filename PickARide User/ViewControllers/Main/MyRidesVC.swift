@@ -44,7 +44,7 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         
         switch tableView{
         case tblMyRides:
-            return 2
+            return 4
         case tblMyRideType:
             return myRideArr.count
         default:
@@ -85,6 +85,21 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         
         switch tableView {
         case tblMyRides:
+            if indexPath.row == 0 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RideDetailsVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if indexPath.row == 1 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ReasonForCancelVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if indexPath.row == 2 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SavedPlaceVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if indexPath.row == 3 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+           
+            
             break
         case tblMyRideType:
             selectedMyRideState = indexPath.row
@@ -98,9 +113,12 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         
         
     }
+    
+    
+    
     func setupLocalization(){
-        btnUpcoming.setTitle("btnUpcoming", for: .normal)
-        lblMyRides.text = "lblMyRides".Localized()
+        btnUpcoming.setTitle("MyRidesVC_btnUpcoming", for: .normal)
+        lblMyRides.text = "MyRidesVC_lblMyRides".Localized()
     }
     //MARK: -IBActions
     @IBAction func btnMyRidesTap(_ sender: Any) {
@@ -150,11 +168,11 @@ class MyridesCell:UITableViewCell{
         setupLocalization()
     }
     func setupLocalization(){
-        lblDate.text = "lblDate".Localized()
-        lblName.text = "lblName".Localized()
-        lblAddress.text = "lblAddress".Localized()
-        lblPrice.text = "lblPrice".Localized()
-        lblTotal.text = "lblTotal".Localized()
+        lblDate.text = "MyRidesVC_lblDate".Localized()
+        lblName.text = "MyRidesVC_lblName".Localized()
+        lblAddress.text = "MyRidesVC_lblAddress".Localized()
+        lblPrice.text = "MyRidesVC_lblPrice".Localized()
+        lblTotal.text = "MyRidesVC_lblTotal".Localized()
     }
 }
 class MyrideCell:UITableViewCell{
@@ -164,7 +182,7 @@ class MyrideCell:UITableViewCell{
         setupLocalization()
     }
     func setupLocalization(){
-        lblMyride.text = "lblMyride".Localized()
+        lblMyride.text = "MyRidesVC_lblMyride".Localized()
     }
     
 }

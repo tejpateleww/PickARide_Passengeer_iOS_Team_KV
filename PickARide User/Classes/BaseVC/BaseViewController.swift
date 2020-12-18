@@ -41,8 +41,8 @@ class BaseViewController: UIViewController {
         } else {
             let label = UILabel()
             label.text = naviTitle
-            label.textColor = colors.black.value
-            label.font = CustomFont.bold.returnFont(20)
+            label.textColor = colors.loginPlaceHolderColor.value
+            label.font = CustomFont.bold.returnFont(18)
             label.adjustsFontSizeToFitWidth = true
            // controller.navigationItem.title = naviTitle //.Localized()
             controller.navigationItem.titleView = label
@@ -83,6 +83,18 @@ class BaseViewController: UIViewController {
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
+            } else if leftImage == NavItemsLeft.cancel.value {
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                btnLeft.setImage(UIImage.init(named: "ic_Cancel"), for: .normal)
+                btnLeft.layer.setValue(controller, forKey: "controller")
+                
+                btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                LeftView.addSubview(btnLeft)
+            
+                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
+                btnLeftBar.style = .plain
+                controller.navigationItem.leftBarButtonItem = btnLeftBar
             }
         }
         if rightImages.count != 0 {
@@ -98,7 +110,7 @@ class BaseViewController: UIViewController {
                     btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
                     btnLogin.setTitle("NavigationButton_btnLogin".Localized(), for: .normal)
                     btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
-                    btnLogin.titleLabel?.textColor = colors.submitButtonColor.value
+                    btnLogin.setTitleColor(colors.submitButtonColor.value, for: .normal)
                     btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
                     btnLogin.layer.setValue(controller, forKey: "controller")
                     viewLogin.addSubview(btnLogin)
@@ -108,8 +120,7 @@ class BaseViewController: UIViewController {
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewLogin)
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
-                } else if title == NavItemsRight.userProfile.value {
-                    
+                } else if title == NavItemsRight.EditProfile.value {
                     
                     
                     let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -128,6 +139,46 @@ class BaseViewController: UIViewController {
                     btnProfile.layer.shadowOpacity = 0.4
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfile)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                } else if title == NavItemsRight.userProfile.value {
+                    
+                    
+                    
+                    let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+
+                    let btnProfileEdit = UIButton.init()
+                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    btnProfileEdit.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
+                    btnProfileEdit.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
+                   // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    btnProfileEdit.layer.setValue(controller, forKey: "controller")
+                    viewProfileEdit.addSubview(btnProfileEdit)
+
+                  
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfileEdit)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                } else  if title == NavItemsRight.Done.value {
+                    
+                    
+                    
+                    let viewLogin = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+
+                    let btnLogin = UIButton.init()
+                    btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+                    btnLogin.setTitle("NavigationButton_btnDone".Localized(), for: .normal)
+                    btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
+                    btnLogin.setTitleColor(colors.submitButtonColor.value, for: .normal)
+                   
+                   // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    btnLogin.layer.setValue(controller, forKey: "controller")
+                    viewLogin.addSubview(btnLogin)
+
+                
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewLogin)
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
                 }
@@ -266,7 +317,17 @@ class BaseViewController: UIViewController {
 //        let notifVc = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
 //        controller?.navigationController?.pushViewController(notifVc, animated: true)
     }
-    
+    @objc func EditUserProfile(_ sender: UIButton?) {
+        
+        let rtViewVC = (appDel.window?.rootViewController as! UINavigationController).children
+        for i in rtViewVC {
+            if i.isKind(of: ProfileVC.self) {
+                let vc:ProfileVC = i as! ProfileVC
+                vc.makeEditProfile(isEditProfile: true)
+            }
+        }
+        
+    }
     @objc func DismissViewController (_ sender: UIButton?)
     {
         let controller = sender?.layer.value(forKey: "controller") as? UIViewController
