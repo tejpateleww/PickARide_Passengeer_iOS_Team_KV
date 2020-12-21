@@ -44,7 +44,7 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         
         switch tableView{
         case tblMyRides:
-            return 4
+            return 6
         case tblMyRideType:
             return myRideArr.count
         default:
@@ -89,13 +89,19 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RideDetailsVC.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
             } else if indexPath.row == 1 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ReasonForCancelVC.storyboardID)
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SelectTaxiTypeViewController.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
             } else if indexPath.row == 2 {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SavedPlaceVC.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
             } else if indexPath.row == 3 {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if indexPath.row == 4 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingViewController.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if indexPath.row == 5 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addNewDestinationViewController.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
            

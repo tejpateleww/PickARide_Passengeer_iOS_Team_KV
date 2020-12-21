@@ -357,3 +357,93 @@ class RideDetailLabel : UILabel{
         }
     }
 }
+class settingLabel : UILabel {
+    @IBInspectable var isUserName : Bool = false
+    @IBInspectable var isUserPhoneNumber : Bool = false
+    @IBInspectable var isUserEmail : Bool = false
+    @IBInspectable var isCategoryName : Bool = false
+    override func awakeFromNib() {
+        if isUserName {
+            self.font = CustomFont.medium.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isUserPhoneNumber {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value.withAlphaComponent(0.52)
+        } else if isUserEmail {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value.withAlphaComponent(0.52)
+        } else if isCategoryName {
+            self.font = CustomFont.regular.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+        }
+    }
+}
+class suggestedRidesLabel : UILabel {
+    @IBInspectable var isTitle : Bool = false
+    @IBInspectable var isTaxiName : Bool = false
+    @IBInspectable var isTaxiPrice : Bool = false
+    @IBInspectable var isTaxiComingTime : Bool = false
+    @IBInspectable var isTaxiTotalCapacity : Bool = false
+    @IBInspectable var islblCardPayment : Bool = false
+    @IBInspectable var isStartRideAddress : Bool = false
+    @IBInspectable var isEndRideAddress : Bool = false
+    override func awakeFromNib() {
+        if isTitle {
+            self.font = CustomFont.bold.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isTaxiName {
+            self.font = CustomFont.regular.returnFont(16)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isTaxiPrice {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isTaxiComingTime {
+            self.font = CustomFont.bold.returnFont(11)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isTaxiTotalCapacity {
+            self.font = CustomFont.regular.returnFont(11)
+            self.textColor = colors.black.value
+        } else if islblCardPayment {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isStartRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .right
+        } else if isEndRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        }
+    }
+    
+}
+class currentRideLabel : UILabel {
+    @IBInspectable var isStartRideAddress : Bool = false
+    @IBInspectable var isEndRideAddress : Bool = false
+    @IBInspectable var isDriveName : Bool = false
+    @IBInspectable var isRideGO : Bool = false
+    @IBInspectable var isCarNumber : Bool = false
+    override func awakeFromNib() {
+        
+            if isStartRideAddress {
+                self.font = CustomFont.regular.returnFont(15)
+                self.textColor = colors.loginPlaceHolderColor.value
+                self.textAlignment = .right
+            } else if isEndRideAddress {
+                self.font = CustomFont.regular.returnFont(15)
+                self.textColor = colors.loginPlaceHolderColor.value
+                self.textAlignment = .left
+            } else if isDriveName {
+                self.font = CustomFont.bold.returnFont(20)
+                self.textColor = colors.loginPlaceHolderColor.value
+            } else if isRideGO {
+                self.font = CustomFont.medium.returnFont(11)
+                self.textColor = colors.white.value
+            } else if isCarNumber {
+                self.font = CustomFont.medium.returnFont(15)
+                self.textColor = colors.loginPlaceHolderColor.value
+            }
+        
+    }
+}

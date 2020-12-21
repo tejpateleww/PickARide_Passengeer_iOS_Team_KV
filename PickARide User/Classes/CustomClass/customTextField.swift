@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 class customTextField: UITextField {
     
     private let defaultUnderlineColor = UIColor.gray
@@ -289,4 +290,21 @@ class ProfileTextField: UITextField {
                self.layoutSubviews()
            }
        }
+}
+
+class addNewDestinationTextField : SkyFloatingLabelTextField {
+    override func awakeFromNib() {
+        self.titleColor = colors.loginPlaceHolderColor.value
+                self.lineHeight = 1.0
+                self.selectedTitleColor = colors.black.value
+                self.selectedLineColor = colors.seperatorColor.value
+                self.textColor = colors.phoneNumberColor.value
+                self.titleFormatter = { $0 }
+        
+        self.titleFont = CustomFont.medium.returnFont(18)
+        self.font = CustomFont.medium.returnFont(18)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }

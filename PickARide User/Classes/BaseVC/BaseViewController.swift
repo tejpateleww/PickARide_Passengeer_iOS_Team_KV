@@ -127,7 +127,7 @@ class BaseViewController: UIViewController {
 
                     let btnProfile = UIButton.init()
                     btnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-                    btnProfile.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
+                    btnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
                    
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
                     btnProfile.layer.setValue(controller, forKey: "controller")
@@ -149,7 +149,7 @@ class BaseViewController: UIViewController {
 
                     let btnProfileEdit = UIButton.init()
                     btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-                    btnProfileEdit.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
+                    btnProfileEdit.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
                     btnProfileEdit.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
                     btnProfileEdit.layer.setValue(controller, forKey: "controller")

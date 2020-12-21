@@ -167,6 +167,27 @@
 "ProfileVC_lblPassword" = "PASSWORD";
 "ProfileVC_textFieldPassword" = "xxxxxxxx";
 
+//SettingsVC_
+"SettingsVC_lblTitle" = "Settings";
+"SettingsVC_Favourites" = "Favourites";
+"SettingsVC_Home" = "Home";
+"SettingsVC_Work" = "Work";
+"SettingsVC_privacyPolicy" = "Privacy Policy";
+"SettingsVC_Language" = "Language";
+"SettingsVC_English" = "English";
+"SettingsVC_German" = "German ";
+"SettingsVC_btnAdd  " = "Add";
+"SettingsVC_btnMoreSavedPlaces" = "More Saved Places ";
+
+//AddNewDestinationVC_
+"AddNewDestinationVC_PlaceName_place" = "Place Name";
+
+//SuggestedTaxiVC_
+"SuggestedTaxiVC_lblTitle" = "SUGGESTED RIDES";
+"SuggestedTaxiVC_lblCardPayment" = "Card payment";
+"SuggestedTaxiVC_lblOffer" = "Offers";
+
+"SuggestedTaxiVC_btnBookNow" = "BOOK NOW";
 
 //NavigationTitle
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";

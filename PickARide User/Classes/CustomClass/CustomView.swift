@@ -179,3 +179,86 @@ class savedPlacesView : UIView {
         }
     }
 }
+class settingsView : UIView {
+    @IBInspectable var isUserProfile : Bool = false
+    @IBInspectable var isShadowView : Bool = false
+    override func awakeFromNib() {
+         if isUserProfile{
+            self.layer.cornerRadius = self.frame.size.height / 2
+            self.clipsToBounds = true
+         } else if isShadowView {
+            self.clipsToBounds = false
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = self.frame.size.height / 2
+            self.backgroundColor = UIColor.white
+            self.layer.shadowColor = colors.loginViewColor.value.cgColor
+            self.layer.shadowOpacity = 1
+            self.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+            self.layer.shadowRadius = 4.0
+           
+         }
+    }
+}
+class suggestedTaxiView : UIView {
+    @IBInspectable var isMainView : Bool = false
+    @IBInspectable var isBGView : Bool = false
+    @IBInspectable var isTopView : Bool = false
+    override func awakeFromNib() {
+        if isBGView {
+            self.layer.cornerRadius = 4
+            self.layer.borderColor = colors.submitButtonColor.value.cgColor
+        } else if isMainView {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = 16
+            self.clipsToBounds = false
+            self.backgroundColor =  colors.white.value
+            self.layer.shadowColor = colors.black.value.cgColor
+            self.layer.shadowOpacity = 0.3
+            self.layer.shadowOffset = CGSize(width: -4.0, height: 0.0)
+            self.layer.shadowRadius = 8.0
+          
+        } else if isTopView {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = 6
+            self.backgroundColor = UIColor.white
+            self.layer.shadowColor = colors.loginViewColor.value.cgColor
+            self.layer.shadowOpacity = 1
+            self.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+            self.layer.shadowRadius = 4.0
+        }
+    }
+}
+class currentRideView : UIView {
+    @IBInspectable var isMainView : Bool = false
+    @IBInspectable var isTopView : Bool = false
+    @IBInspectable var isRoundView : Bool = false
+    @IBInspectable var isRIDEGOBgVIew : Bool = false
+    override func awakeFromNib() {
+        if isRoundView {
+            self.layer.cornerRadius = self.frame.size.height / 2
+            self.clipsToBounds = true
+        } else if isMainView {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = 16
+            self.clipsToBounds = false
+            self.backgroundColor =  colors.white.value
+            self.layer.shadowColor = colors.black.value.cgColor
+            self.layer.shadowOpacity = 0.3
+            self.layer.shadowOffset = CGSize(width: -4.0, height: 0.0)
+            self.layer.shadowRadius = 8.0
+          
+        } else if isTopView {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = 6
+            self.backgroundColor = UIColor.white
+            self.layer.shadowColor = colors.loginViewColor.value.cgColor
+            self.layer.shadowOpacity = 1
+            self.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+            self.layer.shadowRadius = 4.0
+        } else if isRIDEGOBgVIew {
+            self.layer.cornerRadius = self.frame.size.height / 2
+            self.clipsToBounds = true
+            self.backgroundColor = colors.submitButtonColor.value
+        }
+    }
+}
