@@ -29,7 +29,7 @@ enum NavItemsLeft {
 
 
 enum NavItemsRight {
-    case none,login,userProfile,Done,EditProfile
+    case none,login,EditProfile,userProfile,Done
     
     var value:String {
         switch self {
@@ -37,12 +37,12 @@ enum NavItemsRight {
             return ""
         case .login:
             return "login"
+        case .EditProfile:
+            return "skip"
         case .userProfile:
-            return "userProfile"
+            return "like"
         case .Done:
             return "Done"
-        case .EditProfile:
-            return "EditProfile"
         }
     }
 }

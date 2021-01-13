@@ -4,6 +4,8 @@ import Firebase
 import UserNotifications
 import GoogleMaps
 import GooglePlaces
+import SideMenuSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate {
     
@@ -20,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //        FirebaseApp.configure()
         GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
         GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
+        
+        SideMenuController.preferences.basic.menuWidth = UIScreen.main.bounds.width - 100
+        SideMenuController.preferences.basic.defaultCacheKey = "0"
         self.navigateToLogin()
         checkAndSetDefaultLanguage()
         registerForPushNotifications()
@@ -75,10 +80,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func navigateToMain(){
+        
+        //SideMenuController
         let storyborad = UIStoryboard(name: "Main", bundle: nil)
-        let Home = storyborad.instantiateViewController(withIdentifier: HomeViewController.className) as! HomeViewController
+        let Home = storyborad.instantiateViewController(withIdentifier: SideMenuController.className) as! SideMenuController
         let HomeVC = UINavigationController(rootViewController: Home)
+        HomeVC.navigationBar.isHidden = true
         self.window?.rootViewController = HomeVC
+        
+//        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+//        let Home = storyborad.instantiateViewController(withIdentifier: HomeViewController.className) as! HomeViewController
+//        let HomeVC = UINavigationController(rootViewController: Home)
+//        self.window?.rootViewController = HomeVC
     }
     
     func clearData()

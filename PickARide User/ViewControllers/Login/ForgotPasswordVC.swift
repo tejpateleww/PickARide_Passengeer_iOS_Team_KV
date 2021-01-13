@@ -51,6 +51,7 @@ class ForgotPasswordVC: BaseViewController {
     @IBAction func btnContinue(_ sender: Any) {
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
     //MARK: -API Calls
 }

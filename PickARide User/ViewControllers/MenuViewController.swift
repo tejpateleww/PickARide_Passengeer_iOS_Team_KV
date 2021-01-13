@@ -1,0 +1,166 @@
+
+//
+//  MenuViewController.swift
+//  SideMenuExample
+//
+//  Created by kukushi on 11/02/2018.
+//  Copyright © 2018 kukushi. All rights reserved.
+//
+
+import UIKit
+import SideMenuSwift
+
+class Preferences {
+    static let shared = Preferences()
+    var enableTransitionAnimation = false
+}
+
+class MenuViewController: UIViewController {
+    var isDarkModeEnabled = false
+    @IBOutlet weak var tblSidemenuData: UITableView! {
+        didSet {
+            tblSidemenuData.dataSource = self
+            tblSidemenuData.delegate = self
+            tblSidemenuData.separatorStyle = .none
+        }
+    }
+    var myimgarr = [#imageLiteral(resourceName: "imgHome"),#imageLiteral(resourceName: "imgMyrides"),#imageLiteral(resourceName: "imgPayment"),#imageLiteral(resourceName: "imgNotification"),#imageLiteral(resourceName: "imgSettings"),#imageLiteral(resourceName: "imgAddFrind"),#imageLiteral(resourceName: "imgHelp"),#imageLiteral(resourceName: "imgLogout")]
+    var myarray = [MyType]()
+    let mylblarr = [MyType.Home.value,MyType.MyRides.value,MyType.PaymentMethods.value,MyType.Notification.value,MyType.Settings.value,MyType.InviteaFrind.value,MyType.Help.value,MyType.Logout.value]
+    
+    @IBOutlet weak var selectionTableViewHeader: UILabel!
+
+    @IBOutlet weak var selectionMenuTrailingConstraint: NSLayoutConstraint!
+    private var themeColor = UIColor.white
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        isDarkModeEnabled = SideMenuController.preferences.basic.position == .under
+        configureView()
+
+//        sideMenuController?.cache(viewControllerGenerator: {
+//            self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
+//        }, with: "1")
+//
+//        sideMenuController?.cache(viewControllerGenerator: {
+//            self.storyboard?.instantiateViewController(withIdentifier: "ThirdViewController")
+//        }, with: "2")
+
+        sideMenuController?.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("[Example] Menu did appear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("[Example] Menu will disappear")
+    }
+
+    private func configureView() {
+        if isDarkModeEnabled {
+            themeColor = UIColor(red: 0.03, green: 0.04, blue: 0.07, alpha: 1.00)
+            selectionTableViewHeader.textColor = .white
+        } else {
+            selectionMenuTrailingConstraint.constant = 0
+            themeColor = UIColor(red: 0.98, green: 0.97, blue: 0.96, alpha: 1.00)
+        }
+
+        let sidemenuBasicConfiguration = SideMenuController.preferences.basic
+        let showPlaceTableOnLeft = (sidemenuBasicConfiguration.position == .under) != (sidemenuBasicConfiguration.direction == .right)
+        if showPlaceTableOnLeft {
+           // selectionMenuTrailingConstraint.constant = -(view.frame.width)
+            selectionMenuTrailingConstraint.constant = SideMenuController.preferences.basic.menuWidth - view.frame.width
+        }
+
+        view.backgroundColor = themeColor
+        //tableView.backgroundColor = themeColor
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        let sideMenuBasicConfiguration = SideMenuController.preferences.basic
+        let showPlaceTableOnLeft = (sideMenuBasicConfiguration.position == .under) != (sideMenuBasicConfiguration.direction == .right)
+        selectionMenuTrailingConstraint.constant = showPlaceTableOnLeft ? SideMenuController.preferences.basic.menuWidth - size.width : 0
+        view.layoutIfNeeded()
+    }
+}
+
+extension MenuViewController: SideMenuControllerDelegate {
+    func sideMenuController(_ sideMenuController: SideMenuController,
+                            animationControllerFrom fromVC: UIViewController,
+                            to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BasicTransitionAnimator(options: .transitionFlipFromLeft, duration: 0.6)
+    }
+
+    func sideMenuController(_ sideMenuController: SideMenuController, willShow viewController: UIViewController, animated: Bool) {
+        print("[Example] View controller will show [\(viewController)]")
+    }
+
+    func sideMenuController(_ sideMenuController: SideMenuController, didShow viewController: UIViewController, animated: Bool) {
+        print("[Example] View controller did show [\(viewController)]")
+    }
+
+    func sideMenuControllerWillHideMenu(_ sideMenuController: SideMenuController) {
+        print("[Example] Menu will hide")
+    }
+
+    func sideMenuControllerDidHideMenu(_ sideMenuController: SideMenuController) {
+        print("[Example] Menu did hide.")
+    }
+
+    func sideMenuControllerWillRevealMenu(_ sideMenuController: SideMenuController) {
+        print("[Example] Menu will reveal.")
+    }
+
+    func sideMenuControllerDidRevealMenu(_ sideMenuController: SideMenuController) {
+        print("[Example] Menu did reveal.")
+    }
+}
+
+extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myimgarr.count
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:sideCell = tblSidemenuData.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath)as! sideCell
+        cell.imgData?.image = myimgarr[indexPath.row]
+        cell.lblData?.text = mylblarr[indexPath.row]
+        return cell
+    }
+    
+}
+class sideCell:UITableViewCell{
+    @IBOutlet weak var imgData: UIImageView?
+    @IBOutlet weak var lblData: UILabel?
+}
+
+enum MyType{
+    case Home,MyRides,PaymentMethods,Notification,Settings,InviteaFrind,Help,Logout
+    
+    var value:String{
+        switch self{
+        case .Home:
+            return "Home"
+        case .MyRides:
+            return "My Rides"
+        case .PaymentMethods:
+            return "Payment Methods"
+        case .Notification:
+            return "Notification"
+        case .Settings:
+            return "Settings"
+        case .InviteaFrind:
+            return "Invite a Friend"
+        case .Help:
+            return "Help"
+        case .Logout:
+            return "Logout"
+        }
+    }
+}

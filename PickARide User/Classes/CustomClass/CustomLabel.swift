@@ -447,3 +447,20 @@ class currentRideLabel : UILabel {
         
     }
 }
+class menuLabel : UILabel {
+    @IBInspectable var isUserName : Bool = false
+    @IBInspectable var isUserEmailAddress : Bool = false
+    @IBInspectable var isMenuTitle : Bool = false
+    override func awakeFromNib() {
+        if isUserName {
+            self.font = CustomFont.medium.returnFont(18)
+            self.textColor = colors.white.value
+        } else if isUserEmailAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.white.value.withAlphaComponent(0.5)
+        } else if isMenuTitle {
+            self.font = CustomFont.regular.returnFont(20)
+            self.textColor = colors.black.value
+        }
+    }
+}

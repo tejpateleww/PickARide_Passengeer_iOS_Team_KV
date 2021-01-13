@@ -67,6 +67,7 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - SideMenuSwift (2.0.7)
   - SkyFloatingLabelTextField (4.0.0)
   - SwiftyJSON (4.0.0)
 
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - IQKeyboardManagerSwift (= 6.3.0)
+  - SideMenuSwift
   - SkyFloatingLabelTextField
   - SwiftyJSON (= 4.0)
 
@@ -97,6 +99,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
+    - SideMenuSwift
     - SkyFloatingLabelTextField
     - SwiftyJSON
 
@@ -116,9 +119,10 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 4106f6e10dd20272dac7f1ce360dda0e4a4c6937
+PODFILE CHECKSUM: 1c74958165c2c1dbd3eb06daa7495a26deef2bd6
 
 COCOAPODS: 1.10.0

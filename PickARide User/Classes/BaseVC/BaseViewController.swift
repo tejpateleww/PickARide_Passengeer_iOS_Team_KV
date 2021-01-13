@@ -279,6 +279,7 @@ class BaseViewController: UIViewController {
 //    }
     
     @objc func OpenSideMenu(_ sender: UIButton?) {
+      
 //        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
 //        let vc = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SideMenuVC.storyboardID)
 //        let navController = UINavigationController.init(rootViewController: vc)
@@ -416,7 +417,7 @@ class BaseViewController: UIViewController {
         }
     }
     @objc func btMenuAction() {
-        
+        sideMenuController?.revealMenu()
         
         
     }

@@ -24,7 +24,7 @@ extension UIViewController {
         self.navigationItem.title = Title//.uppercased()
         self.navigationController?.isNavigationBarHidden = false
         //    self.navigationController?.navigationBar.isOpaque = false
-        self.navigationController?.navigationBar.barTintColor = colors.appColor.value
+        self.navigationController?.navigationBar.barTintColor = .clear
         self.navigationController?.navigationBar.tintColor = TintColour
         self.navigationController?.navigationBar.isTranslucent = isTranslucent
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : TitleColour , NSAttributedString.Key.font : CustomFont.medium.returnFont(22.0)]

@@ -11,6 +11,7 @@ target 'PickARide User' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+pod 'SideMenuSwift'
 pod 'SkyFloatingLabelTextField'
   # Pods for ApiStructureModulex
   

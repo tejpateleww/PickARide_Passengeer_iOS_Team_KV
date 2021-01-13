@@ -36,7 +36,22 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         setValue()
         taxiData.append(suggestRide(name: "Taxi/Cab", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
         taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
         tblSuggestedRides.reloadData()
+        DispatchQueue.main.async { [self] in
+            if taxiData.count > 2 {
+                tblSuggestedRidesHeight.constant = (tblSuggestedRides.contentSize.height / CGFloat(taxiData.count)) * 2
+            } else {
+                tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
+            }
+        }
+       
+       
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +64,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         lblCardPayment.text = "SuggestedTaxiVC_lblCardPayment".Localized()
         
         btnBookNow.setTitle("SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
-        btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor, font: CustomFont.regular.returnFont(15))
+        btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
     }
     func setValue() {
         lblStartRideAddress.text = "Destination 1"
@@ -74,11 +89,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
             cell.suggestTaxiBackgroundView.layer.borderWidth = 0
             cell.TaxiType.textColor = colors.loginPlaceHolderColor.value
         }
-        if taxiData.count > 2 || taxiData.count == 2 {
-            tblSuggestedRidesHeight.constant = cell.frame.size.height * 2
-        } else {
-            tblSuggestedRidesHeight.constant = cell.frame.size.height * 1
-        }
+       
         cell.TaxiType.text = taxiData[indexPath.row].taxiName
         cell.TotalSeat.text = taxiData[indexPath.row].taxiTotalCapacity
         cell.SuggestedMoney.text = taxiData[indexPath.row].taxiPrice

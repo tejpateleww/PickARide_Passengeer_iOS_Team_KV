@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SideMenuSwift
 class SplashVC: UIViewController {
 
     //MARK: -Properties
@@ -24,6 +24,8 @@ class SplashVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             
             if userDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
+//                let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: LoginViewController.storyboardID)
+//                self.navigationController?.pushViewController(controller, animated: true)
                 appDel.navigateToMain()
             } else {
                 let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: LoginViewController.storyboardID)

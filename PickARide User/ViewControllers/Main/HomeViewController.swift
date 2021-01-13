@@ -33,6 +33,7 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
         TextFieldWhereAreYouGoing.placeholder = "home_Whereareyougoing_place".Localized()
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
