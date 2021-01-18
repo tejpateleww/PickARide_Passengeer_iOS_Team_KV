@@ -59,11 +59,14 @@ class seperatorView : UIView {
 }
 class selectDestinationView : UIView {
     override func awakeFromNib() {
+        self.clipsToBounds = true
+        
         self.layer.cornerRadius = 16
         self.layer.shadowColor = colors.black.value.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowRadius = 7
         self.layer.shadowOpacity = 0.4
+        self.layer.masksToBounds = false
     }
 }
 class viewBorder : UIView {
@@ -259,6 +262,106 @@ class currentRideView : UIView {
             self.layer.cornerRadius = self.frame.size.height / 2
             self.clipsToBounds = true
             self.backgroundColor = colors.submitButtonColor.value
+        }
+    }
+}
+class customviewRadius : UIView{
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 4
+    }
+}
+class customImagewithShadow: UIView {
+    @IBInspectable var istopRadius : Bool = false
+    @IBInspectable var isBottomRadius : Bool = false
+    @IBInspectable var isShadow : Bool = false
+    override func awakeFromNib() {
+        if istopRadius{
+            self.roundCorners(corners: [.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 4)
+        }else if isBottomRadius{
+            self.roundCorners(corners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner], radius: 4)
+        }else if isShadow{
+            self.layer.cornerRadius = 5
+            self.clipsToBounds = false
+            self.layer.masksToBounds = true;
+            self.backgroundColor = UIColor.clear
+            self.layer.shadowColor = UIColor.init(hexString: "#E4E9F2").cgColor
+            self.layer.shadowOpacity = 0.50
+            self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            self.layer.shadowRadius = 10.0
+            self.layer.masksToBounds = false
+        }
+    }
+}
+extension UIView{
+    func createDottedLine(width: CGFloat, color: CGColor) {
+        let caShapeLayer = CAShapeLayer()
+        caShapeLayer.strokeColor = UIColor.init(hexString: "#303A55").cgColor
+        caShapeLayer.lineWidth = width
+        caShapeLayer.lineDashPattern = [6,6]
+        let cgPath = CGMutablePath()
+        let cgPoint = [CGPoint(x: 0, y: 7), CGPoint(x: self.bounds.width, y: 7)]
+        cgPath.addLines(between: cgPoint)
+        caShapeLayer.path = cgPath
+        layer.addSublayer(caShapeLayer)
+    }
+    func roundCorners(corners:CACornerMask, radius: CGFloat) {
+          self.layer.cornerRadius = radius
+          self.layer.maskedCorners = corners
+       }
+}
+class blurView : UIView {
+    override func awakeFromNib() {
+        self.backgroundColor = .clear
+        setUpBlurView()
+    }
+    
+    func setUpBlurView() {
+        //        self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
+        
+        //If iOS 13 is available, add blur effect:
+        if #available(iOS 13.0, *) {
+            //check if transparency is reduced in system accessibility settings..
+            if UIAccessibility.isReduceTransparencyEnabled == true {
+                let backView = UIView(frame: self.bounds)
+                backView.backgroundColor =  colors.white.value.withAlphaComponent(0.67)//UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+            } else {
+                
+                
+                let blurEffect = UIBlurEffect(style: .dark)
+                let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                bluredEffectView.frame = self.bounds
+                
+                let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                vibrancyEffectView.frame = bluredEffectView.bounds
+                
+                bluredEffectView.layer.masksToBounds = true
+                bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                self.addSubview(bluredEffectView)
+                //                self.bringSubviewToFront(viewMain)
+            }
+        } else {
+            if UIAccessibility.isReduceTransparencyEnabled == false {
+                let backView = UIView(frame: self.bounds)
+                backView.backgroundColor = colors.white.value.withAlphaComponent(0.67) //UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+                
+            } else {
+                
+                
+                let blurEffect = UIBlurEffect(style: .dark)
+                let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                bluredEffectView.frame = self.bounds
+                
+                let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                vibrancyEffectView.frame = bluredEffectView.bounds
+                
+                bluredEffectView.layer.masksToBounds = true
+                bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                self.addSubview(bluredEffectView)
+                
+                //                self.bringSubviewToFront(viewMain)
+            }
         }
     }
 }

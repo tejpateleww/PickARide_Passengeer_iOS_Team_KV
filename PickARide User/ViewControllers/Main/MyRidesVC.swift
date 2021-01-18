@@ -85,26 +85,13 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         
         switch tableView {
         case tblMyRides:
-            if indexPath.row == 0 {
+            if selectedMyRideState == 0 {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RideDetailsVC.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
-            } else if indexPath.row == 1 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SelectTaxiTypeViewController.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else if indexPath.row == 2 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SavedPlaceVC.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else if indexPath.row == 3 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else if indexPath.row == 4 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingViewController.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else if indexPath.row == 5 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addNewDestinationViewController.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
             }
-           
             
             break
         case tblMyRideType:

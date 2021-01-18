@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
     //MARK: -IBActions
     
     @IBAction func signUP(_ sender: Any) {
-        self.navigationController?.navigationBar.isHidden = false
+        //self.navigationController?.navigationBar.isHidden = false
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
 //            self.dismiss(animated: true, completion: nil)
 //        }
 //        self.present(controller, animated: true, completion: nil)
-        self.navigationController?.navigationBar.isHidden = false
+        //self.navigationController?.navigationBar.isHidden = false
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }

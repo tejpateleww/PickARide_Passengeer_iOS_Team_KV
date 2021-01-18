@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GoogleMaps
 class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
    
     
@@ -16,6 +16,8 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     var taxiData = [suggestRide]()
     var selectedTaxi = 0
     //MARK: -IBOutlets
+    
+    @IBOutlet weak var showRouteMapView: GMSMapView!
     @IBOutlet weak var lblStartRideAddress: suggestedRidesLabel!
     @IBOutlet weak var lblEndRideAddress: suggestedRidesLabel!
     @IBOutlet weak var lblCardPayment: suggestedRidesLabel!
@@ -31,7 +33,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         super.viewDidLoad()
        
         
-        self.navigationController?.navigationBar.isHidden = true
+        
         setLocalization()
         setValue()
         taxiData.append(suggestRide(name: "Taxi/Cab", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
@@ -50,14 +52,16 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-       
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        //self.navigationController?.navigationBar.isHidden = true
     }
-  
+    override func viewDidDisappear(_ animated: Bool) {
+        //self.navigationController?.navigationBar.isHidden = false
+    }
     //MARK: -other methods
     func setLocalization() {
         lblSuggestedRide.text = "SuggestedTaxiVC_lblTitle".Localized()
@@ -70,6 +74,84 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         lblStartRideAddress.text = "Destination 1"
         lblEndRideAddress.text = "Destination 2"
     }
+    
+//    func getRouteSteps(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
+//
+//        let session = URLSession.shared
+//
+//        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&sensor=false&mode=driving&key=\(AppInfo.Google_API_Key)")!
+//
+//        let task = session.dataTask(with: url, completionHandler: {
+//            (data, response, error) in
+//
+//            guard error == nil else {
+//                print(error!.localizedDescription)
+//                return
+//            }
+//
+//            guard let jsonResult = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] else {
+//
+//                print("error in JSONSerialization")
+//                return
+//
+//            }
+//
+//
+//
+//            guard let routes = jsonResult["routes"] as? [Any] else {
+//                return
+//            }
+//
+//            guard let route = routes[0] as? [String: Any] else {
+//                return
+//            }
+//
+//            guard let legs = route["legs"] as? [Any] else {
+//                return
+//            }
+//
+//            guard let leg = legs[0] as? [String: Any] else {
+//                return
+//            }
+//
+//            guard let steps = leg["steps"] as? [Any] else {
+//                return
+//            }
+//              for item in steps {
+//
+//                guard let step = item as? [String: Any] else {
+//                    return
+//                }
+//
+//                guard let polyline = step["polyline"] as? [String: Any] else {
+//                    return
+//                }
+//
+//                guard let polyLineString = polyline["points"] as? String else {
+//                    return
+//                }
+//
+//                //Call this method to draw path on map
+//                DispatchQueue.main.async {
+//                    self.drawPath(from: polyLineString)
+//                }
+//
+//            }
+//        })
+//        task.resume()
+//    }
+//    func drawPath(from polyStr: String){
+//        let path = GMSPath(fromEncodedPath: polyStr)
+//        let polyline = GMSPolyline(path: path)
+//        polyline.strokeWidth = 3.0
+//        polyline.map = showRouteMapView // Google MapView
+//
+//
+//        let cameraUpdate = GMSCameraUpdate.fit(GMSCoordinateBounds(coordinate: sourceLocationCordinates, coordinate: destinationLocationCordinates))
+//        showRouteMapView.moveCamera(cameraUpdate)
+//        let currentZoom = showRouteMapView.camera.zoom
+//        showRouteMapView.animate(toZoom: currentZoom - 1.4)
+//    }
     //MARK: -tblViewMethods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taxiData.count
@@ -106,8 +188,37 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     
    
     @IBAction func btnScheduleClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsViewController.storyboardID)
+        
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ScheduleRideVC.storyboardID) as!
+            ScheduleRideVC
+        controller.setClosour = {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        }
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+        
+//        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsViewController.storyboardID)
+//        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    @IBAction func btnBookNowClick(_ sender: Any) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    @IBAction func btnOfferClick(_ sender: Any) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    @IBAction func btnCardPaymentClick(_ sender: Any) {
+       
         
     }
     //MARK: -API Calls

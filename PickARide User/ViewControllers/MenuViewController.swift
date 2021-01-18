@@ -16,7 +16,13 @@ class Preferences {
 }
 
 class MenuViewController: UIViewController {
+    
+   
+    var selectedMenuClosure : (() -> ())?
     var isDarkModeEnabled = false
+    var selectedMenuIndex = 0
+    
+    
     @IBOutlet weak var tblSidemenuData: UITableView! {
         didSet {
             tblSidemenuData.dataSource = self
@@ -57,6 +63,7 @@ class MenuViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+      
         print("[Example] Menu will disappear")
     }
 
@@ -110,7 +117,11 @@ extension MenuViewController: SideMenuControllerDelegate {
     }
 
     func sideMenuControllerDidHideMenu(_ sideMenuController: SideMenuController) {
+        
+       
+        
         print("[Example] Menu did hide.")
+       
     }
 
     func sideMenuControllerWillRevealMenu(_ sideMenuController: SideMenuController) {
@@ -129,15 +140,86 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:sideCell = tblSidemenuData.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath)as! sideCell
-        cell.imgData?.image = myimgarr[indexPath.row]
         cell.lblData?.text = mylblarr[indexPath.row]
+        
+        if selectedMenuIndex == indexPath.row {
+            let templateImage = myimgarr[indexPath.row].withRenderingMode(.alwaysTemplate)
+            cell.imgData?.image = templateImage
+            cell.imgData?.tintColor = colors.black.value
+            
+            cell.lblData?.textColor = colors.black.value
+        } else {
+            let templateImage = myimgarr[indexPath.row].withRenderingMode(.alwaysTemplate)
+            cell.imgData?.image = templateImage
+            cell.imgData?.tintColor = colors.black.value.withAlphaComponent(0.4)
+            
+            cell.lblData?.textColor = colors.black.value.withAlphaComponent(0.4)
+        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMenuIndex = indexPath.row
+        tblSidemenuData.reloadData()
+        sideMenuController?.hideMenu()
+       
+        let homeVC = self.parent?.children.first?.children.first as? HomeViewController
+       // let homeVC = HomeViewController()
+     
+        let strCellItemTitle = mylblarr[indexPath.row] // aryItemNames[indexPath.row]
+        // let currentItem = aryList[indexPath.row]
+        
+        if strCellItemTitle == MyType.Home.value {
+       
+            
+        }
+        else if strCellItemTitle == MyType.MyRides.value {
+            
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+            homeVC?.navigationController?.pushViewController(controller, animated: true)
+        } else if strCellItemTitle == MyType.Logout.value {
+            let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                userDefault.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToLogin()
+                // (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        } else if strCellItemTitle == MyType.Notification.value {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: NotificationVC.storyboardID)
+            homeVC?.navigationController?.pushViewController(controller, animated: true)
+        } else if strCellItemTitle == MyType.PaymentMethods.value {
+            
+        } else if strCellItemTitle == MyType.Settings.value {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingViewController.storyboardID)
+            homeVC?.navigationController?.pushViewController(controller, animated: true)
+        } else if strCellItemTitle == MyType.InviteaFrind.value {
+            let text = ""
+            
+            // set up activity view controller
+            let textToShare = [ text ]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // exclude some activity types from the list (optional)
+            // activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        
+        
+        
+        
     }
     
 }
 class sideCell:UITableViewCell{
-    @IBOutlet weak var imgData: UIImageView?
-    @IBOutlet weak var lblData: UILabel?
+    @IBOutlet weak var imgData: menuImageView?
+    @IBOutlet weak var lblData: menuLabel?
 }
 
 enum MyType{

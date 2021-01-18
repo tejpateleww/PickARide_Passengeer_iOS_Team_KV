@@ -17,7 +17,7 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var textFieldFirstName: UITextField!
     @IBOutlet weak var textFieldLastName: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
-    @IBOutlet weak var lblCountryCode: UILabel!
+    @IBOutlet weak var lblCountryCode: registerScreenLabel!
     @IBOutlet weak var textFieldPhoneNumber: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textView: UITextView!
@@ -27,7 +27,7 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
+        //self.navigationController?.navigationBar.isHidden = false
        setLocalization()
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true)
        

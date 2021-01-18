@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 enum NavItemsLeft {
-    case none, back , menu , cancel
+    case none, back , menu , cancel , cancelWhite
     
     var value:String {
         switch self {
@@ -23,6 +23,8 @@ enum NavItemsLeft {
             return "menu"
         case .cancel:
             return "cancel"
+        case .cancelWhite:
+            return "cancelWhite"
         }
     }
 }
@@ -47,7 +49,7 @@ enum NavItemsRight {
     }
 }
 enum NavTitles {
-    case none, Home,reasonForCancle
+    case none, Home,reasonForCancle,rating
     
     var value:String {
         switch self {
@@ -57,6 +59,8 @@ enum NavTitles {
             return ""
         case .reasonForCancle:
             return "NavigationTitle_reasonForCancle".Localized()
+        case .rating:
+        return "NavigationTitle_Rating".Localized()
         }
     }
 }

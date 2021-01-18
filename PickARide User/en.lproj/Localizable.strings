@@ -176,7 +176,7 @@
 "SettingsVC_Language" = "Language";
 "SettingsVC_English" = "English";
 "SettingsVC_German" = "German ";
-"SettingsVC_btnAdd  " = "Add";
+"SettingsVC_btnAdd" = "Add";
 "SettingsVC_btnMoreSavedPlaces" = "More Saved Places ";
 
 //AddNewDestinationVC_
@@ -189,5 +189,12 @@
 
 "SuggestedTaxiVC_btnBookNow" = "BOOK NOW";
 
+
+//ScheduleRideVC_
+"ScheduleRideVC_title" = "Schedule a Ride";
+"ScheduleRideVC_btnCancel" = "CANCEL";
+"ScheduleRideVC_btnSet" = "SET";
+
 //NavigationTitle
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";
+"NavigationTitle_Rating" = "Rating";

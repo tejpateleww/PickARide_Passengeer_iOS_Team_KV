@@ -49,7 +49,7 @@ class ForgotPasswordVC: BaseViewController {
     }
     //MARK: -IBActions
     @IBAction func btnContinue(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

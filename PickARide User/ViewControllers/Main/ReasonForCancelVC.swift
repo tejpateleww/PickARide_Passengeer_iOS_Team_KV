@@ -54,7 +54,10 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
         btnDone.setTitle("ReasonForCancleVC_btnDone".Localized(), for: .normal)
     }
     //MARK: -IBActions
-    
+    @IBAction func btnDoneClick(_ sender: Any) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RatingYourTripVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     //MARK: -API Calls
 }
 class reasonCell:UITableViewCell{

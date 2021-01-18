@@ -8,7 +8,7 @@
 
 import Foundation
 import AVKit
-
+import IQKeyboardManagerSwift
 class signUPPageTextView : UITextView {
     override func awakeFromNib() {
         let text = NSMutableAttributedString(string: "SignUpPage_textViewText1".Localized())
@@ -53,5 +53,14 @@ class signUPPageTextView : UITextView {
         self.isEditable = false
         self.isSelectable = true
         // Set the delegate in order to use textView(_:shouldInteractWithURL:inRange)
+    }
+}
+class ratingTextview : IQTextView{
+    override func awakeFromNib() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.init(hexString: "#E4E9F2").cgColor
+        self.layer.cornerRadius = 5
+        self.clipsToBounds = true
+        self.textContainerInset = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
     }
 }

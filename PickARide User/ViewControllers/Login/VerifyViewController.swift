@@ -70,14 +70,22 @@ class VerifyViewController: BaseViewController {
     }
     //MARK: -IBActions
     @IBAction func Verify(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+        
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as!
+            ChangePasswordPopUpViewController
         controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
-        controller.isChangePassword = false
+        controller.isChangePassword = true
         controller.btnSubmitClosure = {
             userDefault.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
         }
-        self.present(controller, animated: true, completion: nil)
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+        
        
     }
     

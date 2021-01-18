@@ -151,6 +151,20 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             if indexPath.row == 0 {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: walletHistoryViewController.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
+                    PaymentSucessFullyVC
+                
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                let navigationController = UINavigationController(rootViewController: controller)
+                navigationController.modalPresentationStyle = .overCurrentContext
+                navigationController.modalTransitionStyle = .crossDissolve
+                navigationController.navigationBar.isHidden = true
+                self.present(navigationController, animated: true, completion: nil)
+                
+                
+//                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+//                self.navigationController?.pushViewController(controller, animated: true)
             }
             selectedPaymentMethods = indexPath.row
             tblPaymentMethod.reloadData()

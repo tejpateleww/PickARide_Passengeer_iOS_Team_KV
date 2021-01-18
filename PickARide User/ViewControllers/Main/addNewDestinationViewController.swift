@@ -49,7 +49,7 @@ class addNewDestinationViewController: BaseViewController,UITableViewDelegate,UI
         textFieldDestinationLocation.placeholder = "AddNewDestinationVC_PlaceName_place".Localized()
     }
     func setString() {
-        textFieldDestinationLocation.text = "Home"
+        //textFieldDestinationLocation.text = "Home"
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -97,14 +97,15 @@ class addNewDestinationViewController: BaseViewController,UITableViewDelegate,UI
         switch indexPath.section {
         case 0:
             return UITableView.automaticDimension
-        case 1:
-            return UITableView.automaticDimension
         default:
             return 0
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        textFieldDestinationLocation.text = tableData[indexPath.row].primaryText
+        textFieldDestinationLocation.resignFirstResponder()
+    }
     //MARK: -googleMaps Methods
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         tableData.removeAll()

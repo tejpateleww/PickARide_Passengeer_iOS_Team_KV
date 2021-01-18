@@ -43,6 +43,11 @@ class BaseViewController: UIViewController {
             label.text = naviTitle
             label.textColor = colors.loginPlaceHolderColor.value
             label.font = CustomFont.bold.returnFont(18)
+            if naviTitle == "NavigationTitle_Rating".Localized() {
+                label.textColor = colors.white.value
+            }
+            
+            
             label.adjustsFontSizeToFitWidth = true
            // controller.navigationItem.title = naviTitle //.Localized()
             controller.navigationItem.titleView = label
@@ -95,7 +100,24 @@ class BaseViewController: UIViewController {
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
+            } else if leftImage == NavItemsLeft.cancelWhite.value {
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                btnLeft.setImage(UIImage.init(named: "ic_cancelWhite"), for: .normal)
+                btnLeft.layer.setValue(controller, forKey: "controller")
+                
+                btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                LeftView.addSubview(btnLeft)
+            
+                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
+                btnLeftBar.style = .plain
+                controller.navigationItem.leftBarButtonItem = btnLeftBar
             }
+        } else {
+            let emptyView = UIView()
+            let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: emptyView)
+            btnLeftBar.style = .plain
+            controller.navigationItem.leftBarButtonItem = btnLeftBar
         }
         if rightImages.count != 0 {
             var arrButtons = [UIBarButtonItem]()
@@ -417,6 +439,7 @@ class BaseViewController: UIViewController {
         }
     }
     @objc func btMenuAction() {
+       
         sideMenuController?.revealMenu()
         
         

@@ -14,6 +14,7 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
     var arrayForSavedPlaces : [String] = ["Home","Work"]
     var tableData=[placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
+    var selectedTextField = 0
     //MARK: -IBOutlets
     @IBOutlet weak var tblPlacePicker: UITableView!
     @IBOutlet weak var textFieldStartLocation: chooseLocationTextField!
@@ -34,6 +35,8 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
            tblPlacePicker.dataSource = self
         textFieldStartLocation.delegate = self
         textFieldDestinationLocation.delegate = self
+        
+        textFieldStartLocation.becomeFirstResponder()
         
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
         
@@ -122,12 +125,35 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
             
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 {
+            if selectedTextField == 0 {
+                textFieldStartLocation.text = tableData[indexPath.row].primaryText
+            } else {
+                textFieldDestinationLocation.text = tableData[indexPath.row].primaryText
+            }
+            textFieldDestinationLocation.resignFirstResponder()
+            textFieldStartLocation.resignFirstResponder()
+        }
+       
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-      
+        if textField == textFieldStartLocation {
+            selectedTextField = 0
+        } else {
+            selectedTextField = 1
+        }
+       
 
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         tableDataFetecher.sourceTextHasChanged(textField.text)
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SelectTaxiTypeViewController.storyboardID)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableData.count != 0 {

@@ -45,7 +45,8 @@ class SavedPlaceVC: BaseViewController,UITableViewDelegate,UITableViewDataSource
     //MARK: -IBActions
     
     @IBAction func btnAddPlaceTap(_ sender: Any) {
-        
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addNewDestinationViewController.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     //MARK: -API Calls
 }

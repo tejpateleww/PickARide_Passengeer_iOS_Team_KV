@@ -76,6 +76,47 @@ class SavedPlaceButton : UIButton
         if isAddButton {
             self.setTitleColor(colors.submitButtonColor.value, for: .normal)
             self.titleLabel?.font = CustomFont.regular.returnFont(18)
+            
         }
+    }
+}
+class scheduleRideButton : UIButton {
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 4
+        self.layer.borderColor = colors.submitButtonColor.value.cgColor
+        self.layer.borderWidth = 1
+        self.setTitleColor(colors.submitButtonColor.value, for: .normal)
+        self.titleLabel?.font = CustomFont.medium.returnFont(18)
+    }
+}
+class cancelButton : UIButton
+{
+    @IBInspectable var isCancel : Bool = false
+    @IBInspectable var isNotCancel : Bool = false
+    override func awakeFromNib() {
+        if isCancel{
+            self.layer.cornerRadius = 4
+            self.backgroundColor = UIColor(hexString: "#F4586C")
+            self.clipsToBounds = true
+            self.setTitleColor(colors.white.value, for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(14)
+        }else if isNotCancel{
+            self.layer.cornerRadius = 4
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.init(hexString: "#7F7F7F").cgColor
+            self.clipsToBounds = true
+            self.setTitleColor(UIColor.init(hexString: "#7F7F7F"), for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(14)
+        }
+    }
+}
+class paymentSucessFullyButton : UIButton {
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 7
+        self.layer.borderWidth = 1
+        self.layer.borderColor = colors.loginPlaceHolderColor.value.withAlphaComponent(0.14).cgColor
+        self.setTitleColorFont(title: self.titleLabel?.text ?? "", color: colors.submitButtonColor, font: CustomFont.regular.returnFont(17))
+        
+       
     }
 }

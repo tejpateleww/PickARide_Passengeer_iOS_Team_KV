@@ -36,6 +36,16 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
     }
     
     //MARK: -other methods
+    @objc func settingsButton(_ sender : UIButton) {
+        if sender.titleLabel?.text == "SettingsVC_btnAdd".Localized() {
+            
+        } else if sender.titleLabel?.text == "SettingsVC_btnMoreSavedPlaces".Localized() {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SavedPlaceVC.storyboardID)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    
     func setLocalization() {
         lblSettingsTitle.text = "SettingsVC_lblTitle".Localized()
     }
@@ -148,6 +158,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
             let button = UIButton()
             button.frame = CGRect(x: 21, y: 0, width: tblSettings.frame.size.width, height: headerView.frame.size.height)
             button.setTitle(settings[sectionNumber].titleButton, for: .normal)
+            button.addTarget(self, action: #selector(settingsButton(_:)), for: .touchUpInside)
             button.titleLabel?.textColor = colors.submitButtonColor.value
             button.contentHorizontalAlignment = .left
             button.titleLabel?.font =  CustomFont.medium.returnFont(17)
@@ -163,22 +174,39 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
             
         } else {
             let label = UILabel()
-            label.frame = CGRect(x: 21, y: 0, width: tblSettings.frame.size.width - 84, height: headerView.frame.size.height)
+            label.frame = CGRect(x: 21, y: 0, width: tblSettings.frame.size.width - 99, height: headerView.frame.size.height)
             label.text = settings[sectionNumber].TitleName
             label.font = CustomFont.medium.returnFont(17)
             label.textColor = colors.loginPlaceHolderColor.value
             headerView.addSubview(label)
             
             let button = UIButton()
-            button.frame = CGRect(x: tblSettings.frame.size.width - 18 - 35, y: 0, width: 35, height: headerView.frame.size.height)
+            button.frame = CGRect(x: tblSettings.frame.size.width - 18 - 50, y: 0, width: 50, height: headerView.frame.size.height)
             button.setTitle(settings[sectionNumber].titleButton, for: .normal)
             button.titleLabel?.textColor = colors.submitButtonColor.value
+            button.addTarget(self, action: #selector(settingsButton(_:)), for: .touchUpInside)
             button.contentHorizontalAlignment = .right
             button.titleLabel?.font =  CustomFont.medium.returnFont(17)
             button.setTitleColor(colors.submitButtonColor.value, for: .normal)
             headerView.addSubview(button)
         }
         return headerView
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
+            self.navigationController?.pushViewController(controller, animated: true)
+            break
+        case 1:
+           break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+           break
+        }
     }
     
     

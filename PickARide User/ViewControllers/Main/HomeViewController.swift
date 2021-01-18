@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: BaseViewController,UITextFieldDelegate {
 
     //MARK: -Properties
-    
+   
     //MARK: -IBOutlets
     
     @IBOutlet weak var TextFieldWhereAreYouGoing: leftSideImageTextField!
@@ -19,22 +19,33 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        
+        
         setLocalization()
         TextFieldWhereAreYouGoing.delegate = self
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true)
         
+      
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+       // print("Hello One two three")
     }
    
+                
+    override func viewDidAppear(_ animated: Bool) {
+      //  print("nkfjghifgig")
+    }
     //MARK: -other methods
+    
+  
+    
     func setLocalization() {
         TextFieldWhereAreYouGoing.placeholder = "home_Whereareyougoing_place".Localized()
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: chooseDestinationViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     //MARK: -IBActions

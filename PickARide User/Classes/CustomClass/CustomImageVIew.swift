@@ -18,3 +18,10 @@ class ProfileView : UIImageView {
     }
 }
 
+class menuImageView : UIImageView {
+    override func awakeFromNib() {
+       
+    }
+    
+   
+}

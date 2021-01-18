@@ -25,10 +25,15 @@ class CurrentRideDetailsViewController: BaseViewController {
         setLocalization()
         setValue()
         setLabel()
+        
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        //self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        //self.navigationController?.navigationBar.isHidden = false
     }
     
     //MARK: -other methods

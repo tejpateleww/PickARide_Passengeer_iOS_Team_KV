@@ -43,9 +43,14 @@ class loginScreenLabel : UILabel {
 
 class registerScreenLabel : UILabel {
     @IBInspectable var isSignUp : Bool = false
+    @IBInspectable var isCountryCode : Bool = false
     override func awakeFromNib() {
         self.font = CustomFont.bold.returnFont(38)
         self.textColor = colors.loginPlaceHolderColor.value
+        if isCountryCode {
+            self.font = CustomFont.bold.returnFont(12)
+            self.textColor = UIColor(hexString: "#8992A3")
+        }
     }
 }
 
@@ -460,7 +465,83 @@ class menuLabel : UILabel {
             self.textColor = colors.white.value.withAlphaComponent(0.5)
         } else if isMenuTitle {
             self.font = CustomFont.regular.returnFont(20)
-            self.textColor = colors.black.value
+            self.textColor = colors.black.value.withAlphaComponent(0.4)
         }
+    }
+}
+class ScheduleARide : UILabel {
+    override func awakeFromNib() {
+        self.font = CustomFont.medium.returnFont(28)
+            self.textColor = colors.loginPlaceHolderColor.value
+    }
+}
+class RatingTripLabel : UILabel{
+    override func awakeFromNib() {
+        self.layer.cornerRadius = self.layer.bounds.height / 2
+        self.clipsToBounds = true
+    }
+}
+class RatingYourTripLabel : UILabel {
+    @IBInspectable var isName : Bool = false
+    @IBInspectable var isRidego : Bool = false
+    @IBInspectable var isCarno : Bool = false
+    @IBInspectable var isCarName : Bool = false
+    @IBInspectable var isYourride : Bool = false
+    @IBInspectable var isFeedback : Bool = false
+    override func awakeFromNib() {
+        
+        if isName {
+            self.font = CustomFont.bold.returnFont(20)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        } else if isRidego {
+            self.font = CustomFont.medium.returnFont(11)
+            self.textColor = colors.white.value
+            self.backgroundColor = UIColor(hexString: "#00AA7E")
+            //self.superview?.layer.cornerRadius = (self.superview?.layer.bounds.height)!/2
+            self.textAlignment = .center
+        } else if isCarno {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = UIColor.init(hexString: "#222B45")
+        } else if isCarName {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = UIColor.init(hexString: "#ACB1C0")
+        } else if isYourride {
+            self.font = CustomFont.medium.returnFont(18)
+            self.textColor = UIColor.init(hexString: "#222B45")
+        }else if isFeedback {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = UIColor.init(hexString: "#ACB1C0")
+        }
+        
+    }
+}
+class MessageDetailsLabel : UILabel{
+    @IBInspectable var isName : Bool = false
+    @IBInspectable var isCarName : Bool = false
+    override func awakeFromNib() {
+        if isName {
+            self.font = CustomFont.bold.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        }else if isCarName {
+            self.font = CustomFont.medium.returnFont(13)
+            self.textColor = UIColor.init(hexString: "#ACB1C0")
+        }
+    }
+}
+class cencleRideLabel : UILabel {
+    override func awakeFromNib() {
+        self.font = CustomFont.bold.returnFont(18)
+        self.textColor = colors.loginPlaceHolderColor.value
+        self.textAlignment = .center
+    }
+    
+}
+class paymentSucessFullyLabel : UILabel {
+    override func awakeFromNib() {
+        self.font = CustomFont.bold.returnFont(25)
+        self.textColor = colors.loginPlaceHolderColor.value
+        self.textAlignment = .center
     }
 }
