@@ -28,7 +28,7 @@ class MyOfferVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         tblMyOffers.reloadData()
         setupLocalization()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
     }
     
     //MARK: -Other Methods

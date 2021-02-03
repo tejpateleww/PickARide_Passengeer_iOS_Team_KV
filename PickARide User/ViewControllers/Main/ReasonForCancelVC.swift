@@ -28,7 +28,7 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
         footerView.backgroundColor = .white
         self.tblReasonforCancel.tableFooterView = footerView
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
     }
     //MARK: -Other Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

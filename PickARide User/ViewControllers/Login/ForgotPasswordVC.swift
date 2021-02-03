@@ -27,7 +27,7 @@ class ForgotPasswordVC: BaseViewController {
     
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
         super.viewDidLoad()
         setupLocalization()
         // Do any additional setup after loading the view.

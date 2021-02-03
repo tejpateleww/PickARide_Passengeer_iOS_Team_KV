@@ -24,7 +24,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -154,7 +154,10 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             } else {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
                     PaymentSucessFullyVC
-                
+                controller.dismissedClosour = {
+                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+                           self.navigationController?.pushViewController(controller, animated: true)
+                }
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
                 let navigationController = UINavigationController(rootViewController: controller)
                 navigationController.modalPresentationStyle = .overCurrentContext

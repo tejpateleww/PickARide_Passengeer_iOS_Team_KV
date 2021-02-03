@@ -16,8 +16,7 @@ class CurrentRideDetailsViewController: BaseViewController {
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
-    @IBOutlet weak var lblStartRideAddress: currentRideLabel!
-    @IBOutlet weak var lblEndRideAddress: currentRideLabel!
+  
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -26,7 +25,7 @@ class CurrentRideDetailsViewController: BaseViewController {
         setValue()
         setLabel()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: "CommonView", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Seattle","280 Hemlock Ln"])
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +40,7 @@ class CurrentRideDetailsViewController: BaseViewController {
         
     }
     func setValue() {
-        lblStartRideAddress.text = "Seattle"
-        lblEndRideAddress.text = "280 Hemlock Ln"
+        
     }
     func setLabel() {
         let attributedString = NSMutableAttributedString(string: lblVehicalData.text!)

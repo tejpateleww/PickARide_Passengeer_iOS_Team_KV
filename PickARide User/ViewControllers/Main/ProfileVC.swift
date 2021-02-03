@@ -60,7 +60,7 @@ class ProfileVC: BaseViewController {
         }
        // textFieldCollection.forEach({ $0.isUserInteractionEnabled = isEditProfile ? true : false})
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
         
         
         

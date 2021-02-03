@@ -26,7 +26,7 @@ class BaseViewController: UIViewController {
 //    var switchNavLanguage = switchLanguageSegment()
 //    var btnNavSkip = themeSubmitBtn()
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool)
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String])
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -39,18 +39,59 @@ class BaseViewController: UIViewController {
         if naviTitle == NavTitles.Home.value {
             controller.navigationItem.titleView = UIView()
         } else {
-            let label = UILabel()
-            label.text = naviTitle
-            label.textColor = colors.loginPlaceHolderColor.value
-            label.font = CustomFont.bold.returnFont(18)
-            if naviTitle == "NavigationTitle_Rating".Localized() {
-                label.textColor = colors.white.value
+           
+            
+            if naviTitle == "CommonView" {
+                let viewForTop = UIView()
+                viewForTop.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width)!), height: 40)
+                viewForTop.backgroundColor = .clear
+                let xibView : navigationCommonView = navigationCommonView.loadFromXib()
+                xibView.frame = CGRect(x: 0, y: 0, width: viewForTop.frame.size.width, height: 40)
+                xibView.lblEndRideAddress.text = CommonViewTitles[1]
+                xibView.lblStartRideAddress.text = CommonViewTitles[0]
+              
+                viewForTop.addSubview(xibView)
+                
+                controller.navigationItem.titleView = viewForTop
+            } else if naviTitle.contains("MultiLine"){
+                
+                let label = UILabel()
+                
+                let newNavTitle = naviTitle.replacingOccurrences(of: "MultiLine", with: "")
+                let fullNameArr = newNavTitle.split{$0 == "\n"}.map(String.init)
+                print(fullNameArr)
+                
+                let myMutableString1 = NSMutableAttributedString(string: fullNameArr[0], attributes: [NSAttributedString.Key.font : CustomFont.bold.returnFont(18)])
+                let myMutableString2 = NSMutableAttributedString(string: "\n\(fullNameArr[1])", attributes: [NSAttributedString.Key.font : CustomFont.medium.returnFont(13)])
+                myMutableString1.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.loginPlaceHolderColor.value, range: NSRange(location: 0, length: fullNameArr[0].count - 1))
+                myMutableString2.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(hexString: "#ACB1C0"), range: NSRange(location: 0, length: fullNameArr[1].count + 1))
+                
+                let combination = NSMutableAttributedString()
+
+                combination.append(myMutableString1)
+              
+                combination.append(myMutableString2)
+                
+                label.attributedText = combination
+                label.textAlignment = .center
+                label.numberOfLines = 0
+                label.adjustsFontSizeToFitWidth = true
+                controller.navigationItem.titleView = label
+            } else {
+                let label = UILabel()
+                label.text = naviTitle
+                label.textColor = colors.loginPlaceHolderColor.value
+                label.font = CustomFont.bold.returnFont(18)
+                if naviTitle == "NavigationTitle_Rating".Localized() {
+                    label.textColor = colors.white.value
+                }
+                label.numberOfLines = 0
+                label.textAlignment = .center
+                label.adjustsFontSizeToFitWidth = true
+               // controller.navigationItem.title = naviTitle //.Localized()
+                controller.navigationItem.titleView = label
             }
             
-            
-            label.adjustsFontSizeToFitWidth = true
-           // controller.navigationItem.title = naviTitle //.Localized()
-            controller.navigationItem.titleView = label
         }
             //controller.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : colors.black.value, NSAttributedString.Key.font: CustomFont.bold.returnFont(20)]
         

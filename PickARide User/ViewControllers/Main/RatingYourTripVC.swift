@@ -23,7 +23,7 @@ class RatingYourTripVC: BaseViewController {
         setValue()
         self.DotedLine.createDottedLine(width: 1.0, color: UIColor.cyan.cgColor)
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rating.value, leftImage: NavItemsLeft.cancelWhite.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rating.value, leftImage: NavItemsLeft.cancelWhite.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -18,8 +18,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     //MARK: -IBOutlets
     
     @IBOutlet weak var showRouteMapView: GMSMapView!
-    @IBOutlet weak var lblStartRideAddress: suggestedRidesLabel!
-    @IBOutlet weak var lblEndRideAddress: suggestedRidesLabel!
+   
     @IBOutlet weak var lblCardPayment: suggestedRidesLabel!
     @IBOutlet weak var lblSuggestedRide: suggestedRidesLabel!
     @IBOutlet weak var btnCardPayment: UIButton!
@@ -52,7 +51,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: "CommonView", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
        
         // Do any additional setup after loading the view.
     }
@@ -71,8 +70,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
     }
     func setValue() {
-        lblStartRideAddress.text = "Destination 1"
-        lblEndRideAddress.text = "Destination 2"
+       
     }
     
 //    func getRouteSteps(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {

@@ -29,7 +29,7 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
         super.viewDidLoad()
         //self.navigationController?.navigationBar.isHidden = false
        setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [])
        
         // Do any additional setup after loading the view.
     }

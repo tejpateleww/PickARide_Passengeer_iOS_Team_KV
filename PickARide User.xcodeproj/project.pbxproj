@@ -33,6 +33,9 @@
 		1813E4C6258C6A4D00EE33CA /* addPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C4258C6A4D00EE33CA /* addPaymentVC.swift */; };
 		1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */; };
 		1813E4DC258C7F1700EE33CA /* walletHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4DB258C7F1700EE33CA /* walletHistoryViewController.swift */; };
+		181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E432A25B68DB700A76B36 /* navigationCommonView.swift */; };
+		181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E432D25B68DC600A76B36 /* navigationCommonView.xib */; };
+		181E433125B6BAAA00A76B36 /* chatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E433025B6BAAA00A76B36 /* chatVC.swift */; };
 		181EBD95258730B300C11C08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD5D258730B300C11C08 /* ViewController.swift */; };
 		181EBD96258730B300C11C08 /* ApiPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD60258730B300C11C08 /* ApiPaths.swift */; };
 		181EBD97258730B300C11C08 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD61258730B300C11C08 /* Method.swift */; };
@@ -127,6 +130,9 @@
 		1813E4C4258C6A4D00EE33CA /* addPaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addPaymentVC.swift; sourceTree = "<group>"; };
 		1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardVC.swift; sourceTree = "<group>"; };
 		1813E4DB258C7F1700EE33CA /* walletHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walletHistoryViewController.swift; sourceTree = "<group>"; };
+		181E432A25B68DB700A76B36 /* navigationCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationCommonView.swift; sourceTree = "<group>"; };
+		181E432D25B68DC600A76B36 /* navigationCommonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = navigationCommonView.xib; sourceTree = "<group>"; };
+		181E433025B6BAAA00A76B36 /* chatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatVC.swift; sourceTree = "<group>"; };
 		181EBD5D258730B300C11C08 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		181EBD60258730B300C11C08 /* ApiPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiPaths.swift; sourceTree = "<group>"; };
 		181EBD61258730B300C11C08 /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
@@ -268,6 +274,15 @@
 			path = Ubuntu;
 			sourceTree = "<group>";
 		};
+		181E432925B68D8500A76B36 /* navigationCommonView */ = {
+			isa = PBXGroup;
+			children = (
+				181E432A25B68DB700A76B36 /* navigationCommonView.swift */,
+				181E432D25B68DC600A76B36 /* navigationCommonView.xib */,
+			);
+			path = navigationCommonView;
+			sourceTree = "<group>";
+		};
 		181EBD5C258730B300C11C08 /* PickARide User */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +384,7 @@
 		181EBD76258730B300C11C08 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				181E432925B68D8500A76B36 /* navigationCommonView */,
 				18F9B6E4259350E100202DA6 /* Enum */,
 				18F9B6E9259350E100202DA6 /* Extention */,
 				180979CF25876C45002070A7 /* BaseVC */,
@@ -443,6 +459,7 @@
 				185CADFA25B5AD8800082AFC /* CancelTripVC.swift */,
 				185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */,
 				185CADE225B5A64A00082AFC /* CurrentRideDriverInformationVC.swift */,
+				181E433025B6BAAA00A76B36 /* chatVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -593,6 +610,7 @@
 				180979F525877CA0002070A7 /* Login.storyboard in Resources */,
 				180979E725876C75002070A7 /* UFL.txt in Resources */,
 				180979DF25876C75002070A7 /* Ubuntu-Medium.ttf in Resources */,
+				181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */,
 				181EBDB9258730B300C11C08 /* Main.storyboard in Resources */,
 				180979FD25877CCE002070A7 /* Localizable.strings in Resources */,
 				180979E625876C75002070A7 /* Ubuntu-Light.ttf in Resources */,
@@ -745,8 +763,10 @@
 				180979AC25876AA2002070A7 /* AppStoryboards.swift in Sources */,
 				18FDF55625887C530084D40C /* VerifyViewController.swift in Sources */,
 				184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */,
+				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				18F9B6FA259350E100202DA6 /* Fonts.swift in Sources */,
+				181E433125B6BAAA00A76B36 /* chatVC.swift in Sources */,
 				181EBD98258730B300C11C08 /* ResposneInitClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

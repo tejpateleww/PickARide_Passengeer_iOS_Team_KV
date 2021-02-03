@@ -365,3 +365,17 @@ class blurView : UIView {
         }
     }
 }
+class chatScreenView : UIView {
+    @IBInspectable var isSenderView : Bool = false
+    @IBInspectable var isReciverView : Bool = false
+    override func awakeFromNib() {
+        self.roundCorners(corners: [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner], radius: 12)
+        if isSenderView {
+            self.backgroundColor = UIColor(hexString: "#00AA7E")
+        } else if isReciverView {
+            self.backgroundColor = UIColor(hexString: "#DEE2EA")
+        }
+        
+       
+    }
+}

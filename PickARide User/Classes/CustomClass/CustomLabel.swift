@@ -545,3 +545,25 @@ class paymentSucessFullyLabel : UILabel {
         self.textAlignment = .center
     }
 }
+class chatScreenLabel : UILabel {
+    @IBInspectable var lblSender : Bool = false
+    @IBInspectable var lblReciver : Bool = false
+    @IBInspectable var lblHeader : Bool = false
+    
+    override func awakeFromNib() {
+        self.numberOfLines = 0
+        if lblSender {
+            self.font = CustomFont.medium.returnFont(17)
+            self.textColor = colors.white.value
+            self.textAlignment = .right
+        } else if lblReciver {
+            self.font = CustomFont.medium.returnFont(17)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        } else if lblHeader {
+            self.font = CustomFont.regular.returnFont(14)
+            self.textColor = UIColor(hexString: "#ACB1C0")
+            self.textAlignment = .center
+        }
+    }
+}
