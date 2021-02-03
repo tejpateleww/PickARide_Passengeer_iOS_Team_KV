@@ -29,11 +29,12 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
         super.viewDidLoad()
         //self.navigationController?.navigationBar.isHidden = false
        setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [])
+    setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [])
        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
         lblSignUP.text = "SignUpPage_lblSignUP".Localized()
         textFieldFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
         textFieldLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
@@ -52,10 +53,16 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
 
-        if ((URL.scheme?.contains("termsAndConditions")) != nil) {
+        if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print termsAndConditions")
-        } else {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebVC.storyboardID) as! CommonWebVC
+            controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else if (URL.absoluteString ==  "SignUpPage_textViewText4".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print privacypolicy")
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebVC.storyboardID) as! CommonWebVC
+            controller.strNavTitle = "SignUpPage_textViewText4".Localized().capitalized
+            self.navigationController?.pushViewController(controller, animated: true)
         }
 
             return false
@@ -67,11 +74,5 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
     }
     
     //MARK: -API Calls
-    
-    
-    
-    
-    
-   
     
 }

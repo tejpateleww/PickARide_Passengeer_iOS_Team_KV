@@ -51,7 +51,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: "CommonView", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
        
         // Do any additional setup after loading the view.
     }

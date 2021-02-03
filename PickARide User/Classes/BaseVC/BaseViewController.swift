@@ -24,13 +24,13 @@ class BaseViewController: UIViewController {
 //    var lblNavNotifBadge = badgeLabel()
 //    var btnNavProfile = buttonForProfile()
 //    var switchNavLanguage = switchLanguageSegment()
-//    var btnNavSkip = themeSubmitBtn()
+    var btnProfile = UIButton()
     
     func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String])
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
-        controller.navigationController?.navigationBar.isOpaque = false;
+        controller.navigationController?.navigationBar.isOpaque = false
         
         controller.navigationController?.navigationBar.isTranslucent = isTranslucent
         
@@ -188,7 +188,7 @@ class BaseViewController: UIViewController {
                     
                     let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 
-                    let btnProfile = UIButton.init()
+                    btnProfile = UIButton.init()
                     btnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
                     btnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
                    
@@ -351,8 +351,9 @@ class BaseViewController: UIViewController {
 //        controller?.present(navController, animated: false, completion: nil)
     }
     @objc func openLoginVC(_ sender: UIButton?) {
-   
-//        controller?.navigationController?.pushViewController(docInfoVc, animated: true)
+        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
+//        let notifVc = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: NotificationsListVC.storyboardID)
+        controller?.navigationController?.popViewController(animated: true)
     }
     @objc func OpenMailVC(_ sender: UIButton?) {
    

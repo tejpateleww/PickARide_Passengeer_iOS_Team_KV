@@ -133,6 +133,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
             return headerView
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
@@ -195,7 +196,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID) as! ProfileVC
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case 1:

@@ -25,9 +25,10 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
         setLocalization()
         TextFieldWhereAreYouGoing.delegate = self
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
-     //   setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: "CommonView", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+     //   setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
        // print("Hello One two three")
     }

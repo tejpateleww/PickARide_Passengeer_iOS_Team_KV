@@ -40,16 +40,17 @@ enum NavItemsRight {
         case .login:
             return "login"
         case .EditProfile:
-            return "skip"
+            return "EditProfile"
         case .userProfile:
             return "like"
         case .Done:
             return "Done"
+        
         }
     }
 }
 enum NavTitles {
-    case none, Home,reasonForCancle,rating
+    case none, Home,reasonForCancle,rating, CommonView
     
     var value:String {
         switch self {
@@ -61,6 +62,8 @@ enum NavTitles {
             return "NavigationTitle_reasonForCancle".Localized()
         case .rating:
         return "NavigationTitle_Rating".Localized()
+        case .CommonView:
+            return "CommonView"
         }
     }
 }

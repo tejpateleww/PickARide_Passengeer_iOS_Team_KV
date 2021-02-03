@@ -60,13 +60,16 @@ class ProfileVC: BaseViewController {
         }
        // textFieldCollection.forEach({ $0.isUserInteractionEnabled = isEditProfile ? true : false})
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
+//        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
         
-        
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [])
         
     }
     
     //MARK: -IBActions
+    @IBAction func btnEditProfileClicked(_ sender: Any) {
+        appDel.navigateToMain()
+    }
     
     //MARK: -API Calls
 }

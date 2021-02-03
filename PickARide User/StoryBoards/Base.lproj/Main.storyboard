@@ -5231,7 +5231,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VV5-cx-bbj">
                                                             <rect key="frame" x="86" y="9.5" width="288" height="69.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Or-xxh" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Or-xxh" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -5240,7 +5240,7 @@
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isNotificatioTitle" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Order #1234 has been Successfully completed " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFC-2r-zQR" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Order #1234 has been Successfully completed " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFC-2r-zQR" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28.5" width="288" height="41"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -5845,6 +5845,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Em-f9-niW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1810" y="893"/>
+        </scene>
+        <!--Common WebVC-->
+        <scene sceneID="tlm-CK-W94">
+            <objects>
+                <viewController storyboardIdentifier="CommonWebViewVC" id="B0Z-kR-nmF" customClass="CommonWebVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EjP-rG-fFh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-pz-fUB">
+                                <rect key="frame" x="0.0" y="82" width="414" height="780"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpW-73-tem">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="780"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mpW-73-tem" firstAttribute="top" secondItem="EWg-pz-fUB" secondAttribute="top" id="3IK-Bk-yGu"/>
+                                    <constraint firstItem="mpW-73-tem" firstAttribute="leading" secondItem="EWg-pz-fUB" secondAttribute="leading" id="QPF-nZ-kvA"/>
+                                    <constraint firstAttribute="trailing" secondItem="mpW-73-tem" secondAttribute="trailing" id="o6U-nW-tfP"/>
+                                    <constraint firstAttribute="bottom" secondItem="mpW-73-tem" secondAttribute="bottom" id="pyc-pf-NfT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MNC-5C-cSg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EWg-pz-fUB" firstAttribute="top" secondItem="MNC-5C-cSg" secondAttribute="top" constant="38" id="JN6-fY-e8d"/>
+                            <constraint firstItem="EWg-pz-fUB" firstAttribute="leading" secondItem="MNC-5C-cSg" secondAttribute="leading" id="PYc-zR-Har"/>
+                            <constraint firstItem="MNC-5C-cSg" firstAttribute="bottom" secondItem="EWg-pz-fUB" secondAttribute="bottom" id="ktb-wp-tPy"/>
+                            <constraint firstItem="MNC-5C-cSg" firstAttribute="trailing" secondItem="EWg-pz-fUB" secondAttribute="trailing" id="tkw-eu-2LB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="vwWebMain" destination="mpW-73-tem" id="IiC-JL-V1Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v93-hz-s5P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5762.3188405797109" y="-547.09821428571422"/>
         </scene>
     </scenes>
     <resources>

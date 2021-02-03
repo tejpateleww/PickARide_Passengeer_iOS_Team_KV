@@ -164,6 +164,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E30-Ck-7ce" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="372" height="46"/>
                                                         <state key="normal" title="SIGN IN"/>
+                                                        <connections>
+                                                            <action selector="btnSignInClicked:" destination="Umi-hn-684" eventType="touchUpInside" id="QnK-Lw-Lpt"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

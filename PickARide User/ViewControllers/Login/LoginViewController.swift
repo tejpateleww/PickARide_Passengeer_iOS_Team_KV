@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: -Other Methods
@@ -69,6 +69,11 @@ class LoginViewController: UIViewController {
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    @IBAction func btnSignInClicked(_ sender: Any) {
+        appDel.navigateToMain()
+    }
+    
     @IBAction func ForgotPassword(_ sender: Any) {
 //        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
 //        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
