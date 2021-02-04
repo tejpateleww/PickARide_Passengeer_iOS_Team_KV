@@ -12,6 +12,8 @@ class VerifyViewController: BaseViewController {
 
     //MARK: -Properties
     var phoneNumber = " +966 655 6565 656"
+    var isFrmRegister = false
+    
     //MARK: -IBOutlets
     
     
@@ -26,6 +28,7 @@ class VerifyViewController: BaseViewController {
     @IBOutlet weak var lblDontRecive: verifyVcLabel!
     @IBOutlet weak var btnRecendCode: ResendCodeButton!
     @IBOutlet weak var btnVerify: submitButton!
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -56,6 +59,7 @@ class VerifyViewController: BaseViewController {
         textFieldOTP3.text = "6"
         textFieldOTP4.text = "8"
     }
+    
     func setLabel() {
         let attributedString = NSMutableAttributedString(string: lblCheckSMS.text!)
         
@@ -68,16 +72,20 @@ class VerifyViewController: BaseViewController {
         lblCheckSMS.attributedText = attributedString
         //
     }
+    
     //MARK: -IBActions
     @IBAction func Verify(_ sender: Any) {
-        
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as!
-            ChangePasswordPopUpViewController
-        controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
-        controller.isChangePassword = true
-        controller.btnSubmitClosure = {
+        if isFrmRegister {
             userDefault.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
+        } else {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+                controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
+                controller.isChangePassword = false
+            
+        controller.btnSubmitClosure = {
+            userDefault.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            appDel.navigateToLogin()
         }
         controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         let navigationController = UINavigationController(rootViewController: controller)
@@ -85,13 +93,9 @@ class VerifyViewController: BaseViewController {
         navigationController.modalTransitionStyle = .crossDissolve
         navigationController.navigationBar.isHidden = true
         self.present(navigationController, animated: true, completion: nil)
-        
-       
+        }
     }
     
     //MARK: -API Calls
-    
-    
-    
-    
+
 }

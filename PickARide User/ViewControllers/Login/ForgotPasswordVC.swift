@@ -32,26 +32,25 @@ class ForgotPasswordVC: BaseViewController {
         setupLocalization()
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    //MARK: -Other Methods
     
-    func setupLocalization(){
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    //MARK: -Other Methods
+    func setupLocalization() {
         lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
         lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
         lblCountryCode.text = "ForgotPasswordScreen_lblCountryCode".Localized()
-
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
-
         btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
     }
+    
     //MARK: -IBActions
     @IBAction func btnContinue(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID)
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID) as! VerifyViewController
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
     //MARK: -API Calls
 }

@@ -51,12 +51,12 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        //self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     override func viewDidDisappear(_ animated: Bool) {
         //self.navigationController?.navigationBar.isHidden = false
@@ -206,7 +206,8 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         
     }
     @IBAction func btnBookNowClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID)
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID) as! addPaymentVC
+        controller.isFromSideMenu = true
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

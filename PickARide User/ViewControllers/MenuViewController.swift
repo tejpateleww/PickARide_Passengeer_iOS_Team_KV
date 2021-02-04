@@ -36,6 +36,9 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var selectionTableViewHeader: UILabel!
 
+    @IBOutlet weak var lblLegal: versionLabel!
+    @IBOutlet weak var lblVersion: versionLabel!
+    
     @IBOutlet weak var selectionMenuTrailingConstraint: NSLayoutConstraint!
     private var themeColor = UIColor.white
 
@@ -44,7 +47,8 @@ class MenuViewController: UIViewController {
 
         isDarkModeEnabled = SideMenuController.preferences.basic.position == .under
         configureView()
-
+        NotificationCenter.default.removeObserver(self, name: NotificationRefreshSideMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMenu), name: NotificationRefreshSideMenu, object: nil)
 //        sideMenuController?.cache(viewControllerGenerator: {
 //            self.storyboard?.instantiateViewController(withIdentifier: "SecondViewController")
 //        }, with: "1")
@@ -54,10 +58,11 @@ class MenuViewController: UIViewController {
 //        }, with: "2")
 
         sideMenuController?.delegate = self
+        self.setupLocalization()
     }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+       
         print("[Example] Menu did appear")
     }
 
@@ -67,6 +72,18 @@ class MenuViewController: UIViewController {
         print("[Example] Menu will disappear")
     }
 
+    //MARK: -Other Methods
+    @objc func refreshMenu() {
+        DispatchQueue.main.async { [self] in
+            self.selectedMenuIndex = 0
+            self.tblSidemenuData.reloadData()
+        }
+    }
+    func setupLocalization() {
+        lblLegal.text = "MenuVC_lblLegal".Localized()
+        lblVersion.text = String(format: "MenuVC_lblVersion".Localized(), kAPPVesion)
+    }
+    
     private func configureView() {
         if isDarkModeEnabled {
             themeColor = UIColor(red: 0.03, green: 0.04, blue: 0.07, alpha: 1.00)
@@ -178,7 +195,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.PaymentMethods.value {
             
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID)
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID) as! addPaymentVC
+            controller.isFromSideMenu = true
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.Logout.value {
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
@@ -213,6 +231,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
             // present the view controller
             self.present(activityViewController, animated: true, completion: nil)
+        } else if strCellItemTitle == MyType.Help.value {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
+            controller.strNavTitle = "Help"
+            self.navigationController?.pushViewController(controller, animated: true)
         }
         
         
@@ -238,7 +260,7 @@ enum MyType{
         case .PaymentMethods:
             return "Payment Methods"
         case .Notification:
-            return "Notification"
+            return "Notifications"
         case .Settings:
             return "Settings"
         case .InviteaFrind:

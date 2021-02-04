@@ -1,15 +1,15 @@
 //
-//  CommonWebView.swift
+//  CommonWebViewVC.swift
 //  PickARide User
 //
-//  Created by apple on 03/02/21.
+//  Created by apple on 04/02/21.
 //  Copyright © 2021 EWW071. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
-class CommonWebVC: BaseViewController, WKNavigationDelegate {
+class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     
     //MARK: - Properties
     var strUrl = ""
@@ -25,10 +25,18 @@ class CommonWebVC: BaseViewController, WKNavigationDelegate {
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Other Methods
     func setUp() {
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
-        
         webView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.webView)
         NSLayoutConstraint.activate([

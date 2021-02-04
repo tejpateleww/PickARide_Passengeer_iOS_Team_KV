@@ -20,14 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 //        FirebaseApp.configure()
-        GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
-        GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
+       // GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
+      //  GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
         
         SideMenuController.preferences.basic.menuWidth = UIScreen.main.bounds.width - 100
         SideMenuController.preferences.basic.defaultCacheKey = "0"
-        self.navigateToLogin()
+        
         checkAndSetDefaultLanguage()
         registerForPushNotifications()
+        if userDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
+            self.navigateToMain()
+        } else {
+            self.navigateToLogin()
+        }
         return true
     }
     func checkAndSetDefaultLanguage() {
@@ -46,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func setupNavigation(){
-        
-        
         if #available(iOS 13.0, *) {
             // prefer a light interface style with this:
             //  window?.overrideUserInterfaceStyle = .light
@@ -73,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func navigateToLogin(){
         let storyborad = UIStoryboard(name: "Login", bundle: nil)
-        let splash = storyborad.instantiateViewController(withIdentifier: SplashVC.className) as! SplashVC
+        let splash = storyborad.instantiateViewController(withIdentifier: LoginViewController.className) as! LoginViewController
         let NavHomeVC = UINavigationController(rootViewController: splash)
         NavHomeVC.navigationBar.isHidden = true
         self.window?.rootViewController = NavHomeVC

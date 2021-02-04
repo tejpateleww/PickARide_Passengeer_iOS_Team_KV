@@ -45,13 +45,16 @@ class MyOfferVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         btnApply.setTitle("MyOfferVC_btnApply".Localized(), for: .normal)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
-        self.navigationController?.pushViewController(controller, animated: true)
+//        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+//        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     //MARK: -IBActions
     
     //MARK: -API Calls
 }
+
 class myOfferCell:UITableViewCell{
     @IBOutlet weak var lblOffers: myofferLabel!
     @IBOutlet weak var lblValidto: myofferLabel!

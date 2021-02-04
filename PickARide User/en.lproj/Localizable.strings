@@ -46,6 +46,7 @@
 //ChangePassword_
 
 "ChangePassword_lblChangePassword" = "Change Password";
+"ChangePassword_lblSetPassword" = "Set Password";
 "ChangePassword_oldPassword_Place" = "Old Password";
 "ChangePassword_newPassword_Place" = "New Password";
 "ChangePassword_confirmPassword_Place" = "Confirm Password";
@@ -96,7 +97,7 @@
 //Forgot Password Screen
 "ForgotPasswordScreen_lblForgotPassword" = "Forgot \nPassword";
 "ForgotPasswordScreen_lblQuestion" = "What is your phone number?";
-"ForgotPasswordScreen_lblDescription" = "Tap Get Started to get an SMS confirmation to help you use PICK A RIDE. We would like your phone number.";
+"ForgotPasswordScreen_lblDescription" = "Tap \"Get Started\" to get an SMS confirmation to help you use PICK A RIDE. We would like your phone number.";
 "ForgotPasswordScreen_lblCountryCode" = "COUNTRY CODE";
 "ForgotPasswordScreen_textFieldPhoneNumber" = "Phone number";
 "ForgotPasswordScreen_btnContinue" = "CONTINUE";
@@ -194,6 +195,10 @@
 "ScheduleRideVC_title" = "Schedule a Ride";
 "ScheduleRideVC_btnCancel" = "CANCEL";
 "ScheduleRideVC_btnSet" = "SET";
+
+//MenuVC
+"MenuVC_lblLegal" = "Legal";
+"MenuVC_lblVersion" = "v%@";
 
 //NavigationTitle
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";

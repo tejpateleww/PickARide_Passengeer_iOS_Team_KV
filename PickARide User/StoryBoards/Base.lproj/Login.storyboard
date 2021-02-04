@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cI9-hm-QYy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3KX-nd-Xbz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702.8985507246377" y="37.5"/>
+            <point key="canvasLocation" x="2090" y="536"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="eVC-SU-OIT">
@@ -308,6 +308,7 @@
                             <constraint firstItem="a0E-vq-ht0" firstAttribute="leading" secondItem="YVs-R0-3Wq" secondAttribute="leading" id="eTI-DT-Q4l"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Btw-hz-12V"/>
                     <connections>
                         <outlet property="btnForgotPassword" destination="9a0-j6-sqv" id="v8d-wj-QbT"/>
                         <outlet property="btnSIgnUP" destination="sk2-dG-Es2" id="rKv-Fp-Ag9"/>
@@ -322,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdx-Ga-f5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928.985507246377" y="57.589285714285708"/>
+            <point key="canvasLocation" x="1614" y="38"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="q2D-dD-ySX">
@@ -593,7 +594,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRu-Cu-KIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3697.1014492753625" y="55.580357142857139"/>
+            <point key="canvasLocation" x="2341" y="44"/>
         </scene>
         <!--Verify View Controller-->
         <scene sceneID="bFA-yW-A8z">
@@ -1002,7 +1003,7 @@ Number</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="B56-Z4-AZT" kind="relationship" relationship="rootViewController" id="2bP-r6-N7n"/>
+                        <segue destination="Umi-hn-684" kind="relationship" relationship="rootViewController" id="jDA-DN-aZz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGh-2f-RuD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -71,6 +71,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnSignInClicked(_ sender: Any) {
+        userDefault.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
         appDel.navigateToMain()
     }
     

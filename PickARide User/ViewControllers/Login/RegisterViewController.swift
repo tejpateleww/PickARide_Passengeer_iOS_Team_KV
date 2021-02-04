@@ -55,12 +55,12 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
 
         if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print termsAndConditions")
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebVC.storyboardID) as! CommonWebVC
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
             controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
             self.navigationController?.pushViewController(controller, animated: true)
         } else if (URL.absoluteString ==  "SignUpPage_textViewText4".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print privacypolicy")
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebVC.storyboardID) as! CommonWebVC
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
             controller.strNavTitle = "SignUpPage_textViewText4".Localized().capitalized
             self.navigationController?.pushViewController(controller, animated: true)
         }
@@ -69,7 +69,8 @@ class RegisterViewController: BaseViewController, UITextViewDelegate {
         }
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID)
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: VerifyViewController.storyboardID) as! VerifyViewController
+        controller.isFrmRegister = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

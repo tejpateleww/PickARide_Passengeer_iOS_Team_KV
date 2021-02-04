@@ -200,8 +200,14 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case 1:
+            NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID) as! HomeViewController
+            self.navigationController?.pushViewController(controller, animated: true)
            break
         case 2:
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
+            controller.strNavTitle = "SettingsVC_privacyPolicy".Localized()
+            self.navigationController?.pushViewController(controller, animated: true)
             break
         case 3:
             break

@@ -24,7 +24,7 @@ class BaseViewController: UIViewController {
 //    var lblNavNotifBadge = badgeLabel()
 //    var btnNavProfile = buttonForProfile()
 //    var switchNavLanguage = switchLanguageSegment()
-    var btnProfile = UIButton()
+    var navBtnProfile = UIButton()
     
     func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String])
     {
@@ -188,18 +188,18 @@ class BaseViewController: UIViewController {
                     
                     let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 
-                    btnProfile = UIButton.init()
-                    btnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-                    btnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
+                    navBtnProfile = UIButton.init()
+                    navBtnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    navBtnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
                    
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    btnProfile.layer.setValue(controller, forKey: "controller")
-                    viewProfile.addSubview(btnProfile)
+                    navBtnProfile.layer.setValue(controller, forKey: "controller")
+                    viewProfile.addSubview(navBtnProfile)
 
-                    btnProfile.layer.shadowColor = colors.black.value.cgColor
-                    btnProfile.layer.shadowOffset = CGSize(width: 0, height: 0)
-                    btnProfile.layer.shadowRadius = 3
-                    btnProfile.layer.shadowOpacity = 0.4
+                    navBtnProfile.layer.shadowColor = colors.black.value.cgColor
+                    navBtnProfile.layer.shadowOffset = CGSize(width: 0, height: 0)
+                    navBtnProfile.layer.shadowRadius = 3
+                    navBtnProfile.layer.shadowOpacity = 0.4
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfile)
                     btnRightBar.style = .plain

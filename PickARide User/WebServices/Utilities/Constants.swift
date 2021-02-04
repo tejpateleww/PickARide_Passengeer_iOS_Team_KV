@@ -14,7 +14,7 @@ let keywindow = UIApplication.shared.keyWindow
 
 let appDel = UIApplication.shared.delegate as! AppDelegate
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-let AppName = "Virtuwoof"
+let AppName = ""
 let AppURL = "itms-apps://itunes.apple.com/app/id1488928328"
 
 let themeColor = hexStringToUIColor(hex: "2ab6b6")
@@ -26,8 +26,8 @@ let themeStatusYellow = hexStringToUIColor(hex: "EFB818")
 let themeStatusGreen = hexStringToUIColor(hex: "1AC62F")
 
 
-let NotificationBadges = NSNotification.Name(rawValue:"NotificationBadges")
-
+let NotificationRefreshSideMenu = NSNotification.Name(rawValue:"NotificationRefreshSideMenu")
+let NotificationBadges = NSNotification.Name(rawValue: "NotificationBadges")
 
 enum DateFormatterString : String{
     case timeWithDate = "yyyy-MM-dd HH:mm:ss"

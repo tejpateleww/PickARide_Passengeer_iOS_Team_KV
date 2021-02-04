@@ -91,7 +91,7 @@ class NotificationLabel: UILabel {
         super.awakeFromNib()
         if isTitle {
             self.textColor = colors.loginPlaceHolderColor.value
-            self.font = CustomFont.bold.returnFont(40)
+            self.font = CustomFont.medium.returnFont(40)
         } else if isNotificatioTitle {
             self.font = CustomFont.medium.returnFont(17)
             self.textColor = UIColor(hexString: "#242E42")
@@ -184,7 +184,7 @@ class myRidesLabel : UILabel{
             self.font = CustomFont.regular.returnFont(13)
             self.textColor = UIColor(hexString: "#ACB1C0")
         }else if isTotal{
-            self.font = CustomFont.bold.returnFont(13)
+            self.font = CustomFont.bold.returnFont(18)
             self.textColor = colors.loginPlaceHolderColor.value
         } else if isSelectType {
             self.font = CustomFont.medium.returnFont(15)
@@ -305,6 +305,7 @@ class ReasonforLabel : UILabel {
         }
     }
 }
+
 class RideDetailLabel : UILabel{
     @IBInspectable var isRideDetails : Bool = false
     @IBInspectable var isDate : Bool = false
@@ -338,10 +339,10 @@ class RideDetailLabel : UILabel{
         }else if isPrice{
             self.font = CustomFont.regular.returnFont(13)
             self.textColor = UIColor(hexString: "#ACB1C0")
-        }else if isTotal{
-            self.font = CustomFont.bold.returnFont(13)
+        } else if isTotal{
+            self.font = CustomFont.bold.returnFont(18)
             self.textColor = colors.loginPlaceHolderColor.value
-        }else if isPickup{
+        } else if isPickup{
             self.font = CustomFont.medium.returnFont(11)
             self.textColor = UIColor(hexString: "#9095A2")
         }else if ispickupAddress{
@@ -362,6 +363,7 @@ class RideDetailLabel : UILabel{
         }
     }
 }
+
 class settingLabel : UILabel {
     @IBInspectable var isUserName : Bool = false
     @IBInspectable var isUserPhoneNumber : Bool = false
@@ -383,6 +385,7 @@ class settingLabel : UILabel {
         }
     }
 }
+
 class suggestedRidesLabel : UILabel {
     @IBInspectable var isTitle : Bool = false
     @IBInspectable var isTaxiName : Bool = false
@@ -423,6 +426,7 @@ class suggestedRidesLabel : UILabel {
     }
     
 }
+
 class currentRideLabel : UILabel {
     @IBInspectable var isStartRideAddress : Bool = false
     @IBInspectable var isEndRideAddress : Bool = false
@@ -452,6 +456,7 @@ class currentRideLabel : UILabel {
         
     }
 }
+
 class menuLabel : UILabel {
     @IBInspectable var isUserName : Bool = false
     @IBInspectable var isUserEmailAddress : Bool = false
@@ -564,6 +569,22 @@ class chatScreenLabel : UILabel {
             self.font = CustomFont.regular.returnFont(14)
             self.textColor = UIColor(hexString: "#ACB1C0")
             self.textAlignment = .center
+        }
+    }
+}
+
+class versionLabel : UILabel {
+    @IBInspectable var isLegalText : Bool = false
+    
+    override func awakeFromNib() {
+        self.numberOfLines = 0
+        self.textColor = colors.black.value.withAlphaComponent(0.4)
+        if isLegalText {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textAlignment = .left
+        } else {
+            self.font = CustomFont.medium.returnFont(18)
+            self.textAlignment = .right
         }
     }
 }

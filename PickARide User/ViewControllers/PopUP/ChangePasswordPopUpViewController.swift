@@ -21,8 +21,8 @@ class ChangePasswordPopUpViewController: UIViewController {
     @IBOutlet weak var textFieldNewPassword: ChangePasswordTextField!
     @IBOutlet weak var textFieldConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
-    //MARK: -View Life Cycle Methods
     
+    //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonTitleAndHideView()
@@ -31,6 +31,7 @@ class ChangePasswordPopUpViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
     }
@@ -39,6 +40,7 @@ class ChangePasswordPopUpViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y -= keyboardSize.height
@@ -48,20 +50,24 @@ class ChangePasswordPopUpViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
+    
     func setButtonTitleAndHideView() {
         if isChangePassword {
             textFieldOldPassword.superview?.isHidden = false
+            lblChangePassword.text = "ChangePassword_lblChangePassword".Localized()
         } else {
             textFieldOldPassword.superview?.isHidden = true
+            lblChangePassword.text = "ChangePassword_lblSetPassword".Localized()
         }
     }
+    
     func setLocalization() {
-        lblChangePassword.text = "ChangePassword_lblChangePassword".Localized()
         textFieldOldPassword.placeholder = "ChangePassword_oldPassword_Place".Localized()
         textFieldNewPassword.placeholder = "ChangePassword_newPassword_Place".Localized()
         textFieldConfirmPassword.placeholder = "ChangePassword_confirmPassword_Place".Localized()
         btnSubmit.setTitle(submitButtonText, for: .normal)
     }
+    
     //MARK: -IBActions
     @IBAction func btnsubmitAction(_ sender: Any) {
         if let click = self.btnSubmitClosure {
@@ -70,9 +76,5 @@ class ChangePasswordPopUpViewController: UIViewController {
     }
     
     //MARK: -API Calls
-    
-    
-    
-    
 
 }

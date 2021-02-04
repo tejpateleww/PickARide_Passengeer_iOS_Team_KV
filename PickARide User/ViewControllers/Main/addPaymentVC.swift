@@ -13,7 +13,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //MARK: -Properties
     var cardDetails : [String] = []
- 
+    var isFromSideMenu = false
     var selectedPaymentMethods = 1
     //MARK: -IBOutlets
     @IBOutlet weak var tblPaymentMethod: UITableView!
@@ -24,9 +24,14 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
+        if isFromSideMenu {
+            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
+        } else {
+            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
+        }
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
     }
@@ -36,6 +41,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         lblTitle.text = "AddCardVC_lblPaymentMethod".Localized()
         btnAddCard.setTitle("AddCardVC_lblAddCard".Localized(), for: .normal)
     }
+    
     //MARK: -btnAction
     @IBAction func placeOrderBtn(_ sender: submitButton) {
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: AddCardVC.storyboardID)
@@ -96,8 +102,6 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
                 }
                 cell = cell2
             }
-            
-            
             return cell
         default:
             return UITableViewCell()
