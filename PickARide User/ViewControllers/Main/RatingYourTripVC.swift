@@ -34,15 +34,17 @@ class RatingYourTripVC: BaseViewController {
     func setLocalization() {
         
     }
+    
     func setValue() {
     }
+    
     //MARK: -IBActions
     
     @IBAction func btnSubmitReviewClicked(_ sender: Any) {
-        NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
+//        NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID) as! HomeViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-        
+//        self.navigationController?.pushViewController(controller, animated: true)
+        appDel.navigateToMain()
     }
     
     //MARK: -API Calls

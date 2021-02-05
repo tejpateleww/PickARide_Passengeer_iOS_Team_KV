@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class CurrentRideDetailsViewController: BaseViewController {
 
@@ -16,7 +17,8 @@ class CurrentRideDetailsViewController: BaseViewController {
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
-  
+    @IBOutlet weak var mapVw: GMSMapView!
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {

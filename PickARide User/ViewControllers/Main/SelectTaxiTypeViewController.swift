@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import GoogleMaps
+
 class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
    
     
@@ -26,6 +28,8 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     @IBOutlet weak var btnBookNow: submitButton!
     @IBOutlet weak var tblSuggestedRidesHeight: NSLayoutConstraint!
     @IBOutlet weak var tblSuggestedRides: UITableView!
+    @IBOutlet weak var mapVw: GMSMapView!
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {

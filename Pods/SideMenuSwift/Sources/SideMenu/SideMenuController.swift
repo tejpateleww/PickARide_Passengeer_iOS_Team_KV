@@ -298,7 +298,6 @@ open class SideMenuController: UIViewController {
             animationCompletionClosure(true)
             completion?(true)
         }
-
     }
 
     private func animateMenu(with reveal: Bool,

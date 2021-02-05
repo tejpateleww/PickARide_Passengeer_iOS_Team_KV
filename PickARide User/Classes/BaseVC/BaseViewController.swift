@@ -472,7 +472,6 @@ class BaseViewController: UIViewController {
 //    }
     
     @objc func btnBackAction() {
-        
         if self.navigationController?.children.count == 1 {
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
@@ -480,15 +479,17 @@ class BaseViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    @objc func btMenuAction() {
-       
-        sideMenuController?.revealMenu()
-        
-        
+    
+    @objc func btMenuAction (_ sender: UIButton?) {
+//    @objc func btMenuAction() {
+        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
+        controller?.sideMenuController?.revealMenu()
     }
+    
     @objc func btnSkipAction() {
         //appDel.navigateToHome()
     }
+    
 //    @objc func DeleteAllNotification()
 //    {
 //        let AlrtMsg = UIAlertController(title: "", message: "Are you sure want to clear all notifications?".Localized(), preferredStyle: .alert)

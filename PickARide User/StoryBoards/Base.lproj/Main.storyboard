@@ -90,6 +90,7 @@
                     <navigationItem key="navigationItem" id="u9v-XX-aWJ"/>
                     <connections>
                         <outlet property="TextFieldWhereAreYouGoing" destination="P8A-Ai-qax" id="Kjb-Nf-38x"/>
+                        <outlet property="mapVw" destination="eLB-Vi-Pzl" id="RVG-rS-Efs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uzt-dd-ykL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4514,6 +4515,7 @@
                         <outlet property="btnOffer" destination="Mh8-py-eTt" id="GzL-8H-db3"/>
                         <outlet property="lblCardPayment" destination="RMG-Zr-apr" id="QkW-hp-Kkg"/>
                         <outlet property="lblSuggestedRide" destination="i5I-qa-OwC" id="QxN-7D-W0t"/>
+                        <outlet property="mapVw" destination="vOk-8C-wBy" id="6pK-DO-FeC"/>
                         <outlet property="showRouteMapView" destination="vOk-8C-wBy" id="CqJ-9P-Qbo"/>
                         <outlet property="tblSuggestedRides" destination="Iar-BH-Hq2" id="QQh-5k-DlQ"/>
                         <outlet property="tblSuggestedRidesHeight" destination="thM-ez-h2w" id="uTK-XI-QE8"/>
@@ -4681,6 +4683,7 @@
                         <outlet property="lblDriverName" destination="Zff-eZ-EYf" id="mP8-hU-WkI"/>
                         <outlet property="lblRidego" destination="dmj-XP-gDO" id="4Oq-8Q-CHG"/>
                         <outlet property="lblVehicalData" destination="2DG-fK-TuT" id="82i-9w-69I"/>
+                        <outlet property="mapVw" destination="eMg-YK-O6M" id="BH8-9O-GZQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpS-fu-lTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4902,6 +4905,7 @@
                         <outlet property="lblDriverName" destination="7Am-sP-peU" id="fCs-mC-xwF"/>
                         <outlet property="lblRidego" destination="Oal-UZ-yh4" id="REy-IZ-buR"/>
                         <outlet property="lblVehicalData" destination="K1R-Sd-Ywu" id="fcG-CN-qbi"/>
+                        <outlet property="mapVw" destination="7it-Tj-Cg1" id="2v5-We-l9X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noQ-hU-qu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -5942,6 +5946,14 @@
             <point key="canvasLocation" x="6402" y="-586"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6Pe-yI-iX4">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="aQs-tF-B1u">
+            <size key="intrinsicContentSize" width="189.35000000000002" height="26.670000000000002"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Dummy-Profile" width="100" height="100"/>
         <image name="Dummy-RightShape" width="24" height="24"/>
@@ -5987,7 +5999,7 @@
         <image name="imgCanceltrue" width="19" height="17"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="23" height="19.5"/>
+        <image name="imgHome" width="14" height="16"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <systemColor name="labelColor">

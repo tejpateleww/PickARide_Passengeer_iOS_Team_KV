@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class HomeViewController: BaseViewController,UITextFieldDelegate {
 
@@ -14,7 +15,9 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
    
     //MARK: -IBOutlets
     
+    @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var TextFieldWhereAreYouGoing: leftSideImageTextField!
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -24,12 +27,12 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
         
         setLocalization()
         TextFieldWhereAreYouGoing.delegate = self
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
-     //   setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
-        
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+       
        // print("Hello One two three")
     }
    
@@ -48,6 +51,7 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
         textField.resignFirstResponder()
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: chooseDestinationViewController.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
     }
     //MARK: -IBActions
     

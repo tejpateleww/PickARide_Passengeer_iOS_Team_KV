@@ -49,7 +49,8 @@ struct AppInfo {
         return ""
     }
     static var Google_API_Key: String {
-        return ""
+        return "AIzaSyD9aZBxr4MjVuneyUp4x969up5GUvTY6vk"
+//        return "AIzaSyDvJt3EcQPwKnsfIuOa0_9zd9P8L2FfUkE"
         //
     }
 //    static var Google_API_Key: String {
