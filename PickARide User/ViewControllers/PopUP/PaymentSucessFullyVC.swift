@@ -20,7 +20,7 @@ class PaymentSucessFullyVC: BaseViewController {
         super.viewDidLoad()
         setLocalization()
         setValue()
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

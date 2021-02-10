@@ -38,7 +38,7 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
         
         textFieldStartLocation.becomeFirstResponder()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -110,6 +110,11 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
         case 0:
             let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as! SavedCell
             cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row]
+            if indexPath.row == 0 {
+                cell.imgLocationType.image = UIImage.init(named: "ic_HomeTemp")
+            } else {
+                cell.imgLocationType.image = UIImage.init(named: "ic_WorkTemp")
+            }
             if indexPath.row == arrayForSavedPlaces.count - 1 {
                 cell.Seperator1.isHidden = true
             }
@@ -199,8 +204,10 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
 }
 class SavedCell : UITableViewCell {
     @IBOutlet weak var savedPlaceName : UILabel!
+    @IBOutlet weak var imgLocationType: UIImageView!
     @IBOutlet weak var Seperator1 : seperatorView!
 }
+
 class SearchCell : UITableViewCell {
     @IBOutlet weak var searchPlaceTitle : UILabel!
     @IBOutlet weak var searchSubPlaceTitle : UILabel!

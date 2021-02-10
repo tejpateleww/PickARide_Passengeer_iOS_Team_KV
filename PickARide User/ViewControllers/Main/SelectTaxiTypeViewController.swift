@@ -55,7 +55,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"], isTwoLabels: false)
        
         // Do any additional setup after loading the view.
     }
@@ -174,7 +174,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
             cell.TaxiType.textColor = colors.loginPlaceHolderColor.value
         }
        
-        cell.TaxiType.text = taxiData[indexPath.row].taxiName
+        cell.TaxiType.text = taxiData[indexPath.row].taxiName?.uppercased()
         cell.TotalSeat.text = taxiData[indexPath.row].taxiTotalCapacity
         cell.SuggestedMoney.text = taxiData[indexPath.row].taxiPrice
         cell.SuggestedTime.text = taxiData[indexPath.row].taxiComingTime
@@ -211,25 +211,26 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     }
     @IBAction func btnBookNowClick(_ sender: Any) {
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID) as! addPaymentVC
-        controller.isFromSideMenu = true
+        controller.isFromSideMenu = false
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
+    
     @IBAction func btnOfferClick(_ sender: Any) {
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
+    
     @IBAction func btnCardPaymentClick(_ sender: Any) {
-       
         
     }
+    
     //MARK: -API Calls
     
     
     
     
 }
+
 class suggestedVisitCell : UITableViewCell {
     
     @IBOutlet weak var suggestTaxiBackgroundView: suggestedTaxiView!
@@ -239,6 +240,7 @@ class suggestedVisitCell : UITableViewCell {
     @IBOutlet weak var SuggestedTime: suggestedRidesLabel!
     @IBOutlet weak var TaxiImage: UIImageView!
 }
+
 class suggestRide {
     var taxiName : String?
     var taxiTotalCapacity : String?

@@ -16,6 +16,7 @@ import UIKit
 /// SideMenuController
 /// ├── Menu View Controller
 /// └── Content View Controller
+
 open class SideMenuController: UIViewController {
 
     /// Configure this property to change the behavior of SideMenuController;

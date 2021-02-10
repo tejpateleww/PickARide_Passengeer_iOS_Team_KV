@@ -30,7 +30,7 @@ class chatVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true)
                                                                         ]))
        
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: "MultiLineConnor Chavez\nST3751 - Toyota Vios", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: "Connor Chavez\nST3751 - Toyota Vios", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: true)
         
         tblChat.reloadData()
         // Do any additional setup after loading the view.

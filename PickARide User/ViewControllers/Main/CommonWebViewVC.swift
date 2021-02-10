@@ -36,7 +36,7 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     
     // MARK: - Other Methods
     func setUp() {
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         webView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.webView)
         NSLayoutConstraint.activate([

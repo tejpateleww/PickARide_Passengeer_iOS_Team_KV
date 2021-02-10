@@ -15,20 +15,26 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     var cardDetails : [String] = []
     var isFromSideMenu = false
     var selectedPaymentMethods = 1
+    
     //MARK: -IBOutlets
     @IBOutlet weak var tblPaymentMethod: UITableView!
     @IBOutlet weak var btnAddCard: submitButton!
     @IBOutlet weak var lblTitle: TitleLabel!
+    
+    
+    
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
         if isFromSideMenu {
-            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
+            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         } else {
-            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [])
+            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         }
+        navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
         // Do any additional setup after loading the view.
     }
     
@@ -39,7 +45,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     //MARK: -other methods
     func setLocalization() {
         lblTitle.text = "AddCardVC_lblPaymentMethod".Localized()
-        btnAddCard.setTitle("AddCardVC_lblAddCard".Localized(), for: .normal)
+        btnAddCard.setTitle("AddCardVC_lblAddCard".Localized().uppercased(), for: .normal)
     }
     
     //MARK: -btnAction
@@ -48,7 +54,24 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    
+    @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
+            PaymentSucessFullyVC
+        controller.dismissedClosour = {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+        
+        
+//                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+//                self.navigationController?.pushViewController(controller, animated: true)
+        }
     //MARK: -tblViewMethods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -155,23 +178,6 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             if indexPath.row == 0 {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: walletHistoryViewController.storyboardID)
                 self.navigationController?.pushViewController(controller, animated: true)
-            } else {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
-                    PaymentSucessFullyVC
-                controller.dismissedClosour = {
-                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
-                           self.navigationController?.pushViewController(controller, animated: true)
-                }
-                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-                let navigationController = UINavigationController(rootViewController: controller)
-                navigationController.modalPresentationStyle = .overCurrentContext
-                navigationController.modalTransitionStyle = .crossDissolve
-                navigationController.navigationBar.isHidden = true
-                self.present(navigationController, animated: true, completion: nil)
-                
-                
-//                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
-//                self.navigationController?.pushViewController(controller, animated: true)
             }
             selectedPaymentMethods = indexPath.row
             tblPaymentMethod.reloadData()

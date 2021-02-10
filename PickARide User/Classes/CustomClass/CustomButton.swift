@@ -52,13 +52,14 @@ class MyofferScreenButton : UIButton
     override func awakeFromNib() {
         if isApply {
             self.setTitleColor(colors.submitButtonColor.value, for: .normal)
-            self.titleLabel?.font = CustomFont.regular.returnFont(18)
+            self.titleLabel?.font = CustomFont.medium.returnFont(18)
         } else if isUseNow {
             self.setTitleColor(colors.submitButtonColor.value, for: .normal)
-            self.titleLabel?.font = CustomFont.regular.returnFont(13)
+            self.titleLabel?.font = CustomFont.medium.returnFont(13)
         }
     }
 }
+
 class MyRidesButton : UIButton
 {
     override func awakeFromNib() {
@@ -75,7 +76,7 @@ class SavedPlaceButton : UIButton
     override func awakeFromNib() {
         if isAddButton {
             self.setTitleColor(colors.submitButtonColor.value, for: .normal)
-            self.titleLabel?.font = CustomFont.regular.returnFont(18)
+            self.titleLabel?.font = CustomFont.medium.returnFont(17)
             
         }
     }

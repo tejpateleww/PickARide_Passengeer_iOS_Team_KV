@@ -96,7 +96,7 @@ class NotificationLabel: UILabel {
             self.font = CustomFont.medium.returnFont(17)
             self.textColor = UIColor(hexString: "#242E42")
         } else if isNotificatioDescription {
-            self.font = CustomFont.medium.returnFont(17)
+            self.font = CustomFont.regular.returnFont(17)
             self.textColor = UIColor(hexString: "#242E42")
         }
         
@@ -289,7 +289,7 @@ class ProfileLabel : UILabel{
             self.font = CustomFont.medium.returnFont(40)
             self.textColor = colors.loginPlaceHolderColor.value
         }else if isProfileLabel{
-            self.font = CustomFont.regular.returnFont(12)
+            self.font = CustomFont.bold.returnFont(12)
             self.textColor = UIColor(hexString: "#8F9BB3")
         }
     }
@@ -395,6 +395,7 @@ class suggestedRidesLabel : UILabel {
     @IBInspectable var islblCardPayment : Bool = false
     @IBInspectable var isStartRideAddress : Bool = false
     @IBInspectable var isEndRideAddress : Bool = false
+    
     override func awakeFromNib() {
         if isTitle {
             self.font = CustomFont.bold.returnFont(15)
@@ -424,36 +425,51 @@ class suggestedRidesLabel : UILabel {
             self.textAlignment = .left
         }
     }
-    
 }
 
 class currentRideLabel : UILabel {
+    
     @IBInspectable var isStartRideAddress : Bool = false
     @IBInspectable var isEndRideAddress : Bool = false
     @IBInspectable var isDriveName : Bool = false
     @IBInspectable var isRideGO : Bool = false
     @IBInspectable var isCarNumber : Bool = false
+    @IBInspectable var isRemainigTime : Bool = false
+    @IBInspectable var isRemaningTimeTitle : Bool = false
+    @IBInspectable var isWeFoundTitle : Bool = false
+    
     override func awakeFromNib() {
-        
-            if isStartRideAddress {
-                self.font = CustomFont.regular.returnFont(15)
-                self.textColor = colors.loginPlaceHolderColor.value
-                self.textAlignment = .right
-            } else if isEndRideAddress {
-                self.font = CustomFont.regular.returnFont(15)
-                self.textColor = colors.loginPlaceHolderColor.value
-                self.textAlignment = .left
-            } else if isDriveName {
-                self.font = CustomFont.bold.returnFont(20)
-                self.textColor = colors.loginPlaceHolderColor.value
-            } else if isRideGO {
-                self.font = CustomFont.medium.returnFont(11)
-                self.textColor = colors.white.value
-            } else if isCarNumber {
-                self.font = CustomFont.medium.returnFont(15)
-                self.textColor = colors.loginPlaceHolderColor.value
-            }
-        
+        if isStartRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .right
+        } else if isEndRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+        } else if isDriveName {
+            self.font = CustomFont.bold.returnFont(20)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isRideGO {
+            self.font = CustomFont.medium.returnFont(11)
+            self.textColor = colors.white.value
+        } else if isCarNumber {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+        } else if isRemainigTime {
+            self.font = CustomFont.bold.returnFont(15)
+            self.textColor = colors.submitButtonColor.value
+            self.textAlignment = .left
+        } else if isRemaningTimeTitle {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.submitButtonColor.value
+            self.textAlignment = .right
+        } else if isWeFoundTitle {
+            self.font = CustomFont.medium.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .center
+            self.text = self.text?.uppercased()
+        }
     }
 }
 

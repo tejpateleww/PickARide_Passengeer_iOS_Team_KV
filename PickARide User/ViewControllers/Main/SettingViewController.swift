@@ -23,7 +23,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         
         settings.append(settingData(name: "", button: "", subsetting: []))
         settings.append(settingData(name: "SettingsVC_Favourites".Localized(), button: "SettingsVC_btnAdd".Localized(), subsetting: [subSettingsData(img: UIImage(named: "ic_settingsHome")!, name: "SettingsVC_Home".Localized(), isLanguage: false),subSettingsData(img: UIImage(named: "ic_SettingWork")!, name: "SettingsVC_Work".Localized(), isLanguage: false)]))

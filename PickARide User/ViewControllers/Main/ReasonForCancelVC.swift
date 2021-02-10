@@ -28,7 +28,7 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
         footerView.backgroundColor = .white
         self.tblReasonforCancel.tableFooterView = footerView
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     //MARK: -Other Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,10 +37,10 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:reasonCell = tblReasonforCancel.dequeueReusableCell(withIdentifier: reasonCell.reuseIdentifier, for: indexPath)as! reasonCell
         if indexPath.row == selectIndex {
-           cell.imgQuestion.image = #imageLiteral(resourceName: "imgCanceltrue")
+           cell.imgQuestion.image = #imageLiteral(resourceName: "ImgRightArrow")
             cell.lblReasonforcancel.textColor = UIColor(hexString: "#282F39")
         } else {
-            cell.imgQuestion.image = #imageLiteral(resourceName: "imgQuestionFalse")
+            cell.imgQuestion.image = #imageLiteral(resourceName: "deselectReason")
                            cell.lblReasonforcancel.textColor = UIColor(hexString: "#7F7F7F")
         }
         cell.lblReasonforcancel.text = reasonArray[indexPath.row]

@@ -25,8 +25,15 @@ class BaseViewController: UIViewController {
 //    var btnNavProfile = buttonForProfile()
 //    var switchNavLanguage = switchLanguageSegment()
     var navBtnProfile = UIButton()
+    var navBtnDone = UIButton()
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String])
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        let bounds = self.navigationController!.navigationBar.bounds
+//        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 48)
+//    }
+    
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String], isTwoLabels:Bool)
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -36,27 +43,15 @@ class BaseViewController: UIViewController {
         
         controller.navigationController?.navigationBar.barTintColor = naviColor;
         controller.navigationController?.navigationBar.tintColor = colors.white.value;
+        
+   //     controller.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: (controller.navigationController?.navigationBar.frame.size.width)!, height: 48)
         if naviTitle == NavTitles.Home.value {
             controller.navigationItem.titleView = UIView()
         } else {
-           
-            
-            if naviTitle == "CommonView" {
-                let viewForTop = UIView()
-                viewForTop.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width)!), height: 40)
-                viewForTop.backgroundColor = .clear
-                let xibView : navigationCommonView = navigationCommonView.loadFromXib()
-                xibView.frame = CGRect(x: 0, y: 0, width: viewForTop.frame.size.width, height: 40)
-                xibView.lblEndRideAddress.text = CommonViewTitles[1]
-                xibView.lblStartRideAddress.text = CommonViewTitles[0]
-              
-                viewForTop.addSubview(xibView)
-                
-                controller.navigationItem.titleView = viewForTop
-            } else if naviTitle.contains("MultiLine"){
-                
+            if isTwoLabels {
+                                
                 let label = UILabel()
-                
+                label.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width)!), height: 44)
                 let newNavTitle = naviTitle.replacingOccurrences(of: "MultiLine", with: "")
                 let fullNameArr = newNavTitle.split{$0 == "\n"}.map(String.init)
                 print(fullNameArr)
@@ -77,6 +72,20 @@ class BaseViewController: UIViewController {
                 label.numberOfLines = 0
                 label.adjustsFontSizeToFitWidth = true
                 controller.navigationItem.titleView = label
+            }
+            
+            else if naviTitle == "CommonView" {
+                let viewForTop = UIView()
+                viewForTop.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width)!), height: 44)
+                viewForTop.backgroundColor = .clear
+                let xibView : navigationCommonView = navigationCommonView.loadFromXib()
+                xibView.frame = CGRect(x: 0, y: 0, width: viewForTop.frame.size.width, height: 44)
+                xibView.lblEndRideAddress.text = CommonViewTitles[1]
+                xibView.lblStartRideAddress.text = CommonViewTitles[0]
+                xibView.btnNavigation.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                viewForTop.addSubview(xibView)
+                
+                controller.navigationItem.titleView = viewForTop
             } else {
                 let label = UILabel()
                 label.text = naviTitle
@@ -91,28 +100,28 @@ class BaseViewController: UIViewController {
                // controller.navigationItem.title = naviTitle //.Localized()
                 controller.navigationItem.titleView = label
             }
-            
         }
-            //controller.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : colors.black.value, NSAttributedString.Key.font: CustomFont.bold.returnFont(20)]
         
-       
+        // controller.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : colors.black.value, NSAttributedString.Key.font: CustomFont.bold.returnFont(20)]
+        
         controller.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         controller.navigationController?.navigationBar.shadowImage = UIImage()
 
         if leftImage != "" {
             if leftImage == NavItemsLeft.back.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "nav_back"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                btnLeft.contentHorizontalAlignment = .left
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
             } else if leftImage == NavItemsLeft.menu.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "ic_menu"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 btnLeft.addTarget(self, action: #selector(self.btMenuAction), for: .touchUpInside)
@@ -123,38 +132,39 @@ class BaseViewController: UIViewController {
                 btnLeft.layer.shadowOpacity = 0.4
                 
                 
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
             } else if leftImage == NavItemsLeft.cancel.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "ic_Cancel"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 
                 btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
             } else if leftImage == NavItemsLeft.cancelWhite.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "ic_cancelWhite"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 
                 btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
             }
-        } else {
+        }
+        else {
             let emptyView = UIView()
             let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: emptyView)
             btnLeftBar.style = .plain
@@ -167,10 +177,10 @@ class BaseViewController: UIViewController {
                     
                     
                     
-                    let viewLogin = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+                    let viewLogin = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
 
                     let btnLogin = UIButton.init()
-                    btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+                    btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
                     btnLogin.setTitle("NavigationButton_btnLogin".Localized(), for: .normal)
                     btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
                     btnLogin.setTitleColor(colors.submitButtonColor.value, for: .normal)
@@ -184,12 +194,10 @@ class BaseViewController: UIViewController {
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
                 } else if title == NavItemsRight.EditProfile.value {
-                    
-                    
-                    let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                    let viewProfile = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
 
                     navBtnProfile = UIButton.init()
-                    navBtnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    navBtnProfile.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
                     navBtnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
                    
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
@@ -206,12 +214,10 @@ class BaseViewController: UIViewController {
                     arrButtons.append(btnRightBar)
                 } else if title == NavItemsRight.userProfile.value {
                     
-                    
-                    
-                    let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                    let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
 
                     let btnProfileEdit = UIButton.init()
-                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
                     btnProfileEdit.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
                     btnProfileEdit.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
@@ -224,28 +230,22 @@ class BaseViewController: UIViewController {
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
                 } else  if title == NavItemsRight.Done.value {
-                    
-                    
-                    
-                    let viewLogin = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+                    let viewDone = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
 
-                    let btnLogin = UIButton.init()
-                    btnLogin.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
-                    btnLogin.setTitle("NavigationButton_btnDone".Localized(), for: .normal)
-                    btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
-                    btnLogin.setTitleColor(colors.submitButtonColor.value, for: .normal)
+                    navBtnDone = UIButton.init()
+                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
+                    navBtnDone.setTitle("NavigationButton_btnDone".Localized(), for: .normal)
+                    navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(18)
+                    navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    btnLogin.layer.setValue(controller, forKey: "controller")
-                    viewLogin.addSubview(btnLogin)
+                    navBtnDone.layer.setValue(controller, forKey: "controller")
+                    viewDone.addSubview(navBtnDone)
 
-                
-
-                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewLogin)
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
                     btnRightBar.style = .plain
                     arrButtons.append(btnRightBar)
                 }
-               
             }
             controller.navigationItem.rightBarButtonItems = arrButtons
         }

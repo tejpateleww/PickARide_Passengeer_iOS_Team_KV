@@ -11,7 +11,8 @@ import UIKit
 class navigationCommonView: UIView {
     @IBOutlet weak var lblStartRideAddress: suggestedRidesLabel!
     @IBOutlet weak var lblEndRideAddress: suggestedRidesLabel!
- 
+    @IBOutlet weak var btnNavigation: UIButton!
+    
     // MARK: - Properties
     var contentView:UIView?
     @IBInspectable var nibName:String?

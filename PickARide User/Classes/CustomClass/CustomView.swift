@@ -182,6 +182,7 @@ class savedPlacesView : UIView {
         }
     }
 }
+
 class settingsView : UIView {
     @IBInspectable var isUserProfile : Bool = false
     @IBInspectable var isShadowView : Bool = false
@@ -202,6 +203,7 @@ class settingsView : UIView {
          }
     }
 }
+
 class suggestedTaxiView : UIView {
     @IBInspectable var isMainView : Bool = false
     @IBInspectable var isBGView : Bool = false
@@ -231,6 +233,7 @@ class suggestedTaxiView : UIView {
         }
     }
 }
+
 class currentRideView : UIView {
     @IBInspectable var isMainView : Bool = false
     @IBInspectable var isTopView : Bool = false
@@ -265,11 +268,13 @@ class currentRideView : UIView {
         }
     }
 }
+
 class customviewRadius : UIView{
     override func awakeFromNib() {
         self.layer.cornerRadius = 4
     }
 }
+
 class customImagewithShadow: UIView {
     @IBInspectable var istopRadius : Bool = false
     @IBInspectable var isBottomRadius : Bool = false
@@ -365,17 +370,74 @@ class blurView : UIView {
         }
     }
 }
+
+//class themeViewChatSender: UIView {
+//    override func awakeFromNib() {
+//           super.awakeFromNib()
+//        
+//    }
+//    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        let bounds: CGRect = self.bounds
+//        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: ([ .topRight, .bottomLeft, .bottomRight]), cornerRadii: CGSize(width: 12.0, height: 12.0))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = bounds
+//        maskLayer.path = maskPath.cgPath
+//        self.layer.mask = maskLayer
+//    }
+//}
+//
+//class themeViewChatReceiver: UIView {
+//    override func awakeFromNib() {
+//           super.awakeFromNib()
+//        
+//    }
+//    
+//    override func layoutSubviews() {
+//    super.layoutSubviews()
+//        let bounds: CGRect = self.bounds
+//        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: ([.topLeft, .bottomLeft, .bottomRight]), cornerRadii: CGSize(width: 12.0, height: 12.0))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = bounds
+//        maskLayer.path = maskPath.cgPath
+//        self.layer.mask = maskLayer
+//    }
+//}
+
 class chatScreenView : UIView {
+    
     @IBInspectable var isSenderView : Bool = false
     @IBInspectable var isReciverView : Bool = false
+    
     override func awakeFromNib() {
-        self.roundCorners(corners: [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner], radius: 12)
+     //   self.roundCorners(corners: [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner], radius: 12)
+//        if isSenderView {
+//            self.backgroundColor = UIColor(hexString: "#00AA7E")
+//        } else if isReciverView {
+//            self.backgroundColor = UIColor(hexString: "#DEE2EA")
+//        }
+    }
+    
+    override func layoutSubviews() {
+    super.layoutSubviews()
         if isSenderView {
             self.backgroundColor = UIColor(hexString: "#00AA7E")
+            let bounds: CGRect = self.bounds
+            let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: ([ .topLeft, .topRight, .bottomLeft]), cornerRadii: CGSize(width: 12.0, height: 12.0))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = bounds
+            maskLayer.path = maskPath.cgPath
+            self.layer.mask = maskLayer
         } else if isReciverView {
             self.backgroundColor = UIColor(hexString: "#DEE2EA")
+            let bounds: CGRect = self.bounds
+            let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: ([.topLeft, .bottomRight, .topRight]), cornerRadii: CGSize(width: 12.0, height: 12.0))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = bounds
+            maskLayer.path = maskPath.cgPath
+            self.layer.mask = maskLayer
         }
         
-       
     }
 }

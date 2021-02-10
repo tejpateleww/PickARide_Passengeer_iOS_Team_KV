@@ -169,7 +169,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             let templateImage = myimgarr[indexPath.row].withRenderingMode(.alwaysTemplate)
             cell.imgData?.image = templateImage
             cell.imgData?.tintColor = colors.black.value.withAlphaComponent(0.4)
-            
             cell.lblData?.textColor = colors.black.value.withAlphaComponent(0.4)
         }
         return cell

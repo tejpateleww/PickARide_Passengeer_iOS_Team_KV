@@ -18,6 +18,7 @@ class CurrentRideDetailsViewController: BaseViewController {
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
     @IBOutlet weak var mapVw: GMSMapView!
+    @IBOutlet weak var vwMain: suggestedTaxiView!
     
     //MARK: -View Life Cycle Methods
     
@@ -27,7 +28,9 @@ class CurrentRideDetailsViewController: BaseViewController {
         setValue()
         setLabel()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Seattle","280 Hemlock Ln"])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Seattle","280 Hemlock Ln"], isTwoLabels: false)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        vwMain.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +59,15 @@ class CurrentRideDetailsViewController: BaseViewController {
         lblVehicalData.attributedText = attributedString
         //
     }
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        appDel.navigateToMain()
+    }
     //MARK: -IBActions
     
+    @IBAction func btnProfileClicked(_ sender: Any) {
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RatingYourTripVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     //MARK: -API Calls
     

@@ -36,7 +36,7 @@ class ProfileVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocalization()
-        makeEditProfile(isEditProfile: false)
+        makeEditProfile(isEditProfile: true)
     }
     
     //MARK: -Other Methods
@@ -65,16 +65,16 @@ class ProfileVC: BaseViewController {
         
 //        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
     }
     
     @objc func makeEditableTrue() {
-        if self.currentEditStatus == false {
-            self.makeEditProfile(isEditProfile: true)
-        } else {
-            self.makeEditProfile(isEditProfile: false)
-        }
+//        if self.currentEditStatus == false {
+//            self.makeEditProfile(isEditProfile: true)
+//        } else {
+//            self.makeEditProfile(isEditProfile: false)
+//        }
     }
     
     //MARK: -IBActions
@@ -88,7 +88,9 @@ class ProfileVC: BaseViewController {
         controller.isChangePassword = true
         controller.btnSubmitClosure = {
             userDefault.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToLogin()
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             let navigationController = UINavigationController(rootViewController: controller)

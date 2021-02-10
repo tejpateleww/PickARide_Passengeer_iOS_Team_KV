@@ -11,7 +11,7 @@ import UIKit
 class VerifyViewController: BaseViewController {
 
     //MARK: -Properties
-    var phoneNumber = " +966 655 6565 656"
+    var phoneNumber = " +966 *** **** 656"
     var isFrmRegister = false
     
     //MARK: -IBOutlets
@@ -35,7 +35,7 @@ class VerifyViewController: BaseViewController {
         super.viewDidLoad()
         setLocalization()
         setValue()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [])
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
