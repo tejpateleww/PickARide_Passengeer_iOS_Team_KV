@@ -39,7 +39,7 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         
         setLocalization()
         setValue()
-        taxiData.append(suggestRide(name: "Taxi/Cab", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
+        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
         taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
         
         taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))

@@ -47,7 +47,7 @@
 
 "ChangePassword_lblChangePassword" = "Change Password";
 "ChangePassword_lblSetPassword" = "Set Password";
-"ChangePassword_oldPassword_Place" = "Old Password";
+"ChangePassword_oldPassword_Place" = "Current Password";
 "ChangePassword_newPassword_Place" = "New Password";
 "ChangePassword_confirmPassword_Place" = "Confirm Password";
 "ChangePassword_btnSetPassword" = "SET PASSWORD";

@@ -29,7 +29,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
         setValue()
         setLabel()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Seattle","280 Hemlock Ln"], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         vwMain.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
@@ -57,17 +57,17 @@ class CurrentRideDriverInformationVC: BaseViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        self.dismiss(animated: true, completion: {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsViewController.storyboardID) as!
-                CurrentRideDetailsViewController
-            self.navigationController?.pushViewController(controller, animated: true)
+//        self.dismiss(animated: true, completion: {
+//            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsViewController.storyboardID) as!
+//                CurrentRideDetailsViewController
+//            self.navigationController?.pushViewController(controller, animated: true)
 //            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 //            let navigationController = UINavigationController(rootViewController: controller)
 //            navigationController.modalPresentationStyle = .overCurrentContext
 //            navigationController.modalTransitionStyle = .crossDissolve
 //            navigationController.navigationBar.isHidden = true
 //            self.present(navigationController, animated: true, completion: nil)
-        })
+//        })
         
     }
     func setLabel() {
@@ -94,6 +94,12 @@ class CurrentRideDriverInformationVC: BaseViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    @IBAction func btnprofileClicked(_ sender: Any) {
+//        self.dismiss(animated: true, completion: {
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsViewController.storyboardID) as!
+                CurrentRideDetailsViewController
+            self.navigationController?.pushViewController(controller, animated: true)
+    }
     @IBAction func btnCancelClick(_ sender: Any) {
         
         

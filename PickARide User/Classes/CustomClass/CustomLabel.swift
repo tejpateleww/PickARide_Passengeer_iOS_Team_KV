@@ -12,7 +12,7 @@ import UIKit
 class TitleLabel : UILabel {
     override func awakeFromNib() {
         
-            self.font = CustomFont.medium.returnFont(40)
+            self.font = CustomFont.medium.returnFont(37)
             self.textColor = colors.loginPlaceHolderColor.value
        
     }

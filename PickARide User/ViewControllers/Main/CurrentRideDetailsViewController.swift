@@ -28,7 +28,7 @@ class CurrentRideDetailsViewController: BaseViewController {
         setValue()
         setLabel()
         
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Seattle","280 Hemlock Ln"], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         vwMain.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.

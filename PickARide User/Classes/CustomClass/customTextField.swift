@@ -209,14 +209,13 @@ class addCarddetailsTextField : UITextField {
     }
 }
 class ProfileTextField: UITextField {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        self.font = CustomFont.regular.returnFont(15)
         borderStyle = .none
     }
 
- 
     @IBInspectable var leftImage : UIImage? {
         didSet {
             if let image = leftImage{

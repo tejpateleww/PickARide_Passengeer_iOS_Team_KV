@@ -97,8 +97,10 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
                 cell1.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
                 if indexPath.row == selectedPaymentMethods {
                     cell1.vWMain.layer.borderWidth = 1
+//                    cell1.selectPaymentMethodButton.isHidden = false
                 } else {
                     cell1.vWMain.layer.borderWidth = 0
+//                    cell1.selectPaymentMethodButton.isHidden = true
                 }
                 cell = cell1
             } else {
@@ -175,9 +177,11 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            if indexPath.row == 0 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: walletHistoryViewController.storyboardID)
-                self.navigationController?.pushViewController(controller, animated: true)
+            if isFromSideMenu{
+                if indexPath.row == 0 {
+                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: walletHistoryViewController.storyboardID)
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
             }
             selectedPaymentMethods = indexPath.row
             tblPaymentMethod.reloadData()

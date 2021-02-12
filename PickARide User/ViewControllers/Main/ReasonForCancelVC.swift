@@ -37,10 +37,10 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:reasonCell = tblReasonforCancel.dequeueReusableCell(withIdentifier: reasonCell.reuseIdentifier, for: indexPath)as! reasonCell
         if indexPath.row == selectIndex {
-           cell.imgQuestion.image = #imageLiteral(resourceName: "ImgRightArrow")
+           cell.imgQuestion.image = #imageLiteral(resourceName: "imgCanceltrue")
             cell.lblReasonforcancel.textColor = UIColor(hexString: "#282F39")
         } else {
-            cell.imgQuestion.image = #imageLiteral(resourceName: "deselectReason")
+            cell.imgQuestion.image = #imageLiteral(resourceName: "imgQuestionFalse")
                            cell.lblReasonforcancel.textColor = UIColor(hexString: "#7F7F7F")
         }
         cell.lblReasonforcancel.text = reasonArray[indexPath.row]
@@ -55,8 +55,9 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
     }
     //MARK: -IBActions
     @IBAction func btnDoneClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RatingYourTripVC.storyboardID)
-        self.navigationController?.pushViewController(controller, animated: true)
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID)
+//        self.navigationController?.pushViewController(controller, animated: true)
+        appDel.navigateToMain()
     }
     //MARK: -API Calls
 }

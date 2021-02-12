@@ -17,7 +17,7 @@ class viewWithClearBg : UIView {
 
 class loginView : UIView {
     override func awakeFromNib() {
-
+        self.layer.cornerRadius = 4
         self.layer.borderColor = colors.loginViewColor.value.cgColor
         self.layer.borderWidth = 1
     }

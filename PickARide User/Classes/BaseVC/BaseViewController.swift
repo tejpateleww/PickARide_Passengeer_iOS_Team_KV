@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
 //        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 48)
 //    }
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String], isTwoLabels:Bool)
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String], isTwoLabels:Bool, isDisableBack:Bool = false)
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -82,7 +82,9 @@ class BaseViewController: UIViewController {
                 xibView.frame = CGRect(x: 0, y: 0, width: viewForTop.frame.size.width, height: 44)
                 xibView.lblEndRideAddress.text = CommonViewTitles[1]
                 xibView.lblStartRideAddress.text = CommonViewTitles[0]
-                xibView.btnNavigation.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                if !isDisableBack {
+                    xibView.btnNavigation.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                }
                 viewForTop.addSubview(xibView)
                 
                 controller.navigationItem.titleView = viewForTop
@@ -224,7 +226,6 @@ class BaseViewController: UIViewController {
                     btnProfileEdit.layer.setValue(controller, forKey: "controller")
                     viewProfileEdit.addSubview(btnProfileEdit)
 
-                  
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfileEdit)
                     btnRightBar.style = .plain

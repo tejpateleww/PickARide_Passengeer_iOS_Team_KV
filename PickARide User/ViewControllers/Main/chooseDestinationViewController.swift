@@ -12,6 +12,7 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
 
     //MARK: -Properties
     var arrayForSavedPlaces : [String] = ["Home","Work"]
+    var arrImage = [#imageLiteral(resourceName: "ic_HomeTemp"),#imageLiteral(resourceName: "Dummy_Work")]
     var tableData=[placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
     var selectedTextField = 0
@@ -25,7 +26,6 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
            tableDataFetecher = GMSAutocompleteFetcher()
            tableDataFetecher.delegate = self
@@ -110,11 +110,11 @@ class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UI
         case 0:
             let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as! SavedCell
             cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row]
-            if indexPath.row == 0 {
-                cell.imgLocationType.image = UIImage.init(named: "ic_HomeTemp")
-            } else {
-                cell.imgLocationType.image = UIImage.init(named: "ic_WorkTemp")
-            }
+//            if indexPath.row == 0 {
+            cell.imgLocationType.image = arrImage[indexPath.row]
+//            } else {
+//                cell.imgLocationType.image = UIImage.init(named: "ic_WorkTemp")
+//            }
             if indexPath.row == arrayForSavedPlaces.count - 1 {
                 cell.Seperator1.isHidden = true
             }
