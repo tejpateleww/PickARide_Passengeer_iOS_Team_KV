@@ -27,4 +27,8 @@ extension UITextField{
           let validator = VaildatorFactory.validatorFor(type: validationType)
           return validator.validated(self.text!)
       }
+    
+
+
+    
 }

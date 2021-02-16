@@ -1,0 +1,27 @@
+
+/* Class = "UITextField"; placeholder = "Email ID/Phone Number"; ObjectID = "2fh-yT-3LD"; */
+"2fh-yT-3LD.placeholder" = "Email ID/Phone Number";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "9a0-j6-sqv"; */
+"9a0-j6-sqv.normalTitle" = "Forgot Password?";
+
+/* Class = "UILabel"; text = "Welcome Back! "; ObjectID = "Dox-07-Ei6"; */
+"Dox-07-Ei6.text" = "Welcome Back! ";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "E30-Ck-7ce"; */
+"E30-Ck-7ce.normalTitle" = "SIGN IN";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "HTP-Ig-oDL"; */
+"HTP-Ig-oDL.text" = "OR";
+
+/* Class = "UILabel"; text = "Sign In"; ObjectID = "OxV-YL-pD7"; */
+"OxV-YL-pD7.text" = "Sign In";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "dTs-2U-lMp"; */
+"dTs-2U-lMp.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "rcv-ia-Rbt"; */
+"rcv-ia-Rbt.text" = "Don't have an account?";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "sk2-dG-Es2"; */
+"sk2-dG-Es2.normalTitle" = "SIGN UP";

@@ -64,7 +64,7 @@ extension String {
             //Get the range of the last component
             if let rangeOfLastComponent = self.range(of: lastComponentAsString) {
                 //Get the string without its last component
-                let stringWithoutLastComponent = String(self[rangeOfLastComponent])//self.substring(to: rangeOfLastComponent.lowerBound)
+                let stringWithoutLastComponent = self.substring(to: rangeOfLastComponent.lowerBound)
                 
                 
                 //Encode the last component

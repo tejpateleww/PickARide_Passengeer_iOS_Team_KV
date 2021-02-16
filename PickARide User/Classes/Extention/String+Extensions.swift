@@ -186,7 +186,17 @@ extension String{
     //MARK: Strike Through Words
     //MARK: ==================================
     func strikeThrough(color: UIColor)->NSAttributedString{
-        let textRange = NSMakeRange(0, self.count)
+            let textRange = NSMakeRange(0, self.count)
+            let attributedText = NSMutableAttributedString(string: self)
+            attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                        value: NSUnderlineStyle.single.rawValue,
+                                        range: textRange)
+            attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle, value: color, range: textRange)
+            return attributedText
+        }
+    
+    func strikeThrough(color: UIColor, forString:String)->NSAttributedString{
+        let textRange = (self as NSString).range(of: forString)
         let attributedText = NSMutableAttributedString(string: self)
         attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle,
                                     value: NSUnderlineStyle.single.rawValue,
@@ -224,4 +234,22 @@ extension String{
         }
     }
     
+    //MARK: - ================================
+    //MARK: For Coupon codes with spacing
+    //MARK: ==================================
+    func getAttributedStringWithKern() -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: 4, range: NSRange(location: 0, length: attributedString.length))
+        return attributedString
+    }
+    
+    //MARK: - ================================
+    //MARK: For localized string
+    //MARK: ==================================
+    func Localized() -> String {
+        guard let lang = userDefault.value(forKey: UserDefaultsKey.selLanguage.rawValue) as? String else { return "" }
+        let path = Bundle.main.path(forResource: lang , ofType: "lproj")
+        let bundle = Bundle(path: path!)!
+        return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+    }
 }

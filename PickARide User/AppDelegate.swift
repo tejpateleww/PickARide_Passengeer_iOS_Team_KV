@@ -1,15 +1,10 @@
-//
-//  AppDelegate.swift
-//  ApiStructureModule
-//
-//  Created by EWW071 on 13/03/20.
-//  Copyright © 2020 EWW071. All rights reserved.
-//
-
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 import UserNotifications
+import GoogleMaps
+import GooglePlaces
+import SideMenuSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate {
@@ -24,12 +19,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //        setupNavigation()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-//        FirebaseApp.configure()
-        self.navigateToLogin()
+        
+        FirebaseApp.configure()
+        GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
+        GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
+        
+        SideMenuController.preferences.basic.menuWidth = UIScreen.main.bounds.width - 100
+        SideMenuController.preferences.basic.defaultCacheKey = "0"
+        
+        checkAndSetDefaultLanguage()
         registerForPushNotifications()
+        if userDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
+            self.navigateToMain()
+        } else {
+            self.navigateToLogin()
+        }
         return true
     }
-    
+    func checkAndSetDefaultLanguage() {
+        if userDefault.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
+            setLanguageEnglish()
+        }
+    }
+    func setLanguageEnglish() {
+        userDefault.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
+    }
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
     }
@@ -38,8 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func setupNavigation(){
-        
-        
         if #available(iOS 13.0, *) {
             // prefer a light interface style with this:
             //  window?.overrideUserInterfaceStyle = .light
@@ -65,11 +77,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func navigateToLogin(){
         let storyborad = UIStoryboard(name: "Login", bundle: nil)
-        let Login = storyborad.instantiateViewController(withIdentifier: LoginViewController.className) as! LoginViewController
-        let NavHomeVC = UINavigationController(rootViewController: Login)
+        let splash = storyborad.instantiateViewController(withIdentifier: LoginViewController.className) as! LoginViewController
+        let NavHomeVC = UINavigationController(rootViewController: splash)
+        NavHomeVC.navigationBar.isHidden = true
         self.window?.rootViewController = NavHomeVC
     }
     
+    func navigateToMain(){
+        
+        //SideMenuController
+        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+        let Home = storyborad.instantiateViewController(withIdentifier: SideMenuController.className) as! SideMenuController
+        let HomeVC = UINavigationController(rootViewController: Home)
+        HomeVC.navigationBar.isHidden = true
+        self.window?.rootViewController = HomeVC
+        
+//        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+//        let Home = storyborad.instantiateViewController(withIdentifier: HomeViewController.className) as! HomeViewController
+//        let HomeVC = UINavigationController(rootViewController: Home)
+//        self.window?.rootViewController = HomeVC
+    }
     
     func clearData()
     {
@@ -84,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         SingletonClass.sharedInstance.clearSingletonClass()
     }
-    
+   
     func navigateToHomeScreen()
     {
 //        let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MainViewController

@@ -12,7 +12,11 @@ extension UIStoryboard {
     
     enum Storyboard: String {
         case Main
-        case Authentication
+        case Auth
+        case Home
+        case Settings
+        case Popup
+        case BookAppointment
     }
     
     // MARK: - Convenience Initializers
@@ -27,6 +31,5 @@ extension UIStoryboard {
         }
         return viewController
     }
-    
 }
 
