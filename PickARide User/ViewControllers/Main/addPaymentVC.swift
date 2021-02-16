@@ -93,7 +93,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
                 
                 cell1.paymentImageView.image = UIImage(named: "ic_wallet")
                 cell1.lblWallet.text = "AddCardVC_lblWallet".Localized()
-                cell1.lblwalletBalance.text = "$250.00"
+                cell1.lblwalletBalance.text = "250.00"
                 cell1.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
                 if indexPath.row == selectedPaymentMethods {
                     cell1.vWMain.layer.borderWidth = 1

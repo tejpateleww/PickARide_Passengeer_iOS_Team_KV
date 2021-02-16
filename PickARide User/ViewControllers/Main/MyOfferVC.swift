@@ -31,7 +31,7 @@ class MyOfferVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
-    //MARK: -Other Methods
+    //MARK: - Other Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
