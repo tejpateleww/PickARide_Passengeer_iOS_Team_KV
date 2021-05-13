@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cI9-hm-QYy">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cI9-hm-QYy">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,24 +14,24 @@
             <objects>
                 <viewController storyboardIdentifier="SplashVC" id="B56-Z4-AZT" customClass="SplashVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5vd-8N-ROv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_top" translatesAutoresizingMaskIntoConstraints="NO" id="G3Z-d5-dHw">
-                                <rect key="frame" x="-15" y="-11" width="139" height="254"/>
+                                <rect key="frame" x="-15" y="-55" width="139" height="254"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="139" id="ABl-0L-qlF"/>
                                     <constraint firstAttribute="height" constant="254" id="TYv-FR-F7T"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_center" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-mw-M90">
-                                <rect key="frame" x="70.5" y="203" width="273" height="273"/>
+                                <rect key="frame" x="64" y="159" width="247" height="247.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y5z-mw-M90" secondAttribute="height" multiplier="1:1" id="ydC-KH-TP0"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fdQ-O8-dHb">
-                                <rect key="frame" x="0.0" y="622" width="414" height="274"/>
+                                <rect key="frame" x="0.0" y="419" width="375" height="248"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fdQ-O8-dHb" secondAttribute="height" multiplier="414:274" id="a0g-eN-WlK"/>
                                 </constraints>
@@ -73,30 +73,30 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="Umi-hn-684" customClass="LoginViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MzD-3V-FAd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0E-vq-ht0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="829.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="608.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_top" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-XK-HVa">
-                                                <rect key="frame" x="259.5" y="-60" width="154.5" height="281.5"/>
+                                                <rect key="frame" x="220.5" y="-60" width="154.5" height="281.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="281.30000000000001" id="UwJ-AX-w2T"/>
                                                     <constraint firstAttribute="width" constant="154.34" id="mrT-4u-akI"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_center" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-8x-zxT">
-                                                <rect key="frame" x="100" y="78" width="214" height="214"/>
+                                                <rect key="frame" x="100" y="10" width="175" height="175"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="yDF-8x-zxT" secondAttribute="height" multiplier="1:1" id="Jj1-uc-Kae"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back! " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dox-07-Ei6" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="313" width="372" height="20.5"/>
+                                                <rect key="frame" x="21" y="206" width="333" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxV-YL-pD7" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="338.5" width="372" height="20.5"/>
+                                                <rect key="frame" x="21" y="231.5" width="333" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -115,10 +115,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-nZ-sPb" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="387" width="372" height="49"/>
+                                                <rect key="frame" x="21" y="262" width="333" height="49"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email ID/Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="15.5" width="336" height="18.5"/>
+                                                        <rect key="frame" x="18" y="15.5" width="297" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -132,10 +132,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-83-RpI" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="473" width="372" height="49"/>
+                                                <rect key="frame" x="21" y="321" width="333" height="49"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTs-2U-lMp" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="15.5" width="336" height="18.5"/>
+                                                        <rect key="frame" x="18" y="15.5" width="297" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -149,7 +149,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a0-j6-sqv" customClass="loginScreenButton" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="270" y="537" width="123" height="14"/>
+                                                <rect key="frame" x="231" y="385" width="123" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="vYt-Dv-HaI"/>
                                                 </constraints>
@@ -162,10 +162,10 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-xJ-bW3">
-                                                <rect key="frame" x="21" y="583" width="372" height="46"/>
+                                                <rect key="frame" x="21" y="409" width="333" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E30-Ck-7ce" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="372" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <state key="normal" title="SIGN IN"/>
                                                         <connections>
                                                             <action selector="btnSignInClicked:" destination="Umi-hn-684" eventType="touchUpInside" id="QnK-Lw-Lpt"/>
@@ -182,7 +182,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
-                                                <rect key="frame" x="142" y="656" width="130" height="59"/>
+                                                <rect key="frame" x="122.5" y="465" width="130" height="59"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
                                                         <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
@@ -221,7 +221,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-Ig-oDL" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="733" width="372" height="20.5"/>
+                                                <rect key="frame" x="21" y="542" width="333" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -230,7 +230,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="puq-b7-rSs">
-                                                <rect key="frame" x="86" y="773.5" width="242" height="16"/>
+                                                <rect key="frame" x="66.5" y="582.5" width="242" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ia-Rbt" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="16"/>
@@ -259,7 +259,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="puq-b7-rSs" secondAttribute="bottom" constant="40" id="5D1-W7-r5j"/>
+                                            <constraint firstAttribute="bottom" secondItem="puq-b7-rSs" secondAttribute="bottom" constant="10" id="5D1-W7-r5j"/>
                                             <constraint firstItem="puq-b7-rSs" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="928-J5-zVX"/>
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="leading" secondItem="i0e-kj-Qw2" secondAttribute="leading" constant="100" id="9UW-EJ-8da"/>
                                             <constraint firstItem="Dox-07-Ei6" firstAttribute="top" secondItem="yDF-8x-zxT" secondAttribute="bottom" constant="21" id="AjO-Sm-cu5"/>
@@ -269,12 +269,12 @@
                                             <constraint firstItem="OxV-YL-pD7" firstAttribute="trailing" secondItem="Dox-07-Ei6" secondAttribute="trailing" id="OMI-3K-mG0"/>
                                             <constraint firstItem="OxV-YL-pD7" firstAttribute="top" secondItem="Dox-07-Ei6" secondAttribute="bottom" constant="5" id="ORx-Q3-6eX"/>
                                             <constraint firstAttribute="trailing" secondItem="mcX-XK-HVa" secondAttribute="trailing" id="Rau-3g-KvU"/>
-                                            <constraint firstItem="yDF-8x-zxT" firstAttribute="top" secondItem="i0e-kj-Qw2" secondAttribute="top" constant="78" id="TFQ-7J-5xC"/>
+                                            <constraint firstItem="yDF-8x-zxT" firstAttribute="top" secondItem="i0e-kj-Qw2" secondAttribute="top" constant="10" id="TFQ-7J-5xC"/>
                                             <constraint firstItem="mcX-XK-HVa" firstAttribute="top" secondItem="i0e-kj-Qw2" secondAttribute="top" constant="-60" id="Tzw-8C-ki7"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="UjC-Ko-U2y"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="WlT-wL-PJS"/>
-                                            <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="27" id="b6G-jk-Z1D"/>
-                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="37" id="b9V-ID-GyG"/>
+                                            <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="10" id="b6G-jk-Z1D"/>
+                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="10" id="b9V-ID-GyG"/>
                                             <constraint firstAttribute="trailing" secondItem="yDF-8x-zxT" secondAttribute="trailing" constant="100" id="dmv-cb-L86"/>
                                             <constraint firstAttribute="trailing" secondItem="HTP-Ig-oDL" secondAttribute="trailing" constant="21" id="gei-dw-2pv"/>
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="gfd-s4-u6j"/>
@@ -282,11 +282,11 @@
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="top" secondItem="qZe-cf-LYS" secondAttribute="bottom" constant="18" id="j84-Fh-zWM"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="leading" secondItem="YwE-83-RpI" secondAttribute="leading" id="jOk-nV-2LB"/>
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="leading" secondItem="9fO-xJ-bW3" secondAttribute="leading" id="jqn-j9-k6M"/>
-                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="28" id="kNp-oc-pfD"/>
+                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="10" id="kNp-oc-pfD"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="leading" secondItem="OxV-YL-pD7" secondAttribute="leading" id="m5i-o8-xMl"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="trailing" secondItem="YwE-83-RpI" secondAttribute="trailing" id="o3I-Ui-yBa"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="trailing" secondItem="tqo-nZ-sPb" secondAttribute="trailing" id="phm-RW-W9E"/>
-                                            <constraint firstItem="9fO-xJ-bW3" firstAttribute="top" secondItem="9a0-j6-sqv" secondAttribute="bottom" constant="32" id="qe5-c2-eFE"/>
+                                            <constraint firstItem="9fO-xJ-bW3" firstAttribute="top" secondItem="9a0-j6-sqv" secondAttribute="bottom" constant="10" id="qe5-c2-eFE"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="trailing" secondItem="OxV-YL-pD7" secondAttribute="trailing" id="tEW-HB-8mM"/>
                                             <constraint firstItem="9a0-j6-sqv" firstAttribute="top" secondItem="YwE-83-RpI" secondAttribute="bottom" constant="15" id="vCV-7k-vZQ"/>
                                             <constraint firstItem="puq-b7-rSs" firstAttribute="top" secondItem="HTP-Ig-oDL" secondAttribute="bottom" constant="20" id="y6u-GO-sg8"/>
@@ -333,17 +333,17 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" id="5JG-2z-zd1" customClass="RegisterViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fvZ-sy-IXo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhg-7R-gTF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uem-TH-Ie7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et7-Va-2H3" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="32" width="382" height="20.5"/>
+                                                <rect key="frame" x="16" y="32" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -352,13 +352,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-Jt-vGQ">
-                                                <rect key="frame" x="16" y="91.5" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="91.5" width="343" height="48"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-Ni-hzZ" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="163" height="48"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo">
-                                                                <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
+                                                                <rect key="frame" x="16" y="15" width="131" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -372,10 +372,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-xd-5WY" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="199.5" y="0.0" width="182.5" height="48"/>
+                                                        <rect key="frame" x="180" y="0.0" width="163" height="48"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM">
-                                                                <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
+                                                                <rect key="frame" x="16" y="15" width="131" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -390,10 +390,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gu4-jI-mwO" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="154.5" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="154.5" width="343" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-ce-l5T">
-                                                        <rect key="frame" x="16" y="15" width="350" height="18.5"/>
+                                                        <rect key="frame" x="16" y="15" width="311" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -407,7 +407,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTRY CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-yy-9cX" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="217.5" width="382" height="20.5"/>
+                                                <rect key="frame" x="16" y="217.5" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.5725490196078431" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -416,7 +416,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-fq-YK6">
-                                                <rect key="frame" x="16" y="244" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="244" width="343" height="48"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpu-sp-yqe" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="114" height="48"/>
@@ -462,10 +462,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-2T-53s" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="130" y="0.0" width="252" height="48"/>
+                                                        <rect key="frame" x="130" y="0.0" width="213" height="48"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaJ-zt-mGl">
-                                                                <rect key="frame" x="16" y="15" width="220" height="18.5"/>
+                                                                <rect key="frame" x="16" y="15" width="181" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -480,10 +480,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2i-Ba-ohv" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="307" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="307" width="343" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQZ-fp-OEH">
-                                                        <rect key="frame" x="16" y="15" width="350" height="18.5"/>
+                                                        <rect key="frame" x="16" y="15" width="311" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -497,7 +497,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By clicking &quot;Sign Up&quot; you agree to our terms and conditions as well as our privacy policy" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBh-Q7-UR8" customClass="signUPPageTextView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="387" width="382" height="54"/>
+                                                <rect key="frame" x="16" y="387" width="343" height="54"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="MhL-GF-klX"/>
@@ -507,14 +507,14 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-ma-afl">
-                                                <rect key="frame" x="0.0" y="441" width="414" height="311"/>
+                                                <rect key="frame" x="0.0" y="441" width="375" height="160"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9os-aS-3fG">
-                                                <rect key="frame" x="16" y="752" width="382" height="46"/>
+                                                <rect key="frame" x="16" y="601" width="343" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhA-TB-TLy" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
                                                         <state key="normal" title="SIGN UP"/>
                                                         <connections>
                                                             <action selector="signUP:" destination="5JG-2z-zd1" eventType="touchUpInside" id="LNG-EU-oNt"/>
@@ -604,17 +604,17 @@
             <objects>
                 <viewController storyboardIdentifier="VerifyViewController" id="NhO-bU-9oJ" customClass="VerifyViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qr5-Uo-ahY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fN-iY-YK6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPL-vi-Bed">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8l-8a-FgU" customClass="verifyVcLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="32" width="382" height="41"/>
+                                                <rect key="frame" x="16" y="32" width="343" height="41"/>
                                                 <string key="text">Verify Phone
 Number</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -625,7 +625,7 @@ Number</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your SMS messages. We've sent you the PIN at" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pc-yl-6gu" customClass="verifyVcLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="92" width="382" height="41"/>
+                                                <rect key="frame" x="16" y="92" width="343" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -634,13 +634,13 @@ Number</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="o64-NS-Lk8">
-                                                <rect key="frame" x="16" y="166" width="382" height="80"/>
+                                                <rect key="frame" x="16" y="166" width="343" height="80"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrx-OJ-rw5" customClass="verifyPinView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gf-h0-LUs" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -655,10 +655,10 @@ Number</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-1x-q1C" customClass="verifyPinView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="101" y="0.0" width="79.5" height="80"/>
+                                                        <rect key="frame" x="91" y="0.0" width="70" height="80"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-q0-K17" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -672,10 +672,10 @@ Number</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoz-0L-I48" customClass="verifyPinView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="201.5" y="0.0" width="80" height="80"/>
+                                                        <rect key="frame" x="182" y="0.0" width="70" height="80"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2db-B0-MVq" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -689,10 +689,10 @@ Number</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hx6-YS-7Wk" customClass="verifyPinView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="302.5" y="0.0" width="79.5" height="80"/>
+                                                        <rect key="frame" x="273" y="0.0" width="70" height="80"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e1T-bK-v1V" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -713,7 +713,7 @@ Number</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Z25-59-N7P">
-                                                <rect key="frame" x="16" y="279" width="382" height="22"/>
+                                                <rect key="frame" x="16" y="279" width="343" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn't receive SMS?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-lr-e4H" customClass="verifyVcLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="153" height="22"/>
@@ -729,20 +729,20 @@ Number</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xf-yb-hWe" customClass="ResendCodeButton" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="156" y="0.0" width="226" height="22"/>
+                                                        <rect key="frame" x="156" y="0.0" width="187" height="22"/>
                                                         <state key="normal" title="Resend Code"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRe-uO-RIg" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="301" width="414" height="451"/>
+                                                <rect key="frame" x="0.0" y="301" width="375" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEQ-qh-ip9">
-                                                <rect key="frame" x="16" y="752" width="382" height="46"/>
+                                                <rect key="frame" x="16" y="601" width="343" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-1t-B8O" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
                                                         <state key="normal" title="VERIFY"/>
                                                         <connections>
                                                             <action selector="Verify:" destination="NhO-bU-9oJ" eventType="touchUpInside" id="VgV-Id-yvL"/>
@@ -823,39 +823,39 @@ Number</string>
             <objects>
                 <viewController storyboardIdentifier="ChangePasswordPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="TL5-eG-oUG" customClass="ChangePasswordPopUpViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utm-wT-tm6" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQZ-uz-5sP" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIe-Lh-RWU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lG8-2M-vim" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Xy-Vds" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="456.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="305.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu">
-                                                        <rect key="frame" x="0.0" y="456.5" width="414" height="377.5"/>
+                                                        <rect key="frame" x="0.0" y="305.5" width="375" height="377.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhN-0h-T4o" customClass="changePasswordLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="30" width="382" height="20.5"/>
+                                                                <rect key="frame" x="16" y="30" width="343" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-6z-Cbf">
-                                                                <rect key="frame" x="16" y="71.5" width="382" height="186"/>
+                                                                <rect key="frame" x="16" y="71.5" width="343" height="186"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-mw-dBz" customClass="changePasswordView" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aby-cF-a0u" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="350" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15" width="311" height="18.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -869,10 +869,10 @@ Number</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maE-6X-6pb" customClass="changePasswordView" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="69" width="382" height="48"/>
+                                                                        <rect key="frame" x="0.0" y="69" width="343" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKH-AN-zuH" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="350" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15" width="311" height="18.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -886,10 +886,10 @@ Number</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-u3-ydm" customClass="changePasswordView" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="138" width="382" height="48"/>
+                                                                        <rect key="frame" x="0.0" y="138" width="343" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-4D-1r5" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="350" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15" width="311" height="18.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -905,10 +905,10 @@ Number</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxc-ZS-6Zr">
-                                                                <rect key="frame" x="16" y="293.5" width="382" height="48"/>
+                                                                <rect key="frame" x="16" y="293.5" width="343" height="48"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4e-VP-TJl" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
                                                                         <state key="normal" title="VERIFY"/>
                                                                         <connections>
                                                                             <action selector="btnsubmitAction:" destination="TL5-eG-oUG" eventType="touchUpInside" id="eGZ-Ba-TG1"/>
@@ -1018,17 +1018,17 @@ Number</string>
             <objects>
                 <viewController storyboardIdentifier="ForgotPasswordVC" id="nj9-zx-Jge" customClass="ForgotPasswordVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V5P-Ba-CBC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eg9-2s-hpT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEl-6E-oqt">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7f-VF-rRi">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bG0-Lr-l7g" customClass="ForgotPasswordLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="31.5" width="0.0" height="0.0"/>
@@ -1040,7 +1040,7 @@ Number</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmX-Rp-MPR" customClass="ForgotPasswordLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="51.5" width="382" height="0.0"/>
+                                                        <rect key="frame" x="16" y="51.5" width="343" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1049,7 +1049,7 @@ Number</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT5-q9-vRC" customClass="ForgotPasswordLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="58.5" width="382" height="0.0"/>
+                                                        <rect key="frame" x="16" y="58.5" width="343" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1067,7 +1067,7 @@ Number</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5dx-zC-bLz">
-                                                        <rect key="frame" x="16" y="88.5" width="382" height="48"/>
+                                                        <rect key="frame" x="16" y="88.5" width="343" height="48"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-4J-hL2" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="114" height="48"/>
@@ -1107,10 +1107,10 @@ Number</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFj-yw-Mmw" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="130" y="0.0" width="252" height="48"/>
+                                                                <rect key="frame" x="130" y="0.0" width="213" height="48"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlA-Cd-dbO" customClass="phonenumberTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="16" y="15" width="220" height="18.5"/>
+                                                                        <rect key="frame" x="16" y="15" width="181" height="18.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                     </textField>
@@ -1132,11 +1132,11 @@ Number</string>
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KD-cN-gKb" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="136.5" width="414" height="613.5"/>
+                                                        <rect key="frame" x="0.0" y="136.5" width="375" height="462.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fV7-2g-P3k" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="750" width="382" height="48"/>
+                                                        <rect key="frame" x="16" y="599" width="343" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="rPT-cb-G4M"/>
                                                         </constraints>

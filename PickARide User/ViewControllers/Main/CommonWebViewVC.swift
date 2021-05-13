@@ -25,11 +25,14 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
         setUp()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -47,16 +50,16 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
         ])
         self.view.setNeedsLayout()
         if strUrl != "" {
-        let request = URLRequest(url: URL.init(string: strUrl)!)
-        self.webView.navigationDelegate = self
-        self.webView.load(request)
+            let request = URLRequest(url: URL.init(string: strUrl)!)
+            self.webView.navigationDelegate = self
+            self.webView.load(request)
         } else {
-        strUrl = "https://www.google.com"
-        let request = URLRequest(url: URL.init(string: strUrl)!)
-        self.webView.navigationDelegate = self
-        self.webView.load(request)
+            strUrl = "https://www.google.com"
+            let request = URLRequest(url: URL.init(string: strUrl)!)
+            self.webView.navigationDelegate = self
+            self.webView.load(request)
         }
-//        Utilities.showHud()
+        //        Utilities.showHud()
     }
     
     // MARK: - IBActions
