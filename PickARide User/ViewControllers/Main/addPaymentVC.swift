@@ -15,6 +15,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     var cardDetails : [String] = []
     var isFromSideMenu = false
     var selectedPaymentMethods = 1
+    var isFromSchedulled : Bool = false
     
     //MARK: -IBOutlets
     @IBOutlet weak var tblPaymentMethod: UITableView!
@@ -55,18 +56,25 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
-            PaymentSucessFullyVC
-        controller.dismissedClosour = {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+        if isFromSchedulled{
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID) as!
+                MyRidesVC
             self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
+                PaymentSucessFullyVC
+            controller.dismissedClosour = {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.navigationBar.isHidden = true
+            self.present(navigationController, animated: true, completion: nil)
         }
-        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        navigationController.modalTransitionStyle = .crossDissolve
-        navigationController.navigationBar.isHidden = true
-        self.present(navigationController, animated: true, completion: nil)
+        
         
         
 //                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)

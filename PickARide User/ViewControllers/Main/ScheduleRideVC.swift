@@ -19,6 +19,9 @@ class ScheduleRideVC: BaseViewController {
     @IBOutlet weak var btnCancel: scheduleRideButton!
     @IBOutlet weak var lblSeheduleRide: ScheduleARide!
     @IBOutlet weak var scheduleDatePicker: UIDatePicker!
+    
+    //MARK:- Variables And Properties
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -51,7 +54,11 @@ class ScheduleRideVC: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnSetClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            if let obj = self.onButtonSetTap{
+                obj()
+            }
+        })
         let dateFormatter = DateFormatter()
 
            dateFormatter.dateStyle = DateFormatter.Style.short
