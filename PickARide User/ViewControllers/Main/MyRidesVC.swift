@@ -12,6 +12,7 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     //MARK: -Properties
     var myRideArr = ["UPCOMING","PAST"]
     var selectedMyRideState = 0
+    var isFromSchedulled : Bool = false
     //MARK: -IBOutlets
     
     @IBOutlet weak var btnUpcoming: MyRidesButton!
@@ -51,6 +52,9 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
             return 2
         }
      
+    }
+    override func btnBackAction() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

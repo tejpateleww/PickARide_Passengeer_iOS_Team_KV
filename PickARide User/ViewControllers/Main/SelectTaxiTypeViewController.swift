@@ -194,8 +194,11 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ScheduleRideVC.storyboardID) as!
             ScheduleRideVC
         controller.setClosour = {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
-            self.navigationController?.pushViewController(controller, animated: true)
+            let vc : addPaymentVC = addPaymentVC.instantiate(fromAppStoryboard: .Main)
+            vc.isFromSchedulled = true
+            self.navigationController?.pushViewController(vc, animated: true)
+//            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+//            self.navigationController?.pushViewController(controller, animated: true)
             
         }
         controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)

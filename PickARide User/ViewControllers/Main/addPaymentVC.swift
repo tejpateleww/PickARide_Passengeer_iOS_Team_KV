@@ -57,8 +57,17 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if isFromSchedulled{
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID) as!
-                MyRidesVC
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
+                PaymentSucessFullyVC
+            controller.dismissedClosour = {
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.navigationBar.isHidden = true
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
             let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
