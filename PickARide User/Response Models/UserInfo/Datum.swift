@@ -7,7 +7,7 @@ import Foundation
 import SwiftyJSON
 
 
-class Datum : NSObject, NSCoding{
+class Datum : Codable{
 
     var accountPrivacy : String!
     var coins : String!

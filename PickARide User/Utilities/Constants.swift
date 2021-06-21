@@ -20,7 +20,7 @@ let AppURL = "itms-apps://itunes.apple.com/app/id1488928328"
 let themeColor = hexStringToUIColor(hex: "2ab6b6")
 let themeColorOrange = hexStringToUIColor(hex: "ff8b7b")
 let themeColorOffWhite = hexStringToUIColor(hex: "efecef")
-
+let user_defaults = UserDefaults.standard
 let themeStatusRed = hexStringToUIColor(hex: "DF1A49")
 let themeStatusYellow = hexStringToUIColor(hex: "EFB818")
 let themeStatusGreen = hexStringToUIColor(hex: "1AC62F")

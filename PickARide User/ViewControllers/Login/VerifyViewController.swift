@@ -76,7 +76,7 @@ class VerifyViewController: BaseViewController {
     //MARK: -IBActions
     @IBAction func Verify(_ sender: Any) {
         if isFrmRegister {
-            userDefault.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
         } else {
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
@@ -84,7 +84,7 @@ class VerifyViewController: BaseViewController {
                 controller.isChangePassword = false
             
         controller.btnSubmitClosure = {
-            userDefault.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToLogin()
         }
         controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)

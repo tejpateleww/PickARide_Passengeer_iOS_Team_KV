@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         checkAndSetDefaultLanguage()
         registerForPushNotifications()
-        if userDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
+        if user_defaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
             self.navigateToMain()
         } else {
             self.navigateToLogin()
@@ -37,12 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         return true
     }
     func checkAndSetDefaultLanguage() {
-        if userDefault.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
+        if user_defaults.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
             setLanguageEnglish()
         }
     }
     func setLanguageEnglish() {
-        userDefault.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
+        user_defaults.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
     }
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
@@ -165,7 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let token = fcmToken ?? "No Token found"
         print("Firebase registration token: \(fcmToken ?? "No Token found")")
         SingletonClass.sharedInstance.DeviceToken = token
-        userDefault.set(fcmToken, forKey: UserDefaultsKey.DeviceToken.rawValue)
+        user_defaults.set(fcmToken, forKey: UserDefaultsKey.DeviceToken.rawValue)
         
         
         let dataDict:[String: String] = ["token": token]

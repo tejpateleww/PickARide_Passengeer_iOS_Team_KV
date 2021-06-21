@@ -1,17 +1,19 @@
 //
-//  ResposneInitClass.swift
+//  UserInfo.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on March 17, 2020
+//  Created on December 14, 2020
 
 import Foundation
 import SwiftyJSON
 
 
-class ResposneInitClass : NSObject, NSCoding{
+class UserInfo : Codable{
 
+    var arabicMessage : String!
+    var data : Datum!
     var message : String!
     var status : Bool!
-    var update : Bool!
+    var xApiKey : String!
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
@@ -20,9 +22,14 @@ class ResposneInitClass : NSObject, NSCoding{
 		if json.isEmpty{
 			return
 		}
+        arabicMessage = json["arabic_message"].stringValue
+        let dataJson = json["data"]
+        if !dataJson.isEmpty{
+            data = Datum(fromJson: dataJson)
+        }
         message = json["message"].stringValue
         status = json["status"].boolValue
-        update = json["update"].boolValue
+        xApiKey = json["x-api-key"].stringValue
 	}
 
 	/**
@@ -31,14 +38,20 @@ class ResposneInitClass : NSObject, NSCoding{
 	func toDictionary() -> [String:Any]
 	{
 		var dictionary = [String:Any]()
+        if arabicMessage != nil{
+        	dictionary["arabic_message"] = arabicMessage
+        }
+        if data != nil{
+        	dictionary["data"] = data.toDictionary()
+        }
         if message != nil{
         	dictionary["message"] = message
         }
         if status != nil{
         	dictionary["status"] = status
         }
-        if update != nil{
-        	dictionary["update"] = update
+        if xApiKey != nil{
+        	dictionary["x-api-key"] = xApiKey
         }
 		return dictionary
 	}
@@ -47,12 +60,13 @@ class ResposneInitClass : NSObject, NSCoding{
     * NSCoding required initializer.
     * Fills the data from the passed decoder
     */
-    
     @objc required init(coder aDecoder: NSCoder)
 	{
+		arabicMessage = aDecoder.decodeObject(forKey: "arabic_message") as? String
+		data = aDecoder.decodeObject(forKey: "data") as? Datum
 		message = aDecoder.decodeObject(forKey: "message") as? String
 		status = aDecoder.decodeObject(forKey: "status") as? Bool
-		update = aDecoder.decodeObject(forKey: "update") as? Bool
+		xApiKey = aDecoder.decodeObject(forKey: "x-api-key") as? String
 	}
 
     /**
@@ -61,14 +75,20 @@ class ResposneInitClass : NSObject, NSCoding{
     */
     func encode(with aCoder: NSCoder)
 	{
+		if arabicMessage != nil{
+			aCoder.encode(arabicMessage, forKey: "arabic_message")
+		}
+		if data != nil{
+			aCoder.encode(data, forKey: "data")
+		}
 		if message != nil{
 			aCoder.encode(message, forKey: "message")
 		}
 		if status != nil{
 			aCoder.encode(status, forKey: "status")
 		}
-		if update != nil{
-			aCoder.encode(update, forKey: "update")
+		if xApiKey != nil{
+			aCoder.encode(xApiKey, forKey: "x-api-key")
 		}
 
 	}

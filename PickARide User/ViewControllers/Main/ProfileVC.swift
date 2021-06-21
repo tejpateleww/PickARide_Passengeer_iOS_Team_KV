@@ -87,7 +87,7 @@ class ProfileVC: BaseViewController {
         controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
         controller.isChangePassword = true
         controller.btnSubmitClosure = {
-            userDefault.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
             self.dismiss(animated: true, completion: {
                 self.navigationController?.popViewController(animated: true)
             })
