@@ -11,16 +11,10 @@ class SingletonClass: NSObject
 {
     static let sharedInstance = SingletonClass()
     
-    
     var UserId = String()
     var LoginRegisterUpdateData : UserInfo?
     var Api_Key = String()
     var DeviceToken : String = ""
-//    var currentLat = Double()
-//    var currentLong = Double()
-    
-    ///Owner Profile Info
-//    var OwnerProfileInfo : ResProfileRootClass?
     
   
     var arrFutureYears:[String] {

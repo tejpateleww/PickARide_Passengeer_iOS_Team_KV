@@ -59,9 +59,7 @@
 //        
 //        let messagetoPrint = title != "" ?
 //            
-//            NSMutableAttributedString()
-//            .bold( "\(title)\n" , fontSize: 15.0 , fontColor: .white)
-//            .normal(message, fontSize: 14.0 , fontColor: .white)
+//            NSMutableAttributedString().bold( "\(title)\n" , fontSize: 15.0 , fontColor: .white).normal(message, fontSize: 14.0 , fontColor: .white)
 //            :
 //            NSMutableAttributedString()
 //            .normal(message, fontSize: 15.0 , fontColor: .white)
@@ -129,25 +127,25 @@
 // var fontSize:CGFloat { return 18 }
 ////    var boldFont:UIFont { return UIFont(name: FontBook.semibold.rawValue, size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
 ////    var normalFont:UIFont { return UIFont(name: FontBook.regular.rawValue, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)}
-////    
+////
 ////    func bold(_ value:String , fontSize : CGFloat,  fontColor : UIColor = .white) -> NSMutableAttributedString {
-////        
+////
 ////        let attributes:[NSAttributedString.Key : Any] = [
 ////            .font : FontBook.semibold.of(size: fontSize) ,//boldFont,
 ////            .foregroundColor : fontColor
 ////        ]
-////        
+////
 ////        self.append(NSAttributedString(string: value, attributes:attributes))
 ////        return self
 ////    }
-////    
+////
 ////    func normal(_ value:String, fontSize : CGFloat , fontColor : UIColor = .white) -> NSMutableAttributedString {
-////        
+////
 ////        let attributes:[NSAttributedString.Key : Any] = [
 ////            .font : FontBook.regular.of(size: fontSize),//normalFont,
 ////            .foregroundColor : fontColor
 ////        ]
-////        
+////
 //        self.append(NSAttributedString(string: value, attributes:attributes))
 //        return self
 //    }

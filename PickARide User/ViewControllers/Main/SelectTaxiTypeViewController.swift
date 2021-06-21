@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import GoogleMaps
 
 class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
    
@@ -29,6 +28,8 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
     @IBOutlet weak var tblSuggestedRidesHeight: NSLayoutConstraint!
     @IBOutlet weak var tblSuggestedRides: UITableView!
     @IBOutlet weak var mapVw: GMSMapView!
+    @IBOutlet weak var btnPromo: UIButton!
+    @IBOutlet weak var btnCancelPromo: UIButton!
     
     //MARK: -View Life Cycle Methods
     
@@ -72,9 +73,13 @@ class SelectTaxiTypeViewController: BaseViewController,UITableViewDelegate,UITab
         
         btnBookNow.setTitle("SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
         btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
+        btnPromo.setTitle("SuggestedTaxiVC_btnPromo".Localized(), for: .normal)
     }
     func setValue() {
        
+    }
+    
+    @IBAction func btnPromo(_ sender: Any) {
     }
     
 //    func getRouteSteps(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {

@@ -76,3 +76,16 @@ class ScheduleRideVC: BaseViewController {
     
     
 }
+
+//MARK:- Picker
+extension ScheduleRideVC{
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.frame.size.width, height: 44))
+        label.textColor = UIColor.green
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.text = " \(row)"
+        return label
+    }
+}
+

@@ -61,7 +61,7 @@ class AddCardVC: BaseViewController {
     func setData() {
         TextFieldName.text = "Shane Mendoza"
         TextFieldCreditCardNumber.text = "**** - **** -  **** - **85"
-        TextFieldExpires.text = "10/27/2030"
+        TextFieldExpires.text = "10/2030"
         TextFieldCVV.text = "****"
         TextFieldCountry.text = "Germany"
     }

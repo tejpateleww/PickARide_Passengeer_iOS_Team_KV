@@ -74,15 +74,15 @@ class BaseViewController: UIViewController {
             }
             
             else if naviTitle == "CommonView" {
-                var w = (controller.navigationController?.navigationBar.frame.size.width)!
+                var w = (controller.navigationController?.navigationBar.frame.size.width) ?? 0
                 if #available(iOS 13.0, *) {
                     w = w - 10
                 }
                 let viewForTop = UIView()
-                viewForTop.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width)!), height: 44)
+                viewForTop.frame = CGRect(x: 0, y: 0, width: ((controller.navigationController?.navigationBar.frame.size.width) ?? 0), height: 50)
                 viewForTop.backgroundColor = .clear
                 let xibView : navigationCommonView = navigationCommonView.loadFromXib()
-                xibView.frame = CGRect(x: 0, y: 0, width: w, height: 44)
+                xibView.frame = CGRect(x: 0, y: 5, width: w, height: 45)
                 xibView.lblEndRideAddress.text = CommonViewTitles[1]
                 xibView.lblStartRideAddress.text = CommonViewTitles[0]
                 if !isDisableBack {
@@ -114,19 +114,12 @@ class BaseViewController: UIViewController {
 
         if leftImage != "" {
             if leftImage == NavItemsLeft.back.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-                btnLeft.setImage(UIImage.init(named: "nav_back"), for: .normal)
-                btnLeft.layer.setValue(controller, forKey: "controller")
-                btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                btnLeft.contentHorizontalAlignment = .left
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-                LeftView.addSubview(btnLeft)
-            
-                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
-                btnLeftBar.style = .plain
+                let btnLeftBar = UIBarButtonItem(image: UIImage(named: "nav_back"), style: .plain, target: self, action: #selector(self.btnBackAction))
+                btnLeftBar.tintColor = .black
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
+                
             } else if leftImage == NavItemsLeft.menu.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 42, height: 42))
                 btnLeft.setImage(UIImage.init(named: "ic_menu"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 btnLeft.addTarget(self, action: #selector(self.btMenuAction), for: .touchUpInside)
@@ -143,18 +136,12 @@ class BaseViewController: UIViewController {
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
-            } else if leftImage == NavItemsLeft.cancel.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-                btnLeft.setImage(UIImage.init(named: "ic_Cancel"), for: .normal)
-                btnLeft.layer.setValue(controller, forKey: "controller")
                 
-                btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-                LeftView.addSubview(btnLeft)
-            
-                let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
-                btnLeftBar.style = .plain
+            } else if leftImage == NavItemsLeft.cancel.value {
+                let btnLeftBar = UIBarButtonItem(image: UIImage(named: "ic_Cancel"), style: .plain, target: self, action: #selector(self.btnBackAction))
+                btnLeftBar.tintColor = .black
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
+                
             } else if leftImage == NavItemsLeft.cancelWhite.value {
                 let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "ic_cancelWhite"), for: .normal)

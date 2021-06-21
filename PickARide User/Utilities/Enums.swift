@@ -37,10 +37,6 @@ enum NoRecordsStrings : String{
     case Cards = "You have not added any cards yet."
 }
 
-//enum DateFormatterString : String{
-//    case timeWithDate = "yyyy-MM-dd HH:mm:ss"
-//    case onlyDate = "yyyy-MM-dd"
-//}
 enum RideStatus {
     case Initial , WaitForDriver , TripHasBeenStart
 }
