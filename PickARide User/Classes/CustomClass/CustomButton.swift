@@ -30,7 +30,7 @@ class loginScreenButton : UIButton
             self.titleLabel?.font = CustomFont.regular.returnFont(13)
         } else if issignUp {
             
-            self.setunderline(title: self.titleLabel?.text ?? "", color: colors.submitButtonColor.value, font: CustomFont.medium.returnFont(14))
+            self.setunderline(title: self.titleLabel?.text ?? "", color: ThemeColorEnum.Theme.rawValue, font: CustomFont.medium.returnFont(14))
         }
     }
 }

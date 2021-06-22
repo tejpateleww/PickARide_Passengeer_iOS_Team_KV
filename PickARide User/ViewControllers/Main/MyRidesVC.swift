@@ -90,7 +90,7 @@ class MyRidesVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         switch tableView {
         case tblMyRides:
             if selectedMyRideState == 0 {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: addPaymentVC.storyboardID) as! addPaymentVC
+                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: AddPaymentVC.storyboardID) as! AddPaymentVC
                 self.navigationController?.pushViewController(controller, animated: true)
             } else {
                 let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RideDetailsVC.storyboardID)

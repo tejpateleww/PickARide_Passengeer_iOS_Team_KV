@@ -8,7 +8,7 @@
 
 import UIKit
 
-class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource {
+class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource {
     
     
     //MARK: -Properties
@@ -21,9 +21,6 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var tblPaymentMethod: UITableView!
     @IBOutlet weak var btnAddCard: submitButton!
     @IBOutlet weak var lblTitle: TitleLabel!
-    
-    
-    
     
     //MARK: -View Life Cycle Methods
     
@@ -196,7 +193,7 @@ class addPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         case 0:
             if isFromSideMenu{
                 if indexPath.row == 0 {
-                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: walletHistoryViewController.storyboardID)
+                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: WalletHistoryVC.storyboardID)
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }

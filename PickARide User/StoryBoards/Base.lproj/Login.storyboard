@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -68,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="1903" y="907"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginVC-->
         <scene sceneID="eVC-SU-OIT">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="Umi-hn-684" customClass="LoginViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Umi-hn-684" customClass="LoginVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MzD-3V-FAd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="559.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="569.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_top" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-XK-HVa">
                                                 <rect key="frame" x="165.5" y="-60" width="154.5" height="281.5"/>
@@ -119,6 +120,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email ID/Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="15.5" width="242" height="18.5"/>
+                                                        <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     </textField>
@@ -136,6 +138,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTs-2U-lMp" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="16" width="242" height="17"/>
+                                                        <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
@@ -182,7 +185,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
-                                                <rect key="frame" x="95" y="416" width="130" height="59"/>
+                                                <rect key="frame" x="95" y="426" width="130" height="59"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
                                                         <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
@@ -221,7 +224,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-Ig-oDL" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="493" width="278" height="20.5"/>
+                                                <rect key="frame" x="21" y="503" width="278" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -230,7 +233,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="puq-b7-rSs">
-                                                <rect key="frame" x="39" y="533.5" width="242" height="16"/>
+                                                <rect key="frame" x="39" y="543.5" width="242" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ia-Rbt" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="16"/>
@@ -273,7 +276,7 @@
                                             <constraint firstItem="mcX-XK-HVa" firstAttribute="top" secondItem="i0e-kj-Qw2" secondAttribute="top" constant="-60" id="Tzw-8C-ki7"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="UjC-Ko-U2y"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="WlT-wL-PJS"/>
-                                            <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="10" id="b6G-jk-Z1D"/>
+                                            <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="20" id="b6G-jk-Z1D"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="10" id="b9V-ID-GyG"/>
                                             <constraint firstAttribute="trailing" secondItem="yDF-8x-zxT" secondAttribute="trailing" constant="100" id="dmv-cb-L86"/>
                                             <constraint firstAttribute="trailing" secondItem="HTP-Ig-oDL" secondAttribute="trailing" constant="21" id="gei-dw-2pv"/>
@@ -326,12 +329,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdx-Ga-f5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="38"/>
+            <point key="canvasLocation" x="1612.5" y="36.971830985915496"/>
         </scene>
-        <!--Register View Controller-->
+        <!--RegisterVC-->
         <scene sceneID="q2D-dD-ySX">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="5JG-2z-zd1" customClass="RegisterViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="5JG-2z-zd1" customClass="RegisterVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fvZ-sy-IXo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,6 +362,7 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo">
                                                                 <rect key="frame" x="16" y="15" width="103.5" height="18.5"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -376,6 +380,7 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM">
                                                                 <rect key="frame" x="16" y="15" width="103.5" height="18.5"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -394,6 +399,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-ce-l5T">
                                                         <rect key="frame" x="16" y="15" width="256" height="18.5"/>
+                                                        <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -477,6 +483,7 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaJ-zt-mGl">
                                                                 <rect key="frame" x="16" y="15" width="126" height="18.5"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -495,6 +502,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQZ-fp-OEH">
                                                         <rect key="frame" x="16" y="15.5" width="256" height="17"/>
+                                                        <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
@@ -610,10 +618,10 @@
             </objects>
             <point key="canvasLocation" x="2341" y="44"/>
         </scene>
-        <!--Verify View Controller-->
+        <!--VerifyVC-->
         <scene sceneID="bFA-yW-A8z">
             <objects>
-                <viewController storyboardIdentifier="VerifyViewController" id="NhO-bU-9oJ" customClass="VerifyViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyVC" id="NhO-bU-9oJ" customClass="VerifyVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qr5-Uo-ahY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -652,6 +660,7 @@ Number</string>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gf-h0-LUs" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56.5" height="80"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -670,6 +679,7 @@ Number</string>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-q0-K17" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="80"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -687,6 +697,7 @@ Number</string>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2db-B0-MVq" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56.5" height="80"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -704,6 +715,7 @@ Number</string>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e1T-bK-v1V" customClass="verifyPinTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="80"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -829,10 +841,10 @@ Number</string>
             </objects>
             <point key="canvasLocation" x="4488.4057971014499" y="66.964285714285708"/>
         </scene>
-        <!--Change Password Pop Up View Controller-->
+        <!--Change PasswordVC-->
         <scene sceneID="jG0-yH-u3i">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="TL5-eG-oUG" customClass="ChangePasswordPopUpViewController" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="TL5-eG-oUG" customClass="ChangePasswordVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utm-wT-tm6" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -866,9 +878,10 @@ Number</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aby-cF-a0u" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="256" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15.5" width="256" height="17"/>
+                                                                                <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -883,9 +896,10 @@ Number</string>
                                                                         <rect key="frame" x="0.0" y="69" width="288" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKH-AN-zuH" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="256" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15.5" width="256" height="17"/>
+                                                                                <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -900,9 +914,10 @@ Number</string>
                                                                         <rect key="frame" x="0.0" y="138" width="288" height="48"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-4D-1r5" customClass="ChangePasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                                <rect key="frame" x="16" y="15" width="256" height="18.5"/>
+                                                                                <rect key="frame" x="16" y="15.5" width="256" height="17"/>
+                                                                                <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -991,7 +1006,7 @@ Number</string>
                         <constraints>
                             <constraint firstItem="LQZ-uz-5sP" firstAttribute="top" secondItem="eLx-eo-EM8" secondAttribute="top" id="KzB-Kk-TxQ"/>
                             <constraint firstItem="LQZ-uz-5sP" firstAttribute="leading" secondItem="eLx-eo-EM8" secondAttribute="leading" id="XAA-FK-AwE"/>
-                            <constraint firstItem="eLx-eo-EM8" firstAttribute="bottom" secondItem="LQZ-uz-5sP" secondAttribute="bottom" id="hJJ-5U-daO"/>
+                            <constraint firstAttribute="bottom" secondItem="LQZ-uz-5sP" secondAttribute="bottom" id="hJJ-5U-daO"/>
                             <constraint firstItem="eLx-eo-EM8" firstAttribute="trailing" secondItem="LQZ-uz-5sP" secondAttribute="trailing" id="mXQ-Sa-Lb3"/>
                         </constraints>
                     </view>
@@ -1001,6 +1016,7 @@ Number</string>
                         <outlet property="textFieldConfirmPassword" destination="ADa-4D-1r5" id="8rX-gG-pIZ"/>
                         <outlet property="textFieldNewPassword" destination="yKH-AN-zuH" id="9tc-8A-fRU"/>
                         <outlet property="textFieldOldPassword" destination="aby-cF-a0u" id="4Cz-sK-77R"/>
+                        <outlet property="vwMain" destination="8Su-Xy-Vds" id="DOs-jc-j2Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJN-fa-weZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1122,6 +1138,7 @@ Number</string>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlA-Cd-dbO" customClass="phonenumberTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="15" width="126" height="18.5"/>
+                                                                        <color key="tintColor" name="ThemeColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                     </textField>
@@ -1233,6 +1250,9 @@ Number</string>
         <image name="splash_img_bottom" width="375.5" height="248"/>
         <image name="splash_img_center" width="274" height="274"/>
         <image name="splash_img_top" width="139" height="253.5"/>
+        <namedColor name="ThemeColor">
+            <color red="0.0" green="0.66666666666666663" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

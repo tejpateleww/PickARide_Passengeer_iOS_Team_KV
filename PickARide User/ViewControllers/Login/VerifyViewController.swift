@@ -8,16 +8,13 @@
 
 import UIKit
 
-class VerifyViewController: BaseViewController {
+class VerifyVC: BaseViewController {
 
     //MARK: -Properties
     var phoneNumber = " +966 *** **** 656"
     var isFrmRegister = false
     
     //MARK: -IBOutlets
-    
-    
-   
     
     @IBOutlet weak var lblVerifyPhoneNumber: verifyVcLabel!
     @IBOutlet weak var lblCheckSMS: verifyVcLabel!
@@ -79,7 +76,7 @@ class VerifyViewController: BaseViewController {
             user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
         } else {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
                 controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
                 controller.isChangePassword = false
             

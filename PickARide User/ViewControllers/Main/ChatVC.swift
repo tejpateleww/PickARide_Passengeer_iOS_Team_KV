@@ -8,7 +8,7 @@
 
 import UIKit
 
-class chatVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class ChatVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
    
     
 

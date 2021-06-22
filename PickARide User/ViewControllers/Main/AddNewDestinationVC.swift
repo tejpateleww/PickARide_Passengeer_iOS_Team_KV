@@ -8,7 +8,7 @@
 
 import UIKit
 import GooglePlaces
-class addNewDestinationViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, GMSAutocompleteFetcherDelegate {
+class AddNewDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, GMSAutocompleteFetcherDelegate {
    
     
 

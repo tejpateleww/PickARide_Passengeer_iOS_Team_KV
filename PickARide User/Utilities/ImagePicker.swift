@@ -62,7 +62,7 @@ open class ImagePicker: NSObject {
             alertController.addAction(action)
         }
        
-        if  image == UIImage(named: "coverplaceholder") || image == UIImage(named: "imgPetPlaceholder") || image == UIImage(named: "imgPet") {
+        if  image == UserPlaceHolder{
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
             if UIDevice.current.userInterfaceIdiom == .pad {

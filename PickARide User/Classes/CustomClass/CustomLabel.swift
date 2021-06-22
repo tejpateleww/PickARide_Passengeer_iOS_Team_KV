@@ -12,9 +12,9 @@ import UIKit
 class TitleLabel : UILabel {
     override func awakeFromNib() {
         
-            self.font = CustomFont.medium.returnFont(37)
-            self.textColor = colors.loginPlaceHolderColor.value
-       
+        self.font = CustomFont.medium.returnFont(37)
+        self.textColor = colors.loginPlaceHolderColor.value
+        
     }
 }
 
@@ -33,10 +33,10 @@ class loginScreenLabel : UILabel {
             self.textColor = colors.loginText.value
         } else if isORlbl {
             self.font = CustomFont.regular.returnFont(14)
-                self.textColor = colors.black.value
+            self.textColor = colors.black.value
         } else if isDontHaveAccount {
             self.font = CustomFont.regular.returnFont(14)
-                self.textColor = colors.black.value
+            self.textColor = colors.black.value
         }
     }
 }
@@ -62,17 +62,17 @@ class verifyVcLabel : UILabel {
         if IsVerifyPhoneNumber {
             self.textColor = colors.loginPlaceHolderColor.value
             self.font = CustomFont.bold.returnFont(29)
-          
+            
         } else if IsCheckYourPhoneNumber {
             self.textColor = colors.phoneNumberColor.value
-
-         
-         
+            
+            
+            
         } else if IsnotRecive {
             self.font = CustomFont.medium.returnFont(15)
-                self.textColor = colors.loginPlaceHolderColor.value
+            self.textColor = colors.loginPlaceHolderColor.value
         }
-      
+        
     }
 }
 
@@ -236,15 +236,15 @@ class walletHistoryLabel : UILabel {
         } else if ismoneyFrom {
             self.textColor = colors.loginPlaceHolderColor.value
             self.font = CustomFont.bold.returnFont(14)
-                   self.textAlignment = .left
+            self.textAlignment = .left
         } else if istime {
             self.textColor = colors.phoneNumberColor.value
             self.font = CustomFont.regular.returnFont(13)
-                   self.textAlignment = .left
+            self.textAlignment = .left
         } else if ismoney {
             self.textColor = colors.submitButtonColor.value
             self.font = CustomFont.bold.returnFont(15)
-                   self.textAlignment = .center
+            self.textAlignment = .center
         }
     }
 }
@@ -282,7 +282,7 @@ class SavedPlacesLabel : UILabel{
 class ProfileLabel : UILabel{
     @IBInspectable var isProfille : Bool = false
     @IBInspectable var isProfileLabel : Bool = false
-   
+    
     
     override func awakeFromNib() {
         if isProfille{
@@ -301,7 +301,7 @@ class ReasonforLabel : UILabel {
     override func awakeFromNib() {
         if isLabel{
             self.font = CustomFont.regular.returnFont(16)
-            self.textColor = UIColor(hexString: "#7F7F7F")
+            self.textColor = ThemeColorEnum.Theme.rawValue
         }
     }
 }
@@ -493,7 +493,7 @@ class menuLabel : UILabel {
 class ScheduleARide : UILabel {
     override func awakeFromNib() {
         self.font = CustomFont.medium.returnFont(28)
-            self.textColor = colors.loginPlaceHolderColor.value
+        self.textColor = colors.loginPlaceHolderColor.value
     }
 }
 class RatingTripLabel : UILabel{

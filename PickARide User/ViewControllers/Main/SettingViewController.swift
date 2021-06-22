@@ -39,7 +39,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
     //MARK: -other methods
     @objc func settingsButton(_ sender : UIButton) {
         if sender.titleLabel?.text == "SettingsVC_btnAdd".Localized() {
-            let vc : addNewDestinationViewController = addNewDestinationViewController.instantiate(fromAppStoryboard: .Main)
+            let vc : AddNewDestinationVC = AddNewDestinationVC.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(vc, animated: true)
         } else if sender.titleLabel?.text == "SettingsVC_btnMoreSavedPlaces".Localized() {
             let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SavedPlaceVC.storyboardID)
@@ -203,7 +203,7 @@ class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewD
             break
         case 1:
             NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID) as! HomeViewController
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeVC.storyboardID) as! HomeVC
             self.navigationController?.pushViewController(controller, animated: true)
            break
         case 2:

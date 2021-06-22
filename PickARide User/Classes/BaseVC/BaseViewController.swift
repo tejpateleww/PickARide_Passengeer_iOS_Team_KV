@@ -372,14 +372,6 @@ class BaseViewController: UIViewController {
     }
     @objc func EditUserProfile(_ sender: UIButton?) {
         
-        let rtViewVC = (appDel.window?.rootViewController as! UINavigationController).children
-        for i in rtViewVC {
-            if i.isKind(of: ProfileVC.self) {
-                let vc:ProfileVC = i as! ProfileVC
-                vc.makeEditProfile(isEditProfile: true)
-            }
-        }
-        
     }
     @objc func DismissViewController (_ sender: UIButton?)
     {

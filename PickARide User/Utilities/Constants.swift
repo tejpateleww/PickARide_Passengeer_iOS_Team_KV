@@ -25,6 +25,11 @@ let themeStatusRed = hexStringToUIColor(hex: "DF1A49")
 let themeStatusYellow = hexStringToUIColor(hex: "EFB818")
 let themeStatusGreen = hexStringToUIColor(hex: "1AC62F")
 
+//MARK:- Images
+let RadioCheckImg = #imageLiteral(resourceName: "ImgRightArrow")
+let HidePassword = #imageLiteral(resourceName: "HidePassword")
+let ShowPassword = #imageLiteral(resourceName: "ShowPassword")
+let UserPlaceHolder = #imageLiteral(resourceName: "Dummy-Profile")
 
 let NotificationRefreshSideMenu = NSNotification.Name(rawValue:"NotificationRefreshSideMenu")
 let NotificationBadges = NSNotification.Name(rawValue: "NotificationBadges")
@@ -53,11 +58,11 @@ struct DeviceType {
 }
 
 struct ScreenSize {
-
+    
     static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
     static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
     static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-
+    
 }
 

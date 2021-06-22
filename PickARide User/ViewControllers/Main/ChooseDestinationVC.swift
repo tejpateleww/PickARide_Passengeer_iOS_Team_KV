@@ -8,7 +8,7 @@
 
 import UIKit
 import GooglePlaces
-class chooseDestinationViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, GMSAutocompleteFetcherDelegate {
+class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, GMSAutocompleteFetcherDelegate {
 
     //MARK: -Properties
     var arrayForSavedPlaces : [String] = ["Home","Work"]

@@ -65,9 +65,6 @@ extension UIViewController {
             let img = UIImageView(frame: CGRect(x: 0, y: 0, width: w, height: h))
             img.image = UIImage(named: "nav_leftCorner.png")
             self.view.addSubview(img)
-//            img.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//            img.heightAnchor.constraint(equalToConstant: 106).isActive = true
-//            img.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             
         }
         if isRight {
@@ -80,10 +77,6 @@ extension UIViewController {
             let img = UIImageView(frame: CGRect(x: Int(self.view.frame.size.width) - w, y: 0, width: w, height: h))
             img.image = UIImage(named: "nav_rightCorner.png")
             self.view.addSubview(img)
-//            img.translatesAutoresizingMaskIntoConstraints = false
-//            img.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//            img.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//            img.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
             
         }
     }

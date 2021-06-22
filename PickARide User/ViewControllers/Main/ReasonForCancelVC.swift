@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class ReasonForCancelVC: BaseViewController {
 
-    //MARK: -Properties
-      var reasonArray = ["Driver isn't here","Driver declined to come","Driver asking for more money"]
-    let footerView = UIView()
-
-    var isselected = true    //MARK: -IBOutlets
-    var selectIndex = 0
     @IBOutlet weak var btnDone: submitButton!
     @IBOutlet weak var tblReasonforCancel: UITableView!
+    
+    //MARK: -Properties
+    var reasonArray = ["Driver isn't here","Driver declined to come","Driver asking for more money"]
+    let footerView = UIView()
+
+    var isselected = true
+    var selectIndex = 0
+    
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +32,31 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
         
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
-    //MARK: -Other Methods
+    
+    //MARK: -IBActions
+    @IBAction func btnDoneClick(_ sender: Any) {
+        appDel.navigateToMain()
+    }
+}
+
+//MARK: Other Methods
+extension ReasonForCancelVC{
+    func setupLocalization(){
+        btnDone.setTitle("ReasonForCancleVC_btnDone".Localized(), for: .normal)
+    }
+}
+
+extension ReasonForCancelVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reasonArray.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:reasonCell = tblReasonforCancel.dequeueReusableCell(withIdentifier: reasonCell.reuseIdentifier, for: indexPath)as! reasonCell
-        if indexPath.row == selectIndex {
-           cell.imgQuestion.image = #imageLiteral(resourceName: "imgCanceltrue")
-            cell.lblReasonforcancel.textColor = UIColor(hexString: "#282F39")
-        } else {
-            cell.imgQuestion.image = #imageLiteral(resourceName: "imgQuestionFalse")
-                           cell.lblReasonforcancel.textColor = UIColor(hexString: "#7F7F7F")
-        }
+        let cell:reasonCell = tblReasonforCancel.dequeueReusableCell(withIdentifier: reasonCell.reuseIdentifier, for: indexPath) as? reasonCell ?? reasonCell()
+        cell.imgQuestion.image = RadioCheckImg
+        cell.imgQuestion.tintColor = indexPath.row == selectIndex ? ThemeColorEnum.Theme.rawValue : ThemeColorEnum.ThemeGray.rawValue
+        cell.lblReasonforcancel.textColor = indexPath.row == selectIndex ? ThemeColorEnum.Theme.rawValue : ThemeColorEnum.ThemeGray.rawValue
+       
         cell.lblReasonforcancel.text = reasonArray[indexPath.row]
         return cell
     }
@@ -50,19 +64,16 @@ class ReasonForCancelVC: BaseViewController,UITableViewDelegate,UITableViewDataS
         selectIndex = indexPath.row
         tblReasonforCancel.reloadData()
     }
-    func setupLocalization(){
-        btnDone.setTitle("ReasonForCancleVC_btnDone".Localized(), for: .normal)
-    }
-    //MARK: -IBActions
-    @IBAction func btnDoneClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID)
-//        self.navigationController?.pushViewController(controller, animated: true)
-        appDel.navigateToMain()
-    }
-    //MARK: -API Calls
 }
-class reasonCell:UITableViewCell{
+
+class reasonCell: UITableViewCell{
     @IBOutlet weak var imgQuestion: UIImageView!
     @IBOutlet weak var lblReasonforcancel: ReasonforLabel!
-       
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
 }
+
+

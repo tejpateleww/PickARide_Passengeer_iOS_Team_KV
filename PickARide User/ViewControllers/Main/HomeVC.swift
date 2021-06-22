@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class HomeViewController: BaseViewController,UITextFieldDelegate {
+class HomeVC: BaseViewController,UITextFieldDelegate {
 
     //MARK: - Properties
    
@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController,UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: chooseDestinationViewController.storyboardID)
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ChooseDestinationVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
 //        self.navigationController?.popToRootViewController(animated: true)
     }

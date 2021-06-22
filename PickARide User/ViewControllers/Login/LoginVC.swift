@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
 
     //MARK: -Properties
     
@@ -30,20 +30,39 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lblDontHaveanAccount: loginScreenLabel!
     
     @IBOutlet weak var btnSIgnUP: loginScreenButton!
+    
     //MARK: -View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLocalization()
-        // Do any additional setup after loading the view.
+        self.setupTextfields(textfield: self.textFieldPassword)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: -Other Methods
+    //MARK: IBActions
+    @IBAction func signUP(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
+    @IBAction func btnSignInClicked(_ sender: Any) {
+        user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+        appDel.navigateToMain()
+    }
+    
+    @IBAction func ForgotPassword(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+//MARK: Other Methods
+extension LoginVC{
     func setupLocalization() {
         lblSignIN.text = "LoginScreen_lblSignIN".Localized()
         lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
@@ -62,34 +81,22 @@ class LoginViewController: UIViewController {
         btnSIgnUP.setTitle("LoginScreen_btnSIgnUP".Localized(), for: .normal)
     }
     
-    //MARK: -IBActions
-    
-    @IBAction func signUP(_ sender: Any) {
-        //self.navigationController?.navigationBar.isHidden = false
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterViewController.storyboardID)
-        self.navigationController?.pushViewController(controller, animated: true)
+    func setupTextfields(textfield : UITextField) {
+        let button = UIButton(type: .custom)
+        button.isSelected = true
+        button.setImage(ShowPassword, for: .normal)
+        button.setImage(HidePassword, for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -16, bottom: -5, right: 0)
+        button.frame = CGRect(x: CGFloat(textfield.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.tag = textfield.tag
+        textfield.isSelected = true
+        button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
+        textfield.rightView = button
+        textfield.rightViewMode = .always
     }
     
-    @IBAction func btnSignInClicked(_ sender: Any) {
-        user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-        appDel.navigateToMain()
+    @objc func showHidePassword(_ sender : UIButton) {
+        sender.isSelected = !sender.isSelected
+        self.textFieldPassword.isSecureTextEntry = sender.isSelected
     }
-    
-    @IBAction func ForgotPassword(_ sender: Any) {
-//        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
-//        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
-//        controller.isChangePassword = true
-//        controller.btnSubmitClosure = {
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//        self.present(controller, animated: true, completion: nil)
-        //self.navigationController?.navigationBar.isHidden = false
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    //MARK: -API Calls
-    
-    
-  
 }

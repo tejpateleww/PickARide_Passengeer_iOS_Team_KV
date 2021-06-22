@@ -9,12 +9,10 @@
 import UIKit
 
 class ProfileVC: BaseViewController {
-
-    
-    //MARK: -Properties
-   
     //MARK: -IBOutlets
     
+    @IBOutlet weak var imgProfile: ProfileView!
+    @IBOutlet weak var btnProfile: UIButton!
     @IBOutlet weak var lblTitle: ProfileLabel!
     @IBOutlet weak var lblFirstName: ProfileLabel!
     @IBOutlet weak var textFieldFirstName: ProfileTextField!
@@ -32,16 +30,65 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var btnPasword: UIButton!
     var currentEditStatus = false
     
+    var imagePicker : ImagePicker?
+    var selectedImage : UIImage?
+    
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocalization()
-        makeEditProfile(isEditProfile: true)
+        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        
+        navBtnProfile.isSelected = true
+        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
+        self.makeEditableTrue(navBtnProfile)
+        self.imgProfile.image = UserPlaceHolder
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self, allowsEditing: false)
     }
     
-    //MARK: -Other Methods
+    
+    @objc func makeEditableTrue(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        self.currentEditStatus = sender.isSelected
+        for i in textFieldCollection {
+            i.isUserInteractionEnabled = sender.isSelected
+        }
+        self.btnPasword.isUserInteractionEnabled = sender.isSelected
+        self.btnProfile.isUserInteractionEnabled = sender.isSelected
+    }
+    
+    //MARK: -IBActions
+    @IBAction func btnProfile(_ sender: Any) {
+        self.view.endEditing(true)
+        self.imagePicker?.present(from: self.imgProfile, image: self.imgProfile.image ?? UIImage())
+    }
+    
+    @IBAction func btnEditProfileClicked(_ sender: Any) {
+        appDel.navigateToMain()
+    }
+    
+    @IBAction func btnPasswordClicked(_ sender: Any) {
+        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
+        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
+        controller.isChangePassword = true
+        controller.btnSubmitClosure = {
+            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+    }
+}
+
+//MARK: Other Methods
+extension ProfileVC{
     func setupLocalization(){
-               
         lblTitle.text = "ProfileVC_lblTitle".Localized()
         lblFirstName.text = "ProfileVC_lblFirstName".Localized()
         textFieldFirstName.placeholder = "ProfileVC_textFieldFirstName".Localized()
@@ -54,50 +101,19 @@ class ProfileVC: BaseViewController {
         lblPassword.text = "ProfileVC_lblPassword".Localized()
         textFieldPassword.placeholder = "ProfileVC_textFieldPassword".Localized()
     }
+}
+
+extension ProfileVC:ImagePickerDelegate {
     
-    func makeEditProfile(isEditProfile : Bool) {
-        self.currentEditStatus = isEditProfile
-        for i in textFieldCollection {
-            i.isUserInteractionEnabled = isEditProfile
+    func didSelect(image: UIImage?, button SelectedTag:Int) {
+        if(image == nil && SelectedTag == 101){
+            self.selectedImage = UIImage()
+            self.imgProfile.image = UserPlaceHolder
+        }else if let img = image{
+            self.imgProfile.image = img
+            self.selectedImage = self.imgProfile.image
+        }else{
+            return
         }
-        self.btnPasword.isUserInteractionEnabled = isEditProfile
-       // textFieldCollection.forEach({ $0.isUserInteractionEnabled = isEditProfile ? true : false})
-        
-//        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: isEditProfile ? [NavItemsRight.none.value] : [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [])
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
     }
-    
-    @objc func makeEditableTrue() {
-//        if self.currentEditStatus == false {
-//            self.makeEditProfile(isEditProfile: true)
-//        } else {
-//            self.makeEditProfile(isEditProfile: false)
-//        }
-    }
-    
-    //MARK: -IBActions
-    @IBAction func btnEditProfileClicked(_ sender: Any) {
-        appDel.navigateToMain()
-    }
-    
-    @IBAction func btnPasswordClicked(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordPopUpViewController.storyboardID) as! ChangePasswordPopUpViewController
-        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
-        controller.isChangePassword = true
-        controller.btnSubmitClosure = {
-            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            self.dismiss(animated: true, completion: {
-                self.navigationController?.popViewController(animated: true)
-            })
-        }
-            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-            let navigationController = UINavigationController(rootViewController: controller)
-            navigationController.modalPresentationStyle = .overCurrentContext
-            navigationController.modalTransitionStyle = .crossDissolve
-            navigationController.navigationBar.isHidden = true
-            self.present(navigationController, animated: true, completion: nil)
-        }
-    //MARK: -API Calls
 }

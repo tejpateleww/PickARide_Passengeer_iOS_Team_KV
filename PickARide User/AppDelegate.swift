@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func navigateToLogin(){
         let storyborad = UIStoryboard(name: "Login", bundle: nil)
-        let splash = storyborad.instantiateViewController(withIdentifier: LoginViewController.className) as! LoginViewController
+        let splash = storyborad.instantiateViewController(withIdentifier: LoginVC.className) as! LoginVC
         let NavHomeVC = UINavigationController(rootViewController: splash)
         NavHomeVC.navigationBar.isHidden = true
         self.window?.rootViewController = NavHomeVC

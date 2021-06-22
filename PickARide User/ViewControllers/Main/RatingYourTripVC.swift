@@ -42,7 +42,7 @@ class RatingYourTripVC: BaseViewController {
     
     @IBAction func btnSubmitReviewClicked(_ sender: Any) {
 //        NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeViewController.storyboardID) as! HomeViewController
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeVC.storyboardID) as! HomeVC
 //        self.navigationController?.pushViewController(controller, animated: true)
         appDel.navigateToMain()
     }

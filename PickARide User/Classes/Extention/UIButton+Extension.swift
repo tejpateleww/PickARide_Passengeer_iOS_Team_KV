@@ -20,7 +20,7 @@ extension UIButton{
     }
     //MARK:- Text In Two Differnt Color in Button Text
     func setTextColor(str1:String,str2:String,color1:UIColor,color2:UIColor){
-
+        
         let att = NSMutableAttributedString(string: "\(str1)\(str2)");
         att.addAttribute(NSAttributedString.Key.foregroundColor, value: color1, range: NSRange(location: 0, length: str1.count))
         att.addAttribute(NSAttributedString.Key.foregroundColor, value: color2, range: NSRange(location: str1.count, length: str2.count))
@@ -60,12 +60,12 @@ extension UIButton{
         self.imageView?.contentMode = .scaleAspectFit
     }
     func setRightImage(iconName:String){
-       // let image = UIImage(named: iconName)
+        // let image = UIImage(named: iconName)
         self.contentHorizontalAlignment = .trailing
         self.setImage(UIImage(named: iconName), for: UIControl.State.normal)
         self.semanticContentAttribute = .forceRightToLeft
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-       
+        
     }
     func setBoarderColor(bcolor:colors){
         self.layer.borderColor  = bcolor.value.cgColor
@@ -82,7 +82,7 @@ extension UIButton{
     func setunderline(title:String ,color: UIColor, font: UIFont){
         self.setAttributedTitle(NSMutableAttributedString(string: title, attributes:  [.font: font,
                                                                                        .foregroundColor: color,
-             .underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
+                                                                                       .underlineStyle: NSUnderlineStyle.double.rawValue]), for: .normal)
     }
 }
 

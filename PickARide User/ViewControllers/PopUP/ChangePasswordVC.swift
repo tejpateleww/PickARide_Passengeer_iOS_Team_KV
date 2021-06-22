@@ -8,35 +8,42 @@
 
 import UIKit
 
-class ChangePasswordPopUpViewController: UIViewController {
+class ChangePasswordVC: UIViewController {
 
-    //MARK: -Properties
-    var submitButtonText = ""
-    var isChangePassword : Bool = false
-    var btnSubmitClosure : (() -> ())?
-    //MARK: -IBOutlets
-    
+    @IBOutlet weak var vwMain: viewWithClearBg!
     @IBOutlet weak var lblChangePassword: UILabel!
     @IBOutlet weak var textFieldOldPassword: ChangePasswordTextField!
     @IBOutlet weak var textFieldNewPassword: ChangePasswordTextField!
     @IBOutlet weak var textFieldConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
     
-    //MARK: -View Life Cycle Methods
+    var submitButtonText = ""
+    var isChangePassword : Bool = false
+    var btnSubmitClosure : (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonTitleAndHideView()
-        setLocalization()
+        self.setButtonTitleAndHideView()
+        self.setLocalization()
+        self.setUpTextField()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
     
-    //MARK: -other methods
+    //MARK: -IBActions
+    @IBAction func btnsubmitAction(_ sender: Any) {
+        if let click = self.btnSubmitClosure {
+            click()
+        }
+    }
+}
+
+//MARK: Other methods
+extension ChangePasswordVC{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -46,7 +53,7 @@ class ChangePasswordPopUpViewController: UIViewController {
             self.view.frame.origin.y -= keyboardSize.height
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
@@ -68,13 +75,40 @@ class ChangePasswordPopUpViewController: UIViewController {
         btnSubmit.setTitle(submitButtonText, for: .normal)
     }
     
-    //MARK: -IBActions
-    @IBAction func btnsubmitAction(_ sender: Any) {
-        if let click = self.btnSubmitClosure {
-            click()
-        }
+    func setUpTextField(){
+        self.textFieldOldPassword.tag = 0
+        self.setupTextfields(textfield: self.textFieldOldPassword)
+        
+        self.textFieldNewPassword.tag = 1
+        self.setupTextfields(textfield: self.textFieldNewPassword)
+        
+        self.textFieldConfirmPassword.tag = 2
+        self.setupTextfields(textfield: self.textFieldConfirmPassword)
     }
     
-    //MARK: -API Calls
-
+    func setupTextfields(textfield : UITextField) {
+        let button = UIButton(type: .custom)
+        button.isSelected = true
+        button.setImage(ShowPassword, for: .normal)
+        button.setImage(HidePassword, for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -16, bottom: -5, right: 0)
+        button.frame = CGRect(x: CGFloat(textfield.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.tag = textfield.tag
+        textfield.isSelected = true
+        button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
+        textfield.rightView = button
+        textfield.rightViewMode = .always
+    }
+    
+    @objc func showHidePassword(_ sender : UIButton) {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.tag == 0{
+            self.textFieldOldPassword.isSecureTextEntry = sender.isSelected
+        }else if sender.tag == 1{
+            self.textFieldNewPassword.isSecureTextEntry = sender.isSelected
+        }else if sender.tag == 2{
+            self.textFieldConfirmPassword.isSecureTextEntry = sender.isSelected
+        }
+    }
 }

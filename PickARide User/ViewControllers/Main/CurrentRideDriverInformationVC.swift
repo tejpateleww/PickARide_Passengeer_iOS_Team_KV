@@ -91,7 +91,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnMessageClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ChatVC.storyboardID) as! ChatVC
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 class CancelTripVC: BaseViewController {
-
+    
     
     //MARK: -Properties
     @IBOutlet weak var viewBGBottom: NSLayoutConstraint!
@@ -42,7 +42,7 @@ class CancelTripVC: BaseViewController {
             self.view.layoutIfNeeded()
             //stackView.layoutIfNeeded()
         })
-
+        
     }
     override func viewDidLayoutSubviews() {
         self.viewBG.layer.cornerRadius = 10
@@ -67,5 +67,5 @@ class CancelTripVC: BaseViewController {
     
     //MARK: -API Calls
     
- 
+    
 }
