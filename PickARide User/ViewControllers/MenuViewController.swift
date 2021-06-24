@@ -219,7 +219,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         } else if strCellItemTitle == MyType.PaymentMethods.value {
             
         } else if strCellItemTitle == MyType.Settings.value {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingViewController.storyboardID)
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingVC.storyboardID)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.InviteaFrind.value {
             let text = ""

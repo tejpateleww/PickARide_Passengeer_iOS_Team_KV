@@ -757,12 +757,8 @@ Number</string>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRe-uO-RIg" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="301" width="320" height="201"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEQ-qh-ip9">
-                                                <rect key="frame" x="16" y="502" width="288" height="46"/>
+                                                <rect key="frame" x="16" y="301" width="288" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-1t-B8O" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="46"/>
@@ -784,10 +780,8 @@ Number</string>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="wRe-uO-RIg" secondAttribute="trailing" id="0S5-Q7-cj7"/>
                                             <constraint firstItem="Z25-59-N7P" firstAttribute="top" secondItem="o64-NS-Lk8" secondAttribute="bottom" constant="33" id="42B-0H-g2v"/>
                                             <constraint firstItem="gEQ-qh-ip9" firstAttribute="trailing" secondItem="Z25-59-N7P" secondAttribute="trailing" id="By8-Mw-aUR"/>
-                                            <constraint firstItem="wRe-uO-RIg" firstAttribute="leading" secondItem="XPL-vi-Bed" secondAttribute="leading" id="HVt-yF-cex"/>
                                             <constraint firstItem="I8l-8a-FgU" firstAttribute="top" secondItem="XPL-vi-Bed" secondAttribute="top" constant="32" id="JF2-dw-WoX"/>
                                             <constraint firstItem="gEQ-qh-ip9" firstAttribute="leading" secondItem="Z25-59-N7P" secondAttribute="leading" id="Kgz-Dq-k0u"/>
                                             <constraint firstItem="I8l-8a-FgU" firstAttribute="leading" secondItem="XPL-vi-Bed" secondAttribute="leading" constant="16" id="LU7-kE-lcT"/>
@@ -797,9 +791,8 @@ Number</string>
                                             <constraint firstItem="o64-NS-Lk8" firstAttribute="top" secondItem="5Pc-yl-6gu" secondAttribute="bottom" constant="33" id="V4z-K9-Q0M"/>
                                             <constraint firstItem="5Pc-yl-6gu" firstAttribute="leading" secondItem="I8l-8a-FgU" secondAttribute="leading" id="VGe-5f-zyZ"/>
                                             <constraint firstItem="5Pc-yl-6gu" firstAttribute="top" secondItem="I8l-8a-FgU" secondAttribute="bottom" constant="19" id="ZIW-Ef-awG"/>
-                                            <constraint firstItem="wRe-uO-RIg" firstAttribute="top" secondItem="Z25-59-N7P" secondAttribute="bottom" id="cOy-gM-fAf"/>
-                                            <constraint firstAttribute="bottom" secondItem="gEQ-qh-ip9" secondAttribute="bottom" constant="20" id="hIf-fF-psb"/>
-                                            <constraint firstItem="gEQ-qh-ip9" firstAttribute="top" secondItem="wRe-uO-RIg" secondAttribute="bottom" id="k6k-4t-BWT"/>
+                                            <constraint firstItem="gEQ-qh-ip9" firstAttribute="top" secondItem="Z25-59-N7P" secondAttribute="bottom" id="aam-OA-WQi"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gEQ-qh-ip9" secondAttribute="bottom" constant="20" id="hIf-fF-psb"/>
                                             <constraint firstItem="o64-NS-Lk8" firstAttribute="leading" secondItem="5Pc-yl-6gu" secondAttribute="leading" id="st1-cS-fWz"/>
                                             <constraint firstItem="Z25-59-N7P" firstAttribute="trailing" secondItem="o64-NS-Lk8" secondAttribute="trailing" id="vwC-7T-OJE"/>
                                             <constraint firstAttribute="trailing" secondItem="I8l-8a-FgU" secondAttribute="trailing" constant="16" id="wai-mI-3OF"/>

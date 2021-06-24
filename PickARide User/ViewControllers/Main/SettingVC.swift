@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class SettingVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
    
     
 

@@ -10,48 +10,30 @@ import UIKit
 
 class RatingYourTripVC: BaseViewController {
 
-    
-    //MARK: -Properties
-    
-    //MARK: -IBOutlets
     @IBOutlet weak var DotedLine: UIView!
-    //MARK: -View Life Cycle Methods
+    @IBOutlet weak var btnSkip: loginScreenButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        setValue()
-        self.DotedLine.createDottedLine(width: 1.0, color: UIColor.cyan.cgColor)
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rating.value, leftImage: NavItemsLeft.cancelWhite.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        // Do any additional setup after loading the view.
+        self.setUpUI()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    //MARK: -other methods
-    func setLocalization() {
-        
-    }
-    
-    func setValue() {
-    }
-    
-    //MARK: -IBActions
     
     @IBAction func btnSubmitReviewClicked(_ sender: Any) {
-//        NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: HomeVC.storyboardID) as! HomeVC
-//        self.navigationController?.pushViewController(controller, animated: true)
         appDel.navigateToMain()
     }
     
-    //MARK: -API Calls
-    
-    
-    
-    
-    
-  
+    @IBAction func btnSkip(_ sender: Any) {
+        appDel.navigateToMain()
+    }
+}
+
+//MARK:- Set Up UI
+extension RatingYourTripVC{
+    func setUpUI(){
+        //Set DotedLine
+        self.DotedLine.createDottedLine(width: 1.0, color: UIColor.cyan.cgColor)
+        
+        //Set Navigation View
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rating.value, leftImage: NavItemsLeft.cancelWhite.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
 }

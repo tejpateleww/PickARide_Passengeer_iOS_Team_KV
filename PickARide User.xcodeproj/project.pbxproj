@@ -26,10 +26,10 @@
 		180979F325876FA8002070A7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180979F225876FA7002070A7 /* CustomButton.swift */; };
 		180979F525877CA0002070A7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180979F725877CA0002070A7 /* Login.storyboard */; };
 		180979FD25877CCE002070A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 180979FF25877CCE002070A7 /* Localizable.strings */; };
-		180CC7F72590561E00799280 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC7F62590561E00799280 /* SettingViewController.swift */; };
+		180CC7F72590561E00799280 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC7F62590561E00799280 /* SettingVC.swift */; };
 		180CC7FA2590849600799280 /* AddNewDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC7F92590849600799280 /* AddNewDestinationVC.swift */; };
-		180CC81025909C9200799280 /* SelectTaxiTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC80F25909C9200799280 /* SelectTaxiTypeViewController.swift */; };
-		180CC8132590CD9700799280 /* CurrentRideDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC8122590CD9600799280 /* CurrentRideDetailsViewController.swift */; };
+		180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */; };
+		180CC8132590CD9700799280 /* CurrentRideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */; };
 		1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */; };
 		1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */; };
 		1813E4DC258C7F1700EE33CA /* WalletHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */; };
@@ -128,10 +128,10 @@
 		180979F225876FA7002070A7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		180979F925877CA9002070A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		180979FE25877CCE002070A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		180CC7F62590561E00799280 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		180CC7F62590561E00799280 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		180CC7F92590849600799280 /* AddNewDestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDestinationVC.swift; sourceTree = "<group>"; };
-		180CC80F25909C9200799280 /* SelectTaxiTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTaxiTypeViewController.swift; sourceTree = "<group>"; };
-		180CC8122590CD9600799280 /* CurrentRideDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRideDetailsViewController.swift; sourceTree = "<group>"; };
+		180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTaxiTypeVC.swift; sourceTree = "<group>"; };
+		180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRideDetailsVC.swift; sourceTree = "<group>"; };
 		1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPaymentVC.swift; sourceTree = "<group>"; };
 		1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardVC.swift; sourceTree = "<group>"; };
 		1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryVC.swift; sourceTree = "<group>"; };
@@ -427,10 +427,10 @@
 				1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */,
 				1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */,
 				1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */,
-				180CC7F62590561E00799280 /* SettingViewController.swift */,
+				180CC7F62590561E00799280 /* SettingVC.swift */,
 				180CC7F92590849600799280 /* AddNewDestinationVC.swift */,
-				180CC80F25909C9200799280 /* SelectTaxiTypeViewController.swift */,
-				180CC8122590CD9600799280 /* CurrentRideDetailsViewController.swift */,
+				180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */,
+				180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */,
 				185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */,
 				185CADFA25B5AD8800082AFC /* CancelTripVC.swift */,
 				185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */,
@@ -720,9 +720,9 @@
 				18F9B6FE259350E100202DA6 /* UILabel+Extension.swift in Sources */,
 				181EBD9F258730B300C11C08 /* Constants.swift in Sources */,
 				180979D125876C45002070A7 /* BaseViewController.swift in Sources */,
-				180CC8132590CD9700799280 /* CurrentRideDetailsViewController.swift in Sources */,
+				180CC8132590CD9700799280 /* CurrentRideDetailsVC.swift in Sources */,
 				1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */,
-				180CC7F72590561E00799280 /* SettingViewController.swift in Sources */,
+				180CC7F72590561E00799280 /* SettingVC.swift in Sources */,
 				180979A9258769A2002070A7 /* SplashVC.swift in Sources */,
 				181EBDB3258730B300C11C08 /* CustomSlider.swift in Sources */,
 				18F9B705259350E100202DA6 /* UITableViewCell+Extension.swift in Sources */,
@@ -759,7 +759,7 @@
 				18F9B6FF259350E100202DA6 /* String+Extensions.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,
 				1865CF54267C763100379A40 /* apiPaths.swift in Sources */,
-				180CC81025909C9200799280 /* SelectTaxiTypeViewController.swift in Sources */,
+				180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */,
 				18F9B701259350E100202DA6 /* UIView+Extension.swift in Sources */,
 				185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */,
 				18F9B6FD259350E100202DA6 /* UIColor+Extension.swift in Sources */,

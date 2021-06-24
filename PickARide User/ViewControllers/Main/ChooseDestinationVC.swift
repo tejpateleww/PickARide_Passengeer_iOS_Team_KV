@@ -156,7 +156,7 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SelectTaxiTypeViewController.storyboardID)
+            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SelectTaxiTypeVC.storyboardID)
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
