@@ -859,20 +859,34 @@ Number</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Xy-Vds" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="206.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="197"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu">
-                                                        <rect key="frame" x="0.0" y="206.5" width="320" height="377.5"/>
+                                                        <rect key="frame" x="0.0" y="197" width="320" height="387"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhN-0h-T4o" customClass="changePasswordLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="30" width="288" height="20.5"/>
+                                                                <rect key="frame" x="16" y="30" width="258" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="MPR-L5-REP"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcn-1T-zBQ">
+                                                                <rect key="frame" x="274" y="30" width="30" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Zcn-1T-zBQ" secondAttribute="height" multiplier="1:1" id="iJV-nW-Hhv"/>
+                                                                </constraints>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="ic_Cancel"/>
+                                                                <connections>
+                                                                    <action selector="btnClose:" destination="TL5-eG-oUG" eventType="touchUpInside" id="afX-dC-c07"/>
+                                                                </connections>
+                                                            </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-6z-Cbf">
-                                                                <rect key="frame" x="16" y="71.5" width="288" height="186"/>
+                                                                <rect key="frame" x="16" y="81" width="288" height="186"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-mw-dBz" customClass="changePasswordView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
@@ -931,7 +945,7 @@ Number</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxc-ZS-6Zr">
-                                                                <rect key="frame" x="16" y="293.5" width="288" height="48"/>
+                                                                <rect key="frame" x="16" y="303" width="288" height="48"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4e-VP-TJl" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
@@ -953,16 +967,19 @@ Number</string>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="trailing" secondItem="jmX-6z-Cbf" secondAttribute="trailing" id="1Vg-5H-q2a"/>
+                                                            <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="trailing" secondItem="jmX-6z-Cbf" secondAttribute="trailing" id="2bn-SZ-E8f"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jmX-6z-Cbf" secondAttribute="trailing" constant="16" id="6Ca-XZ-icg"/>
                                                             <constraint firstItem="jmX-6z-Cbf" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="bottom" constant="21" id="DSC-OC-pxK"/>
                                                             <constraint firstItem="IhN-0h-T4o" firstAttribute="leading" secondItem="gF7-qg-ETu" secondAttribute="leading" constant="16" id="ILd-bc-clj"/>
                                                             <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="top" secondItem="jmX-6z-Cbf" secondAttribute="bottom" constant="36" id="Iew-BN-kIV"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Zcn-1T-zBQ" secondAttribute="trailing" constant="16" id="Jmh-CM-wc9"/>
                                                             <constraint firstItem="IhN-0h-T4o" firstAttribute="top" secondItem="gF7-qg-ETu" secondAttribute="top" constant="30" id="KGy-EQ-3ba"/>
                                                             <constraint firstItem="jmX-6z-Cbf" firstAttribute="leading" secondItem="IhN-0h-T4o" secondAttribute="leading" id="ORf-PM-iHy"/>
+                                                            <constraint firstItem="Zcn-1T-zBQ" firstAttribute="leading" secondItem="IhN-0h-T4o" secondAttribute="trailing" id="Vdn-Cu-MTf"/>
+                                                            <constraint firstItem="Zcn-1T-zBQ" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="top" id="ZLf-tC-fo0"/>
                                                             <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="leading" secondItem="jmX-6z-Cbf" secondAttribute="leading" id="Zxs-MW-baD"/>
                                                             <constraint firstAttribute="bottom" secondItem="Oxc-ZS-6Zr" secondAttribute="bottom" constant="36" id="d4a-Z2-Sw6"/>
-                                                            <constraint firstAttribute="trailing" secondItem="IhN-0h-T4o" secondAttribute="trailing" constant="16" id="dYp-Ax-q9k"/>
-                                                            <constraint firstItem="jmX-6z-Cbf" firstAttribute="trailing" secondItem="IhN-0h-T4o" secondAttribute="trailing" id="k67-9D-8Zw"/>
+                                                            <constraint firstItem="Zcn-1T-zBQ" firstAttribute="bottom" secondItem="IhN-0h-T4o" secondAttribute="bottom" id="yEj-Uw-0to"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1011,6 +1028,7 @@ Number</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnClose" destination="Zcn-1T-zBQ" id="cyj-lV-eRn"/>
                         <outlet property="btnSubmit" destination="Z4e-VP-TJl" id="mYl-QH-4vg"/>
                         <outlet property="lblChangePassword" destination="IhN-0h-T4o" id="MiH-EW-7u4"/>
                         <outlet property="textFieldConfirmPassword" destination="ADa-4D-1r5" id="8rX-gG-pIZ"/>
@@ -1243,6 +1261,7 @@ Number</string>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_Cancel" width="34" height="34"/>
         <image name="ic_DownReg" width="14" height="8"/>
         <image name="ic_Facebook" width="66" height="66"/>
         <image name="ic_Google" width="66" height="66"/>
@@ -1251,7 +1270,7 @@ Number</string>
         <image name="splash_img_center" width="274" height="274"/>
         <image name="splash_img_top" width="139" height="253.5"/>
         <namedColor name="ThemeColor">
-            <color red="0.0" green="0.66666666666666663" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.66699999570846558" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -24,6 +24,7 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var textFieldPhoneNumber: ProfileTextField!
     @IBOutlet weak var lblPassword: ProfileLabel!
     @IBOutlet weak var textFieldPassword: ProfileTextField!
+    @IBOutlet weak var btnCamera: UIButton!
     
     
     @IBOutlet var textFieldCollection: [ProfileTextField]!
@@ -55,6 +56,7 @@ class ProfileVC: BaseViewController {
         }
         self.btnPasword.isUserInteractionEnabled = sender.isSelected
         self.btnProfile.isUserInteractionEnabled = sender.isSelected
+        self.btnCamera.isHidden = !sender.isSelected
     }
     
     //MARK: -IBActions

@@ -25,6 +25,10 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
         setUp()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.navigationController?.navigationBar.showNavBarSeparator()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

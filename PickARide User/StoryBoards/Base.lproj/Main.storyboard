@@ -2112,10 +2112,45 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblInfo" destination="bjg-VO-UHU" id="I1O-Xz-ihD"/>
+                        <outlet property="lblName" destination="owD-YR-IBb" id="xpl-VW-9u5"/>
                         <outlet property="tblChat" destination="hig-nd-rgW" id="4Ej-y5-HZW"/>
+                        <outlet property="vwNavBar" destination="zmT-Zu-nhD" id="Xeh-f8-xs0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5U-bu-q1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="zmT-Zu-nhD">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="t2d-Qf-O8h">
+                            <rect key="frame" x="99.5" y="40" width="41.5" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owD-YR-IBb">
+                                    <rect key="frame" x="0.0" y="0.0" width="41.5" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="uJj-V3-hem"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-VO-UHU">
+                                    <rect key="frame" x="0.0" y="23" width="41.5" height="25"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="ibu-rT-1Mq"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="t2d-Qf-O8h" firstAttribute="centerX" secondItem="zmT-Zu-nhD" secondAttribute="centerX" id="YfV-bN-YIK"/>
+                        <constraint firstItem="t2d-Qf-O8h" firstAttribute="centerY" secondItem="zmT-Zu-nhD" secondAttribute="centerY" id="gpP-jt-T4i"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="7621.739130434783" y="908.70535714285711"/>
         </scene>
@@ -2615,6 +2650,23 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
+                                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H7-NA-Wzj">
+                                                                        <rect key="frame" x="0.0" y="39" width="25" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="IXO-i9-v5r"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="y8U-aB-IFN"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="ThemeGray"/>
+                                                                        <state key="normal" image="ic_call"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="12.5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnProfile:" destination="OOL-4n-Wig" eventType="touchUpInside" id="0gB-id-7cr"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BC3-P2-EV3">
                                                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                                                         <connections>
@@ -2628,9 +2680,11 @@
                                                                     <constraint firstItem="BC3-P2-EV3" firstAttribute="top" secondItem="zOc-OD-Ilz" secondAttribute="top" id="Jjj-vj-bas"/>
                                                                     <constraint firstItem="BC3-P2-EV3" firstAttribute="leading" secondItem="zOc-OD-Ilz" secondAttribute="leading" id="OxX-GD-KHU"/>
                                                                     <constraint firstItem="zOc-OD-Ilz" firstAttribute="leading" secondItem="Xsb-0X-BwZ" secondAttribute="leading" id="YjO-5l-ISw"/>
+                                                                    <constraint firstItem="8H7-NA-Wzj" firstAttribute="leading" secondItem="Xsb-0X-BwZ" secondAttribute="leading" id="gqg-cR-9Cz"/>
                                                                     <constraint firstAttribute="bottom" secondItem="zOc-OD-Ilz" secondAttribute="bottom" id="hNF-3h-4UK"/>
                                                                     <constraint firstAttribute="width" secondItem="Xsb-0X-BwZ" secondAttribute="height" multiplier="1:1" id="p9M-1z-ZRf"/>
                                                                     <constraint firstItem="zOc-OD-Ilz" firstAttribute="top" secondItem="Xsb-0X-BwZ" secondAttribute="top" id="qud-02-mkx"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="8H7-NA-Wzj" secondAttribute="bottom" id="r3D-0G-YLb"/>
                                                                     <constraint firstItem="BC3-P2-EV3" firstAttribute="bottom" secondItem="zOc-OD-Ilz" secondAttribute="bottom" id="tOf-VD-xry"/>
                                                                     <constraint firstAttribute="height" constant="64" id="uEO-Wo-U4M"/>
                                                                     <constraint firstItem="BC3-P2-EV3" firstAttribute="trailing" secondItem="zOc-OD-Ilz" secondAttribute="trailing" id="uxp-Mv-kUz"/>
@@ -2987,6 +3041,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCamera" destination="8H7-NA-Wzj" id="tDv-Ep-VEU"/>
                         <outlet property="btnPasword" destination="grF-6g-GgX" id="qNq-wP-3lU"/>
                         <outlet property="btnProfile" destination="BC3-P2-EV3" id="MQw-gh-Gfq"/>
                         <outlet property="imgProfile" destination="zOc-OD-Ilz" id="CzL-a6-3rg"/>
@@ -5494,7 +5549,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VV5-cx-bbj">
                                                             <rect key="frame" x="86" y="9.5" width="288" height="69.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Or-xxh" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Or-xxh" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -5503,7 +5558,7 @@
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isNotificatioTitle" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Order #1234 has been Successfully completed " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFC-2r-zQR" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Order #1234 has been Successfully completed " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFC-2r-zQR" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28.5" width="288" height="41"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -6160,8 +6215,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="6Pe-yI-iX4">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
         <designable name="QaB-WB-bRa">
             <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="aQs-tF-B1u">
+            <size key="intrinsicContentSize" width="189.35000000000002" height="26.670000000000002"/>
         </designable>
     </designables>
     <resources>
@@ -6209,14 +6270,14 @@
         <image name="imgBlue" width="12" height="12"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="14" height="16"/>
+        <image name="imgHome" width="23" height="19.5"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <namedColor name="ThemeColor">
-            <color red="0.0" green="0.66666666666666663" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.66699999570846558" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ThemeGray">
-            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.49799999594688416" green="0.49799999594688416" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

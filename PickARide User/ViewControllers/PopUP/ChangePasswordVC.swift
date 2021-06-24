@@ -17,6 +17,8 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var textFieldConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
     
+    @IBOutlet weak var btnClose: UIButton!
+    
     var submitButtonText = ""
     var isChangePassword : Bool = false
     var btnSubmitClosure : (() -> ())?
@@ -26,15 +28,19 @@ class ChangePasswordVC: UIViewController {
         self.setButtonTitleAndHideView()
         self.setLocalization()
         self.setUpTextField()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
+    } 
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
     
     //MARK: -IBActions
+    @IBAction func btnClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btnsubmitAction(_ sender: Any) {
         if let click = self.btnSubmitClosure {
             click()

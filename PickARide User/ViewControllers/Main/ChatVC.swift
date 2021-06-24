@@ -8,48 +8,68 @@
 
 import UIKit
 
-class ChatVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
-   
+class ChatVC: BaseViewController {
     
-
-    //MARK: -Properties
-    var MessageArray = [ChatConversation]()
-    //MARK: -IBOutlets
     @IBOutlet weak var tblChat: UITableView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblInfo: UILabel!
+    @IBOutlet var vwNavBar: UIView!
     
-    //MARK: -View Life Cycle Methods
+    var MessageArray = [ChatConversation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        setValue()
-        MessageArray.append(ChatConversation(date: "Today at 5:03 PM", Data: [MessageAllData(fromSender: true, message: "Hello, are you nearby?", lastMessage: false),
-                                                                              MessageAllData(fromSender: false, message: "I'll be there in a few mins", lastMessage: true),
-                                                                              MessageAllData(fromSender: true, message: "OK, I'm in front of the bus stop", lastMessage: true)
-                                                                        ]))
-        MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true)
-                                                                        ]))
+        self.setLocalization()
+        self.setValue()
+        MessageArray.append(ChatConversation(date: "Today at 5:03 PM", Data: [MessageAllData(fromSender: true, message: "Hello, are you nearby?", lastMessage: false), MessageAllData(fromSender: false, message: "I'll be there in a few mins", lastMessage: true), MessageAllData(fromSender: true, message: "OK, I'm in front of the bus stop", lastMessage: true) ]))
+        MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true) ]))
+        
+                setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.navigationItem.titleView = vwNavBar
        
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: "Connor Chavez\nST3751 - Toyota Vios", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: true)
+        self.lblName.text = "Connor Chavez"
+        self.lblInfo.text = "ST3751 - Toyota Vios"
         
-        tblChat.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
         
+        self.tblChat.reloadData()
     }
     
-    //MARK: -other methods
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.navigationController?.navigationBar.showNavBarSeparator()
+    }
+}
+
+//MARK: Other methods
+extension ChatVC{
     func setLocalization() {
         
     }
-    func setValue() {
+    
+    @objc func backClick(){
+        self.view.endEditing(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK: -tableviewDelegate
+    func setValue() {
+    }
+}
+
+//MARK:- TableView Methods
+extension ChatVC: UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return MessageArray.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageArray[section].MessageData!.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tblChat.dequeueReusableCell(withIdentifier: chatHeaderCell.reuseIdentifier) as! chatHeaderCell
+        cell.lblDateTime.text = MessageArray[section].MessageDate
+        return cell
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,109 +78,40 @@ class ChatVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
             let SenderCell = tblChat.dequeueReusableCell(withIdentifier: chatSenderCell.reuseIdentifier, for: indexPath) as! chatSenderCell
             SenderCell.lblSenderMessage.text = MessageArray[indexPath.section].MessageData![indexPath.row].chatMessage
             SenderCell.lblBottomView.isHidden = false
-            
-//            if indexPath.row != 0 {
-//                if indexPath.row != MessageArray[indexPath.section].MessageDate!.count - 1 {
-//                    if (MessageArray[indexPath.section].MessageData![indexPath.row].isFromSender!) && (MessageArray[indexPath.section].MessageData![indexPath.row - 1].isFromSender!)   {
-//                        SenderCell.lblBottomView.isHidden = false
-//                    } else {
-//                        SenderCell.lblBottomView.isHidden = true
-//                    }
-//                } else {
-//                    SenderCell.lblBottomView.isHidden = false
-//                }
-//
-//
-//            } else {
-//                if indexPath.row != MessageArray[indexPath.section].MessageDate!.count - 1 {
-//                    if (MessageArray[indexPath.section].MessageData![indexPath.row].isFromSender!) && (MessageArray[indexPath.section].MessageData![indexPath.row + 1].isFromSender!)   {
-//                        SenderCell.lblBottomView.isHidden = true
-//                    } else {
-//                        SenderCell.lblBottomView.isHidden = false
-//                    }
-//                } else {
-//                    SenderCell.lblBottomView.isHidden = false
-//                }
-//            }
-            
-           
-            
-//            if MessageArray[indexPath.section].MessageData![indexPath.row].isLastMessage != true {
-//
-//            }
             cell = SenderCell
             
         } else {
             let ReciverCell = tblChat.dequeueReusableCell(withIdentifier: chatReciverCell.reuseIdentifier, for: indexPath) as! chatReciverCell
             ReciverCell.lblReciverMessage.text = MessageArray[indexPath.section].MessageData![indexPath.row].chatMessage
             ReciverCell.lblBottomView.isHidden = false
-//            if indexPath.row != 0 {
-//                if indexPath.row != MessageArray[indexPath.section].MessageDate?.count {
-//                    if (MessageArray[indexPath.section].MessageData![indexPath.row].isFromSender!) && (MessageArray[indexPath.section].MessageData![indexPath.row - 1].isFromSender!)   {
-//                        ReciverCell.lblBottomView.isHidden = false
-//                    } else {
-//                        ReciverCell.lblBottomView.isHidden = true
-//                    }
-//                } else {
-//                    ReciverCell.lblBottomView.isHidden = false
-//                }
-//
-//
-//            } else {
-//                if indexPath.row != MessageArray[indexPath.section].MessageDate?.count {
-//                    if (MessageArray[indexPath.section].MessageData![indexPath.row].isFromSender!) && (MessageArray[indexPath.section].MessageData![indexPath.row + 1].isFromSender!)   {
-//                        ReciverCell.lblBottomView.isHidden = true
-//                    } else {
-//                        ReciverCell.lblBottomView.isHidden = false
-//                    }
-//                } else {
-//                    ReciverCell.lblBottomView.isHidden = false
-//                }
-//            }
-            
             cell = ReciverCell
         }
-       
+        
         return cell
-       
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return MessageArray.count
-    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tblChat.dequeueReusableCell(withIdentifier: chatHeaderCell.reuseIdentifier) as! chatHeaderCell
-        cell.lblDateTime.text = MessageArray[section].MessageDate
-        return cell
-    }
-    
-    //MARK: -IBActions
-    
-    
-    //MARK: -API Calls
-    
-    
-    
-    
-
 }
+
 class chatSenderCell : UITableViewCell {
     
     @IBOutlet weak var lblBottomView: UIView!
     @IBOutlet weak var lblSenderView: chatScreenView!
     @IBOutlet weak var lblSenderMessage: chatScreenLabel!
 }
+
 class chatReciverCell : UITableViewCell {
     @IBOutlet weak var lblBottomView: UIView!
     @IBOutlet weak var lblReciverView: chatScreenView!
     @IBOutlet weak var lblReciverMessage: chatScreenLabel!
 }
+
 class chatHeaderCell : UITableViewCell {
-    
     @IBOutlet weak var lblDateTime: chatScreenLabel!
 }
+
 class ChatConversation {
     var MessageDate : String?
     var MessageData : [MessageAllData]?
@@ -169,6 +120,7 @@ class ChatConversation {
         self.MessageData = Data
     }
 }
+
 class MessageAllData {
     var isFromSender : Bool?
     var chatMessage : String?

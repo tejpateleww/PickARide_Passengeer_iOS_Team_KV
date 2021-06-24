@@ -71,6 +71,7 @@ class BaseViewController: UIViewController {
                 label.numberOfLines = 0
                 label.adjustsFontSizeToFitWidth = true
                 controller.navigationItem.titleView = label
+            
             }
             
             else if naviTitle == "CommonView" {
@@ -105,6 +106,8 @@ class BaseViewController: UIViewController {
                // controller.navigationItem.title = naviTitle //.Localized()
                 controller.navigationItem.titleView = label
             }
+            
+                
         }
         
         // controller.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : colors.black.value, NSAttributedString.Key.font: CustomFont.bold.returnFont(20)]
@@ -203,10 +206,10 @@ class BaseViewController: UIViewController {
                     arrButtons.append(btnRightBar)
                 } else if title == NavItemsRight.userProfile.value {
                     
-                    let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+                    let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 
                     let btnProfileEdit = UIButton.init()
-                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
                     btnProfileEdit.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
                     btnProfileEdit.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
@@ -237,6 +240,7 @@ class BaseViewController: UIViewController {
             }
             controller.navigationItem.rightBarButtonItems = arrButtons
         }
+        
         
         /*
         if rightImage != "" {
@@ -527,3 +531,17 @@ class BaseViewController: UIViewController {
 
 }
 
+extension UINavigationBar {
+
+    func hideNavBarSeparator() {
+        let image = UIImage()
+        shadowImage = image
+        setBackgroundImage(image, for: UIBarMetrics.default)
+    }
+
+    func showNavBarSeparator() {
+        self.setBackgroundImage(nil, for:.default)
+        self.shadowImage = nil
+        self.layoutIfNeeded()
+    }
+}
