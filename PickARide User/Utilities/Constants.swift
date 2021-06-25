@@ -27,10 +27,12 @@ let themeStatusGreen = hexStringToUIColor(hex: "1AC62F")
 
 //MARK:- Images
 let RadioCheckImg = #imageLiteral(resourceName: "ImgRightArrow")
+let RadioUncheckImg = #imageLiteral(resourceName: "icCircle")
 let HidePassword = #imageLiteral(resourceName: "HidePassword")
 let ShowPassword = #imageLiteral(resourceName: "ShowPassword")
 let UserPlaceHolder = #imageLiteral(resourceName: "Dummy-Profile")
 let BackImage = #imageLiteral(resourceName: "nav_back")
+
 
 let NotificationRefreshSideMenu = NSNotification.Name(rawValue:"NotificationRefreshSideMenu")
 let NotificationBadges = NSNotification.Name(rawValue: "NotificationBadges")

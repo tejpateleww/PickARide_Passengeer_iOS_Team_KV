@@ -282,6 +282,7 @@ class SavedPlacesLabel : UILabel{
 class ProfileLabel : UILabel{
     @IBInspectable var isProfille : Bool = false
     @IBInspectable var isProfileLabel : Bool = false
+    @IBInspectable var isAddressTitle : Bool = false
     
     
     override func awakeFromNib() {
@@ -291,6 +292,9 @@ class ProfileLabel : UILabel{
         }else if isProfileLabel{
             self.font = CustomFont.bold.returnFont(12)
             self.textColor = UIColor(hexString: "#8F9BB3")
+        }else if isAddressTitle{
+            self.font = CustomFont.bold.returnFont(18)
+            self.textColor = colors.loginPlaceHolderColor.value
         }
     }
 }

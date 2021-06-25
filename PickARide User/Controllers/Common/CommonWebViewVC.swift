@@ -11,15 +11,12 @@ import WebKit
 
 class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     
-    //MARK: - Properties
+    @IBOutlet weak var vwWebMain: UIView!
+    
     var strUrl = ""
     private let webView = WKWebView(frame: .zero)
     var strNavTitle = ""
     
-    // MARK: - IBOutlets
-    @IBOutlet weak var vwWebMain: UIView!
-    
-    // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -41,9 +38,8 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    // MARK: - Other Methods
     func setUp() {
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         webView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.webView)
         NSLayoutConstraint.activate([
@@ -52,21 +48,14 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
             self.webView.rightAnchor.constraint(equalTo: self.vwWebMain.rightAnchor),
             self.webView.topAnchor.constraint(equalTo: self.vwWebMain.topAnchor),
         ])
+        
         self.view.setNeedsLayout()
-        if strUrl != "" {
-            let request = URLRequest(url: URL.init(string: strUrl)!)
-            self.webView.navigationDelegate = self
-            self.webView.load(request)
-        } else {
-            strUrl = "https://www.google.com"
-            let request = URLRequest(url: URL.init(string: strUrl)!)
+        
+        if let url = URL(string: strUrl){
+            let request = URLRequest(url: url)
             self.webView.navigationDelegate = self
             self.webView.load(request)
         }
-        //        Utilities.showHud()
     }
     
-    // MARK: - IBActions
-    
-    // MARK: - Api Calls
 }

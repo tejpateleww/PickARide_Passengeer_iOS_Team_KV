@@ -51,6 +51,7 @@ class customTextField: UITextField {
             
         }
     }
+    
     @IBInspectable var rightImage: UIImage? {
         didSet {
             if let image = rightImage {

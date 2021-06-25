@@ -9,11 +9,6 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
-    //MARK: -Properties
-    
-    //MARK: -IBOutlets
-    
   
     @IBOutlet weak var lblSignIN: loginScreenLabel!
     @IBOutlet weak var lblWelcomeBack: loginScreenLabel!
@@ -31,8 +26,6 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var btnSIgnUP: loginScreenButton!
     
-    //MARK: -View Life Cycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +37,6 @@ class LoginVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: IBActions
     @IBAction func signUP(_ sender: Any) {
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
@@ -66,18 +58,12 @@ extension LoginVC{
     func setupLocalization() {
         lblSignIN.text = "LoginScreen_lblSignIN".Localized()
         lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
-        
         textFieldEmailID.placeholder = "LoginScreen_textFieldEmailID_place".Localized()
         textFieldPassword.placeholder = "LoginScreen_textFieldPassword_place".Localized()
-        
         btnForgotPassword.setTitle("LoginScreen_btnForgotPassword".Localized(), for: .normal)
-        
         btnSignIN.setTitle("LoginScreen_btnSignIN".Localized(), for: .normal)
-        
         lblOR.text = "LoginScreen_lblOR".Localized()
-        
         lblDontHaveanAccount.text = "LoginScreen_lblDontHaveanAccount".Localized()
-        
         btnSIgnUP.setTitle("LoginScreen_btnSIgnUP".Localized(), for: .normal)
     }
     

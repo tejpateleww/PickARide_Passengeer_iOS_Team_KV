@@ -79,18 +79,16 @@ extension RegisterVC{
 extension RegisterVC: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
+        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
         if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print termsAndConditions")
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
             controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
-            self.navigationController?.pushViewController(controller, animated: true)
         } else if (URL.absoluteString ==  "SignUpPage_textViewText4".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print privacypolicy")
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
             controller.strNavTitle = "SignUpPage_textViewText4".Localized().capitalized
-            self.navigationController?.pushViewController(controller, animated: true)
         }
         
+        self.navigationController?.pushViewController(controller, animated: true)
         return false
     }
 }

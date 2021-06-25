@@ -9,11 +9,6 @@
 import UIKit
 
 class AddCardVC: BaseViewController {
-
-    
-    //MARK: -Properties
-    
-    //MARK: -IBOutlets
     
     @IBOutlet weak var lblAddCard : TitleLabel!
     @IBOutlet weak var LblName : addCardLabel!
@@ -29,20 +24,24 @@ class AddCardVC: BaseViewController {
     @IBOutlet weak var TextFieldCountry : addCarddetailsTextField!
     @IBOutlet weak var btnSave : submitButton!
 
-    //MARK: -View Life Cycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        setData()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        // Do any additional setup after loading the view.
+        self.setUpUI()
+        self.setLocalization()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
+
+    @IBAction func placeOrderBtn(_ sender: submitButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK: -other methods
+}
+
+//MARK:- Set Up UI
+extension AddCardVC{
+    func setUpUI(){
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
     func setLocalization() {
         lblAddCard.text = "AddCardVC_lblAddCard".Localized()
         LblName.text = "AddCardVC_LblName".Localized()
@@ -58,6 +57,7 @@ class AddCardVC: BaseViewController {
         TextFieldCountry.placeholder = "AddCardVC_TextFieldCountry_place".Localized()
         btnSave.setTitle("AddCardVC_btnSave".Localized(), for: .normal)
     }
+    
     func setData() {
         TextFieldName.text = "Shane Mendoza"
         TextFieldCreditCardNumber.text = "**** - **** -  **** - **85"
@@ -65,23 +65,4 @@ class AddCardVC: BaseViewController {
         TextFieldCVV.text = "****"
         TextFieldCountry.text = "Germany"
     }
-    //MARK: -IBActions
-    
-    
-    @IBAction func placeOrderBtn(_ sender: submitButton) {
-        //             let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: BffComboVC.storyboardID)
-        //             self.navigationController?.pushViewController(controller, animated: true)
-      self.navigationController?.popViewController(animated: true)
-
-           }
-    //MARK: -API Calls
-    
-    
-    
-    
-    
-   
-    
-
-
 }

@@ -53,7 +53,7 @@ extension ReasonForCancelVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:reasonCell = tblReasonforCancel.dequeueReusableCell(withIdentifier: reasonCell.reuseIdentifier, for: indexPath) as? reasonCell ?? reasonCell()
-        cell.imgQuestion.image = RadioCheckImg
+        cell.imgQuestion.image = indexPath.row == selectIndex ? RadioCheckImg : RadioUncheckImg
         cell.imgQuestion.tintColor = indexPath.row == selectIndex ? ThemeColorEnum.Theme.rawValue : ThemeColorEnum.ThemeGray.rawValue
         cell.lblReasonforcancel.textColor = indexPath.row == selectIndex ? ThemeColorEnum.Theme.rawValue : ThemeColorEnum.ThemeGray.rawValue
        

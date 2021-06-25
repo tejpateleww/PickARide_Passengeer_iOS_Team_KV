@@ -36,7 +36,6 @@
 		181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E432A25B68DB700A76B36 /* navigationCommonView.swift */; };
 		181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E432D25B68DC600A76B36 /* navigationCommonView.xib */; };
 		181E433125B6BAAA00A76B36 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E433025B6BAAA00A76B36 /* ChatVC.swift */; };
-		181EBD95258730B300C11C08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD5D258730B300C11C08 /* ViewController.swift */; };
 		181EBD98258730B300C11C08 /* ResposneInitClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD64258730B300C11C08 /* ResposneInitClass.swift */; };
 		181EBD9F258730B300C11C08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD6E258730B300C11C08 /* Constants.swift */; };
 		181EBDA0258730B300C11C08 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBD6F258730B300C11C08 /* Utilities.swift */; };
@@ -138,7 +137,6 @@
 		181E432A25B68DB700A76B36 /* navigationCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationCommonView.swift; sourceTree = "<group>"; };
 		181E432D25B68DC600A76B36 /* navigationCommonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = navigationCommonView.xib; sourceTree = "<group>"; };
 		181E433025B6BAAA00A76B36 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		181EBD5D258730B300C11C08 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		181EBD64258730B300C11C08 /* ResposneInitClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResposneInitClass.swift; sourceTree = "<group>"; };
 		181EBD6E258730B300C11C08 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		181EBD6F258730B300C11C08 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -239,8 +237,6 @@
 				181EBD92258730B300C11C08 /* RegisterVC.swift */,
 				180979A8258769A2002070A7 /* SplashVC.swift */,
 				18FDF55525887C530084D40C /* VerifyViewController.swift */,
-				18003584258A381A006BD68A /* NotificationVC.swift */,
-				18747074258B7AF60095546B /* ForgotPasswordVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -303,10 +299,10 @@
 				180979D325876C75002070A7 /* Resources */,
 				181EBDC12587312600C11C08 /* StoryBoards */,
 				18D177D72681D8C10025271F /* EnumService */,
-				181EBDBF2587310E00C11C08 /* ViewControllers */,
+				181EBD62258730B300C11C08 /* Models */,
+				181EBDBF2587310E00C11C08 /* Controllers */,
 				181EBD6D258730B300C11C08 /* Utilities */,
 				1865CF45267C763100379A40 /* Webservices */,
-				181EBD62258730B300C11C08 /* Response Models */,
 				181EBD74258730B300C11C08 /* Validation */,
 				181EBD76258730B300C11C08 /* Classes */,
 				181EBD8B258730B300C11C08 /* AppInfo.swift */,
@@ -318,13 +314,13 @@
 			path = "PickARide User";
 			sourceTree = "<group>";
 		};
-		181EBD62258730B300C11C08 /* Response Models */ = {
+		181EBD62258730B300C11C08 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				181EBD63258730B300C11C08 /* Init */,
 				181EBD65258730B300C11C08 /* UserInfo */,
 			);
-			path = "Response Models";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		181EBD63258730B300C11C08 /* Init */ = {
@@ -391,16 +387,22 @@
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
-		181EBDBF2587310E00C11C08 /* ViewControllers */ = {
+		181EBDBF2587310E00C11C08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1848437B258B17EC0094480C /* Main */,
-				18FDF558258899F20084D40C /* PopUP */,
 				1809799C25876896002070A7 /* Login */,
-				181EBD5D258730B300C11C08 /* ViewController.swift */,
-				18F7FA4525AED38000F1F619 /* MenuViewController.swift */,
+				1848437B258B17EC0094480C /* Main */,
+				18D597282686451B006D6D7A /* Password */,
+				18D59727268644EE006D6D7A /* Driver */,
+				18D59726268644A6006D6D7A /* Address */,
+				18D597252686448F006D6D7A /* Payment */,
+				18D5972426864467006D6D7A /* Ride */,
+				18D5972326864456006D6D7A /* Chat */,
+				18D5972226864440006D6D7A /* Profile */,
+				18D5972926864572006D6D7A /* Notification */,
+				18D5972A2686459F006D6D7A /* Common */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		181EBDC12587312600C11C08 /* StoryBoards */ = {
@@ -416,27 +418,9 @@
 		1848437B258B17EC0094480C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				184C6F72258CB29A00F60FFE /* ProfileVC.swift */,
-				184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */,
-				184C6F75258CB29C00F60FFE /* RideDetailsVC.swift */,
-				184C6F74258CB29B00F60FFE /* SavedPlaceVC.swift */,
 				1848437C258B18340094480C /* HomeVC.swift */,
-				18747075258B7AF70095546B /* MyOfferVC.swift */,
-				18747076258B7AF70095546B /* MyRidesVC.swift */,
-				18747062258B55AD0095546B /* ChooseDestinationVC.swift */,
-				1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */,
-				1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */,
-				1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */,
+				18F7FA4525AED38000F1F619 /* MenuViewController.swift */,
 				180CC7F62590561E00799280 /* SettingVC.swift */,
-				180CC7F92590849600799280 /* AddNewDestinationVC.swift */,
-				180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */,
-				180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */,
-				185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */,
-				185CADFA25B5AD8800082AFC /* CancelTripVC.swift */,
-				185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */,
-				185CADE225B5A64A00082AFC /* CurrentRideDriverInformationVC.swift */,
-				181E433025B6BAAA00A76B36 /* ChatVC.swift */,
-				8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -481,6 +465,92 @@
 			path = EnumService;
 			sourceTree = "<group>";
 		};
+		18D5972226864440006D6D7A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				184C6F72258CB29A00F60FFE /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		18D5972326864456006D6D7A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				181E433025B6BAAA00A76B36 /* ChatVC.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		18D5972426864467006D6D7A /* Ride */ = {
+			isa = PBXGroup;
+			children = (
+				185CAE1425B5BD5A00082AFC /* PaymentSucessFullyVC.swift */,
+				184C6F75258CB29C00F60FFE /* RideDetailsVC.swift */,
+				18747075258B7AF70095546B /* MyOfferVC.swift */,
+				184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */,
+				180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */,
+				185CADFA25B5AD8800082AFC /* CancelTripVC.swift */,
+				185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */,
+				180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */,
+				185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */,
+				18747076258B7AF70095546B /* MyRidesVC.swift */,
+			);
+			path = Ride;
+			sourceTree = "<group>";
+		};
+		18D597252686448F006D6D7A /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */,
+				1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */,
+				1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		18D59726268644A6006D6D7A /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				184C6F74258CB29B00F60FFE /* SavedPlaceVC.swift */,
+				18747062258B55AD0095546B /* ChooseDestinationVC.swift */,
+				180CC7F92590849600799280 /* AddNewDestinationVC.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		18D59727268644EE006D6D7A /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				185CADE225B5A64A00082AFC /* CurrentRideDriverInformationVC.swift */,
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		18D597282686451B006D6D7A /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				18FDF55925889A0E0084D40C /* ChangePasswordVC.swift */,
+				18747074258B7AF60095546B /* ForgotPasswordVC.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		18D5972926864572006D6D7A /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				18003584258A381A006BD68A /* NotificationVC.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		18D5972A2686459F006D6D7A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		18F9B6E4259350E100202DA6 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,15 +582,6 @@
 				18F9B6F8259350E100202DA6 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Extention;
-			sourceTree = "<group>";
-		};
-		18FDF558258899F20084D40C /* PopUP */ = {
-			isa = PBXGroup;
-			children = (
-				18FDF55925889A0E0084D40C /* ChangePasswordVC.swift */,
-				185CAE1425B5BD5A00082AFC /* PaymentSucessFullyVC.swift */,
-			);
-			path = PopUP;
 			sourceTree = "<group>";
 		};
 		64C68AD5241BBB2900B97B25 = {
@@ -733,7 +794,6 @@
 				1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */,
 				18F9B6FC259350E100202DA6 /* Colors.swift in Sources */,
 				181EBDB7258730B300C11C08 /* AppInfo.swift in Sources */,
-				181EBD95258730B300C11C08 /* ViewController.swift in Sources */,
 				18F9B6FB259350E100202DA6 /* AuthenticationToken.swift in Sources */,
 				181EBE1D258749AE00C11C08 /* UserInfo.swift in Sources */,
 				181EBDA1258730B300C11C08 /* Singleton.swift in Sources */,
@@ -956,6 +1016,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -969,6 +1030,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eww.pickaridepassenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -980,6 +1042,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -993,6 +1056,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eww.pickaridepassenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

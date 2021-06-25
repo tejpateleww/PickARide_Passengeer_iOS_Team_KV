@@ -758,7 +758,7 @@ Number</string>
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEQ-qh-ip9">
-                                                <rect key="frame" x="16" y="301" width="288" height="46"/>
+                                                <rect key="frame" x="16" y="309" width="288" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-1t-B8O" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="46"/>
@@ -791,7 +791,7 @@ Number</string>
                                             <constraint firstItem="o64-NS-Lk8" firstAttribute="top" secondItem="5Pc-yl-6gu" secondAttribute="bottom" constant="33" id="V4z-K9-Q0M"/>
                                             <constraint firstItem="5Pc-yl-6gu" firstAttribute="leading" secondItem="I8l-8a-FgU" secondAttribute="leading" id="VGe-5f-zyZ"/>
                                             <constraint firstItem="5Pc-yl-6gu" firstAttribute="top" secondItem="I8l-8a-FgU" secondAttribute="bottom" constant="19" id="ZIW-Ef-awG"/>
-                                            <constraint firstItem="gEQ-qh-ip9" firstAttribute="top" secondItem="Z25-59-N7P" secondAttribute="bottom" id="aam-OA-WQi"/>
+                                            <constraint firstItem="gEQ-qh-ip9" firstAttribute="top" secondItem="Z25-59-N7P" secondAttribute="bottom" constant="8" id="aam-OA-WQi"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gEQ-qh-ip9" secondAttribute="bottom" constant="20" id="hIf-fF-psb"/>
                                             <constraint firstItem="o64-NS-Lk8" firstAttribute="leading" secondItem="5Pc-yl-6gu" secondAttribute="leading" id="st1-cS-fWz"/>
                                             <constraint firstItem="Z25-59-N7P" firstAttribute="trailing" secondItem="o64-NS-Lk8" secondAttribute="trailing" id="vwC-7T-OJE"/>

@@ -9,10 +9,6 @@
 import UIKit
 
 class RideDetailsVC: BaseViewController {
-
-    //MARK: -Properties
-      
-    //MARK: -IBOutlets
     
     @IBOutlet weak var lblRideDetails: RideDetailLabel!
     @IBOutlet weak var lblDate: RideDetailLabel!
@@ -30,15 +26,21 @@ class RideDetailsVC: BaseViewController {
     @IBOutlet weak var lblName: RideDetailLabel!
     @IBOutlet weak var lblRating: RideDetailLabel!
     @IBOutlet weak var btnHelp: RidesDetailsButton!
-    //MARK: -View Life Cycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocalization()
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        // Do any additional setup after loading the view.
+        self.setUpUI()
+        self.setupLocalization()
+         
     }
-    //MARK: -Other Methods
+}
+
+//MARK:- Set Up UI
+extension RideDetailsVC{
+    func setUpUI(){
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
     func setupLocalization(){
         lblRideDetails.text = "RideDetailsVC_lblRideDetails".Localized()
         lblDate.text = "RideDetailsVC_lblDate".Localized()
@@ -57,7 +59,4 @@ class RideDetailsVC: BaseViewController {
         btnRepeatRide.setTitle("RideDetailsVC_btnRepeatRide".Localized(), for: .normal)
         btnHelp.setTitle("RideDetailsVC_btnHelp".Localized(), for: .normal)
     }
-    //MARK: -IBActions
-    
-    //MARK: -API Calls
 }

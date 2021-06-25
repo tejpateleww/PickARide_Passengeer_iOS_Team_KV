@@ -56,6 +56,7 @@ class MenuViewController: UIViewController {
         sideMenuController?.delegate = self
         self.setupLocalization()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

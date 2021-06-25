@@ -18,6 +18,16 @@ class RatingYourTripVC: BaseViewController {
         self.setUpUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //Set DotedLine
+        self.DotedLine.createDottedLine(width: 1.0, color: UIColor.cyan.cgColor)
+    }
+    
     @IBAction func btnSubmitReviewClicked(_ sender: Any) {
         appDel.navigateToMain()
     }
@@ -30,9 +40,6 @@ class RatingYourTripVC: BaseViewController {
 //MARK:- Set Up UI
 extension RatingYourTripVC{
     func setUpUI(){
-        //Set DotedLine
-        self.DotedLine.createDottedLine(width: 1.0, color: UIColor.cyan.cgColor)
-        
         //Set Navigation View
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rating.value, leftImage: NavItemsLeft.cancelWhite.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
