@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 struct AppInfo {
     
     static var appVersion: String {
@@ -43,20 +44,13 @@ struct AppInfo {
         return "itms-apps://itunes.apple.com/app/id1488928328"
     }
     
-    
-    //
     static var Google_Client_Id: String {
         return ""
     }
+    
     static var Google_API_Key: String {
         return "AIzaSyD9aZBxr4MjVuneyUp4x969up5GUvTY6vk"
-//        return "AIzaSyDvJt3EcQPwKnsfIuOa0_9zd9P8L2FfUkE"
-        //
     }
-//    static var Google_API_Key: String {
-//        return "AIzaSyDZ6MXcM6b-8Oy61CKeQuwMiX71fRkWQgY"
-//        //
-//    }
 }
 
 

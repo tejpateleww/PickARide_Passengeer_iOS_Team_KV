@@ -7,16 +7,24 @@
 //
 
 import Foundation
-class SingletonClass: NSObject
-{
-    static let sharedInstance = SingletonClass()
+import CoreLocation
+
+class Singleton: NSObject{
+    static let sharedInstance = Singleton()
     
     var UserId = String()
     var LoginRegisterUpdateData : UserInfo?
     var Api_Key = String()
+    var DeviceType : String = "ios"
     var DeviceToken : String = ""
     
+    //MARK:- User' Custom Details
+    var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
   
+    func locationString() -> (latitude: String, longitude: String){
+        return (String(format: "%4d", userCurrentLocation.latitude), String(format: "%4d", userCurrentLocation.longitude))
+    }
+    
     var arrFutureYears:[String] {
         get {
             let calendar = Calendar.current
@@ -26,9 +34,9 @@ class SingletonClass: NSObject
     }
     
     func clearSingletonClass() {
-        SingletonClass.sharedInstance.UserId = ""
-        SingletonClass.sharedInstance.LoginRegisterUpdateData = nil
-        SingletonClass.sharedInstance.Api_Key = ""
+        Singleton.sharedInstance.UserId = ""
+        Singleton.sharedInstance.LoginRegisterUpdateData = nil
+        Singleton.sharedInstance.Api_Key = ""
     }
 }
 

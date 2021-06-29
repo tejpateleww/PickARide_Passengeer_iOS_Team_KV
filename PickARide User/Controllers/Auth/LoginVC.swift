@@ -12,19 +12,15 @@ class LoginVC: UIViewController {
   
     @IBOutlet weak var lblSignIN: loginScreenLabel!
     @IBOutlet weak var lblWelcomeBack: loginScreenLabel!
-    
     @IBOutlet weak var textFieldPassword: emailPasswordTextField!
     @IBOutlet weak var textFieldEmailID: emailPasswordTextField!
-    
     @IBOutlet weak var btnForgotPassword: loginScreenButton!
-    
     @IBOutlet weak var btnSignIN: submitButton!
-    
     @IBOutlet weak var lblOR: loginScreenLabel!
-    
     @IBOutlet weak var lblDontHaveanAccount: loginScreenLabel!
-    
     @IBOutlet weak var btnSIgnUP: loginScreenButton!
+    
+    var loginUserModel = LoginUserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +39,9 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnSignInClicked(_ sender: Any) {
-        user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-        appDel.navigateToMain()
+        if self.validation(){
+            self.callApi()
+        }
     }
     
     @IBAction func ForgotPassword(_ sender: Any) {
@@ -84,5 +81,37 @@ extension LoginVC{
     @objc func showHidePassword(_ sender : UIButton) {
         sender.isSelected = !sender.isSelected
         self.textFieldPassword.isSecureTextEntry = sender.isSelected
+    }
+}
+
+//MARK:- Validation & Api
+extension LoginVC{
+    func validation()->Bool{
+        var strTitle : String?
+        let checkEmail = textFieldEmailID.validatedText(validationType: .email)
+        let password = textFieldPassword.validatedText(validationType: .requiredField(field: textFieldPassword.placeholder?.lowercased() ?? ""))
+        
+        if !checkEmail.0{
+            strTitle = checkEmail.1
+        }else if !password.0{
+            strTitle = password.1
+        }
+
+        if let str = strTitle{
+            Toast.show(message: str, state: .failure)
+            return false
+        }
+        
+        return true
+    }
+    
+    func callApi(){
+        self.loginUserModel.loginVC = self
+        
+        let reqModel = LoginRequestModel()
+        reqModel.userName = self.textFieldEmailID.text ?? ""
+        reqModel.password = self.textFieldPassword.text ?? ""
+        
+        self.loginUserModel.webserviceLogin(reqModel: reqModel)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class VerifyVC: BaseViewController {
-
+    
     //MARK: -Properties
     var phoneNumber = " +966 *** **** 656"
     var isFrmRegister = false
@@ -32,6 +32,7 @@ class VerifyVC: BaseViewController {
         super.viewDidLoad()
         setLocalization()
         setValue()
+        self.configureOtpField()
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         // Do any additional setup after loading the view.
     }
@@ -39,7 +40,39 @@ class VerifyVC: BaseViewController {
         
     }
     
-    //MARK: -other methods
+    //MARK: -IBActions
+    @IBAction func Verify(_ sender: Any) {
+        if isFrmRegister {
+            user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            appDel.navigateToMain()
+        } else {
+            let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
+            controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
+            controller.isChangePassword = false
+            
+            controller.btnSubmitClosure = {
+                user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToLogin()
+            }
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.navigationBar.isHidden = true
+            self.present(navigationController, animated: true, completion: nil)
+        }
+    }
+}
+
+//MARK:- Set Up UI
+extension VerifyVC{
+    func configureOtpField() {
+        self.textFieldOTP1.textContentType = .oneTimeCode
+        self.textFieldOTP2.textContentType = .oneTimeCode
+        self.textFieldOTP3.textContentType = .oneTimeCode
+        self.textFieldOTP4.textContentType = .oneTimeCode
+    }
+    
     func setLocalization() {
         lblVerifyPhoneNumber.text = "VerifyVC_lblVerifyPhoneNumber".Localized()
         lblCheckSMS.text = "VerifyVC_lblCheckSMS".Localized() + phoneNumber
@@ -67,32 +100,5 @@ class VerifyVC: BaseViewController {
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.loginPlaceHolderColor.value, range: NSMakeRange(0, attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.phoneNumberColor.value , range: range)
         lblCheckSMS.attributedText = attributedString
-        //
     }
-    
-    //MARK: -IBActions
-    @IBAction func Verify(_ sender: Any) {
-        if isFrmRegister {
-            user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToMain()
-        } else {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
-                controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
-                controller.isChangePassword = false
-            
-        controller.btnSubmitClosure = {
-            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToLogin()
-        }
-        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        navigationController.modalTransitionStyle = .crossDissolve
-        navigationController.navigationBar.isHidden = true
-        self.present(navigationController, animated: true, completion: nil)
-        }
-    }
-    
-    //MARK: -API Calls
-
 }

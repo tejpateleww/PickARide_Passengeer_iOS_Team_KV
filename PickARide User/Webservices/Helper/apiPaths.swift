@@ -32,7 +32,7 @@ enum APIEnvironment : String {
                 if user_defaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
                         if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil,UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
-                            return ["x-api-key":SingletonClass.sharedInstance.Api_Key]
+                            return ["x-api-key":Singleton.sharedInstance.Api_Key]
                         }else{
                             return ["key":"PickARide951*#*"]
                         }
@@ -47,11 +47,11 @@ enum APIEnvironment : String {
 enum ApiKey: String {
     case Init                                 = "init/"
     case getCountryList                       = "country_list"
+    case login                                = "login"
     case registerOTP                          = "register_otp"
     case uploadDocs                           = "upload_docs"
     case register                             = "register"
     case vehicleTypeList                      = "vehicle_type_list"
-    case login                                = "login"
     case updateBasicInfo                      = "update_basic_info"
     case updateBankInfo                       = "update_bank_info"
     case vehicleInfo                          = "update_vehicle_info"
@@ -71,9 +71,8 @@ enum ApiKey: String {
     case changeDuty                           = "change_duty"
     
     
-    
-    
-    case socialCheckExists                    = "social_login"
+
+    case socialLogin                    = "social_login"
     case updateProfile                        = "profile_update"
     
     

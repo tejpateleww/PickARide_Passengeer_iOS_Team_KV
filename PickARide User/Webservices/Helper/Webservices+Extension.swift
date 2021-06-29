@@ -68,5 +68,3 @@ extension Encodable {
         return dictionary
     }
 }
-
-

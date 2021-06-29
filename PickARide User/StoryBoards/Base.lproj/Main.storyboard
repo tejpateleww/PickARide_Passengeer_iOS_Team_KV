@@ -2641,6 +2641,9 @@
                                                     <constraint firstAttribute="height" constant="50" id="j5P-3h-tt5"/>
                                                 </constraints>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="btnSave:" destination="OOL-4n-Wig" eventType="touchUpInside" id="zgh-bS-m68"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3075,6 +3078,7 @@
                         <outlet property="btnCamera" destination="8H7-NA-Wzj" id="tDv-Ep-VEU"/>
                         <outlet property="btnPasword" destination="grF-6g-GgX" id="qNq-wP-3lU"/>
                         <outlet property="btnProfile" destination="BC3-P2-EV3" id="MQw-gh-Gfq"/>
+                        <outlet property="btnSave" destination="oYt-61-zhj" id="RhB-Ms-tkR"/>
                         <outlet property="imgProfile" destination="zOc-OD-Ilz" id="CzL-a6-3rg"/>
                         <outlet property="lblEmail" destination="WPl-o5-O8l" id="s8m-T4-Ajd"/>
                         <outlet property="lblFirstName" destination="BTd-98-Yiv" id="2hY-eq-CMD"/>
@@ -6500,6 +6504,20 @@
             <point key="canvasLocation" x="9086" y="-727"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6Pe-yI-iX4">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="MMg-AW-tZd">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="Zjg-Ca-cwA">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="aQs-tF-B1u">
+            <size key="intrinsicContentSize" width="189.35000000000002" height="26.670000000000002"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Dummy-Profile" width="100" height="100"/>
         <image name="Dummy-RightShape" width="24" height="24"/>

@@ -25,12 +25,11 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var lblPassword: ProfileLabel!
     @IBOutlet weak var textFieldPassword: ProfileTextField!
     @IBOutlet weak var btnCamera: UIButton!
-    
-    
+    @IBOutlet weak var btnSave: submitButton!
     @IBOutlet var textFieldCollection: [ProfileTextField]!
     @IBOutlet weak var btnPasword: UIButton!
-    var currentEditStatus = false
     
+    var currentEditStatus = false
     var imagePicker : ImagePicker?
     var selectedImage : UIImage?
     
@@ -57,6 +56,10 @@ class ProfileVC: BaseViewController {
         self.btnPasword.isUserInteractionEnabled = sender.isSelected
         self.btnProfile.isUserInteractionEnabled = sender.isSelected
         self.btnCamera.isHidden = !sender.isSelected
+        self.btnSave.isHidden = !sender.isSelected
+        if sender.isSelected{
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     //MARK: -IBActions
@@ -85,6 +88,10 @@ class ProfileVC: BaseViewController {
         navigationController.modalTransitionStyle = .crossDissolve
         navigationController.navigationBar.isHidden = true
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func btnSave(_ sender: Any) {
     }
 }
 
