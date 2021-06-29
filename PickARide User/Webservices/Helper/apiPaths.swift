@@ -31,7 +31,7 @@ enum APIEnvironment : String {
                 
                 if user_defaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
-                        if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil,UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
+                        if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
                             return ["x-api-key":Singleton.sharedInstance.Api_Key]
                         }else{
                             return ["key":"PickARide951*#*"]
@@ -40,7 +40,7 @@ enum APIEnvironment : String {
                 }
             }
         }
-        return ["key":"Danfo951*#*"]
+        return ["key":"PickARide951*#*"]
     }
 }
 

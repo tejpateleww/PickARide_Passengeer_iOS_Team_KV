@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.0.0)
   - Cosmos (23.0.0)
   - Firebase/CoreOnly (7.3.0):
     - FirebaseCore (= 7.3.0)
@@ -70,10 +69,8 @@ PODS:
   - PromisesObjC (1.2.11)
   - SideMenuSwift (2.0.7)
   - SkyFloatingLabelTextField (4.0.0)
-  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (= 5.0)
   - Cosmos (~> 23.0)
   - Firebase/Messaging
   - GoogleMaps
@@ -82,11 +79,9 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 6.3.0)
   - SideMenuSwift
   - SkyFloatingLabelTextField
-  - SwiftyJSON (= 4.0)
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - Cosmos
     - Firebase
     - FirebaseCore
@@ -104,10 +99,8 @@ SPEC REPOS:
     - PromisesObjC
     - SideMenuSwift
     - SkyFloatingLabelTextField
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
@@ -125,8 +118,7 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 62c5308e8c14ed3f894ef70b6b44b1835ad54973
+PODFILE CHECKSUM: c9ecea887d1fbddad0108f2332b2bf66fda27a0f
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

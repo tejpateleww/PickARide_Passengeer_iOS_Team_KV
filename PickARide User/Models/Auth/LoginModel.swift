@@ -40,7 +40,6 @@ class LoginResponseModel: Codable{
     }
 }
 
-
 // MARK: - DataClass
 class ProfileModel: Codable {
     var id, companyID, firstName, lastName: String?

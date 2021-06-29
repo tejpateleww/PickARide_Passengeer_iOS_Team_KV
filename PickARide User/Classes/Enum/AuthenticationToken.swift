@@ -20,20 +20,3 @@ enum AuthenticationToken:Int{
     }
     
 }
-import Alamofire
-
-enum ParaEncoding :Int{
-    case urlDefault
-    case urlQueryString
-    case jsonDefault
-    
-    static var mapper: [ParaEncoding: ParameterEncoding] = [
-        .urlDefault: URLEncoding.default,
-        .urlQueryString: URLEncoding.queryString,
-        .jsonDefault: JSONEncoding.default
-    ]
-    
-    var value: ParameterEncoding {
-        return ParaEncoding.mapper[self]!
-    }
-}

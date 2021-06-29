@@ -252,6 +252,45 @@ class Utilities:NSObject{
         }
     }
     
+    class func getMessageFromApiResponse(param: Any) -> String {
+        
+        if let res = param as? String {
+            return res
+            
+        }else if let resDict = param as? NSDictionary {
+            
+            if let msg = resDict.object(forKey: "message") as? String {
+                return msg
+                
+            }else if let msg = resDict.object(forKey: "msg") as? String {
+                return msg
+                
+            }else if let msg = resDict.object(forKey: "message") as? [String] {
+                return msg.first ?? ""
+                
+            }
+            
+        }else if let resAry = param as? NSArray {
+            
+            if let dictIndxZero = resAry.firstObject as? NSDictionary {
+                if let msg = dictIndxZero.object(forKey: "message") as? String {
+                    return msg
+                    
+                }else if let msg = dictIndxZero.object(forKey: "msg") as? String {
+                    return msg
+                    
+                }else if let msg = dictIndxZero.object(forKey: "message") as? [String] {
+                    return msg.first ?? ""
+                }
+                
+            }else if let msg = resAry as? [String] {
+                return msg.first ?? ""
+                
+            }
+        }
+        return UrlConstant.SomethingWentWrong
+    }
+    
     
     class func showHud()
     {
@@ -485,7 +524,7 @@ class Utilities:NSObject{
     {
         // Unarchive
         if let archivedData = try? Data(contentsOf: URL(string: fileURL)!),
-                let myObject = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archivedData)) as? UserInfo {
+                let myObject = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archivedData)) as? ProfileModel {
             return myObject
         }
         

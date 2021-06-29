@@ -13,7 +13,11 @@ class Singleton: NSObject{
     static let sharedInstance = Singleton()
     
     var UserId = String()
-    var LoginRegisterUpdateData : UserInfo?
+    
+    //Objects
+    var UserProfilData : ProfileModel?
+    var CountryList = [CountryDetilsModel]()       
+    
     var Api_Key = String()
     var DeviceType : String = "ios"
     var DeviceToken : String = ""
@@ -35,7 +39,7 @@ class Singleton: NSObject{
     
     func clearSingletonClass() {
         Singleton.sharedInstance.UserId = ""
-        Singleton.sharedInstance.LoginRegisterUpdateData = nil
+        Singleton.sharedInstance.UserProfilData = nil
         Singleton.sharedInstance.Api_Key = ""
     }
 }

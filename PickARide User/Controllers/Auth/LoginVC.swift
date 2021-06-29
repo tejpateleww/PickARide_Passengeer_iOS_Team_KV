@@ -40,7 +40,7 @@ class LoginVC: UIViewController {
     
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
-            self.callApi()
+            self.callLoginApi()
         }
     }
     
@@ -48,6 +48,11 @@ class LoginVC: UIViewController {
         let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    @IBAction func btnSocialRequests(_ sender: Any) {
+        
+    }
+    
 }
 
 //MARK: Other Methods
@@ -105,7 +110,7 @@ extension LoginVC{
         return true
     }
     
-    func callApi(){
+    func callLoginApi(){
         self.loginUserModel.loginVC = self
         
         let reqModel = LoginRequestModel()
@@ -113,5 +118,13 @@ extension LoginVC{
         reqModel.password = self.textFieldPassword.text ?? ""
         
         self.loginUserModel.webserviceLogin(reqModel: reqModel)
+    }
+    
+    func callSocialLoginApi(){
+        self.loginUserModel.loginVC = self
+        
+        let reqModel = SocialLoginRequestModel()
+        
+        self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
     }
 }

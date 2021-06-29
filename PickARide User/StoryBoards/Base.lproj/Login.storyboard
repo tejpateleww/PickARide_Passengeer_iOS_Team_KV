@@ -193,6 +193,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-R2-jfp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                                 <state key="normal" image="ic_Facebook"/>
+                                                                <connections>
+                                                                    <action selector="btnSocialRequests:" destination="Umi-hn-684" eventType="touchUpInside" id="kgX-79-0sQ"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -211,6 +214,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-F4-uSt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                                 <state key="normal" image="ic_Google"/>
+                                                                <connections>
+                                                                    <action selector="btnSocialRequests:" destination="Umi-hn-684" eventType="touchUpInside" id="l8N-4J-OzI"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
