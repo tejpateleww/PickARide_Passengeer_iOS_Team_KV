@@ -36,7 +36,7 @@ class RegisterVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
-        let controller = VerifyVC.instantiate(fromAppStoryboard: .Login)
+        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
         controller.isFrmRegister = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

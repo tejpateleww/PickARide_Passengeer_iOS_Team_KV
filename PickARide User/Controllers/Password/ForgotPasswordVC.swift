@@ -49,7 +49,7 @@ class ForgotPasswordVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func btnContinue(_ sender: Any) {
-        let controller = VerifyVC.instantiate(fromAppStoryboard: .Login)
+        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     //MARK: -API Calls

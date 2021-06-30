@@ -73,6 +73,8 @@
 		18747077258B7AF70095546B /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747074258B7AF60095546B /* ForgotPasswordVC.swift */; };
 		18747078258B7AF70095546B /* MyOfferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747075258B7AF70095546B /* MyOfferVC.swift */; };
 		18747079258B7AF70095546B /* MyRidesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747076258B7AF70095546B /* MyRidesVC.swift */; };
+		1877A639268C3B8B00041E6C /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877A638268C3B8B00041E6C /* OtpVC.swift */; };
+		1877A63B268C3C6F00041E6C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877A63A268C3C6F00041E6C /* Theme.swift */; };
 		187A27F126805B1400F936B2 /* ConstanceEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A27F026805B1400F936B2 /* ConstanceEnums.swift */; };
 		187A27F326805B5800F936B2 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A27F226805B5800F936B2 /* Toast.swift */; };
 		187BC461268AD7EC00CAD121 /* AppDelegate+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC460268AD7EC00CAD121 /* AppDelegate+Methods.swift */; };
@@ -183,6 +185,8 @@
 		18747074258B7AF60095546B /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		18747075258B7AF70095546B /* MyOfferVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOfferVC.swift; sourceTree = "<group>"; };
 		18747076258B7AF70095546B /* MyRidesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesVC.swift; sourceTree = "<group>"; };
+		1877A638268C3B8B00041E6C /* OtpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
+		1877A63A268C3C6F00041E6C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		187A27F026805B1400F936B2 /* ConstanceEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstanceEnums.swift; sourceTree = "<group>"; };
 		187A27F226805B5800F936B2 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		187BC460268AD7EC00CAD121 /* AppDelegate+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Methods.swift"; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				18F9B6E9259350E100202DA6 /* Extention */,
 				180979CF25876C45002070A7 /* BaseVC */,
 				181EBD86258730B300C11C08 /* CustomClass */,
+				1877A63A268C3C6F00041E6C /* Theme.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 		181EBDBF2587310E00C11C08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1877A637268C3B7D00041E6C /* Otp */,
 				1809799C25876896002070A7 /* Auth */,
 				1848437B258B17EC0094480C /* Main */,
 				18D597282686451B006D6D7A /* Password */,
@@ -464,6 +470,14 @@
 				1865CF4F267C763100379A40 /* Webservices+Extension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		1877A637268C3B7D00041E6C /* Otp */ = {
+			isa = PBXGroup;
+			children = (
+				1877A638268C3B8B00041E6C /* OtpVC.swift */,
+			);
+			path = Otp;
 			sourceTree = "<group>";
 		};
 		187BC48B268ADAD400CAD121 /* ViewModel */ = {
@@ -837,9 +851,11 @@
 				18F9B705259350E100202DA6 /* UITableViewCell+Extension.swift in Sources */,
 				1865CF56267C763100379A40 /* CodableResponseServiceClass.swift in Sources */,
 				185CADFC25B5AD8900082AFC /* CancelTripVC.swift in Sources */,
+				1877A639268C3B8B00041E6C /* OtpVC.swift in Sources */,
 				181EBDA2258730B300C11C08 /* ImagePicker.swift in Sources */,
 				181EBDBC258730B300C11C08 /* AppDelegate.swift in Sources */,
 				1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */,
+				1877A63B268C3C6F00041E6C /* Theme.swift in Sources */,
 				18F9B6FC259350E100202DA6 /* Colors.swift in Sources */,
 				181EBDB7258730B300C11C08 /* AppInfo.swift in Sources */,
 				187BC47B268AD96400CAD121 /* AppDelegate+Cycle.swift in Sources */,
