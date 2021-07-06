@@ -21,6 +21,8 @@ target 'PickARide User' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Messaging'
   
+  pod 'FormTextField'
+  
   # Pods for ApiStructureModulex
   
 end
