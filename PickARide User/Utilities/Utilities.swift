@@ -578,28 +578,6 @@ class Utilities:NSObject{
         
     }
     
-    /*
-     var instance: DataClass? = nil
-     class DataClass {
-     
-     var str = ""
-     
-     var laAnimation: AnimationView?
-     var viewBackFull: UIView?
-     
-     
-     class func getInstance() -> DataClass? {
-     let lockQueue = DispatchQueue(label: "self")
-     lockQueue.sync {
-     if instance == nil {
-     instance = DataClass()
-     }
-     }
-     return instance
-     }
-     }
-     */
-    
     public func formattedNumber(number: String, mask:String) -> String {
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         var result = ""

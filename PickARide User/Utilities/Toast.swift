@@ -30,7 +30,6 @@ class Toast {
         
         let toastLabel = UILabel(frame: CGRect())
         let statusImage = UIImageView(frame: CGRect())
-        
         switch state {
         case .success:
             toastContainer.backgroundColor = ThemeColorEnum.ThemeGreen.rawValue//UIColor(red: 97.0/255.0, green: 161.0/255.0, blue: 23.0/255.0, alpha: 1.0)// UIColor.green//.withAlphaComponent(0.9)
@@ -51,6 +50,7 @@ class Toast {
         
         statusImage.layer.cornerRadius = 15
         statusImage.clipsToBounds = true
+        
         
         toastContainer.alpha = 1.0
         toastContainer.layer.cornerRadius = 15
@@ -106,10 +106,12 @@ class Toast {
             
             UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveLinear, .allowUserInteraction], animations: {
                 //                toastContainer.alpha = 1.0
-                window.layoutIfNeeded()
+                    window.layoutIfNeeded()
+                
                 
             }, completion: { completed in
                 c3.constant = 0
+                
                 UIView.animate(withDuration: 0.1, delay: delay, options: .curveLinear, animations: {
                     //                    toastContainer.alpha = 0.0
                     window.layoutIfNeeded()

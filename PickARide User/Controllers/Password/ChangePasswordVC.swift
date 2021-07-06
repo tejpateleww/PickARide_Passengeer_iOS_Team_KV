@@ -83,13 +83,13 @@ extension ChangePasswordVC{
     
     func setUpTextField(){
         self.textFieldOldPassword.tag = 0
-        self.setupTextfields(textfield: self.textFieldOldPassword)
+        self.textFieldOldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
         
         self.textFieldNewPassword.tag = 1
-        self.setupTextfields(textfield: self.textFieldNewPassword)
+        self.textFieldNewPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
         
         self.textFieldConfirmPassword.tag = 2
-        self.setupTextfields(textfield: self.textFieldConfirmPassword)
+        self.textFieldConfirmPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
     func setupTextfields(textfield : UITextField) {

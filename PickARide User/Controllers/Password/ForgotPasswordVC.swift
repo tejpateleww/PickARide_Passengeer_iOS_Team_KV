@@ -9,28 +9,20 @@
 import UIKit
 
 class ForgotPasswordVC: BaseViewController {
-
-    //MARK: -Properties
-      
-    //MARK: -IBOutlets
-    
     
     @IBOutlet weak var lblForgotPassword: ForgotPasswordLabel!
     @IBOutlet weak var lblQuestion: ForgotPasswordLabel!
     @IBOutlet weak var lblDescription: ForgotPasswordLabel!
     @IBOutlet weak var lblCountryCode: ForgotPasswordLabel!
-    
-    
     @IBOutlet weak var textFieldPhoneNumber: phonenumberTextField!
-    
     @IBOutlet weak var btnContinue: submitButton!
     
-    //MARK: -View Life Cycle Methods
+    var forgotPasswordUserModel = PasswordUserModel()
+    
     override func viewDidLoad() {
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         super.viewDidLoad()
         setupLocalization()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,5 +44,32 @@ class ForgotPasswordVC: BaseViewController {
         let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    //MARK: -API Calls
+}
+
+//MARK:- Validation & Api
+extension ForgotPasswordVC{
+    func validation()->Bool{
+        var strTitle : String?
+        let checkEmail = textFieldPhoneNumber.validatedText(validationType: .email)
+        
+        if !checkEmail.0{
+            strTitle = checkEmail.1
+        }
+
+        if let str = strTitle{
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
+            return false
+        }
+        
+        return true
+    }
+    
+    func callForgotPasswordApi(){
+        self.forgotPasswordUserModel.forgotPasswordVC = self
+        
+        let reqModel = ForgotPasswordReqModel()
+        reqModel.email = self.textFieldPhoneNumber.text ?? ""
+        
+        self.forgotPasswordUserModel.webserviceForgotPassword(reqModel: reqModel)
+    }
 }

@@ -15,7 +15,7 @@ struct AppInfo {
         if let app_version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String {
             return app_version
         } else{
-            return "no Version"
+            return "No Version"
         }
     }
     

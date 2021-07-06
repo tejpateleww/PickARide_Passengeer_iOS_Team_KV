@@ -21,12 +21,13 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btnSIgnUP: loginScreenButton!
     
     var loginUserModel = LoginUserModel()
+    var googleSignInManager : GoogleLoginProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLocalization()
-        self.setupTextfields(textfield: self.textFieldPassword)
+        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +40,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnSignInClicked(_ sender: Any) {
-        if self.validation(){
-            self.callLoginApi()
-        }
+//        if self.validation(){
+//            self.callLoginApi()
+//        }
+        appDel.navigateToMain()
     }
     
     @IBAction func ForgotPassword(_ sender: Any) {
@@ -49,10 +51,19 @@ class LoginVC: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    @IBAction func btnSocialRequests(_ sender: Any) {
-        
+    @IBAction func btnSocialRequests(_ sender: UIButton) {
+        self.view.endEditing(true)
+        print(#function)
+        return
+        if sender.tag == 0{
+            let faceBookSignInManager = FacebookLoginProvider(self)
+            faceBookSignInManager.delegate = self
+            faceBookSignInManager.fetchToken(from: self)
+        }else{
+            self.googleSignInManager = GoogleLoginProvider(self)
+            self.googleSignInManager?.delegate = self
+        }
     }
-    
 }
 
 //MARK: Other Methods
@@ -67,20 +78,6 @@ extension LoginVC{
         lblOR.text = "LoginScreen_lblOR".Localized()
         lblDontHaveanAccount.text = "LoginScreen_lblDontHaveanAccount".Localized()
         btnSIgnUP.setTitle("LoginScreen_btnSIgnUP".Localized(), for: .normal)
-    }
-    
-    func setupTextfields(textfield : UITextField) {
-        let button = UIButton(type: .custom)
-        button.isSelected = true
-        button.setImage(ShowPassword, for: .normal)
-        button.setImage(HidePassword, for: .selected)
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -16, bottom: -5, right: 0)
-        button.frame = CGRect(x: CGFloat(textfield.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.tag = textfield.tag
-        textfield.isSelected = true
-        button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
-        textfield.rightView = button
-        textfield.rightViewMode = .always
     }
     
     @objc func showHidePassword(_ sender : UIButton) {
@@ -103,7 +100,7 @@ extension LoginVC{
         }
 
         if let str = strTitle{
-            Toast.show(message: str, state: .failure)
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
             return false
         }
         
@@ -126,5 +123,16 @@ extension LoginVC{
         let reqModel = SocialLoginRequestModel()
         
         self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
+    }
+}
+
+//MARK:- Social Sign In
+extension LoginVC: SocialSignInDelegate{
+    func FatchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?) {
+        if let userObj = user{
+            if let _ = userObj.email{
+            }else{
+            }
+        }
     }
 }

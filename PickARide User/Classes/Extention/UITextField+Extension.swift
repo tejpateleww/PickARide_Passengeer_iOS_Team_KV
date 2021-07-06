@@ -28,7 +28,19 @@ extension UITextField{
           return validator.validated(self.text!)
       }
     
-
-
+    
+    func setPasswordVisibility(vc: UIViewController, action: Selector) {
+        let button = UIButton(type: .custom)
+        button.isSelected = true
+        button.setImage(ShowPassword, for: .normal)
+        button.setImage(HidePassword, for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 0, right: 0)
+        button.frame = CGRect(x: CGFloat(self.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.tag = self.tag
+        self.isSelected = true
+        button.addTarget(vc, action: action, for: .touchUpInside)
+        self.rightView = button
+        self.rightViewMode = .always
+    }
     
 }

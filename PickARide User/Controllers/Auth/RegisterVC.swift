@@ -27,7 +27,7 @@ class RegisterVC: BaseViewController {
         super.viewDidLoad()
         setLocalization()
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        self.setupTextfields(textfield: self.textFieldPassword)
+        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,20 +54,6 @@ extension RegisterVC{
         textFieldPassword.placeholder = "SignUpPage_textFieldPassword_place".Localized()
         textView.delegate = self
         btnSignUP.setTitle("SignUpPage_btnSIgnUP".Localized(), for: .normal)
-    }
-    
-    func setupTextfields(textfield : UITextField) {
-        let button = UIButton(type: .custom)
-        button.isSelected = true
-        button.setImage(ShowPassword, for: .normal)
-        button.setImage(HidePassword, for: .selected)
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -16, bottom: -5, right: 0)
-        button.frame = CGRect(x: CGFloat(textfield.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.tag = textfield.tag
-        textfield.isSelected = true
-        button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
-        textfield.rightView = button
-        textfield.rightViewMode = .always
     }
     
     @objc func showHidePassword(_ sender : UIButton) {

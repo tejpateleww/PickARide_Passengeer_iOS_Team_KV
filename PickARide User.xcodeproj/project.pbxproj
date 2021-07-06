@@ -87,6 +87,8 @@
 		187BC49D268AEFE200CAD121 /* SocialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC49C268AEFE200CAD121 /* SocialModel.swift */; };
 		187BC4F6268B140800CAD121 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC4F5268B140800CAD121 /* UserDefaults+Extension.swift */; };
 		187BC4FB268B1EC900CAD121 /* SocialSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */; };
+		18B364A7269411EA00CE8E3D /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364A6269411EA00CE8E3D /* PasswordModel.swift */; };
+		18B364C52694121500CE8E3D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364C42694121500CE8E3D /* PasswordViewModel.swift */; };
 		18D177D92681D9110025271F /* ColorsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D177D82681D9110025271F /* ColorsTypes.swift */; };
 		18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7FA4525AED38000F1F619 /* MenuViewController.swift */; };
 		18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E5259350E100202DA6 /* NavigationItems.swift */; };
@@ -199,6 +201,8 @@
 		187BC49C268AEFE200CAD121 /* SocialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialModel.swift; sourceTree = "<group>"; };
 		187BC4F5268B140800CAD121 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignInManager.swift; sourceTree = "<group>"; };
+		18B364A6269411EA00CE8E3D /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
+		18B364C42694121500CE8E3D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		18D177D82681D9110025271F /* ColorsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTypes.swift; sourceTree = "<group>"; };
 		18F7FA4525AED38000F1F619 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18F9B6E5259350E100202DA6 /* NavigationItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItems.swift; sourceTree = "<group>"; };
@@ -492,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				187BC48E268ADDCD00CAD121 /* LoginViewModel.swift */,
+				18B364C42694121500CE8E3D /* PasswordViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				187BC492268ADE2500CAD121 /* LoginModel.swift */,
 				187BC499268AE58800CAD121 /* RegisterModel.swift */,
 				187BC49C268AEFE200CAD121 /* SocialModel.swift */,
+				18B364A6269411EA00CE8E3D /* PasswordModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -908,6 +914,7 @@
 				18F9B706259350E100202DA6 /* UIStoryboard+Extension.swift in Sources */,
 				180979F325876FA8002070A7 /* CustomButton.swift in Sources */,
 				18F9B700259350E100202DA6 /* UIButton+Extension.swift in Sources */,
+				18B364A7269411EA00CE8E3D /* PasswordModel.swift in Sources */,
 				180979AC25876AA2002070A7 /* AppStoryboards.swift in Sources */,
 				18FDF55625887C530084D40C /* VerifyVC.swift in Sources */,
 				1865CF52267C763100379A40 /* UrlServiceConstant.swift in Sources */,
@@ -916,6 +923,7 @@
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				18F9B6FA259350E100202DA6 /* Fonts.swift in Sources */,
+				18B364C52694121500CE8E3D /* PasswordViewModel.swift in Sources */,
 				181E433125B6BAAA00A76B36 /* ChatVC.swift in Sources */,
 				1865CF57267C763100379A40 /* Webservices+Extension.swift in Sources */,
 			);

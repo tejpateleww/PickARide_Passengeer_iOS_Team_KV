@@ -11,13 +11,13 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 class SocialUser: Codable{
-    var userId : String = ""
-    var token : String = ""
-    var firstName : String = ""
-    var lastName : String = ""
-    var email : String? = nil
-    var profile : String = ""
-    var socialType : String = ""
+    var userId : String?
+    var token : String?
+    var firstName : String?
+    var lastName : String?
+    var email : String?
+    var profile : String?
+    var socialType : String?
 }
 
 enum LoginResult {
@@ -68,11 +68,11 @@ class FacebookLoginProvider {
                 if let result = conresult, let dataDic = result as? [String: Any]{
                     let obj = SocialUser()
                     obj.socialType = SocialType.FaceBook.rawValue
-                    obj.userId = dataDic["id"] as? String ?? ""
+                    obj.userId = dataDic["id"] as? String
                     obj.token = token
-                    obj.firstName = dataDic["first_name"] as? String ?? ""
-                    obj.lastName = dataDic["last_name"] as? String ?? ""
-                    obj.email = dataDic["email"] as? String ?? ""
+                    obj.firstName = dataDic["first_name"] as? String
+                    obj.lastName = dataDic["last_name"] as? String
+                    obj.email = dataDic["email"] as? String
                     if let profileUrl = dataDic["profileURL"] as? URL{
                         obj.profile = profileUrl.absoluteString
                     }
@@ -115,8 +115,8 @@ extension GoogleLoginProvider: GIDSignInDelegate {
         obj.userId = user.userID
         obj.token = user.authentication.idToken
         obj.email = user.profile.email
-        obj.firstName = user.profile.givenName ?? ""
-        obj.lastName = user.profile.familyName ?? ""
+        obj.firstName = user.profile.givenName
+        obj.lastName = user.profile.familyName
         obj.profile = user.profile.imageURL(withDimension: 200)?.absoluteString ?? ""
 
         self.delegate?.FatchUser(socialType: .Google, success: true, user: obj, error: nil)

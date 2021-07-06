@@ -11,6 +11,7 @@ class UrlConstant{
     static let ResponseMessage = "message"
     
     //MARK:- Message Title
+    static let Required = "Required"
     static let Success = "Success"
     static let Failed = "Failed"
     static let Status = "status"

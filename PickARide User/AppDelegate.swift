@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         FirebaseApp.configure()
-        GMSServices.provideAPIKey("\(AppInfo.Google_API_Key)")
-        GMSPlacesClient.provideAPIKey("\(AppInfo.Google_API_Key)")
+        GMSServices.provideAPIKey(AppInfo.Google_API_Key)
+        GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         
         SideMenuController.preferences.basic.menuWidth = UIScreen.main.bounds.width - 100
         SideMenuController.preferences.basic.defaultCacheKey = "0"

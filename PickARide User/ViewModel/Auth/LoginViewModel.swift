@@ -31,11 +31,10 @@ class LoginUserModel{
                 if let userID = response?.data?.id{
                     Singleton.sharedInstance.UserId = userID
                 }
-                
-                Toast.show(message: apiMessage, state: .success)
+                Toast.show(title: UrlConstant.Success, message: apiMessage, state: .success)
                 appDel.navigateToMain()
             }else{
-                Toast.show(message: apiMessage, state: .failure)
+                Toast.show(title: UrlConstant.Failed, message: apiMessage, state: .failure)
             }
         }
     }
@@ -62,10 +61,10 @@ class LoginUserModel{
                     Singleton.sharedInstance.UserId = userID
                 }
                 
-                Toast.show(message: apiMessage, state: .success)
+                Toast.show(title: UrlConstant.Success, message: apiMessage, state: .success)
                 appDel.navigateToMain()
             }else{
-                Toast.show(message: apiMessage, state: .failure)
+                Toast.show(title: UrlConstant.Failed, message: apiMessage, state: .failure)
             }
         }
     }
