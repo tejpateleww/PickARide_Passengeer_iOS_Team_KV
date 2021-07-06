@@ -33,7 +33,7 @@ class CurrentRideDetailsVC: BaseViewController {
     //MARK: -IBActions
     
     @IBAction func btnProfileClicked(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RatingYourTripVC.storyboardID)
+        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

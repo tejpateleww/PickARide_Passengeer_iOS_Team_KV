@@ -65,7 +65,7 @@ extension RegisterVC{
 extension RegisterVC: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
+        let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)
         if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
             print("Print termsAndConditions")
             controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized

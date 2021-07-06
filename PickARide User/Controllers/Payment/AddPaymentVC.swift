@@ -48,16 +48,15 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     
     //MARK: -btnAction
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: AddCardVC.storyboardID)
+        let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if isFromSchedulled{
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
-                PaymentSucessFullyVC
+            let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
             controller.dismissedClosour = {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+                let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -67,10 +66,9 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             navigationController.navigationBar.isHidden = true
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: PaymentSucessFullyVC.storyboardID) as!
-                PaymentSucessFullyVC
+            let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
             controller.dismissedClosour = {
-                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
+                let controller = CurrentRideDriverInformationVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -80,11 +78,6 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             navigationController.navigationBar.isHidden = true
             self.present(navigationController, animated: true, completion: nil)
         }
-        
-        
-        
-//                let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDriverInformationVC.storyboardID)
-//                self.navigationController?.pushViewController(controller, animated: true)
         }
     //MARK: -tblViewMethods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,7 +186,7 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         case 0:
             if isFromSideMenu{
                 if indexPath.row == 0 {
-                    let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: WalletHistoryVC.storyboardID)
+                    let controller = WalletHistoryVC.instantiate(fromAppStoryboard: .Main)
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }

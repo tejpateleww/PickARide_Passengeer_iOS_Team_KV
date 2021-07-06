@@ -58,7 +58,7 @@ class CancelTripVC: BaseViewController {
     //MARK: -IBActions
     
     @IBAction func btnCancelClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ReasonForCancelVC.storyboardID)
+        let controller = ReasonForCancelVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func btnNoClick(_ sender: Any) {

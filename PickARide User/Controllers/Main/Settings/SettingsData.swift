@@ -13,16 +13,15 @@ class SettingData {
     var titleName : String?
     var titleButton : String?
     var subData : [SubSettingsData]?
-    var isForLanguage : Bool?
     
-    init(name:String? = "", button:String? = "", subsetting:[SubSettingsData] = [], isForLanguage: Bool? = Bool()) {
+    init(name:String? = "", button:String? = "", subsetting:[SubSettingsData] = []) {
         self.titleName = name
         self.titleButton = button
         self.subData = subsetting
-        self.isForLanguage = isForLanguage
     }
     
     static var SettingList = [SettingData]()
+    static var LanguageList = ["English", "German"]
 }
 
 class SubSettingsData {
@@ -56,5 +55,4 @@ func addValuesInSettingList(){
     SettingData.SettingList.append(SettingData())
     SettingData.SettingList.append(SettingData(name: SettingsTitle.Favoutite, button: SettingsTitle.Add, subsetting: [SubSettingsData(name: SettingsTitle.Home, img: SettingImages.SettingHome), SubSettingsData(name: SettingsTitle.Work, img: SettingImages.SettingWork)]))
     SettingData.SettingList.append(SettingData(button: SettingsTitle.MoreSavedPlaces, subsetting: [SubSettingsData(name: SettingsTitle.PrivacyPolicy)]))
-    SettingData.SettingList.append(SettingData(name: SettingsTitle.Language))
 }

@@ -187,7 +187,7 @@ class addCarddetailsTextField : UITextField {
         didSet {
             if let image = RightSideImage{
                 rightViewMode = .always
-                let view = UIView(frame : CGRect(x: 0, y: 0, width: 33, height: 24))
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 20, height: 20))
                 
                 let imageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 14, height: 14))
                 imageView.image = image

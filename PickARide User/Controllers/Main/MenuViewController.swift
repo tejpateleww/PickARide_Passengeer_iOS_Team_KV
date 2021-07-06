@@ -196,11 +196,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if strCellItemTitle == MyType.MyRides.value {
             
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
+            let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.PaymentMethods.value {
             
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: AddPaymentVC.storyboardID) as! AddPaymentVC
+            let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
             controller.isFromSideMenu = true
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.Logout.value {
@@ -215,12 +215,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         } else if strCellItemTitle == MyType.Notification.value {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: NotificationVC.storyboardID)
+            let controller = NotificationVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.PaymentMethods.value {
             
         } else if strCellItemTitle == MyType.Settings.value {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SettingVC.storyboardID)
+            let controller = SettingVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
         } else if strCellItemTitle == MyType.InviteaFrind.value {
             let text = ""
@@ -231,7 +231,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.present(activityViewController, animated: true, completion: nil)
         } else if strCellItemTitle == MyType.Help.value {
-            let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CommonWebViewVC.storyboardID) as! CommonWebViewVC
+            let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)
             controller.strNavTitle = "Help"
             self.navigationController?.pushViewController(controller, animated: true)
         }

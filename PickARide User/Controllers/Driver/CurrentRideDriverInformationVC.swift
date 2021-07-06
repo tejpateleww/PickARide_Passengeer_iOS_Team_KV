@@ -41,7 +41,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnProfileClicked(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: RatingYourTripVC.storyboardID)
+        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -63,19 +63,16 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnMessageClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ChatVC.storyboardID) as! ChatVC
+        let controller = ChatVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnprofileClicked(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CurrentRideDetailsVC.storyboardID) as!
-            CurrentRideDetailsVC
+        let controller = CurrentRideDetailsVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func btnCancelClick(_ sender: Any) {
-        
-        
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: CancelTripVC.storyboardID) as! CancelTripVC
+        let controller = CancelTripVC.instantiate(fromAppStoryboard: .Main)
         
         let navigationController = UINavigationController(rootViewController: controller)
         

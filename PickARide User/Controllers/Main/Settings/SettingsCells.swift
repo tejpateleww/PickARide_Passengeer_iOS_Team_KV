@@ -24,16 +24,4 @@ class SettingCell2 : UITableViewCell {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var CategoryImageView: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
-    @IBOutlet weak var lblLanguage: UILabel!
-    
-    override func awakeFromNib() {
-    }
-    
-    @objc func btnLanguageClick(sender:UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            sender.isSelected = true
-        }
-    }
 }

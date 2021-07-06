@@ -73,7 +73,7 @@ class ProfileVC: BaseViewController {
     }
     
     @IBAction func btnPasswordClicked(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
+        let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
         controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
         controller.isChangePassword = true
         controller.btnSubmitClosure = {

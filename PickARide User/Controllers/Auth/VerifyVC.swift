@@ -46,7 +46,7 @@ class VerifyVC: BaseViewController {
             user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
         } else {
-            let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ChangePasswordVC.storyboardID) as! ChangePasswordVC
+            let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
             controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
             controller.isChangePassword = false
             

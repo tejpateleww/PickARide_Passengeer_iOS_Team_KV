@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signUP(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: RegisterVC.storyboardID)
+        let controller = RegisterVC.instantiate(fromAppStoryboard: .Login)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -47,7 +47,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func ForgotPassword(_ sender: Any) {
-        let controller = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: ForgotPasswordVC.storyboardID)
+        let controller = ForgotPasswordVC.instantiate(fromAppStoryboard: .Login)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

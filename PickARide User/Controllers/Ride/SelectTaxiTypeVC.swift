@@ -71,8 +71,7 @@ class SelectTaxiTypeVC: BaseViewController{
    
     @IBAction func btnScheduleClick(_ sender: Any) {
         
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ScheduleRideVC.storyboardID) as!
-            ScheduleRideVC
+        let controller = ScheduleRideVC.instantiate(fromAppStoryboard: .Main)
         controller.setClosour = {
             let vc : AddPaymentVC = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
             vc.isFromSchedulled = true
@@ -89,13 +88,13 @@ class SelectTaxiTypeVC: BaseViewController{
         
     }
     @IBAction func btnBookNowClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: AddPaymentVC.storyboardID) as! AddPaymentVC
+        let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
         controller.isFromSideMenu = false
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnOfferClick(_ sender: Any) {
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyOfferVC.storyboardID)
+        let controller = MyOfferVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

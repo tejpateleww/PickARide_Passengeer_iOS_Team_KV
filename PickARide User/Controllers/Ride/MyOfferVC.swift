@@ -45,8 +45,6 @@ class MyOfferVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         btnApply.setTitle("MyOfferVC_btnApply".Localized(), for: .normal)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: MyRidesVC.storyboardID)
-//        self.navigationController?.pushViewController(controller, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
     

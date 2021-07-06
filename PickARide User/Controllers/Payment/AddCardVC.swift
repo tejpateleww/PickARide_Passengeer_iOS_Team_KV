@@ -40,6 +40,10 @@ class AddCardVC: BaseViewController {
 extension AddCardVC{
     func setUpUI(){
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        
+        let dtPicker = UIDatePicker()
+        dtPicker.minimumDate = Date()
+        self.TextFieldExpires.inputView = dtPicker
     }
     
     func setLocalization() {

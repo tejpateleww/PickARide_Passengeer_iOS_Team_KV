@@ -36,7 +36,7 @@ class HomeVC: BaseViewController,UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        let controller = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ChooseDestinationVC.storyboardID)
+        let controller =  ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
 //        self.navigationController?.popToRootViewController(animated: true)
     }
