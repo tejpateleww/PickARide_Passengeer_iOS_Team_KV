@@ -17,6 +17,8 @@ class UrlConstant{
     static let Status = "status"
     static let SomethingWentWrong = "There is some server side error, Please try again after some time!"
     static let NoInternetConnection = "The Internet connection appears to be offline, Please connect to the internet."
+    
+    var LanguageList = ["English","German"]
 }
 
 let ErrorResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SomethingWentWrong]

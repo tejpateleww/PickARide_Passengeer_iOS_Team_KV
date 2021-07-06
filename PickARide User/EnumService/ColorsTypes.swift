@@ -17,6 +17,7 @@ enum ThemeColorEnum {
     case ThemeYellow
     case ThemeGreen
     case ThemeGray
+    case SettingsCell
     
     //MARK:- Tost Message Theme
     case Success
@@ -36,6 +37,7 @@ extension ThemeColorEnum: RawRepresentable {
             case #colorLiteral(red: 0.937254902, green: 0.7215686275, blue: 0.09411764706, alpha: 1): self = .ThemeYellow
             case #colorLiteral(red: 0.1019607843, green: 0.7764705882, blue: 0.1843137255, alpha: 1): self = .ThemeGreen
             case #colorLiteral(red: 0.4980392157, green: 0.4980392157, blue: 0.4980392157, alpha: 1): self = .ThemeGray
+            case #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9647058824, alpha: 1): self = .SettingsCell
                 
             //MARK:- Tost Message Theme
             case #colorLiteral(red: 0.3803921569, green: 0.631372549, blue: 0.09019607843, alpha: 1): self = .Success
@@ -54,6 +56,7 @@ extension ThemeColorEnum: RawRepresentable {
             case .ThemeYellow: return #colorLiteral(red: 0.937254902, green: 0.7215686275, blue: 0.09411764706, alpha: 1)
             case .ThemeGreen: return #colorLiteral(red: 0.1019607843, green: 0.7764705882, blue: 0.1843137255, alpha: 1)
             case .ThemeGray: return #colorLiteral(red: 0.4980392157, green: 0.4980392157, blue: 0.4980392157, alpha: 1)
+            case .SettingsCell: return #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9647058824, alpha: 1)
                 
             //MARK:- Tost Message Theme
             case .Success: return #colorLiteral(red: 0.3803921569, green: 0.631372549, blue: 0.09019607843, alpha: 1)

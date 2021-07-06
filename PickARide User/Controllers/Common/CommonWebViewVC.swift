@@ -33,7 +33,7 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
         self.navigationController?.navigationBar.isHidden = true
     }

@@ -89,6 +89,8 @@
 		187BC4FB268B1EC900CAD121 /* SocialSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */; };
 		18B364A7269411EA00CE8E3D /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364A6269411EA00CE8E3D /* PasswordModel.swift */; };
 		18B364C52694121500CE8E3D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364C42694121500CE8E3D /* PasswordViewModel.swift */; };
+		18B365222694396800CE8E3D /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B365212694396800CE8E3D /* SettingsData.swift */; };
+		18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B365242694399B00CE8E3D /* SettingsCells.swift */; };
 		18D177D92681D9110025271F /* ColorsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D177D82681D9110025271F /* ColorsTypes.swift */; };
 		18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7FA4525AED38000F1F619 /* MenuViewController.swift */; };
 		18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E5259350E100202DA6 /* NavigationItems.swift */; };
@@ -203,6 +205,8 @@
 		187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignInManager.swift; sourceTree = "<group>"; };
 		18B364A6269411EA00CE8E3D /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		18B364C42694121500CE8E3D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		18B365212694396800CE8E3D /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		18B365242694399B00CE8E3D /* SettingsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCells.swift; sourceTree = "<group>"; };
 		18D177D82681D9110025271F /* ColorsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTypes.swift; sourceTree = "<group>"; };
 		18F7FA4525AED38000F1F619 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18F9B6E5259350E100202DA6 /* NavigationItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItems.swift; sourceTree = "<group>"; };
@@ -440,7 +444,7 @@
 			children = (
 				1848437C258B18340094480C /* HomeVC.swift */,
 				18F7FA4525AED38000F1F619 /* MenuViewController.swift */,
-				180CC7F62590561E00799280 /* SettingVC.swift */,
+				18B365202694394B00CE8E3D /* Settings */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -518,6 +522,16 @@
 				187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */,
 			);
 			path = SocialSignInManager;
+			sourceTree = "<group>";
+		};
+		18B365202694394B00CE8E3D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				180CC7F62590561E00799280 /* SettingVC.swift */,
+				18B365212694396800CE8E3D /* SettingsData.swift */,
+				18B365242694399B00CE8E3D /* SettingsCells.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		18D177D72681D8C10025271F /* EnumService */ = {
@@ -869,6 +883,7 @@
 				187BC49A268AE58800CAD121 /* RegisterModel.swift in Sources */,
 				181EBDA1258730B300C11C08 /* Singleton.swift in Sources */,
 				1865CF50267C763100379A40 /* URLSessionRequestManager.swift in Sources */,
+				18B365222694396800CE8E3D /* SettingsData.swift in Sources */,
 				1865CF55267C763100379A40 /* UploadMediaModel.swift in Sources */,
 				18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */,
 				18F9B70A259350E100202DA6 /* Data+Extensions.swift in Sources */,
@@ -889,6 +904,7 @@
 				18F9B702259350E100202DA6 /* UIImage+Extension.swift in Sources */,
 				184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */,
 				18F9B6FF259350E100202DA6 /* String+Extensions.swift in Sources */,
+				18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,
 				1865CF54267C763100379A40 /* apiPaths.swift in Sources */,
 				180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */,
