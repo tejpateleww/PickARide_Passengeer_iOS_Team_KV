@@ -247,7 +247,7 @@ extension String{
     //MARK: For localized string
     //MARK: ==================================
     func Localized() -> String {
-        guard let lang = user_defaults.value(forKey: UserDefaultsKey.selLanguage.rawValue) as? String else { return "" }
+        guard let lang = userDefaults.value(forKey: UserDefaultsKey.selLanguage.rawValue) as? String else { return "" }
         let path = Bundle.main.path(forResource: lang , ofType: "lproj")
         let bundle = Bundle(path: path!)!
         return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")

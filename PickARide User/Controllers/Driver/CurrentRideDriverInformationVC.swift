@@ -28,13 +28,14 @@ class CurrentRideDriverInformationVC: BaseViewController {
         super.viewDidLoad()
         self.setLabel()
         
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         vwMain.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
+    }
     
     @IBAction func btnCancel(_ sender: Any) {
         appDel.navigateToMain()
@@ -58,7 +59,6 @@ class CurrentRideDriverInformationVC: BaseViewController {
         lblVehicalData.attributedText = attributedString
     }
     
-    //MARK: -IBActions
     @IBAction func btnCallClick(_ sender: Any) {
     }
     
@@ -71,6 +71,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
         let controller = CurrentRideDetailsVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
     @IBAction func btnCancelClick(_ sender: Any) {
         let controller = CancelTripVC.instantiate(fromAppStoryboard: .Main)
         

@@ -18,54 +18,68 @@ class AddCardVC: BaseViewController {
     @IBOutlet weak var LblCVV : addCardLabel!
     @IBOutlet weak var LblCountry : addCardLabel!
     @IBOutlet weak var LblDebitCardAreAcceptedDescription : addCardLabel!
-    @IBOutlet weak var TextFieldName : FormTextField!
-    @IBOutlet weak var TextFieldCreditCardNumber : FormTextField!
-    @IBOutlet weak var TextFieldExpires : FormTextField!
-    @IBOutlet weak var TextFieldCVV : FormTextField!
-    @IBOutlet weak var TextFieldCountry : addCarddetailsTextField!
+    @IBOutlet weak var txtName : FormTextField!
+    @IBOutlet weak var txtCardNumber : FormTextField!
+    @IBOutlet weak var txtExpires : FormTextField!
+    @IBOutlet weak var txtCVV : FormTextField!
+    @IBOutlet weak var txtCountry : UITextField!
     @IBOutlet weak var btnSave : submitButton!
+    @IBOutlet weak var imgCardType: UIImageView!
 
     var creditCardValidator: CreditCardValidator!
     var validation = Validation()
     var inputValidator = InputValidator()
     let monthPicker = MonthYearPickerView()
     
-    var isCreditCardValid = false
-    var cardTypeLabel = ""
+    var cardTypeLabel = String()
+    var isCreditCardValid = Bool()
+    
+    var pickerView = UIPickerView()
+    var selectedIndexOfPicker = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
         self.setLocalization()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setGeneralFormatting(for: self.TextFieldName)
-        self.setUpNameTextField()
-        
-        self.setGeneralFormatting(for: self.TextFieldCreditCardNumber)
-        self.setUpCardNumTextField()
-        
-        self.setGeneralFormatting(for: self.TextFieldExpires)
-        self.setUpCardExpiryTextField()
-        
-        self.setGeneralFormatting(for: self.TextFieldCVV)
-        self.setUpCardCVVTextfield()
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     @IBAction func placeOrderBtn(_ sender: submitButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
 //MARK:- Set Up UI
 extension AddCardVC{
     func setUpUI(){
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.txtExpires.delegate = self
+        self.creditCardValidator = CreditCardValidator()
+        self.setValidation()
         
-        creditCardValidator = CreditCardValidator()
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        self.pickerView.showsSelectionIndicator = true
+        
+        self.txtCountry.tintColor = .white
+        self.txtCountry.delegate = self
+        self.txtCountry.inputView = pickerView
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.barTintColor = .black
+        toolBar.barTintColor = .white
+        toolBar.tintColor = themeColor
+        toolBar.sizeToFit()
+        let done = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAction))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+        toolBar.setItems([cancel,space,done], animated: false)
+        
+        self.txtCountry.inputAccessoryView = toolBar
     }
     
     func setLocalization() {
@@ -76,37 +90,119 @@ extension AddCardVC{
         LblCVV.text = "AddCardVC_LblCVV".Localized()
         LblCountry.text = "AddCardVC_LblCountry".Localized()
         LblDebitCardAreAcceptedDescription.text = "AddCardVC_LblDebitCardAreAcceptedDescription".Localized()
-        TextFieldName.placeholder = "AddCardVC_TextFieldName_place".Localized()
-        TextFieldCreditCardNumber.placeholder = "AddCardVC_TextFieldCreditCardNumber_place".Localized()
-        TextFieldExpires.placeholder = "AddCardVC_TextFieldExpires_place".Localized()
-        TextFieldCVV.placeholder = "AddCardVC_TextFieldCVV_place".Localized()
-        TextFieldCountry.placeholder = "AddCardVC_TextFieldCountry_place".Localized()
+        txtName.placeholder = "AddCardVC_TextFieldName_place".Localized()
+        txtCardNumber.placeholder = "AddCardVC_TextFieldCreditCardNumber_place".Localized()
+        txtExpires.placeholder = "AddCardVC_TextFieldExpires_place".Localized()
+        txtCVV.placeholder = "AddCardVC_TextFieldCVV_place".Localized()
+        txtCountry.placeholder = "AddCardVC_TextFieldCountry_place".Localized()
         btnSave.setTitle("AddCardVC_btnSave".Localized(), for: .normal)
     }
     
     func setData() {
-        TextFieldName.text = "Shane Mendoza"
-        TextFieldCreditCardNumber.text = "**** - **** -  **** - **85"
-        TextFieldExpires.text = "10/2030"
-        TextFieldCVV.text = "****"
-        TextFieldCountry.text = "Germany"
+        txtName.text = "Shane Mendoza"
+        txtCardNumber.text = "**** - **** -  **** - **85"
+        txtExpires.text = "10/2030"
+        txtCVV.text = "****"
+        txtCountry.text = "Germany"
+    }
+    
+    @objc func cancelAction(_ sender: UIBarButtonItem) {
+        self.txtCountry.endEditing(true)
+    }
+    
+    @objc func doneAction(_ sender: UIBarButtonItem) {
+        self.txtCountry.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].name
+        self.txtCountry.endEditing(true)
     }
 }
 
-extension AddCardVC {
+//MARK:- Card Validation
+extension AddCardVC{
+    func validateCardNumber(number: String) {
+        if creditCardValidator.validate(string: number) {
+            isCreditCardValid = true
+        } else {
+            isCreditCardValid = false
+        }
+    }
+    
+    func CvvValidation() {
+        
+        txtCVV.inputType = .integer
+        if self.cardTypeLabel == "amex" {
+            self.validation.maximumLength = 4
+            self.validation.minimumLength = 4
+        }
+        else {
+            self.validation.maximumLength = 3
+            self.validation.minimumLength = 3
+        }
+        validation.characterSet = NSCharacterSet.decimalDigits
+        let inputValidator = InputValidator(validation: validation)
+        txtCVV.inputValidator = inputValidator
+    }
+    
+    func isValidatePaymentDetail() -> (Bool,String) {
+        var isValidate:Bool = true
+        var ValidatorMessage:String = ""
+        let holder = self.txtName.validatedText(validationType: ValidatorType.username(field: "card holder name") )
+        
+        if (!holder.0) {
+            isValidate = false
+            ValidatorMessage = holder.1
+            
+        }else if (txtCardNumber.text?.isEmptyOrWhitespace() ?? Bool()) {
+            isValidate = false
+            ValidatorMessage = "Please enter card number"
+            
+        }else if !isCreditCardValid {
+            isValidate = false
+            ValidatorMessage = "Your card number is invalid"
+        }
+        else if txtExpires.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 {
+            isValidate = false
+            ValidatorMessage = "Please enter expiry date"
+        }
+        else if txtCVV.text?.isEmptyOrWhitespace() ?? Bool() {
+            isValidate = false
+            ValidatorMessage = "Please enter cvv"
+        }
+        
+        return (isValidate,ValidatorMessage)
+    }
+    
+    func setValidation () {
+        //Card Name
+        txtName.inputType = .name
+        
+        //Card Number
+        txtCardNumber.inputType = .integer
+        txtCardNumber.formatter = CardNumberFormatter()
+        validation.maximumLength = 19
+        validation.minimumLength = 14
+        let characterSet = NSMutableCharacterSet.decimalDigit()
+        characterSet.addCharacters(in: " ")
+        validation.characterSet = characterSet as CharacterSet
+        inputValidator = InputValidator(validation: validation)
+        txtCardNumber.inputValidator = inputValidator
+        txtExpires.inputView = monthPicker
+        
+        // Expiry Date
+        txtExpires.inputType = .integer
+        txtExpires.formatter = CardExpirationDateFormatter()
+        
+        validation.minimumLength = 1
+        
+        // CVV
+        self.CvvValidation()
+    }
     
     @IBAction func txtCardNumberEditingChange(_ sender: UITextField) {
         if let number = sender.text {
             if number.isEmpty {
                 isCreditCardValid = false
-                //                   self.btnVisa.isSelected = false
-                //                   self.btnMasterCard.isSelected = false
-                //                   self.btnAmerican.isSelected = false
-                //                   self.btnJCB.isSelected = false
-                //                   self.btnDiscover.isSelected = false
-                //                   self.btnDiner.isSelected = false
-                self.TextFieldCreditCardNumber.textColor = UIColor.black
-                self.imgvCardType.image = nil
+                self.txtCardNumber.textColor = UIColor.black
+//                self.imgvCardType.image = nil
             } else {
                 validateCardNumber(number: number)
                 detectCardNumberType(number: number)
@@ -119,158 +215,71 @@ extension AddCardVC {
             isCreditCardValid = true
             self.cardTypeLabel = type.name.lowercased()
             print(type.name.lowercased())
-            self.txtCardNumber.textColor =
-            self.setUpCardCVVTextfield()
-            self.imgvCardType.image = getCardTypeImage(type: self.cardTypeLabel)
+            
+            switch type.name.lowercased() {
+            case "visa":
+                imgCardType.image = UIImage(assetIdentifier: .visa)
+            case "amex":
+                imgCardType.image = UIImage(assetIdentifier: .amex)
+            case "diners club":
+                imgCardType.image = UIImage(assetIdentifier: .dinersClub)
+            case "discover":
+                imgCardType.image = UIImage(assetIdentifier: .discover)
+            case "jcb":
+                imgCardType.image = UIImage(assetIdentifier: .jcb)
+            case "maestro" :
+                imgCardType.image = UIImage(assetIdentifier: .maestro)
+            case "mastercard":
+                imgCardType.image = UIImage(assetIdentifier: .master)
+            default:
+                imgCardType.image = UIImage(assetIdentifier: .none)
+            }
+            self.txtCardNumber.textColor = ThemeColorEnum.Theme.rawValue
+            self.CvvValidation()
         } else {
             isCreditCardValid = false
             self.cardTypeLabel = "Undefined"
-            self.imgvCardType.image = nil
         }
-    }
-    
-    func validateCardNumber(number: String) {
-        if creditCardValidator.validate(string: number) {
-            isCreditCardValid = true
-            
-        } else {
-            isCreditCardValid = false
-            self.imgvCardType.image = nil
-            
-        }
-    }
-    
-    func setGeneralFormatting(for textField: FormTextField) {
-        
-        //        textField.clearButtonMode = .never
-        textField.clearButtonMode = .never
-        textField.font = FontBook.
-        textField.textColor = .black
-        textField.backgroundColor = ThemeColor.textFieldBg
-        textField.inactiveBackgroundColor = ThemeColor.textFieldBg
-        textField.activeBackgroundColor = ThemeColor.textFieldBg
-        
-        textField.attributedPlaceholder =
-            NSAttributedString(string: textField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : ThemeColor.textFieldPlaceholder,NSAttributedString.Key.font : FontBook.Regular.of(size: 15.0)] )
-        
-        textField.tintColor = UIColor.black
-        
-        textField.layer.cornerRadius = 6.0
-        textField.layer.masksToBounds = true
-        
-        textField.leftMargin = 10
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.rightView = paddingView
-        textField.rightViewMode = .always
-        
-        //        textField.layer.borderWidth = 1.0
-        //        textField.layer.borderColor = ThemeColor.LightGrey.cgColor
-        
-    }
-    
-    func setUpNameTextField() {
-        txtCardHolderName.inputType = .name
-    }
-    
-    func setUpCardNumTextField() {
-        txtCardNumber.inputType = .integer
-        txtCardNumber.formatter = CardNumberFormatter()
-        
-        validation.maximumLength = 19
-        validation.minimumLength = 14
-        let characterSet = NSMutableCharacterSet.decimalDigit()
-        characterSet.addCharacters(in: " ")
-        validation.characterSet = characterSet as CharacterSet
-        inputValidator = InputValidator(validation: validation)
-        txtCardNumber.inputValidator = inputValidator
-    }
-    
-    func setUpCardExpiryTextField() {
-        txtExpiryDate.inputType = .integer
-        txtExpiryDate.formatter = CardExpirationDateFormatter()
-        txtExpiryDate.inputView = monthPicker
-        txtExpiryDate.textColor = UIColor.black
-        validation.minimumLength = 1
-        let inputValidator = CardExpirationDateInputValidator(validation: validation)
-        txtExpiryDate.inputValidator = inputValidator
-    }
-    
-    
-    func setUpCardCVVTextfield() {
-        print("setUpCardCVVTextfield")
-        txtCVV.inputType = .integer
-        //           txtCVVNumber.setValue(UIColor.black , forKeyPath: "placeholderLabel.textColor")
-        //           txtCVVNumber.font = FontBook.Regular.of(size: 14.0)
-        //           txtCVVNumber.textColor = UIColor.black
-        //        var validation = Validation()
-        if self.cardTypeLabel.lowercased() == "amex" {
-            print("amex card cv length set to 4")
-            self.validation.maximumLength = 4
-            //               self.validation.minimumLength = 3
-        }
-        else {
-            print("general card cvv length set to 3")
-            self.validation.maximumLength = 3
-            //               self.validation.minimumLength = 3
-        }
-        validation.characterSet = NSCharacterSet.decimalDigits
-        let inputValidator = InputValidator(validation: validation)
-        txtCVV.inputValidator = inputValidator
-        txtCVV.isSecureTextEntry = true
-        print("txtCVV.text : \(txtCVV.text ?? "")")
-    }
-    
-    func isValidatePaymentDetail() -> (Bool,String) {
-        var isValidate:Bool = true
-        var ValidatorMessage:String = ""
-        let holder = txtCardHolderName.validatedText(validationType: ValidatorType.requiredField(field: "Card Holder Name"))//ValidatorType.requiredField(field: "first name"))
-        
-        if (!holder.0) {
-            isValidate = false
-            ValidatorMessage = holder.1
-            
-        }else if (txtCardNumber.text!.isEmptyOrWhitespace()) {
-            isValidate = false
-            ValidatorMessage = "Please enter card number"
-            
-        }else if !isCreditCardValid {
-            isValidate = false
-            ValidatorMessage = "Your card number is invalid"
-        }
-        
-        //        else if txtCardNumber.text?.count != 19 {
-        //            isValidate = false
-        //            ValidatorMessage = "Please enter valid card number."
-        //        }
-        
-        else if txtExpiryDate.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 {
-            isValidate = false
-            ValidatorMessage = "Please enter expiry date"
-            
-        } else if txtCVV.text!.isEmptyOrWhitespace() {
-            isValidate = false
-            ValidatorMessage = "Please enter cvv"
-        } else if txtCVV.text?.count ?? 0 < 3{
-            isValidate = false
-            ValidatorMessage = "Please enter valid cvv"
-        }
-        
-        return (isValidate,ValidatorMessage)
     }
 }
 
-// MARK: - ======UITextFieldDelegate
-extension PaymentVC : UITextFieldDelegate {
+// MARK:- UITextFieldDelegate
+extension AddCardVC : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if(textField == txtExpiryDate) {
+        if(textField == self.txtExpires) {
             var strMonth = "\(monthPicker.month)" as String
             if(monthPicker.month <= 9)
             {
                 strMonth = "0\(monthPicker.month)"
             }
             let yearStr = "\(monthPicker.year)".dropFirst(2)
-            txtExpiryDate.text = "\(strMonth)/\(yearStr)"
+            self.txtExpires.text = "\(strMonth)/\(yearStr)"
         }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.txtCountry{
+            return Singleton.sharedInstance.CountryList.count != 0
+        }
+        return true
     }
 }
 
+//MARK:- Language Picker Set Up
+extension AddCardVC : UIPickerViewDelegate,UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Singleton.sharedInstance.CountryList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Singleton.sharedInstance.CountryList[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedIndexOfPicker = row
+    }
+}

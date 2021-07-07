@@ -38,6 +38,9 @@ extension UserDefaults{
         try? UserDefaults.standard.set(object:  Singleton.sharedInstance.UserProfilData, forKey: UserDefaultsKey.userProfile.rawValue)
     }
     
-    
+    func getUserData() -> LoginResponseModel? {
+        let objResponse = try? UserDefaults.standard.get(objectType: LoginResponseModel.self, forKey:  UserDefaultsKey.userProfile.rawValue)
+        return objResponse ?? nil
+    }
 
 }

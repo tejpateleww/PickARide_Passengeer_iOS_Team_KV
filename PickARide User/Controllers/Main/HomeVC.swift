@@ -14,24 +14,28 @@ class HomeVC: BaseViewController,UITextFieldDelegate {
     //MARK: - Properties
    
     //MARK: - IBOutlets
+    @IBOutlet weak var mainVW: UIView!
     @IBOutlet weak var mapVw: GMSMapView!
-    @IBOutlet weak var TextFieldWhereAreYouGoing: leftSideImageTextField!
+    @IBOutlet weak var txtFieldWhereAreYouGoing: leftSideImageTextField!
     
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        TextFieldWhereAreYouGoing.delegate = self
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        txtFieldWhereAreYouGoing.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
-    
-    //MARK: - Other Methods
+}
+
+//MARK:- Methods
+extension HomeVC{
     func setLocalization() {
-        TextFieldWhereAreYouGoing.placeholder = "home_Whereareyougoing_place".Localized()
+        txtFieldWhereAreYouGoing.placeholder = "home_Whereareyougoing_place".Localized()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -40,13 +44,4 @@ class HomeVC: BaseViewController,UITextFieldDelegate {
         self.navigationController?.pushViewController(controller, animated: true)
 //        self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    //MARK: -IBActions
-    
-    
-    //MARK: -API Calls
-    
-    
-    
-    
 }

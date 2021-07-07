@@ -11,9 +11,6 @@ import GoogleMaps
 
 class CurrentRideDetailsVC: BaseViewController {
 
-    //MARK: -Properties
-    var vehicalNumber = "ST3751"
-    //MARK: -IBOutlets
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
@@ -21,16 +18,21 @@ class CurrentRideDetailsVC: BaseViewController {
     @IBOutlet weak var vwMain: suggestedTaxiView!
     @IBOutlet weak var btnCancel: UIButton!
     
+    var vehicalNumber = "ST3751"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
+    }
+    
     @IBAction func btnCancel(_ sender: Any) {
         appDel.navigateToMain()
     }
-    
-    //MARK: -IBActions
     
     @IBAction func btnProfileClicked(_ sender: Any) {
         let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
@@ -42,7 +44,6 @@ class CurrentRideDetailsVC: BaseViewController {
 extension CurrentRideDetailsVC{
     func setUpUI(){
         self.setLabel()
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.vwMain.addGestureRecognizer(tap)
     }

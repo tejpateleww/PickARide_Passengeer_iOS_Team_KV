@@ -14,7 +14,7 @@ public enum FormTextFieldInputType: String {
 open class FormTextField: UITextField, UITextFieldDelegate {
     @objc open dynamic var borderWidth: CGFloat = 0 { didSet { self.layer.borderWidth = borderWidth } }
     @objc open dynamic var cornerRadius: CGFloat = 0 { didSet { self.layer.cornerRadius = cornerRadius } }
-    @objc open dynamic var leftMargin: CGFloat = 10.0 { didSet { self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: self.leftMargin, height: 0)) } }
+    @objc open dynamic var leftMargin: CGFloat = 0 { didSet { self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: self.leftMargin, height: 0)) } }
 
     @objc open dynamic var enabledBackgroundColor: UIColor = UIColor.clear { didSet { self.updateEnabled(self.isEnabled) } }
     @objc open dynamic var enabledBorderColor: UIColor = UIColor.clear { didSet { self.updateEnabled(self.isEnabled) } }

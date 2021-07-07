@@ -8,14 +8,17 @@
 import Foundation
 class WebServiceSubClass{
 
-//    class func InitApi(keyPath : String , completion: @escaping (Bool,String,ResposneInitClass?,Any) -> ()) {
-//        URLSessionRequestManager.makeGetRequest(urlString: keyPath, responseModel: ResposneInitClass.self) { (status, response, error) in
-//            completion(status, response, error)
-//        }
-//    }
+    class func InitApi(completion: @escaping (Bool,String,InitResponseModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + Singleton.sharedInstance.UserId, responseModel: InitResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
     
     class func GetCountryList(completion: @escaping (Bool,String,CountryListModel?,Any) -> ()){
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getCountryList.rawValue, responseModel: CountryListModel.self) { (status, message, response, error) in
+            if status{
+                Singleton.sharedInstance.CountryList = response?.data ?? []
+            }
             completion(status, message, response, error)
         }
     }

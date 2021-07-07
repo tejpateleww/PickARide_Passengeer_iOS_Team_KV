@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavedPlaceVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class SavedPlaceVC: BaseViewController {
     //MARK: -Properties
       var placeArray = ["Home","Work"]
     //MARK: -IBOutlets
@@ -21,14 +21,37 @@ class SavedPlaceVC: BaseViewController,UITableViewDelegate,UITableViewDataSource
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblSavedPlaces.delegate = self
-        tblSavedPlaces.dataSource = self
-        tblSavedPlaces.reloadData()
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setUpUI()
+        self.setupLocalization()
     }
     
-    //MARK: -Other Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
+    @IBAction func btnAddPlaceTap(_ sender: Any) {
+        let controller = AddNewDestinationVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+//MARK:- Methods
+extension SavedPlaceVC{
+    func setUpUI(){
+        self.tblSavedPlaces.delegate = self
+        self.tblSavedPlaces.dataSource = self
+        self.tblSavedPlaces.reloadData()
+    }
+    
+    func setupLocalization(){
+        lblSavedPlaces.text = "SavedPlaceVC_lblSavedPlaces".Localized()
+        btnAddPlace.setTitle("SavedPlaceVC_btnAddPlace".Localized(), for: .normal)
+    }
+}
+
+//MARK:- TableView Delegate
+extension SavedPlaceVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return placeArray.count
     }
@@ -38,25 +61,17 @@ class SavedPlaceVC: BaseViewController,UITableViewDelegate,UITableViewDataSource
         cell.lblPlaceName.text = placeArray[indexPath.row]
         return cell
     }
-    func setupLocalization(){
-        lblSavedPlaces.text = "SavedPlaceVC_lblSavedPlaces".Localized()
-        btnAddPlace.setTitle("SavedPlaceVC_btnAddPlace".Localized(), for: .normal)
-    }
-    //MARK: -IBActions
-    
-    @IBAction func btnAddPlaceTap(_ sender: Any) {
-        let controller = AddNewDestinationVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    //MARK: -API Calls
 }
-class SavedPlaceCell:UITableViewCell{
+
+class SavedPlaceCell: UITableViewCell{
     
     @IBOutlet weak var imgPlace: UIImageView!
     @IBOutlet weak var lblPlaceName: SavedPlacesLabel!
+    
     override func awakeFromNib() {
         setupLocalization()
     }
+    
     func setupLocalization(){
         lblPlaceName.text = "SavedPlaceVC_lblPlaceName".Localized()
     }

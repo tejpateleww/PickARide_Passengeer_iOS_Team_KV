@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EEv-gc-g8B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -72,7 +72,6 @@
                                     <constraint firstItem="7aL-40-OfG" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="BLW-L3-idk"/>
                                     <constraint firstAttribute="bottom" secondItem="7aL-40-OfG" secondAttribute="bottom" id="EhY-aR-ugP"/>
                                     <constraint firstAttribute="trailing" secondItem="7aL-40-OfG" secondAttribute="trailing" id="QQN-he-R7C"/>
-                                    <constraint firstItem="eLB-Vi-Pzl" firstAttribute="top" secondItem="ZMM-W0-Uy5" secondAttribute="top" id="Tsk-6G-AGX"/>
                                     <constraint firstItem="eLB-Vi-Pzl" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="YD9-wf-nIf"/>
                                     <constraint firstAttribute="trailing" secondItem="eLB-Vi-Pzl" secondAttribute="trailing" id="sMn-Mw-cp3"/>
                                     <constraint firstAttribute="bottom" secondItem="eLB-Vi-Pzl" secondAttribute="bottom" id="zVM-Dl-yFp"/>
@@ -83,6 +82,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZMM-W0-Uy5" firstAttribute="leading" secondItem="8Eq-Bb-pS4" secondAttribute="leading" id="M25-aQ-5oc"/>
+                            <constraint firstItem="eLB-Vi-Pzl" firstAttribute="top" secondItem="ZMM-W0-Uy5" secondAttribute="top" id="TIv-Kc-v5r"/>
                             <constraint firstItem="ZMM-W0-Uy5" firstAttribute="top" secondItem="S8p-PV-0jf" secondAttribute="top" id="V3Q-JC-Myg"/>
                             <constraint firstItem="ZMM-W0-Uy5" firstAttribute="trailing" secondItem="8Eq-Bb-pS4" secondAttribute="trailing" id="d9p-E8-ddJ"/>
                             <constraint firstItem="8Eq-Bb-pS4" firstAttribute="bottom" secondItem="ZMM-W0-Uy5" secondAttribute="bottom" id="p2m-4L-g3m"/>
@@ -90,8 +90,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="u9v-XX-aWJ"/>
                     <connections>
-                        <outlet property="TextFieldWhereAreYouGoing" destination="P8A-Ai-qax" id="Kjb-Nf-38x"/>
+                        <outlet property="mainVW" destination="ZMM-W0-Uy5" id="gwo-uI-afh"/>
                         <outlet property="mapVw" destination="eLB-Vi-Pzl" id="RVG-rS-Efs"/>
+                        <outlet property="txtFieldWhereAreYouGoing" destination="P8A-Ai-qax" id="Kjb-Nf-38x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uzt-dd-ykL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1291,7 +1292,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFz-8i-Wnb" customClass="addCardDetailsView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="22" width="343" height="48"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shane Mendoza" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63i-Q4-VOI" customClass="addCarddetailsTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shane Mendoza" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63i-Q4-VOI" customClass="FormTextField" customModule="FormTextField">
                                                                                 <rect key="frame" x="16" y="0.0" width="311" height="48"/>
                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1337,18 +1338,30 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-Hf-aMy" customClass="addCardDetailsView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="22" width="343" height="48"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="**** **** **** **85" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-yE-UiH" customClass="addCarddetailsTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="**** **** **** **85" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-yE-UiH" customClass="FormTextField" customModule="FormTextField">
                                                                                 <rect key="frame" x="16" y="0.0" width="311" height="48"/>
                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes" textContentType="cc-number"/>
+                                                                                <connections>
+                                                                                    <action selector="txtCardNumberEditingChange:" destination="wGt-up-O7P" eventType="editingChanged" id="4w0-VQ-hXl"/>
+                                                                                </connections>
                                                                             </textField>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MNG-wc-X6G">
+                                                                                <rect key="frame" x="285" y="11.5" width="50" height="25"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="My9-T0-LzZ"/>
+                                                                                    <constraint firstAttribute="height" constant="25" id="ySR-6W-dRc"/>
+                                                                                </constraints>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="bottom" secondItem="8C0-yE-UiH" secondAttribute="bottom" id="1pO-xT-jaC"/>
                                                                             <constraint firstItem="8C0-yE-UiH" firstAttribute="top" secondItem="6oV-Hf-aMy" secondAttribute="top" id="JNz-sJ-6KT"/>
+                                                                            <constraint firstItem="MNG-wc-X6G" firstAttribute="trailing" secondItem="8C0-yE-UiH" secondAttribute="trailing" constant="8" id="Lng-vb-wfL"/>
                                                                             <constraint firstAttribute="trailing" secondItem="8C0-yE-UiH" secondAttribute="trailing" constant="16" id="ZDI-BD-r4J"/>
+                                                                            <constraint firstItem="MNG-wc-X6G" firstAttribute="centerY" secondItem="6oV-Hf-aMy" secondAttribute="centerY" id="juQ-nd-SnN"/>
                                                                             <constraint firstItem="8C0-yE-UiH" firstAttribute="leading" secondItem="6oV-Hf-aMy" secondAttribute="leading" constant="16" id="os7-yC-wlW"/>
                                                                         </constraints>
                                                                     </view>
@@ -1391,7 +1404,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-jP-7zb" customClass="addCardDetailsView" customModule="PickARide_User" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="22" width="163" height="48"/>
                                                                                         <subviews>
-                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10/2030" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4T-yD-X7W" customClass="addCarddetailsTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10/2030" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4T-yD-X7W" customClass="FormTextField" customModule="FormTextField">
                                                                                                 <rect key="frame" x="16" y="0.0" width="131" height="48"/>
                                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1436,7 +1449,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNd-Uw-aqM" customClass="addCardDetailsView" customModule="PickARide_User" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="22" width="163" height="48"/>
                                                                                         <subviews>
-                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="****" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-ZY-fga" customClass="addCarddetailsTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="****" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-ZY-fga" customClass="FormTextField" customModule="FormTextField">
                                                                                                 <rect key="frame" x="16" y="0.0" width="131" height="48"/>
                                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1492,14 +1505,14 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OC-6l-qOW" customClass="addCardDetailsView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="22" width="343" height="48"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Germany" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIZ-0b-Ohv" customClass="addCarddetailsTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Germany" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIZ-0b-Ohv">
                                                                                 <rect key="frame" x="16" y="0.0" width="311" height="48"/>
                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="RightSideImage" value="ic_DownReg"/>
-                                                                                </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="wGt-up-O7P" id="WYH-rd-6AA"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1595,10 +1608,6 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlJ-dD-ZKk" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="343" height="47"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAppOrangeBg" value="YES"/>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCorner" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="placeOrderBtn:" destination="wGt-up-O7P" eventType="touchUpInside" id="ht1-ir-jKT"/>
                                                                 </connections>
@@ -1670,13 +1679,14 @@
                         <outlet property="LblDebitCardAreAcceptedDescription" destination="uaH-tI-m6C" id="t3c-cy-ZtE"/>
                         <outlet property="LblExpires" destination="fEZ-FZ-6BM" id="gCF-gK-3sN"/>
                         <outlet property="LblName" destination="reo-h2-bWA" id="FIz-js-yoK"/>
-                        <outlet property="TextFieldCVV" destination="pX4-ZY-fga" id="1k5-hJ-FXQ"/>
-                        <outlet property="TextFieldCountry" destination="QIZ-0b-Ohv" id="k1V-YK-e3W"/>
-                        <outlet property="TextFieldCreditCardNumber" destination="8C0-yE-UiH" id="XFj-xZ-Crw"/>
-                        <outlet property="TextFieldExpires" destination="A4T-yD-X7W" id="EWI-7d-4W0"/>
-                        <outlet property="TextFieldName" destination="63i-Q4-VOI" id="S0u-qI-9J5"/>
                         <outlet property="btnSave" destination="nlJ-dD-ZKk" id="qvg-22-TJY"/>
+                        <outlet property="imgCardType" destination="MNG-wc-X6G" id="X5j-Ge-Pew"/>
                         <outlet property="lblAddCard" destination="ezr-hR-a7h" id="vfH-17-Klj"/>
+                        <outlet property="txtCVV" destination="pX4-ZY-fga" id="1k5-hJ-FXQ"/>
+                        <outlet property="txtCardNumber" destination="8C0-yE-UiH" id="XFj-xZ-Crw"/>
+                        <outlet property="txtCountry" destination="QIZ-0b-Ohv" id="k1V-YK-e3W"/>
+                        <outlet property="txtExpires" destination="A4T-yD-X7W" id="EWI-7d-4W0"/>
+                        <outlet property="txtName" destination="63i-Q4-VOI" id="S0u-qI-9J5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdu-gP-lNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3862,30 +3872,30 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uoh-2d-12u">
-                                        <rect key="frame" x="0.0" y="74" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="74" width="375" height="200"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" id="9f1-fC-7h3"/>
+                                            <constraint firstAttribute="height" constant="200" id="9f1-fC-7h3"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingCell1" id="HF4-gB-IIr" customClass="SettingCell1" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HF4-gB-IIr" id="MB0-ep-jsX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MA9-s2-wLx">
-                                                            <rect key="frame" x="13" y="0.0" width="349" height="24"/>
+                                                            <rect key="frame" x="13" y="0.0" width="349" height="69"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEw-vb-Kb6">
-                                                                    <rect key="frame" x="0.0" y="3" width="349" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="3" width="349" height="66"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-pY-yps" customClass="settingsView" customModule="PickARide_User" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="21"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-PA-wjM">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="21"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="66" id="mCu-aA-bMc"/>
                                                                                         <constraint firstAttribute="width" constant="66" id="ppC-RA-Oiq"/>
@@ -3904,10 +3914,10 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bI7-bf-Zpq">
-                                                                            <rect key="frame" x="83" y="0.0" width="230" height="21"/>
+                                                                            <rect key="frame" x="83" y="0.0" width="230" height="66"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCp-aF-BeN" customClass="settingLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="2.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="17.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -3916,7 +3926,7 @@
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezo-5V-wVq" customClass="settingLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="9.5" width="230" height="2"/>
+                                                                                    <rect key="frame" x="0.0" y="24.5" width="230" height="17"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -3925,7 +3935,7 @@
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOV-pa-nM1" customClass="settingLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="18.5" width="230" height="2.5"/>
+                                                                                    <rect key="frame" x="0.0" y="48.5" width="230" height="17.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -3936,10 +3946,10 @@
                                                                             </subviews>
                                                                         </stackView>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnF-Gx-qoB">
-                                                                            <rect key="frame" x="330" y="0.0" width="19" height="21"/>
+                                                                            <rect key="frame" x="330" y="0.0" width="19" height="66"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZ1-bK-HJo">
-                                                                                    <rect key="frame" x="0.0" y="3.5" width="14" height="14"/>
+                                                                                    <rect key="frame" x="0.0" y="26" width="14" height="14"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="14" id="Fo1-aA-NVI"/>
                                                                                         <constraint firstAttribute="width" constant="14" id="WsV-tK-sAv"/>
@@ -3966,7 +3976,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cs4-BR-o0X" customClass="seperatorView" customModule="PickARide_User" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                            <rect key="frame" x="0.0" y="88" width="375" height="1"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Pe7-qW-lJl"/>
@@ -3992,23 +4002,23 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingCell2" id="eN0-56-8iZ" customClass="SettingCell2" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="117" width="375" height="62"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eN0-56-8iZ" id="CmX-ST-ujd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGe-iX-W7A" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                            <rect key="frame" x="13" y="13" width="349" height="18"/>
+                                                            <rect key="frame" x="13" y="13" width="349" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4CZ-86-sEe">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="36"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgm-Rx-RFG" customClass="settingsView" customModule="PickARide_User" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVW-XA-vrm">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="36" id="gkG-sr-FDZ"/>
                                                                                         <constraint firstAttribute="height" constant="36" id="m7B-hB-jCv"/>
@@ -4027,10 +4037,10 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upo-UR-5e8" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                                            <rect key="frame" x="46" y="0.0" width="273" height="18"/>
+                                                                            <rect key="frame" x="46" y="0.0" width="273" height="36"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr5-gQ-yL7">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="273" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="273" height="36"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -4045,16 +4055,16 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-XE-RVV" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                                            <rect key="frame" x="329" y="0.0" width="20" height="18"/>
+                                                                            <rect key="frame" x="329" y="0.0" width="20" height="36"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Ui-G0-kzI">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="36"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nq8-jb-ucf" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="18"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="36"/>
                                                                                             <subviews>
                                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf9-2u-Cm6">
-                                                                                                    <rect key="frame" x="0.0" y="2" width="20" height="14"/>
+                                                                                                    <rect key="frame" x="0.0" y="11" width="20" height="14"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="width" constant="20" id="OA9-fz-dFV"/>
                                                                                                         <constraint firstAttribute="height" constant="14" id="oec-9q-Uwm"/>
@@ -4096,7 +4106,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYe-4q-4q0" customClass="seperatorView" customModule="PickARide_User" customModuleProvider="target">
-                                                            <rect key="frame" x="55" y="43" width="320" height="1"/>
+                                                            <rect key="frame" x="55" y="61" width="320" height="1"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="6di-yo-2Vg"/>
@@ -4127,7 +4137,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuz-iY-wDh">
-                                        <rect key="frame" x="0.0" y="74" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="274" width="375" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uab-RG-oAB" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="12.5" width="75.5" height="20.5"/>
@@ -4192,6 +4202,7 @@
                                     <constraint firstItem="uoh-2d-12u" firstAttribute="leading" secondItem="QhZ-IV-sTG" secondAttribute="leading" id="CT9-jr-BUX"/>
                                     <constraint firstItem="GSM-yR-M4k" firstAttribute="top" secondItem="QhZ-IV-sTG" secondAttribute="top" constant="31.5" id="Fwa-U6-YtV"/>
                                     <constraint firstItem="kuz-iY-wDh" firstAttribute="leading" secondItem="uoh-2d-12u" secondAttribute="leading" id="GEC-oG-TZB"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kuz-iY-wDh" secondAttribute="bottom" id="JxJ-lh-HzC"/>
                                     <constraint firstAttribute="trailing" secondItem="uoh-2d-12u" secondAttribute="trailing" id="bPs-MH-Reo"/>
                                     <constraint firstItem="GSM-yR-M4k" firstAttribute="leading" secondItem="QhZ-IV-sTG" secondAttribute="leading" constant="16" id="be6-bM-z5n"/>
                                     <constraint firstItem="kuz-iY-wDh" firstAttribute="top" secondItem="uoh-2d-12u" secondAttribute="bottom" id="hdN-7y-o1J"/>
@@ -4903,10 +4914,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-SN-tQB" customClass="blurView" customModule="PickARide_User" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yya-A0-dKr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lii-hR-4sd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-RK-8GF" customClass="suggestedTaxiView" customModule="PickARide_User" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="390" width="375" height="277"/>
                                 <subviews>
@@ -5106,17 +5121,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iP6-Dm-Fwh"/>
                         <constraints>
-                            <constraint firstItem="BCa-SN-tQB" firstAttribute="leading" secondItem="iP6-Dm-Fwh" secondAttribute="leading" id="2qV-HD-2iw"/>
                             <constraint firstItem="eMg-YK-O6M" firstAttribute="top" secondItem="gWt-l7-0YH" secondAttribute="top" id="3Od-8b-M5e"/>
                             <constraint firstItem="iSo-RK-8GF" firstAttribute="top" secondItem="eMg-YK-O6M" secondAttribute="bottom" id="CmE-KP-76S"/>
                             <constraint firstAttribute="bottom" secondItem="iSo-RK-8GF" secondAttribute="bottom" id="J93-Xo-zgc"/>
+                            <constraint firstItem="yya-A0-dKr" firstAttribute="bottom" secondItem="eMg-YK-O6M" secondAttribute="bottom" id="K7x-Ps-oSN"/>
                             <constraint firstItem="iSo-RK-8GF" firstAttribute="trailing" secondItem="iP6-Dm-Fwh" secondAttribute="trailing" id="KH7-Tg-jd0"/>
-                            <constraint firstAttribute="bottom" secondItem="BCa-SN-tQB" secondAttribute="bottom" id="RfT-Ay-fNg"/>
+                            <constraint firstItem="yya-A0-dKr" firstAttribute="trailing" secondItem="eMg-YK-O6M" secondAttribute="trailing" id="RT1-sW-k6a"/>
+                            <constraint firstItem="yya-A0-dKr" firstAttribute="leading" secondItem="eMg-YK-O6M" secondAttribute="leading" id="Trf-jY-Fvp"/>
                             <constraint firstItem="iSo-RK-8GF" firstAttribute="leading" secondItem="iP6-Dm-Fwh" secondAttribute="leading" id="UBf-uD-EbV"/>
-                            <constraint firstItem="BCa-SN-tQB" firstAttribute="trailing" secondItem="iP6-Dm-Fwh" secondAttribute="trailing" id="iIn-z2-o0L"/>
+                            <constraint firstItem="yya-A0-dKr" firstAttribute="top" secondItem="eMg-YK-O6M" secondAttribute="top" id="Z57-hG-dEk"/>
                             <constraint firstItem="eMg-YK-O6M" firstAttribute="leading" secondItem="iP6-Dm-Fwh" secondAttribute="leading" id="juw-an-8n7"/>
                             <constraint firstItem="eMg-YK-O6M" firstAttribute="trailing" secondItem="iP6-Dm-Fwh" secondAttribute="trailing" id="taE-bZ-owV"/>
-                            <constraint firstItem="BCa-SN-tQB" firstAttribute="top" secondItem="gWt-l7-0YH" secondAttribute="top" id="xsQ-Wj-ilb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5144,10 +5159,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujQ-6z-rnC" customClass="blurView" customModule="PickARide_User" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-hL-2ML">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2pK-jn-8gM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-6n-lcY" customClass="suggestedTaxiView" customModule="PickARide_User" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="236" width="375" height="431"/>
                                 <subviews>
@@ -5440,15 +5459,15 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="pUl-6n-lcY" secondAttribute="bottom" id="DZN-Cw-niK"/>
                             <constraint firstItem="pUl-6n-lcY" firstAttribute="trailing" secondItem="I9o-Yc-0XJ" secondAttribute="trailing" id="EDN-oY-EQn"/>
-                            <constraint firstAttribute="bottom" secondItem="ujQ-6z-rnC" secondAttribute="bottom" id="L3b-M5-Yd3"/>
                             <constraint firstItem="pUl-6n-lcY" firstAttribute="leading" secondItem="I9o-Yc-0XJ" secondAttribute="leading" id="NIh-GN-VuK"/>
                             <constraint firstItem="7it-Tj-Cg1" firstAttribute="top" secondItem="abq-1i-et6" secondAttribute="top" id="NXf-yT-DBP"/>
-                            <constraint firstItem="ujQ-6z-rnC" firstAttribute="top" secondItem="abq-1i-et6" secondAttribute="top" id="RqT-2l-SP2"/>
-                            <constraint firstItem="ujQ-6z-rnC" firstAttribute="trailing" secondItem="I9o-Yc-0XJ" secondAttribute="trailing" id="W57-cT-TBi"/>
+                            <constraint firstItem="Brb-hL-2ML" firstAttribute="top" secondItem="7it-Tj-Cg1" secondAttribute="top" id="ZnR-R1-dWl"/>
+                            <constraint firstItem="Brb-hL-2ML" firstAttribute="bottom" secondItem="7it-Tj-Cg1" secondAttribute="bottom" id="ef4-SQ-Czg"/>
+                            <constraint firstItem="Brb-hL-2ML" firstAttribute="trailing" secondItem="7it-Tj-Cg1" secondAttribute="trailing" id="faU-aR-ikh"/>
                             <constraint firstItem="pUl-6n-lcY" firstAttribute="top" secondItem="7it-Tj-Cg1" secondAttribute="bottom" constant="-16" id="llW-jU-40P"/>
                             <constraint firstItem="7it-Tj-Cg1" firstAttribute="trailing" secondItem="I9o-Yc-0XJ" secondAttribute="trailing" id="m8u-q3-Rdh"/>
+                            <constraint firstItem="Brb-hL-2ML" firstAttribute="leading" secondItem="7it-Tj-Cg1" secondAttribute="leading" id="r3b-Lg-U51"/>
                             <constraint firstItem="7it-Tj-Cg1" firstAttribute="leading" secondItem="I9o-Yc-0XJ" secondAttribute="leading" id="rv7-mu-ONQ"/>
-                            <constraint firstItem="ujQ-6z-rnC" firstAttribute="leading" secondItem="I9o-Yc-0XJ" secondAttribute="leading" id="vBE-y1-YEL"/>
                         </constraints>
                     </view>
                     <connections>

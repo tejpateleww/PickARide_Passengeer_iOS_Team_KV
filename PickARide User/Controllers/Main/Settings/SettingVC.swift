@@ -24,7 +24,6 @@ class SettingVC: BaseViewController{
         super.viewDidLoad()
         self.setLocalization()
         self.setUpValue()
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         addValuesInSettingList()
         self.tblSettings.reloadData()
         self.tblSettings.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -33,6 +32,7 @@ class SettingVC: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
@@ -69,6 +69,7 @@ extension SettingVC{
     
     func setLocalization() {
         lblSettingsTitle.text = "SettingsVC_lblTitle".Localized()
+        lblLanguageTitle.text = "SettingsVC_Language".Localized()
     }
     
     @objc func settingsButton(_ sender : UIButton) {
@@ -137,8 +138,6 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
     
     func setHeaderView(sectionNumber : Int) -> UIView {
         let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tblSettings.frame.size.width, height: 49))
-        let headerLabel = UILabel()
-        let headerButton = UIButton()
         
         let settingObj = SettingData.SettingList[sectionNumber]
         

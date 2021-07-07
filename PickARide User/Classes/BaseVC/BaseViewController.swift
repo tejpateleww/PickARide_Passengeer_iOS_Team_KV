@@ -9,15 +9,16 @@
 import UIKit
 //import LGSideMenuController
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGestureRecognizerDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 //        self.UpdateView()
     }
 //    
@@ -264,7 +265,7 @@ class BaseViewController: UIViewController {
     
     func UpdateView() {
         
-        if let lang = user_defaults.value(forKey: "language") as? String {
+        if let lang = userDefaults.value(forKey: "language") as? String {
 //            if lang == LanguageKey.EnglishLanguage {
 //                UIView.appearance().semanticContentAttribute = .forceLeftToRight
 //                UITableView.appearance().semanticContentAttribute = .forceLeftToRight
@@ -286,7 +287,7 @@ class BaseViewController: UIViewController {
     
     func LanguageUpdate() {
         
-        if let lang = user_defaults.value(forKey: "language") as? String {
+        if let lang = userDefaults.value(forKey: "language") as? String {
 //            if lang == LanguageKey.EnglishLanguage {
 //                self.navigationController?.navigationBar.semanticContentAttribute = .forceLeftToRight
 //                if let NavController = self.navigationController?.children {

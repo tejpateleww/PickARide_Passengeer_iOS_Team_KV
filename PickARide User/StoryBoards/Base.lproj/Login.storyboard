@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cI9-hm-QYy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B56-Z4-AZT">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -192,12 +192,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
                                                 <rect key="frame" x="95" y="426" width="130" height="59"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
-                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
+                                                        <rect key="frame" x="-59" y="0.0" width="59" height="59"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-R2-jfp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
-                                                                <state key="normal" image="ic_Facebook"/>
+                                                                <state key="normal" image="applelogo" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="btnSocialRequests:" destination="Umi-hn-684" eventType="touchUpInside" id="kgX-79-0sQ"/>
                                                                 </connections>
@@ -211,6 +211,27 @@
                                                             <constraint firstItem="iHy-R2-jfp" firstAttribute="top" secondItem="BdK-3b-S2m" secondAttribute="top" id="Syj-5C-hlj"/>
                                                             <constraint firstAttribute="height" constant="59" id="pBS-ED-SPL"/>
                                                             <constraint firstAttribute="trailing" secondItem="iHy-R2-jfp" secondAttribute="trailing" id="pNP-zH-qXj"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-R3-9Nm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-ht-jNE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                                <state key="normal" image="ic_Facebook"/>
+                                                                <connections>
+                                                                    <action selector="btnSocialRequests:" destination="Umi-hn-684" eventType="touchUpInside" id="PoS-6x-6M3"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="hgh-ht-jNE" firstAttribute="top" secondItem="cEN-R3-9Nm" secondAttribute="top" id="Iha-dI-G77"/>
+                                                            <constraint firstAttribute="width" constant="59" id="NPZ-YU-Dxz"/>
+                                                            <constraint firstAttribute="height" constant="59" id="VLP-Vk-B01"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hgh-ht-jNE" secondAttribute="trailing" id="aOf-Up-OHE"/>
+                                                            <constraint firstItem="hgh-ht-jNE" firstAttribute="leading" secondItem="cEN-R3-9Nm" secondAttribute="leading" id="eB1-eP-h7u"/>
+                                                            <constraint firstAttribute="bottom" secondItem="hgh-ht-jNE" secondAttribute="bottom" id="nBl-Ze-TEj"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-ON-8kM">
@@ -443,22 +464,18 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="30.5" translatesAutoresizingMaskIntoConstraints="NO" id="gkB-ZZ-CDu">
-                                                                        <rect key="frame" x="3" y="0.0" width="77.5" height="22"/>
+                                                                        <rect key="frame" x="3" y="0.0" width="156.5" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+49" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-os-8v7">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="22"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="35" id="3iz-rw-Eb1"/>
-                                                                                    <constraint firstAttribute="height" constant="22" id="PZd-md-dOa"/>
-                                                                                </constraints>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="35"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW3-LZ-N1T">
-                                                                                <rect key="frame" x="65.5" y="0.0" width="12" height="22"/>
+                                                                                <rect key="frame" x="144.5" y="0.0" width="12" height="35"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="bbq-zS-3Zc">
-                                                                                        <rect key="frame" x="0.0" y="2" width="12" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="8.5" width="12" height="18"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="18" id="dLd-PT-JCY"/>
                                                                                         </constraints>
@@ -486,7 +503,11 @@
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="114" id="QmR-Ox-qdu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="nW3-LZ-N1T" secondAttribute="bottom" constant="13" id="Zxb-7G-N3B"/>
+                                                            <constraint firstAttribute="trailing" secondItem="P0h-os-8v7" secondAttribute="trailing" id="dnw-om-OAO"/>
+                                                            <constraint firstItem="P0h-os-8v7" firstAttribute="leading" secondItem="zpu-sp-yqe" secondAttribute="leading" id="ehA-4M-0b0"/>
                                                             <constraint firstAttribute="height" constant="48" id="hqR-tf-vXh"/>
+                                                            <constraint firstItem="P0h-os-8v7" firstAttribute="top" secondItem="zpu-sp-yqe" secondAttribute="top" id="t6x-dv-Z1I"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-2T-53s" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
@@ -1482,6 +1503,7 @@ Number</string>
         </scene>
     </scenes>
     <resources>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="ic_Cancel" width="34" height="34"/>
         <image name="ic_DownReg" width="14" height="8"/>
         <image name="ic_Facebook" width="66" height="66"/>

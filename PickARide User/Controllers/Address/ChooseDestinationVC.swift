@@ -8,14 +8,16 @@
 
 import UIKit
 import GooglePlaces
-class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, GMSAutocompleteFetcherDelegate {
+class ChooseDestinationVC: BaseViewController {
 
     //MARK: -Properties
-    var arrayForSavedPlaces : [String] = ["Home","Work"]
-    var arrImage = [#imageLiteral(resourceName: "ic_HomeTemp"),#imageLiteral(resourceName: "Dummy_Work")]
-    var tableData=[placePickerData]()
+    var arrayForSavedPlaces : [String] = [SettingsTitle.Home,SettingsTitle.Work]
+    var arrImage = [SettingImages.SettingHome,SettingImages.SettingWork]
+    
+    var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
     var selectedTextField = 0
+    
     //MARK: -IBOutlets
     @IBOutlet weak var tblPlacePicker: UITableView!
     @IBOutlet weak var textFieldStartLocation: chooseLocationTextField!
@@ -26,32 +28,39 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-           tableDataFetecher = GMSAutocompleteFetcher()
-           tableDataFetecher.delegate = self
-        
+        self.setUpUI()
+        self.setLocalization()
            
-           tblPlacePicker.delegate = self
-           tblPlacePicker.dataSource = self
-        textFieldStartLocation.delegate = self
-        textFieldDestinationLocation.delegate = self
-        
-        textFieldStartLocation.becomeFirstResponder()
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        setLocalization()
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
+}
+
+//MARK:- Methods
+extension ChooseDestinationVC{
+    func setUpUI(){
+        self.tableDataFetecher = GMSAutocompleteFetcher()
+        self.tableDataFetecher.delegate = self
+        
+        self.tblPlacePicker.delegate = self
+        self.tblPlacePicker.dataSource = self
+        
+        self.textFieldDestinationLocation.delegate = self
+        
+        self.textFieldStartLocation.delegate = self
+        self.textFieldStartLocation.becomeFirstResponder()
+    }
+    
     func setLocalization() {
         textFieldStartLocation.placeholder = "ChooseDestination_startLocation_place".Localized()
         textFieldDestinationLocation.placeholder = "ChooseDestination_DestinationLocation_place".Localized()
     }
-    //MARK: -other methods
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.tblPlacePickerBottom.constant = keyboardSize.height
@@ -61,28 +70,22 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
     @objc func keyboardWillHide(notification: NSNotification) {
         self.tblPlacePickerBottom.constant = 0
     }
-    //MARK: -tableView Methods
+}
+
+//MARK:- TableView Delegate
+extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.tableData.count != 0 ? 2 : 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return arrayForSavedPlaces.count
-        case 1:
-            return tableData.count
-        default:
-            return 0
-            
-        }
+        return section == 0 ? self.arrayForSavedPlaces.count : self.tableData.count
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 0
-        case 1:
-            return 10.5
-        default:
-            return 0
-        }
+        return section == 0 ? 0 : 10.5
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
@@ -105,22 +108,20 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
             return headerView
         }
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as! SavedCell
+            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as? SavedCell ?? SavedCell()
             cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row]
-//            if indexPath.row == 0 {
             cell.imgLocationType.image = arrImage[indexPath.row]
-//            } else {
-//                cell.imgLocationType.image = UIImage.init(named: "ic_WorkTemp")
-//            }
+            
             if indexPath.row == arrayForSavedPlaces.count - 1 {
                 cell.Seperator1.isHidden = true
             }
             return cell
         case 1:
-            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
+            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell ?? SearchCell()
             cell.searchPlaceTitle.text = tableData[indexPath.row].primaryText
             cell.searchSubPlaceTitle.text = tableData[indexPath.row].secondaryText
 
@@ -130,6 +131,7 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
             
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
             if selectedTextField == 0 {
@@ -140,45 +142,36 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
             textFieldDestinationLocation.resignFirstResponder()
             textFieldStartLocation.resignFirstResponder()
         }
-       
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == textFieldStartLocation {
-            selectedTextField = 0
-        } else {
-            selectedTextField = 1
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+            case 0,1: return UITableView.automaticDimension
+            default: return 0
         }
-       
-
     }
+}
+
+//MARK:- UITextField Delegate
+extension ChooseDestinationVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectedTextField = textField == textFieldStartLocation ? 0 : 1
+    }
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         tableDataFetecher.sourceTextHasChanged(textField.text)
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
             let controller = SelectTaxiTypeVC.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if tableData.count != 0 {
-            return 2
-        }
-        return 1
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return UITableView.automaticDimension
-        case 1:
-            return UITableView.automaticDimension
-        default:
-            return 0
-        }
-    }
-    
-    
-    //MARK: -googleMaps Methods
+}
+
+//MARK:- Google AutoComplete Delegate
+extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         tableData.removeAll()
         for prediction in predictions {
@@ -191,17 +184,8 @@ class ChooseDestinationVC: BaseViewController,UITableViewDelegate,UITableViewDat
     func didFailAutocompleteWithError(_ error: Error) {
         print(error.localizedDescription)
     }
-    
-    //MARK: -IBActions
-    
-    
-    //MARK: -API Calls
-    
-    
-    
-    
-
 }
+
 class SavedCell : UITableViewCell {
     @IBOutlet weak var savedPlaceName : UILabel!
     @IBOutlet weak var imgLocationType: UIImageView!
@@ -212,9 +196,11 @@ class SearchCell : UITableViewCell {
     @IBOutlet weak var searchPlaceTitle : UILabel!
     @IBOutlet weak var searchSubPlaceTitle : UILabel!
 }
+
 class placePickerData {
     var primaryText = ""
     var secondaryText = ""
+    
     init(primary:String,secondary:String) {
         self.primaryText = primary
         self.secondaryText = secondary

@@ -29,11 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         self.checkAndSetDefaultLanguage()
         self.registerForPushNotifications()
         
-        if user_defaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true{
-            self.navigateToMain()
-        } else {
-            self.navigateToLogin()
-        }
         return true
     }
     

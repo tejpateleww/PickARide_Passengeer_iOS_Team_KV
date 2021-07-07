@@ -87,6 +87,7 @@
 		187BC49D268AEFE200CAD121 /* SocialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC49C268AEFE200CAD121 /* SocialModel.swift */; };
 		187BC4F6268B140800CAD121 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC4F5268B140800CAD121 /* UserDefaults+Extension.swift */; };
 		187BC4FB268B1EC900CAD121 /* SocialSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */; };
+		188677E82695A209007F17EE /* InitResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188677E72695A209007F17EE /* InitResponseModel.swift */; };
 		18B364A7269411EA00CE8E3D /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364A6269411EA00CE8E3D /* PasswordModel.swift */; };
 		18B364C52694121500CE8E3D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B364C42694121500CE8E3D /* PasswordViewModel.swift */; };
 		18B365222694396800CE8E3D /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B365212694396800CE8E3D /* SettingsData.swift */; };
@@ -206,6 +207,7 @@
 		187BC49C268AEFE200CAD121 /* SocialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialModel.swift; sourceTree = "<group>"; };
 		187BC4F5268B140800CAD121 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		187BC4FA268B1EC900CAD121 /* SocialSignInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignInManager.swift; sourceTree = "<group>"; };
+		188677E72695A209007F17EE /* InitResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitResponseModel.swift; sourceTree = "<group>"; };
 		18B364A6269411EA00CE8E3D /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		18B364C42694121500CE8E3D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		18B365212694396800CE8E3D /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				187BC496268AE1BB00CAD121 /* CountryListModel.swift */,
+				188677E72695A209007F17EE /* InitResponseModel.swift */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,
 				1865CF54267C763100379A40 /* apiPaths.swift in Sources */,
+				188677E82695A209007F17EE /* InitResponseModel.swift in Sources */,
 				180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */,
 				18F9B701259350E100202DA6 /* UIView+Extension.swift in Sources */,
 				185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */,

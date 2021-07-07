@@ -29,17 +29,17 @@ class RideDetailsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpUI()
         self.setupLocalization()
-         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
 }
 
 //MARK:- Set Up UI
 extension RideDetailsVC{
-    func setUpUI(){
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-    }
     
     func setupLocalization(){
         lblRideDetails.text = "RideDetailsVC_lblRideDetails".Localized()

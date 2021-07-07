@@ -30,6 +30,7 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,7 +40,6 @@ class CommonWebViewVC: BaseViewController, WKNavigationDelegate {
     }
     
     func setUp() {
-        setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         webView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.webView)
         NSLayoutConstraint.activate([

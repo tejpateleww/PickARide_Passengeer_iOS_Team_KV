@@ -20,17 +20,14 @@ class ReasonForCancelVC: BaseViewController {
     var isselected = true
     var selectIndex = 0
     
-    //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblReasonforCancel.delegate = self
-        tblReasonforCancel.dataSource = self
-        tblReasonforCancel.reloadData()
-        setupLocalization()
-        footerView.backgroundColor = .white
-        self.tblReasonforCancel.tableFooterView = footerView
-        
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setupLocalization()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.reasonForCancle.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     //MARK: -IBActions
@@ -39,13 +36,24 @@ class ReasonForCancelVC: BaseViewController {
     }
 }
 
-//MARK: Other Methods
+//MARK: Methods
 extension ReasonForCancelVC{
+    func setUpUI(){
+        tblReasonforCancel.delegate = self
+        tblReasonforCancel.dataSource = self
+        tblReasonforCancel.reloadData()
+        
+        footerView.backgroundColor = .white
+        self.tblReasonforCancel.tableFooterView = footerView
+    }
+    
     func setupLocalization(){
         btnDone.setTitle("ReasonForCancleVC_btnDone".Localized(), for: .normal)
     }
 }
 
+
+//MARK:- TableView Delegate
 extension ReasonForCancelVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reasonArray.count
@@ -72,7 +80,6 @@ class reasonCell: UITableViewCell{
     
     override class func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 }
 

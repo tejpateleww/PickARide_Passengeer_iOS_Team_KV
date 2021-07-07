@@ -35,7 +35,7 @@ extension AppDelegate{
         let token = fcmToken ?? "No Token found"
         print("Firebase registration token: \(fcmToken ?? "No Token found")")
         Singleton.sharedInstance.DeviceToken = token
-        user_defaults.set(fcmToken, forKey: UserDefaultsKey.DeviceToken.rawValue)
+        userDefaults.set(fcmToken, forKey: UserDefaultsKey.DeviceToken.rawValue)
         
         
         let dataDict:[String: String] = ["token": token]

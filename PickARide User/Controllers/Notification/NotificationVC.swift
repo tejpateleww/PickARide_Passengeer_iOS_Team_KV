@@ -8,38 +8,36 @@
 
 import UIKit
 
-class NotificationVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class NotificationVC: BaseViewController {
     
-    
-    // MARK: - Properties
-   // var customTabBarController: CustomTabBarVC?
-    
-    // MARK: - IBOutlets
     @IBOutlet weak var lblNotificationTitle: NotificationLabel!
     @IBOutlet weak var tbvNotification: UITableView!
     
-    // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setUp()
+        self.setUpUI()
+        self.setUpLocalization()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+}
 
-    // MARK: - Other Methods
-    func setUp() {
-       // self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
+//MARK:- Methods
+extension NotificationVC{
+    func setUpUI() {
         addNavBarImage(isLeft: true, isRight: true)
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
+    
     func setUpLocalization() {
         lblNotificationTitle.text = "Notification_lblTitle".Localized()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        //self.customTabBarController?.hideTabBar()
-    }
-    // MARK: - IBActions
-    
-    // MARK: - UITableViewDelegates And Datasource
+}
+
+//MARK:- Methods
+extension NotificationVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -48,11 +46,10 @@ class NotificationVC: BaseViewController,UITableViewDelegate,UITableViewDataSour
         let cell:NotificationCell = tbvNotification.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath)as! NotificationCell
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }
-    
-    // MARK: - Api Calls
 }
 
 class NotificationCell: UITableViewCell{

@@ -17,15 +17,15 @@ class LoginUserModel{
             Utilities.hideHud()
             
             if status{
-                user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                user_defaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 
                 Singleton.sharedInstance.UserProfilData = response?.data
-                user_defaults.setUserData()
+                userDefaults.setUserData()
                 
                 if let apikey = response?.data?.xAPIKey{
                     Singleton.sharedInstance.Api_Key = apikey
-                    user_defaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+                    userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 }
                 
                 if let userID = response?.data?.id{
@@ -46,15 +46,15 @@ class LoginUserModel{
             Utilities.hideHud()
             
             if status{
-                user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                user_defaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 
                 Singleton.sharedInstance.UserProfilData = response?.data
-                user_defaults.setUserData()
+                userDefaults.setUserData()
                 
                 if let apikey = response?.data?.xAPIKey{
                     Singleton.sharedInstance.Api_Key = apikey
-                    user_defaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+                    userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 }
                 
                 if let userID = response?.data?.id{

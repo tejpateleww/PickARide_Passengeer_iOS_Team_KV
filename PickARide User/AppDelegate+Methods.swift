@@ -16,13 +16,13 @@ import SideMenuSwift
 
 extension AppDelegate{
     func checkAndSetDefaultLanguage() {
-        if user_defaults.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
+        if userDefaults.value(forKey: UserDefaultsKey.selLanguage.rawValue) == nil {
             setLanguageEnglish()
         }
     }
     
     func setLanguageEnglish() {
-        user_defaults.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
+        userDefaults.setValue("en", forKey: UserDefaultsKey.selLanguage.rawValue)
     }
     
     func setupNavigation(){

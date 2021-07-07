@@ -8,39 +8,28 @@
 
 import UIKit
 
-class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource {
+class AddPaymentVC: BaseViewController{
     
+    @IBOutlet weak var tblPaymentMethod: UITableView!
+    @IBOutlet weak var btnAddCard: submitButton!
+    @IBOutlet weak var lblTitle: TitleLabel!
     
-    //MARK: -Properties
     var cardDetails : [String] = []
     var isFromSideMenu = false
     var selectedPaymentMethods = 1
     var isFromSchedulled : Bool = false
     
-    //MARK: -IBOutlets
-    @IBOutlet weak var tblPaymentMethod: UITableView!
-    @IBOutlet weak var btnAddCard: submitButton!
-    @IBOutlet weak var lblTitle: TitleLabel!
-    
-    //MARK: -View Life Cycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        if isFromSideMenu {
-            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        } else {
-            setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        }
-        navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
-        // Do any additional setup after loading the view.
+        self.setLocalization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
-    //MARK: -other methods
     func setLocalization() {
         lblTitle.text = "AddCardVC_lblPaymentMethod".Localized()
         btnAddCard.setTitle("AddCardVC_lblAddCard".Localized().uppercased(), for: .normal)
@@ -78,20 +67,52 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             navigationController.navigationBar.isHidden = true
             self.present(navigationController, animated: true, completion: nil)
         }
-        }
-    //MARK: -tblViewMethods
+    }
+}
+
+
+//MARK:- TableView Delegate
+extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return section == 0 ? 3 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 100 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 31 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            return 3
+            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tblPaymentMethod.frame.size.width, height: 31))
+            headerView.backgroundColor = colors.white.value
+            let label = UILabel()
+            label.frame = CGRect(x: 16, y: 0, width:  headerView .frame.size.width, height: 19)
+            // let label = UILabel.init(frame: )
+            label.center.y = headerView.frame.size.height / 2
+            label.text = "AddCardVC_lblChoosedesired".Localized()
+            label.font = CustomFont.regular.returnFont(15)
+            label.textColor = colors.loginPlaceHolderColor.value
+            label.textAlignment = .left
+            headerView.addSubview(label)
+            return headerView
         default:
-            return 0
+            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            
+            return headerView
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         switch indexPath.section {
         case 0:
             var cell = UITableViewCell()
@@ -139,48 +160,7 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             return UITableViewCell()
         }
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 100
-        default:
-            return 0
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        switch section {
-        case 0:
-            return 31
-      
-        default:
-            return 0
-        }
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tblPaymentMethod.frame.size.width, height: 31))
-            headerView.backgroundColor = colors.white.value
-            let label = UILabel()
-            label.frame = CGRect(x: 16, y: 0, width:  headerView .frame.size.width, height: 19)
-            // let label = UILabel.init(frame: )
-            label.center.y = headerView.frame.size.height / 2
-            label.text = "AddCardVC_lblChoosedesired".Localized()
-            label.font = CustomFont.regular.returnFont(15)
-            label.textColor = colors.loginPlaceHolderColor.value
-            label.textAlignment = .left
-            headerView.addSubview(label)
-            return headerView
-        default:
-            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-            
-            return headerView
-        }
-    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -192,36 +172,19 @@ class AddPaymentVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             }
             selectedPaymentMethods = indexPath.row
             tblPaymentMethod.reloadData()
-            
-            
-            
         default:
             break
         }
-        
-        
     }
-    
-    
-    //MARK: -API Calls
-    
-    
-    
-    
-    
-    
-    
-    
-  
-    
-    
 }
+
 class paymentMethodCell1 : UITableViewCell {
-     @IBOutlet weak var vWMain: PaymentView!
+    @IBOutlet weak var vWMain: PaymentView!
     @IBOutlet weak var lblWallet: addPaymentlable!
     @IBOutlet weak var lblwalletBalance: addPaymentlable!
     @IBOutlet weak var paymentImageView: UIImageView!
 }
+
 class paymentMethodCell2 : UITableViewCell {
      @IBOutlet weak var vWMain: PaymentView!
     @IBOutlet weak var selectPaymentMethodButton: UIButton!

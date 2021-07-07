@@ -29,43 +29,20 @@ class SelectTaxiTypeVC: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.setUPUI()
         self.setLocalization()
-        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-        
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-        
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-        
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-        tblSuggestedRides.reloadData()
-        DispatchQueue.main.async { [self] in
-            if taxiData.count > 2 {
-                tblSuggestedRidesHeight.constant = (tblSuggestedRides.contentSize.height / CGFloat(taxiData.count)) * 2
-            } else {
-                tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
-            }
-        }
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"], isTwoLabels: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"], isTwoLabels: false)
     }
+    
     @IBAction func btnCancel(_ sender: Any) {
         appDel.navigateToMain()
     }
-    
-    func setLocalization() {
-        lblSuggestedRide.text = "SuggestedTaxiVC_lblTitle".Localized()
-        lblCardPayment.text = "SuggestedTaxiVC_lblCardPayment".Localized()
-        
-        btnBookNow.setTitle("SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
-        btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
-        btnPromo.setTitle("SuggestedTaxiVC_btnPromo".Localized(), for: .normal)
-    }
-    
+
     @IBAction func btnPromo(_ sender: Any) {
     }
    
@@ -84,9 +61,8 @@ class SelectTaxiTypeVC: BaseViewController{
         navigationController.modalTransitionStyle = .crossDissolve
         navigationController.navigationBar.isHidden = true
         self.present(navigationController, animated: true, completion: nil)
-        
-        
     }
+    
     @IBAction func btnBookNowClick(_ sender: Any) {
         let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
         controller.isFromSideMenu = false
@@ -101,7 +77,38 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBAction func btnCardPaymentClick(_ sender: Any) {
         
     }
+}
+
+//MARK:- Methods
+extension SelectTaxiTypeVC{
+    func setUPUI(){
+        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        
+        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+        tblSuggestedRides.reloadData()
+        
+        DispatchQueue.main.async { [self] in
+            if taxiData.count > 2 {
+                tblSuggestedRidesHeight.constant = (tblSuggestedRides.contentSize.height / CGFloat(taxiData.count)) * 2
+            } else {
+                tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
+            }
+        }
+    }
     
+    func setLocalization() {
+        lblSuggestedRide.text = "SuggestedTaxiVC_lblTitle".Localized()
+        lblCardPayment.text = "SuggestedTaxiVC_lblCardPayment".Localized()
+        
+        btnBookNow.setTitle("SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
+        btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
+        btnPromo.setTitle("SuggestedTaxiVC_btnPromo".Localized(), for: .normal)
+    }
 }
 
 //MARK:- TableView Delegate

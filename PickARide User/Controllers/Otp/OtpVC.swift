@@ -26,10 +26,58 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblDisplayMesagewithNumber.text = "Check your SMS messages. We've sent you the PIN at" + "    ******9999"
+        self.setUpUI()
+        self.reversetimer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
+    override func btnBackAction() {
+        super.btnBackAction()
+        timer.invalidate()
+    }
+    
+    @IBAction func btnAeeroTap(_ sender: Any) {
+        if isFrmRegister {
+            userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            appDel.navigateToMain()
+        } else {
+            let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
+            controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
+            controller.isChangePassword = false
+            
+            controller.btnSubmitClosure = {
+                userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToLogin()
+            }
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.navigationBar.isHidden = true
+            self.present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func btnResendCodeTap(_ sender: Any) {
+        self.txtOtp.forEach { (textfield) in
+            textfield.text = ""
+        }
+        
+        self.counter = 31
+        self.reversetimer()
+    }
+}
+
+//MARK:- Methods
+extension OtpVC{
+    func setUpUI(){
+        lblDisplayMesagewithNumber.text = "Check your SMS messages. We've sent you the PIN at" + "    ******9999"
         txtOtp[0].becomeFirstResponder()
-        reversetimer()
+        
         for i in txtOtp {
             i.backgroundColor = .clear
             i.layer.cornerRadius = 4
@@ -45,13 +93,6 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
         txtOtp[1].myDelegate = self
         txtOtp[2].myDelegate = self
         txtOtp[3].myDelegate = self
-        
-        
-    }
-    
-    override func btnBackAction() {
-        super.btnBackAction()
-        timer.invalidate()
     }
     
     func reversetimer(){
@@ -75,34 +116,7 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
             btnResendCode.setTitle("Resend code", for: .normal)
         }
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if range.length == 0 {
-            setNextResponder(textFieldsIndexes[textField as! OTPTextField], direction: .right)
-            textField.text = string
-            return true
-        } else if range.length == 1 {
-            setNextResponder(textFieldsIndexes[textField as! OTPTextField], direction: .left)
-            textField.text = ""
-            return false
-        }
-        return false
-    }
     
-    func textFieldDidDelete(currentTextField: OTPTextField) {
-        print("delete")
-        setNextResponder(textFieldsIndexes[currentTextField], direction: .left)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
-        //        if textField != txtCode1 {
-        setNextResponderBlank(textFieldsIndexes[textField as! OTPTextField])
-        //        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-//        self.btnArrowBottom.constant = 20
-    }
     func validation() -> Bool {
         var strEnteredOTP = ""
         for index in 0 ..< txtOtp.count {
@@ -110,12 +124,10 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
         }
         
         if strEnteredOTP == "" {
-            //                Utilities.ShowAlert(OfMessage: "validMsg_RequiredOtp".Localized())
             Utilities.ShowAlert(OfMessage: "Please enter verification code")
             return false
         } else if self.StringOTP != strEnteredOTP {
             self.clearAllFields()
-            //                Utilities.ShowAlert(OfMessage: "validMsg_InvalidOtp".Localized())
             Utilities.ShowAlert(OfMessage: "Please enter valid verification code")
             return false
         }
@@ -153,58 +165,41 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
             let neIndex = index! + 1
             for i in neIndex..<txtOtp.count {
                 txtOtp[i].text = ""
-               
             }
         }
     }
-    
-    
-    //MARK:- IBActions
-    
-    @IBAction func btnAeeroTap(_ sender: Any) {
-        if isFrmRegister {
-            user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToMain()
-        } else {
-            let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
-            controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
-            controller.isChangePassword = false
-            
-            controller.btnSubmitClosure = {
-                user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToLogin()
-            }
-            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-            let navigationController = UINavigationController(rootViewController: controller)
-            navigationController.modalPresentationStyle = .overCurrentContext
-            navigationController.modalTransitionStyle = .crossDissolve
-            navigationController.navigationBar.isHidden = true
-            self.present(navigationController, animated: true, completion: nil)
-        }
-        
-    }
-    @IBAction func btnResendCodeTap(_ sender: Any) {
-//        if lblCountDown.text == "0"{
-//            counter = 30
-//            webserviceForOtp()
-//            reversetimer()
-//
-//        }
-        txtOtp.forEach { (textfield) in
-            textfield.text = ""
-        }
-            counter = 31
-//            webserviceForOtp()
-            reversetimer()
-        
-    }
-    
-    
 }
 
+//MARK:- UITextFieldDelegate
+extension OtpVC{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if range.length == 0 {
+            setNextResponder(textFieldsIndexes[textField as! OTPTextField], direction: .right)
+            textField.text = string
+            return true
+        } else if range.length == 1 {
+            setNextResponder(textFieldsIndexes[textField as! OTPTextField], direction: .left)
+            textField.text = ""
+            return false
+        }
+        return false
+    }
+    
+    func textFieldDidDelete(currentTextField: OTPTextField) {
+        print("delete")
+        setNextResponder(textFieldsIndexes[currentTextField], direction: .left)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        setNextResponderBlank(textFieldsIndexes[textField as! OTPTextField])
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+}
 
 class OTPTextField: UITextField {
-    
     var myDelegate: OTPTextFieldDelegate?
     
     override func deleteBackward() {
@@ -224,4 +219,5 @@ class OTPTextField: UITextField {
         self.tintColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
     }
 }
+
 enum Direction { case left, right }

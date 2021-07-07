@@ -23,15 +23,18 @@ class RegisterVC: BaseViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var btnSignUP: submitButton!
     
+    var pickerView = UIPickerView()
+    var selectedIndexOfPicker = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     //MARK: -IBActions
@@ -44,6 +47,28 @@ class RegisterVC: BaseViewController {
 
 //MARK: Other methods
 extension RegisterVC{
+    func setUpUI(){
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        self.pickerView.showsSelectionIndicator = true
+        
+        self.txt.tintColor = .white
+        self.txtCountry.delegate = self
+        self.txtCountry.inputView = pickerView
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.barTintColor = .black
+        toolBar.barTintColor = .white
+        toolBar.tintColor = themeColor
+        toolBar.sizeToFit()
+        let done = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAction))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+        toolBar.setItems([cancel,space,done], animated: false)
+        
+        self.txtCountry.inputAccessoryView = toolBar
+    }
     func setLocalization() {
         lblSignUP.text = "SignUpPage_lblSignUP".Localized()
         textFieldFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()

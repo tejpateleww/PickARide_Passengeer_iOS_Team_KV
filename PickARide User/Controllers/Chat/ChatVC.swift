@@ -19,19 +19,12 @@ class ChatVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setLocalization()
         self.setValue()
-        MessageArray.append(ChatConversation(date: "Today at 5:03 PM", Data: [MessageAllData(fromSender: true, message: "Hello, are you nearby?", lastMessage: false), MessageAllData(fromSender: false, message: "I'll be there in a few mins", lastMessage: true), MessageAllData(fromSender: true, message: "OK, I'm in front of the bus stop", lastMessage: true) ]))
-        MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true) ]))
-        
-                setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        self.navigationItem.titleView = vwNavBar
-       
-        self.lblName.text = "Connor Chavez"
-        self.lblInfo.text = "ST3751 - Toyota Vios"
-        
-        
-        self.tblChat.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,16 +35,21 @@ class ChatVC: BaseViewController {
 
 //MARK: Other methods
 extension ChatVC{
-    func setLocalization() {
+    func setValue() {
+        MessageArray.append(ChatConversation(date: "Today at 5:03 PM", Data: [MessageAllData(fromSender: true, message: "Hello, are you nearby?", lastMessage: false), MessageAllData(fromSender: false, message: "I'll be there in a few mins", lastMessage: true), MessageAllData(fromSender: true, message: "OK, I'm in front of the bus stop", lastMessage: true) ]))
+        MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true) ]))
         
+        self.navigationItem.titleView = vwNavBar
+        
+        self.lblName.text = "Connor Chavez"
+        self.lblInfo.text = "ST3751 - Toyota Vios"
+        
+        self.tblChat.reloadData()
     }
     
     @objc func backClick(){
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func setValue() {
     }
 }
 

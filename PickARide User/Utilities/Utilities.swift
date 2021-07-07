@@ -46,7 +46,7 @@ class Utilities:NSObject{
     //MARK: - ================================
     //MARK: Device UDID
     //MARK: ==================================
-    static let deviceId: String = (UIDevice.current.identifierForVendor?.uuidString)!
+    static let deviceId: String = (UIDevice.current.identifierForVendor?.uuidString) ?? ""
     
     //MARK: - ================================
     //MARK: Print Output
@@ -305,83 +305,7 @@ class Utilities:NSObject{
 //        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
     
-    /*
-     class func showHUDWithoutLottie(with mainView: UIView?) {
-     
-     let obj = DataClass.getInstance()
-     obj?.viewBackFull = UIView(frame: CGRect(x: 0, y: 0, width: mainView?.frame.size.width ?? 0.0, height: mainView?.frame.size.height ?? 0.0))
-     obj?.viewBackFull?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-     let imgGlass = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))//239    115    40
-     imgGlass.backgroundColor = UIColor.black.withAlphaComponent(0.0) //UIColor(red: 239/255, green: 115/255, blue: 40/255, alpha: 1.0)//
-     //        self._loadAnimationNamed("Loading", view: imgGlass, dataClass: obj)
-     imgGlass.center = obj?.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
-     imgGlass.layer.cornerRadius = 15.0
-     imgGlass.layer.masksToBounds = true
-     obj?.viewBackFull?.addSubview(imgGlass)
-     mainView?.addSubview(obj?.viewBackFull ?? UIView())
-     }
-     
-     
-     class func showHUDWithLottie(with mainView: UIView?) {
-     
-     let obj = DataClass.getInstance()
-     obj?.viewBackFull = UIView(frame: CGRect(x: 0, y: 0, width: mainView?.frame.size.width ?? 0.0, height: mainView?.frame.size.height ?? 0.0))
-     obj?.viewBackFull?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-     let imgGlass = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))//239    115    40
-     imgGlass.backgroundColor = UIColor.black.withAlphaComponent(0.0) //UIColor(red: 239/255, green: 115/255, blue: 40/255, alpha: 1.0)//
-     self._loadAnimationNamed("loadingDog", view: imgGlass, dataClass: obj)
-     imgGlass.center = obj?.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
-     imgGlass.layer.cornerRadius = 15.0
-     imgGlass.layer.masksToBounds = true
-     obj?.viewBackFull?.addSubview(imgGlass)
-     mainView?.addSubview(obj?.viewBackFull ?? UIView())
-     }
-     
-     class func _loadAnimationNamed(_ named: String?, view mainView: UIView?, dataClass obj: DataClass?) {
-     
-     obj?.laAnimation = AnimationView(name: named ?? "")
-     obj?.laAnimation?.frame = mainView?.frame ?? CGRect(x: 0, y: 0, width: 0, height: 0)//CGRect(x: (mainView?.center.x ?? 0.0) / 2 - 3, y: 20, width: 140, height: 140)
-     obj?.laAnimation?.contentMode = .scaleAspectFill
-     obj?.laAnimation?.center = mainView?.center ?? CGPoint(x: 0, y: 0)
-     obj?.laAnimation?.play(fromProgress: 0,
-     toProgress: 1,
-     loopMode: LottieLoopMode.loop,
-     completion: { (finished) in
-     if finished {
-     
-     } else {
-     
-     }
-     })
-     obj?.laAnimation?.layer.masksToBounds = true
-     mainView?.setNeedsLayout()
-     if let laAnimation = obj?.laAnimation {
-     mainView?.addSubview(laAnimation)
-     }
-     
-     }
-     
-     class func showDataNotFound(text:String,View:UIView,isHidden:Bool) {
-     let label = UILabel(frame: CGRect(x:UIScreen.main.bounds.width/2 - 120,y:UIScreen.main.bounds.height/2 - 25,width:240,height: 50))
-     label.textAlignment = .center
-     label.textColor = .black
-     // label.backgroundColor = .yellow
-     label.font = UIFont(name:AppExtraBold, size:15.0)
-     label.text =  text
-     View.addSubview(label)
-     View.isHidden = isHidden
-     label.isHidden = isHidden
-     }
-     
-     class func hideHUD() {
-     let obj = DataClass.getInstance()
-     
-     DispatchQueue.main.async(execute: {
-     obj?.viewBackFull?.removeFromSuperview()
-     })
-     
-     }
-     */
+    
     
     //MARK:- Date string format change ========
     class func DateStringChange(Format:String,getFormat:String,dateString:String)-> String{
@@ -417,8 +341,6 @@ class Utilities:NSObject{
         alertWindow.makeKeyAndVisible()
         alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
-    
-    
     
     class func getReadableDate(timeStamp: TimeInterval , isFromTime : Bool) -> String? {
         let date = Date(timeIntervalSinceNow: timeStamp)//Date(timeIntervalSince1970: timeStamp)
@@ -609,6 +531,133 @@ class Utilities:NSObject{
         return nil
     }
     
+    
+    static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], isOkRed : Bool, completion:((_ index:Int) -> Void)!) -> Void{
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var style : UIAlertAction.Style
+        for index in 0..<buttons.count {
+            if isOkRed{
+                if buttons[index].lowercased() == UrlConstant.Ok.lowercased() || buttons[index].lowercased() == UrlConstant.Yes.lowercased(){
+                    style = .destructive
+                }else{
+                    style = .default
+                }
+            }else{
+                style = .default
+            }
+            
+            let action = UIAlertAction(title: buttons[index], style: style, handler: { (alert: UIAlertAction!) in
+                if(completion != nil) {
+                    completion(index)
+                }
+            })
+            alertController.addAction(action)
+        }
+        DispatchQueue.main.async {
+            vc.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    static func showAlertWithTitleFromWindow(title:String?, andMessage message:String, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        for index in 0..<buttons.count
+        {
+            let action = UIAlertAction(title: buttons[index], style: .default, handler: {
+                (alert: UIAlertAction!) in
+                
+                if(completion != nil) {
+                    completion(index)
+                }
+            })
+            
+            alertController.addAction(action)
+        }
+        
+        appDel.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    static func showActionSheetWithTitleFromVC(vc:UIViewController, title:String, andMessage message:String, buttons:[String],canCancel:Bool, completion:((_ index:Int) -> Void)!) -> Void {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        for index in 0..<buttons.count  {
+            
+            let action = UIAlertAction(title: buttons[index], style: .default, handler: {
+                
+                (alert: UIAlertAction!) in
+                if(completion != nil){
+                    
+                    completion(index)
+                }
+            })
+            alertController.addAction(action)
+        }
+        
+        if canCancel {
+            
+            let action = UIAlertAction(title: UrlConstant.Cancel, style: .cancel, handler: {
+                (alert: UIAlertAction!) in
+                
+                if completion != nil {
+                    
+                    completion(buttons.count)
+                }
+            })
+            alertController.addAction(action)
+        }
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = vc.view
+            popoverController.sourceRect = CGRect(x: vc.view.bounds.midX, y: vc.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        DispatchQueue.main.async {
+            vc.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    static func showActionSheetWithTitleFromWindow(title:String?, andMessage message:String, buttons:[String], canCancel: Bool, completion:((_ index:Int) -> Void)!) -> Void {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        for index in 0..<buttons.count  {
+            
+            let action = UIAlertAction(title: buttons[index], style: .default, handler: {
+                
+                (alert: UIAlertAction!) in
+                if(completion != nil){
+                    
+                    completion(index)
+                }
+            })
+            //            setvalue for color
+            //            action.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            //            action.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            alertController.addAction(action)
+        }
+        
+        if canCancel {
+            
+            let action = UIAlertAction(title: UrlConstant.Cancel, style: .cancel, handler: {
+                (alert: UIAlertAction!) in
+                
+                if completion != nil {
+                    
+                    completion(buttons.count)
+                }
+            })
+            //            action.setValue(UIColor.darkGray, forKey: "titleTextColor")
+            alertController.addAction(action)
+        }
+        alertController.modalPresentationStyle = .overFullScreen
+        appDel.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+    }
 }
 
 

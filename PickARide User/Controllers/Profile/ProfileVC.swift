@@ -36,16 +36,55 @@ class ProfileVC: BaseViewController {
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocalization()
-        setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        
+        self.setUpUI()
+        self.setupLocalization()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
+    @IBAction func btnProfile(_ sender: Any) {
+        self.view.endEditing(true)
+        self.imagePicker?.present(from: self.imgProfile, image: self.imgProfile.image ?? UIImage())
+    }
+    
+    @IBAction func btnEditProfileClicked(_ sender: Any) {
+        appDel.navigateToMain()
+    }
+    
+    @IBAction func btnPasswordClicked(_ sender: Any) {
+        let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
+        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
+        controller.isChangePassword = true
+        controller.btnSubmitClosure = {
+            userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func btnSave(_ sender: Any) {
+    }
+}
+
+//MARK: Other Methods
+extension ProfileVC{
+    func setUpUI(){
         navBtnProfile.isSelected = true
         navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
         self.makeEditableTrue(navBtnProfile)
         self.imgProfile.image = UserPlaceHolder
         self.imagePicker = ImagePicker(presentationController: self, delegate: self, allowsEditing: false)
     }
-    
     
     @objc func makeEditableTrue(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
@@ -61,42 +100,6 @@ class ProfileVC: BaseViewController {
             self.navigationItem.rightBarButtonItem = nil
         }
     }
-    
-    //MARK: -IBActions
-    @IBAction func btnProfile(_ sender: Any) {
-        self.view.endEditing(true)
-        self.imagePicker?.present(from: self.imgProfile, image: self.imgProfile.image ?? UIImage())
-    }
-    
-    @IBAction func btnEditProfileClicked(_ sender: Any) {
-        appDel.navigateToMain()
-    }
-    
-    @IBAction func btnPasswordClicked(_ sender: Any) {
-        let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
-        controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
-        controller.isChangePassword = true
-        controller.btnSubmitClosure = {
-            user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            self.dismiss(animated: true, completion: {
-                self.navigationController?.popViewController(animated: true)
-            })
-        }
-        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        navigationController.modalTransitionStyle = .crossDissolve
-        navigationController.navigationBar.isHidden = true
-        self.present(navigationController, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func btnSave(_ sender: Any) {
-    }
-}
-
-//MARK: Other Methods
-extension ProfileVC{
     func setupLocalization(){
         lblTitle.text = "ProfileVC_lblTitle".Localized()
         lblFirstName.text = "ProfileVC_lblFirstName".Localized()

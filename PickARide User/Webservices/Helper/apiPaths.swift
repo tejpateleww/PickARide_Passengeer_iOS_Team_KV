@@ -11,8 +11,8 @@ typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 
 enum APIEnvironment : String {
  
-///Development URL : Picka ride customer
-    case Development = "http://65.1.154.172/api/driver_api/"
+//Development URL : Pick A Ride Customer
+    case Development = "http://65.1.154.172/api/customer_api/"
     case Profilebu = "http://65.1.154.172/api/"
     case Live = "not provided"
      
@@ -25,11 +25,11 @@ enum APIEnvironment : String {
     }
     
     static var headers : [String:String]{
-        if user_defaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
+        if userDefaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
             
-            if user_defaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
+            if userDefaults.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
                 
-                if user_defaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
+                if userDefaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
                         if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
                             return ["x-api-key":Singleton.sharedInstance.Api_Key]
@@ -45,7 +45,7 @@ enum APIEnvironment : String {
 }
 
 enum ApiKey: String {
-    case Init                                 = "init/"
+    case Init                                 = "init/ios/"
     case getCountryList                       = "country_list"
     case login                                = "login"
     case registerOTP                          = "register_otp"

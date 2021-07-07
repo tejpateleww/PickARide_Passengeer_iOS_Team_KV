@@ -20,16 +20,24 @@ class ForgotPasswordVC: BaseViewController {
     var forgotPasswordUserModel = PasswordUserModel()
     
     override func viewDidLoad() {
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         super.viewDidLoad()
         setupLocalization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
-    //MARK: -Other Methods
+    @IBAction func btnContinue(_ sender: Any) {
+        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+//MARK:- Methods
+extension ForgotPasswordVC{
     func setupLocalization() {
         lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
         lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
@@ -37,12 +45,6 @@ class ForgotPasswordVC: BaseViewController {
         lblCountryCode.text = "ForgotPasswordScreen_lblCountryCode".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
         btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
-    }
-    
-    //MARK: -IBActions
-    @IBAction func btnContinue(_ sender: Any) {
-        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 

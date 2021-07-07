@@ -16,7 +16,7 @@ class AddNewDestinationVC: BaseViewController {
     @IBOutlet weak var txtPlaceAddress: ProfileTextField!
     @IBOutlet weak var txtPlaceName: ProfileTextField!
     
-    var tableData=[placePickerData]()
+    var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
     
     override func viewDidLoad() {
@@ -24,19 +24,27 @@ class AddNewDestinationVC: BaseViewController {
         s = "d"
         print(s ?? "")
         super.viewDidLoad()
+        self.setUpUI()
         self.setLocalization()
-        self.setString()
         self.setDelegates()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
 }
 
 //MARK:- Set Up UI
 extension AddNewDestinationVC{
+    func setUpUI(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     func setDelegates(){
         tableDataFetecher = GMSAutocompleteFetcher()
         tableDataFetecher.delegate = self
-        
         
         tblPlacePicker.delegate = self
         tblPlacePicker.dataSource = self
@@ -45,13 +53,6 @@ extension AddNewDestinationVC{
     
     func setLocalization() {
         txtPlaceAddress.placeholder = "AddNewDestinationVC_PlaceName_place".Localized()
-    }
-    
-    func setString() {
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -74,7 +75,7 @@ extension AddNewDestinationVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
+            let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell ?? SearchCell()
             cell.searchPlaceTitle.text = tableData[indexPath.row].primaryText
             cell.searchSubPlaceTitle.text = tableData[indexPath.row].secondaryText
             return cell

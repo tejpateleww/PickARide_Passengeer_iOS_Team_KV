@@ -30,20 +30,19 @@ class VerifyVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        setValue()
+        self.setLocalization()
+        self.setValue()
         self.configureOtpField()
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
-    //MARK: -IBActions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+    }
+    
     @IBAction func Verify(_ sender: Any) {
         if isFrmRegister {
-            user_defaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
         } else {
             let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
@@ -51,7 +50,7 @@ class VerifyVC: BaseViewController {
             controller.isChangePassword = false
             
             controller.btnSubmitClosure = {
-                user_defaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
                 appDel.navigateToLogin()
             }
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -93,7 +92,7 @@ extension VerifyVC{
     func setLabel() {
         let attributedString = NSMutableAttributedString(string: lblCheckSMS.text!)
         
-        let strNumber : NSString = lblCheckSMS.text as! NSString
+        let strNumber : NSString = lblCheckSMS.text as NSString? ?? ""
         let range = (strNumber).range(of: phoneNumber)
         print(range.location)
         attributedString.addAttribute(NSAttributedString.Key.font, value: CustomFont.regular.returnFont(16), range: NSMakeRange(0, attributedString.length))

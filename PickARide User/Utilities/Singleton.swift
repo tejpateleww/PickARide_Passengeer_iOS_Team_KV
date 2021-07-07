@@ -15,8 +15,9 @@ class Singleton: NSObject{
     var UserId = String()
     
     //Objects
+    var AppInitModel : InitResponseModel?
     var UserProfilData : ProfileModel?
-    var CountryList = [CountryDetilsModel]()       
+    var CountryList = [CountryDetilsModel]()
     
     var Api_Key = String()
     var DeviceType : String = "ios"
