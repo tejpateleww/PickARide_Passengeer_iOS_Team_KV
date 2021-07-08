@@ -56,10 +56,12 @@ class AddPaymentVC: BaseViewController{
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
             let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
+            
             controller.dismissedClosour = {
-                let controller = CurrentRideDriverInformationVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.navigationController?.popViewController(animated: false)
+                NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
             }
+            
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             let navigationController = UINavigationController(rootViewController: controller)
             navigationController.modalPresentationStyle = .overCurrentContext

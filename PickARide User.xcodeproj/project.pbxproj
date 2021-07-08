@@ -96,6 +96,7 @@
 		18B365642694946D00CE8E3D /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B365632694946D00CE8E3D /* MonthPickerView.swift */; };
 		18B36567269494A100CE8E3D /* CardValidatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B36566269494A100CE8E3D /* CardValidatorType.swift */; };
 		18D177D92681D9110025271F /* ColorsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D177D82681D9110025271F /* ColorsTypes.swift */; };
+		18E93C532696F413003AB725 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E93C522696F413003AB725 /* Notifications.swift */; };
 		18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7FA4525AED38000F1F619 /* MenuViewController.swift */; };
 		18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E5259350E100202DA6 /* NavigationItems.swift */; };
 		18F9B6FA259350E100202DA6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E6259350E100202DA6 /* Fonts.swift */; };
@@ -216,6 +217,7 @@
 		18B365632694946D00CE8E3D /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
 		18B36566269494A100CE8E3D /* CardValidatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidatorType.swift; sourceTree = "<group>"; };
 		18D177D82681D9110025271F /* ColorsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTypes.swift; sourceTree = "<group>"; };
+		18E93C522696F413003AB725 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		18F7FA4525AED38000F1F619 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18F9B6E5259350E100202DA6 /* NavigationItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItems.swift; sourceTree = "<group>"; };
 		18F9B6E6259350E100202DA6 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 				18F9B6E6259350E100202DA6 /* Fonts.swift */,
 				18F9B6E7259350E100202DA6 /* AuthenticationToken.swift */,
 				18F9B6E8259350E100202DA6 /* Colors.swift */,
+				18E93C522696F413003AB725 /* Notifications.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				18F9B702259350E100202DA6 /* UIImage+Extension.swift in Sources */,
 				184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */,
 				18F9B6FF259350E100202DA6 /* String+Extensions.swift in Sources */,
+				18E93C532696F413003AB725 /* Notifications.swift in Sources */,
 				18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,
 				1865CF54267C763100379A40 /* apiPaths.swift in Sources */,

@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import GoogleMaps
 
 class CurrentRideDetailsVC: BaseViewController {
 
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
-    @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var vwMain: suggestedTaxiView!
     @IBOutlet weak var btnCancel: UIButton!
     

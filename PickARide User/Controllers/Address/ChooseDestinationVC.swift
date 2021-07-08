@@ -9,8 +9,13 @@
 import UIKit
 import GooglePlaces
 class ChooseDestinationVC: BaseViewController {
-
-    //MARK: -Properties
+    
+    @IBOutlet weak var tblPlacePicker: UITableView!
+    @IBOutlet weak var textFieldStartLocation: chooseLocationTextField!
+    
+    @IBOutlet weak var tblPlacePickerBottom: NSLayoutConstraint!
+    @IBOutlet weak var textFieldDestinationLocation: chooseLocationTextField!
+    
     var arrayForSavedPlaces : [String] = [SettingsTitle.Home,SettingsTitle.Work]
     var arrImage = [SettingImages.SettingHome,SettingImages.SettingWork]
     
@@ -18,13 +23,7 @@ class ChooseDestinationVC: BaseViewController {
     var tableDataFetecher : GMSAutocompleteFetcher!
     var selectedTextField = 0
     
-    //MARK: -IBOutlets
-    @IBOutlet weak var tblPlacePicker: UITableView!
-    @IBOutlet weak var textFieldStartLocation: chooseLocationTextField!
-    
-    @IBOutlet weak var tblPlacePickerBottom: NSLayoutConstraint!
-    @IBOutlet weak var textFieldDestinationLocation: chooseLocationTextField!
-    //MARK: -View Life Cycle Methods
+    var openSelectTexiVC : (()->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,8 +163,10 @@ extension ChooseDestinationVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
-            let controller = SelectTaxiTypeVC.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.navigationController?.popViewController(animated: false)
+            if let obj = openSelectTexiVC{
+                obj()
+            }
         }
     }
 }

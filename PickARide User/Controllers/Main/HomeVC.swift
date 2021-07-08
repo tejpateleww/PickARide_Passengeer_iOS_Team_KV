@@ -17,12 +17,14 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var mainVW: UIView!
     @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var txtFieldWhereAreYouGoing: leftSideImageTextField!
+    @IBOutlet weak var bottomVWWhereAreYouGoing: UIView!
     
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        txtFieldWhereAreYouGoing.delegate = self
+        self.setLocalization()
+        self.addObserver()
+        self.txtFieldWhereAreYouGoing.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,24 @@ extension HomeVC{
     func setProfilePicture(){
         //Set User Profile
     }
+    
+    func addObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDriverInfoVC), name: .OpenCurrentRideDriverInfoVC, object: nil)
+    }
+    
+    @objc func openCurrentRideDriverInfoVC(){
+        let controller = CurrentRideDriverInformationVC.instantiate(fromAppStoryboard: .Main)
+        self.addChild(controller)
+        self.view.addSubview(controller.view)
+        controller.didMove(toParent: self)
+        self.bottomVWWhereAreYouGoing.isHidden = true
+        
+        controller.closeBtnClosure = {
+            controller.removeFromParent()
+            controller.view.removeFromSuperview()
+            self.bottomVWWhereAreYouGoing.isHidden = false
+        }
+    }
 }
 
 
@@ -50,6 +70,21 @@ extension HomeVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
+        
+        controller.openSelectTexiVC = {
+            let selectTexiVC = SelectTaxiTypeVC.instantiate(fromAppStoryboard: .Main)
+            self.addChild(selectTexiVC)
+            self.view.addSubview(selectTexiVC.view)
+            selectTexiVC.didMove(toParent: self)
+            self.bottomVWWhereAreYouGoing.isHidden = true
+            
+            selectTexiVC.closeBtnClosure = {
+                selectTexiVC.removeFromParent()
+                selectTexiVC.view.removeFromSuperview()
+                self.bottomVWWhereAreYouGoing.isHidden = false
+            }
+        }
+        
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

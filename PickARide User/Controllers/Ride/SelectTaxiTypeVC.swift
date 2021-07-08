@@ -11,7 +11,6 @@ import GoogleMaps
 
 class SelectTaxiTypeVC: BaseViewController{
    
-    @IBOutlet weak var showRouteMapView: GMSMapView!
     @IBOutlet weak var lblCardPayment: suggestedRidesLabel!
     @IBOutlet weak var lblSuggestedRide: suggestedRidesLabel!
     @IBOutlet weak var btnCardPayment: UIButton!
@@ -19,7 +18,6 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBOutlet weak var btnBookNow: submitButton!
     @IBOutlet weak var tblSuggestedRidesHeight: NSLayoutConstraint!
     @IBOutlet weak var tblSuggestedRides: UITableView!
-    @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var btnPromo: UIButton!
     @IBOutlet weak var btnCancelPromo: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
@@ -34,24 +32,9 @@ class SelectTaxiTypeVC: BaseViewController{
     
     var isExpandCategory:  Bool  = false {
         didSet {
-            suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedVWBottomConstraint.constant + topVW.frame.height)
-
-            if(isExpandCategory)
-            {
-                UIView.animate(withDuration: 0.2) {
-                    self.topVW.transform = CGAffineTransform.identity
-                }
-            }
-            else
-            {
-                UIView.animate(withDuration: 0.2) {
-                    self.topVW.transform = CGAffineTransform(rotationAngle: .pi)
-                }
-            }
-
-
+            suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedTexiView.frame.height + topVW.frame.height + 40)
+            self.btnCancel.isHidden = !isExpandCategory
             self.view.endEditing(true)
-            
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
             }) { (success) in
@@ -59,6 +42,8 @@ class SelectTaxiTypeVC: BaseViewController{
             }
         }
     }
+    
+    var closeBtnClosure : (()->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +58,14 @@ class SelectTaxiTypeVC: BaseViewController{
     }
     
     @IBAction func btnCancel(_ sender: Any) {
-        appDel.navigateToMain()
+        self.isExpandCategory = !self.isExpandCategory
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+            if let obj = self.closeBtnClosure{
+                obj()
+                self.isExpandCategory = !self.isExpandCategory
+            }
+        })
     }
 
     @IBAction func btnPromo(_ sender: Any) {
@@ -132,8 +124,7 @@ extension SelectTaxiTypeVC{
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
-        
-        self.topVW.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
+        self.setupViewCategory()
     }
     
     func setLocalization() {
@@ -148,11 +139,11 @@ extension SelectTaxiTypeVC{
     func setupViewCategory() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-        self.suggestedTexiView.addGestureRecognizer(swipeUp)
+        self.topVW.addGestureRecognizer(swipeUp)
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        self.suggestedTexiView.addGestureRecognizer(swipeDown)
+        self.topVW.addGestureRecognizer(swipeDown)
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
