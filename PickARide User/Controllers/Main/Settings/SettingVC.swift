@@ -51,7 +51,7 @@ extension SettingVC{
         
         self.txtLanguage.tintColor = .white
         self.txtLanguage.delegate = self
-        txtLanguage.inputView = pickerView
+        self.txtLanguage.inputView = pickerView
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -64,7 +64,8 @@ extension SettingVC{
         let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
         toolBar.setItems([cancel,space,done], animated: false)
         
-        txtLanguage.inputAccessoryView = toolBar
+        self.txtLanguage.inputAccessoryView = toolBar
+        self.lblLanguage.text = SettingData.LanguageList[self.selectedIndexOfPicker]
     }
     
     func setLocalization() {

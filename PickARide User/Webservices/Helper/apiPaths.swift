@@ -51,6 +51,9 @@ enum ApiKey: String {
     case registerOTP                          = "register_otp"
     case uploadDocs                           = "upload_docs"
     case register                             = "register"
+    case socialLogin                          = "social_login"
+    case updateProfile                        = "profile_update"
+    
     case vehicleTypeList                      = "vehicle_type_list"
     case updateBasicInfo                      = "update_basic_info"
     case updateBankInfo                       = "update_bank_info"
@@ -70,10 +73,7 @@ enum ApiKey: String {
     case walletHistory                        = "wallet_history"
     case changeDuty                           = "change_duty"
     
-    
 
-    case socialLogin                    = "social_login"
-    case updateProfile                        = "profile_update"
     
     
     

@@ -7,7 +7,6 @@ protocol OTPTextFieldDelegate   {
 
 class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     
-    //MARK:- IBOutlets
     @IBOutlet weak var lblDisplayMesagewithNumber: themeLabel!
     @IBOutlet var txtOtp: [OTPTextField]!
     @IBOutlet weak var lblCountDown: themeLabel!
@@ -15,7 +14,8 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     @IBOutlet weak var btnArrowBottom: NSLayoutConstraint!
     
     @IBOutlet weak var btnResendCode: UIButton!
-    //MARK:- Variables
+    
+    
     var StringOTP : String = ""
     var clickBtnVerify : (() -> ())?
     var textFieldsIndexes:[OTPTextField:Int] = [:]
@@ -23,6 +23,7 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     var phoneNumber = " +966 *** **** 656"
     var isFrmRegister = false
     var timer = Timer()
+    var registerReqModel = RegisterRequestModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
         if isFrmRegister {
             userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
             appDel.navigateToMain()
+            
+            
         } else {
             let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
             controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()

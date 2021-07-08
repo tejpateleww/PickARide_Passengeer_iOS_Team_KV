@@ -58,14 +58,7 @@ class SelectTaxiTypeVC: BaseViewController{
     }
     
     @IBAction func btnCancel(_ sender: Any) {
-        self.isExpandCategory = !self.isExpandCategory
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-            if let obj = self.closeBtnClosure{
-                obj()
-                self.isExpandCategory = !self.isExpandCategory
-            }
-        })
+        appDel.navigateToMain()
     }
 
     @IBAction func btnPromo(_ sender: Any) {

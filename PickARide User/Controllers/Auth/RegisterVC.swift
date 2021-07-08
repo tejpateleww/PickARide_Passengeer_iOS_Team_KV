@@ -14,12 +14,12 @@ class RegisterVC: BaseViewController {
     
     //MARK: -IBOutlets
     @IBOutlet weak var lblSignUP: registerScreenLabel!
-    @IBOutlet weak var textFieldFirstName: UITextField!
-    @IBOutlet weak var textFieldLastName: UITextField!
-    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var txtFirstName: UITextField!
+    @IBOutlet weak var txtLastName: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var lblCountryCode: registerScreenLabel!
-    @IBOutlet weak var textFieldPhoneNumber: UITextField!
-    @IBOutlet weak var textFieldPassword: UITextField!
+    @IBOutlet weak var txtPhoneNumber: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var btnSignUP: submitButton!
     @IBOutlet weak var txtCountryCode: customTextField!
@@ -41,9 +41,11 @@ class RegisterVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
-        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-        controller.isFrmRegister = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        if self.validation(){
+            let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+            controller.isFrmRegister = true
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
@@ -71,24 +73,24 @@ extension RegisterVC{
         
         self.txtCountryCode.inputAccessoryView = toolBar
         self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
-        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
     func setLocalization() {
         lblSignUP.text = "SignUpPage_lblSignUP".Localized()
-        textFieldFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
-        textFieldLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
-        textFieldEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
+        txtFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
+        txtLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
+        txtEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
         lblCountryCode.text = "SignUpPage_lblCountryCode".Localized()
-        textFieldPhoneNumber.placeholder = "SignUpPage_textFieldPhoneNumbaer_place".Localized()
-        textFieldPassword.placeholder = "SignUpPage_textFieldPassword_place".Localized()
+        txtPhoneNumber.placeholder = "SignUpPage_textFieldPhoneNumbaer_place".Localized()
+        txtPassword.placeholder = "SignUpPage_textFieldPassword_place".Localized()
         textView.delegate = self
         btnSignUP.setTitle("SignUpPage_btnSIgnUP".Localized(), for: .normal)
     }
     
     @objc func showHidePassword(_ sender : UIButton) {
         sender.isSelected = !sender.isSelected
-        self.textFieldPassword.isSecureTextEntry = sender.isSelected
+        self.txtPassword.isSecureTextEntry = sender.isSelected
     }
     
     @objc func cancelAction(_ sender: UIBarButtonItem) {
@@ -98,6 +100,34 @@ extension RegisterVC{
     @objc func doneAction(_ sender: UIBarButtonItem) {
         self.txtCountryCode.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].countryCode
         self.txtCountryCode.endEditing(true)
+    }
+}
+
+//MARK:- Validation & Api
+extension RegisterVC{
+    func validation()->Bool{
+        var strTitle : String?
+        let firstName = self.txtFirstName.validatedText(validationType: .username(field: self.txtFirstName.placeholder?.lowercased() ?? ""))
+        let lastName = self.txtLastName.validatedText(validationType: .username(field: self.txtLastName.placeholder?.lowercased() ?? ""))
+        let checkEmail = self.txtEmail.validatedText(validationType: .email)
+        let password = self.txtPassword.validatedText(validationType: .requiredField(field: self.txtPassword.placeholder?.lowercased() ?? ""))
+        
+        if !firstName.0{
+            strTitle = firstName.1
+        }else if !lastName.0{
+            strTitle = lastName.1
+        }else if !checkEmail.0{
+            strTitle = checkEmail.1
+        }else if !password.0{
+            strTitle = password.1
+        }
+
+        if let str = strTitle{
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
+            return false
+        }
+        
+        return true
     }
 }
 

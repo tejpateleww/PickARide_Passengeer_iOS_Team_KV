@@ -40,10 +40,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnSignInClicked(_ sender: Any) {
-//        if self.validation(){
-//            self.callLoginApi()
-//        }
-        appDel.navigateToMain()
+        if self.validation(){
+            userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            appDel.navigateToMain()
+        }
     }
     
     @IBAction func ForgotPassword(_ sender: Any) {

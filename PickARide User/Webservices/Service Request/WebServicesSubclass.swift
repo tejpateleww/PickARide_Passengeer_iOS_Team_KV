@@ -58,4 +58,10 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    class func ProfileApi(reqModel : ProfileReqModel, completion: @escaping (Bool,String,LoginResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.updateProfile.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }

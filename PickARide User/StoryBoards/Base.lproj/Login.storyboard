@@ -615,13 +615,13 @@
                         <outlet property="btnSignUP" destination="JhA-TB-TLy" id="CCS-Ij-Aym"/>
                         <outlet property="lblCountryCode" destination="ThJ-yy-9cX" id="zfS-oo-2J3"/>
                         <outlet property="lblSignUP" destination="et7-Va-2H3" id="TjZ-BZ-2wz"/>
-                        <outlet property="textFieldEmail" destination="2C1-ce-l5T" id="8wT-UQ-xLo"/>
-                        <outlet property="textFieldFirstName" destination="p6q-Ac-bNo" id="JDc-1Z-s0k"/>
-                        <outlet property="textFieldLastName" destination="QB0-02-ncM" id="QHj-5m-UxY"/>
-                        <outlet property="textFieldPassword" destination="AQZ-fp-OEH" id="x6E-mf-ORa"/>
-                        <outlet property="textFieldPhoneNumber" destination="BaJ-zt-mGl" id="1el-v1-dwo"/>
                         <outlet property="textView" destination="sBh-Q7-UR8" id="eci-v0-SF3"/>
                         <outlet property="txtCountryCode" destination="m6H-4A-8uY" id="c3G-kt-4Og"/>
+                        <outlet property="txtEmail" destination="2C1-ce-l5T" id="8wT-UQ-xLo"/>
+                        <outlet property="txtFirstName" destination="p6q-Ac-bNo" id="JDc-1Z-s0k"/>
+                        <outlet property="txtLastName" destination="QB0-02-ncM" id="QHj-5m-UxY"/>
+                        <outlet property="txtPassword" destination="AQZ-fp-OEH" id="x6E-mf-ORa"/>
+                        <outlet property="txtPhoneNumber" destination="BaJ-zt-mGl" id="1el-v1-dwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRu-Cu-KIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

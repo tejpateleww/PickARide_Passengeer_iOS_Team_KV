@@ -11,15 +11,15 @@ import GoogleMaps
 
 class HomeVC: BaseViewController {
 
-    //MARK: - Properties
-   
-    //MARK: - IBOutlets
     @IBOutlet weak var mainVW: UIView!
     @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var txtFieldWhereAreYouGoing: leftSideImageTextField!
     @IBOutlet weak var bottomVWWhereAreYouGoing: UIView!
+    @IBOutlet weak var selectTexiVCContainerVW: UIView!
+    @IBOutlet weak var currentRideDetailContainerVW: UIView!
+    @IBOutlet weak var currentRideDriverInfoContainerVW: UIView!
     
-    //MARK: -View Life Cycle Methods
+    //MARK: -View Life Cycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
@@ -47,20 +47,20 @@ extension HomeVC{
     
     func addObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDriverInfoVC), name: .OpenCurrentRideDriverInfoVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDetailsVC), name: .OpenCurrentRideDetailsVC, object: nil)
     }
     
     @objc func openCurrentRideDriverInfoVC(){
-        let controller = CurrentRideDriverInformationVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(controller)
-        self.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
         self.bottomVWWhereAreYouGoing.isHidden = true
-        
-        controller.closeBtnClosure = {
-            controller.removeFromParent()
-            controller.view.removeFromSuperview()
-            self.bottomVWWhereAreYouGoing.isHidden = false
-        }
+        self.selectTexiVCContainerVW.isHidden = true
+        self.currentRideDriverInfoContainerVW.isHidden = false
+    }
+    
+    @objc func openCurrentRideDetailsVC(){
+        self.bottomVWWhereAreYouGoing.isHidden = true
+        self.selectTexiVCContainerVW.isHidden = true
+        self.currentRideDriverInfoContainerVW.isHidden = true
+        self.currentRideDetailContainerVW.isHidden = false
     }
 }
 
@@ -72,17 +72,8 @@ extension HomeVC: UITextFieldDelegate{
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         
         controller.openSelectTexiVC = {
-            let selectTexiVC = SelectTaxiTypeVC.instantiate(fromAppStoryboard: .Main)
-            self.addChild(selectTexiVC)
-            self.view.addSubview(selectTexiVC.view)
-            selectTexiVC.didMove(toParent: self)
+            self.selectTexiVCContainerVW.isHidden = false
             self.bottomVWWhereAreYouGoing.isHidden = true
-            
-            selectTexiVC.closeBtnClosure = {
-                selectTexiVC.removeFromParent()
-                selectTexiVC.view.removeFromSuperview()
-                self.bottomVWWhereAreYouGoing.isHidden = false
-            }
         }
         
         self.navigationController?.pushViewController(controller, animated: true)

@@ -56,8 +56,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnProfileClicked(_ sender: Any) {
-        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(controller, animated: true)
+        NotificationCenter.default.post(name: .OpenCurrentRideDetailsVC, object: nil)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -74,7 +73,6 @@ class CurrentRideDriverInformationVC: BaseViewController {
     
     @IBAction func btnprofileClicked(_ sender: Any) {
         let controller = CurrentRideDetailsVC.instantiate(fromAppStoryboard: .Main)
-        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
