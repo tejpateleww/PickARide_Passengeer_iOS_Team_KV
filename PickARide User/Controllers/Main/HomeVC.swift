@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class HomeVC: BaseViewController,UITextFieldDelegate {
+class HomeVC: BaseViewController {
 
     //MARK: - Properties
    
@@ -29,6 +29,7 @@ class HomeVC: BaseViewController,UITextFieldDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setProfilePicture()
     }
 }
 
@@ -38,10 +39,17 @@ extension HomeVC{
         txtFieldWhereAreYouGoing.placeholder = "home_Whereareyougoing_place".Localized()
     }
     
+    func setProfilePicture(){
+        //Set User Profile
+    }
+}
+
+
+//MARK:- UITextFiled Delegate
+extension HomeVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        let controller =  ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
+        let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
-//        self.navigationController?.popToRootViewController(animated: true)
     }
 }

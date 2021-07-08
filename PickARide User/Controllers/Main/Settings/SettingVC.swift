@@ -217,7 +217,6 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let vc = ProfileVC.instantiate(fromAppStoryboard: .Main)
             let controller = ProfileVC.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(controller, animated: true)
             break

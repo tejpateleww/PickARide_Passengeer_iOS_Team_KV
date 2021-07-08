@@ -14,7 +14,7 @@ extension UITextField{
             return self.placeHolderColor
         }
         set {
-            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? (self.placeholder ?? "") : "", attributes:[NSAttributedString.Key.foregroundColor: newValue ?? UIColor()])
         }
     }
     
@@ -25,7 +25,7 @@ extension UITextField{
     
     func validatedText(validationType: ValidatorType) -> (Bool,String) {
           let validator = VaildatorFactory.validatorFor(type: validationType)
-          return validator.validated(self.text!)
+          return validator.validated(self.text ?? "")
       }
     
     
@@ -42,5 +42,4 @@ extension UITextField{
         self.rightView = button
         self.rightViewMode = .always
     }
-    
 }

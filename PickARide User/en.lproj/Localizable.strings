@@ -10,7 +10,7 @@
 
 "LoginScreen_lblSignIN" = "Sign In";
 "LoginScreen_lblWelcomeBack" = "Welcome Back!";
-"LoginScreen_textFieldEmailID_place" = "Email ID/Phone Number";
+"LoginScreen_textFieldEmailID_place" = "Email";
 "LoginScreen_textFieldPassword_place" = "Password";
 "LoginScreen_btnForgotPassword" = "Forgot Password?";
 "LoginScreen_btnSignIN" = "SIGN IN";

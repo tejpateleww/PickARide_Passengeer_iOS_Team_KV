@@ -36,13 +36,13 @@ class ProfileVC: BaseViewController {
     //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpUI()
         self.setupLocalization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setUpUI()
     }
     
     @IBAction func btnProfile(_ sender: Any) {

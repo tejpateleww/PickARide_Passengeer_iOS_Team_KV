@@ -123,11 +123,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-nZ-sPb" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
                                                 <rect key="frame" x="21" y="207" width="278" height="49"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email ID/Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="15.5" width="242" height="18.5"/>
                                                         <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -392,7 +392,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-Ni-hzZ" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="135.5" height="48"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="15" width="103.5" height="18.5"/>
                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -410,7 +410,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-xd-5WY" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="152.5" y="0.0" width="135.5" height="48"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="15" width="103.5" height="18.5"/>
                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -429,11 +429,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gu4-jI-mwO" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="154.5" width="288" height="48"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-ce-l5T">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-ce-l5T" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="15" width="256" height="18.5"/>
                                                         <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -453,68 +453,44 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCountryCode" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-fq-YK6">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-fq-YK6">
                                                 <rect key="frame" x="16" y="244" width="288" height="48"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpu-sp-yqe" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="48"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdc-yR-7LI" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="13" width="82" height="22"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="30.5" translatesAutoresizingMaskIntoConstraints="NO" id="gkB-ZZ-CDu">
-                                                                        <rect key="frame" x="3" y="0.0" width="156.5" height="35"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+49" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-os-8v7">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="35"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW3-LZ-N1T">
-                                                                                <rect key="frame" x="144.5" y="0.0" width="12" height="35"/>
-                                                                                <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="bbq-zS-3Zc">
-                                                                                        <rect key="frame" x="0.0" y="8.5" width="12" height="18"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="height" constant="18" id="dLd-PT-JCY"/>
-                                                                                        </constraints>
-                                                                                    </imageView>
-                                                                                </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="trailing" secondItem="bbq-zS-3Zc" secondAttribute="trailing" id="Dtd-35-aeR"/>
-                                                                                    <constraint firstAttribute="width" constant="12" id="eb5-kx-IcV"/>
-                                                                                    <constraint firstItem="bbq-zS-3Zc" firstAttribute="leading" secondItem="nW3-LZ-N1T" secondAttribute="leading" id="r1u-IF-IOY"/>
-                                                                                    <constraint firstItem="bbq-zS-3Zc" firstAttribute="centerY" secondItem="nW3-LZ-N1T" secondAttribute="centerY" id="skn-6i-Ejf"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                        </subviews>
-                                                                    </stackView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dg-Qo-xbA">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="22"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-WZ-61j">
+                                                                <rect key="frame" x="45" y="16.5" width="15" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="15" id="bwO-oo-Nqr"/>
+                                                                    <constraint firstAttribute="height" constant="15" id="sVE-Lz-RmE"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m6H-4A-8uY">
+                                                                <rect key="frame" x="10" y="0.0" width="60" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="60" id="xRN-Le-1Ri"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="114" id="QmR-Ox-qdu"/>
-                                                            <constraint firstAttribute="bottom" secondItem="nW3-LZ-N1T" secondAttribute="bottom" constant="13" id="Zxb-7G-N3B"/>
-                                                            <constraint firstAttribute="trailing" secondItem="P0h-os-8v7" secondAttribute="trailing" id="dnw-om-OAO"/>
-                                                            <constraint firstItem="P0h-os-8v7" firstAttribute="leading" secondItem="zpu-sp-yqe" secondAttribute="leading" id="ehA-4M-0b0"/>
+                                                            <constraint firstAttribute="bottom" secondItem="m6H-4A-8uY" secondAttribute="bottom" id="2Ee-g3-H6B"/>
+                                                            <constraint firstAttribute="trailing" secondItem="m6H-4A-8uY" secondAttribute="trailing" id="Ars-U0-dAV"/>
+                                                            <constraint firstItem="m6H-4A-8uY" firstAttribute="leading" secondItem="zpu-sp-yqe" secondAttribute="leading" constant="10" id="C0c-Re-Muu"/>
+                                                            <constraint firstItem="m6H-4A-8uY" firstAttribute="top" secondItem="zpu-sp-yqe" secondAttribute="top" id="SwA-Iu-HOu"/>
+                                                            <constraint firstItem="Be7-WZ-61j" firstAttribute="centerY" secondItem="zpu-sp-yqe" secondAttribute="centerY" id="a4j-0e-DEs"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Be7-WZ-61j" secondAttribute="trailing" constant="10" id="aAx-kJ-QHa"/>
                                                             <constraint firstAttribute="height" constant="48" id="hqR-tf-vXh"/>
-                                                            <constraint firstItem="P0h-os-8v7" firstAttribute="top" secondItem="zpu-sp-yqe" secondAttribute="top" id="t6x-dv-Z1I"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-2T-53s" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="130" y="0.0" width="158" height="48"/>
+                                                        <rect key="frame" x="86" y="0.0" width="202" height="48"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaJ-zt-mGl">
-                                                                <rect key="frame" x="16" y="15" width="126" height="18.5"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaJ-zt-mGl" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="16" y="0.0" width="170" height="48"/>
                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -522,9 +498,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="BaJ-zt-mGl" firstAttribute="centerY" secondItem="Zw8-2T-53s" secondAttribute="centerY" id="0zK-Kq-CQv"/>
+                                                            <constraint firstAttribute="bottom" secondItem="BaJ-zt-mGl" secondAttribute="bottom" id="4At-0I-PP5"/>
                                                             <constraint firstAttribute="trailing" secondItem="BaJ-zt-mGl" secondAttribute="trailing" constant="16" id="KuR-PG-nQ3"/>
                                                             <constraint firstItem="BaJ-zt-mGl" firstAttribute="leading" secondItem="Zw8-2T-53s" secondAttribute="leading" constant="16" id="OMU-S9-ElC"/>
+                                                            <constraint firstItem="BaJ-zt-mGl" firstAttribute="top" secondItem="Zw8-2T-53s" secondAttribute="top" id="n5n-dN-YoH"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -532,7 +509,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2i-Ba-ohv" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="307" width="288" height="48"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQZ-fp-OEH">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQZ-fp-OEH" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="15.5" width="256" height="17"/>
                                                         <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -644,6 +621,7 @@
                         <outlet property="textFieldPassword" destination="AQZ-fp-OEH" id="x6E-mf-ORa"/>
                         <outlet property="textFieldPhoneNumber" destination="BaJ-zt-mGl" id="1el-v1-dwo"/>
                         <outlet property="textView" destination="sBh-Q7-UR8" id="eci-v0-SF3"/>
+                        <outlet property="txtCountryCode" destination="m6H-4A-8uY" id="c3G-kt-4Og"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRu-Cu-KIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

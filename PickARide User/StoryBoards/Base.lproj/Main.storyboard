@@ -2871,7 +2871,7 @@
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Abdullah88@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-7i-82d" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="16" y="12" width="311" height="23"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ImgRightArrow"/>
                                                                                 </userDefinedRuntimeAttributes>
@@ -2930,7 +2930,7 @@
                                                                                 <rect key="frame" x="16" y="12" width="311" height="23"/>
                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ImgRightArrow"/>
                                                                                 </userDefinedRuntimeAttributes>
@@ -4894,8 +4894,11 @@
                         <outlet property="lblSuggestedRide" destination="i5I-qa-OwC" id="QxN-7D-W0t"/>
                         <outlet property="mapVw" destination="vOk-8C-wBy" id="6pK-DO-FeC"/>
                         <outlet property="showRouteMapView" destination="vOk-8C-wBy" id="CqJ-9P-Qbo"/>
+                        <outlet property="suggestedTexiView" destination="Oi5-Wd-ZuS" id="Ndd-jX-ex6"/>
+                        <outlet property="suggestedVWBottomConstraint" destination="WQ8-jG-nYN" id="gda-aX-uou"/>
                         <outlet property="tblSuggestedRides" destination="Iar-BH-Hq2" id="QQh-5k-DlQ"/>
                         <outlet property="tblSuggestedRidesHeight" destination="thM-ez-h2w" id="uTK-XI-QE8"/>
+                        <outlet property="topVW" destination="Iqb-Py-3tK" id="P0B-RU-ryQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEI-xq-Uv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -24,8 +24,41 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBOutlet weak var btnCancelPromo: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     
+    //Gesture
+    @IBOutlet weak var topVW: UIView!
+    @IBOutlet weak var suggestedTexiView: suggestedTaxiView!
+    @IBOutlet weak var suggestedVWBottomConstraint: NSLayoutConstraint!
+    
     var taxiData = [suggestRide]()
     var selectedTaxi = 0
+    
+    var isExpandCategory:  Bool  = false {
+        didSet {
+            suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedVWBottomConstraint.constant + topVW.frame.height)
+
+            if(isExpandCategory)
+            {
+                UIView.animate(withDuration: 0.2) {
+                    self.topVW.transform = CGAffineTransform.identity
+                }
+            }
+            else
+            {
+                UIView.animate(withDuration: 0.2) {
+                    self.topVW.transform = CGAffineTransform(rotationAngle: .pi)
+                }
+            }
+
+
+            self.view.endEditing(true)
+            
+            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
+                self.view.layoutIfNeeded()
+            }) { (success) in
+                
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +132,8 @@ extension SelectTaxiTypeVC{
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
+        
+        self.topVW.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
     }
     
     func setLocalization() {
@@ -108,6 +143,37 @@ extension SelectTaxiTypeVC{
         btnBookNow.setTitle("SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
         btnOffer.setunderline(title: "SuggestedTaxiVC_lblOffer".Localized(), color: colors.loginPlaceHolderColor.value, font: CustomFont.regular.returnFont(15))
         btnPromo.setTitle("SuggestedTaxiVC_btnPromo".Localized(), for: .normal)
+    }
+    
+    func setupViewCategory() {
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+        swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+        self.suggestedTexiView.addGestureRecognizer(swipeUp)
+
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        self.suggestedTexiView.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.down:
+                print("Swiped down")
+                self.isExpandCategory = false
+
+            case UISwipeGestureRecognizer.Direction.up:
+                print("Swiped up")
+                self.isExpandCategory = true
+
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc func setBottomViewOnclickofViewTop(){
+        self.isExpandCategory = !self.isExpandCategory
     }
 }
 

@@ -209,13 +209,13 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     
                     let viewProfileEdit = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 
-                    let btnProfileEdit = UIButton.init()
-                    btnProfileEdit.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-                    btnProfileEdit.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
-                    btnProfileEdit.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
+                    navBtnProfile = UIButton.init()
+                    navBtnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                    navBtnProfile.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
+                    navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    btnProfileEdit.layer.setValue(controller, forKey: "controller")
-                    viewProfileEdit.addSubview(btnProfileEdit)
+                    navBtnProfile.layer.setValue(controller, forKey: "controller")
+                    viewProfileEdit.addSubview(navBtnProfile)
 
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewProfileEdit)
@@ -376,7 +376,8 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
 //        controller?.navigationController?.pushViewController(notifVc, animated: true)
     }
     @objc func EditUserProfile(_ sender: UIButton?) {
-        
+        let controller = ProfileVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func DismissViewController (_ sender: UIButton?)
     {

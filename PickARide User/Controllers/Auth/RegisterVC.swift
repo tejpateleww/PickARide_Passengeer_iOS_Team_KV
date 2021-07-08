@@ -22,15 +22,17 @@ class RegisterVC: BaseViewController {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var btnSignUP: submitButton!
+    @IBOutlet weak var txtCountryCode: customTextField!
     
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
-        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.setUpUI()
+        self.setLocalization()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
@@ -52,9 +54,9 @@ extension RegisterVC{
         self.pickerView.dataSource = self
         self.pickerView.showsSelectionIndicator = true
         
-        self.txt.tintColor = .white
-        self.txtCountry.delegate = self
-        self.txtCountry.inputView = pickerView
+        self.txtCountryCode.tintColor = .white
+        self.txtCountryCode.delegate = self
+        self.txtCountryCode.inputView = pickerView
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -67,8 +69,11 @@ extension RegisterVC{
         let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
         toolBar.setItems([cancel,space,done], animated: false)
         
-        self.txtCountry.inputAccessoryView = toolBar
+        self.txtCountryCode.inputAccessoryView = toolBar
+        self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
+    
     func setLocalization() {
         lblSignUP.text = "SignUpPage_lblSignUP".Localized()
         textFieldFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
@@ -85,8 +90,18 @@ extension RegisterVC{
         sender.isSelected = !sender.isSelected
         self.textFieldPassword.isSecureTextEntry = sender.isSelected
     }
+    
+    @objc func cancelAction(_ sender: UIBarButtonItem) {
+        self.txtCountryCode.endEditing(true)
+    }
+    
+    @objc func doneAction(_ sender: UIBarButtonItem) {
+        self.txtCountryCode.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].countryCode
+        self.txtCountryCode.endEditing(true)
+    }
 }
 
+//MARK:- TextView Delegate
 extension RegisterVC: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
@@ -101,5 +116,28 @@ extension RegisterVC: UITextViewDelegate{
         
         self.navigationController?.pushViewController(controller, animated: true)
         return false
+    }
+}
+
+//MARK:- TextField Delegate
+extension RegisterVC: UITextFieldDelegate{
+}
+
+//MARK:- Country Code Picker Set Up
+extension RegisterVC : UIPickerViewDelegate,UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Singleton.sharedInstance.CountryList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return (Singleton.sharedInstance.CountryList[row].countryCode ?? "") + " - " + (Singleton.sharedInstance.CountryList[row].name ?? "")
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedIndexOfPicker = row
     }
 }
