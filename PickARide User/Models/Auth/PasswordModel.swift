@@ -35,7 +35,7 @@ class PasswordResponseModel: Codable {
     let status: Bool?
     let message: String?
 
-    init(status: Bool?, message: String?) {
+    init(status: Bool, message: String) {
         self.status = status
         self.message = message
     }

@@ -58,15 +58,12 @@ class Toast {
         
         toastLabel.textAlignment = .left;
         
-        let messagetoPrint = title != "" ?
-            
-            NSMutableAttributedString()
-            .bold( "\(title)\n" , fontSize: 15.0 , fontColor: .white)
-            .normal(message, fontSize: 14.0 , fontColor: .white)
-            :
-            NSMutableAttributedString()
-            .normal(message, fontSize: 15.0 , fontColor: .white)
-        toastLabel.attributedText = messagetoPrint
+        if title != "" {
+            toastLabel.addInterlineSpacing(title: "\(title)\n", message: message, spacingValue: 4)
+        }else{
+            let messagetoPrint = NSMutableAttributedString().normal(message, fontSize: 15.0 , fontColor: .white)
+            toastLabel.attributedText = messagetoPrint
+        }
         
         toastLabel.clipsToBounds  =  true
         toastLabel.numberOfLines = 0
@@ -128,3 +125,33 @@ class Toast {
 }
 
 
+private extension UILabel {
+
+    // MARK: - spacingValue is spacing that you need
+    func addInterlineSpacing(title: String, message: String,spacingValue: CGFloat) {
+
+        // MARK: - Check if there's any text
+
+        // MARK: - Create "NSMutableAttributedString" with your text
+        let attributedString = NSMutableAttributedString()
+            .bold(title , fontSize: 15.0 , fontColor: .white)
+            .normal(message, fontSize: 14.0 , fontColor: .white)
+
+        // MARK: - Create instance of "NSMutableParagraphStyle"
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        // MARK: - Actually adding spacing we need to ParagraphStyle
+        paragraphStyle.lineSpacing = spacingValue
+
+        // MARK: - Adding ParagraphStyle to your attributed String
+        attributedString.addAttribute(
+            .paragraphStyle,
+            value: paragraphStyle,
+            range: NSRange(location: 0, length: attributedString.length
+        ))
+
+        // MARK: - Assign string that you've modified to current attributed Text
+        attributedText = attributedString
+    }
+
+}

@@ -23,6 +23,8 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     var phoneNumber = " +966 *** **** 656"
     var isFrmRegister = false
     var timer = Timer()
+    
+    var otpUserModel = OTPUserModel()
     var registerReqModel = RegisterRequestModel()
     
     override func viewDidLoad() {
@@ -42,27 +44,15 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     }
     
     @IBAction func btnAeeroTap(_ sender: Any) {
-        if isFrmRegister {
-            userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToMain()
-            
-            
-        } else {
-            let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
-            controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
-            controller.isChangePassword = false
-            
-            controller.btnSubmitClosure = {
-                userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToLogin()
+//        if self.validation(){
+            if isFrmRegister {
+//                self.callRegisterApi()
+                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToMain()
+            }else {
+                self.openChangePasswordVC()
             }
-            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-            let navigationController = UINavigationController(rootViewController: controller)
-            navigationController.modalPresentationStyle = .overCurrentContext
-            navigationController.modalTransitionStyle = .crossDissolve
-            navigationController.navigationBar.isHidden = true
-            self.present(navigationController, animated: true, completion: nil)
-        }
+//        }
     }
     
     @IBAction func btnResendCodeTap(_ sender: Any) {
@@ -120,23 +110,6 @@ extension OtpVC{
         }
     }
     
-    func validation() -> Bool {
-        var strEnteredOTP = ""
-        for index in 0 ..< txtOtp.count {
-            strEnteredOTP.append(txtOtp[index].text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "")
-        }
-        
-        if strEnteredOTP == "" {
-            Utilities.ShowAlert(OfMessage: "Please enter verification code")
-            return false
-        } else if self.StringOTP != strEnteredOTP {
-            self.clearAllFields()
-            Utilities.ShowAlert(OfMessage: "Please enter valid verification code")
-            return false
-        }
-        return true
-    }
-    
     func clearAllFields() {
         for index in 0 ..< txtOtp.count {
             txtOtp[index].text = ""
@@ -170,6 +143,53 @@ extension OtpVC{
                 txtOtp[i].text = ""
             }
         }
+    }
+    
+    func openChangePasswordVC(){
+        let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
+        controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
+        controller.isChangePassword = false
+        
+        controller.btnSubmitClosure = {
+            userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+            appDel.navigateToLogin()
+        }
+        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+    }
+}
+
+//MARK:- Validation & Apis
+extension OtpVC{
+    func validation() -> Bool {
+        var strTitle : String?
+        var strEnteredOTP = ""
+        for index in 0 ..< txtOtp.count {
+            strEnteredOTP.append(txtOtp[index].text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "")
+        }
+        
+        if strEnteredOTP == "" {
+            strTitle = UrlConstant.RequiredVerificationCode
+        }else if self.StringOTP != strEnteredOTP {
+            self.clearAllFields()
+            strTitle = UrlConstant.InvalidVerificationCode
+        }
+        
+        if let str = strTitle{
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
+            return false
+        }
+        
+        return true
+    }
+    
+    func callRegisterApi(){
+        self.otpUserModel.otpVC = self
+        self.otpUserModel.webserviceFinalRegister(reqModel: self.registerReqModel)
     }
 }
 

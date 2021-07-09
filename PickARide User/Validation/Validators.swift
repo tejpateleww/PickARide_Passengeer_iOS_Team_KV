@@ -14,7 +14,7 @@ protocol ValidatorConvertible {
 
 enum ValidatorType {
     case email
-    case password
+    case password(field: String)
     case username(field: String)
     case requiredField(field: String)
     case age
@@ -24,7 +24,7 @@ enum VaildatorFactory {
     static func validatorFor(type: ValidatorType) -> ValidatorConvertible {
         switch type {
         case .email: return EmailValidator()
-        case .password: return PasswordValidator()
+        case .password(let fieldName): return PasswordValidator(fieldName)
         case .username(let fieldName): return UserNameValidator(fieldName)
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
@@ -37,10 +37,10 @@ enum VaildatorFactory {
 class AgeValidator: ValidatorConvertible {
     func validated(_ value: String) -> (Bool, String)
     {
-        guard value.count > 0 else{return (false,ValidationError("Age is required").message)}
-        guard let age = Int(value) else {return (false,ValidationError("Age must be a number!").message)}
-        guard value.count < 3 else {return (false,ValidationError("Invalid age number!").message)}
-        guard age >= 18 else {return (false,ValidationError("You have to be over 18 years old to user our app :)").message)}
+        guard value.count > 0 else{return (false,ValidationError(UrlConstant.AgeIsRequired).message)}
+        guard let age = Int(value) else {return (false,ValidationError(UrlConstant.AgeMustNumber).message)}
+        guard value.count < 3 else {return (false,ValidationError(UrlConstant.InvalidAgeNumber).message)}
+        guard age >= 18 else {return (false,ValidationError(UrlConstant.Age18YearsOld).message)}
         return (true, "")
     }
 }
@@ -93,9 +93,15 @@ struct UserNameValidator: ValidatorConvertible {
     
 }
 struct PasswordValidator: ValidatorConvertible {
+    private let fieldName: String
+    
+    init(_ field: String) {
+        fieldName = field
+    }
+    
     func validated(_ value: String)  -> (Bool,String) {
-        guard value != "" else {return (false,ValidationError("Password is Required").message)}
-        guard value.count >= 8 else { return (false,ValidationError("Password must have at least 8 characters").message) }
+        guard value != "" else {return (false,ValidationError("Please enter " + fieldName).message)}
+        guard value.count >= 8 else { return (false,ValidationError("\(fieldName.capitalized) must have at least 8 characters").message) }
         
 //        do {
 //            if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {

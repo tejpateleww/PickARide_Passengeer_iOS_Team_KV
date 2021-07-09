@@ -64,4 +64,37 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    class func AddCardApi(reqModel : AddCardReqModel, completion: @escaping (Bool,String,CardListModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.addCard.rawValue, requestModel: reqModel, responseModel: CardListModel.self) { (status, message, response, error) in
+            if status{
+                Singleton.sharedInstance.CardList = response?.cards ?? []
+            }
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func CardListApi(completion: @escaping (Bool,String,CardListModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.cardlist.rawValue, requestModel: CardListReqModel(), responseModel: CardListModel.self) { (status, message, response, error) in
+            if status{
+                Singleton.sharedInstance.CardList = response?.cards ?? []
+            }
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func RemoveCardApi(reqModel : CardListReqModel, completion: @escaping (Bool,String,CardListModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.removeCard.rawValue, requestModel: reqModel, responseModel: CardListModel.self) { (status, message, response, error) in
+            if status{
+                Singleton.sharedInstance.CardList = response?.cards ?? []
+            }
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func WalletHistoryApi(reqModel : WalletHistoryRequestModel, completion: @escaping (Bool,String,WalletHistoryModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.walletHistory.rawValue, requestModel: reqModel, responseModel: WalletHistoryModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }

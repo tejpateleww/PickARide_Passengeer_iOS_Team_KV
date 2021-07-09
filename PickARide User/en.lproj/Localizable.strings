@@ -203,3 +203,26 @@
 //NavigationTitle
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";
 "NavigationTitle_Rating" = "Rating";
+
+//Messages
+"UrlConstant_Required" = "Required";
+"UrlConstant_Success" = "Success";
+"UrlConstant_Failed" = "Failed";
+"UrlConstant_SomethingWentWrong" = "There is some server side error, Please try again after some time!";
+"UrlConstant_NoInternetConnection" = "The Internet connection appears to be offline, Please connect to the internet.";
+"UrlConstant_RequestTimeOut" = "Poor internet connection, Check your internet connection or try again.";
+"UrlConstant_Ok" = "Ok";
+"UrlConstant_Yes" = "Yes";
+"UrlConstant_Cancel" = "Cancel";
+"UrlConstant_No" = "No";
+"UrlConstant_Retry" = "Retry";
+"UrlConstant_SelectCard" = "Select Card";
+"UrlConstant_Continue" = "Continue";
+"UrlConstant_ValidPhoneNo" = "Please enter valid mobile number.";
+"UrlConstant_AgeIsRequired" = "Age is required";
+"UrlConstant_AgeMustNumber" = "Age must be a number!";
+"UrlConstant_InvalidAgeNumber" = "Invalid age number!";
+"UrlConstant_Age18YearsOld" = "You have to be over 18 years old to user our app :)";
+"UrlConstant_RequiredVerificationCode" = "Please enter verification code";
+"UrlConstantInvalidVerificationCode" = "Please enter valid verification code";
+

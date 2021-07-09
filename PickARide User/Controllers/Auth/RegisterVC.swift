@@ -27,6 +27,8 @@ class RegisterVC: BaseViewController {
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
     
+    var registerUserModel = RegisterUserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -42,6 +44,7 @@ class RegisterVC: BaseViewController {
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
         if self.validation(){
+//            self.callOtpApi()
             let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
             controller.isFrmRegister = true
             self.navigationController?.pushViewController(controller, animated: true)
@@ -110,7 +113,8 @@ extension RegisterVC{
         let firstName = self.txtFirstName.validatedText(validationType: .username(field: self.txtFirstName.placeholder?.lowercased() ?? ""))
         let lastName = self.txtLastName.validatedText(validationType: .username(field: self.txtLastName.placeholder?.lowercased() ?? ""))
         let checkEmail = self.txtEmail.validatedText(validationType: .email)
-        let password = self.txtPassword.validatedText(validationType: .requiredField(field: self.txtPassword.placeholder?.lowercased() ?? ""))
+        let mobileNo = self.txtPhoneNumber.validatedText(validationType: .username(field: self.txtPhoneNumber.placeholder?.lowercased() ?? ""))
+        let password = self.txtPassword.validatedText(validationType: .password(field: self.txtPassword.placeholder?.lowercased() ?? ""))
         
         if !firstName.0{
             strTitle = firstName.1
@@ -118,6 +122,10 @@ extension RegisterVC{
             strTitle = lastName.1
         }else if !checkEmail.0{
             strTitle = checkEmail.1
+        }else if !mobileNo.0{
+            strTitle = mobileNo.1
+        }else if self.txtPhoneNumber.text?.count != 10 {
+            strTitle = UrlConstant.ValidPhoneNo
         }else if !password.0{
             strTitle = password.1
         }
@@ -128,6 +136,30 @@ extension RegisterVC{
         }
         
         return true
+    }
+    
+    func callOtpApi(){
+        self.registerUserModel.registerVc = self
+        
+        let finalRegisterReqModel = RegisterRequestModel()
+        finalRegisterReqModel.firstName = self.txtFirstName.text ?? ""
+        finalRegisterReqModel.lastName = self.txtLastName.text ?? ""
+        finalRegisterReqModel.email = self.txtEmail.text ?? ""
+        finalRegisterReqModel.password = self.txtPassword.text ?? ""
+        finalRegisterReqModel.phone = self.txtPhoneNumber.text ?? ""
+        finalRegisterReqModel.birthDate = ""
+        finalRegisterReqModel.gender = ""
+        finalRegisterReqModel.address = ""
+        finalRegisterReqModel.countryCode = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        finalRegisterReqModel.countryId = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].id
+        
+        self.registerUserModel.registerReqModel = finalRegisterReqModel
+        
+        let otpReqModel = OTPRequestModel()
+        otpReqModel.email = self.txtEmail.text ?? ""
+        otpReqModel.phone = self.txtPhoneNumber.text ?? ""
+        
+        self.registerUserModel.webserviceOTP(reqModel: otpReqModel)
     }
 }
 
@@ -151,6 +183,15 @@ extension RegisterVC: UITextViewDelegate{
 
 //MARK:- TextField Delegate
 extension RegisterVC: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         if textField == txtPhoneNumber{
+            let currentString: NSString = textField.text as NSString? ?? ""
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= MAX_PHONE_DIGITS
+        }
+        return true
+    }
 }
 
 //MARK:- Country Code Picker Set Up

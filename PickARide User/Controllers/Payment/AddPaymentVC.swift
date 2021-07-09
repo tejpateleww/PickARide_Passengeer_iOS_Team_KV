@@ -19,29 +19,30 @@ class AddPaymentVC: BaseViewController{
     var selectedPaymentMethods = 1
     var isFromSchedulled : Bool = false
     
+    var addPaymentUserModel = CardUserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
+        
+        if Singleton.sharedInstance.CardList.count == 0{
+            self.callCardListApi()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.Done.value : NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
     func setLocalization() {
         lblTitle.text = "AddCardVC_lblPaymentMethod".Localized()
-        btnAddCard.setTitle("AddCardVC_lblAddCard".Localized().uppercased(), for: .normal)
+        btnAddCard.setTitle(self.isFromSideMenu ? "AddCardVC_lblAddCard".Localized().uppercased() : "SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
     }
     
     //MARK: -btnAction
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-        let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if isFromSchedulled{
             let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
             controller.dismissedClosour = {
@@ -70,8 +71,32 @@ class AddPaymentVC: BaseViewController{
             self.present(navigationController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
+        if isFromSideMenu{
+            let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
+    }
 }
 
+//MARK:- Apis
+extension AddPaymentVC{
+    func callCardListApi(){
+        self.addPaymentUserModel.addPaymentVC = self
+        self.addPaymentUserModel.webserviceCardListApi()
+    }
+    
+    func callRemoveCardListApi(id: String){
+        self.addPaymentUserModel.addPaymentVC = self
+        
+        let reqModel = CardListReqModel()
+        reqModel.cardId = id
+        
+        self.addPaymentUserModel.webserviceRemoveCardApi(reqModel: reqModel)
+    }
+}
 
 //MARK:- TableView Delegate
 extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
@@ -114,7 +139,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         switch indexPath.section {
         case 0:
             var cell = UITableViewCell()
@@ -127,10 +152,10 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
                 cell1.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
                 if indexPath.row == selectedPaymentMethods {
                     cell1.vWMain.layer.borderWidth = 1
-//                    cell1.selectPaymentMethodButton.isHidden = false
+                    //                    cell1.selectPaymentMethodButton.isHidden = false
                 } else {
                     cell1.vWMain.layer.borderWidth = 0
-//                    cell1.selectPaymentMethodButton.isHidden = true
+                    //                    cell1.selectPaymentMethodButton.isHidden = true
                 }
                 cell = cell1
             } else {
@@ -140,7 +165,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
                     cell2.vWMain.layer.borderWidth = 1
                     cell2.selectPaymentMethodButton.isHidden = false
                 } else {
-                     cell2.vWMain.layer.borderWidth = 0
+                    cell2.vWMain.layer.borderWidth = 0
                     cell2.selectPaymentMethodButton.isHidden = true
                 }
                 if indexPath.row == 1
@@ -148,7 +173,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
                     cell2.paymentMethodImageView.image = UIImage(named: "ic_masterCard")
                     cell2.lblcardDetails.text = "**** **** **** 5967"
                     cell2.lblExpiresDate.text = "Expires 09/25"
-                   
+                    
                 } else if indexPath.row == 2 {
                     cell2.paymentMethodImageView.image = UIImage(named: "ic_visa")
                     cell2.lblcardDetails.text = "**** **** **** 3802"
@@ -188,7 +213,7 @@ class paymentMethodCell1 : UITableViewCell {
 }
 
 class paymentMethodCell2 : UITableViewCell {
-     @IBOutlet weak var vWMain: PaymentView!
+    @IBOutlet weak var vWMain: PaymentView!
     @IBOutlet weak var selectPaymentMethodButton: UIButton!
     @IBOutlet weak var paymentMethodImageView: UIImageView!
     @IBOutlet weak var lblExpiresDate: addPaymentlable!

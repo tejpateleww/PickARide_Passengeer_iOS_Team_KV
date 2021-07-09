@@ -32,15 +32,15 @@ enum APIEnvironment : String {
                 if userDefaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
                         if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
-                            return ["x-api-key":Singleton.sharedInstance.Api_Key]
+                            return [UrlConstant.XApiKey : Singleton.sharedInstance.Api_Key]
                         }else{
-                            return ["key":"PickARide951*#*"]
+                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
                         }
                     }
                 }
             }
         }
-        return ["key":"PickARide951*#*"]
+        return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
     }
 }
 
@@ -53,30 +53,13 @@ enum ApiKey: String {
     case register                             = "register"
     case socialLogin                          = "social_login"
     case updateProfile                        = "profile_update"
-    
-    case vehicleTypeList                      = "vehicle_type_list"
-    case updateBasicInfo                      = "update_basic_info"
-    case updateBankInfo                       = "update_bank_info"
-    case vehicleInfo                          = "update_vehicle_info"
-    case updateDocs                           = "update_docs"
     case changePassword                       = "change_password"
     case forgotPassword                       = "forgot_password"
     case logout                               = "logout/"
     case addCard                              = "add_card"
     case cardlist                             = "card_list"
     case removeCard                           = "remove_card"
-    case qrCodeDetail                         = "qr_code_detail"
-    case addMoney                             = "add_money"
-    case transferMoney                        = "transfer_money"
-    case transferMoneyToMobileNum             = "transfer_money_with_mobile_no"
-    case transferMoneyToBank                  = "transfer_money_to_bank"
     case walletHistory                        = "wallet_history"
-    case changeDuty                           = "change_duty"
-    
-
-    
-    
-    
 }
 
  

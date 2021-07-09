@@ -71,3 +71,4 @@ struct ScreenSize {
 
 let TEXTFIELD_MaximumLimit = 25
 let TEXTFIELD_MinimumLimit = 2
+let MAX_PHONE_DIGITS = 10

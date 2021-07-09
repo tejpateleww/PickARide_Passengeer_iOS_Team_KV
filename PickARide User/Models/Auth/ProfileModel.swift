@@ -9,7 +9,7 @@
 import Foundation
 
 class ProfileReqModel: Encodable{
-    var customerId: String?
+    var customerId: String? = Singleton.sharedInstance.UserId
     var firstName: String?
     var lastName: String?
     var birthDate: String?

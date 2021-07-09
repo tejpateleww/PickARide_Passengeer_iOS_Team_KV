@@ -12,6 +12,8 @@ import UIKit
 class RegisterUserModel{
     weak var registerVc : RegisterVC? = nil
     
+    var registerReqModel = RegisterRequestModel()
+    
     func webserviceOTP(reqModel: OTPRequestModel){
         Utilities.showHud()
         WebServiceSubClass.OTPRequestApi(reqModel: reqModel) { (status, apiMessage, response, error) in
@@ -22,14 +24,15 @@ class RegisterUserModel{
                 let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
                 controller.isFrmRegister = true
                 controller.StringOTP = String(format: "%d", response?.otp ?? 0)
+                controller.registerReqModel = self.registerReqModel
                 self.registerVc?.navigationController?.pushViewController(controller, animated: true)
             }
         }
     }
 }
 
-class FinalRegisterUserModel{
-    weak var registerVc : OtpVC? = nil
+class OTPUserModel{
+    weak var otpVC : OtpVC? = nil
     
     func webserviceFinalRegister(reqModel: RegisterRequestModel){
         Utilities.showHud()

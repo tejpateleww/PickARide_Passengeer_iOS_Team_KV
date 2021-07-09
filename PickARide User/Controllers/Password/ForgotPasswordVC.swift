@@ -31,6 +31,9 @@ class ForgotPasswordVC: BaseViewController {
     }
     
     @IBAction func btnContinue(_ sender: Any) {
+//        if self.validation(){
+//            self.callForgotPasswordApi()
+//        }
         let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
         self.navigationController?.pushViewController(controller, animated: true)
     }

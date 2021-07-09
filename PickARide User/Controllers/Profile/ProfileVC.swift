@@ -16,7 +16,7 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var lblFirstName: ProfileLabel!
     @IBOutlet weak var txtFirstName: ProfileTextField!
     @IBOutlet weak var lblLastName: ProfileLabel!
-    @IBOutlet weak var txtLastName: MyOfferTextField!
+    @IBOutlet weak var txtLastName: ProfileTextField!
     @IBOutlet weak var lblEmail: ProfileLabel!
     @IBOutlet weak var txtEmail: ProfileTextField!
     @IBOutlet weak var lblPhoneNumber: ProfileLabel!
@@ -158,7 +158,7 @@ extension ProfileVC{
         let firstName = self.txtFirstName.validatedText(validationType: .username(field: self.txtFirstName.placeholder?.lowercased() ?? ""))
         let lastName = self.txtLastName.validatedText(validationType: .username(field: self.txtLastName.placeholder?.lowercased() ?? ""))
         let checkEmail = self.txtEmail.validatedText(validationType: .email)
-        let password = self.txtPassword.validatedText(validationType: .requiredField(field: self.txtPassword.placeholder?.lowercased() ?? ""))
+        let mobileNo = self.txtPhone.validatedText(validationType: .requiredField(field: self.txtPhone.placeholder?.lowercased() ?? ""))
         
         if !firstName.0{
             strTitle = firstName.1
@@ -166,8 +166,10 @@ extension ProfileVC{
             strTitle = lastName.1
         }else if !checkEmail.0{
             strTitle = checkEmail.1
-        }else if !password.0{
-            strTitle = password.1
+        }else if !mobileNo.0{
+            strTitle = mobileNo.1
+        }else if self.txtPhone.text?.count != 10 {
+            strTitle = UrlConstant.ValidPhoneNo
         }
 
         if let str = strTitle{
@@ -181,6 +183,15 @@ extension ProfileVC{
 
 //MARK:- TextView Delegate
 extension ProfileVC: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         if textField == txtPhone{
+            let currentString: NSString = textField.text as NSString? ?? ""
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= MAX_PHONE_DIGITS
+        }
+        return true
+    }
 }
     
 extension ProfileVC: ImagePickerDelegate {

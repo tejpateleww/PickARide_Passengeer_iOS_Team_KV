@@ -12,24 +12,23 @@ class ChangePasswordVC: UIViewController {
 
     @IBOutlet weak var vwMain: viewWithClearBg!
     @IBOutlet weak var lblChangePassword: UILabel!
-    @IBOutlet weak var textFieldOldPassword: ChangePasswordTextField!
-    @IBOutlet weak var textFieldNewPassword: ChangePasswordTextField!
-    @IBOutlet weak var textFieldConfirmPassword: ChangePasswordTextField!
+    @IBOutlet weak var txtOldPassword: ChangePasswordTextField!
+    @IBOutlet weak var txtNewPassword: ChangePasswordTextField!
+    @IBOutlet weak var txtConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
-    
     @IBOutlet weak var btnClose: UIButton!
     
     var submitButtonText = ""
     var isChangePassword : Bool = false
     var btnSubmitClosure : (() -> ())?
     
+    var changePasswordUserModel = PasswordUserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setButtonTitleAndHideView()
         self.setLocalization()
         self.setUpTextField()
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
     } 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +41,9 @@ class ChangePasswordVC: UIViewController {
     }
     
     @IBAction func btnsubmitAction(_ sender: Any) {
+        if self.validation(){
+            self.callChangePasswordApi()
+        }
         if let click = self.btnSubmitClosure {
             click()
         }
@@ -66,30 +68,30 @@ extension ChangePasswordVC{
     
     func setButtonTitleAndHideView() {
         if isChangePassword {
-            textFieldOldPassword.superview?.isHidden = false
+            txtOldPassword.superview?.isHidden = false
             lblChangePassword.text = "ChangePassword_lblChangePassword".Localized()
         } else {
-            textFieldOldPassword.superview?.isHidden = true
+            txtOldPassword.superview?.isHidden = true
             lblChangePassword.text = "ChangePassword_lblSetPassword".Localized()
         }
     }
     
     func setLocalization() {
-        textFieldOldPassword.placeholder = "ChangePassword_oldPassword_Place".Localized()
-        textFieldNewPassword.placeholder = "ChangePassword_newPassword_Place".Localized()
-        textFieldConfirmPassword.placeholder = "ChangePassword_confirmPassword_Place".Localized()
+        txtOldPassword.placeholder = "ChangePassword_oldPassword_Place".Localized()
+        txtNewPassword.placeholder = "ChangePassword_newPassword_Place".Localized()
+        txtConfirmPassword.placeholder = "ChangePassword_confirmPassword_Place".Localized()
         btnSubmit.setTitle(submitButtonText, for: .normal)
     }
     
     func setUpTextField(){
-        self.textFieldOldPassword.tag = 0
-        self.textFieldOldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.txtOldPassword.tag = 0
+        self.txtOldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
         
-        self.textFieldNewPassword.tag = 1
-        self.textFieldNewPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.txtNewPassword.tag = 1
+        self.txtNewPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
         
-        self.textFieldConfirmPassword.tag = 2
-        self.textFieldConfirmPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.txtConfirmPassword.tag = 2
+        self.txtConfirmPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
     func setupTextfields(textfield : UITextField) {
@@ -110,11 +112,49 @@ extension ChangePasswordVC{
         sender.isSelected = !sender.isSelected
         
         if sender.tag == 0{
-            self.textFieldOldPassword.isSecureTextEntry = sender.isSelected
+            self.txtOldPassword.isSecureTextEntry = sender.isSelected
         }else if sender.tag == 1{
-            self.textFieldNewPassword.isSecureTextEntry = sender.isSelected
+            self.txtNewPassword.isSecureTextEntry = sender.isSelected
         }else if sender.tag == 2{
-            self.textFieldConfirmPassword.isSecureTextEntry = sender.isSelected
+            self.txtConfirmPassword.isSecureTextEntry = sender.isSelected
         }
+    }
+}
+
+
+//MARK:- Validation & Api
+extension ChangePasswordVC{
+    func validation()->Bool{
+        var strTitle : String?
+        let oldPassword = self.txtOldPassword.validatedText(validationType: .password(field: self.txtOldPassword.placeholder?.lowercased() ?? ""))
+        let newPassword = txtNewPassword.validatedText(validationType: .password(field: self.txtNewPassword.placeholder?.lowercased() ?? ""))
+        let confirmPassword = txtConfirmPassword.validatedText(validationType: .requiredField(field: self.txtConfirmPassword.placeholder?.lowercased() ?? ""))
+         
+        if !oldPassword.0{
+            strTitle = oldPassword.1
+        }else if !newPassword.0{
+            strTitle = newPassword.1
+        }else if !confirmPassword.0{
+            strTitle = confirmPassword.1
+        }else if txtNewPassword.text != txtConfirmPassword.text{
+            strTitle = "New password & confirm password should be same."
+        }
+
+        if let str = strTitle{
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
+            return false
+        }
+        
+        return true
+    }
+    
+    func callChangePasswordApi(){
+        self.changePasswordUserModel.changePasswordVC = self
+        
+        let reqModel = ChangePasswordReqModel()
+        reqModel.oldPassword = self.txtOldPassword.text ?? ""
+        reqModel.newPassword = self.txtNewPassword.text ?? ""
+        
+        self.changePasswordUserModel.webserviceChangePassword(reqModel: reqModel)
     }
 }

@@ -37,6 +37,9 @@ class AddCardVC: BaseViewController {
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
     
+    var monthYearTuple : (month: String?, year: String?) = (nil,nil)
+    var addCardUserModel = CardUserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -49,6 +52,7 @@ class AddCardVC: BaseViewController {
     }
     
     @IBAction func placeOrderBtn(_ sender: submitButton) {
+//        self.callApi()
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -113,6 +117,30 @@ extension AddCardVC{
     @objc func doneAction(_ sender: UIBarButtonItem) {
         self.txtCountry.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].name
         self.txtCountry.endEditing(true)
+    }
+}
+
+//MARK:- Api
+extension AddCardVC{
+    func callApi(){
+        if !isValidatePaymentDetail().0{
+            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
+            return
+        }
+        if isCreditCardValid{
+            self.addCardUserModel.addCardVC = self
+            
+            let reqModel = AddCardReqModel()
+            reqModel.cardNo = (self.txtCardNumber.text ?? "").replacingOccurrences(of: " ", with: "")
+            reqModel.cardHolderName = self.txtName.text ?? ""
+            reqModel.cvv = self.txtCVV.text ?? ""
+            reqModel.expiryYear = self.monthYearTuple.month
+            reqModel.expiryMonth = ""
+            
+            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
+        }else{
+            
+        }
     }
 }
 
@@ -252,7 +280,9 @@ extension AddCardVC : UITextFieldDelegate {
             {
                 strMonth = "0\(monthPicker.month)"
             }
+
             let yearStr = "\(monthPicker.year)".dropFirst(2)
+            monthYearTuple = (strMonth,"\(yearStr)")
             self.txtExpires.text = "\(strMonth)/\(yearStr)"
         }
     }

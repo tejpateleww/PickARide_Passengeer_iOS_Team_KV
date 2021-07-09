@@ -2226,16 +2226,17 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F9-3L-ARz" customClass="TitleLabel" customModule="PickARide_User" customModuleProvider="target">
                                         <rect key="frame" x="16" y="31.5" width="343" height="21"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-ed-hko">
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-ed-hko">
                                         <rect key="frame" x="0.0" y="95.5" width="375" height="483.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell1" rowHeight="100" id="8ox-fI-SS8" customClass="paymentMethodCell1" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8ox-fI-SS8" id="NBU-Kb-EEj">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -2314,7 +2315,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell2" rowHeight="100" id="JKA-9E-Fna" customClass="paymentMethodCell2" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="128" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="155.5" width="375" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JKA-9E-Fna" id="3cf-3N-Std">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -3181,17 +3182,17 @@
                         <outlet property="lblPassword" destination="bmR-Ba-RCm" id="lli-al-4vW"/>
                         <outlet property="lblPhoneNumber" destination="WCt-NV-bc3" id="8Xb-Tl-BWL"/>
                         <outlet property="lblTitle" destination="vEV-fB-6Jd" id="UJR-ur-726"/>
-                        <outlet property="textFieldEmail" destination="rfb-7i-82d" id="LVl-fe-iAh"/>
-                        <outlet property="textFieldFirstName" destination="12o-D4-097" id="X0z-y8-7bh"/>
-                        <outlet property="textFieldLastName" destination="i6S-oW-qcD" id="tCt-Bq-KA3"/>
-                        <outlet property="textFieldPassword" destination="vMR-Rb-X2W" id="Xm8-EN-gMx"/>
-                        <outlet property="textFieldPhoneNumber" destination="BAh-QV-2e0" id="9Hf-cd-smI"/>
                         <outlet property="txtCountryCode" destination="DGo-a4-WhU" id="76x-Gx-4HU"/>
-                        <outletCollection property="textFieldCollection" destination="12o-D4-097" collectionClass="NSMutableArray" id="ojx-4p-oee"/>
-                        <outletCollection property="textFieldCollection" destination="i6S-oW-qcD" collectionClass="NSMutableArray" id="4sx-IR-N9w"/>
-                        <outletCollection property="textFieldCollection" destination="rfb-7i-82d" collectionClass="NSMutableArray" id="ZYj-Hq-qzC"/>
-                        <outletCollection property="textFieldCollection" destination="vMR-Rb-X2W" collectionClass="NSMutableArray" id="Rh4-ne-bOR"/>
-                        <outletCollection property="textFieldCollection" destination="BAh-QV-2e0" collectionClass="NSMutableArray" id="CjF-90-J7t"/>
+                        <outlet property="txtEmail" destination="rfb-7i-82d" id="fA1-AG-Pc4"/>
+                        <outlet property="txtFirstName" destination="12o-D4-097" id="Xth-2p-f3r"/>
+                        <outlet property="txtLastName" destination="i6S-oW-qcD" id="GLl-a5-vbX"/>
+                        <outlet property="txtPassword" destination="vMR-Rb-X2W" id="aPW-3X-pnm"/>
+                        <outlet property="txtPhone" destination="BAh-QV-2e0" id="WrD-mD-ZpY"/>
+                        <outletCollection property="textFieldCollection" destination="12o-D4-097" collectionClass="NSMutableArray" id="hpT-21-21s"/>
+                        <outletCollection property="textFieldCollection" destination="i6S-oW-qcD" collectionClass="NSMutableArray" id="sgE-sc-Oek"/>
+                        <outletCollection property="textFieldCollection" destination="rfb-7i-82d" collectionClass="NSMutableArray" id="Myc-hJ-Tfj"/>
+                        <outletCollection property="textFieldCollection" destination="BAh-QV-2e0" collectionClass="NSMutableArray" id="2d5-qj-hl9"/>
+                        <outletCollection property="textFieldCollection" destination="vMR-Rb-X2W" collectionClass="NSMutableArray" id="YPf-TB-hDm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ji-Wn-nmY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6684,7 +6685,7 @@
         <image name="imgBlue" width="12" height="12"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="14" height="16"/>
+        <image name="imgHome" width="23" height="19.5"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <namedColor name="CustomImgBG">

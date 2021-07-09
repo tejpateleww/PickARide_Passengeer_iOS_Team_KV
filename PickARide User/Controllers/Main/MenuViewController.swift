@@ -203,6 +203,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
             controller.isFromSideMenu = true
             homeVC?.navigationController?.pushViewController(controller, animated: true)
+            
         } else if strCellItemTitle == MyType.Logout.value {
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in

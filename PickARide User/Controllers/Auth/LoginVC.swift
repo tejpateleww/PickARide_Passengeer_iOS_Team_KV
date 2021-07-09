@@ -12,8 +12,8 @@ class LoginVC: UIViewController {
   
     @IBOutlet weak var lblSignIN: loginScreenLabel!
     @IBOutlet weak var lblWelcomeBack: loginScreenLabel!
-    @IBOutlet weak var textFieldPassword: emailPasswordTextField!
-    @IBOutlet weak var textFieldEmailID: emailPasswordTextField!
+    @IBOutlet weak var txtPassword: emailPasswordTextField!
+    @IBOutlet weak var txtEmail: emailPasswordTextField!
     @IBOutlet weak var btnForgotPassword: loginScreenButton!
     @IBOutlet weak var btnSignIN: submitButton!
     @IBOutlet weak var lblOR: loginScreenLabel!
@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         
         setupLocalization()
-        self.textFieldPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+        self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +71,8 @@ extension LoginVC{
     func setupLocalization() {
         lblSignIN.text = "LoginScreen_lblSignIN".Localized()
         lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
-        textFieldEmailID.placeholder = "LoginScreen_textFieldEmailID_place".Localized()
-        textFieldPassword.placeholder = "LoginScreen_textFieldPassword_place".Localized()
+        txtEmail.placeholder = "LoginScreen_textFieldEmailID_place".Localized()
+        txtPassword.placeholder = "LoginScreen_textFieldPassword_place".Localized()
         btnForgotPassword.setTitle("LoginScreen_btnForgotPassword".Localized(), for: .normal)
         btnSignIN.setTitle("LoginScreen_btnSignIN".Localized(), for: .normal)
         lblOR.text = "LoginScreen_lblOR".Localized()
@@ -82,7 +82,7 @@ extension LoginVC{
     
     @objc func showHidePassword(_ sender : UIButton) {
         sender.isSelected = !sender.isSelected
-        self.textFieldPassword.isSecureTextEntry = sender.isSelected
+        self.txtPassword.isSecureTextEntry = sender.isSelected
     }
 }
 
@@ -90,8 +90,8 @@ extension LoginVC{
 extension LoginVC{
     func validation()->Bool{
         var strTitle : String?
-        let checkEmail = textFieldEmailID.validatedText(validationType: .email)
-        let password = textFieldPassword.validatedText(validationType: .requiredField(field: textFieldPassword.placeholder?.lowercased() ?? ""))
+        let checkEmail = txtEmail.validatedText(validationType: .email)
+        let password = txtPassword.validatedText(validationType: .password(field: self.txtPassword.placeholder?.lowercased() ?? ""))
         
         if !checkEmail.0{
             strTitle = checkEmail.1
@@ -111,8 +111,8 @@ extension LoginVC{
         self.loginUserModel.loginVC = self
         
         let reqModel = LoginRequestModel()
-        reqModel.userName = self.textFieldEmailID.text ?? ""
-        reqModel.password = self.textFieldPassword.text ?? ""
+        reqModel.userName = self.txtEmail.text ?? ""
+        reqModel.password = self.txtPassword.text ?? ""
         
         self.loginUserModel.webserviceLogin(reqModel: reqModel)
     }
