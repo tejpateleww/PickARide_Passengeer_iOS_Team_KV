@@ -259,4 +259,22 @@ extension String{
     mutating func capitalizeFirstLetter() {
     self = self.capitalizingFirstLetter()
     }
+    
+    func heightForView(font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = self
+        label.sizeToFit()
+
+        return label.frame.height
+    }
+    
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+           let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+           
+           return ceil(boundingBox.height)
+       }
 }

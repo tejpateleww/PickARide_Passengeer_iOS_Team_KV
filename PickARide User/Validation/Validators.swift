@@ -54,7 +54,7 @@ struct RequiredFieldValidator: ValidatorConvertible {
     
     func validated(_ value: String) -> (Bool, String) {
         guard !value.isEmpty else {
-            return (false,ValidationError("Required field " + fieldName).message)
+            return (false,ValidationError("Please enter  " + fieldName).message)
         }
         return (true,"")
     }
@@ -81,12 +81,12 @@ struct UserNameValidator: ValidatorConvertible {
         do {
             let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
             if regex.firstMatch(in: value, options: [], range: NSMakeRange(0, value.count)) != nil {
-               return (false , ValidationError("Invalid \(fieldName), \(fieldName) should not contain numbers or special characters").message)
+                return (false , ValidationError("\(UrlConstant.Invalid) \(fieldName), \(fieldName) should not contain numbers or special characters").message)
 
             }
         }
         catch {
-            return (false,ValidationError("Invalid \(fieldName), \(fieldName) should not contain numbers or special characters").message)
+            return (false,ValidationError("\(UrlConstant.Invalid) \(fieldName), \(fieldName) should not contain numbers or special characters").message)
         }
         return (true , "")
     }
@@ -117,12 +117,12 @@ struct PasswordValidator: ValidatorConvertible {
 struct EmailValidator: ValidatorConvertible {
     func validated(_ value: String)  -> (Bool,String) {
         do {
-            guard value.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {return (false,ValidationError("Please enter email").message)}
+            guard value.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {return (false,ValidationError(UrlConstant.EnterEmail).message)}
             if try NSRegularExpression(pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$", options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
-                return (false,ValidationError("Invalid e-mail Address").message)
+                return (false,ValidationError(UrlConstant.InvalidEmail).message)
             }
         } catch {
-            return (false,ValidationError("Invalid e-mail Address").message)
+            return (false,ValidationError(UrlConstant.InvalidEmail).message)
         }
         return (true, "")
     }

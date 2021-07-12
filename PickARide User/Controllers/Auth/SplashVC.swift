@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenuSwift
+import CoreLocation
 
 class SplashVC: UIViewController {
     
@@ -92,3 +93,4 @@ extension SplashVC{
         }
     }
 }
+

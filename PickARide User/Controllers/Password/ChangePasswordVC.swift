@@ -42,10 +42,10 @@ class ChangePasswordVC: UIViewController {
     
     @IBAction func btnsubmitAction(_ sender: Any) {
         if self.validation(){
-            self.callChangePasswordApi()
-        }
-        if let click = self.btnSubmitClosure {
-            click()
+//            self.callChangePasswordApi()
+            if let click = self.btnSubmitClosure {
+                click()
+            }
         }
     }
 }
@@ -67,13 +67,8 @@ extension ChangePasswordVC{
     }
     
     func setButtonTitleAndHideView() {
-        if isChangePassword {
-            txtOldPassword.superview?.isHidden = false
-            lblChangePassword.text = "ChangePassword_lblChangePassword".Localized()
-        } else {
-            txtOldPassword.superview?.isHidden = true
-            lblChangePassword.text = "ChangePassword_lblSetPassword".Localized()
-        }
+        txtOldPassword.superview?.isHidden = !isChangePassword
+        lblChangePassword.text = isChangePassword ? "ChangePassword_lblChangePassword".Localized() : "ChangePassword_lblSetPassword".Localized()
     }
     
     func setLocalization() {
@@ -130,7 +125,7 @@ extension ChangePasswordVC{
         let newPassword = txtNewPassword.validatedText(validationType: .password(field: self.txtNewPassword.placeholder?.lowercased() ?? ""))
         let confirmPassword = txtConfirmPassword.validatedText(validationType: .requiredField(field: self.txtConfirmPassword.placeholder?.lowercased() ?? ""))
          
-        if !oldPassword.0{
+        if isChangePassword && !oldPassword.0{
             strTitle = oldPassword.1
         }else if !newPassword.0{
             strTitle = newPassword.1

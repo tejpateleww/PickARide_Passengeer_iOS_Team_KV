@@ -195,34 +195,37 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         else if strCellItemTitle == MyType.MyRides.value {
-            
             let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
-        } else if strCellItemTitle == MyType.PaymentMethods.value {
             
+        } else if strCellItemTitle == MyType.PaymentMethods.value {
             let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
             controller.isFromSideMenu = true
             homeVC?.navigationController?.pushViewController(controller, animated: true)
             
         } else if strCellItemTitle == MyType.Logout.value {
-            let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToLogin()
-                
+            Utilities.showAlertWithTitleFromVC(vc: self, title: UrlConstant.Logout, message: UrlConstant.LogoutMessage, buttons: [UrlConstant.Ok,UrlConstant.Cancel], isOkRed: false) { (ind) in
+                if ind == 0{
+                    Utilities.showHud()
+                    WebServiceSubClass.LogoutApi { (status, apimessage, error) in
+                        Utilities.hideHud()
+                        userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                        appDel.navigateToLogin()
+                    }
+                    
+                }
             }
-            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-            alert.addAction(ok)
-            alert.addAction(cancel)
-            self.present(alert, animated: true, completion: nil)
+            
         } else if strCellItemTitle == MyType.Notification.value {
             let controller = NotificationVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
+            
         } else if strCellItemTitle == MyType.PaymentMethods.value {
             
         } else if strCellItemTitle == MyType.Settings.value {
             let controller = SettingVC.instantiate(fromAppStoryboard: .Main)
             homeVC?.navigationController?.pushViewController(controller, animated: true)
+            
         } else if strCellItemTitle == MyType.InviteaFrind.value {
             let text = ""
             
@@ -231,10 +234,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             
             self.present(activityViewController, animated: true, completion: nil)
+            
         } else if strCellItemTitle == MyType.Help.value {
             let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)
-            controller.strNavTitle = "Help"
+            controller.strNavTitle = UrlConstant.Help
             self.navigationController?.pushViewController(controller, animated: true)
+            
         }
     }
     

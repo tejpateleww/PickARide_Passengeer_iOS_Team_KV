@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="VKToolTip" id="iN0-l3-epB" customClass="VKToolTip" customModule="weLOCUM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaB-RM-lcB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r99-d2-x2d">
+                            <rect key="frame" x="8" y="8" width="359" height="53"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.3411764706" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="r99-d2-x2d" secondAttribute="bottom" constant="8" id="TH7-49-vZm"/>
+                        <constraint firstItem="r99-d2-x2d" firstAttribute="centerY" secondItem="RaB-RM-lcB" secondAttribute="centerY" id="dIl-wi-KCb"/>
+                        <constraint firstItem="r99-d2-x2d" firstAttribute="leading" secondItem="RaB-RM-lcB" secondAttribute="leading" constant="8" id="h1b-y4-7XY"/>
+                        <constraint firstAttribute="trailing" secondItem="r99-d2-x2d" secondAttribute="trailing" constant="8" id="plR-zq-ptr"/>
+                        <constraint firstItem="r99-d2-x2d" firstAttribute="top" secondItem="RaB-RM-lcB" secondAttribute="top" constant="8" id="s8y-FY-6Aj"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_tooltip" translatesAutoresizingMaskIntoConstraints="NO" id="oxg-Eh-9NT">
+                    <rect key="frame" x="32" y="68" width="12" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="oxg-Eh-9NT" secondAttribute="height" multiplier="1:1" id="SsY-HK-jlM"/>
+                        <constraint firstAttribute="height" constant="12" id="osn-t6-3oV"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RaB-RM-lcB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="7Q6-Jp-X0l"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oxg-Eh-9NT" secondAttribute="bottom" id="cz9-qu-gkc"/>
+                <constraint firstItem="oxg-Eh-9NT" firstAttribute="top" secondItem="RaB-RM-lcB" secondAttribute="bottom" constant="-1" id="gdF-l8-kpc"/>
+                <constraint firstItem="oxg-Eh-9NT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="nVn-OW-Hsh"/>
+                <constraint firstItem="RaB-RM-lcB" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="seG-dr-23j"/>
+                <constraint firstItem="RaB-RM-lcB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vNd-1a-PSn"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="toolTipImg" destination="oxg-Eh-9NT" id="9eo-PP-5UH"/>
+                <outlet property="toolTipLbl" destination="r99-d2-x2d" id="pr3-I9-iuu"/>
+                <outlet property="toolTipView" destination="RaB-RM-lcB" id="acx-uz-vyq"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="-112"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_tooltip" width="21.5" height="11"/>
+    </resources>
+</document>

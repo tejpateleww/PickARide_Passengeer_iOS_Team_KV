@@ -27,7 +27,9 @@ class RideDetailsVC: BaseViewController {
     @IBOutlet weak var lblRating: RideDetailLabel!
     @IBOutlet weak var btnHelp: RidesDetailsButton!
     
+    var isFromPastRide = Bool()
     override func viewDidLoad() {
+        self.setUpUI()
         super.viewDidLoad()
         self.setupLocalization()
     }
@@ -36,10 +38,20 @@ class RideDetailsVC: BaseViewController {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
+    
+    @IBAction func btnRideReceipt(_ sender: Any) {
+        let controller = RideReceiptDetailsVC.instantiate(fromAppStoryboard: .Main)
+        controller.isFromPastRide = isFromPastRide
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
 //MARK:- Set Up UI
 extension RideDetailsVC{
+    func setUpUI(){
+        self.btnRepeatRide.isHidden = !self.isFromPastRide
+    }
     
     func setupLocalization(){
         lblRideDetails.text = "RideDetailsVC_lblRideDetails".Localized()

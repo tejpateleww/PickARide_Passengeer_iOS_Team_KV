@@ -63,4 +63,8 @@ extension AppDelegate{
         
         Singleton.sharedInstance.clearSingletonClass()
     }
+    
+    func callLogOutApi(){
+        
+    }
 }

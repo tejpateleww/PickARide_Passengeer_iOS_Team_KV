@@ -27,7 +27,7 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var btnSave: submitButton!
     @IBOutlet var textFieldCollection: [ProfileTextField]!
     @IBOutlet weak var btnPasword: UIButton!
-    @IBOutlet weak var txtCountryCode: UITextField!
+    @IBOutlet weak var txtCountryCode: ProfileTextField!
     
     var currentEditStatus = false
     var imagePicker : ImagePicker?
@@ -184,12 +184,12 @@ extension ProfileVC{
 //MARK:- TextView Delegate
 extension ProfileVC: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-         if textField == txtPhone{
+        if textField == txtPhone || textField == txtFirstName || textField == txtLastName{
             let currentString: NSString = textField.text as NSString? ?? ""
-            let newString: NSString =
-                currentString.replacingCharacters(in: range, with: string) as NSString
-            return newString.length <= MAX_PHONE_DIGITS
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return string == "" || newString.length <= ((textField == txtPhone) ? MAX_PHONE_DIGITS : TEXTFIELD_MaximumLimit)
         }
+        
         return true
     }
 }

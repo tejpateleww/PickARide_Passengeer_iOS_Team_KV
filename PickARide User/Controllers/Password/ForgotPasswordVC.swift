@@ -13,9 +13,10 @@ class ForgotPasswordVC: BaseViewController {
     @IBOutlet weak var lblForgotPassword: ForgotPasswordLabel!
     @IBOutlet weak var lblQuestion: ForgotPasswordLabel!
     @IBOutlet weak var lblDescription: ForgotPasswordLabel!
-    @IBOutlet weak var lblCountryCode: ForgotPasswordLabel!
+    @IBOutlet weak var lblEmailTitle: ForgotPasswordLabel!
     @IBOutlet weak var textFieldPhoneNumber: phonenumberTextField!
     @IBOutlet weak var btnContinue: submitButton!
+    @IBOutlet weak var txtEmail: emailPasswordTextField!
     
     var forgotPasswordUserModel = PasswordUserModel()
     
@@ -31,11 +32,11 @@ class ForgotPasswordVC: BaseViewController {
     }
     
     @IBAction func btnContinue(_ sender: Any) {
-//        if self.validation(){
+        if self.validation(){
 //            self.callForgotPasswordApi()
-//        }
-        let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-        self.navigationController?.pushViewController(controller, animated: true)
+            let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
@@ -45,7 +46,7 @@ extension ForgotPasswordVC{
         lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
         lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
-        lblCountryCode.text = "ForgotPasswordScreen_lblCountryCode".Localized()
+        lblEmailTitle.text = "LoginScreen_textFieldEmailID_place".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
         btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
     }
@@ -55,7 +56,7 @@ extension ForgotPasswordVC{
 extension ForgotPasswordVC{
     func validation()->Bool{
         var strTitle : String?
-        let checkEmail = textFieldPhoneNumber.validatedText(validationType: .email)
+        let checkEmail = self.txtEmail.validatedText(validationType: .email)
         
         if !checkEmail.0{
             strTitle = checkEmail.1

@@ -30,11 +30,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Pick A Ride would like to use your camera for profile picture.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location always and when in usage description</string>
+	<string>Pick A Ride would like to access your location to get near by drivers for you.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Location usage desription</string>
+	<string>Pick A Ride would like to access your location to get near by drivers for you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location always usage description</string>
+	<string>Pick A Ride would like to access your location to get near by drivers for you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Pick A Ride would like to use your Photo library for profile picture.</string>
 	<key>UIAppFonts</key>

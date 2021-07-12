@@ -22,6 +22,7 @@ class ReasonForCancelVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpUI()
         self.setupLocalization()
     }
     

@@ -52,8 +52,13 @@ class AddCardVC: BaseViewController {
     }
     
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-//        self.callApi()
-        self.navigationController?.popViewController(animated: true)
+        if !isValidatePaymentDetail().0{
+            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
+            return
+        }
+        if isCreditCardValid{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -102,14 +107,6 @@ extension AddCardVC{
         btnSave.setTitle("AddCardVC_btnSave".Localized(), for: .normal)
     }
     
-    func setData() {
-        txtName.text = "Shane Mendoza"
-        txtCardNumber.text = "**** - **** -  **** - **85"
-        txtExpires.text = "10/2030"
-        txtCVV.text = "****"
-        txtCountry.text = "Germany"
-    }
-    
     @objc func cancelAction(_ sender: UIBarButtonItem) {
         self.txtCountry.endEditing(true)
     }
@@ -134,8 +131,8 @@ extension AddCardVC{
             reqModel.cardNo = (self.txtCardNumber.text ?? "").replacingOccurrences(of: " ", with: "")
             reqModel.cardHolderName = self.txtName.text ?? ""
             reqModel.cvv = self.txtCVV.text ?? ""
-            reqModel.expiryYear = self.monthYearTuple.month
-            reqModel.expiryMonth = ""
+            reqModel.expiryYear = self.monthYearTuple.year
+            reqModel.expiryMonth = self.monthYearTuple.month
             
             self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
         }else{
@@ -171,32 +168,37 @@ extension AddCardVC{
     }
     
     func isValidatePaymentDetail() -> (Bool,String) {
-        var isValidate:Bool = true
-        var ValidatorMessage:String = ""
-        let holder = self.txtName.validatedText(validationType: ValidatorType.username(field: "card holder name") )
+        var ValidatorMessage : String?
         
-        if (!holder.0) {
-            isValidate = false
-            ValidatorMessage = holder.1
+        let cardHolderName = self.txtName.validatedText(validationType: .username(field: txtName.placeholder?.lowercased() ?? ""))
+        let cardNumber = self.txtCardNumber.validatedText(validationType: .requiredField(field: txtCardNumber.placeholder?.lowercased() ?? ""))
+        let expiryDt = self.txtExpires.validatedText(validationType: .requiredField(field: txtExpires.placeholder?.lowercased() ?? ""))
+        let cvv = self.txtCVV.validatedText(validationType: .requiredField(field: txtCVV.placeholder?.lowercased() ?? ""))
+        let country = self.txtCountry.validatedText(validationType: .requiredField(field: txtCountry.placeholder?.lowercased() ?? ""))
+        
+        if !cardHolderName.0 {
+            ValidatorMessage = cardHolderName.1
             
-        }else if (txtCardNumber.text?.isEmptyOrWhitespace() ?? Bool()) {
-            isValidate = false
-            ValidatorMessage = "Please enter card number"
+        }else if !cardNumber.0 {
+            ValidatorMessage = cardNumber.1
             
         }else if !isCreditCardValid {
-            isValidate = false
-            ValidatorMessage = "Your card number is invalid"
+            ValidatorMessage = UrlConstant.InvalidCardNumber
         }
-        else if txtExpires.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 {
-            isValidate = false
-            ValidatorMessage = "Please enter expiry date"
+        else if !expiryDt.0 {
+            ValidatorMessage = expiryDt.1
         }
-        else if txtCVV.text?.isEmptyOrWhitespace() ?? Bool() {
-            isValidate = false
-            ValidatorMessage = "Please enter cvv"
+        else if !cvv.0 {
+            ValidatorMessage = cvv.1
+        }
+        else if !country.0 {
+            ValidatorMessage = country.1
         }
         
-        return (isValidate,ValidatorMessage)
+        if let str = ValidatorMessage{
+            return(false, str)
+        }
+        return (true,"")
     }
     
     func setValidation () {

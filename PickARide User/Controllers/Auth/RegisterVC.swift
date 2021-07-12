@@ -10,9 +10,6 @@ import UIKit
 
 class RegisterVC: BaseViewController {
     
-    //MARK: -Properties
-    
-    //MARK: -IBOutlets
     @IBOutlet weak var lblSignUP: registerScreenLabel!
     @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
@@ -28,6 +25,7 @@ class RegisterVC: BaseViewController {
     var selectedIndexOfPicker = Int()
     
     var registerUserModel = RegisterUserModel()
+    var locationManager : LocationService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +42,17 @@ class RegisterVC: BaseViewController {
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
         if self.validation(){
-//            self.callOtpApi()
-            let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-            controller.isFrmRegister = true
-            self.navigationController?.pushViewController(controller, animated: true)
+            if self.getLocation(){
+                //            self.callOtpApi()
+                let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+                controller.isFrmRegister = true
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }
 
-//MARK: Other methods
+//MARK: Other Methods
 extension RegisterVC{
     func setUpUI(){
         self.pickerView.delegate = self
@@ -104,6 +104,16 @@ extension RegisterVC{
         self.txtCountryCode.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].countryCode
         self.txtCountryCode.endEditing(true)
     }
+    
+    func getLocation() -> Bool {
+        if Singleton.sharedInstance.userCurrentLocation == nil{
+            self.locationManager = LocationService()
+            self.locationManager?.startUpdatingLocation()
+            return false
+        }else{
+            return true
+        }
+    }
 }
 
 //MARK:- Validation & Api
@@ -129,7 +139,7 @@ extension RegisterVC{
         }else if !password.0{
             strTitle = password.1
         }
-
+        
         if let str = strTitle{
             Toast.show(title: UrlConstant.Required, message: str, state: .failure)
             return false
@@ -184,19 +194,19 @@ extension RegisterVC: UITextViewDelegate{
 //MARK:- TextField Delegate
 extension RegisterVC: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-         if textField == txtPhoneNumber{
+        if textField == txtPhoneNumber || textField == txtFirstName || textField == txtLastName{
             let currentString: NSString = textField.text as NSString? ?? ""
-            let newString: NSString =
-                currentString.replacingCharacters(in: range, with: string) as NSString
-            return newString.length <= MAX_PHONE_DIGITS
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return string == "" || (newString.length <= ((textField == txtPhoneNumber) ? MAX_PHONE_DIGITS : TEXTFIELD_MaximumLimit))
         }
+        
         return true
     }
 }
 
 //MARK:- Country Code Picker Set Up
 extension RegisterVC : UIPickerViewDelegate,UIPickerViewDataSource {
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

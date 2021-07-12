@@ -23,6 +23,7 @@ class UrlConstant{
     static let SomethingWentWrong = "UrlConstant_SomethingWentWrong".Localized()
     static let NoInternetConnection =  "UrlConstant_NoInternetConnection".Localized()
     static let RequestTimeOut = "UrlConstant_RequestTimeOut".Localized()
+    static let LocationRequired = "UrlConstant_LocationRequiredMessage".Localized()
     
     static let Ok = "UrlConstant_Ok".Localized()
     static let Yes = "UrlConstant_Yes".Localized()
@@ -31,6 +32,10 @@ class UrlConstant{
     static let Retry = "UrlConstant_Retry".Localized()
     static let SelectCard = "UrlConstant_SelectCard".Localized()
     static let Continue = "UrlConstant_Continue".Localized()
+    static let Settings = "UrlConstant_Settings".Localized()
+    static let Logout = "UrlConstant_Logout".Localized()
+    static let Help = "UrlConstant_Help".Localized()
+    static let Invalid = "UrlConstant_Invalid".Localized()
     
     //Validation Message
     static let ValidPhoneNo = "UrlConstant_ValidPhoneNo".Localized()
@@ -40,6 +45,10 @@ class UrlConstant{
     static let Age18YearsOld = "UrlConstant_Age18YearsOld".Localized()
     static let RequiredVerificationCode = "UrlConstant_RequiredVerificationCode".Localized()
     static let InvalidVerificationCode = "UrlConstant_InvalidVerificationCode".Localized()
+    static let LogoutMessage = "UrlConstant_LogoutMessage".Localized()
+    static let InvalidEmail = "UrlConstant_InvalidEmailMessage".Localized()
+    static let EnterEmail = "UrlConstant_EnterEmailMessage".Localized()
+    static let InvalidCardNumber = "UrlConstant_InvalidCardNumber".Localized()
 }
 
 let ErrorResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SomethingWentWrong]

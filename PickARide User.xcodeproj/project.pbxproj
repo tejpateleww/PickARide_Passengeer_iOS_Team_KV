@@ -33,6 +33,9 @@
 		1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */; };
 		1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */; };
 		1813E4DC258C7F1700EE33CA /* WalletHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */; };
+		18173E8A269C04EB00B9F3D9 /* VKToolTip.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18173E89269C04EB00B9F3D9 /* VKToolTip.xib */; };
+		18173E8E269C36AB00B9F3D9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18173E8D269C36AB00B9F3D9 /* LocationService.swift */; };
+		18173EB9269C6A0F00B9F3D9 /* RideReceiptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18173EB8269C6A0F00B9F3D9 /* RideReceiptVC.swift */; };
 		181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E432A25B68DB700A76B36 /* navigationCommonView.swift */; };
 		181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E432D25B68DC600A76B36 /* navigationCommonView.xib */; };
 		181E433125B6BAAA00A76B36 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E433025B6BAAA00A76B36 /* ChatVC.swift */; };
@@ -162,6 +165,9 @@
 		1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPaymentVC.swift; sourceTree = "<group>"; };
 		1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardVC.swift; sourceTree = "<group>"; };
 		1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryVC.swift; sourceTree = "<group>"; };
+		18173E89269C04EB00B9F3D9 /* VKToolTip.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VKToolTip.xib; sourceTree = "<group>"; };
+		18173E8D269C36AB00B9F3D9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		18173EB8269C6A0F00B9F3D9 /* RideReceiptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideReceiptVC.swift; sourceTree = "<group>"; };
 		181E432A25B68DB700A76B36 /* navigationCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationCommonView.swift; sourceTree = "<group>"; };
 		181E432D25B68DC600A76B36 /* navigationCommonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = navigationCommonView.xib; sourceTree = "<group>"; };
 		181E433025B6BAAA00A76B36 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -395,6 +401,7 @@
 		181EBD6D258730B300C11C08 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				18173E8D269C36AB00B9F3D9 /* LocationService.swift */,
 				180979AB25876AA2002070A7 /* AppStoryboards.swift */,
 				181EBD8B258730B300C11C08 /* AppInfo.swift */,
 				187A27F226805B5800F936B2 /* Toast.swift */,
@@ -505,6 +512,7 @@
 		1828A1CA26985EA6009ADA2A /* XibViews */ = {
 			isa = PBXGroup;
 			children = (
+				18173E89269C04EB00B9F3D9 /* VKToolTip.xib */,
 				1828A1C726985B75009ADA2A /* ToastMessageXib.xib */,
 			);
 			path = XibViews;
@@ -664,6 +672,7 @@
 				180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */,
 				185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */,
 				18747076258B7AF70095546B /* MyRidesVC.swift */,
+				18173EB8269C6A0F00B9F3D9 /* RideReceiptVC.swift */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -872,6 +881,7 @@
 				180979E425876C75002070A7 /* Ubuntu-BoldItalic.ttf in Resources */,
 				180979E125876C75002070A7 /* Ubuntu-Regular.ttf in Resources */,
 				181EBDB8258730B300C11C08 /* LaunchScreen.storyboard in Resources */,
+				18173E8A269C04EB00B9F3D9 /* VKToolTip.xib in Resources */,
 				180979E325876C75002070A7 /* Ubuntu-MediumItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -983,6 +993,7 @@
 				1865CF55267C763100379A40 /* UploadMediaModel.swift in Sources */,
 				18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */,
 				18B36567269494A100CE8E3D /* CardValidatorType.swift in Sources */,
+				18173EB9269C6A0F00B9F3D9 /* RideReceiptVC.swift in Sources */,
 				18F9B70A259350E100202DA6 /* Data+Extensions.swift in Sources */,
 				18747077258B7AF70095546B /* ForgotPasswordVC.swift in Sources */,
 				18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */,
@@ -1042,6 +1053,7 @@
 				18FDF55625887C530084D40C /* VerifyVC.swift in Sources */,
 				1865CF52267C763100379A40 /* UrlServiceConstant.swift in Sources */,
 				184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */,
+				18173E8E269C36AB00B9F3D9 /* LocationService.swift in Sources */,
 				187BC48F268ADDCD00CAD121 /* LoginViewModel.swift in Sources */,
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,

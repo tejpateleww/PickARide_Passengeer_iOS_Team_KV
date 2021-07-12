@@ -25,10 +25,10 @@ class Singleton: NSObject{
     var DeviceToken : String = ""
     
     //MARK:- User' Custom Details
-    var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+    var userCurrentLocation : CLLocationCoordinate2D?
   
     func locationString() -> (latitude: String, longitude: String){
-        return (String(format: "%4d", userCurrentLocation.latitude), String(format: "%4d", userCurrentLocation.longitude))
+        return (String(format: "%4d", userCurrentLocation?.latitude ?? 0.0), String(format: "%4d", userCurrentLocation?.longitude ?? 0.0))
     }
     
     var arrFutureYears:[String] {

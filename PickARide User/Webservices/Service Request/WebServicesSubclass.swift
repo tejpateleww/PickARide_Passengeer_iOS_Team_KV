@@ -97,4 +97,10 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    class func LogoutApi(completion: @escaping (Bool,String,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logout.rawValue + Singleton.sharedInstance.UserId, responseModel: [String:String].self) { (status, message, response, error) in
+            completion(status, message, error)
+        }
+    }
 }

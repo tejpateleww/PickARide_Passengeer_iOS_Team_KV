@@ -30,7 +30,7 @@ class MyRidesVC: BaseViewController {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
-
+    
     override func btnBackAction() {
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -103,17 +103,12 @@ extension MyRidesVC: UITableViewDelegate,UITableViewDataSource{
         let cell = UITableViewCell()
         switch tableView{
         case tblMyRides:
-            let cell:MyridesCell = tblMyRides.dequeueReusableCell(withIdentifier: MyridesCell.reuseIdentifier, for: indexPath)as! MyridesCell
-            if selectedMyRideState == 0 {
-                cell.btnCalender.superview?.isHidden = false
-            } else {
-                cell.btnCalender.superview?.isHidden = true
-            }
+            let cell:MyridesCell = tblMyRides.dequeueReusableCell(withIdentifier: MyridesCell.reuseIdentifier, for: indexPath) as? MyridesCell ?? MyridesCell()
             return cell
         case tblMyRideType:
             
             print(cell.frame.size)
-            let cell:MyrideCell = tblMyRideType.dequeueReusableCell(withIdentifier: MyrideCell.reuseIdentifier, for: indexPath)as! MyrideCell
+            let cell:MyrideCell = tblMyRideType.dequeueReusableCell(withIdentifier: MyrideCell.reuseIdentifier, for: indexPath) as? MyrideCell ?? MyrideCell()
             cell.lblMyride.text = myRideArr[indexPath.row]
             cell.imgSelect.isHidden = true
             if indexPath.row == selectedMyRideState {
@@ -129,15 +124,11 @@ extension MyRidesVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableView {
         case tblMyRides:
-            if selectedMyRideState == 0 {
-                let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else {
-                let controller = RideDetailsVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-            
+            let controller = RideDetailsVC.instantiate(fromAppStoryboard: .Main)
+            controller.isFromPastRide = selectedMyRideState == 1
+            self.navigationController?.pushViewController(controller, animated: true)
             break
+            
         case tblMyRideType:
             selectedMyRideState = indexPath.row
             self.btnUpcoming.setTitle(myRideArr[selectedMyRideState], for: .normal)

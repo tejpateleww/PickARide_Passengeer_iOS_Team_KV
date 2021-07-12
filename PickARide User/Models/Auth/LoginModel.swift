@@ -106,3 +106,8 @@ class ProfileModel: Codable {
         self.xAPIKey = xAPIKey
     }
 }
+
+//MARK:- Apple User Model
+class AppleUserDetailModel: Codable{
+    
+}

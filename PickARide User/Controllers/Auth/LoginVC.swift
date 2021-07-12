@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LoginVC: UIViewController {
   
@@ -22,11 +23,12 @@ class LoginVC: UIViewController {
     
     var loginUserModel = LoginUserModel()
     var googleSignInManager : GoogleLoginProvider?
+    var locationManager : LocationService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupLocalization()
+        let _ = self.getLocation()
+        self.setupLocalization()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
@@ -41,8 +43,11 @@ class LoginVC: UIViewController {
     
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
-            userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            appDel.navigateToMain()
+            if self.getLocation(){
+//                self.callLoginApi()
+                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToMain()
+            }
         }
     }
     
@@ -54,14 +59,18 @@ class LoginVC: UIViewController {
     @IBAction func btnSocialRequests(_ sender: UIButton) {
         self.view.endEditing(true)
         print(#function)
-        return
-        if sender.tag == 0{
-            let faceBookSignInManager = FacebookLoginProvider(self)
-            faceBookSignInManager.delegate = self
-            faceBookSignInManager.fetchToken(from: self)
-        }else{
-            self.googleSignInManager = GoogleLoginProvider(self)
-            self.googleSignInManager?.delegate = self
+        
+        if self.getLocation(){
+            return
+                
+            if sender.tag == 0{
+                let faceBookSignInManager = FacebookLoginProvider(self)
+                faceBookSignInManager.delegate = self
+                faceBookSignInManager.fetchToken(from: self)
+            }else{
+                self.googleSignInManager = GoogleLoginProvider(self)
+                self.googleSignInManager?.delegate = self
+            }
         }
     }
 }
@@ -83,6 +92,16 @@ extension LoginVC{
     @objc func showHidePassword(_ sender : UIButton) {
         sender.isSelected = !sender.isSelected
         self.txtPassword.isSecureTextEntry = sender.isSelected
+    }
+    
+    func getLocation() -> Bool {
+        if Singleton.sharedInstance.userCurrentLocation == nil{
+            self.locationManager = LocationService()
+            self.locationManager?.startUpdatingLocation()
+            return false
+        }else{
+            return true
+        }
     }
 }
 
@@ -136,3 +155,5 @@ extension LoginVC: SocialSignInDelegate{
         }
     }
 }
+
+

@@ -134,7 +134,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                 btnLeft.layer.shadowOpacity = 0.4
                 
                 
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
@@ -228,6 +228,38 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
                     navBtnDone.setTitle("NavigationButton_btnDone".Localized(), for: .normal)
                     navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(18)
+                    navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
+                   
+                   // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    navBtnDone.layer.setValue(controller, forKey: "controller")
+                    viewDone.addSubview(navBtnDone)
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                } else if title == NavItemsRight.addCard.value {
+                    let viewDone = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 44))
+
+                    navBtnDone = UIButton.init()
+                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 80, height: 44)
+                    navBtnDone.setTitle("NavigationButton_btnAddCard".Localized(), for: .normal)
+                    navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(17)
+                    navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
+                   
+                   // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    navBtnDone.layer.setValue(controller, forKey: "controller")
+                    viewDone.addSubview(navBtnDone)
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                }else if title == NavItemsRight.help.value {
+                    let viewDone = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
+
+                    navBtnDone = UIButton.init()
+                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 60   , height: 44)
+                    navBtnDone.setTitle("NavigationButton_btnHelp".Localized(), for: .normal)
+                    navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(17)
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)

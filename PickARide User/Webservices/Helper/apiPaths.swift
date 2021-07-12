@@ -60,6 +60,8 @@ enum ApiKey: String {
     case cardlist                             = "card_list"
     case removeCard                           = "remove_card"
     case walletHistory                        = "wallet_history"
+    case logOut                               = "logout"
+
 }
 
  

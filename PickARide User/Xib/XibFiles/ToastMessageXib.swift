@@ -14,6 +14,7 @@ class ToastMessageXib: UIView {
     @IBOutlet weak var statusImgVW: UIImageView!
     @IBOutlet weak var lblTitle: themeLabel!
     @IBOutlet weak var lblMessage: themeLabel!
+    @IBOutlet weak var mainVCBottomConstraint: NSLayoutConstraint!
     
     
     

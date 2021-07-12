@@ -32,7 +32,7 @@ class AddPaymentVC: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.Done.value : NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
@@ -43,41 +43,46 @@ class AddPaymentVC: BaseViewController{
     
     //MARK: -btnAction
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-        if isFromSchedulled{
-            let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-            controller.dismissedClosour = {
-                let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-            let navigationController = UINavigationController(rootViewController: controller)
-            navigationController.modalPresentationStyle = .overCurrentContext
-            navigationController.modalTransitionStyle = .crossDissolve
-            navigationController.navigationBar.isHidden = true
-            self.navigationController?.pushViewController(controller, animated: true)
-        }else{
-            let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-            
-            controller.dismissedClosour = {
-                self.navigationController?.popViewController(animated: false)
-                NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
-            }
-            
-            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-            let navigationController = UINavigationController(rootViewController: controller)
-            navigationController.modalPresentationStyle = .overCurrentContext
-            navigationController.modalTransitionStyle = .crossDissolve
-            navigationController.navigationBar.isHidden = true
-            self.present(navigationController, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if isFromSideMenu{
             let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            if isFromSchedulled{
+                let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
+                controller.dismissedClosour = {
+                    let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                let navigationController = UINavigationController(rootViewController: controller)
+                navigationController.modalPresentationStyle = .overCurrentContext
+                navigationController.modalTransitionStyle = .crossDissolve
+                navigationController.navigationBar.isHidden = true
+                self.navigationController?.pushViewController(controller, animated: true)
+            }else{
+                let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
+                
+                controller.dismissedClosour = {
+                    self.navigationController?.popViewController(animated: false)
+                    NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
+                }
+                
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                let navigationController = UINavigationController(rootViewController: controller)
+                navigationController.modalPresentationStyle = .overCurrentContext
+                navigationController.modalTransitionStyle = .crossDissolve
+                navigationController.navigationBar.isHidden = true
+                self.present(navigationController, animated: true, completion: nil)
+            }
         }
         
+    }
+    
+    @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
+        if !isFromSideMenu{
+            let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
