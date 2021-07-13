@@ -33,7 +33,13 @@ class LoginVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
     }
     
     @IBAction func signUP(_ sender: Any) {
@@ -44,9 +50,7 @@ class LoginVC: UIViewController {
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
             if self.getLocation(){
-//                self.callLoginApi()
-                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToMain()
+                self.callLoginApi()
             }
         }
     }

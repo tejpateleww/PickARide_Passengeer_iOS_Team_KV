@@ -97,12 +97,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="aTu-R3-lgb" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="6An-G2-i5k"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZZo-yz-qKQ" secondAttribute="bottom" id="6nj-lA-0Ew"/>
                                     <constraint firstItem="7aL-40-OfG" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="BLW-L3-idk"/>
-                                    <constraint firstAttribute="bottom" secondItem="aTu-R3-lgb" secondAttribute="bottom" id="Cwk-hv-rXn"/>
                                     <constraint firstAttribute="bottom" secondItem="7aL-40-OfG" secondAttribute="bottom" id="EhY-aR-ugP"/>
                                     <constraint firstAttribute="trailing" secondItem="ZZo-yz-qKQ" secondAttribute="trailing" id="O7Q-2l-wdO"/>
-                                    <constraint firstAttribute="bottom" secondItem="kw9-eE-vyv" secondAttribute="bottom" id="O7z-hU-ZHu"/>
                                     <constraint firstAttribute="trailing" secondItem="7aL-40-OfG" secondAttribute="trailing" id="QQN-he-R7C"/>
                                     <constraint firstAttribute="trailing" secondItem="aTu-R3-lgb" secondAttribute="trailing" id="UUV-El-hyP"/>
                                     <constraint firstAttribute="trailing" secondItem="kw9-eE-vyv" secondAttribute="trailing" id="VnU-6j-A43"/>
@@ -121,7 +118,10 @@
                             <constraint firstItem="eLB-Vi-Pzl" firstAttribute="top" secondItem="ZMM-W0-Uy5" secondAttribute="top" id="TIv-Kc-v5r"/>
                             <constraint firstItem="ZMM-W0-Uy5" firstAttribute="top" secondItem="S8p-PV-0jf" secondAttribute="top" id="V3Q-JC-Myg"/>
                             <constraint firstItem="ZMM-W0-Uy5" firstAttribute="trailing" secondItem="8Eq-Bb-pS4" secondAttribute="trailing" id="d9p-E8-ddJ"/>
+                            <constraint firstItem="8Eq-Bb-pS4" firstAttribute="bottom" secondItem="aTu-R3-lgb" secondAttribute="bottom" id="ogh-JH-KHY"/>
                             <constraint firstAttribute="bottom" secondItem="ZMM-W0-Uy5" secondAttribute="bottom" id="p2m-4L-g3m"/>
+                            <constraint firstItem="8Eq-Bb-pS4" firstAttribute="bottom" secondItem="ZZo-yz-qKQ" secondAttribute="bottom" id="pms-ZF-DXV"/>
+                            <constraint firstItem="8Eq-Bb-pS4" firstAttribute="bottom" secondItem="kw9-eE-vyv" secondAttribute="bottom" id="whB-rV-9MQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="u9v-XX-aWJ"/>
@@ -325,7 +325,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KpU-ax-psv" customClass="selectDestinationView" customModule="PickARide_User" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-100" width="375" height="213"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5q-o1-cOg" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5q-o1-cOg" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                                 <rect key="frame" x="3" y="100" width="369" height="110"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9T-Bc-nGa">
@@ -530,30 +530,36 @@
                                         <color key="backgroundColor" red="0.96866685149999998" green="0.97636109589999998" blue="0.98818641900000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myOfferCell" id="hNc-zi-0iD" customClass="myOfferCell" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="129"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hNc-zi-0iD" id="yHa-yY-MIA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WD8-wf-zk8" customClass="myOfferView" customModule="PickARide_User" customModuleProvider="target">
-                                                            <rect key="frame" x="16" y="8" width="343" height="113"/>
+                                                            <rect key="frame" x="16" y="8" width="343" height="114"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEN-DO-C4i" customClass="myOfferView" customModule="PickARide_User" customModuleProvider="target">
-                                                                    <rect key="frame" x="1" y="1" width="341" height="111"/>
+                                                                    <rect key="frame" x="1" y="1" width="341" height="112"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lbU-EY-jQP">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="111"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="112"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNw-21-icp">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="111"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="112"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_myImage" translatesAutoresizingMaskIntoConstraints="NO" id="kky-BU-IY4">
-                                                                                            <rect key="frame" x="16" y="16" width="79" height="79"/>
+                                                                                            <rect key="frame" x="16" y="16" width="80" height="80"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" secondItem="kky-BU-IY4" secondAttribute="height" multiplier="1:1" id="iU3-RP-EX5"/>
-                                                                                                <constraint firstAttribute="width" constant="79" id="rRr-jg-e9I"/>
+                                                                                                <constraint firstAttribute="width" constant="80" id="rRr-jg-e9I"/>
                                                                                             </constraints>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="NO"/>
+                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                    <real key="value" value="40"/>
+                                                                                                </userDefinedRuntimeAttribute>
+                                                                                            </userDefinedRuntimeAttributes>
                                                                                         </imageView>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -564,13 +570,13 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVh-Sa-BHv">
-                                                                                    <rect key="frame" x="128" y="0.0" width="213" height="111"/>
+                                                                                    <rect key="frame" x="128" y="0.0" width="213" height="112"/>
                                                                                     <subviews>
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-SQ-fwi">
-                                                                                            <rect key="frame" x="0.0" y="7" width="209" height="104"/>
+                                                                                            <rect key="frame" x="0.0" y="7" width="209" height="105"/>
                                                                                             <subviews>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWW-5i-cIF" customClass="myofferLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="44"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="45"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
@@ -579,7 +585,7 @@
                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                 </label>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS1-tr-bIZ" customClass="myofferLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                    <rect key="frame" x="0.0" y="54" width="209" height="20"/>
+                                                                                                    <rect key="frame" x="0.0" y="55" width="209" height="20"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="height" constant="20" id="P3P-Ba-08U"/>
                                                                                                     </constraints>
@@ -591,7 +597,7 @@
                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                 </label>
                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F75-sL-nep">
-                                                                                                    <rect key="frame" x="0.0" y="84" width="209" height="20"/>
+                                                                                                    <rect key="frame" x="0.0" y="85" width="209" height="20"/>
                                                                                                     <subviews>
                                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anb-QG-eqb" customClass="MyofferScreenButton" customModule="PickARide_User" customModuleProvider="target">
                                                                                                             <rect key="frame" x="163" y="-2" width="30" height="13"/>
@@ -1230,6 +1236,7 @@
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isShadowView" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
@@ -1302,7 +1309,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYO-aH-hSA">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6d-45-IWl">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6d-45-IWl" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezr-hR-a7h" customClass="TitleLabel" customModule="PickARide_User" customModuleProvider="target">
@@ -1382,7 +1389,7 @@
                                                                                 <rect key="frame" x="16" y="0.0" width="311" height="48"/>
                                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes" textContentType="cc-number"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" smartDashesType="yes" textContentType="cc-number"/>
                                                                                 <connections>
                                                                                     <action selector="txtCardNumberEditingChange:" destination="wGt-up-O7P" eventType="editingChanged" id="4w0-VQ-hXl"/>
                                                                                 </connections>
@@ -2708,7 +2715,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMS-Bq-NlR">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbP-kD-Wxj">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbP-kD-Wxj" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="468"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66J-D3-YJZ">
@@ -2726,10 +2733,12 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsb-0X-BwZ" customClass="savedPlacesView" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="295" y="3" width="64" height="64"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-OD-Ilz" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-OD-Ilz">
                                                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H7-NA-Wzj">
@@ -2991,9 +3000,6 @@
                                                                                         <color key="tintColor" name="ThemeColor"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                                                                        <userDefinedRuntimeAttributes>
-                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ImgRightArrow"/>
-                                                                                        </userDefinedRuntimeAttributes>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3781,10 +3787,11 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcI-Dd-LaV" customClass="savedPlacesView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-s5-eIY" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-s5-eIY">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </imageView>
                                                                         </subviews>
@@ -4012,12 +4019,18 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-pY-yps" customClass="settingsView" customModule="PickARide_User" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-PA-wjM">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-PA-wjM">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="66" id="mCu-aA-bMc"/>
                                                                                         <constraint firstAttribute="width" constant="66" id="ppC-RA-Oiq"/>
                                                                                     </constraints>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                            <real key="value" value="33"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                                                    </userDefinedRuntimeAttributes>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4141,6 +4154,11 @@
                                                                                         <constraint firstAttribute="width" constant="36" id="gkG-sr-FDZ"/>
                                                                                         <constraint firstAttribute="height" constant="36" id="m7B-hB-jCv"/>
                                                                                     </constraints>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                            <real key="value" value="18"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                    </userDefinedRuntimeAttributes>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4362,7 +4380,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-Wa-YOx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3k-9u-VG3">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3k-9u-VG3" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                         <rect key="frame" x="25" y="45.5" width="325" height="123.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Place Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lhv-pc-S2M" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
@@ -5076,8 +5094,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-aQ-Zaj" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-St-uvE">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-St-uvE">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="50"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-Nk-YWu">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -5359,8 +5383,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBc-im-DX1" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
                                         <rect key="frame" x="137.5" y="125.5" width="100" height="100"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="1jn-bg-MfV">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1jn-bg-MfV">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHn-kP-pZF">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -5382,6 +5412,7 @@
                                             <constraint firstItem="1jn-bg-MfV" firstAttribute="leading" secondItem="cBc-im-DX1" secondAttribute="leading" id="gc1-rA-8xU"/>
                                             <constraint firstAttribute="bottom" secondItem="1jn-bg-MfV" secondAttribute="bottom" id="hja-Kt-Xvy"/>
                                             <constraint firstItem="PHn-kP-pZF" firstAttribute="trailing" secondItem="1jn-bg-MfV" secondAttribute="trailing" id="tNJ-MM-YAK"/>
+                                            <constraint firstItem="1jn-bg-MfV" firstAttribute="top" secondItem="cBc-im-DX1" secondAttribute="top" id="vEa-ns-da1"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundView" value="YES"/>
@@ -5639,8 +5670,12 @@
                                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fu6-dN-l1l">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="54p-rd-D5a">
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="54p-rd-D5a">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
+                                                                                                <color key="backgroundColor" name="ThemeWhite"/>
+                                                                                                <userDefinedRuntimeAttributes>
+                                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                                                                </userDefinedRuntimeAttributes>
                                                                                             </imageView>
                                                                                         </subviews>
                                                                                         <constraints>
@@ -5938,17 +5973,22 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationCell" id="5dL-w5-5IM" customClass="NotificationCell" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="87"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5dL-w5-5IM" id="mCW-0O-udP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43k-Wq-V5B">
-                                                            <rect key="frame" x="16" y="8" width="50" height="50"/>
+                                                            <rect key="frame" x="16" y="10" width="50" height="50"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-RightShape" translatesAutoresizingMaskIntoConstraints="NO" id="Kjp-ef-d3i">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="25"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.94510692360000004" green="0.94508653880000004" blue="0.9450905919" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -5967,7 +6007,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VV5-cx-bbj">
-                                                            <rect key="frame" x="86" y="8" width="253" height="71"/>
+                                                            <rect key="frame" x="86" y="10" width="253" height="71"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Or-xxh" customClass="NotificationLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="253" height="25"/>
@@ -5996,7 +6036,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNG-w1-y5b">
-                                                            <rect key="frame" x="0.0" y="84" width="375" height="1"/>
+                                                            <rect key="frame" x="0.0" y="94" width="375" height="1"/>
                                                             <color key="backgroundColor" red="0.9372935295" green="0.93701571230000003" blue="0.95681506400000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="a9T-2H-EvX"/>
@@ -6007,13 +6047,14 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="MNG-w1-y5b" firstAttribute="bottom" secondItem="VV5-cx-bbj" secondAttribute="bottom" constant="6" id="7aY-N8-fmA"/>
+                                                        <constraint firstItem="MNG-w1-y5b" firstAttribute="bottom" secondItem="VV5-cx-bbj" secondAttribute="bottom" constant="14" id="7aY-N8-fmA"/>
                                                         <constraint firstItem="MNG-w1-y5b" firstAttribute="leading" secondItem="mCW-0O-udP" secondAttribute="leading" id="C98-Kg-Nx7"/>
-                                                        <constraint firstItem="VV5-cx-bbj" firstAttribute="top" secondItem="43k-Wq-V5B" secondAttribute="top" id="NQ5-lt-r58"/>
+                                                        <constraint firstItem="VV5-cx-bbj" firstAttribute="top" secondItem="43k-Wq-V5B" secondAttribute="top" id="PwN-Gq-r2u"/>
                                                         <constraint firstItem="43k-Wq-V5B" firstAttribute="leading" secondItem="mCW-0O-udP" secondAttribute="leading" constant="16" id="Qo1-PR-lQb"/>
                                                         <constraint firstItem="VV5-cx-bbj" firstAttribute="leading" secondItem="43k-Wq-V5B" secondAttribute="trailing" constant="20" id="Zgj-oG-vsT"/>
+                                                        <constraint firstItem="MNG-w1-y5b" firstAttribute="top" relation="greaterThanOrEqual" secondItem="43k-Wq-V5B" secondAttribute="bottom" constant="10" id="bRi-5w-JY0"/>
                                                         <constraint firstAttribute="bottom" secondItem="MNG-w1-y5b" secondAttribute="bottom" constant="2" id="cYV-F1-pec"/>
-                                                        <constraint firstItem="43k-Wq-V5B" firstAttribute="top" secondItem="mCW-0O-udP" secondAttribute="top" constant="8" id="nWd-Af-2DQ"/>
+                                                        <constraint firstItem="43k-Wq-V5B" firstAttribute="top" secondItem="mCW-0O-udP" secondAttribute="top" constant="10" id="nWd-Af-2DQ"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="VV5-cx-bbj" secondAttribute="trailing" constant="20" id="sIv-ru-HcL"/>
                                                         <constraint firstAttribute="trailing" secondItem="MNG-w1-y5b" secondAttribute="trailing" id="yyZ-xi-T1m"/>
                                                     </constraints>
@@ -6127,10 +6168,14 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJK-MU-Arv">
                                                                         <rect key="frame" x="0.0" y="3.5" width="100" height="100"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="krF-OK-QjU" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="krF-OK-QjU">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                        <real key="value" value="50"/>
+                                                                                    </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </imageView>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78x-Xg-q4G" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
@@ -6678,7 +6723,7 @@
         <!--Ride Receipt DetailsVC-->
         <scene sceneID="FJc-98-g8d">
             <objects>
-                <viewController storyboardIdentifier="RideReceiptDetailsVC" id="x5U-Q6-Wlj" customClass="RideReceiptDetailsVC" customModule="PickaRideDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RideReceiptDetailsVC" id="x5U-Q6-Wlj" customClass="RideReceiptDetailsVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B96-i3-eBr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6698,7 +6743,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="P6A-8f-kNq">
                                                                 <rect key="frame" x="157" y="93" width="61.5" height="20.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el3-zd-XKd" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el3-zd-XKd" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
                                                                         <attributedString key="attributedText">
                                                                             <fragment content="$">
@@ -6719,7 +6764,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6g-74-Il8" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6g-74-Il8" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="10.5" y="0.0" width="51" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -6751,7 +6796,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf0-qc-GwB">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="17.5"/>
                                                                                         <subviews>
-                                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAd-vg-MHQ" customClass="ProfileView" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAd-vg-MHQ" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="6.5" y="5.5" width="7" height="7"/>
                                                                                                 <color key="backgroundColor" red="0.20000000000000001" green="0.41176470590000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                 <constraints>
@@ -6773,7 +6818,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IA-az-ZJK">
                                                                                         <rect key="frame" x="30" y="0.0" width="295" height="17.5"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Ash Park, Pembroke Dock, SA72" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urg-3B-XwB" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Ash Park, Pembroke Dock, SA72" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urg-3B-XwB" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="17.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -6835,7 +6880,7 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-NJ-ZiG">
                                                                                         <rect key="frame" x="30" y="0.0" width="285" height="50"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54 Hollybank Rd, Southampton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqU-CU-chH" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54 Hollybank Rd, Southampton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqU-CU-chH" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -6868,7 +6913,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="Mbi-U4-SQu"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment made successfully " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="if0-Nh-TQx" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment made successfully " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="if0-Nh-TQx" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="79.5" y="130.5" width="216" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -6894,7 +6939,7 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-yp-pYu">
                                                                                         <rect key="frame" x="0.0" y="13" width="187" height="47"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Ja-XSx" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Ja-XSx" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -6909,7 +6954,7 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUr-VO-Qfk" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUr-VO-Qfk" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -6939,7 +6984,7 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4cB-fz-OFy">
                                                                                         <rect key="frame" x="0.0" y="13" width="187" height="47"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-aF-8QU" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-aF-8QU" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -6954,7 +6999,7 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-iw-fty" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-iw-fty" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -7002,7 +7047,7 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSa-20-qnD">
                                                                                         <rect key="frame" x="24" y="0.0" width="327" height="19.5"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpQ-KW-7O6" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpQ-KW-7O6" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="19.5"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="130" id="3TQ-Hq-tsN"/>
@@ -7019,7 +7064,7 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 Feb'19 at 9:42am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6L-N9-7Ag" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 Feb'19 at 9:42am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6L-N9-7Ag" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="130" y="0.0" width="197" height="19.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -7050,7 +7095,7 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9z0-zN-4S5">
                                                                                         <rect key="frame" x="24" y="0.0" width="327" height="20"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZT-nI-wc2" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZT-nI-wc2" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="20"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="130" id="2Me-Sj-jgw"/>
@@ -7067,7 +7112,7 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sedan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROS-sE-ZI6" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sedan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROS-sE-ZI6" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="130" y="0.0" width="197" height="20"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -7098,7 +7143,7 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuJ-jw-n8S">
                                                                                         <rect key="frame" x="24" y="0.0" width="327" height="19.5"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33C-Fp-yfe" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33C-Fp-yfe" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="19.5"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="130" id="ydW-JK-F52"/>
@@ -7115,7 +7160,7 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-wl-jif" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-wl-jif" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="130" y="0.0" width="197" height="19.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
@@ -7177,7 +7222,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lls-Wx-eM4">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqK-M0-a6G" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqK-M0-a6G" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
@@ -7204,7 +7249,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alv-2J-nzI">
                                                                                                 <rect key="frame" x="80" y="0.0" width="85" height="50"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;JohnDoe&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0l-B7-Att" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;JohnDoe&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0l-B7-Att" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="50"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
@@ -7231,7 +7276,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qY-TX-0wl">
                                                                                                 <rect key="frame" x="165" y="0.0" width="25" height="50"/>
                                                                                                 <subviews>
-                                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-Bs-z2B" customClass="ProfileView" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-Bs-z2B" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.5" y="13" width="24" height="24"/>
                                                                                                         <constraints>
                                                                                                             <constraint firstAttribute="height" constant="24" id="2IT-fg-AGB"/>
@@ -7289,7 +7334,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3t3-T6-wV7">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;JohnDoe&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M0-NT-Gk4" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;JohnDoe&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M0-NT-Gk4" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
@@ -7316,7 +7361,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pO7-Ne-Zie">
                                                                                                 <rect key="frame" x="80" y="0.0" width="85" height="30"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rated You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPk-uk-3ek" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rated You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPk-uk-3ek" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
@@ -7343,7 +7388,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgs-5a-vEe">
                                                                                                 <rect key="frame" x="165" y="0.0" width="25" height="30"/>
                                                                                                 <subviews>
-                                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummy-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-PJ-kYM" customClass="ProfileView" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-PJ-kYM" customClass="ProfileView" customModule="PickARide_User" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.5" y="3" width="24" height="24"/>
                                                                                                         <constraints>
                                                                                                             <constraint firstAttribute="height" constant="24" id="9mY-rM-VWE"/>
@@ -7351,6 +7396,7 @@
                                                                                                         </constraints>
                                                                                                         <userDefinedRuntimeAttributes>
                                                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
+                                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
                                                                                                         </userDefinedRuntimeAttributes>
                                                                                                     </imageView>
                                                                                                 </subviews>
@@ -7437,7 +7483,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-EF-Ioc">
                                                         <rect key="frame" x="0.0" y="475.5" width="375" height="48"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECEIPT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4py-rU-pVQ" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECEIPT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4py-rU-pVQ" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="24" y="17.5" width="327" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -7470,7 +7516,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxG-3T-hLl">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rides fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-VQ-tp9" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rides fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-VQ-tp9" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="272" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7484,7 +7530,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40.25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WX2-wM-HPa" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40.25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WX2-wM-HPa" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="272" y="0.0" width="55" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7515,7 +7561,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHX-BE-KMR">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taxi Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rt7-tq-WS4" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taxi Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rt7-tq-WS4" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="272.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7529,7 +7575,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lvi-GQ-kLk" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lvi-GQ-kLk" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="272.5" y="0.0" width="54.5" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7560,7 +7606,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-pq-bjM">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d95-bc-9WA" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d95-bc-9WA" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="261.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7574,7 +7620,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y34-d8-72l" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y34-d8-72l" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="261.5" y="0.0" width="65.5" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7605,7 +7651,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-6x-f8a">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+Tolls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-rJ-Drf" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+Tolls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-rJ-Drf" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="261.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7619,7 +7665,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4tb-l3-jrI" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4tb-l3-jrI" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="261.5" y="0.0" width="65.5" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7653,7 +7699,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVY-tJ-yYl">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdj-05-Dvo" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdj-05-Dvo" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="272" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7667,7 +7713,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40.25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CCW-xc-86f" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40.25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CCW-xc-86f" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="272" y="0.0" width="55" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7698,7 +7744,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3B-gZ-s4c">
                                                                         <rect key="frame" x="24" y="10" width="327" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Topup Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuJ-Pf-s2z" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Topup Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuJ-Pf-s2z" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="272.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -7712,7 +7758,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b69-CD-c2g" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b69-CD-c2g" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="272.5" y="0.0" width="54.5" height="20.5"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7761,7 +7807,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpX-0q-6of">
                                                                 <rect key="frame" x="24" y="9.5" width="327" height="21"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrE-Il-159" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrE-Il-159" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="263" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -7776,7 +7822,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isbold" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$460.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbv-7g-28d" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$460.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbv-7g-28d" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="263" y="0.0" width="64" height="21"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7803,7 +7849,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="DpX-0q-6of" secondAttribute="trailing" constant="24" id="fuw-3q-w41"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This ride was towards your destination you received Guaranteed fare" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22I-2i-DDW" customClass="themeLabel" customModule="PickaRideDriver" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This ride was towards your destination you received Guaranteed fare" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22I-2i-DDW" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="24" y="858.5" width="327" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -7960,6 +8006,7 @@
         <image name="imgHome" width="14" height="16"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
+        <image name="user_placeholder" width="341" height="341"/>
         <namedColor name="CustomImgBG">
             <color red="0.89399999380111694" green="0.91399997472763062" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -7968,6 +8015,9 @@
         </namedColor>
         <namedColor name="ThemeGray">
             <color red="0.49799999594688416" green="0.49799999594688416" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ThemeWhite">
+            <color red="0.93699997663497925" green="0.92500001192092896" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

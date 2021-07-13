@@ -11,7 +11,7 @@ import Foundation
 //MARK:- Wallet History Request Model
 class WalletHistoryRequestModel: Encodable {
     var customerId: String? = Singleton.sharedInstance.UserId
-    var page: String?
+    var page: String? = "1"
     
     enum CodingKeys: String, CodingKey {
         case customerId = "customer_id"

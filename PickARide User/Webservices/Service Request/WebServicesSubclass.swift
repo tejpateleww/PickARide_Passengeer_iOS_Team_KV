@@ -9,7 +9,7 @@ import Foundation
 class WebServiceSubClass{
 
     class func InitApi(completion: @escaping (Bool,String,InitResponseModel?,Any) -> ()) {
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + Singleton.sharedInstance.UserId, responseModel: InitResponseModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + "/" + Singleton.sharedInstance.UserId, responseModel: InitResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

@@ -14,6 +14,7 @@ class SplashVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = userDefaults.getUserData()
         self.webserviceInit()
     }
 }
@@ -59,12 +60,17 @@ extension SplashVC{
             
             DispatchQueue.global(qos: .background).async {
                 self.webserviceGetCountryList()
+                self.webserviceGetCardList()
             }
         }
     }
     
     func webserviceGetCountryList(){
         WebServiceSubClass.GetCountryList {_, _, _, _ in}
+    }
+    
+    func webserviceGetCardList(){
+        WebServiceSubClass.CardListApi {_, _, _, _ in}
     }
 }
 
@@ -84,9 +90,7 @@ extension SplashVC{
     func setRootViewController() {
         let isLogin = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
         
-        if isLogin, let userData = userDefaults.getUserData() {
-            Singleton.sharedInstance.UserProfilData = userData.data
-            Singleton.sharedInstance.UserId = userData.data?.id ?? ""
+        if isLogin, let _ = userDefaults.getUserData() {
             appDel.navigateToMain()
         }else{
             appDel.navigateToLogin()

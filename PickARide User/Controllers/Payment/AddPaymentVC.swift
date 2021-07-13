@@ -20,13 +20,15 @@ class AddPaymentVC: BaseViewController{
     var isFromSchedulled : Bool = false
     
     var addPaymentUserModel = CardUserModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
         
         if Singleton.sharedInstance.CardList.count == 0{
             self.callCardListApi()
+        }else{
+            self.tblPaymentMethod.reloadData()
         }
     }
     
@@ -45,6 +47,11 @@ class AddPaymentVC: BaseViewController{
     @IBAction func placeOrderBtn(_ sender: submitButton) {
         if isFromSideMenu{
             let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            
+            controller.addCardClosure = {
+                self.tblPaymentMethod.reloadData()
+            }
+            
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
             if isFromSchedulled{
@@ -75,12 +82,16 @@ class AddPaymentVC: BaseViewController{
                 self.present(navigationController, animated: true, completion: nil)
             }
         }
-        
     }
     
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if !isFromSideMenu{
             let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            
+            controller.addCardClosure = {
+                self.tblPaymentMethod.reloadData()
+            }
+            
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -106,11 +117,11 @@ extension AddPaymentVC{
 //MARK:- TableView Delegate
 extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Singleton.sharedInstance.CardList.count + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 3 : 0
+        return section == 0 ? Singleton.sharedInstance.CardList.count : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -144,47 +155,32 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let obj = Singleton.sharedInstance.CardList[indexPath.row]
         
         switch indexPath.section {
         case 0:
             var cell = UITableViewCell()
             if indexPath.row == 0 {
-                let cell1 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell1.reuseIdentifier, for: indexPath) as! paymentMethodCell1
+                let cell1 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell1.reuseIdentifier, for: indexPath) as? paymentMethodCell1 ?? paymentMethodCell1()
                 
-                cell1.paymentImageView.image = UIImage(named: "ic_wallet")
+                cell1.paymentImageView.image = getCardTypeImage(type: PaymentsCardsTypesName.wallet.rawValue)
                 cell1.lblWallet.text = "AddCardVC_lblWallet".Localized()
-                cell1.lblwalletBalance.text = "250.00"
+                cell1.lblwalletBalance.text = Singleton.sharedInstance.UserProfilData?.walletBalance ?? "0"
                 cell1.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
-                if indexPath.row == selectedPaymentMethods {
-                    cell1.vWMain.layer.borderWidth = 1
-                    //                    cell1.selectPaymentMethodButton.isHidden = false
-                } else {
-                    cell1.vWMain.layer.borderWidth = 0
-                    //                    cell1.selectPaymentMethodButton.isHidden = true
-                }
+                cell1.vWMain.layer.borderWidth = indexPath.row == selectedPaymentMethods ? 1 : 0
                 cell = cell1
             } else {
-                let cell2 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell2.reuseIdentifier, for: indexPath) as! paymentMethodCell2
+                let cell2 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell2.reuseIdentifier, for: indexPath) as? paymentMethodCell2 ?? paymentMethodCell2()
+                
+                let isSelect = indexPath.row == selectedPaymentMethods
                 cell2.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
-                if indexPath.row == selectedPaymentMethods {
-                    cell2.vWMain.layer.borderWidth = 1
-                    cell2.selectPaymentMethodButton.isHidden = false
-                } else {
-                    cell2.vWMain.layer.borderWidth = 0
-                    cell2.selectPaymentMethodButton.isHidden = true
-                }
-                if indexPath.row == 1
-                {
-                    cell2.paymentMethodImageView.image = UIImage(named: "ic_masterCard")
-                    cell2.lblcardDetails.text = "**** **** **** 5967"
-                    cell2.lblExpiresDate.text = "Expires 09/25"
-                    
-                } else if indexPath.row == 2 {
-                    cell2.paymentMethodImageView.image = UIImage(named: "ic_visa")
-                    cell2.lblcardDetails.text = "**** **** **** 3802"
-                    cell2.lblExpiresDate.text = "Expires 10/27"
-                    
-                }
+                cell2.vWMain.layer.borderWidth = isSelect ? 1 : 0
+                cell2.selectPaymentMethodButton.isHidden = !isSelect
+                
+                cell2.paymentMethodImageView.image = getCardTypeImage(type: obj.cardType ?? "")
+                cell2.lblcardDetails.text = obj.formatedCardNo ?? ""
+                cell2.lblExpiresDate.text = "\(UrlConstant.Expiry) \(obj.expiryMonth ?? "")/\(obj.expiryYear ?? "")"
+        
                 cell = cell2
             }
             return cell

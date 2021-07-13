@@ -85,8 +85,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0E-vq-ht0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="663.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="679.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_top" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-XK-HVa">
                                                 <rect key="frame" x="259.5" y="-60" width="154.5" height="281.5"/>
@@ -121,10 +121,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-nZ-sPb" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="301" width="372" height="49"/>
+                                                <rect key="frame" x="21" y="303" width="372" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="15.5" width="336" height="18.5"/>
+                                                        <rect key="frame" x="18" y="15" width="336" height="18.5"/>
                                                         <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -134,15 +134,15 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="2fh-yT-3LD" secondAttribute="trailing" constant="18" id="AH7-Bp-82x"/>
                                                     <constraint firstItem="2fh-yT-3LD" firstAttribute="centerY" secondItem="tqo-nZ-sPb" secondAttribute="centerY" id="c3I-A5-fFW"/>
-                                                    <constraint firstAttribute="height" constant="49" id="o79-iz-A5R"/>
+                                                    <constraint firstAttribute="height" constant="48" id="o79-iz-A5R"/>
                                                     <constraint firstItem="2fh-yT-3LD" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" constant="18" id="rBf-lm-2uU"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-83-RpI" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="360" width="372" height="49"/>
+                                                <rect key="frame" x="21" y="367" width="372" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTs-2U-lMp" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="16" width="336" height="17"/>
+                                                        <rect key="frame" x="18" y="15.5" width="336" height="17"/>
                                                         <color key="tintColor" name="ThemeColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -153,11 +153,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="dTs-2U-lMp" secondAttribute="trailing" constant="18" id="7o0-aK-m3e"/>
                                                     <constraint firstItem="dTs-2U-lMp" firstAttribute="centerY" secondItem="YwE-83-RpI" secondAttribute="centerY" id="Upl-qt-hlO"/>
                                                     <constraint firstItem="dTs-2U-lMp" firstAttribute="leading" secondItem="YwE-83-RpI" secondAttribute="leading" constant="18" id="khD-SF-qxb"/>
-                                                    <constraint firstAttribute="height" constant="49" id="xuB-cZ-MDp"/>
+                                                    <constraint firstAttribute="height" constant="48" id="xuB-cZ-MDp"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a0-j6-sqv" customClass="loginScreenButton" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="270" y="424" width="123" height="14"/>
+                                                <rect key="frame" x="270" y="431" width="123" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="vYt-Dv-HaI"/>
                                                 </constraints>
@@ -170,7 +170,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-xJ-bW3">
-                                                <rect key="frame" x="21" y="454" width="372" height="46"/>
+                                                <rect key="frame" x="21" y="470" width="372" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E30-Ck-7ce" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="372" height="46"/>
@@ -190,7 +190,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
-                                                <rect key="frame" x="142" y="520" width="130" height="59"/>
+                                                <rect key="frame" x="142" y="536" width="130" height="59"/>
                                                 <subviews>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
                                                         <rect key="frame" x="-59" y="0.0" width="59" height="59"/>
@@ -256,7 +256,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-Ig-oDL" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="597" width="372" height="20.5"/>
+                                                <rect key="frame" x="21" y="613" width="372" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -265,7 +265,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="puq-b7-rSs">
-                                                <rect key="frame" x="86" y="637.5" width="242" height="16"/>
+                                                <rect key="frame" x="86" y="653.5" width="242" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ia-Rbt" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="16"/>
@@ -293,6 +293,7 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="tintColor" name="ThemeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="puq-b7-rSs" secondAttribute="bottom" constant="10" id="5D1-W7-r5j"/>
                                             <constraint firstItem="puq-b7-rSs" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="928-J5-zVX"/>
@@ -309,7 +310,7 @@
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="UjC-Ko-U2y"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="WlT-wL-PJS"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="20" id="b6G-jk-Z1D"/>
-                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="10" id="b9V-ID-GyG"/>
+                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="16" id="b9V-ID-GyG"/>
                                             <constraint firstAttribute="trailing" secondItem="yDF-8x-zxT" secondAttribute="trailing" constant="100" id="dmv-cb-L86"/>
                                             <constraint firstAttribute="trailing" secondItem="HTP-Ig-oDL" secondAttribute="trailing" constant="21" id="gei-dw-2pv"/>
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="gfd-s4-u6j"/>
@@ -317,13 +318,13 @@
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="top" secondItem="qZe-cf-LYS" secondAttribute="bottom" constant="18" id="j84-Fh-zWM"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="leading" secondItem="YwE-83-RpI" secondAttribute="leading" id="jOk-nV-2LB"/>
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="leading" secondItem="9fO-xJ-bW3" secondAttribute="leading" id="jqn-j9-k6M"/>
-                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="10" id="kNp-oc-pfD"/>
+                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="12" id="kNp-oc-pfD"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="leading" secondItem="OxV-YL-pD7" secondAttribute="leading" id="m5i-o8-xMl"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="trailing" secondItem="YwE-83-RpI" secondAttribute="trailing" id="o3I-Ui-yBa"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="trailing" secondItem="tqo-nZ-sPb" secondAttribute="trailing" id="phm-RW-W9E"/>
-                                            <constraint firstItem="9fO-xJ-bW3" firstAttribute="top" secondItem="9a0-j6-sqv" secondAttribute="bottom" constant="16" id="qe5-c2-eFE"/>
+                                            <constraint firstItem="9fO-xJ-bW3" firstAttribute="top" secondItem="9a0-j6-sqv" secondAttribute="bottom" constant="25" id="qe5-c2-eFE"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="trailing" secondItem="OxV-YL-pD7" secondAttribute="trailing" id="tEW-HB-8mM"/>
-                                            <constraint firstItem="9a0-j6-sqv" firstAttribute="top" secondItem="YwE-83-RpI" secondAttribute="bottom" constant="15" id="vCV-7k-vZQ"/>
+                                            <constraint firstItem="9a0-j6-sqv" firstAttribute="top" secondItem="YwE-83-RpI" secondAttribute="bottom" constant="16" id="vCV-7k-vZQ"/>
                                             <constraint firstItem="puq-b7-rSs" firstAttribute="top" secondItem="HTP-Ig-oDL" secondAttribute="bottom" constant="20" id="y6u-GO-sg8"/>
                                         </constraints>
                                     </view>
@@ -374,7 +375,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhg-7R-gTF">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uem-TH-Ie7">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uem-TH-Ie7" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et7-Va-2H3" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
@@ -877,7 +878,7 @@ Number</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="481"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                                         <rect key="frame" x="0.0" y="481" width="414" height="387"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhN-0h-T4o" customClass="changePasswordLabel" customModule="PickARide_User" customModuleProvider="target">

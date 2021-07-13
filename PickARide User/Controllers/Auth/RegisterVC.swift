@@ -39,6 +39,11 @@ class RegisterVC: BaseViewController {
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
+    
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
         if self.validation(){
@@ -123,7 +128,7 @@ extension RegisterVC{
         let firstName = self.txtFirstName.validatedText(validationType: .username(field: self.txtFirstName.placeholder?.lowercased() ?? ""))
         let lastName = self.txtLastName.validatedText(validationType: .username(field: self.txtLastName.placeholder?.lowercased() ?? ""))
         let checkEmail = self.txtEmail.validatedText(validationType: .email)
-        let mobileNo = self.txtPhoneNumber.validatedText(validationType: .username(field: self.txtPhoneNumber.placeholder?.lowercased() ?? ""))
+        let mobileNo = self.txtPhoneNumber.validatedText(validationType: .requiredField(field: self.txtPhoneNumber.placeholder?.lowercased() ?? ""))
         let password = self.txtPassword.validatedText(validationType: .password(field: self.txtPassword.placeholder?.lowercased() ?? ""))
         
         if !firstName.0{

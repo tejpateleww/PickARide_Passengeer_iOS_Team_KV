@@ -25,21 +25,14 @@ extension UserDefaults{
         return try JSONDecoder().decode(objectType, from: result)
     }
     
-    func setCountryData() {
-        try? UserDefaults.standard.set(object: Singleton.sharedInstance.CountryList, forKey: UserDefaultsKey.countryList.rawValue)
-    }
-    
-    func getCountryData() -> [CountryDetilsModel]? {
-        let objResponse = try? UserDefaults.standard.get(objectType: [CountryDetilsModel].self, forKey:  UserDefaultsKey.countryList.rawValue)
-        return objResponse ?? nil
-    }
-    
     func setUserData() {
         try? UserDefaults.standard.set(object:  Singleton.sharedInstance.UserProfilData, forKey: UserDefaultsKey.userProfile.rawValue)
     }
     
-    func getUserData() -> LoginResponseModel? {
-        let objResponse = try? UserDefaults.standard.get(objectType: LoginResponseModel.self, forKey:  UserDefaultsKey.userProfile.rawValue)
+    func getUserData() -> ProfileModel? {
+        let objResponse = try? UserDefaults.standard.get(objectType: ProfileModel.self, forKey:  UserDefaultsKey.userProfile.rawValue)
+        Singleton.sharedInstance.UserProfilData = objResponse
+        Singleton.sharedInstance.UserId = objResponse?.id ?? ""
         return objResponse ?? nil
     }
 

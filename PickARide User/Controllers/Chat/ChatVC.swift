@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ChatVC: BaseViewController {
     
@@ -25,6 +26,10 @@ class ChatVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        
+        self.setupKeyboard(false)
+        self.hideKeyboard()
+        self.registerForKeyboardNotifications()
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,6 +95,80 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+}
+
+//MARK: KEYBOARD SETUP FOR CHATBOX
+extension ChatVC {
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboards))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboards()
+    {
+        view.endEditing(true)
+    }
+    
+    func setupKeyboard(_ enable: Bool) {
+        IQKeyboardManager.shared.enable = enable
+        IQKeyboardManager.shared.enableAutoToolbar = enable
+        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = !enable
+        IQKeyboardManager.shared.previousNextDisplayMode = .alwaysShow
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification){
+//        constraintBottomOfChatBG.constant = 10
+        self.animateConstraintWithDuration()
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        if #available(iOS 11.0, *) {
+            
+//            DispatchQueue.main.async {
+//                if self.arrayChatHistory.count != 0 {
+//                    self.scrollToBottom()
+//                }
+//            }
+//            constraintBottomOfChatBG.constant = keyboardSize!.height - view.safeAreaInsets.bottom
+        
+        } else {
+            
+//            DispatchQueue.main.async {
+//                if self.arrayChatHistory.count != 0 {
+//                    self.scrollToBottom()
+//                }
+//            }
+//            constraintBottomOfChatBG.constant = keyboardSize!.height - 10
+            
+        }
+        self.animateConstraintWithDuration()
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func animateConstraintWithDuration(duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration, animations: { [weak self] in
+            self?.loadViewIfNeeded() ?? ()
+        })
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 

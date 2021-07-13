@@ -21,7 +21,7 @@ class SettingData {
     }
     
     static var SettingList = [SettingData]()
-    static var LanguageList = ["English", "German"]
+    static var LanguageList = ["English","French","Italian"]
 }
 
 class SubSettingsData {

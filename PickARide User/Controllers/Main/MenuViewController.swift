@@ -212,7 +212,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                         userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
                         appDel.navigateToLogin()
                     }
-                    
                 }
             }
             

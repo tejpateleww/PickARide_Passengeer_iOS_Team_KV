@@ -36,6 +36,7 @@ class UrlConstant{
     static let Logout = "UrlConstant_Logout".Localized()
     static let Help = "UrlConstant_Help".Localized()
     static let Invalid = "UrlConstant_Invalid".Localized()
+    static let Expiry = "UrlConstant_Expiry".Localized()
     
     //Validation Message
     static let ValidPhoneNo = "UrlConstant_ValidPhoneNo".Localized()
@@ -49,6 +50,7 @@ class UrlConstant{
     static let InvalidEmail = "UrlConstant_InvalidEmailMessage".Localized()
     static let EnterEmail = "UrlConstant_EnterEmailMessage".Localized()
     static let InvalidCardNumber = "UrlConstant_InvalidCardNumber".Localized()
+    
 }
 
 let ErrorResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SomethingWentWrong]

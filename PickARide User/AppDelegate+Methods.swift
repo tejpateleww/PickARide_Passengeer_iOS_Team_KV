@@ -13,6 +13,8 @@ import UserNotifications
 import GoogleMaps
 import GooglePlaces
 import SideMenuSwift
+import GoogleSignIn
+import FBSDKLoginKit
 
 extension AppDelegate{
     func checkAndSetDefaultLanguage() {
@@ -59,12 +61,14 @@ extension AppDelegate{
                  UserDefaults.standard.removeObject(forKey: key)
             }
         }
-        UserDefaults.standard.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
         
+        
+        userDefaults.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
         Singleton.sharedInstance.clearSingletonClass()
+        userDefaults.setUserData()
     }
     
-    func callLogOutApi(){
+    func dologout(){
         
     }
 }

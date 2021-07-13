@@ -15,8 +15,12 @@ class WalletUserModel{
         Utilities.showHud()
         WebServiceSubClass.WalletHistoryApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            
-            
+            if status{
+                self.walletHistoryVC?.walletObj = response
+                self.walletHistoryVC?.lblTotalMoney.text = response?.walletBalance ?? ""
+                Singleton.sharedInstance.UserProfilData?.walletBalance = response?.walletBalance
+                self.walletHistoryVC?.tblWalletHistory.reloadData()
+            }
         }
     }
 }

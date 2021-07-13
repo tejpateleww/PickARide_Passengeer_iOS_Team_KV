@@ -43,6 +43,7 @@ class Singleton: NSObject{
         Singleton.sharedInstance.UserId = ""
         Singleton.sharedInstance.UserProfilData = nil
         Singleton.sharedInstance.Api_Key = ""
+        Singleton.sharedInstance.CardList = []
     }
 }
 

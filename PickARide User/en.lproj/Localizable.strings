@@ -159,7 +159,7 @@
 
 //profile screen
 "ProfileVC_lblTitle" = "Hey";
-"ProfileVC_lblFirstName" = "FIRSTNAME";
+"ProfileVC_lblFirstName" = "FIRST NAME";
 "ProfileVC_textFieldFirstName" = "First Name";
 "ProfileVC_lblLastName" = "LAST NAME";
 "ProfileVC_textFieldLastName" = "Last Name";
@@ -224,6 +224,7 @@
 "UrlConstant_Continue" = "Continue";
 "UrlConstant_Help" = "Help";
 "UrlConstant_Invalid" = "Invalid";
+"UrlConstant_Expiry" = "Expires";
 "UrlConstant_ValidPhoneNo" = "Please enter valid mobile number.";
 "UrlConstant_InvalidEmailMessage" = "Invalid e-mail Address.";
 "UrlConstant_AgeIsRequired" = "Age is required";

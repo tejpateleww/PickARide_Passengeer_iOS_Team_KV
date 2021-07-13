@@ -9,19 +9,18 @@
 import UIKit
 
 class WalletHistoryVC: BaseViewController{
-    //MARK: -Properties
-    
-    //MARK: -IBOutlets
-    
     @IBOutlet weak var lblTotalMoney: walletHistoryLabel!
     @IBOutlet weak var lblAvailableBalance: walletHistoryLabel!
     @IBOutlet weak var lblPaymentMethod: TitleLabel!
     @IBOutlet weak var tblWalletHistory: UITableView!
-    //MARK: -View Life Cycle Methods
+    
+    var walletUserModel = WalletUserModel()
+    var walletObj : WalletHistoryModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocalization()
+        self.setLocalization()
+        self.callApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +37,15 @@ extension WalletHistoryVC{
     }
 }
 
+//MARK:- Apis
+extension WalletHistoryVC{
+    func callApi(){
+        self.walletUserModel.walletHistoryVC = self
+        
+        self.walletUserModel.webserviceWalletHistory(reqModel: WalletHistoryRequestModel())
+    }
+}
+
 //MARK:- TableView Delegate
 extension WalletHistoryVC: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,22 +53,20 @@ extension WalletHistoryVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.walletObj?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tblWalletHistory.dequeueReusableCell(withIdentifier: WalletHistoryCell.reuseIdentifier, for: indexPath) as! WalletHistoryCell
-        cell.lblmoneyFrom.text = "Refund from Order #15421"
-        cell.lblDate.text = "12/10/2020  01:55PM"
-        cell.lblPrice.text = "+52.00"
-        cell.selectionStyle = .none
+        let cell = tblWalletHistory.dequeueReusableCell(withIdentifier: WalletHistoryCell.reuseIdentifier, for: indexPath) as? WalletHistoryCell ?? WalletHistoryCell()
         
-        if indexPath.row == 1{
-            cell.lblmoneyFrom.text = "Payment Done"
-            cell.lblPrice.text = "- 30.00"
-            cell.lblPrice.textColor = UIColor(hexString: "#E24444")
-        }
+        let obj = self.walletObj?.data?[indexPath.row]
+        let isAdd = obj?.type == plus
+        cell.lblmoneyFrom.text = obj?.datumDescription ?? ""
+        cell.lblDate.text = obj?.createdDate?.getDateTimeFromTimeStamp()
+        cell.lblPrice.text = (isAdd ? plus : minus) + (obj?.amount ?? "")
+        cell.lblPrice.textColor = isAdd ? ThemeColorEnum.ThemeGreen.rawValue : ThemeColorEnum.ThemeRed.rawValue
+        cell.selectionStyle = .none
         
         return cell
     }

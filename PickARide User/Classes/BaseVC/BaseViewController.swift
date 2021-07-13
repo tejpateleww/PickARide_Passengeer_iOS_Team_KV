@@ -123,21 +123,22 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
                 
             } else if leftImage == NavItemsLeft.menu.value {
-                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 42, height: 42))
+                let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
                 btnLeft.setImage(UIImage.init(named: "ic_menu"), for: .normal)
                 btnLeft.layer.setValue(controller, forKey: "controller")
                 btnLeft.addTarget(self, action: #selector(self.btMenuAction), for: .touchUpInside)
                 
-                btnLeft.layer.shadowColor = colors.black.value.cgColor
-                btnLeft.layer.shadowOffset = CGSize(width: 0, height: 0)
-                btnLeft.layer.shadowRadius = 3
-                btnLeft.layer.shadowOpacity = 0.4
+                btnLeft.shadow = true
+//                btnLeft.layer.shadowOffset = CGSize(width: 0, height: 0)
+//                btnLeft.layer.shadowRadius = 3
+//                btnLeft.layer.shadowOpacity = 0.4
                 
                 
-                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
+                let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
                 LeftView.addSubview(btnLeft)
             
                 let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
+                
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
                 
@@ -211,7 +212,12 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
 
                     navBtnProfile = UIButton.init()
                     navBtnProfile.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-                    navBtnProfile.setImage(UIImage.init(named: "nav_dummy_userImage"), for: .normal)
+                    
+                    navBtnProfile.setImage(UserPlaceHolder, for: .normal)
+                    navBtnProfile.addBorder()
+                    navBtnProfile.backgroundColor = ThemeColorEnum.ThemeWhite.rawValue
+                    navBtnProfile.clipsToBounds = true
+                    navBtnProfile.shadow = true
                     navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
                     navBtnProfile.layer.setValue(controller, forKey: "controller")
@@ -257,7 +263,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     let viewDone = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
 
                     navBtnDone = UIButton.init()
-                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 60   , height: 44)
+                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
                     navBtnDone.setTitle("NavigationButton_btnHelp".Localized(), for: .normal)
                     navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(17)
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)

@@ -47,6 +47,11 @@ class ProfileVC: BaseViewController {
         self.setUpUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
+    
     @IBAction func btnProfile(_ sender: Any) {
         self.view.endEditing(true)
         self.imagePicker?.present(from: self.imgProfile, image: self.imgProfile.image ?? UIImage())
@@ -135,7 +140,7 @@ extension ProfileVC{
         txtLastName.placeholder = "ProfileVC_textFieldLastName".Localized()
         lblEmail.text = "ProfileVC_lblEmail".Localized()
         txtEmail.placeholder = "ProfileVC_textFieldEmail".Localized()
-        lblPhoneNumber.text = "ProfileVC_lblPhoneNumber".Localized()
+        lblPhoneNumber.text = "SignUpPage_lblCountryCode".Localized()
         txtPhone.placeholder = "ProfileVC_textFieldPhoneNumber".Localized()
         lblPassword.text = "ProfileVC_lblPassword".Localized()
         txtPassword.placeholder = "ProfileVC_textFieldPassword".Localized()

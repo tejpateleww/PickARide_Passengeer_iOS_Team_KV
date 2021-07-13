@@ -31,6 +31,11 @@ class ForgotPasswordVC: BaseViewController {
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
+    
     @IBAction func btnContinue(_ sender: Any) {
         if self.validation(){
 //            self.callForgotPasswordApi()

@@ -16,7 +16,14 @@ class CardUserModel{
         Utilities.showHud()
         WebServiceSubClass.AddCardApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: .success)
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+            
+            if status{
+        
+                if let obj = self.addCardVC?.addCardClosure{
+                    obj()
+                }
+            }
         }
     }
     
@@ -24,9 +31,8 @@ class CardUserModel{
         Utilities.showHud()
         WebServiceSubClass.CardListApi() { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            
-            if status{
-                
+            if status {
+                self.addPaymentVC?.tblPaymentMethod.reloadData()
             }
         }
     }

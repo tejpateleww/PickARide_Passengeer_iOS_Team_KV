@@ -29,6 +29,8 @@ class NotificationVC: BaseViewController {
 extension NotificationVC{
     func setUpUI() {
         addNavBarImage(isLeft: true, isRight: true)
+        self.tbvNotification.estimatedRowHeight = 80
+        self.tbvNotification.rowHeight = UITableView.automaticDimension
     }
     
     func setUpLocalization() {
@@ -43,12 +45,15 @@ extension NotificationVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:NotificationCell = tbvNotification.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath)as! NotificationCell
+        let cell:NotificationCell = tbvNotification.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as? NotificationCell ?? NotificationCell()
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88
+        return UITableView.automaticDimension
     }
 }
 

@@ -32,7 +32,7 @@ enum APIEnvironment : String {
                 if userDefaults.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
                         if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
-                            return [UrlConstant.XApiKey : Singleton.sharedInstance.Api_Key]
+                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey, UrlConstant.XApiKey : Singleton.sharedInstance.UserProfilData?.xAPIKey ?? ""]
                         }else{
                             return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
                         }

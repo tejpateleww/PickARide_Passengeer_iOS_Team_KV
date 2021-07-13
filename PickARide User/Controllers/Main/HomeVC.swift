@@ -42,7 +42,7 @@ extension HomeVC{
     }
     
     func setProfilePicture(){
-        //Set User Profile
+        self.navBtnProfile.setImage(UserPlaceHolder, for: .normal)
     }
     
     func addObserver(){

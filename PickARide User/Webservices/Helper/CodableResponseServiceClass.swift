@@ -19,7 +19,7 @@ class CodableService {
                 }else{
                     if let httpResponse = response as? HTTPURLResponse{
                         print("Status code of the request:=>",httpResponse.statusCode)
-                        var statusCode = httpResponse.statusCode == 200
+                        var statusCode : Bool = false
                         if httpResponse.statusCode == 200{
                             if  let responseData = data {
                                 

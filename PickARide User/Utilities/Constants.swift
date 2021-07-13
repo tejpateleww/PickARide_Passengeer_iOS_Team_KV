@@ -17,6 +17,10 @@ let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as!
 let AppName = ""
 let AppURL = "itms-apps://itunes.apple.com/app/id1488928328"
 
+//MARK:- Symbols
+let plus = "+"
+let minus = "-"
+
 let themeColor = hexStringToUIColor(hex: "2ab6b6")
 let themeColorOrange = hexStringToUIColor(hex: "ff8b7b")
 let themeColorOffWhite = hexStringToUIColor(hex: "efecef")
@@ -30,7 +34,7 @@ let RadioCheckImg = #imageLiteral(resourceName: "ImgRightArrow")
 let RadioUncheckImg = #imageLiteral(resourceName: "icCircle")
 let HidePassword = #imageLiteral(resourceName: "HidePassword")
 let ShowPassword = #imageLiteral(resourceName: "ShowPassword")
-let UserPlaceHolder = #imageLiteral(resourceName: "Dummy-Profile")
+let UserPlaceHolder = #imageLiteral(resourceName: "user_placeholder")
 let BackImage = #imageLiteral(resourceName: "nav_back")
 
 

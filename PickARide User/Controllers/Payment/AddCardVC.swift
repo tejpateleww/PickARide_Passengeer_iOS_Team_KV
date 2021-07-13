@@ -40,6 +40,8 @@ class AddCardVC: BaseViewController {
     var monthYearTuple : (month: String?, year: String?) = (nil,nil)
     var addCardUserModel = CardUserModel()
     
+    var addCardClosure : (()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -57,7 +59,7 @@ class AddCardVC: BaseViewController {
             return
         }
         if isCreditCardValid{
-            self.navigationController?.popViewController(animated: true)
+            self.callApi()
         }
     }
 }
@@ -73,7 +75,6 @@ extension AddCardVC{
         self.pickerView.dataSource = self
         self.pickerView.showsSelectionIndicator = true
         
-        self.txtCountry.tintColor = .white
         self.txtCountry.delegate = self
         self.txtCountry.inputView = pickerView
         
