@@ -190,20 +190,21 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
-                                                <rect key="frame" x="142" y="536" width="130" height="59"/>
+                                                <rect key="frame" x="106.5" y="536" width="201" height="59"/>
                                                 <subviews>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
-                                                        <rect key="frame" x="-59" y="0.0" width="59" height="59"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-R2-jfp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
-                                                                <state key="normal" image="applelogo" catalog="system"/>
+                                                                <state key="normal" image="Ic_Apple"/>
                                                                 <connections>
                                                                     <action selector="btnSocialRequests:" destination="Umi-hn-684" eventType="touchUpInside" id="kgX-79-0sQ"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="tintColor" systemColor="linkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="59" id="5v8-6h-zIx"/>
                                                             <constraint firstItem="iHy-R2-jfp" firstAttribute="leading" secondItem="BdK-3b-S2m" secondAttribute="leading" id="NTa-im-KzJ"/>
@@ -214,7 +215,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-R3-9Nm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                        <rect key="frame" x="71" y="0.0" width="59" height="59"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-ht-jNE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
@@ -235,7 +236,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-ON-8kM">
-                                                        <rect key="frame" x="71" y="0.0" width="59" height="59"/>
+                                                        <rect key="frame" x="142" y="0.0" width="59" height="59"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-F4-uSt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
@@ -1510,7 +1511,7 @@ Number</string>
         </scene>
     </scenes>
     <resources>
-        <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="Ic_Apple" width="66" height="66"/>
         <image name="ic_Cancel" width="34" height="34"/>
         <image name="ic_DownReg" width="14" height="8"/>
         <image name="ic_Facebook" width="66" height="66"/>
@@ -1524,6 +1525,9 @@ Number</string>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

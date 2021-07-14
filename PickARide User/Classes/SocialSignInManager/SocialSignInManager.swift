@@ -9,15 +9,16 @@ import Foundation
 import AuthenticationServices
 import GoogleSignIn
 import FBSDKLoginKit
+import AuthenticationServices
 
 class SocialUser: Codable{
-    var userId : String?
-    var token : String?
-    var firstName : String?
-    var lastName : String?
-    var email : String?
-    var profile : String?
-    var socialType : String?
+    var userId : String = ""
+    var token : String = ""
+    var firstName : String = ""
+    var lastName : String = ""
+    var email : String? = nil
+    var profile : String = ""
+    var socialType : String = ""
 }
 
 enum LoginResult {
@@ -68,11 +69,11 @@ class FacebookLoginProvider {
                 if let result = conresult, let dataDic = result as? [String: Any]{
                     let obj = SocialUser()
                     obj.socialType = SocialType.FaceBook.rawValue
-                    obj.userId = dataDic["id"] as? String
+                    obj.userId = dataDic["id"] as? String ?? ""
                     obj.token = token
-                    obj.firstName = dataDic["first_name"] as? String
-                    obj.lastName = dataDic["last_name"] as? String
-                    obj.email = dataDic["email"] as? String
+                    obj.firstName = dataDic["first_name"] as? String ?? ""
+                    obj.lastName = dataDic["last_name"] as? String ?? ""
+                    obj.email = dataDic["email"] as? String ?? ""
                     if let profileUrl = dataDic["profileURL"] as? URL{
                         obj.profile = profileUrl.absoluteString
                     }
@@ -115,10 +116,73 @@ extension GoogleLoginProvider: GIDSignInDelegate {
         obj.userId = user.userID
         obj.token = user.authentication.idToken
         obj.email = user.profile.email
-        obj.firstName = user.profile.givenName
-        obj.lastName = user.profile.familyName
+        obj.firstName = user.profile.givenName ?? ""
+        obj.lastName = user.profile.familyName ?? ""
         obj.profile = user.profile.imageURL(withDimension: 200)?.absoluteString ?? ""
 
         self.delegate?.FatchUser(socialType: .Google, success: true, user: obj, error: nil)
     }
+}
+
+
+class AppleSignInProvider: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+   
+    var delegate : SocialSignInDelegate? = nil
+
+    override init() {
+        super.init()
+        if #available(iOS 13.0, *) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return UIApplication.shared.keyWindow ?? UIWindow()
+    }
+    
+    // ASAuthorizationControllerDelegate function for authorization failed
+  @available(iOS 13.0, *)
+     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+         print(error.localizedDescription)
+        delegate?.FatchUser(socialType: .Apple, success: false, user: nil, error: error.localizedDescription)
+     }
+     
+     @available(iOS 13.0, *)
+     // ASAuthorizationControllerDelegate function for successful authorization
+     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+         print(#function)
+         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+             let appleId = appleIDCredential.user
+             let appleUserFirstName = appleIDCredential.fullName?.givenName
+             let appleUserLastName = appleIDCredential.fullName?.familyName
+             let appleUserEmail = appleIDCredential.email
+             print(appleId, appleUserFirstName ?? "", appleUserLastName ?? "", appleUserEmail ?? "")
+            
+            let socialUser = SocialUser()
+            socialUser.firstName = appleUserFirstName ?? ""
+            socialUser.lastName = appleUserLastName ?? ""
+            socialUser.email = appleUserEmail
+            socialUser.userId = appleId
+            socialUser.socialType = SocialType.Apple.rawValue
+            delegate?.FatchUser(socialType: .Apple, success: true, user: socialUser, error: nil)
+         }
+         else if let passwordCredential = authorization.credential as? ASPasswordCredential {
+             let appleUsername = passwordCredential.user
+             let applePassword = passwordCredential.password
+             print(appleUsername, applePassword)
+         }else{
+            print("Can not get apple credentials")
+            print("Error: \("Can not get apple credentials")")
+        }
+     }
+    
+    
 }
