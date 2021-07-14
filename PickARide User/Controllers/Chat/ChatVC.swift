@@ -15,6 +15,10 @@ class ChatVC: BaseViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet var vwNavBar: UIView!
+    @IBOutlet weak var sendMessageOuterView: UIView!
+    @IBOutlet weak var sendMessageOuterVWBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var txtSendMessage: UITextField!
+    @IBOutlet weak var btnSendMessage: UIButton!
     
     var MessageArray = [ChatConversation]()
     
@@ -26,7 +30,7 @@ class ChatVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        
+        self.setSenderProfileInfo()
         self.setupKeyboard(false)
         self.hideKeyboard()
         self.registerForKeyboardNotifications()
@@ -44,12 +48,14 @@ extension ChatVC{
         MessageArray.append(ChatConversation(date: "Today at 5:03 PM", Data: [MessageAllData(fromSender: true, message: "Hello, are you nearby?", lastMessage: false), MessageAllData(fromSender: false, message: "I'll be there in a few mins", lastMessage: true), MessageAllData(fromSender: true, message: "OK, I'm in front of the bus stop", lastMessage: true) ]))
         MessageArray.append(ChatConversation(date: "5:33 PM", Data: [MessageAllData(fromSender: false, message: "Sorry , I'm stuck in traffic. Please give me a moment.", lastMessage: true) ]))
         
+        self.tblChat.reloadData()
+    }
+    
+    func setSenderProfileInfo(){
         self.navigationItem.titleView = vwNavBar
         
         self.lblName.text = "Connor Chavez"
         self.lblInfo.text = "ST3751 - Toyota Vios"
-        
-        self.tblChat.reloadData()
     }
     
     @objc func backClick(){
@@ -126,7 +132,7 @@ extension ChatVC {
     }
     
     @objc func keyboardWillBeHidden(notification: NSNotification){
-//        constraintBottomOfChatBG.constant = 10
+        sendMessageOuterVWBottomConstraint.constant = 10
         self.animateConstraintWithDuration()
     }
     
@@ -141,7 +147,7 @@ extension ChatVC {
 //                    self.scrollToBottom()
 //                }
 //            }
-//            constraintBottomOfChatBG.constant = keyboardSize!.height - view.safeAreaInsets.bottom
+            sendMessageOuterVWBottomConstraint.constant = keyboardSize!.height - view.safeAreaInsets.bottom
         
         } else {
             
@@ -150,7 +156,7 @@ extension ChatVC {
 //                    self.scrollToBottom()
 //                }
 //            }
-//            constraintBottomOfChatBG.constant = keyboardSize!.height - 10
+            sendMessageOuterVWBottomConstraint.constant = keyboardSize!.height - 10
             
         }
         self.animateConstraintWithDuration()

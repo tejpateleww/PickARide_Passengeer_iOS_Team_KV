@@ -37,6 +37,8 @@ class SubSettingsData {
 struct SettingImages {
     static let SettingHome = #imageLiteral(resourceName: "ic_settingsHome")
     static let SettingWork = #imageLiteral(resourceName: "ic_SettingWork")
+    static let SettingHomeGray = #imageLiteral(resourceName: "ic_HomeTemp")
+    static let SettingWorkGray = #imageLiteral(resourceName: "Dummy_Work")
     static let SettingRightArrow = #imageLiteral(resourceName: "ImgGraterThen")
     static let SettingDownArrow = #imageLiteral(resourceName: "ic_DownReg")
 }

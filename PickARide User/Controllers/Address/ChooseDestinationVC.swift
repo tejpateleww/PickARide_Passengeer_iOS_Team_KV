@@ -17,7 +17,7 @@ class ChooseDestinationVC: BaseViewController {
     @IBOutlet weak var textFieldDestinationLocation: chooseLocationTextField!
     
     var arrayForSavedPlaces : [String] = [SettingsTitle.Home,SettingsTitle.Work]
-    var arrImage = [SettingImages.SettingHome,SettingImages.SettingWork]
+    var arrImage = [SettingImages.SettingHomeGray,SettingImages.SettingWorkGray]
     
     var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!

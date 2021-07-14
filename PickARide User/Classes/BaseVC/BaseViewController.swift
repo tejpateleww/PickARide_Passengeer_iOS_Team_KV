@@ -218,7 +218,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnProfile.backgroundColor = ThemeColorEnum.ThemeWhite.rawValue
                     navBtnProfile.clipsToBounds = true
                     navBtnProfile.shadow = true
-                    navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
+//                    navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
                     navBtnProfile.layer.setValue(controller, forKey: "controller")
                     viewProfileEdit.addSubview(navBtnProfile)

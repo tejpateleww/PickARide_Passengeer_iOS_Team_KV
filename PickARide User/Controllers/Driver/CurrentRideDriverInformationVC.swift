@@ -18,13 +18,15 @@ class CurrentRideDriverInformationVC: BaseViewController {
     @IBOutlet weak var mainVW: suggestedTaxiView!
     @IBOutlet weak var topVW: UIView!
     @IBOutlet weak var mainVWBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblDriverPickUpMsg: currentRideLabel!
     
     var vehicalNumber = "ST3751"
     
     var isExpandCategory:  Bool  = false {
         didSet {
-            mainVWBottomConstraint.constant = isExpandCategory ? 0 : (-mainVW.frame.height + topVW.frame.height + 40)
+            mainVWBottomConstraint.constant = isExpandCategory ? 0 : (-mainVW.frame.height + topVW.frame.height + 60)
             self.btnCancel.isHidden = !isExpandCategory
+            self.lblDriverPickUpMsg.superview?.isHidden = !isExpandCategory
             self.view.endEditing(true)
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()

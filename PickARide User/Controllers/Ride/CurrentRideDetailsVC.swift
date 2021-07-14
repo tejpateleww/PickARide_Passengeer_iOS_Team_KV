@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class CurrentRideDetailsVC: BaseViewController {
 
@@ -20,6 +21,9 @@ class CurrentRideDetailsVC: BaseViewController {
     @IBOutlet weak var mainVWBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var driverProfileOuterVW: UIView!
     @IBOutlet weak var rideDetailsStkVWTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ratingsView: CosmosView!
+    @IBOutlet weak var lblAvgRating: UILabel!
+    @IBOutlet weak var btnGoToRatings: UIButton!
     
     var vehicalNumber = "ST3751"
     
@@ -28,6 +32,9 @@ class CurrentRideDetailsVC: BaseViewController {
             self.driverProfileOuterVW.isHidden = !isExpandCategory
             mainVWBottomConstraint.constant = isExpandCategory ? 0 : -50
             self.btnCancel.isHidden = !isExpandCategory
+            self.btnGoToRatings.isHidden = !isExpandCategory
+            self.ratingsView.isHidden = !isExpandCategory
+            self.lblAvgRating.isHidden = !isExpandCategory
             self.rideDetailsStkVWTopConstraint.constant = isExpandCategory ? 0 : 10
             self.view.endEditing(true)
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
@@ -65,8 +72,6 @@ class CurrentRideDetailsVC: BaseViewController {
 extension CurrentRideDetailsVC{
     func setUpUI(){
         self.setLabel()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        self.vwMain.addGestureRecognizer(tap)
     }
     
     func setLabel() {
@@ -78,11 +83,7 @@ extension CurrentRideDetailsVC{
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.loginPlaceHolderColor.value, range: NSMakeRange(0, attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.phoneNumberColor.value , range: range)
         lblVehicalData.attributedText = attributedString
-    }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        appDel.navigateToMain()
-    }
+    } 
     
     func setupViewCategory() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
