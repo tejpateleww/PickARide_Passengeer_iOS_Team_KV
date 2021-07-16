@@ -11,6 +11,8 @@ import GooglePlaces
 
 class AddNewDestinationVC: BaseViewController {
     
+    @IBOutlet weak var lblPlaceName: ProfileLabel!
+    @IBOutlet weak var lblPlaceAddress: ProfileLabel!
     @IBOutlet weak var tblPlacePicker: UITableView!
     @IBOutlet weak var tblPlacePickerBottom: NSLayoutConstraint!
     @IBOutlet weak var txtPlaceAddress: ProfileTextField!
@@ -52,7 +54,11 @@ extension AddNewDestinationVC{
     }
     
     func setLocalization() {
-        txtPlaceAddress.placeholder = "AddNewDestinationVC_PlaceName_place".Localized()
+        self.lblPlaceName.text = "AddNewDestinationVC_PlaceName".Localized()
+        self.txtPlaceName.placeholder = "AddNewDestinationVC_PlaceName".Localized()
+        
+        self.lblPlaceAddress.text = "AddNewDestinationVC_PlaceAddress".Localized()
+        self.txtPlaceAddress.placeholder = "AddNewDestinationVC_PlaceAddress".Localized()
     }
 }
 

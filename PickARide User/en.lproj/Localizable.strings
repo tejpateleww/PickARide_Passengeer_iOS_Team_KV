@@ -63,7 +63,8 @@
 "ChooseDestination_startLocation_place" = "Enter Start Location";
 "ChooseDestination_DestinationLocation_place" = "Enter Destionation";
 
-
+//NoDataFound
+"Title_NoDataFound" = "No Data Found";
 
 
 //AddCardVC_
@@ -183,7 +184,8 @@
 "SettingsVC_btnMoreSavedPlaces" = "More Saved Places ";
 
 //AddNewDestinationVC_
-"AddNewDestinationVC_PlaceName_place" = "Place Name";
+"AddNewDestinationVC_PlaceName" = "Place Name";
+"AddNewDestinationVC_PlaceAddress" = "Place Address";
 
 //SuggestedTaxiVC_
 "SuggestedTaxiVC_lblTitle" = "SUGGESTED RIDES";

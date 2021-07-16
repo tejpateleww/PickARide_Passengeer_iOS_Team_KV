@@ -135,7 +135,7 @@ extension AddCardVC{
             reqModel.expiryYear = self.monthYearTuple.year
             reqModel.expiryMonth = self.monthYearTuple.month
             
-            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
+//            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
         }else{
             
         }

@@ -164,7 +164,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:sideCell = tblSidemenuData.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath)as! sideCell
+        let cell:sideCell = tblSidemenuData.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath) as? sideCell ?? sideCell()
         cell.lblData?.text = mylblarr[indexPath.row]
         
         if selectedMenuIndex == indexPath.row {
@@ -182,7 +182,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedMenuIndex = indexPath.row
+        selectedMenuIndex = 0
         tblSidemenuData.reloadData()
         sideMenuController?.hideMenu()
         

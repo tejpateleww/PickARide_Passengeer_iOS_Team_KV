@@ -21,6 +21,8 @@ class WalletUserModel{
                 Singleton.sharedInstance.UserProfilData?.walletBalance = response?.walletBalance
                 self.walletHistoryVC?.tblWalletHistory.reloadData()
             }
+            
+            self.walletHistoryVC?.lblNoDataFound.isHidden = response?.data?.count != 0
         }
     }
 }

@@ -13,6 +13,7 @@ class WalletHistoryVC: BaseViewController{
     @IBOutlet weak var lblAvailableBalance: walletHistoryLabel!
     @IBOutlet weak var lblPaymentMethod: TitleLabel!
     @IBOutlet weak var tblWalletHistory: UITableView!
+    @IBOutlet weak var lblNoDataFound: themeLabel!
     
     var walletUserModel = WalletUserModel()
     var walletObj : WalletHistoryModel?
@@ -20,7 +21,8 @@ class WalletHistoryVC: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
-        self.callApi()
+//        self.callApi()
+        self.lblNoDataFound.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +36,7 @@ extension WalletHistoryVC{
     func setLocalization() {
         lblAvailableBalance.text = "WalletHistory_lblAvailableBalance".Localized()
         lblPaymentMethod.text = "WalletHistory_lblPayment".Localized()
+        lblNoDataFound.text = "Title_NoDataFound".Localized()
     }
 }
 

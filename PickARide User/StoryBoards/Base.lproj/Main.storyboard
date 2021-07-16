@@ -1259,10 +1259,24 @@
                                             <outlet property="delegate" destination="eAV-8v-nrd" id="dpT-96-QeW"/>
                                         </connections>
                                     </tableView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-pw-jir" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="130.5" y="456" width="114" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isgray" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="muy-a6-nau" secondAttribute="trailing" constant="16" id="1Fr-Vl-pdA"/>
+                                    <constraint firstItem="LRe-pw-jir" firstAttribute="centerY" secondItem="SvA-5g-yI9" secondAttribute="centerY" id="2bv-jf-vo2"/>
                                     <constraint firstItem="SvA-5g-yI9" firstAttribute="leading" secondItem="XXq-AU-bwn" secondAttribute="leading" id="4NA-CC-aIj"/>
                                     <constraint firstAttribute="bottom" secondItem="SvA-5g-yI9" secondAttribute="bottom" id="MCp-x1-uT1"/>
                                     <constraint firstAttribute="trailing" secondItem="SvA-5g-yI9" secondAttribute="trailing" id="Pgx-9D-f05"/>
@@ -1270,6 +1284,7 @@
                                     <constraint firstItem="CIn-Dt-sou" firstAttribute="top" secondItem="muy-a6-nau" secondAttribute="bottom" constant="28" id="a0E-wS-JQ1"/>
                                     <constraint firstItem="muy-a6-nau" firstAttribute="top" secondItem="XXq-AU-bwn" secondAttribute="top" constant="31.5" id="cY1-lh-jiM"/>
                                     <constraint firstItem="muy-a6-nau" firstAttribute="leading" secondItem="XXq-AU-bwn" secondAttribute="leading" constant="16" id="rAy-Rc-uZK"/>
+                                    <constraint firstItem="LRe-pw-jir" firstAttribute="centerX" secondItem="SvA-5g-yI9" secondAttribute="centerX" id="v9i-y0-O2Z"/>
                                     <constraint firstAttribute="trailing" secondItem="CIn-Dt-sou" secondAttribute="trailing" constant="29" id="wAh-T7-OXP"/>
                                     <constraint firstItem="SvA-5g-yI9" firstAttribute="top" secondItem="CIn-Dt-sou" secondAttribute="bottom" constant="34" id="yu2-ka-wtJ"/>
                                 </constraints>
@@ -1286,6 +1301,7 @@
                     </view>
                     <connections>
                         <outlet property="lblAvailableBalance" destination="4oZ-bd-DYi" id="uzD-o8-f6Y"/>
+                        <outlet property="lblNoDataFound" destination="LRe-pw-jir" id="dB0-Dv-qhX"/>
                         <outlet property="lblPaymentMethod" destination="muy-a6-nau" id="TLb-MU-5yd"/>
                         <outlet property="lblTotalMoney" destination="LeW-Zi-uNn" id="pOI-Ci-zkB"/>
                         <outlet property="tblWalletHistory" destination="SvA-5g-yI9" id="L7T-ms-p5R"/>
@@ -2410,6 +2426,19 @@
                                             <outlet property="delegate" destination="pUW-in-LDu" id="FXr-m6-HgZ"/>
                                         </connections>
                                     </tableView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onu-Ot-WaW" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="130.5" y="327" width="114" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isgray" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-MV-9zZ" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                         <rect key="frame" x="16" y="599" width="343" height="48"/>
                                         <constraints>
@@ -2426,12 +2455,14 @@
                                     <constraint firstAttribute="trailing" secondItem="g7j-ed-hko" secondAttribute="trailing" id="0hw-UJ-XT2"/>
                                     <constraint firstItem="4F9-3L-ARz" firstAttribute="top" secondItem="tKf-iq-ciH" secondAttribute="top" constant="31.5" id="3IP-45-Amj"/>
                                     <constraint firstItem="4F9-3L-ARz" firstAttribute="leading" secondItem="tKf-iq-ciH" secondAttribute="leading" constant="16" id="3Q1-IK-syG"/>
+                                    <constraint firstItem="onu-Ot-WaW" firstAttribute="centerY" secondItem="g7j-ed-hko" secondAttribute="centerY" id="Io7-hn-iou"/>
                                     <constraint firstItem="g7j-ed-hko" firstAttribute="leading" secondItem="tKf-iq-ciH" secondAttribute="leading" id="WRU-jR-Gpc"/>
                                     <constraint firstItem="q2E-MV-9zZ" firstAttribute="leading" secondItem="tKf-iq-ciH" secondAttribute="leading" constant="16" id="Xb9-4k-Bj3"/>
                                     <constraint firstAttribute="trailing" secondItem="4F9-3L-ARz" secondAttribute="trailing" constant="16" id="aiu-Ld-P45"/>
                                     <constraint firstAttribute="bottom" secondItem="q2E-MV-9zZ" secondAttribute="bottom" constant="20" id="h1K-O7-FLI"/>
                                     <constraint firstItem="q2E-MV-9zZ" firstAttribute="top" secondItem="g7j-ed-hko" secondAttribute="bottom" constant="20" id="kji-pD-yrA"/>
                                     <constraint firstAttribute="trailing" secondItem="q2E-MV-9zZ" secondAttribute="trailing" constant="16" id="oQp-cK-IKw"/>
+                                    <constraint firstItem="onu-Ot-WaW" firstAttribute="centerX" secondItem="g7j-ed-hko" secondAttribute="centerX" id="vtX-FK-I3I"/>
                                     <constraint firstItem="g7j-ed-hko" firstAttribute="top" secondItem="4F9-3L-ARz" secondAttribute="bottom" constant="43" id="x7X-Z9-lvS"/>
                                 </constraints>
                             </view>
@@ -2448,6 +2479,7 @@
                     <navigationItem key="navigationItem" id="JFu-IC-zNa"/>
                     <connections>
                         <outlet property="btnAddCard" destination="q2E-MV-9zZ" id="aWR-Ry-gKQ"/>
+                        <outlet property="lblNoDataFound" destination="onu-Ot-WaW" id="A5q-Oy-KSs"/>
                         <outlet property="lblTitle" destination="4F9-3L-ARz" id="RTf-6a-Eur"/>
                         <outlet property="tblPaymentMethod" destination="g7j-ed-hko" id="qDL-eH-QrK"/>
                     </connections>
@@ -4591,6 +4623,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblPlaceAddress" destination="Mlu-11-McS" id="3Wb-kk-wl1"/>
+                        <outlet property="lblPlaceName" destination="smo-la-wvh" id="PDH-zp-P6C"/>
                         <outlet property="tblPlacePicker" destination="cLW-Qd-uob" id="EKK-x6-TrU"/>
                         <outlet property="tblPlacePickerBottom" destination="AVj-SB-TgA" id="kY7-oj-vMj"/>
                         <outlet property="txtPlaceAddress" destination="QaB-WB-bRa" id="mUe-tK-gfw"/>

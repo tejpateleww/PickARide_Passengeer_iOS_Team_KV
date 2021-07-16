@@ -50,7 +50,9 @@ class LoginVC: UIViewController {
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
             if self.getLocation(){
-                self.callLoginApi()
+//                self.callLoginApi()
+                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                appDel.navigateToMain()
             }
         }
     }
