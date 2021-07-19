@@ -47,6 +47,13 @@ class ProfileVC: BaseViewController {
         self.setUpUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navBtnProfile.isSelected = true
+        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
+        self.makeEditableTrue(navBtnProfile)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
@@ -89,9 +96,6 @@ class ProfileVC: BaseViewController {
 //MARK: Other Methods
 extension ProfileVC{
     func setUpUI(){
-        navBtnProfile.isSelected = true
-        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
-        self.makeEditableTrue(navBtnProfile)
         self.imgProfile.image = UserPlaceHolder
         self.imagePicker = ImagePicker(presentationController: self, delegate: self, allowsEditing: false)
         

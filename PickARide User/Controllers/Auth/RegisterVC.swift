@@ -47,12 +47,12 @@ class RegisterVC: BaseViewController {
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
         if self.validation(){
-            if self.getLocation(){
+//            if self.getLocation(){
                 //            self.callOtpApi()
                 let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
                 controller.isFrmRegister = true
                 self.navigationController?.pushViewController(controller, animated: true)
-            }
+//            }
         }
     }
 }

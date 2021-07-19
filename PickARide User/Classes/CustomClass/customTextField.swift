@@ -245,6 +245,7 @@ class ProfileTextField: UITextField {
                 imageView.tintColor = tintColor
                 let view = UIView(frame : CGRect(x: 0, y: 0, width: 12, height: 16))
                 view.addSubview(imageView)
+                view.isUserInteractionEnabled = false
                 rightView = view
             }else{
                 rightViewMode = .never
@@ -260,6 +261,23 @@ class ProfileTextField: UITextField {
                 imageView.tintColor = tintColor
                 let view = UIView(frame : CGRect(x: 0, y: 0, width: 12, height: 14))
                 view.addSubview(imageView)
+                view.isUserInteractionEnabled = false
+                rightView = view
+            }else{
+                rightViewMode = .never
+            }
+        }
+    }
+    @IBInspectable var isDropDownImg: UIImage? {
+        didSet {
+            if let image = isDropDownImg {
+                rightViewMode = .always
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 12))
+                imageView.image = image
+                imageView.tintColor = tintColor
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 16, height: 12))
+                view.addSubview(imageView)
+                view.isUserInteractionEnabled = false
                 rightView = view
             }else{
                 rightViewMode = .never

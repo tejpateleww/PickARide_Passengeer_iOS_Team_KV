@@ -115,12 +115,6 @@ enum MessageAlertState {
     case success , failure , info , theme
 }
 
-enum ToastCustomMessagesString : String{
-    case SelectCard = "Please select card."
-    case MoneyAddedtoWallet = "Money added sucessfully."
-    case EnterAmount = "Please enter amount."
-}
-
 class Toast {
     
     static func show(title: String = "" ,delay :Double = 1.5,  message: String, state : MessageAlertState ,  completion: (() -> Void)? = nil) {

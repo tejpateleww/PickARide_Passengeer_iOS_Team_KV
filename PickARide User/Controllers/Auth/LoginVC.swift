@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let _ = self.getLocation()
+//        let _ = self.getLocation()
         self.setupLocalization()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
@@ -49,11 +49,11 @@ class LoginVC: UIViewController {
     
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
-            if self.getLocation(){
+//            if self.getLocation(){
 //                self.callLoginApi()
                 userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
                 appDel.navigateToMain()
-            }
+//            }
         }
     }
     
@@ -66,7 +66,7 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
         print(#function)
         
-        if self.getLocation(){
+//        if self.getLocation(){
             return
                 
             if sender.tag == 0{
@@ -77,7 +77,7 @@ class LoginVC: UIViewController {
                 self.googleSignInManager = GoogleLoginProvider(self)
                 self.googleSignInManager?.delegate = self
             }
-        }
+//        }
     }
 }
 

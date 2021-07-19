@@ -206,12 +206,15 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         } else if strCellItemTitle == MyType.Logout.value {
             Utilities.showAlertWithTitleFromVC(vc: self, title: UrlConstant.Logout, message: UrlConstant.LogoutMessage, buttons: [UrlConstant.Ok,UrlConstant.Cancel], isOkRed: false) { (ind) in
                 if ind == 0{
-                    Utilities.showHud()
-                    WebServiceSubClass.LogoutApi { (status, apimessage, error) in
-                        Utilities.hideHud()
-                        userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                        appDel.navigateToLogin()
-                    }
+                    userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                    appDel.navigateToLogin()
+                    
+//                    Utilities.showHud()
+//                    WebServiceSubClass.LogoutApi { (status, apimessage, error) in
+//                        Utilities.hideHud()
+//                        userDefaults.setValue(false, forKey: U serDefaultsKey.isUserLogin.rawValue)
+//                        appDel.navigateToLogin()
+//                    }
                 }
             }
             

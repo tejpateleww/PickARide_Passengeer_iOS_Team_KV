@@ -136,6 +136,7 @@ extension AddCardVC{
             reqModel.expiryMonth = self.monthYearTuple.month
             
 //            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
+            self.navigationController?.popViewController(animated: true)
         }else{
             
         }
