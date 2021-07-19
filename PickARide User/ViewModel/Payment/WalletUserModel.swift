@@ -25,4 +25,8 @@ class WalletUserModel{
             self.walletHistoryVC?.lblNoDataFound.isHidden = response?.data?.count != 0
         }
     }
+    
+    func webserviceAddMoneyA(reqModel: AddMoneyRequestModel){
+        Utilities.showHud()
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 class WebServiceSubClass{
 
+    //MARK:- Init
     class func InitApi(completion: @escaping (Bool,String,InitResponseModel?,Any) -> ()) {
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + "/" + Singleton.sharedInstance.UserId, responseModel: InitResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
@@ -23,9 +24,16 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Auth
     class func LoginApi(reqModel: LoginRequestModel, completion: @escaping (Bool,String,LoginResponseModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.login.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
+        }
+    }
+    
+    class func LogoutApi(completion: @escaping (Bool,String,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logout.rawValue + Singleton.sharedInstance.UserId, responseModel: [String:String].self) { (status, message, response, error) in
+            completion(status, message, error)
         }
     }
     
@@ -65,6 +73,7 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Card
     class func AddCardApi(reqModel : AddCardReqModel, completion: @escaping (Bool,String,CardListModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.addCard.rawValue, requestModel: reqModel, responseModel: CardListModel.self) { (status, message, response, error) in
             if status{
@@ -92,15 +101,16 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Wallet
     class func WalletHistoryApi(reqModel : WalletHistoryRequestModel, completion: @escaping (Bool,String,WalletHistoryModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.walletHistory.rawValue, requestModel: reqModel, responseModel: WalletHistoryModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
     
-    class func LogoutApi(completion: @escaping (Bool,String,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logout.rawValue + Singleton.sharedInstance.UserId, responseModel: [String:String].self) { (status, message, response, error) in
-            completion(status, message, error)
+    class func AddMoneyApi(reqModel : AddMoneyRequestModel, completion: @escaping (Bool,String,AddMoneyResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.addMoney.rawValue, requestModel: reqModel, responseModel: AddMoneyResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
         }
     }
 }

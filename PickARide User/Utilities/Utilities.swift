@@ -288,7 +288,7 @@ class Utilities:NSObject{
                 
             }
         }
-        return UrlConstant.SomethingWentWrong
+        return ""
     }
     
     

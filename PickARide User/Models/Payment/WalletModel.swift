@@ -77,3 +77,35 @@ class WalletDetails: Codable {
         self.cardID = cardID
     }
 }
+
+//MARK:- Add Money Request Model
+class AddMoneyRequestModel: Encodable {
+    var customerId: String? = Singleton.sharedInstance.UserId
+    var cardId: String?
+    var amount: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case customerId = "customer_id"
+        case cardId = "card_id"
+        case amount = "amount"
+    }
+}
+
+//MARK:- Add Money Response Model
+class AddMoneyResponseModel: Codable {
+    let status: Bool?
+    let walletBalance: Int?
+    let message: String?
+
+    enum CodingKeys: String, CodingKey {
+        case status
+        case walletBalance = "wallet_balance"
+        case message
+    }
+
+    init(status: Bool, walletBalance: Int, message: String) {
+        self.status = status
+        self.walletBalance = walletBalance
+        self.message = message
+    }
+}

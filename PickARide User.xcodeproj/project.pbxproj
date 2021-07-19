@@ -110,6 +110,7 @@
 		18E93C7326973559003AB725 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E93C7226973558003AB725 /* RegisterViewModel.swift */; };
 		18E93C7626973E78003AB725 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E93C7526973E78003AB725 /* ProfileModel.swift */; };
 		18E93C7926973F65003AB725 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E93C7826973F65003AB725 /* ProfileViewModel.swift */; };
+		18ECEFED26A55F1600B7F1C1 /* url.json in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEFEC26A55F1600B7F1C1 /* url.json */; };
 		18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7FA4525AED38000F1F619 /* MenuViewController.swift */; };
 		18F9B6F9259350E100202DA6 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E5259350E100202DA6 /* NavigationItems.swift */; };
 		18F9B6FA259350E100202DA6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9B6E6259350E100202DA6 /* Fonts.swift */; };
@@ -248,6 +249,7 @@
 		18E93C7226973558003AB725 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		18E93C7526973E78003AB725 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		18E93C7826973F65003AB725 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		18ECEFEC26A55F1600B7F1C1 /* url.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = url.json; sourceTree = "<group>"; };
 		18F7FA4525AED38000F1F619 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18F9B6E5259350E100202DA6 /* NavigationItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItems.swift; sourceTree = "<group>"; };
 		18F9B6E6259350E100202DA6 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				180979D325876C75002070A7 /* Resources */,
 				181EBD94258730B300C11C08 /* Info.plist */,
 				180979FF25877CCE002070A7 /* Localizable.strings */,
+				18ECEFEC26A55F1600B7F1C1 /* url.json */,
 			);
 			path = "PickARide User";
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				181EBDB9258730B300C11C08 /* Main.storyboard in Resources */,
 				180979FD25877CCE002070A7 /* Localizable.strings in Resources */,
 				180979E625876C75002070A7 /* Ubuntu-Light.ttf in Resources */,
+				18ECEFED26A55F1600B7F1C1 /* url.json in Resources */,
 				1828A1C826985B75009ADA2A /* ToastMessageXib.xib in Resources */,
 				1809799A25876869002070A7 /* Assets.xcassets in Resources */,
 				816AEABD25CD047E00ABA5BD /* GoogleService-Info.plist in Resources */,
