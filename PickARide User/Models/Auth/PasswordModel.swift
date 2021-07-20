@@ -39,4 +39,10 @@ class PasswordResponseModel: Codable {
         self.status = status
         self.message = message
     }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+        message = try? values?.decodeIfPresent(String.self, forKey: .message)
+    }
 }

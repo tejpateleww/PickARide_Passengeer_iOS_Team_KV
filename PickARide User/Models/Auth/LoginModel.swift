@@ -32,11 +32,24 @@ class LoginResponseModel: Codable{
     var status: Bool?
     var message: String?
     var data: ProfileModel?
-
+    
     init(status: Bool, message: String, data: ProfileModel) {
         self.status = status
         self.message = message
         self.data = data
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case data = "data"
+        case message = "message"
+        case status = "status"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        data = try? ProfileModel(from: decoder)
+        message = try? values?.decodeIfPresent(String.self, forKey: .message)
+        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
     }
 }
 
@@ -49,7 +62,7 @@ class ProfileModel: Codable {
     var profileImage, socialID, socialType, rememberToken: String?
     var address, trash, status, referralCode: String?
     var createdAt, rating, xAPIKey: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case companyID = "company_id"
@@ -75,7 +88,7 @@ class ProfileModel: Codable {
         case rating
         case xAPIKey = "x-api-key"
     }
-
+    
     init(id: String, companyID: String, firstName: String, lastName: String, email: String, countryID: String, countryCode: String, mobileNo: String, dob: String, gender: String, walletBalance: String, deviceType: String, deviceToken: String, lat: String, lng: String, qrCode: String, profileImage: String, socialID: String, socialType: String, rememberToken: String, address: String, trash: String, status: String, referralCode: String, createdAt: String, rating: String, xAPIKey: String) {
         self.id = id
         self.companyID = companyID
@@ -105,6 +118,38 @@ class ProfileModel: Codable {
         self.rating = rating
         self.xAPIKey = xAPIKey
     }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        address = try? values?.decodeIfPresent(String.self, forKey: .address)
+        companyID = try? values?.decodeIfPresent(String.self, forKey: .companyID)
+        countryCode = try? values?.decodeIfPresent(String.self, forKey: .countryCode)
+        countryID = try? values?.decodeIfPresent(String.self, forKey: .countryID)
+        createdAt = try? values?.decodeIfPresent(String.self, forKey: .createdAt)
+        deviceToken = try? values?.decodeIfPresent(String.self, forKey: .deviceToken)
+        deviceType = try? values?.decodeIfPresent(String.self, forKey: .deviceType)
+        dob = try? values?.decodeIfPresent(String.self, forKey: .dob)
+        email = try? values?.decodeIfPresent(String.self, forKey: .email)
+        firstName = try? values?.decodeIfPresent(String.self, forKey: .firstName)
+        gender = try? values?.decodeIfPresent(String.self, forKey: .gender)
+        id = try? values?.decodeIfPresent(String.self, forKey: .id)
+        lastName = try? values?.decodeIfPresent(String.self, forKey: .lastName)
+        lat = try? values?.decodeIfPresent(String.self, forKey: .lat)
+        lng = try? values?.decodeIfPresent(String.self, forKey: .lng)
+        mobileNo = try? values?.decodeIfPresent(String.self, forKey: .mobileNo)
+        profileImage = try? values?.decodeIfPresent(String.self, forKey: .profileImage)
+        qrCode = try? values?.decodeIfPresent(String.self, forKey: .qrCode)
+        rating = try? values?.decodeIfPresent(String.self, forKey: .rating)
+        referralCode = try? values?.decodeIfPresent(String.self, forKey: .referralCode)
+        rememberToken = try? values?.decodeIfPresent(String.self, forKey: .rememberToken)
+        socialID = try? values?.decodeIfPresent(String.self, forKey: .socialID)
+        socialType = try? values?.decodeIfPresent(String.self, forKey: .socialType)
+        status = try? values?.decodeIfPresent(String.self, forKey: .status)
+        trash = try? values?.decodeIfPresent(String.self, forKey: .trash)
+        walletBalance = try? values?.decodeIfPresent(String.self, forKey: .walletBalance)
+        xAPIKey = try? values?.decodeIfPresent(String.self, forKey: .xAPIKey)
+    }
+    
 }
 
 //MARK:- Apple User Model

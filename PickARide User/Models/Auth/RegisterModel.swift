@@ -29,6 +29,13 @@ class OTPResponseModel: Codable {
         self.otp = otp
         self.message = message
     }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+        otp = try? values?.decodeIfPresent(Int.self, forKey: .otp)
+        message = try? values?.decodeIfPresent(String.self, forKey: .message)
+    }
 }
 
 //MARK:- Register Request Model
