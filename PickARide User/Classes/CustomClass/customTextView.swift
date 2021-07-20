@@ -60,6 +60,7 @@ class ratingTextview : IQTextView{
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.init(hexString: "#E4E9F2").cgColor
         self.font = CustomFont.regular.returnFont(13)
+        self.tintColor = ThemeColorEnum.Theme.rawValue
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
         self.textContainerInset = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)

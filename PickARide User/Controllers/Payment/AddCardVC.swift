@@ -46,6 +46,10 @@ class AddCardVC: BaseViewController {
         super.viewDidLoad()
         self.setUpUI()
         self.setLocalization()
+        
+        if Singleton.sharedInstance.CountryList.count == 0{
+            WebServiceSubClass.GetCountryList {_, _, _, _ in}
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -293,6 +297,11 @@ extension AddCardVC : UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.txtCountry{
+            if Singleton.sharedInstance.CountryList.count == 0{
+                DispatchQueue.global(qos: .background).async {
+                    WebServiceSubClass.GetCountryList {_, _, _, _ in}
+                }
+            }
             return Singleton.sharedInstance.CountryList.count != 0
         }
         return true

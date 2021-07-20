@@ -119,7 +119,11 @@ extension ProfileVC{
         toolBar.setItems([cancel,space,done], animated: false)
         
         self.txtCountryCode.inputAccessoryView = toolBar
-        self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        if Singleton.sharedInstance.CountryList.count == 0{
+            WebServiceSubClass.GetCountryList {_, _, _, _ in}
+        }else{
+            self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        }
     }
     
     @objc func makeEditableTrue(_ sender: UIButton) {
@@ -180,7 +184,7 @@ extension ProfileVC{
         }else if self.txtPhone.text?.count != 10 {
             strTitle = UrlConstant.ValidPhoneNo
         }
-
+        
         if let str = strTitle{
             Toast.show(title: UrlConstant.Required, message: str, state: .failure)
             return false
@@ -192,6 +196,17 @@ extension ProfileVC{
 
 //MARK:- TextView Delegate
 extension ProfileVC: UITextFieldDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.txtCountryCode{
+            if Singleton.sharedInstance.CountryList.count == 0{
+                WebServiceSubClass.GetCountryList {_, _, _, _ in}
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtPhone || textField == txtFirstName || textField == txtLastName{
             let currentString: NSString = textField.text as NSString? ?? ""
@@ -202,7 +217,7 @@ extension ProfileVC: UITextFieldDelegate{
         return true
     }
 }
-    
+
 extension ProfileVC: ImagePickerDelegate {
     
     func didSelect(image: UIImage?, button SelectedTag:Int) {
@@ -220,7 +235,7 @@ extension ProfileVC: ImagePickerDelegate {
 
 //MARK:- Country Code Picker Set Up
 extension ProfileVC : UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

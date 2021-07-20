@@ -80,7 +80,11 @@ extension RegisterVC{
         toolBar.setItems([cancel,space,done], animated: false)
         
         self.txtCountryCode.inputAccessoryView = toolBar
-        self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        if Singleton.sharedInstance.CountryList.count == 0{
+            WebServiceSubClass.GetCountryList {_, _, _, _ in}
+        }else{
+            self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+        }
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
@@ -198,6 +202,17 @@ extension RegisterVC: UITextViewDelegate{
 
 //MARK:- TextField Delegate
 extension RegisterVC: UITextFieldDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.txtCountryCode{
+            if Singleton.sharedInstance.CountryList.count == 0{
+                WebServiceSubClass.GetCountryList {_, _, _, _ in}
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtPhoneNumber || textField == txtFirstName || textField == txtLastName{
             let currentString: NSString = textField.text as NSString? ?? ""
