@@ -20,6 +20,7 @@ class UrlConstant{
     static let Success = "UrlConstant_Success".Localized()
     static let Failed = "UrlConstant_Failed".Localized()
     static let Status = "status"
+    static let SessionExpired = "UrlConstant_SessionExpired".Localized()
     static let SomethingWentWrong = "UrlConstant_SomethingWentWrong".Localized()
     static let NoInternetConnection =  "UrlConstant_NoInternetConnection".Localized()
     static let RequestTimeOut = "UrlConstant_RequestTimeOut".Localized()
@@ -53,7 +54,8 @@ class UrlConstant{
     
 }
 
-let ErrorResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SomethingWentWrong]
+let SessionExpiredResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SessionExpired]
+let SomethingWentWrongResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SomethingWentWrong]
 let NoInternetResponseDic = [UrlConstant.ResponseMessage: UrlConstant.NoInternetConnection]
 
 

@@ -18,7 +18,7 @@ class SplashVC: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
             self.webserviceGetCountryList()
-            self.webserviceGetCardList()
+//            self.webserviceGetCardList()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
