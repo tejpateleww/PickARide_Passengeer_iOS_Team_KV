@@ -25,7 +25,6 @@ class CurrentRideDriverInformationVC: BaseViewController {
     var isExpandCategory:  Bool  = false {
         didSet {
             mainVWBottomConstraint.constant = isExpandCategory ? 0 : (-mainVW.frame.height + topVW.frame.height + 60)
-            self.btnCancel.isHidden = !isExpandCategory
             self.lblDriverPickUpMsg.superview?.isHidden = !isExpandCategory
             self.view.endEditing(true)
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {

@@ -169,6 +169,10 @@ extension ChooseDestinationVC: UITextFieldDelegate{
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
 }
 
 //MARK:- Google AutoComplete Delegate

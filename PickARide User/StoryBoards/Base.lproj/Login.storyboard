@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0E-vq-ht0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="679.5"/>
@@ -343,7 +343,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YVs-R0-3Wq" firstAttribute="trailing" secondItem="a0E-vq-ht0" secondAttribute="trailing" id="2HG-eX-AFu"/>
-                            <constraint firstItem="a0E-vq-ht0" firstAttribute="top" secondItem="MzD-3V-FAd" secondAttribute="top" id="4JW-IP-lCS"/>
+                            <constraint firstItem="a0E-vq-ht0" firstAttribute="top" secondItem="YVs-R0-3Wq" secondAttribute="top" id="4JW-IP-lCS"/>
                             <constraint firstAttribute="bottom" secondItem="a0E-vq-ht0" secondAttribute="bottom" id="BuH-1F-7dS"/>
                             <constraint firstItem="a0E-vq-ht0" firstAttribute="leading" secondItem="YVs-R0-3Wq" secondAttribute="leading" id="eTI-DT-Q4l"/>
                         </constraints>

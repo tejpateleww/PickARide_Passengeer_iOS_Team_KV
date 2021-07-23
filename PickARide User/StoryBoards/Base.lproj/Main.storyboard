@@ -67,18 +67,18 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTu-R3-lgb">
-                                        <rect key="frame" x="0.0" y="227" width="375" height="440"/>
+                                        <rect key="frame" x="0.0" y="172" width="375" height="495"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="440" id="Yca-YN-Faa"/>
+                                            <constraint firstAttribute="height" constant="495" id="Yca-YN-Faa"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="0T7-d9-naR" kind="embed" id="XGN-N4-Zud"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kw9-eE-vyv">
-                                        <rect key="frame" x="0.0" y="382" width="375" height="285"/>
+                                        <rect key="frame" x="0.0" y="332" width="375" height="335"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="285" id="JMH-PG-h3P"/>
+                                            <constraint firstAttribute="height" constant="335" id="JMH-PG-h3P"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="1JO-gX-Mth" kind="embed" id="S7u-Y0-io2"/>
@@ -4029,6 +4029,8 @@
                         <outlet property="lblRating" destination="l09-kg-fQ4" id="05L-Wd-vEu"/>
                         <outlet property="lblRideDetails" destination="3Td-5w-khN" id="XFh-88-RxG"/>
                         <outlet property="lblTotal" destination="Vur-cD-alv" id="Mqb-pR-Maa"/>
+                        <outlet property="receiptBtnOuterVWBottomConstraint" destination="g6j-gY-6MH" id="YSg-dv-gDa"/>
+                        <outlet property="receptOuterVWHeightConstraint" destination="CEA-eU-neQ" id="67i-ay-lhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ike-cQ-3ho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4664,7 +4666,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKE-qk-vT8">
-                                <rect key="frame" x="320" y="2" width="40" height="40"/>
+                                <rect key="frame" x="320" y="1.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="3vk-eG-6xg"/>
                                     <constraint firstAttribute="height" constant="40" id="Ejf-9i-SiK"/>
@@ -4973,7 +4975,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtN-qu-Tjd" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="48"/>
-                                                        <state key="normal" title="BOOK NOW"/>
+                                                        <state key="normal" title="CHOOSE PAYMENT METHODS"/>
                                                         <connections>
                                                             <action selector="btnBookNowClick:" destination="kNx-X8-3QC" eventType="touchUpInside" id="qi5-PZ-RoJ"/>
                                                         </connections>
@@ -5063,7 +5065,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Oi5-Wd-ZuS" firstAttribute="leading" secondItem="a9m-S7-uRE" secondAttribute="leading" id="9Hi-9P-Pfj"/>
-                            <constraint firstItem="Oi5-Wd-ZuS" firstAttribute="top" secondItem="KKE-qk-vT8" secondAttribute="bottom" constant="9.5" id="SmY-0a-oP1"/>
+                            <constraint firstItem="Oi5-Wd-ZuS" firstAttribute="top" secondItem="KKE-qk-vT8" secondAttribute="bottom" constant="10" id="SmY-0a-oP1"/>
                             <constraint firstAttribute="bottom" secondItem="Oi5-Wd-ZuS" secondAttribute="bottom" id="WQ8-jG-nYN"/>
                             <constraint firstItem="a9m-S7-uRE" firstAttribute="trailing" secondItem="KKE-qk-vT8" secondAttribute="trailing" constant="15" id="XvT-IC-8qD"/>
                             <constraint firstItem="Oi5-Wd-ZuS" firstAttribute="trailing" secondItem="a9m-S7-uRE" secondAttribute="trailing" id="juz-q8-TWW"/>
@@ -5094,11 +5096,11 @@
             <objects>
                 <viewController storyboardIdentifier="CurrentRideDetailsVC" id="1JO-gX-Mth" customClass="CurrentRideDetailsVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gWt-l7-0YH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="335"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-RK-8GF" customClass="suggestedTaxiView" customModule="PickARide_User" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="5" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfp-eW-nKA">
                                         <rect key="frame" x="16" y="0.0" width="343" height="42"/>
@@ -5125,14 +5127,14 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-SR-tyO">
-                                        <rect key="frame" x="289" y="4" width="70" height="34"/>
+                                        <rect key="frame" x="343" y="4" width="16" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P33-PE-ftO">
-                                                <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="34"/>
                                                 <state key="normal" image="ic_share"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-Qw-fUD">
-                                                <rect key="frame" x="36" y="0.0" width="34" height="34"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-Qw-fUD">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
                                                 <state key="normal" image="ic_Cancel"/>
                                                 <connections>
                                                     <action selector="btnCancel:" destination="1JO-gX-Mth" eventType="touchUpInside" id="I42-WG-m6K"/>
@@ -5336,12 +5338,22 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isMainView" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90X-3i-3QW">
+                                <rect key="frame" x="320" y="5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YsI-yw-Ujb"/>
+                                    <constraint firstAttribute="height" constant="40" id="cjr-de-5cO"/>
+                                </constraints>
+                                <state key="normal" image="ic_Navigation"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iP6-Dm-Fwh"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="iSo-RK-8GF" secondAttribute="bottom" id="J93-Xo-zgc"/>
                             <constraint firstItem="iSo-RK-8GF" firstAttribute="trailing" secondItem="iP6-Dm-Fwh" secondAttribute="trailing" id="KH7-Tg-jd0"/>
                             <constraint firstItem="iSo-RK-8GF" firstAttribute="leading" secondItem="iP6-Dm-Fwh" secondAttribute="leading" id="UBf-uD-EbV"/>
+                            <constraint firstItem="iSo-RK-8GF" firstAttribute="top" secondItem="90X-3i-3QW" secondAttribute="bottom" constant="10" id="fp6-CE-BO8"/>
+                            <constraint firstItem="iP6-Dm-Fwh" firstAttribute="trailing" secondItem="90X-3i-3QW" secondAttribute="trailing" constant="15" id="y8g-98-U8Y"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5369,11 +5381,11 @@
             <objects>
                 <viewController storyboardIdentifier="CurrentRideDriverInformationVC" id="0T7-d9-naR" customClass="CurrentRideDriverInformationVC" customModule="PickARide_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="abq-1i-et6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-6n-lcY" customClass="suggestedTaxiView" customModule="PickARide_User" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="2.5" width="375" height="437.5"/>
+                                <rect key="frame" x="0.0" y="57.5" width="375" height="437.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wl5-eg-Bhh">
                                         <rect key="frame" x="16" y="0.0" width="343" height="42"/>
@@ -5400,14 +5412,14 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="c5l-VY-Qd0">
-                                        <rect key="frame" x="289" y="4" width="70" height="34"/>
+                                        <rect key="frame" x="343" y="4" width="16" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSX-Rd-Lg8">
-                                                <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="34"/>
                                                 <state key="normal" image="ic_share"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-cD-lff">
-                                                <rect key="frame" x="36" y="0.0" width="34" height="34"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-cD-lff">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
                                                 <state key="normal" image="ic_Cancel"/>
                                                 <connections>
                                                     <action selector="btnCancel:" destination="0T7-d9-naR" eventType="touchUpInside" id="r4k-D2-tC4"/>
@@ -5663,12 +5675,22 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isMainView" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-0g-EIO">
+                                <rect key="frame" x="320" y="7.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="HgB-j3-yXd"/>
+                                    <constraint firstAttribute="height" constant="40" id="qGW-EZ-n5M"/>
+                                </constraints>
+                                <state key="normal" image="ic_Navigation"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I9o-Yc-0XJ"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="pUl-6n-lcY" secondAttribute="bottom" id="DZN-Cw-niK"/>
                             <constraint firstItem="pUl-6n-lcY" firstAttribute="trailing" secondItem="I9o-Yc-0XJ" secondAttribute="trailing" id="EDN-oY-EQn"/>
                             <constraint firstItem="pUl-6n-lcY" firstAttribute="leading" secondItem="I9o-Yc-0XJ" secondAttribute="leading" id="NIh-GN-VuK"/>
+                            <constraint firstItem="pUl-6n-lcY" firstAttribute="top" secondItem="8Hq-0g-EIO" secondAttribute="bottom" constant="10" id="QAq-Ul-8P7"/>
+                            <constraint firstItem="I9o-Yc-0XJ" firstAttribute="trailing" secondItem="8Hq-0g-EIO" secondAttribute="trailing" constant="15" id="eu6-G3-JDL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -8057,7 +8079,7 @@
         <image name="imgDollar" width="8" height="14"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="23" height="19.5"/>
+        <image name="imgHome" width="14" height="16"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <image name="user_placeholder" width="341" height="341"/>

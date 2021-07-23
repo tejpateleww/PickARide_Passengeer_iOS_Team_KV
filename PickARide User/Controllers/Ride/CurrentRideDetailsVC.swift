@@ -31,7 +31,6 @@ class CurrentRideDetailsVC: BaseViewController {
         didSet {
             self.driverProfileOuterVW.isHidden = !isExpandCategory
             mainVWBottomConstraint.constant = isExpandCategory ? 0 : -50
-            self.btnCancel.isHidden = !isExpandCategory
             self.btnGoToRatings.isHidden = !isExpandCategory
             self.ratingsView.isHidden = !isExpandCategory
             self.lblAvgRating.isHidden = !isExpandCategory

@@ -34,7 +34,6 @@ class SelectTaxiTypeVC: BaseViewController{
         didSet {
             suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedTexiView.frame.height + topVW.frame.height + 60)
             self.tblSuggestedRides.isHidden = !isExpandCategory
-            self.btnCancel.isHidden = !isExpandCategory
             self.view.endEditing(true)
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
@@ -55,7 +54,7 @@ class SelectTaxiTypeVC: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Destination 1","Destination 2"], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Pick Up","Destination"], isTwoLabels: false)
     }
     
     @IBAction func btnCancel(_ sender: Any) {

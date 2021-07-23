@@ -214,7 +214,7 @@ extension RegisterVC: UITextFieldDelegate{
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == txtPhoneNumber || textField == txtFirstName || textField == txtLastName{
+        if textField == txtPhoneNumber || textField == txtFirstName || textField == txtLastName || textField == txtPassword{
             let currentString: NSString = textField.text as NSString? ?? ""
             let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
             return string == "" || (newString.length <= ((textField == txtPhoneNumber) ? MAX_PHONE_DIGITS : TEXTFIELD_MaximumLimit))

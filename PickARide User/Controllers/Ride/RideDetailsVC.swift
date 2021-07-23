@@ -26,6 +26,8 @@ class RideDetailsVC: BaseViewController {
     @IBOutlet weak var lblName: RideDetailLabel!
     @IBOutlet weak var lblRating: RideDetailLabel!
     @IBOutlet weak var btnHelp: RidesDetailsButton!
+    @IBOutlet weak var receptOuterVWHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var receiptBtnOuterVWBottomConstraint: NSLayoutConstraint!
     
     var isFromPastRide = Bool()
     override func viewDidLoad() {
@@ -50,7 +52,8 @@ class RideDetailsVC: BaseViewController {
 //MARK:- Set Up UI
 extension RideDetailsVC{
     func setUpUI(){
-        self.btnRepeatRide.isHidden = !self.isFromPastRide
+        self.receptOuterVWHeightConstraint.constant = !self.isFromPastRide ? 0 : 30
+        self.receiptBtnOuterVWBottomConstraint.constant = !self.isFromPastRide ? 0 : 25
     }
     
     func setupLocalization(){

@@ -150,6 +150,19 @@ extension LoginVC{
         self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
     }
 }
+//MARK:- TextField Delegate
+extension LoginVC: UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtPassword {
+            let currentString: NSString = textField.text as NSString? ?? ""
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return string == "" || newString.length <= TEXTFIELD_MaximumLimit
+        }
+        
+        return true
+    }
+}
 
 //MARK:- Social Sign In
 extension LoginVC: SocialSignInDelegate{

@@ -61,7 +61,7 @@
 
 //ChooseDestination_
 "ChooseDestination_startLocation_place" = "Enter Start Location";
-"ChooseDestination_DestinationLocation_place" = "Enter Destionation";
+"ChooseDestination_DestinationLocation_place" = "Enter Destination";
 
 //NoDataFound
 "Title_NoDataFound" = "No Data Found";
@@ -192,9 +192,10 @@
 "SuggestedTaxiVC_lblCardPayment" = "Card payment";
 "SuggestedTaxiVC_lblOffer" = "Offers";
 
-"SuggestedTaxiVC_btnBookNow" = "BOOK NOW";
+"SuggestedTaxiVC_btnBookNow" = "CHOOSE PAYMENT METHOD";
 "SuggestedTaxiVC_btnPromo" = "PROMO";
 
+"PaymentVC_btnBookNow" = "BOOK NOW";
 //ScheduleRideVC_
 "ScheduleRideVC_title" = "Schedule a Ride";
 "ScheduleRideVC_btnCancel" = "CANCEL";

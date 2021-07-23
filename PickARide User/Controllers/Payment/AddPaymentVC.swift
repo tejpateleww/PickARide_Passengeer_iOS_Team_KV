@@ -43,7 +43,7 @@ class AddPaymentVC: BaseViewController{
     func setLocalization() {
         lblTitle.text = "AddCardVC_lblPaymentMethod".Localized()
         lblNoDataFound.text = "Title_NoDataFound".Localized()
-        btnAddCard.setTitle(self.isFromSideMenu ? "AddCardVC_lblAddCard".Localized().uppercased() : "SuggestedTaxiVC_btnBookNow".Localized(), for: .normal)
+        btnAddCard.setTitle(self.isFromSideMenu ? "AddCardVC_lblAddCard".Localized().uppercased() : "PaymentVC_btnBookNow".Localized(), for: .normal)
     }
     
     //MARK: -btnAction
