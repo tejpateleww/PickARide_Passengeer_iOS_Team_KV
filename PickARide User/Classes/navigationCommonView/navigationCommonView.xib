@@ -12,11 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="navigationCommonView" customModule="PickARide_User" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzm-iO-AD1" customClass="suggestedTaxiView" customModule="PickARide_User" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="4" width="414" height="44"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="khX-OQ-sIS">
                             <rect key="frame" x="25" y="0.0" width="364" height="44"/>
@@ -83,6 +83,10 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isTopView" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -91,7 +95,7 @@
             <constraints>
                 <constraint firstItem="Tzm-iO-AD1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7v2-K0-O7N"/>
                 <constraint firstAttribute="bottom" secondItem="Tzm-iO-AD1" secondAttribute="bottom" id="8ZY-dI-xef"/>
-                <constraint firstItem="Tzm-iO-AD1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YWk-og-a6Y"/>
+                <constraint firstItem="Tzm-iO-AD1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="YWk-og-a6Y"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tzm-iO-AD1" secondAttribute="trailing" id="feL-9K-kQk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -99,8 +103,9 @@
                 <outlet property="btnNavigation" destination="jd0-9I-Pt2" id="bap-XQ-nxj"/>
                 <outlet property="lblEndRideAddress" destination="Czx-wf-T4r" id="dnG-fv-Kfn"/>
                 <outlet property="lblStartRideAddress" destination="Klu-2W-OlT" id="KKw-5h-Tn3"/>
+                <outlet property="selectTaxiVW" destination="Tzm-iO-AD1" id="pAf-cy-YHa"/>
             </connections>
-            <point key="canvasLocation" x="90" y="111"/>
+            <point key="canvasLocation" x="89.855072463768124" y="111.83035714285714"/>
         </view>
     </objects>
     <resources>

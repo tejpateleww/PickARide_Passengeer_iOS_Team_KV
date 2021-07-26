@@ -29,7 +29,10 @@ class ChooseDestinationVC: BaseViewController {
         super.viewDidLoad()
         self.setUpUI()
         self.setLocalization()
-           
+        
+        var size = CGRect.zero
+        size.size.height = .leastNormalMagnitude
+        tblPlacePicker.tableHeaderView = UIView(frame: size)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
     }

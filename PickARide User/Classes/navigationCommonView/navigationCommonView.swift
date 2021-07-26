@@ -12,16 +12,12 @@ class navigationCommonView: UIView {
     @IBOutlet weak var lblStartRideAddress: suggestedRidesLabel!
     @IBOutlet weak var lblEndRideAddress: suggestedRidesLabel!
     @IBOutlet weak var btnNavigation: UIButton!
+    @IBOutlet weak var selectTaxiVW: suggestedTaxiView!
     
     // MARK: - Properties
     var contentView:UIView?
     @IBInspectable var nibName:String?
 
-    
-    func setValue() {
-        lblStartRideAddress.text = "Destination 1"
-        lblEndRideAddress.text = "Destination 2"
-    }
     
     // MARK: - IBOutlets
    
@@ -32,6 +28,12 @@ class navigationCommonView: UIView {
       
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        selectTaxiVW.addShadow()
+        selectTaxiVW.cornerRadius = 8
+    }
+    
     func xibSetup() {
         guard let view = loadViewFromNib() else { return }
         view.frame = bounds
@@ -39,6 +41,7 @@ class navigationCommonView: UIView {
          //   [.flexibleWidth, .flexibleHeight]
         addSubview(view)
         contentView = view
+        
     }
     
     func loadViewFromNib() -> UIView? {

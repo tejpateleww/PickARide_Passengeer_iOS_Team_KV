@@ -90,7 +90,7 @@
 "AddCardVC_LblDebitCardAreAcceptedDescription" = "Debit cards are accepted at some  locations and for some categories.";
 "AddCardVC_TextFieldName_place" = "Card Holder Name";
 "AddCardVC_TextFieldCreditCardNumber_place" = "Credit Card Number";
-"AddCardVC_TextFieldExpires_place" = "Expirey date";
+"AddCardVC_TextFieldExpires_place" = "Expiry date";
 "AddCardVC_TextFieldCVV_place" = "CVV";
 "AddCardVC_TextFieldCountry_place" = "Country";
 "AddCardVC_btnSave" = "SAVE";
@@ -136,7 +136,7 @@
 //Ride Details Screen
 "RideDetailsVC_lblRideDetails" = "Ride Details";
 "RideDetailsVC_lblDate" = "Today, 10:30 AM";
-"RideDetailsVC_lblPlaceCode" = "RIDEGO(ST3751 ";
+"RideDetailsVC_lblPlaceCode" = "RIDEGO (ST3751 ";
 "RideDetailsVC_lblPlace" = "- Toyota Vios)";
 "RideDetailsVC_lblAddress" = "Seattle - 280 Hemlock Ln";
 "RideDetailsVC_lblPrice" = "Price";
