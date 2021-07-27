@@ -876,14 +876,14 @@ Number</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Xy-Vds" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="481"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="482"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                        <rect key="frame" x="0.0" y="481" width="414" height="387"/>
+                                                        <rect key="frame" x="0.0" y="482" width="414" height="386"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhN-0h-T4o" customClass="changePasswordLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="30" width="352" height="30"/>
+                                                                <rect key="frame" x="16" y="25" width="352" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="MPR-L5-REP"/>
                                                                 </constraints>
@@ -892,7 +892,7 @@ Number</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcn-1T-zBQ">
-                                                                <rect key="frame" x="368" y="30" width="30" height="30"/>
+                                                                <rect key="frame" x="368" y="25" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Zcn-1T-zBQ" secondAttribute="height" multiplier="1:1" id="iJV-nW-Hhv"/>
                                                                 </constraints>
@@ -903,7 +903,7 @@ Number</string>
                                                                 </connections>
                                                             </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-6z-Cbf">
-                                                                <rect key="frame" x="16" y="81" width="382" height="186"/>
+                                                                <rect key="frame" x="16" y="80" width="382" height="186"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-mw-dBz" customClass="changePasswordView" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
@@ -962,7 +962,7 @@ Number</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxc-ZS-6Zr">
-                                                                <rect key="frame" x="16" y="303" width="382" height="48"/>
+                                                                <rect key="frame" x="16" y="302" width="382" height="48"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4e-VP-TJl" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
@@ -986,11 +986,11 @@ Number</string>
                                                         <constraints>
                                                             <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="trailing" secondItem="jmX-6z-Cbf" secondAttribute="trailing" id="2bn-SZ-E8f"/>
                                                             <constraint firstAttribute="trailing" secondItem="jmX-6z-Cbf" secondAttribute="trailing" constant="16" id="6Ca-XZ-icg"/>
-                                                            <constraint firstItem="jmX-6z-Cbf" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="bottom" constant="21" id="DSC-OC-pxK"/>
+                                                            <constraint firstItem="jmX-6z-Cbf" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="bottom" constant="25" id="DSC-OC-pxK"/>
                                                             <constraint firstItem="IhN-0h-T4o" firstAttribute="leading" secondItem="gF7-qg-ETu" secondAttribute="leading" constant="16" id="ILd-bc-clj"/>
                                                             <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="top" secondItem="jmX-6z-Cbf" secondAttribute="bottom" constant="36" id="Iew-BN-kIV"/>
                                                             <constraint firstAttribute="trailing" secondItem="Zcn-1T-zBQ" secondAttribute="trailing" constant="16" id="Jmh-CM-wc9"/>
-                                                            <constraint firstItem="IhN-0h-T4o" firstAttribute="top" secondItem="gF7-qg-ETu" secondAttribute="top" constant="30" id="KGy-EQ-3ba"/>
+                                                            <constraint firstItem="IhN-0h-T4o" firstAttribute="top" secondItem="gF7-qg-ETu" secondAttribute="top" constant="25" id="KGy-EQ-3ba"/>
                                                             <constraint firstItem="jmX-6z-Cbf" firstAttribute="leading" secondItem="IhN-0h-T4o" secondAttribute="leading" id="ORf-PM-iHy"/>
                                                             <constraint firstItem="Zcn-1T-zBQ" firstAttribute="leading" secondItem="IhN-0h-T4o" secondAttribute="trailing" id="Vdn-Cu-MTf"/>
                                                             <constraint firstItem="Zcn-1T-zBQ" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="top" id="ZLf-tC-fo0"/>

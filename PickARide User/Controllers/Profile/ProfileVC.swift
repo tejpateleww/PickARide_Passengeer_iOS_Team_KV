@@ -39,19 +39,22 @@ class ProfileVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocalization()
+        self.setUpUI()
+        navBtnProfile.isSelected = true
+        self.makeEditableTrue(navBtnProfile)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        self.setUpUI()
+        navBtnProfile.isSelected = !currentEditStatus
+        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
+        self.makeEditableTrue(navBtnProfile)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navBtnProfile.isSelected = true
-        navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
-        self.makeEditableTrue(navBtnProfile)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

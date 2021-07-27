@@ -54,7 +54,7 @@
 "ChangePassword_btnChangePassword" = "CHANGE PASSWORD";
 
 //Notification_
-"Notification_lblTitle" = "Notification";
+"Notification_lblTitle" = "Notifications";
 
 //Home_
 "home_Whereareyougoing_place" = "Where are you going ?";
@@ -125,7 +125,7 @@
 //Saved Places Screen
 "SavedPlaceVC_lblSavedPlaces" = "Saved Places";
 "SavedPlaceVC_lblPlaceName" = "Home";
-"SavedPlaceVC_btnAddPlace" = "+Add New Place";
+"SavedPlaceVC_btnAddPlace" = "+ Add New Place";
 
 
 

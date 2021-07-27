@@ -10,7 +10,8 @@ import UIKit
 
 class SavedPlaceVC: BaseViewController {
     //MARK: -Properties
-      var placeArray = ["Home","Work"]
+      var placeArray = [SettingsTitle.Home, SettingsTitle.Work]
+    var placeImages = [SettingImages.SettingHome, SettingImages.SettingWork]
     //MARK: -IBOutlets
     
     
@@ -27,7 +28,7 @@ class SavedPlaceVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     @IBAction func btnAddPlaceTap(_ sender: Any) {
@@ -59,6 +60,7 @@ extension SavedPlaceVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SavedPlaceCell = tblSavedPlaces.dequeueReusableCell(withIdentifier: SavedPlaceCell.reuseIdentifier, for: indexPath)as! SavedPlaceCell
         cell.lblPlaceName.text = placeArray[indexPath.row]
+        cell.imgPlace.image = placeImages[indexPath.row]
         return cell
     }
 }

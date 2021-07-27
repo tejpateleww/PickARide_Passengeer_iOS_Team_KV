@@ -56,6 +56,8 @@ extension ChatVC{
         
         self.lblName.text = "Connor Chavez"
         self.lblInfo.text = "ST3751 - Toyota Vios"
+    
+        self.navBtnProfile.setImage(UIImage(named: "DummayUserPlaceHolder"), for: .normal)
     }
     
     @objc func backClick(){
@@ -100,7 +102,7 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 35
     }
 }
 
