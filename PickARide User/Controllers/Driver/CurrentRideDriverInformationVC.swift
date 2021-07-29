@@ -65,6 +65,8 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnCallClick(_ sender: Any) {
+        self.view.endEditing(true)
+        Utilities.makePhoneCall(phone: "9876543210")
     }
     
     @IBAction func btnMessageClick(_ sender: Any) {

@@ -12,8 +12,14 @@ class ChangePasswordVC: UIViewController {
 
     @IBOutlet weak var vwMain: viewWithClearBg!
     @IBOutlet weak var lblChangePassword: UILabel!
+    
+    @IBOutlet weak var lblOldPassword: ProfileLabel!
     @IBOutlet weak var txtOldPassword: ChangePasswordTextField!
+    
+    @IBOutlet weak var lblNewPassword: ProfileLabel!
     @IBOutlet weak var txtNewPassword: ChangePasswordTextField!
+    
+    @IBOutlet weak var lblConfirmPassword: ProfileLabel!
     @IBOutlet weak var txtConfirmPassword: ChangePasswordTextField!
     @IBOutlet weak var btnSubmit: submitButton!
     @IBOutlet weak var btnClose: UIButton!
@@ -46,12 +52,12 @@ class ChangePasswordVC: UIViewController {
     }
     
     @IBAction func btnsubmitAction(_ sender: Any) {
-        if self.validation(){
+//        if self.validation(){
 //            self.callChangePasswordApi()
             if let click = self.btnSubmitClosure {
                 click()
             }
-        }
+//        }
     }
 }
 
@@ -72,11 +78,14 @@ extension ChangePasswordVC{
     }
     
     func setButtonTitleAndHideView() {
-        txtOldPassword.superview?.isHidden = !isChangePassword
+        lblOldPassword.superview?.isHidden = !isChangePassword
         lblChangePassword.text = isChangePassword ? "ChangePassword_lblChangePassword".Localized() : "ChangePassword_lblSetPassword".Localized()
     }
     
     func setLocalization() {
+        lblOldPassword.text = "ChangePassword_oldPassword".Localized()
+        lblNewPassword.text = "ChangePassword_newPassword".Localized()
+        lblConfirmPassword.text = "ChangePassword_confirmPassword".Localized()
         txtOldPassword.placeholder = "ChangePassword_oldPassword_Place".Localized()
         txtNewPassword.placeholder = "ChangePassword_newPassword_Place".Localized()
         txtConfirmPassword.placeholder = "ChangePassword_confirmPassword_Place".Localized()

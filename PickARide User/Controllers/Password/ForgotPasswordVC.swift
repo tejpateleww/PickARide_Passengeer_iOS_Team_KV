@@ -16,7 +16,6 @@ class ForgotPasswordVC: BaseViewController {
     @IBOutlet weak var lblEmailTitle: ForgotPasswordLabel!
     @IBOutlet weak var textFieldPhoneNumber: phonenumberTextField!
     @IBOutlet weak var btnContinue: submitButton!
-    @IBOutlet weak var lblEmail: ProfileLabel!
     @IBOutlet weak var txtEmail: emailPasswordTextField!
     
     var forgotPasswordUserModel = PasswordUserModel()
@@ -38,22 +37,21 @@ class ForgotPasswordVC: BaseViewController {
     }
     
     @IBAction func btnContinue(_ sender: Any) {
-        if self.validation(){
+//        if self.validation(){
 //            self.callForgotPasswordApi()
             let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
             self.navigationController?.pushViewController(controller, animated: true)
-        }
+//        }
     }
 }
 
 //MARK:- Methods
 extension ForgotPasswordVC{
     func setupLocalization() {
-        lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
+//        lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
         lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
-        lblEmailTitle.text = "LoginScreen_textFieldEmailID_place".Localized()
-        lblEmail.text = "LoginScreen_textFieldEmailID_place".Localized()
+        lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
         btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
     }

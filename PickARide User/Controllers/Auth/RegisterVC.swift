@@ -18,14 +18,14 @@ class RegisterVC: BaseViewController {
     @IBOutlet weak var lblLastNameTitle: ProfileLabel!
     @IBOutlet weak var txtLastName: UITextField!
     
-    @IBOutlet weak var lblEmailTitle: UILabel!
+    @IBOutlet weak var lblEmailTitle: ProfileLabel!
     @IBOutlet weak var txtEmail: UITextField!
     
-    @IBOutlet weak var lblCountryCode: registerScreenLabel!
+    @IBOutlet weak var lblCountryCode: ProfileLabel!
     @IBOutlet weak var txtCountryCode: customTextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     
-    @IBOutlet weak var lblPassword: UILabel!
+    @IBOutlet weak var lblPassword: ProfileLabel!
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var textView: UITextView!
@@ -46,7 +46,7 @@ class RegisterVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.signUp.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.login.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,14 +56,14 @@ class RegisterVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
-        if self.validation(){
+//        if self.validation(){
 //            if self.getLocation(){
                 //            self.callOtpApi()
                 let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
                 controller.isFrmRegister = true
                 self.navigationController?.pushViewController(controller, animated: true)
 //            }
-        }
+//        }
     }
 }
 
@@ -107,7 +107,7 @@ extension RegisterVC{
         lblLastNameTitle.text =  "ProfileVC_lblLastName".Localized()
         txtLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
         
-        lblEmailTitle.text = "ProfileVC_textFieldEmail".Localized()
+        lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         txtEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
         
         lblCountryCode.text = "SignUpPage_lblCountryCode".Localized()

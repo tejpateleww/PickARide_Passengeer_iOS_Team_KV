@@ -55,26 +55,42 @@ enum NavItemsRight {
     }
 }
 enum NavTitles {
-    case none, signUp, Home, forgotPassword, reasonForCancle,rating, CommonView, rideDetails
+    case none, signUp, Home, forgotPassword, verify, profile, myRides, rideDetails, payment , addCard, notification, reasonForCancle, rating, CommonView, setting, addNewPlace, savedPlaces
     
     var value:String {
         switch self {
-        case .none:
-            return ""
+        case .none: return ""
+        case .Home: return ""
         case .signUp:
             return "NavigationTitle_SignUp".Localized()
         case .forgotPassword:
             return "NavigationTitle_ForgotPassword".Localized()
-        case .Home:
-            return ""
+        case .verify:
+            return "NavigationTitle_Verfiy".Localized()
+        case .profile:
+            return "NavigationTitle_Profile".Localized()
+        case .myRides:
+            return "NavigationTitle_MyRides".Localized()
+        case .rideDetails:
+            return "RideDetailsVC_lblRideDetails".Localized()
+        case .payment:
+            return "NavigationTitle_PaymentMethods".Localized()
+        case .addCard:
+            return "NavigationTitle_AddCard".Localized()
+        case .notification:
+            return "NavigationTitle_Notifications".Localized()
+        case .setting:
+            return "NavigationTitle_Settings".Localized()
         case .reasonForCancle:
             return "NavigationTitle_reasonForCancle".Localized()
         case .rating:
-        return "NavigationTitle_Rating".Localized()
+            return "NavigationTitle_Rating".Localized()
         case .CommonView:
             return "CommonView"
-        case .rideDetails:
-            return "RideDetailsVC_lblRideDetails".Localized()
+        case .addNewPlace:
+            return "NavigationTitle_AddNewPlace".Localized()
+        case .savedPlaces:
+            return "NavigationTitle_SavelPlaces".Localized()
         }
     }
 }

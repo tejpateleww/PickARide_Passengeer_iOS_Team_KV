@@ -162,7 +162,15 @@ class Utilities:NSObject{
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    
+    class func makePhoneCall(phone: String){
+        if let url = URL(string: "tel://\(phone)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     
     func isModal(vc: UIViewController) -> Bool {
         

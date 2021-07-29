@@ -55,6 +55,10 @@
 "ChangePassword_btnSetPassword" = "SET PASSWORD";
 "ChangePassword_btnChangePassword" = "CHANGE PASSWORD";
 
+"ChangePassword_oldPassword" = "CURRENT PASSWORD";
+"ChangePassword_newPassword" = "NEW PASSWORD";
+"ChangePassword_confirmPassword" = "CONFIRM PASSWORD";
+
 //Notification_
 "Notification_lblTitle" = "Notifications";
 
@@ -211,8 +215,18 @@
 //NavigationTitle
 "NavigationTitle_SignUp" = "Register";
 "NavigationTitle_ForgotPassword" = "Forgot Password";
+"NavigationTitle_Verfiy" = "Verify";
+"NavigationTitle_Profile" = "Profile";
+"NavigationTitle_MyRides" = "My Rides";
+"NavigationTitle_RideDetails" = "Ride Details";
+"NavigationTitle_PaymentMethods" = "Payment Methods";
+"NavigationTitle_AddCard" = "Add Card";
+"NavigationTitle_Notifications" = "Notifications";
+"NavigationTitle_Settings" = "Settings";
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";
 "NavigationTitle_Rating" = "Rating";
+"NavigationTitle_AddNewPlace" = "Add New Place";
+"NavigationTitle_SavelPlaces" = "Saved Places";
 
 //Messages
 "UrlConstant_Required" = "Required";

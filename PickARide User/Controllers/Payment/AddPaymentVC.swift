@@ -36,7 +36,7 @@ class AddPaymentVC: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.payment.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
