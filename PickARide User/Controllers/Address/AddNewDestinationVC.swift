@@ -33,7 +33,8 @@ class AddNewDestinationVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.add.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        navBtnDone.addTarget(self, action: #selector(navAddButtonClicked), for: .touchUpInside)
     }
 }
 
@@ -59,6 +60,11 @@ extension AddNewDestinationVC{
         
         self.lblPlaceAddress.text = "AddNewDestinationVC_PlaceAddress".Localized()
         self.txtPlaceAddress.placeholder = "AddNewDestinationVC_PlaceAddress".Localized()
+    }
+    
+    @objc func navAddButtonClicked(_ sender: UIButton) {
+        self.view.endEditing(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

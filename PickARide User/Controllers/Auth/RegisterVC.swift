@@ -11,15 +11,25 @@ import UIKit
 class RegisterVC: BaseViewController {
     
     @IBOutlet weak var lblSignUP: registerScreenLabel!
+    
+    @IBOutlet weak var lblFirstNameTitle: ProfileLabel!
     @IBOutlet weak var txtFirstName: UITextField!
+    
+    @IBOutlet weak var lblLastNameTitle: ProfileLabel!
     @IBOutlet weak var txtLastName: UITextField!
+    
+    @IBOutlet weak var lblEmailTitle: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
+    
     @IBOutlet weak var lblCountryCode: registerScreenLabel!
+    @IBOutlet weak var txtCountryCode: customTextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
+    
+    @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var txtPassword: UITextField!
+    
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var btnSignUP: submitButton!
-    @IBOutlet weak var txtCountryCode: customTextField!
     
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
@@ -90,12 +100,22 @@ extension RegisterVC{
     
     func setLocalization() {
         lblSignUP.text = "SignUpPage_lblSignUP".Localized()
+        
+        lblFirstNameTitle.text = "ProfileVC_lblFirstName".Localized()
         txtFirstName.placeholder = "SignUpPage_textFieldFirstName_place".Localized()
+        
+        lblLastNameTitle.text =  "ProfileVC_lblLastName".Localized()
         txtLastName.placeholder = "SignUpPage_textFieldLastName_place".Localized()
+        
+        lblEmailTitle.text = "ProfileVC_textFieldEmail".Localized()
         txtEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
+        
         lblCountryCode.text = "SignUpPage_lblCountryCode".Localized()
         txtPhoneNumber.placeholder = "SignUpPage_textFieldPhoneNumbaer_place".Localized()
+        
+        lblPassword.text = "ProfileVC_lblPassword".Localized()
         txtPassword.placeholder = "SignUpPage_textFieldPassword_place".Localized()
+        
         textView.delegate = self
         btnSignUP.setTitle("SignUpPage_btnSIgnUP".Localized(), for: .normal)
     }

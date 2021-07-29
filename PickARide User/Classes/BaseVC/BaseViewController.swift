@@ -45,6 +45,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
         controller.navigationController?.navigationBar.barTintColor = naviColor;
         controller.navigationController?.navigationBar.tintColor = colors.white.value;
         
+        self.navBtnDone.contentHorizontalAlignment = .trailing
    //     controller.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: (controller.navigationController?.navigationBar.frame.size.width)!, height: 48)
         if naviTitle == NavTitles.Home.value {
             controller.navigationItem.titleView = UIView()
@@ -250,6 +251,22 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone = UIButton.init()
                     navBtnDone.frame = CGRect(x: 0, y: 0, width: 80, height: 44)
                     navBtnDone.setTitle("NavigationButton_btnAddCard".Localized(), for: .normal)
+                    navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(17)
+                    navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
+                   
+                   // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
+                    navBtnDone.layer.setValue(controller, forKey: "controller")
+                    viewDone.addSubview(navBtnDone)
+
+                    let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
+                    btnRightBar.style = .plain
+                    arrButtons.append(btnRightBar)
+                }else if title == NavItemsRight.add.value {
+                    let viewDone = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 44))
+
+                    navBtnDone = UIButton.init()
+                    navBtnDone.frame = CGRect(x: 0, y: 0, width: 50, height: 44)
+                    navBtnDone.setTitle("NavigationButton_btnAdd".Localized(), for: .normal)
                     navBtnDone.titleLabel?.font = CustomFont.bold.returnFont(17)
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    

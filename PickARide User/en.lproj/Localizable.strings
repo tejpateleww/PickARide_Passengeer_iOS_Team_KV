@@ -10,7 +10,9 @@
 
 "LoginScreen_lblSignIN" = "Sign In";
 "LoginScreen_lblWelcomeBack" = "Welcome Back!";
+"LoginScreen_lblEmail" = "EMAIL";
 "LoginScreen_textFieldEmailID_place" = "Email";
+"LoginScreen_lblPassword" = "PASSWORD";
 "LoginScreen_textFieldPassword_place" = "Password";
 "LoginScreen_btnForgotPassword" = "Forgot Password?";
 "LoginScreen_btnSignIN" = "SIGN IN";
@@ -157,6 +159,7 @@
 "NavigationButton_btnDone" = "Done";
 "NavigationButton_btnAddCard" = "Add Card";
 "NavigationButton_btnHelp" = "Help";
+"NavigationButton_btnAdd" = "Add";
 
 //profile screen
 "ProfileVC_lblTitle" = "Hey";
@@ -206,6 +209,8 @@
 "MenuVC_lblVersion" = "v%@";
 
 //NavigationTitle
+"NavigationTitle_SignUp" = "Register";
+"NavigationTitle_ForgotPassword" = "Forgot Password";
 "NavigationTitle_reasonForCancle" = "Reason for Cancel";
 "NavigationTitle_Rating" = "Rating";
 

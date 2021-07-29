@@ -16,6 +16,7 @@ class ForgotPasswordVC: BaseViewController {
     @IBOutlet weak var lblEmailTitle: ForgotPasswordLabel!
     @IBOutlet weak var textFieldPhoneNumber: phonenumberTextField!
     @IBOutlet weak var btnContinue: submitButton!
+    @IBOutlet weak var lblEmail: ProfileLabel!
     @IBOutlet weak var txtEmail: emailPasswordTextField!
     
     var forgotPasswordUserModel = PasswordUserModel()
@@ -28,7 +29,7 @@ class ForgotPasswordVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.forgotPassword.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,6 +53,7 @@ extension ForgotPasswordVC{
         lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
         lblEmailTitle.text = "LoginScreen_textFieldEmailID_place".Localized()
+        lblEmail.text = "LoginScreen_textFieldEmailID_place".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
         btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
     }

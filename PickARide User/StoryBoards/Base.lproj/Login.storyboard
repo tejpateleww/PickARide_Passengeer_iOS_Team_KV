@@ -86,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-kj-Qw2" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="679.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_img_top" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-XK-HVa">
                                                 <rect key="frame" x="259.5" y="-60" width="154.5" height="281.5"/>
@@ -120,8 +120,18 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="istitle" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqA-0U-0Qj" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                <rect key="frame" x="21" y="307" width="41" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCountryCode" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-nZ-sPb" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="303" width="372" height="48"/>
+                                                <rect key="frame" x="21" y="332.5" width="372" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-yT-3LD" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="15" width="336" height="18.5"/>
@@ -138,8 +148,18 @@
                                                     <constraint firstItem="2fh-yT-3LD" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" constant="18" id="rBf-lm-2uU"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-fe-u1p" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                <rect key="frame" x="21" y="396.5" width="73.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCountryCode" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwE-83-RpI" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="367" width="372" height="48"/>
+                                                <rect key="frame" x="21" y="422" width="372" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTs-2U-lMp" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="15.5" width="336" height="17"/>
@@ -157,7 +177,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a0-j6-sqv" customClass="loginScreenButton" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="270" y="431" width="123" height="14"/>
+                                                <rect key="frame" x="270" y="486" width="123" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="vYt-Dv-HaI"/>
                                                 </constraints>
@@ -170,7 +190,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-xJ-bW3">
-                                                <rect key="frame" x="21" y="470" width="372" height="46"/>
+                                                <rect key="frame" x="21" y="525" width="372" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E30-Ck-7ce" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="372" height="46"/>
@@ -190,7 +210,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
-                                                <rect key="frame" x="106.5" y="536" width="201" height="59"/>
+                                                <rect key="frame" x="106.5" y="591" width="201" height="59"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
                                                         <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
@@ -257,7 +277,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-Ig-oDL" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="613" width="372" height="20.5"/>
+                                                <rect key="frame" x="21" y="668" width="372" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -266,7 +286,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="puq-b7-rSs">
-                                                <rect key="frame" x="86" y="653.5" width="242" height="16"/>
+                                                <rect key="frame" x="86" y="708.5" width="242" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ia-Rbt" customClass="loginScreenLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="16"/>
@@ -301,9 +321,13 @@
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="leading" secondItem="i0e-kj-Qw2" secondAttribute="leading" constant="100" id="9UW-EJ-8da"/>
                                             <constraint firstItem="Dox-07-Ei6" firstAttribute="top" secondItem="yDF-8x-zxT" secondAttribute="bottom" constant="21" id="AjO-Sm-cu5"/>
                                             <constraint firstAttribute="trailing" secondItem="9a0-j6-sqv" secondAttribute="trailing" constant="21" id="DDQ-Fv-cqA"/>
+                                            <constraint firstItem="dtb-fe-u1p" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="Ep8-nn-8Pk"/>
                                             <constraint firstItem="OxV-YL-pD7" firstAttribute="leading" secondItem="Dox-07-Ei6" secondAttribute="leading" id="KFl-WA-hTd"/>
                                             <constraint firstAttribute="trailing" secondItem="Dox-07-Ei6" secondAttribute="trailing" constant="21" id="LKw-KV-zVp"/>
+                                            <constraint firstItem="dtb-fe-u1p" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="16" id="Lrk-bu-c4O"/>
+                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="WqA-0U-0Qj" secondAttribute="bottom" constant="5" id="Nf8-JI-mkR"/>
                                             <constraint firstItem="OxV-YL-pD7" firstAttribute="trailing" secondItem="Dox-07-Ei6" secondAttribute="trailing" id="OMI-3K-mG0"/>
+                                            <constraint firstItem="WqA-0U-0Qj" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="16" id="ORo-vj-fxQ"/>
                                             <constraint firstItem="OxV-YL-pD7" firstAttribute="top" secondItem="Dox-07-Ei6" secondAttribute="bottom" constant="5" id="ORx-Q3-6eX"/>
                                             <constraint firstAttribute="trailing" secondItem="mcX-XK-HVa" secondAttribute="trailing" id="Rau-3g-KvU"/>
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="top" secondItem="i0e-kj-Qw2" secondAttribute="top" constant="10" id="TFQ-7J-5xC"/>
@@ -311,7 +335,6 @@
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="UjC-Ko-U2y"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="WlT-wL-PJS"/>
                                             <constraint firstItem="qZe-cf-LYS" firstAttribute="top" secondItem="9fO-xJ-bW3" secondAttribute="bottom" constant="20" id="b6G-jk-Z1D"/>
-                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="tqo-nZ-sPb" secondAttribute="bottom" constant="16" id="b9V-ID-GyG"/>
                                             <constraint firstAttribute="trailing" secondItem="yDF-8x-zxT" secondAttribute="trailing" constant="100" id="dmv-cb-L86"/>
                                             <constraint firstAttribute="trailing" secondItem="HTP-Ig-oDL" secondAttribute="trailing" constant="21" id="gei-dw-2pv"/>
                                             <constraint firstItem="yDF-8x-zxT" firstAttribute="centerX" secondItem="i0e-kj-Qw2" secondAttribute="centerX" id="gfd-s4-u6j"/>
@@ -319,13 +342,14 @@
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="top" secondItem="qZe-cf-LYS" secondAttribute="bottom" constant="18" id="j84-Fh-zWM"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="leading" secondItem="YwE-83-RpI" secondAttribute="leading" id="jOk-nV-2LB"/>
                                             <constraint firstItem="HTP-Ig-oDL" firstAttribute="leading" secondItem="9fO-xJ-bW3" secondAttribute="leading" id="jqn-j9-k6M"/>
-                                            <constraint firstItem="tqo-nZ-sPb" firstAttribute="top" secondItem="OxV-YL-pD7" secondAttribute="bottom" constant="12" id="kNp-oc-pfD"/>
+                                            <constraint firstItem="YwE-83-RpI" firstAttribute="top" secondItem="dtb-fe-u1p" secondAttribute="bottom" constant="5" id="k58-oe-n19"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="leading" secondItem="OxV-YL-pD7" secondAttribute="leading" id="m5i-o8-xMl"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="trailing" secondItem="YwE-83-RpI" secondAttribute="trailing" id="o3I-Ui-yBa"/>
                                             <constraint firstItem="YwE-83-RpI" firstAttribute="trailing" secondItem="tqo-nZ-sPb" secondAttribute="trailing" id="phm-RW-W9E"/>
                                             <constraint firstItem="9fO-xJ-bW3" firstAttribute="top" secondItem="9a0-j6-sqv" secondAttribute="bottom" constant="25" id="qe5-c2-eFE"/>
                                             <constraint firstItem="tqo-nZ-sPb" firstAttribute="trailing" secondItem="OxV-YL-pD7" secondAttribute="trailing" id="tEW-HB-8mM"/>
                                             <constraint firstItem="9a0-j6-sqv" firstAttribute="top" secondItem="YwE-83-RpI" secondAttribute="bottom" constant="16" id="vCV-7k-vZQ"/>
+                                            <constraint firstItem="WqA-0U-0Qj" firstAttribute="leading" secondItem="tqo-nZ-sPb" secondAttribute="leading" id="y5W-Jk-4Dk"/>
                                             <constraint firstItem="puq-b7-rSs" firstAttribute="top" secondItem="HTP-Ig-oDL" secondAttribute="bottom" constant="20" id="y6u-GO-sg8"/>
                                         </constraints>
                                     </view>
@@ -354,7 +378,9 @@
                         <outlet property="btnSIgnUP" destination="sk2-dG-Es2" id="rKv-Fp-Ag9"/>
                         <outlet property="btnSignIN" destination="E30-Ck-7ce" id="QOl-lZ-COJ"/>
                         <outlet property="lblDontHaveanAccount" destination="rcv-ia-Rbt" id="Etu-CU-byr"/>
+                        <outlet property="lblEmailTitle" destination="WqA-0U-0Qj" id="laf-05-acq"/>
                         <outlet property="lblOR" destination="HTP-Ig-oDL" id="Foq-Y7-7Ma"/>
+                        <outlet property="lblPasswordTitle" destination="dtb-fe-u1p" id="NQ8-nG-4PD"/>
                         <outlet property="lblSignIN" destination="OxV-YL-pD7" id="oqt-D3-TcA"/>
                         <outlet property="lblWelcomeBack" destination="Dox-07-Ei6" id="n77-Pd-1kG"/>
                         <outlet property="txtEmail" destination="2fh-yT-3LD" id="Y2f-KR-rsO"/>
@@ -379,8 +405,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uem-TH-Ie7" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et7-Va-2H3" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="32" width="382" height="20.5"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et7-Va-2H3" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -389,53 +415,105 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-Jt-vGQ">
-                                                <rect key="frame" x="16" y="91.5" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="20.5" width="382" height="73.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-Ni-hzZ" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="48"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xR1-4E-Fli">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="73.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
-                                                                <color key="tintColor" name="ThemeColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="5JG-2z-zd1" id="EB6-nI-5t8"/>
-                                                                </connections>
-                                                            </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-4R-USu" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="97" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8P-Ni-hzZ" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="25.5" width="182.5" height="48"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-Ac-bNo" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
+                                                                        <color key="tintColor" name="ThemeColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="5JG-2z-zd1" id="EB6-nI-5t8"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="p6q-Ac-bNo" firstAttribute="leading" secondItem="X8P-Ni-hzZ" secondAttribute="leading" constant="16" id="8hT-dv-btw"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="p6q-Ac-bNo" secondAttribute="trailing" constant="16" id="FwT-B7-HP0"/>
+                                                                    <constraint firstItem="p6q-Ac-bNo" firstAttribute="centerY" secondItem="X8P-Ni-hzZ" secondAttribute="centerY" id="dqP-Ao-t98"/>
+                                                                    <constraint firstAttribute="height" constant="48" id="eOM-r5-v0E"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="p6q-Ac-bNo" firstAttribute="leading" secondItem="X8P-Ni-hzZ" secondAttribute="leading" constant="16" id="8hT-dv-btw"/>
-                                                            <constraint firstAttribute="trailing" secondItem="p6q-Ac-bNo" secondAttribute="trailing" constant="16" id="FwT-B7-HP0"/>
-                                                            <constraint firstItem="p6q-Ac-bNo" firstAttribute="centerY" secondItem="X8P-Ni-hzZ" secondAttribute="centerY" id="dqP-Ao-t98"/>
-                                                            <constraint firstAttribute="height" constant="48" id="eOM-r5-v0E"/>
+                                                            <constraint firstAttribute="trailing" secondItem="X8P-Ni-hzZ" secondAttribute="trailing" id="ORK-c4-E8N"/>
+                                                            <constraint firstItem="fKB-4R-USu" firstAttribute="top" secondItem="xR1-4E-Fli" secondAttribute="top" id="RCE-Rk-28e"/>
+                                                            <constraint firstItem="X8P-Ni-hzZ" firstAttribute="top" secondItem="fKB-4R-USu" secondAttribute="bottom" constant="5" id="lRD-Gz-K7P"/>
+                                                            <constraint firstAttribute="bottom" secondItem="X8P-Ni-hzZ" secondAttribute="bottom" id="oEk-Ey-A5W"/>
+                                                            <constraint firstItem="fKB-4R-USu" firstAttribute="leading" secondItem="xR1-4E-Fli" secondAttribute="leading" id="qqJ-ZH-JEo"/>
+                                                            <constraint firstItem="X8P-Ni-hzZ" firstAttribute="leading" secondItem="xR1-4E-Fli" secondAttribute="leading" id="rMm-Md-eI5"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-xd-5WY" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="199.5" y="0.0" width="182.5" height="48"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76H-wH-ahU">
+                                                        <rect key="frame" x="199.5" y="0.0" width="182.5" height="73.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
-                                                                <color key="tintColor" name="ThemeColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="5JG-2z-zd1" id="Uvm-4i-mVF"/>
-                                                                </connections>
-                                                            </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-I8-wh5" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="93" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-xd-5WY" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="25.5" width="182.5" height="48"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-02-ncM" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="15" width="150.5" height="18.5"/>
+                                                                        <color key="tintColor" name="ThemeColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="5JG-2z-zd1" id="Uvm-4i-mVF"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="QB0-02-ncM" firstAttribute="centerY" secondItem="6MV-xd-5WY" secondAttribute="centerY" id="KlS-3R-yIA"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="QB0-02-ncM" secondAttribute="trailing" constant="16" id="RQV-Iu-bG1"/>
+                                                                    <constraint firstItem="QB0-02-ncM" firstAttribute="leading" secondItem="6MV-xd-5WY" secondAttribute="leading" constant="16" id="j4p-Ul-qms"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="QB0-02-ncM" firstAttribute="centerY" secondItem="6MV-xd-5WY" secondAttribute="centerY" id="KlS-3R-yIA"/>
-                                                            <constraint firstAttribute="trailing" secondItem="QB0-02-ncM" secondAttribute="trailing" constant="16" id="RQV-Iu-bG1"/>
-                                                            <constraint firstItem="QB0-02-ncM" firstAttribute="leading" secondItem="6MV-xd-5WY" secondAttribute="leading" constant="16" id="j4p-Ul-qms"/>
+                                                            <constraint firstItem="6MV-xd-5WY" firstAttribute="top" secondItem="5KG-I8-wh5" secondAttribute="bottom" constant="5" id="7om-Sj-1Si"/>
+                                                            <constraint firstItem="5KG-I8-wh5" firstAttribute="leading" secondItem="76H-wH-ahU" secondAttribute="leading" id="O8C-ga-Wkk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="6MV-xd-5WY" secondAttribute="bottom" id="OaZ-tr-3b8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="6MV-xd-5WY" secondAttribute="trailing" id="fof-ea-s0k"/>
+                                                            <constraint firstItem="5KG-I8-wh5" firstAttribute="top" secondItem="76H-wH-ahU" secondAttribute="top" id="jV9-ep-cin"/>
+                                                            <constraint firstItem="6MV-xd-5WY" firstAttribute="leading" secondItem="5KG-I8-wh5" secondAttribute="leading" id="weK-cM-Kp4"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHi-5p-WQ2">
+                                                <rect key="frame" x="16" y="110" width="48.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gu4-jI-mwO" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="154.5" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="135.5" width="382" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-ce-l5T" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="15" width="350" height="18.5"/>
@@ -456,7 +534,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTRY CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-yy-9cX" customClass="registerScreenLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="217.5" width="382" height="20.5"/>
+                                                <rect key="frame" x="16" y="198.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.53725490196078429" green="0.5725490196078431" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -465,7 +543,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-fq-YK6">
-                                                <rect key="frame" x="16" y="244" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="225" width="382" height="48"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpu-sp-yqe" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="48"/>
@@ -520,8 +598,14 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5g-3R-VqO">
+                                                <rect key="frame" x="16" y="289" width="92.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2i-Ba-ohv" customClass="RegisterView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="307" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="314.5" width="382" height="48"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQZ-fp-OEH" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="15.5" width="350" height="17"/>
@@ -539,7 +623,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By clicking &quot;Sign Up&quot; you agree to our terms and conditions as well as our privacy policy" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBh-Q7-UR8" customClass="signUPPageTextView" customModule="PickARide_User" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="387" width="382" height="54"/>
+                                                <rect key="frame" x="16" y="394.5" width="382" height="54"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="MhL-GF-klX"/>
@@ -549,7 +633,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-ma-afl">
-                                                <rect key="frame" x="0.0" y="441" width="414" height="311"/>
+                                                <rect key="frame" x="0.0" y="448.5" width="414" height="303.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9os-aS-3fG">
@@ -577,32 +661,36 @@
                                         <constraints>
                                             <constraint firstItem="NFU-ma-afl" firstAttribute="leading" secondItem="uem-TH-Ie7" secondAttribute="leading" id="2ON-FO-hVt"/>
                                             <constraint firstItem="Oyx-fq-YK6" firstAttribute="top" secondItem="ThJ-yy-9cX" secondAttribute="bottom" constant="6" id="34l-AJ-UWW"/>
+                                            <constraint firstItem="s2i-Ba-ohv" firstAttribute="top" secondItem="p5g-3R-VqO" secondAttribute="bottom" constant="5" id="4np-SG-48D"/>
                                             <constraint firstItem="ThJ-yy-9cX" firstAttribute="leading" secondItem="gu4-jI-mwO" secondAttribute="leading" id="6fL-0o-egX"/>
                                             <constraint firstItem="gu4-jI-mwO" firstAttribute="leading" secondItem="d4D-Jt-vGQ" secondAttribute="leading" id="6nw-oK-VX4"/>
                                             <constraint firstAttribute="trailing" secondItem="NFU-ma-afl" secondAttribute="trailing" id="B1K-UN-LqI"/>
                                             <constraint firstItem="gu4-jI-mwO" firstAttribute="trailing" secondItem="d4D-Jt-vGQ" secondAttribute="trailing" id="Cj3-Cl-gtP"/>
-                                            <constraint firstItem="et7-Va-2H3" firstAttribute="top" secondItem="uem-TH-Ie7" secondAttribute="top" constant="32" id="EKj-hv-mKq"/>
+                                            <constraint firstItem="et7-Va-2H3" firstAttribute="top" secondItem="uem-TH-Ie7" secondAttribute="top" id="EKj-hv-mKq"/>
                                             <constraint firstItem="sBh-Q7-UR8" firstAttribute="trailing" secondItem="s2i-Ba-ohv" secondAttribute="trailing" id="EgX-V1-jxI"/>
                                             <constraint firstItem="ThJ-yy-9cX" firstAttribute="trailing" secondItem="gu4-jI-mwO" secondAttribute="trailing" id="Fg5-50-Bfw"/>
                                             <constraint firstItem="NFU-ma-afl" firstAttribute="top" secondItem="sBh-Q7-UR8" secondAttribute="bottom" id="JyM-l3-OgI"/>
-                                            <constraint firstItem="d4D-Jt-vGQ" firstAttribute="top" secondItem="et7-Va-2H3" secondAttribute="bottom" constant="39" id="K1o-iK-aGz"/>
-                                            <constraint firstItem="s2i-Ba-ohv" firstAttribute="top" secondItem="Oyx-fq-YK6" secondAttribute="bottom" constant="15" id="Nz4-Eb-VbH"/>
+                                            <constraint firstItem="d4D-Jt-vGQ" firstAttribute="top" secondItem="et7-Va-2H3" secondAttribute="bottom" id="K1o-iK-aGz"/>
+                                            <constraint firstItem="p5g-3R-VqO" firstAttribute="top" secondItem="Oyx-fq-YK6" secondAttribute="bottom" constant="16" id="PX6-Dt-2Fe"/>
                                             <constraint firstItem="d4D-Jt-vGQ" firstAttribute="leading" secondItem="et7-Va-2H3" secondAttribute="leading" id="WJL-2V-nCV"/>
                                             <constraint firstAttribute="bottom" secondItem="9os-aS-3fG" secondAttribute="bottom" constant="20" id="Xo6-6d-nLk"/>
                                             <constraint firstItem="Oyx-fq-YK6" firstAttribute="trailing" secondItem="ThJ-yy-9cX" secondAttribute="trailing" id="YFQ-tB-WyZ"/>
                                             <constraint firstItem="et7-Va-2H3" firstAttribute="leading" secondItem="uem-TH-Ie7" secondAttribute="leading" constant="16" id="b5q-HM-oTQ"/>
                                             <constraint firstItem="9os-aS-3fG" firstAttribute="leading" secondItem="uem-TH-Ie7" secondAttribute="leading" constant="16" id="dwk-zU-sd2"/>
                                             <constraint firstItem="ThJ-yy-9cX" firstAttribute="top" secondItem="gu4-jI-mwO" secondAttribute="bottom" constant="15" id="e9d-AW-HPh"/>
+                                            <constraint firstItem="OHi-5p-WQ2" firstAttribute="leading" secondItem="d4D-Jt-vGQ" secondAttribute="leading" id="hte-eL-4LX"/>
                                             <constraint firstItem="s2i-Ba-ohv" firstAttribute="leading" secondItem="Oyx-fq-YK6" secondAttribute="leading" id="imc-cN-csC"/>
                                             <constraint firstItem="sBh-Q7-UR8" firstAttribute="leading" secondItem="s2i-Ba-ohv" secondAttribute="leading" id="iyv-bJ-WcQ"/>
                                             <constraint firstAttribute="trailing" secondItem="et7-Va-2H3" secondAttribute="trailing" constant="16" id="l7j-nu-tmh"/>
+                                            <constraint firstItem="gu4-jI-mwO" firstAttribute="top" secondItem="OHi-5p-WQ2" secondAttribute="bottom" constant="5" id="m98-Cy-CWE"/>
+                                            <constraint firstItem="OHi-5p-WQ2" firstAttribute="top" secondItem="d4D-Jt-vGQ" secondAttribute="bottom" constant="16" id="mws-RX-JJw"/>
                                             <constraint firstItem="sBh-Q7-UR8" firstAttribute="top" secondItem="s2i-Ba-ohv" secondAttribute="bottom" constant="32" id="pH6-Jq-xQc"/>
                                             <constraint firstAttribute="trailing" secondItem="9os-aS-3fG" secondAttribute="trailing" constant="16" id="pKp-i8-o5N"/>
                                             <constraint firstItem="d4D-Jt-vGQ" firstAttribute="trailing" secondItem="et7-Va-2H3" secondAttribute="trailing" id="qvq-ax-zI4"/>
                                             <constraint firstItem="9os-aS-3fG" firstAttribute="top" secondItem="NFU-ma-afl" secondAttribute="bottom" id="rHM-zh-HZG"/>
                                             <constraint firstItem="s2i-Ba-ohv" firstAttribute="trailing" secondItem="Oyx-fq-YK6" secondAttribute="trailing" id="vGR-EQ-7Rk"/>
                                             <constraint firstItem="Oyx-fq-YK6" firstAttribute="leading" secondItem="ThJ-yy-9cX" secondAttribute="leading" id="vLw-9w-dgH"/>
-                                            <constraint firstItem="gu4-jI-mwO" firstAttribute="top" secondItem="d4D-Jt-vGQ" secondAttribute="bottom" constant="15" id="wm5-Ga-lRF"/>
+                                            <constraint firstItem="p5g-3R-VqO" firstAttribute="leading" secondItem="Oyx-fq-YK6" secondAttribute="leading" id="wfy-B8-RkX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -628,6 +716,10 @@
                     <connections>
                         <outlet property="btnSignUP" destination="JhA-TB-TLy" id="CCS-Ij-Aym"/>
                         <outlet property="lblCountryCode" destination="ThJ-yy-9cX" id="zfS-oo-2J3"/>
+                        <outlet property="lblEmailTitle" destination="OHi-5p-WQ2" id="WPO-ah-Iic"/>
+                        <outlet property="lblFirstNameTitle" destination="fKB-4R-USu" id="jT3-zR-GWn"/>
+                        <outlet property="lblLastNameTitle" destination="5KG-I8-wh5" id="MwD-P5-6qS"/>
+                        <outlet property="lblPassword" destination="p5g-3R-VqO" id="19i-TV-Qey"/>
                         <outlet property="lblSignUP" destination="et7-Va-2H3" id="TjZ-BZ-2wz"/>
                         <outlet property="textView" destination="sBh-Q7-UR8" id="eci-v0-SF3"/>
                         <outlet property="txtCountryCode" destination="m6H-4A-8uY" id="c3G-kt-4Og"/>
@@ -1129,43 +1221,66 @@ Number</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5dx-zC-bLz">
-                                                        <rect key="frame" x="16" y="88.5" width="382" height="49"/>
+                                                        <rect key="frame" x="16" y="88.5" width="382" height="74.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUM-RT-li0" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="49"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AP5-Yk-j0l">
+                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="74.5"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHi-jy-bbg" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="18" y="15.5" width="346" height="18.5"/>
-                                                                        <color key="tintColor" name="ThemeColor"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oo-AQ-AKL" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUM-RT-li0" customClass="loginView" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="25.5" width="382" height="49"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHi-jy-bbg" customClass="emailPasswordTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                                <rect key="frame" x="18" y="15.5" width="346" height="18.5"/>
+                                                                                <color key="tintColor" name="ThemeColor"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="49" id="Bp5-eE-PAe"/>
+                                                                            <constraint firstItem="mHi-jy-bbg" firstAttribute="leading" secondItem="pUM-RT-li0" secondAttribute="leading" constant="18" id="WY1-ML-G4m"/>
+                                                                            <constraint firstItem="mHi-jy-bbg" firstAttribute="centerY" secondItem="pUM-RT-li0" secondAttribute="centerY" id="ZWk-YS-Pgi"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="mHi-jy-bbg" secondAttribute="trailing" constant="18" id="aRJ-cR-MZ9"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="49" id="Bp5-eE-PAe"/>
-                                                                    <constraint firstItem="mHi-jy-bbg" firstAttribute="leading" secondItem="pUM-RT-li0" secondAttribute="leading" constant="18" id="WY1-ML-G4m"/>
-                                                                    <constraint firstItem="mHi-jy-bbg" firstAttribute="centerY" secondItem="pUM-RT-li0" secondAttribute="centerY" id="ZWk-YS-Pgi"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="mHi-jy-bbg" secondAttribute="trailing" constant="18" id="aRJ-cR-MZ9"/>
+                                                                    <constraint firstItem="1oo-AQ-AKL" firstAttribute="top" secondItem="AP5-Yk-j0l" secondAttribute="top" id="1SL-rZ-bp7"/>
+                                                                    <constraint firstItem="1oo-AQ-AKL" firstAttribute="leading" secondItem="AP5-Yk-j0l" secondAttribute="leading" id="HRJ-Tl-7zR"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="pUM-RT-li0" secondAttribute="bottom" id="K0G-JE-wxA"/>
+                                                                    <constraint firstItem="pUM-RT-li0" firstAttribute="leading" secondItem="1oo-AQ-AKL" secondAttribute="leading" id="d72-hX-Flo"/>
+                                                                    <constraint firstItem="pUM-RT-li0" firstAttribute="top" secondItem="1oo-AQ-AKL" secondAttribute="bottom" constant="5" id="lpI-5y-G5R"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="pUM-RT-li0" secondAttribute="trailing" id="tDy-Ls-oXS"/>
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-4J-hL2" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="49"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="74.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+49" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYr-1f-PuE">
-                                                                        <rect key="frame" x="16" y="15" width="31.5" height="19"/>
+                                                                        <rect key="frame" x="16" y="15" width="31.5" height="44.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="PaZ-iO-6Cm">
-                                                                        <rect key="frame" x="90" y="15" width="12" height="19"/>
+                                                                        <rect key="frame" x="90" y="15" width="12" height="44.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="12" id="1qQ-bd-7hx"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTR-mY-mue">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="49"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="74.5"/>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1187,10 +1302,10 @@ Number</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFj-yw-Mmw" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="32" height="49"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="32" height="74.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlA-Cd-dbO" customClass="phonenumberTextField" customModule="PickARide_User" customModuleProvider="target">
-                                                                        <rect key="frame" x="16" y="15.5" width="0.0" height="18.5"/>
+                                                                        <rect key="frame" x="16" y="28" width="0.0" height="18.5"/>
                                                                         <color key="tintColor" name="ThemeColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1210,7 +1325,7 @@ Number</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KD-cN-gKb" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="137.5" width="414" height="612.5"/>
+                                                        <rect key="frame" x="0.0" y="163" width="414" height="587"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fV7-2g-P3k" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
@@ -1281,6 +1396,7 @@ Number</string>
                     <connections>
                         <outlet property="btnContinue" destination="fV7-2g-P3k" id="oEF-dO-LBe"/>
                         <outlet property="lblDescription" destination="qT5-q9-vRC" id="Bgc-9i-ZhX"/>
+                        <outlet property="lblEmail" destination="1oo-AQ-AKL" id="1mH-6A-vaC"/>
                         <outlet property="lblEmailTitle" destination="hiX-e0-u6u" id="tDh-ax-pNZ"/>
                         <outlet property="lblForgotPassword" destination="bG0-Lr-l7g" id="WUG-lz-SDL"/>
                         <outlet property="lblQuestion" destination="rmX-Rp-MPR" id="wWM-GL-lbU"/>

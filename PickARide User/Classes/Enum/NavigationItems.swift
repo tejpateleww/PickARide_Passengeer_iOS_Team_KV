@@ -31,7 +31,7 @@ enum NavItemsLeft {
 
 
 enum NavItemsRight {
-    case none,login,EditProfile,userProfile,Done,addCard,help
+    case none,login,EditProfile,userProfile,Done,addCard,help,add
     
     var value:String {
         switch self {
@@ -49,16 +49,22 @@ enum NavItemsRight {
             return "Add Card"
         case .help:
             return "Help"
+        case .add:
+            return "Add"
         }
     }
 }
 enum NavTitles {
-    case none, Home,reasonForCancle,rating, CommonView, rideDetails
+    case none, signUp, Home, forgotPassword, reasonForCancle,rating, CommonView, rideDetails
     
     var value:String {
         switch self {
         case .none:
             return ""
+        case .signUp:
+            return "NavigationTitle_SignUp".Localized()
+        case .forgotPassword:
+            return "NavigationTitle_ForgotPassword".Localized()
         case .Home:
             return ""
         case .reasonForCancle:

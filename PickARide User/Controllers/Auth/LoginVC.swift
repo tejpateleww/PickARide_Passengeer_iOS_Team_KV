@@ -13,7 +13,9 @@ class LoginVC: UIViewController {
   
     @IBOutlet weak var lblSignIN: loginScreenLabel!
     @IBOutlet weak var lblWelcomeBack: loginScreenLabel!
+    @IBOutlet weak var lblPasswordTitle: ProfileLabel!
     @IBOutlet weak var txtPassword: emailPasswordTextField!
+    @IBOutlet weak var lblEmailTitle: ProfileLabel!
     @IBOutlet weak var txtEmail: emailPasswordTextField!
     @IBOutlet weak var btnForgotPassword: loginScreenButton!
     @IBOutlet weak var btnSignIN: submitButton!
@@ -86,8 +88,13 @@ extension LoginVC{
     func setupLocalization() {
         lblSignIN.text = "LoginScreen_lblSignIN".Localized()
         lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
+        
+        lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         txtEmail.placeholder = "LoginScreen_textFieldEmailID_place".Localized()
+        
+        lblPasswordTitle.text = "LoginScreen_lblPassword".Localized()
         txtPassword.placeholder = "LoginScreen_textFieldPassword_place".Localized()
+        
         btnForgotPassword.setTitle("LoginScreen_btnForgotPassword".Localized(), for: .normal)
         btnSignIN.setTitle("LoginScreen_btnSignIN".Localized(), for: .normal)
         lblOR.text = "LoginScreen_lblOR".Localized()

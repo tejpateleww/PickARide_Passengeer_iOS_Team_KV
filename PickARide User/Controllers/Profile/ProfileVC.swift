@@ -91,7 +91,7 @@ class ProfileVC: BaseViewController {
     
     @IBAction func btnSave(_ sender: Any) {
         if self.validation(){
-            self.navigationController?.popViewController(animated: true)
+            self.makeEditableTrue(navBtnProfile)
         }
     }
 }
@@ -139,9 +139,7 @@ extension ProfileVC{
         self.btnProfile.isUserInteractionEnabled = sender.isSelected
         self.btnCamera.isHidden = !sender.isSelected
         self.btnSave.isHidden = !sender.isSelected
-        if sender.isSelected{
-            self.navigationItem.rightBarButtonItem = nil
-        }
+        navBtnProfile.isHidden = sender.isSelected
     }
     func setupLocalization(){
         lblTitle.text = "ProfileVC_lblTitle".Localized()

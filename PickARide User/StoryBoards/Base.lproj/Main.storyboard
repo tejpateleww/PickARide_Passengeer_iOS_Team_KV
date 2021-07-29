@@ -1862,7 +1862,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OJ-bZ-tJR">
-                                <rect key="frame" x="16" y="209" width="343" height="249"/>
+                                <rect key="frame" x="16" y="227" width="343" height="213.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_paymentSuccessFully" translatesAutoresizingMaskIntoConstraints="NO" id="xT5-XF-YA2">
                                         <rect key="frame" x="123" y="26" width="97" height="97"/>
@@ -1871,17 +1871,17 @@
                                             <constraint firstAttribute="width" constant="97" id="zhW-Cl-ZVO"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Successfully" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-I3-imQ" customClass="paymentSucessFullyLabel" customModule="PickARide_User" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="143" width="311" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your booking has been confirmed." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-I3-imQ" customClass="paymentSucessFullyLabel" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="143" width="311" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-HW-hJc" customClass="paymentSucessFullyButton" customModule="PickARide_User" customModuleProvider="target">
-                                        <rect key="frame" x="83.5" y="184" width="176" height="35"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-HW-hJc" customClass="paymentSucessFullyButton" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="83.5" y="183.5" width="176" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="176" id="5K8-FA-JyL"/>
-                                            <constraint firstAttribute="height" constant="35" id="Vdr-21-rCD"/>
+                                            <constraint firstAttribute="height" id="Vdr-21-rCD"/>
                                         </constraints>
                                         <state key="normal" title="  Share The Trip" image="ic_ShareColor"/>
                                     </button>
