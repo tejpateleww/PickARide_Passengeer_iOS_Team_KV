@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B56-Z4-AZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B56-Z4-AZT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -975,11 +975,11 @@ Number</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Xy-Vds" customClass="viewWithClearBg" customModule="PickARide_User" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="405.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="393.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF7-qg-ETu" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                        <rect key="frame" x="0.0" y="405.5" width="414" height="462.5"/>
+                                                        <rect key="frame" x="0.0" y="393.5" width="414" height="474.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhN-0h-T4o" customClass="changePasswordLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="25" width="352" height="30"/>
@@ -1164,7 +1164,7 @@ Number</string>
                                                             <constraint firstItem="Zcn-1T-zBQ" firstAttribute="leading" secondItem="IhN-0h-T4o" secondAttribute="trailing" id="Vdn-Cu-MTf"/>
                                                             <constraint firstItem="Zcn-1T-zBQ" firstAttribute="top" secondItem="IhN-0h-T4o" secondAttribute="top" id="ZLf-tC-fo0"/>
                                                             <constraint firstItem="Oxc-ZS-6Zr" firstAttribute="leading" secondItem="jmX-6z-Cbf" secondAttribute="leading" id="Zxs-MW-baD"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Oxc-ZS-6Zr" secondAttribute="bottom" constant="36" id="d4a-Z2-Sw6"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Oxc-ZS-6Zr" secondAttribute="bottom" constant="48" id="d4a-Z2-Sw6"/>
                                                             <constraint firstItem="Zcn-1T-zBQ" firstAttribute="bottom" secondItem="IhN-0h-T4o" secondAttribute="bottom" id="yEj-Uw-0to"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
