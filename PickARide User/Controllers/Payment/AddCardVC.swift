@@ -58,13 +58,14 @@ class AddCardVC: BaseViewController {
     }
     
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-        if !isValidatePaymentDetail().0{
-            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
-            return
-        }
-        if isCreditCardValid{
-            self.callApi()
-        }
+//        if !isValidatePaymentDetail().0{
+//            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
+//            return
+//        }
+//        if isCreditCardValid{
+//            self.callApi()
+//        }
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -93,7 +93,7 @@
 "AddCardVC_LblExpires" = "EXPIRES";
 "AddCardVC_LblCVV" = "CVV";
 "AddCardVC_LblCountry" = "COUNTRY";
-"AddCardVC_LblDebitCardAreAcceptedDescription" = "Debit cards are accepted at some  locations and for some categories.";
+"AddCardVC_LblDebitCardAreAcceptedDescription" = "Debit cards are accepted at some locations and for some categories.";
 "AddCardVC_TextFieldName_place" = "Card Holder Name";
 "AddCardVC_TextFieldCreditCardNumber_place" = "Credit Card Number";
 "AddCardVC_TextFieldExpires_place" = "Expiry date";
