@@ -46,7 +46,7 @@ class ProfileVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.profile.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.viewProfile.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.EditProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
         navBtnProfile.isSelected = !currentEditStatus
         navBtnProfile.addTarget(self, action: #selector(makeEditableTrue), for: .touchUpInside)
         self.makeEditableTrue(navBtnProfile)
@@ -131,6 +131,16 @@ extension ProfileVC{
     
     @objc func makeEditableTrue(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        
+        let label = UILabel()
+        label.text = sender.isSelected ? NavTitles.editProfile.value : NavTitles.viewProfile.value
+        label.textColor = colors.loginPlaceHolderColor.value
+        label.font = CustomFont.bold.returnFont(18)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = label
+        
         self.currentEditStatus = sender.isSelected
         for i in textFieldCollection {
             i.isUserInteractionEnabled = sender.isSelected

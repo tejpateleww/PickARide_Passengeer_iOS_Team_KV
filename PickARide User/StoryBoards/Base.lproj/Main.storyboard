@@ -3372,7 +3372,7 @@
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-qn-mkO">
                                                                                     <rect key="frame" x="0.0" y="77.5" width="317" height="1"/>
-                                                                                    <color key="backgroundColor" name="ThemeGray"/>
+                                                                                    <color key="backgroundColor" name="CustomImgBG"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="1" id="Nlc-AV-8pM"/>
                                                                                     </constraints>
@@ -6544,23 +6544,35 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pza-1s-6Id" customClass="ratingTextview" customModule="PickARide_User" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-fY-KRV" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                                                         <rect key="frame" x="16" y="371.5" width="311" height="125"/>
-                                                        <color key="backgroundColor" red="0.96866685149999998" green="0.97636109589999998" blue="0.98818641900000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="tintColor" name="ThemeColor"/>
+                                                        <subviews>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pza-1s-6Id" customClass="ratingTextview" customModule="PickARide_User" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="311" height="125"/>
+                                                                <color key="backgroundColor" red="0.96866685149999998" green="0.97636109589999998" blue="0.98818641900000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="tintColor" name="ThemeColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="125" id="Tri-U1-bJE"/>
+                                                                </constraints>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                                                        <color key="value" red="0.56103956700000002" green="0.60686665770000003" blue="0.70169466729999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Additional Comments..."/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="125" id="Tri-U1-bJE"/>
+                                                            <constraint firstItem="Pza-1s-6Id" firstAttribute="leading" secondItem="eEK-fY-KRV" secondAttribute="leading" id="PEV-XQ-m0s"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Pza-1s-6Id" secondAttribute="bottom" id="QbY-k4-zeN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Pza-1s-6Id" secondAttribute="trailing" id="kmB-oQ-UBU"/>
+                                                            <constraint firstItem="Pza-1s-6Id" firstAttribute="top" secondItem="eEK-fY-KRV" secondAttribute="top" id="tgj-3M-eyk"/>
                                                         </constraints>
-                                                        <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
-                                                                <color key="value" red="0.56103956700000002" green="0.60686665770000003" blue="0.70169466729999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Additional Comments..."/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textView>
+                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-bS-iOQ" customClass="submitButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="531.5" width="311" height="48"/>
                                                         <constraints>
@@ -6577,14 +6589,14 @@
                                                     <constraint firstAttribute="trailing" secondItem="Qdy-d2-HFr" secondAttribute="trailing" id="1AG-hI-bse"/>
                                                     <constraint firstItem="F7s-bS-iOQ" firstAttribute="leading" secondItem="474-NH-GJk" secondAttribute="leading" constant="16" id="1fm-FS-EUA"/>
                                                     <constraint firstItem="xg6-Hv-OTy" firstAttribute="leading" secondItem="474-NH-GJk" secondAttribute="leading" id="1iZ-BI-7U6"/>
-                                                    <constraint firstItem="F7s-bS-iOQ" firstAttribute="top" secondItem="Pza-1s-6Id" secondAttribute="bottom" constant="35" id="22Y-QR-GGp"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Pza-1s-6Id" secondAttribute="trailing" constant="16" id="2YQ-ii-rHP"/>
-                                                    <constraint firstItem="Pza-1s-6Id" firstAttribute="top" secondItem="aQs-tF-B1u" secondAttribute="bottom" constant="35" id="3jl-dD-y7M"/>
                                                     <constraint firstItem="Qdy-d2-HFr" firstAttribute="leading" secondItem="474-NH-GJk" secondAttribute="leading" id="544-aR-7ag"/>
                                                     <constraint firstAttribute="trailing" secondItem="F7s-bS-iOQ" secondAttribute="trailing" constant="16" id="5qG-cQ-txL"/>
+                                                    <constraint firstItem="eEK-fY-KRV" firstAttribute="leading" secondItem="474-NH-GJk" secondAttribute="leading" constant="16" id="6wf-tA-3Cx"/>
+                                                    <constraint firstItem="F7s-bS-iOQ" firstAttribute="top" secondItem="eEK-fY-KRV" secondAttribute="bottom" constant="35" id="91L-XY-SZF"/>
+                                                    <constraint firstItem="eEK-fY-KRV" firstAttribute="top" secondItem="aQs-tF-B1u" secondAttribute="bottom" constant="35" id="Bnx-bX-Ezr"/>
                                                     <constraint firstAttribute="bottom" secondItem="F7s-bS-iOQ" secondAttribute="bottom" constant="20" id="LH4-u6-WG0"/>
                                                     <constraint firstItem="aQs-tF-B1u" firstAttribute="centerX" secondItem="474-NH-GJk" secondAttribute="centerX" id="MTg-Js-wZL"/>
-                                                    <constraint firstItem="Pza-1s-6Id" firstAttribute="leading" secondItem="474-NH-GJk" secondAttribute="leading" constant="16" id="OAg-E6-RGn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eEK-fY-KRV" secondAttribute="trailing" constant="16" id="TWS-3Q-h60"/>
                                                     <constraint firstAttribute="trailing" secondItem="oO7-j5-2BT" secondAttribute="trailing" constant="16" id="TzB-Ia-43i"/>
                                                     <constraint firstItem="Qdy-d2-HFr" firstAttribute="top" secondItem="gbB-h5-Ao8" secondAttribute="bottom" constant="35" id="WFK-b5-zFq"/>
                                                     <constraint firstItem="xg6-Hv-OTy" firstAttribute="top" secondItem="fPv-hF-VFZ" secondAttribute="bottom" constant="12" id="Wyw-2e-zYC"/>

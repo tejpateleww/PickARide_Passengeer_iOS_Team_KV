@@ -136,7 +136,7 @@
 
 
 //Reason for Cancel Screen
-"ReasonForCancleVC_btnDone" = "Done";
+"ReasonForCancleVC_btnDone" = "DONE";
 "ReasonForCancleVC_lblReasonforcancel" = "Driver isn't here";
 
 //Ride Details Screen
@@ -216,7 +216,8 @@
 "NavigationTitle_SignUp" = "Register";
 "NavigationTitle_ForgotPassword" = "Forgot Password";
 "NavigationTitle_Verfiy" = "Verify";
-"NavigationTitle_Profile" = "Profile";
+"NavigationTitle_ViewProfile" = "View Profile";
+"NavigationTitle_EditProfile" = "Edit Profile";
 "NavigationTitle_MyRides" = "My Rides";
 "NavigationTitle_RideDetails" = "Ride Details";
 "NavigationTitle_PaymentMethods" = "Payment Methods";
