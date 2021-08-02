@@ -228,6 +228,7 @@
 "NavigationTitle_Rating" = "Rating";
 "NavigationTitle_AddNewPlace" = "Add New Place";
 "NavigationTitle_SavelPlaces" = "Saved Places";
+"NavigationTitle_Wallet" = "Wallet";
 
 //Messages
 "UrlConstant_Required" = "Required";

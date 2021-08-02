@@ -26,7 +26,7 @@ class WalletHistoryVC: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.wallet.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
 }
 
@@ -34,7 +34,7 @@ class WalletHistoryVC: BaseViewController{
 extension WalletHistoryVC{
     func setLocalization() {
         lblAvailableBalance.text = "WalletHistory_lblAvailableBalance".Localized()
-        lblPaymentMethod.text = "WalletHistory_lblPayment".Localized()
+//        lblPaymentMethod.text = "WalletHistory_lblPayment".Localized()
         lblNoDataFound.text = "Title_NoDataFound".Localized()
     }
 }

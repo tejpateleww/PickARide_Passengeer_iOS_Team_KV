@@ -55,7 +55,7 @@ enum NavItemsRight {
     }
 }
 enum NavTitles {
-    case none, signUp, Home, forgotPassword, verify, viewProfile, editProfile, myRides, rideDetails, payment , addCard, notification, reasonForCancle, rating, CommonView, setting, addNewPlace, savedPlaces
+    case none, signUp, Home, forgotPassword, verify, viewProfile, editProfile, myRides, rideDetails, payment , addCard, notification, reasonForCancle, rating, CommonView, setting, addNewPlace, savedPlaces, wallet
     
     var value:String {
         switch self {
@@ -93,6 +93,8 @@ enum NavTitles {
             return "NavigationTitle_AddNewPlace".Localized()
         case .savedPlaces:
             return "NavigationTitle_SavelPlaces".Localized()
+        case .wallet:
+            return "NavigationTitle_Wallet".Localized()
         }
     }
 }

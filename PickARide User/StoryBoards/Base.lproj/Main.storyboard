@@ -1050,14 +1050,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXq-AU-bwn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muy-a6-nau" customClass="TitleLabel" customModule="PickARide_User" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="31.5" width="343" height="20.5"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muy-a6-nau" customClass="TitleLabel" customModule="PickARide_User" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-Dt-sou" customClass="walletHistoryView" customModule="PickARide_User" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="80" width="317" height="151"/>
+                                        <rect key="frame" x="29" y="20.5" width="317" height="151"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-Mw-iA5">
                                                 <rect key="frame" x="0.0" y="0.0" width="317" height="151"/>
@@ -1136,7 +1136,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-5g-yI9">
-                                        <rect key="frame" x="0.0" y="265" width="375" height="402"/>
+                                        <rect key="frame" x="0.0" y="205.5" width="375" height="461.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WalletHistoryCell" id="Q2O-Aa-gja" customClass="WalletHistoryCell" customModule="PickARide_User" customModuleProvider="target">
@@ -1260,7 +1260,7 @@
                                         </connections>
                                     </tableView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-pw-jir" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                        <rect key="frame" x="130.5" y="456" width="114" height="20.5"/>
+                                        <rect key="frame" x="130.5" y="426" width="114" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1281,8 +1281,8 @@
                                     <constraint firstAttribute="bottom" secondItem="SvA-5g-yI9" secondAttribute="bottom" id="MCp-x1-uT1"/>
                                     <constraint firstAttribute="trailing" secondItem="SvA-5g-yI9" secondAttribute="trailing" id="Pgx-9D-f05"/>
                                     <constraint firstItem="CIn-Dt-sou" firstAttribute="leading" secondItem="XXq-AU-bwn" secondAttribute="leading" constant="29" id="WLv-5H-Ja0"/>
-                                    <constraint firstItem="CIn-Dt-sou" firstAttribute="top" secondItem="muy-a6-nau" secondAttribute="bottom" constant="28" id="a0E-wS-JQ1"/>
-                                    <constraint firstItem="muy-a6-nau" firstAttribute="top" secondItem="XXq-AU-bwn" secondAttribute="top" constant="31.5" id="cY1-lh-jiM"/>
+                                    <constraint firstItem="CIn-Dt-sou" firstAttribute="top" secondItem="muy-a6-nau" secondAttribute="bottom" id="a0E-wS-JQ1"/>
+                                    <constraint firstItem="muy-a6-nau" firstAttribute="top" secondItem="XXq-AU-bwn" secondAttribute="top" id="cY1-lh-jiM"/>
                                     <constraint firstItem="muy-a6-nau" firstAttribute="leading" secondItem="XXq-AU-bwn" secondAttribute="leading" constant="16" id="rAy-Rc-uZK"/>
                                     <constraint firstItem="LRe-pw-jir" firstAttribute="centerX" secondItem="SvA-5g-yI9" secondAttribute="centerX" id="v9i-y0-O2Z"/>
                                     <constraint firstAttribute="trailing" secondItem="CIn-Dt-sou" secondAttribute="trailing" constant="29" id="wAh-T7-OXP"/>
@@ -8060,6 +8060,26 @@
             <point key="canvasLocation" x="9713" y="-49"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6Pe-yI-iX4">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="KJd-Cn-Tlh">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="MMg-AW-tZd">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="Wpv-G0-Obf">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="Zjg-Ca-cwA">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="aQs-tF-B1u">
+            <size key="intrinsicContentSize" width="189.35000000000002" height="26.670000000000002"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Dummy-Profile" width="100" height="100"/>
         <image name="Dummy-RightShape" width="24" height="24"/>
