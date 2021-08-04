@@ -116,7 +116,7 @@ class URLSessionRequestManager {
         
     }
     
-    class func makeMultipleImageRequest<C:Codable, P:Encodable>(urlString: String, requestModel: P, responseModel: C.Type, imageKey: String ,arrImageData : [UIImage]?, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: Any?,_ dataDic: Any) -> ()){
+    class func makeMultipleImageRequest<C:Codable, P:Encodable>(urlString: String, requestModel: P, responseModel: C.Type, imageKey: String ,arrImageData : [UIImage]?, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: C?,_ dataDic: Any) -> ()){
         var paramaterDic = [String: Any]()
         
         if !Reachability.isConnectedToNetwork() {
