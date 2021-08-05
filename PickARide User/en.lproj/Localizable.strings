@@ -229,6 +229,7 @@
 "NavigationTitle_AddNewPlace" = "Add New Place";
 "NavigationTitle_SavelPlaces" = "Saved Places";
 "NavigationTitle_Wallet" = "Wallet";
+"NavigationTitle_MyOfffer" = "My Offers";
 
 //Messages
 "UrlConstant_Required" = "Required";
