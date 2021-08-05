@@ -91,6 +91,7 @@ class ProfileVC: BaseViewController {
     
     @IBAction func btnSave(_ sender: Any) {
 //        if self.validation(){
+       
             self.makeEditableTrue(navBtnProfile)
 //        }
     }

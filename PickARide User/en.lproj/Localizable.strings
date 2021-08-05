@@ -213,7 +213,7 @@
 "MenuVC_lblVersion" = "v%@";
 
 //NavigationTitle
-"NavigationTitle_SignUp" = "Register";
+"NavigationTitle_SignUp" = "Sign up";
 "NavigationTitle_ForgotPassword" = "Forgot Password";
 "NavigationTitle_Verfiy" = "Verify";
 "NavigationTitle_ViewProfile" = "View Profile";
