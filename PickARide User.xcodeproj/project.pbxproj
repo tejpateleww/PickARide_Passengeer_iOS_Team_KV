@@ -1286,7 +1286,7 @@
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8L8KR4GKUG;
 				INFOPLIST_FILE = "PickARide User/Info.plist";
@@ -1312,7 +1312,7 @@
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8L8KR4GKUG;
 				INFOPLIST_FILE = "PickARide User/Info.plist";
