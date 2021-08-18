@@ -189,6 +189,22 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
         selectedPaymentMethods = indexPath.row
         tblPaymentMethod.reloadData()
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "UrlConstant_Remove".Localized()) { (action, sourceView, completionHandler)  in
+            let obj = Singleton.sharedInstance.CardList[indexPath.row - 1]
+            self.callRemoveCardListApi(id: obj.id ?? "")
+            completionHandler(true)
+        }
+        
+        deleteAction.backgroundColor = ThemeColorEnum.ThemeRed.rawValue
+        
+        let cancelAction = UIContextualAction(style: .normal, title: "UrlConstant_Cancel".Localized()) { (action, sourceView, completionHandler)  in
+            completionHandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, cancelAction])
+    }
 }
 
 

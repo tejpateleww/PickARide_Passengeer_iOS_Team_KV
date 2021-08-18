@@ -127,7 +127,7 @@ class WebServiceSubClass{
     }
     
     class func PromoCodeListApi(completion: @escaping (Bool,String,PromoCodeListModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.promocodeList.rawValue, requestModel: [String:String](), responseModel: PromoCodeListModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.promocodeList.rawValue, responseModel: PromoCodeListModel.self){ (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

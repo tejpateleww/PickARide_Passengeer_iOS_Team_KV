@@ -247,10 +247,12 @@
 "UrlConstant_Logout" = "Logout";
 "UrlConstant_No" = "No";
 "UrlConstant_Retry" = "Retry";
+"UrlConstant_Submit" = "Submit";
 "UrlConstant_SelectCard" = "Select Card";
 "UrlConstant_Continue" = "Continue";
 "UrlConstant_Help" = "Help";
 "UrlConstant_Invalid" = "Invalid";
+"UrlConstant_Remove" = "Remove";
 "UrlConstant_Expiry" = "Expires";
 "UrlConstant_ValidPhoneNo" = "Please enter valid mobile number.";
 "UrlConstant_InvalidEmailMessage" = "Invalid e-mail Address.";

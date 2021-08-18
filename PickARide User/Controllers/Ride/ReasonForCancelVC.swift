@@ -20,6 +20,8 @@ class ReasonForCancelVC: BaseViewController {
     var isselected = true
     var selectIndex = 0
     
+    var cancelViewModel = CancelTripUserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -33,7 +35,7 @@ class ReasonForCancelVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func btnDoneClick(_ sender: Any) {
-        appDel.navigateToMain()
+        self.callApi()
     }
 }
 
@@ -53,6 +55,17 @@ extension ReasonForCancelVC{
     }
 }
 
+//MARK: Api
+extension ReasonForCancelVC{
+    func callApi(){
+        cancelViewModel.cancelTripVC = self
+        
+        let reqModel = CancelTripReqModel()
+        reqModel.bookingId = "5"
+        reqModel.cancelReason = self.reasonArray.first ?? ""
+        cancelViewModel.webserviceCancelTripApi(reqModel: reqModel)
+    }
+}
 
 //MARK:- TableView Delegate
 extension ReasonForCancelVC: UITableViewDelegate,UITableViewDataSource{

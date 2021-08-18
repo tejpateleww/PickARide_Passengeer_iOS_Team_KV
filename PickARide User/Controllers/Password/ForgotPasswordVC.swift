@@ -51,7 +51,7 @@ extension ForgotPasswordVC{
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
         lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()
-        btnContinue.setTitle("ForgotPasswordScreen_btnContinue".Localized(), for: .normal)
+        btnContinue.setTitle(UrlConstant.Submit, for: .normal)
     }
 }
 

@@ -16,7 +16,6 @@ class PromoViewModel{
         Utilities.showHud()
         WebServiceSubClass.PromoCodeListApi { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             
             if status{
                 DispatchQueue.main.async {

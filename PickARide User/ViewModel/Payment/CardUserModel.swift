@@ -16,12 +16,11 @@ class CardUserModel{
         Utilities.showHud()
         WebServiceSubClass.AddCardApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure){
-                if status{
-                    if let obj = self.addCardVC?.addCardClosure{
-                        self.addCardVC?.navigationController?.popViewController(animated: true)
-                        obj()
-                    }
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+            if status{
+                if let obj = self.addCardVC?.addCardClosure{
+                    self.addCardVC?.navigationController?.popViewController(animated: true)
+                    obj()
                 }
             }
         }
@@ -42,6 +41,8 @@ class CardUserModel{
         WebServiceSubClass.RemoveCardApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+            Singleton.sharedInstance.CardList.removeAll(where: {$0.id == reqModel.cardId})
+            self.addPaymentVC?.tblPaymentMethod.reloadData()
         }
     }
 }

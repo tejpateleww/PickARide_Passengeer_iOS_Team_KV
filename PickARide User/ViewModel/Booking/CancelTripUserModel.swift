@@ -19,7 +19,7 @@ class CancelTripUserModel{
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             
             if status{
-        
+                appDel.navigateToMain()
             }
         }
     }
