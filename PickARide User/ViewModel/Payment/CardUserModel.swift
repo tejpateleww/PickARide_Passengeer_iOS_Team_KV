@@ -16,12 +16,12 @@ class CardUserModel{
         Utilities.showHud()
         WebServiceSubClass.AddCardApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
-            
-            if status{
-        
-                if let obj = self.addCardVC?.addCardClosure{
-                    obj()
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure){
+                if status{
+                    if let obj = self.addCardVC?.addCardClosure{
+                        self.addCardVC?.navigationController?.popViewController(animated: true)
+                        obj()
+                    }
                 }
             }
         }

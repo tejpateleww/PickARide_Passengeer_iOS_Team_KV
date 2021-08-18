@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 extension UIImage{
     public func maskWithColor(color: UIColor) -> UIImage {
@@ -114,7 +115,9 @@ extension UIImage{
 }
 
 extension UIImageView{
-    func loadSdImage(prefixStr: String = "", imgUrl : String){
-        
+    func loadSDImage(prefixStr: String = "", imgUrl : String, isUserProfile: Bool = true){
+        let url = URL(string: imgUrl)
+        let placeHolderImg = isUserProfile ? UserPlaceHolder : GallaryPlaceHolder
+        self.sd_setImage(with: url, placeholderImage: placeHolderImg, options: .refreshCached, completed: nil)
     }
 }

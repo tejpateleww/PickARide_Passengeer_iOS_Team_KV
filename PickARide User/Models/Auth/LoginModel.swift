@@ -33,12 +33,6 @@ class LoginResponseModel: Codable{
     var message: String?
     var data: ProfileModel?
     
-    init(status: Bool, message: String, data: ProfileModel) {
-        self.status = status
-        self.message = message
-        self.data = data
-    }
-    
     enum CodingKeys: String, CodingKey {
         case data = "data"
         case message = "message"
@@ -87,36 +81,6 @@ class ProfileModel: Codable {
         case createdAt = "created_at"
         case rating
         case xAPIKey = "x-api-key"
-    }
-    
-    init(id: String, companyID: String, firstName: String, lastName: String, email: String, countryID: String, countryCode: String, mobileNo: String, dob: String, gender: String, walletBalance: String, deviceType: String, deviceToken: String, lat: String, lng: String, qrCode: String, profileImage: String, socialID: String, socialType: String, rememberToken: String, address: String, trash: String, status: String, referralCode: String, createdAt: String, rating: String, xAPIKey: String) {
-        self.id = id
-        self.companyID = companyID
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.countryID = countryID
-        self.countryCode = countryCode
-        self.mobileNo = mobileNo
-        self.dob = dob
-        self.gender = gender
-        self.walletBalance = walletBalance
-        self.deviceType = deviceType
-        self.deviceToken = deviceToken
-        self.lat = lat
-        self.lng = lng
-        self.qrCode = qrCode
-        self.profileImage = profileImage
-        self.socialID = socialID
-        self.socialType = socialType
-        self.rememberToken = rememberToken
-        self.address = address
-        self.trash = trash
-        self.status = status
-        self.referralCode = referralCode
-        self.createdAt = createdAt
-        self.rating = rating
-        self.xAPIKey = xAPIKey
     }
     
     required init(from decoder: Decoder) throws {

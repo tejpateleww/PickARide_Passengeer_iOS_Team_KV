@@ -37,7 +37,7 @@ let HidePassword = #imageLiteral(resourceName: "HidePassword")
 let ShowPassword = #imageLiteral(resourceName: "ShowPassword")
 let UserPlaceHolder = #imageLiteral(resourceName: "user_placeholder")
 let BackImage = #imageLiteral(resourceName: "nav_back")
-
+let GallaryPlaceHolder = #imageLiteral(resourceName: "CameraPlaceHolder")
 
 let NotificationRefreshSideMenu = NSNotification.Name(rawValue:"NotificationRefreshSideMenu")
 let NotificationBadges = NSNotification.Name(rawValue: "NotificationBadges")

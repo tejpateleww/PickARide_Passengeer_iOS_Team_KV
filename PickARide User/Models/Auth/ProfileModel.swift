@@ -12,6 +12,7 @@ class ProfileReqModel: Encodable{
     var customerId: String? = Singleton.sharedInstance.UserId
     var firstName: String?
     var lastName: String?
+    var mobileNo : String?
     var birthDate: String?
     var gender: String?
     var address: String?
@@ -20,6 +21,7 @@ class ProfileReqModel: Encodable{
         case customerId = "customer_id"
         case firstName = "first_name"
         case lastName = "last_name"
+        case mobileNo = "mobile_no"
         case birthDate = "dob"
         case gender = "gender"
         case address = "address"

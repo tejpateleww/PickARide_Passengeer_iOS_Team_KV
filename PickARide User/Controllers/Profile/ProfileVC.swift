@@ -145,6 +145,8 @@ extension ProfileVC{
         for i in textFieldCollection {
             i.isUserInteractionEnabled = sender.isSelected
         }
+        
+        self.txtEmail.isEnabled = false
         self.btnPasword.isUserInteractionEnabled = sender.isSelected
         self.btnProfile.isUserInteractionEnabled = sender.isSelected
         self.btnCamera.isHidden = !sender.isSelected
@@ -181,7 +183,7 @@ extension ProfileVC{
         self.txtEmail.text = self.authUser?.email ?? ""
         self.txtCountryCode.text = self.authUser?.countryCode ?? DefaultCouuntryCode
         self.txtPhone.text = self.authUser?.mobileNo ?? ""
-        
+        self.imgProfile.loadSDImage(imgUrl: self.authUser?.profileImage ?? "")
     }
 }
 
@@ -220,6 +222,7 @@ extension ProfileVC{
         let reqModel = ProfileReqModel()
         reqModel.firstName = self.txtFirstName.text ?? ""
         reqModel.lastName = self.txtPassword.text ?? ""
+        reqModel.mobileNo = self.txtPhone.text ?? ""
         
         self.profileUserModel.webserviceProfile(reqModel: reqModel)
     }

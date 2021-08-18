@@ -18,11 +18,15 @@ class Preferences {
 class MenuViewController: UIViewController {
     
     @IBOutlet weak var btnProfile: UIButton!
+    @IBOutlet weak var userProfile: UIImageView!
+    @IBOutlet weak var lblUserName: menuLabel!
+    @IBOutlet weak var lblUserEmail: menuLabel!
     
     var selectedMenuClosure : (() -> ())?
     var isDarkModeEnabled = false
     var selectedMenuIndex = 0
     
+    var authUser = Singleton.sharedInstance.UserProfilData
     
     @IBOutlet weak var tblSidemenuData: UITableView! {
         didSet {
@@ -55,6 +59,7 @@ class MenuViewController: UIViewController {
         
         sideMenuController?.delegate = self
         self.setupLocalization()
+        self.setUserProfileInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,6 +123,12 @@ extension MenuViewController{
         
         view.backgroundColor = themeColor
         //tableView.backgroundColor = themeColor
+    }
+    
+    func setUserProfileInfo(){
+        self.lblUserName.text = (self.authUser?.firstName?.capitalized ?? "") + " " + (self.authUser?.lastName?.capitalized ?? "")
+        self.lblUserEmail.text = self.authUser?.email ?? ""
+        self.userProfile.loadSDImage(imgUrl: self.authUser?.profileImage ?? "")
     }
     
 }

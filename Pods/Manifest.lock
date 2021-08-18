@@ -124,6 +124,9 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - SideMenuSwift (2.0.7)
   - SkyFloatingLabelTextField (4.0.0)
 
@@ -140,6 +143,7 @@ DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - IQKeyboardManagerSwift (= 6.3.0)
+  - SDWebImage
   - SideMenuSwift
   - SkyFloatingLabelTextField
 
@@ -170,6 +174,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
+    - SDWebImage
     - SideMenuSwift
     - SkyFloatingLabelTextField
 
@@ -199,9 +204,10 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
 
-PODFILE CHECKSUM: 01614201f6925f1b32dffa43d5dbac61d7f96e9f
+PODFILE CHECKSUM: 10e2d261f2db240973d2c3e2de9b9e4cf9385fa2
 
 COCOAPODS: 1.10.1
