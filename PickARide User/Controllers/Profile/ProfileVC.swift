@@ -35,6 +35,8 @@ class ProfileVC: BaseViewController {
     
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
+    var profileUserModel = ProfileUserModel()
+    var authUser = Singleton.sharedInstance.UserProfilData
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class ProfileVC: BaseViewController {
         self.setUpUI()
         navBtnProfile.isSelected = true
         self.makeEditableTrue(navBtnProfile)
+        self.setUserProfileInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,10 +79,7 @@ class ProfileVC: BaseViewController {
         controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
         controller.isChangePassword = true
         controller.btnSubmitClosure = {
-            userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
-            self.dismiss(animated: true, completion: {
-                self.navigationController?.popViewController(animated: true)
-            })
+            self.dismiss(animated: true, completion: nil)
         }
         controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         let navigationController = UINavigationController(rootViewController: controller)
@@ -90,10 +90,9 @@ class ProfileVC: BaseViewController {
     }
     
     @IBAction func btnSave(_ sender: Any) {
-//        if self.validation(){
-       
-            self.makeEditableTrue(navBtnProfile)
-//        }
+        if self.validation(){
+            self.callUpdateProfileApi()
+        }
     }
 }
 
@@ -152,6 +151,7 @@ extension ProfileVC{
         self.btnSave.isHidden = !sender.isSelected
         navBtnProfile.isHidden = sender.isSelected
     }
+    
     func setupLocalization(){
         lblTitle.text = "ProfileVC_lblTitle".Localized()
         lblFirstName.text = "ProfileVC_lblFirstName".Localized()
@@ -173,6 +173,15 @@ extension ProfileVC{
     @objc func doneAction(_ sender: UIBarButtonItem) {
         self.txtCountryCode.text = Singleton.sharedInstance.CountryList[self.selectedIndexOfPicker].countryCode
         self.txtCountryCode.endEditing(true)
+    }
+    
+    func setUserProfileInfo(){
+        self.txtFirstName.text = self.authUser?.firstName?.capitalized
+        self.txtLastName.text = self.authUser?.lastName?.capitalized
+        self.txtEmail.text = self.authUser?.email ?? ""
+        self.txtCountryCode.text = self.authUser?.countryCode ?? DefaultCouuntryCode
+        self.txtPhone.text = self.authUser?.mobileNo ?? ""
+        
     }
 }
 
@@ -203,6 +212,16 @@ extension ProfileVC{
         }
         
         return true
+    }
+    
+    func callUpdateProfileApi(){
+        self.profileUserModel.profileVC = self
+        
+        let reqModel = ProfileReqModel()
+        reqModel.firstName = self.txtFirstName.text ?? ""
+        reqModel.lastName = self.txtPassword.text ?? ""
+        
+        self.profileUserModel.webserviceProfile(reqModel: reqModel)
     }
 }
 

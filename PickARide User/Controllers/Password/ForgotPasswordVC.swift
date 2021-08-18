@@ -37,11 +37,9 @@ class ForgotPasswordVC: BaseViewController {
     }
     
     @IBAction func btnContinue(_ sender: Any) {
-//        if self.validation(){
-//            self.callForgotPasswordApi()
-            let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-            self.navigationController?.pushViewController(controller, animated: true)
-//        }
+        if self.validation(){
+            self.callForgotPasswordApi()
+        }
     }
 }
 
@@ -79,7 +77,7 @@ extension ForgotPasswordVC{
         self.forgotPasswordUserModel.forgotPasswordVC = self
         
         let reqModel = ForgotPasswordReqModel()
-        reqModel.email = self.textFieldPhoneNumber.text ?? ""
+        reqModel.email = self.txtEmail.text ?? ""
         
         self.forgotPasswordUserModel.webserviceForgotPassword(reqModel: reqModel)
     }

@@ -113,4 +113,22 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    class func BookingRequestApi(reqModel : BookingReqModel, completion: @escaping (Bool,String,BookingModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.bookingRequest.rawValue, requestModel: reqModel, responseModel: BookingModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func CancelTripApi(reqModel : CancelTripReqModel, completion: @escaping (Bool,String,CommonResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.cancelTrip.rawValue, requestModel: reqModel, responseModel: CommonResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func PromoCodeListApi(completion: @escaping (Bool,String,PromoCodeListModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.promocodeList.rawValue, requestModel: [String:String](), responseModel: PromoCodeListModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }

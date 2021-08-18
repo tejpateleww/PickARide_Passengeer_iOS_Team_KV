@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class LoginVC: UIViewController {
-  
+    
     @IBOutlet weak var lblSignIN: loginScreenLabel!
     @IBOutlet weak var lblWelcomeBack: loginScreenLabel!
     @IBOutlet weak var lblPasswordTitle: ProfileLabel!
@@ -29,7 +29,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let _ = self.getLocation()
+        let _ = self.getLocation()
         self.setupLocalization()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
@@ -50,13 +50,11 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnSignInClicked(_ sender: Any) {
-//        if self.validation(){
-//            if self.getLocation(){
-//                self.callLoginApi()
-                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToMain()
-//            }
-//        }
+        if self.validation(){
+            if self.getLocation(){
+                self.callLoginApi()
+            }
+        }
     }
     
     @IBAction func ForgotPassword(_ sender: Any) {
@@ -68,9 +66,9 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
         print(#function)
         
-//        if self.getLocation(){
+        if self.getLocation(){
             return
-                
+            
             if sender.tag == 0{
                 let faceBookSignInManager = FacebookLoginProvider(self)
                 faceBookSignInManager.delegate = self
@@ -79,7 +77,7 @@ class LoginVC: UIViewController {
                 self.googleSignInManager = GoogleLoginProvider(self)
                 self.googleSignInManager?.delegate = self
             }
-//        }
+        }
     }
 }
 
@@ -130,7 +128,7 @@ extension LoginVC{
         }else if !password.0{
             strTitle = password.1
         }
-
+        
         if let str = strTitle{
             Toast.show(title: UrlConstant.Required, message: str, state: .failure)
             return false

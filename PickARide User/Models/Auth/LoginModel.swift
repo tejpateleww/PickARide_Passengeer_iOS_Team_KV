@@ -47,7 +47,7 @@ class LoginResponseModel: Codable{
     
     required init(from decoder: Decoder) throws {
         let values = try? decoder.container(keyedBy: CodingKeys.self)
-        data = try? ProfileModel(from: decoder)
+        data = try? values?.decodeIfPresent(ProfileModel.self, forKey: .data)
         message = try? values?.decodeIfPresent(String.self, forKey: .message)
         status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
     }

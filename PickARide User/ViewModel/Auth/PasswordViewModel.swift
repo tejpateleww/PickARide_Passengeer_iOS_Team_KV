@@ -15,9 +15,12 @@ class PasswordUserModel{
         Utilities.showHud()
         WebServiceSubClass.ForgotPasswordApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: .success) {
-                let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-                self.forgotPasswordVC?.navigationController?.pushViewController(controller, animated: true)
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure) {
+                if status{
+                    self.forgotPasswordVC?.navigationController?.popViewController(animated: true)
+//                    let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+//                    self.forgotPasswordVC?.navigationController?.pop(controller, animated: true)
+                }
             }
         }
     }
@@ -27,9 +30,14 @@ class PasswordUserModel{
         
         WebServiceSubClass.ChangePasswordApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: .success) {
-                self.changePasswordVC?.navigationController?.popViewController(animated: true)
+            
+            if status{
+                if let click = self.changePasswordVC?.btnSubmitClosure {
+                    click()
+                }
             }
+            
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
         }
     }
 }

@@ -71,6 +71,13 @@
 		185CADFC25B5AD8900082AFC /* CancelTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CADFA25B5AD8800082AFC /* CancelTripVC.swift */; };
 		185CADFD25B5AD8900082AFC /* RatingYourTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */; };
 		185CAE1525B5BD5A00082AFC /* PaymentSucessFullyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CAE1425B5BD5A00082AFC /* PaymentSucessFullyVC.swift */; };
+		1865081E26CD00F800C0757F /* BookingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865081D26CD00F800C0757F /* BookingReqModel.swift */; };
+		1865082226CD03CF00C0757F /* CancelTripReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865082126CD03CF00C0757F /* CancelTripReqModel.swift */; };
+		1865082526CD0B8300C0757F /* BookingUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865082426CD0B8300C0757F /* BookingUserModel.swift */; };
+		1865082826CD0BBD00C0757F /* CancelTripUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865082726CD0BBD00C0757F /* CancelTripUserModel.swift */; };
+		1865082B26CD155300C0757F /* CommonResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865082A26CD155300C0757F /* CommonResponseModel.swift */; };
+		1865082F26CD16BF00C0757F /* PromoCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865082E26CD16BF00C0757F /* PromoCodeModel.swift */; };
+		1865083326CD17B400C0757F /* PromoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865083226CD17B400C0757F /* PromoViewModel.swift */; };
 		1865CF50267C763100379A40 /* URLSessionRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865CF47267C763100379A40 /* URLSessionRequestManager.swift */; };
 		1865CF51267C763100379A40 /* WebServicesSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865CF48267C763100379A40 /* WebServicesSubclass.swift */; };
 		1865CF52267C763100379A40 /* UrlServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865CF4A267C763100379A40 /* UrlServiceConstant.swift */; };
@@ -209,6 +216,13 @@
 		185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingYourTripVC.swift; sourceTree = "<group>"; };
 		185CAE1425B5BD5A00082AFC /* PaymentSucessFullyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSucessFullyVC.swift; sourceTree = "<group>"; };
 		18621B6B258785C600DECD60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
+		1865081D26CD00F800C0757F /* BookingReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingReqModel.swift; sourceTree = "<group>"; };
+		1865082126CD03CF00C0757F /* CancelTripReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripReqModel.swift; sourceTree = "<group>"; };
+		1865082426CD0B8300C0757F /* BookingUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUserModel.swift; sourceTree = "<group>"; };
+		1865082726CD0BBD00C0757F /* CancelTripUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripUserModel.swift; sourceTree = "<group>"; };
+		1865082A26CD155300C0757F /* CommonResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponseModel.swift; sourceTree = "<group>"; };
+		1865082E26CD16BF00C0757F /* PromoCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeModel.swift; sourceTree = "<group>"; };
+		1865083226CD17B400C0757F /* PromoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoViewModel.swift; sourceTree = "<group>"; };
 		1865CF47267C763100379A40 /* URLSessionRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionRequestManager.swift; sourceTree = "<group>"; };
 		1865CF48267C763100379A40 /* WebServicesSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServicesSubclass.swift; sourceTree = "<group>"; };
 		1865CF4A267C763100379A40 /* UrlServiceConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlServiceConstant.swift; sourceTree = "<group>"; };
@@ -393,6 +407,8 @@
 				181EBD63258730B300C11C08 /* Init */,
 				187BC491268ADE1500CAD121 /* Auth */,
 				1828A1B426981D0D009ADA2A /* Payment */,
+				1865081B26CD00C600C0757F /* Booking */,
+				1865082D26CD169C00C0757F /* PromoCode */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,6 +418,7 @@
 			children = (
 				187BC496268AE1BB00CAD121 /* CountryModel.swift */,
 				188677E72695A209007F17EE /* InitModel.swift */,
+				1865082A26CD155300C0757F /* CommonResponseModel.swift */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -545,6 +562,40 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		1865081B26CD00C600C0757F /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				1865081D26CD00F800C0757F /* BookingReqModel.swift */,
+				1865082126CD03CF00C0757F /* CancelTripReqModel.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		1865081C26CD00DB00C0757F /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				1865082426CD0B8300C0757F /* BookingUserModel.swift */,
+				1865082726CD0BBD00C0757F /* CancelTripUserModel.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		1865082D26CD169C00C0757F /* PromoCode */ = {
+			isa = PBXGroup;
+			children = (
+				1865082E26CD16BF00C0757F /* PromoCodeModel.swift */,
+			);
+			path = PromoCode;
+			sourceTree = "<group>";
+		};
+		1865083126CD178300C0757F /* PromoCode */ = {
+			isa = PBXGroup;
+			children = (
+				1865083226CD17B400C0757F /* PromoViewModel.swift */,
+			);
+			path = PromoCode;
+			sourceTree = "<group>";
+		};
 		1865CF45267C763100379A40 /* Webservices */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +640,8 @@
 			children = (
 				187BC48C268ADAFC00CAD121 /* Auth */,
 				1828A1B926982340009ADA2A /* Payment */,
+				1865081C26CD00DB00C0757F /* Booking */,
+				1865083126CD178300C0757F /* PromoCode */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1023,10 +1076,13 @@
 				180CC8132590CD9700799280 /* CurrentRideDetailsVC.swift in Sources */,
 				187BC4F6268B140800CAD121 /* UserDefaults+Extension.swift in Sources */,
 				1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */,
+				1865083326CD17B400C0757F /* PromoViewModel.swift in Sources */,
 				180CC7F72590561E00799280 /* SettingVC.swift in Sources */,
 				180979A9258769A2002070A7 /* SplashVC.swift in Sources */,
 				181EBDB3258730B300C11C08 /* CustomSlider.swift in Sources */,
 				18F9B705259350E100202DA6 /* UITableViewCell+Extension.swift in Sources */,
+				1865081E26CD00F800C0757F /* BookingReqModel.swift in Sources */,
+				1865082F26CD16BF00C0757F /* PromoCodeModel.swift in Sources */,
 				1865CF56267C763100379A40 /* CodableResponseServiceClass.swift in Sources */,
 				185CADFC25B5AD8900082AFC /* CancelTripVC.swift in Sources */,
 				1877A639268C3B8B00041E6C /* OtpVC.swift in Sources */,
@@ -1037,6 +1093,7 @@
 				1877A63B268C3C6F00041E6C /* Theme.swift in Sources */,
 				18F9B6FC259350E100202DA6 /* Colors.swift in Sources */,
 				181EBDB7258730B300C11C08 /* AppInfo.swift in Sources */,
+				1865082B26CD155300C0757F /* CommonResponseModel.swift in Sources */,
 				18E93C7926973F65003AB725 /* ProfileViewModel.swift in Sources */,
 				187BC47B268AD96400CAD121 /* AppDelegate+Cycle.swift in Sources */,
 				18F9B6FB259350E100202DA6 /* AuthenticationToken.swift in Sources */,
@@ -1068,6 +1125,9 @@
 				18F9B702259350E100202DA6 /* UIImage+Extension.swift in Sources */,
 				184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */,
 				18F9B6FF259350E100202DA6 /* String+Functionality.swift in Sources */,
+				1865082826CD0BBD00C0757F /* CancelTripUserModel.swift in Sources */,
+				1865082526CD0B8300C0757F /* BookingUserModel.swift in Sources */,
+				1865082226CD03CF00C0757F /* CancelTripReqModel.swift in Sources */,
 				18E93C532696F413003AB725 /* Notifications.swift in Sources */,
 				18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,

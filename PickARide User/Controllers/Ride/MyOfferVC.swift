@@ -15,10 +15,14 @@ class MyOfferVC: BaseViewController {
     @IBOutlet weak var btnApply: MyofferScreenButton!
     @IBOutlet weak var tblMyOffers: UITableView!
     
+    var promoCodeUserModel = PromoViewModel()
+    var promoCodeList = [PromoDetailsModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
         self.setupLocalization()
+        self.callApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,18 +46,24 @@ extension MyOfferVC{
     }
 }
 
+//MARK:- Apis
+extension MyOfferVC{
+    func callApi(){
+        self.promoCodeUserModel.promoVC = self
+        self.promoCodeUserModel.webservicePromoListApi()
+    }
+}
+
 //MARK:- TableView Delegate
 extension MyOfferVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.promoCodeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:myOfferCell = tblMyOffers.dequeueReusableCell(withIdentifier: myOfferCell.reuseIdentifier, for: indexPath) as! myOfferCell
+        let cell: myOfferCell = tblMyOffers.dequeueReusableCell(withIdentifier: myOfferCell.reuseIdentifier, for: indexPath) as? myOfferCell ?? myOfferCell()
         return cell
     }
-    
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.navigationController?.popViewController(animated: true)

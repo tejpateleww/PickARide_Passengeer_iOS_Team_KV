@@ -58,14 +58,13 @@ class AddCardVC: BaseViewController {
     }
     
     @IBAction func placeOrderBtn(_ sender: submitButton) {
-//        if !isValidatePaymentDetail().0{
-//            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
-//            return
-//        }
-//        if isCreditCardValid{
-//            self.callApi()
-//        }
-        self.navigationController?.popViewController(animated: true)
+        if !isValidatePaymentDetail().0{
+            Toast.show(title: UrlConstant.Required, message: isValidatePaymentDetail().1, state: .failure)
+            return
+        }
+        if isCreditCardValid{
+            self.callApi()
+        }
     }
 }
 
@@ -140,8 +139,7 @@ extension AddCardVC{
             reqModel.expiryYear = self.monthYearTuple.year
             reqModel.expiryMonth = self.monthYearTuple.month
             
-//            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
-            self.navigationController?.popViewController(animated: true)
+            self.addCardUserModel.webserviceAddCardApi(reqModel: reqModel)
         }else{
             
         }

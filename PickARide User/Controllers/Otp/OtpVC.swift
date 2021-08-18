@@ -20,7 +20,7 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     var clickBtnVerify : (() -> ())?
     var textFieldsIndexes:[OTPTextField:Int] = [:]
     var counter = 30
-    var phoneNumber = " +966 *** **** 656"
+    var phoneNumber = String()
     var isFrmRegister = false
     var timer = Timer()
     
@@ -44,15 +44,13 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     }
     
     @IBAction func btnAeeroTap(_ sender: Any) {
-//        if self.validation(){
+        if self.validation(){
             if isFrmRegister {
-//                self.callRegisterApi()
-                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                appDel.navigateToMain()
+                self.callRegisterApi()
             }else {
                 self.openChangePasswordVC()
             }
-//        }
+        }
     }
     
     @IBAction func btnResendCodeTap(_ sender: Any) {
@@ -68,7 +66,8 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
 //MARK:- Methods
 extension OtpVC{
     func setUpUI(){
-        lblDisplayMesagewithNumber.text = "Check your SMS messages. We've sent you the PIN at" + "    ******9999"
+        phoneNumber = " " + (registerReqModel.countryCode ?? "") + (registerReqModel.phone ?? "")
+        lblDisplayMesagewithNumber.text = "VerifyVC_lblCheckSMS".Localized() + "    ******9999"
         txtOtp[0].becomeFirstResponder()
         
         for i in txtOtp {
@@ -93,7 +92,7 @@ extension OtpVC{
         //timer? = nil
         lblCountDown.isHidden = false
         btnResendCode.isUserInteractionEnabled = false
-        btnResendCode.setTitle("Resend code in", for: .normal)
+        btnResendCode.setTitle("VerifyVC_btnResendCodeIn".Localized(), for: .normal)
         
         // start the timer
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
@@ -106,7 +105,7 @@ extension OtpVC{
         } else {
             lblCountDown.isHidden = true
             btnResendCode.isUserInteractionEnabled = true
-            btnResendCode.setTitle("Resend code", for: .normal)
+            btnResendCode.setTitle("VerifyVC_btnResendCode".Localized(), for: .normal)
         }
     }
     

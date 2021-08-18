@@ -43,6 +43,7 @@
 "VerifyVC_lblCheckSMS" = "Check your SMS messages. We've sent you the PIN at";
 "VerifyVC_lblDontRecive" = "Didn't receive SMS?";
 "VerifyVC_btnResendCode" = "Resend Code";
+"VerifyVC_btnResendCodeIn" = "Resend code in";
 "VerifyVC_Verify" = "VERIFY";
 
 //ChangePassword_

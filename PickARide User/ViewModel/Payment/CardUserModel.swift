@@ -41,7 +41,7 @@ class CardUserModel{
         Utilities.showHud()
         WebServiceSubClass.RemoveCardApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: .success)
+            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
         }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import  UIKit
+import UIKit
 
 extension UIImage{
     public func maskWithColor(color: UIColor) -> UIImage {
@@ -110,5 +110,11 @@ extension UIImage{
     }
     convenience init?(assetIdentifier: AssetIdentifier) {
         self.init(named: assetIdentifier.rawValue)
+    }
+}
+
+extension UIImageView{
+    func loadSdImage(prefixStr: String = "", imgUrl : String){
+        
     }
 }

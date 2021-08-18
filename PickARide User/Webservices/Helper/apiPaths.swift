@@ -62,7 +62,9 @@ enum ApiKey: String {
     case walletHistory                        = "wallet_history"
     case addMoney                             = "add_money"
     case logOut                               = "logout"
-
+    case bookingRequest                       = "booking_request"
+    case cancelTrip                           = "cancel_trip"
+    case promocodeList                           = "promocode_list"
 }
 
  

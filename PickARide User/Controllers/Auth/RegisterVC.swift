@@ -56,14 +56,11 @@ class RegisterVC: BaseViewController {
     
     //MARK: -IBActions
     @IBAction func signUP(_ sender: Any) {
-//        if self.validation(){
-//            if self.getLocation(){
-                //            self.callOtpApi()
-                let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-                controller.isFrmRegister = true
-                self.navigationController?.pushViewController(controller, animated: true)
-//            }
-//        }
+        if self.validation(){
+            if self.getLocation(){
+                self.callOtpApi()
+            }
+        }
     }
 }
 
@@ -84,9 +81,9 @@ extension RegisterVC{
         toolBar.barTintColor = .white
         toolBar.tintColor = themeColor
         toolBar.sizeToFit()
-        let done = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAction))
+        let done = UIBarButtonItem(title: "NavigationButton_btnDone".Localized(), style: .plain, target: self, action: #selector(doneAction))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+        let cancel = UIBarButtonItem(title: "UrlConstant_Cancel".Localized(), style: .plain, target: self, action: #selector(cancelAction))
         toolBar.setItems([cancel,space,done], animated: false)
         
         self.txtCountryCode.inputAccessoryView = toolBar

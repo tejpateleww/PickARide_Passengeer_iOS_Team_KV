@@ -52,13 +52,9 @@ class ChangePasswordVC: UIViewController {
     }
     
     @IBAction func btnsubmitAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-//        if self.validation(){
-//            self.callChangePasswordApi()
-//            if let click = self.btnSubmitClosure {
-//                click()
-//            }
-//        }
+        if self.validation(){
+            self.callChangePasswordApi()
+        }
     }
 }
 
