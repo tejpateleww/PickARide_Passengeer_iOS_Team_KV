@@ -82,7 +82,7 @@ extension String {
         
         return nil;
     }
-    
+
 }
 extension StringProtocol {
     

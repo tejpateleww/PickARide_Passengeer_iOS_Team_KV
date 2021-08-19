@@ -180,6 +180,7 @@ extension ChooseDestinationVC: UITextFieldDelegate{
 
 //MARK:- Google AutoComplete Delegate
 extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
+    
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         tableData.removeAll()
         for prediction in predictions {

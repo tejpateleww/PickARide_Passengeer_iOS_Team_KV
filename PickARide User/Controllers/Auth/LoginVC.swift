@@ -147,11 +147,8 @@ extension LoginVC{
         self.loginUserModel.webserviceLogin(reqModel: reqModel)
     }
     
-    func callSocialLoginApi(){
+    func callSocialLoginApi(reqModel: SocialLoginRequestModel){
         self.loginUserModel.loginVC = self
-        
-        let reqModel = SocialLoginRequestModel()
-        
         self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
     }
 }
@@ -173,11 +170,15 @@ extension LoginVC: UITextFieldDelegate{
 extension LoginVC: SocialSignInDelegate{
     func FatchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?) {
         if let userObj = user{
-            if let _ = userObj.email{
-            }else{
-            }
+            let reqModel = SocialLoginRequestModel()
+            reqModel.socialId = userObj.userId
+            reqModel.socialType = socialType.rawValue
+            reqModel.firstName = userObj.firstName
+            reqModel.lastName = userObj.lastName
+            reqModel.email = userObj.email
+            reqModel.userName = userObj.email
+            
+            self.callSocialLoginApi(reqModel: reqModel)
         }
     }
 }
-
-

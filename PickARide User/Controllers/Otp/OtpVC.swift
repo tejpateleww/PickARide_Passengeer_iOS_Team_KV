@@ -67,7 +67,12 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
 extension OtpVC{
     func setUpUI(){
         phoneNumber = " " + (registerReqModel.countryCode ?? "") + (registerReqModel.phone ?? "")
-        lblDisplayMesagewithNumber.text = "VerifyVC_lblCheckSMS".Localized() + "    ******9999"
+        
+        let email = registerReqModel.email ?? ""
+        let components = email.components(separatedBy: "@")
+        let result = Utilities.showingEncreptedEmail(components.first ?? "") + "@" + (components.last ?? "")
+        
+        lblDisplayMesagewithNumber.text = "VerifyVC_lblCheckSMS".Localized() + " " + result
         txtOtp[0].becomeFirstResponder()
         
         for i in txtOtp {

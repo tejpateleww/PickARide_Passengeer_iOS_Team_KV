@@ -40,7 +40,7 @@
 //VerifyVC_
 
 "VerifyVC_lblVerifyPhoneNumber" = "Verify Phone \nNumber";
-"VerifyVC_lblCheckSMS" = "Check your SMS messages. We've sent you the PIN at";
+"VerifyVC_lblCheckSMS" = "Check your email address. We've sent you the code at";
 "VerifyVC_lblDontRecive" = "Didn't receive SMS?";
 "VerifyVC_btnResendCode" = "Resend Code";
 "VerifyVC_btnResendCodeIn" = "Resend code in";
@@ -105,7 +105,7 @@
 //Forgot Password Screen
 "ForgotPasswordScreen_lblForgotPassword" = "Forgot \nPassword";
 "ForgotPasswordScreen_lblQuestion" = "What is your email address?";
-"ForgotPasswordScreen_lblDescription" = "Tap \"Get Started\" to get an SMS confirmation to help you use PICK A RIDE. We would like your email address.";
+"ForgotPasswordScreen_lblDescription" = "Tap \"Reset Password\" link to set new password to use PICK A RIDE. We would like your email address.";
 "ForgotPasswordScreen_lblCountryCode" = "COUNTRY CODE";
 "ForgotPasswordScreen_textFieldPhoneNumber" = "Phone number";
 "ForgotPasswordScreen_btnContinue" = "CONTINUE";

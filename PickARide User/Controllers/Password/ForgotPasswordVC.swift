@@ -47,7 +47,7 @@ class ForgotPasswordVC: BaseViewController {
 extension ForgotPasswordVC{
     func setupLocalization() {
 //        lblForgotPassword.text = "ForgotPasswordScreen_lblForgotPassword".Localized()
-        lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
+//        lblQuestion.text = "ForgotPasswordScreen_lblQuestion".Localized()
         lblDescription.text = "ForgotPasswordScreen_lblDescription".Localized()
         lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         textFieldPhoneNumber.placeholder = "ForgotPasswordScreen_textFieldPhoneNumber".Localized()

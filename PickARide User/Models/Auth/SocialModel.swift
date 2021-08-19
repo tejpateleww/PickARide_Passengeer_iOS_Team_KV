@@ -14,6 +14,9 @@ class SocialLoginRequestModel: Encodable{
     var socialType : String?
     var firstName : String?
     var lastName : String?
+    var userName : String?
+    var email : String?
+    var mobileNo : String?
     var deviceType : String? = Singleton.sharedInstance.DeviceType
     var deviceToken : String? = Singleton.sharedInstance.DeviceToken
     var latitude : String? = Singleton.sharedInstance.locationString().latitude
@@ -28,5 +31,8 @@ class SocialLoginRequestModel: Encodable{
         case deviceToken = "device_token"
         case latitude = "lat"
         case longitude = "lng"
+        case userName = "username"
+        case email = "email"
+        case mobileNo = "mobile_no"
     }
 }
