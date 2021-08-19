@@ -12,6 +12,7 @@ target 'PickARide User' do
   pod 'Cosmos', '~> 23.0'
   pod 'SideMenuSwift'
   pod 'SkyFloatingLabelTextField'
+  pod 'MKProgress'
   
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'

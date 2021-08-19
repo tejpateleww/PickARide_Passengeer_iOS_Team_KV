@@ -115,7 +115,7 @@
 "MyOfferVC_textFieldOfferCode" = "Enter your Offer code";
 "MyOfferVC_btnApply" = "APPLY";
 "MyOfferVC_lblOffers" = "10% Off the base rate on your next rental";
-"MyOfferVC_lblValidto" = "Valid to 10/25/2020";
+"MyOfferVC_lblValidto" = "Valid to ";
 "MyOfferVC_btnUsenow" = "Use now";
 
 //MyRides Screen

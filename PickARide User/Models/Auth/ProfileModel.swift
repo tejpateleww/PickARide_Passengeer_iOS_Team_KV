@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class ProfileReqModel: Encodable{
     var customerId: String? = Singleton.sharedInstance.UserId
     var firstName: String?
@@ -16,6 +16,8 @@ class ProfileReqModel: Encodable{
     var birthDate: String?
     var gender: String?
     var address: String?
+    var profileImage : UIImage?
+    var profilePictureKey : String? = "profile_image"
     
     enum CodingKeys: String, CodingKey {
         case customerId = "customer_id"

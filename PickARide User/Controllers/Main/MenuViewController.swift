@@ -26,8 +26,6 @@ class MenuViewController: UIViewController {
     var isDarkModeEnabled = false
     var selectedMenuIndex = 0
     
-    var authUser = Singleton.sharedInstance.UserProfilData
-    
     @IBOutlet weak var tblSidemenuData: UITableView! {
         didSet {
             tblSidemenuData.dataSource = self
@@ -59,6 +57,10 @@ class MenuViewController: UIViewController {
         
         sideMenuController?.delegate = self
         self.setupLocalization()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.setUserProfileInfo()
     }
     
@@ -126,9 +128,11 @@ extension MenuViewController{
     }
     
     func setUserProfileInfo(){
-        self.lblUserName.text = (self.authUser?.firstName?.capitalized ?? "") + " " + (self.authUser?.lastName?.capitalized ?? "")
-        self.lblUserEmail.text = self.authUser?.email ?? ""
-        self.userProfile.loadSDImage(imgUrl: self.authUser?.profileImage ?? "")
+        let authUser = Singleton.sharedInstance.UserProfilData
+        
+        self.lblUserName.text = (authUser?.firstName?.capitalized ?? "") + " " + (authUser?.lastName?.capitalized ?? "")
+        self.lblUserEmail.text = authUser?.email ?? ""
+        self.userProfile.loadSDImage(imgUrl: authUser?.profileImage ?? "")
     }
     
 }

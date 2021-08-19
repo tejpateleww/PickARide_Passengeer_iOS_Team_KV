@@ -9,8 +9,7 @@
 import UIKit
 
 class SettingVC: BaseViewController{
-    
-    @IBOutlet weak var lblSettingsTitle: TitleLabel!
+        @IBOutlet weak var lblSettingsTitle: TitleLabel!
     @IBOutlet weak var tblSettings: UITableView!
     @IBOutlet weak var lblLanguageTitle: themeLabel!
     @IBOutlet weak var txtLanguage: UITextField!
@@ -192,9 +191,13 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tblSettings.dequeueReusableCell(withIdentifier: SettingCell1.reuseIdentifier, for: indexPath) as? SettingCell1 ?? SettingCell1()
-            cell.lblUserName.text = "Abdullah Amir"
-            cell.lblUserPhoneNumber.text = "+49 9564 656 6555"
-            cell.lblUserEmail.text = "abdullahamir@gmail.com"
+            
+            let authUser = Singleton.sharedInstance.UserProfilData
+            
+            cell.lblUserName.text = (authUser?.firstName?.capitalized ?? "") + " " + (authUser?.lastName?.capitalized ?? "")
+            cell.lblUserPhoneNumber.text = authUser?.mobileNo ?? ""
+            cell.lblUserEmail.text = authUser?.email ?? ""
+            cell.userImage.loadSDImage(imgUrl: authUser?.profileImage ?? "")
             return cell
         case 1,2:
             let cell = tblSettings.dequeueReusableCell(withIdentifier: SettingCell2.reuseIdentifier, for: indexPath) as? SettingCell2 ?? SettingCell2()
@@ -224,6 +227,13 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let controller = ProfileVC.instantiate(fromAppStoryboard: .Main)
+            
+            controller.profileUpdateClosure = {
+                DispatchQueue.main.async {
+                    self.tblSettings.reloadData()
+                }
+            }
+            
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case 1:

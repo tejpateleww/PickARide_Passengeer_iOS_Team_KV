@@ -8,6 +8,16 @@
 
 import Foundation
 
+//MARK:- Check Promo Request Model
+class CheckPromoReqModel: Encodable{
+    var promocode : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case promocode
+    }
+}
+
+//MARK:- Promo Code Response Model
 class PromoCodeListModel : Codable {
     let data : [PromoDetailsModel]?
     let message : String?

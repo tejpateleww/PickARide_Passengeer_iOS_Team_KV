@@ -62,11 +62,31 @@ extension MyOfferVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: myOfferCell = tblMyOffers.dequeueReusableCell(withIdentifier: myOfferCell.reuseIdentifier, for: indexPath) as? myOfferCell ?? myOfferCell()
+        
+        let obj = self.promoCodeList[indexPath.row]
+        
+        cell.lblOffers.text = obj.promocode ?? ""
+        cell.lblValidto.text = "MyOfferVC_lblValidto".Localized() + (obj.endDate?.getDateFromString(formatter: .OnlyDate) ?? "")
+        
+        cell.btnUsenow.tag = indexPath.row
+        cell.btnUsenow.addTarget(self, action: #selector(checkPromo(btn:)), for: .touchUpInside)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func checkPromo(btn: UIButton){
+        let obj = self.promoCodeList[btn.tag]
+        
+        self.promoCodeUserModel.promoVC = self
+        
+        let reqModel = CheckPromoReqModel()
+        reqModel.promocode = obj.promocode ?? ""
+        
+        self.promoCodeUserModel.webserviceCheckPromoCodeApi(reqModel: reqModel)
     }
 }
 

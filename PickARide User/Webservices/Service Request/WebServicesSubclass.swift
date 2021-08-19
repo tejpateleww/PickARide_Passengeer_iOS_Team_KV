@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 class WebServiceSubClass{
 
     //MARK:- Init
@@ -68,7 +70,7 @@ class WebServiceSubClass{
     }
     
     class func ProfileApi(reqModel : ProfileReqModel, completion: @escaping (Bool,String,LoginResponseModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.updateProfile.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeImageUploadRequest(urlString: ApiKey.updateProfile.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self, image: reqModel.profileImage ?? UIImage(), imageKey: reqModel.profilePictureKey ?? "") { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -126,8 +128,15 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Promo Code
     class func PromoCodeListApi(completion: @escaping (Bool,String,PromoCodeListModel?,Any) -> ()){
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.promocodeList.rawValue, responseModel: PromoCodeListModel.self){ (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func CheckPromoCodeApi(reqModel : CheckPromoReqModel, completion: @escaping (Bool,String,CommonResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.checkPromocode.rawValue, requestModel: reqModel, responseModel: CommonResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

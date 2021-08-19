@@ -203,7 +203,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
             completionHandler(true)
         }
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, cancelAction])
+        return indexPath.row == 0 ? nil : UISwipeActionsConfiguration(actions: [deleteAction, cancelAction])
     }
 }
 

@@ -573,10 +573,10 @@
                                                                                     <rect key="frame" x="128" y="0.0" width="213" height="112"/>
                                                                                     <subviews>
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-SQ-fwi">
-                                                                                            <rect key="frame" x="0.0" y="7" width="209" height="105"/>
+                                                                                            <rect key="frame" x="0.0" y="26" width="209" height="60"/>
                                                                                             <subviews>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWW-5i-cIF" customClass="myofferLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="45"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="0.0"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
@@ -585,7 +585,7 @@
                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                 </label>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS1-tr-bIZ" customClass="myofferLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                    <rect key="frame" x="0.0" y="55" width="209" height="20"/>
+                                                                                                    <rect key="frame" x="0.0" y="10" width="209" height="20"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="height" constant="20" id="P3P-Ba-08U"/>
                                                                                                     </constraints>
@@ -597,7 +597,7 @@
                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                 </label>
                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F75-sL-nep">
-                                                                                                    <rect key="frame" x="0.0" y="85" width="209" height="20"/>
+                                                                                                    <rect key="frame" x="0.0" y="40" width="209" height="20"/>
                                                                                                     <subviews>
                                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anb-QG-eqb" customClass="MyofferScreenButton" customModule="PickARide_User" customModuleProvider="target">
                                                                                                             <rect key="frame" x="163" y="-2" width="30" height="13"/>
@@ -621,9 +621,8 @@
                                                                                         </stackView>
                                                                                     </subviews>
                                                                                     <constraints>
-                                                                                        <constraint firstItem="lvd-SQ-fwi" firstAttribute="top" secondItem="oVh-Sa-BHv" secondAttribute="top" constant="7" id="7OA-nm-NpU"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="lvd-SQ-fwi" secondAttribute="trailing" constant="4" id="HAS-fN-1KZ"/>
-                                                                                        <constraint firstAttribute="bottom" secondItem="lvd-SQ-fwi" secondAttribute="bottom" id="dJq-rL-c9J"/>
+                                                                                        <constraint firstItem="lvd-SQ-fwi" firstAttribute="centerY" secondItem="oVh-Sa-BHv" secondAttribute="centerY" id="JC1-wt-jXT"/>
                                                                                         <constraint firstItem="lvd-SQ-fwi" firstAttribute="leading" secondItem="oVh-Sa-BHv" secondAttribute="leading" id="mmv-Rv-I3p"/>
                                                                                     </constraints>
                                                                                 </view>
@@ -8063,6 +8062,26 @@
             <point key="canvasLocation" x="9713" y="-49"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6Pe-yI-iX4">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="KJd-Cn-Tlh">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="MMg-AW-tZd">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="Wpv-G0-Obf">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="Zjg-Ca-cwA">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+        <designable name="aQs-tF-B1u">
+            <size key="intrinsicContentSize" width="189.35000000000002" height="26.670000000000002"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Dummy-Profile" width="100" height="100"/>
         <image name="Dummy-RightShape" width="24" height="24"/>
@@ -8108,7 +8127,7 @@
         <image name="imgDollar" width="8" height="14"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="14" height="16"/>
+        <image name="imgHome" width="23" height="19.5"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <image name="user_placeholder" width="341" height="341"/>

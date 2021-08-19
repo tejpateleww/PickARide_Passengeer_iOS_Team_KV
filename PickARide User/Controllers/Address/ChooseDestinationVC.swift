@@ -188,6 +188,8 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
 
         tblPlacePicker.reloadData()
     }
+    
+    
 
     func didFailAutocompleteWithError(_ error: Error) {
         print(error.localizedDescription)

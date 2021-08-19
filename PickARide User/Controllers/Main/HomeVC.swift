@@ -19,7 +19,6 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var currentRideDetailContainerVW: UIView!
     @IBOutlet weak var currentRideDriverInfoContainerVW: UIView!
     
-    //MARK: -View Life Cycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
@@ -46,7 +45,9 @@ extension HomeVC{
     }
     
     func setProfilePicture(){
-        self.navBtnProfile.setImage(UserPlaceHolder, for: .normal)
+        let authUser = Singleton.sharedInstance.UserProfilData
+        
+        self.navBtnProfile.loadSDImage(imgUrl: authUser?.profileImage ?? "")
         self.navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
     }
     

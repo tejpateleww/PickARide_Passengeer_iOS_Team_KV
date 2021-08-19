@@ -36,7 +36,8 @@ class ProfileVC: BaseViewController {
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
     var profileUserModel = ProfileUserModel()
-    var authUser = Singleton.sharedInstance.UserProfilData
+    
+    var profileUpdateClosure : (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,12 +179,14 @@ extension ProfileVC{
     }
     
     func setUserProfileInfo(){
-        self.txtFirstName.text = self.authUser?.firstName?.capitalized
-        self.txtLastName.text = self.authUser?.lastName?.capitalized
-        self.txtEmail.text = self.authUser?.email ?? ""
-        self.txtCountryCode.text = self.authUser?.countryCode ?? DefaultCouuntryCode
-        self.txtPhone.text = self.authUser?.mobileNo ?? ""
-        self.imgProfile.loadSDImage(imgUrl: self.authUser?.profileImage ?? "")
+        let authUser = Singleton.sharedInstance.UserProfilData
+        
+        self.txtFirstName.text = authUser?.firstName?.capitalized
+        self.txtLastName.text = authUser?.lastName?.capitalized
+        self.txtEmail.text = authUser?.email ?? ""
+        self.txtCountryCode.text = authUser?.countryCode ?? DefaultCouuntryCode
+        self.txtPhone.text = authUser?.mobileNo ?? ""
+        self.imgProfile.loadSDImage(imgUrl: authUser?.profileImage ?? "")
     }
 }
 
@@ -221,8 +224,9 @@ extension ProfileVC{
         
         let reqModel = ProfileReqModel()
         reqModel.firstName = self.txtFirstName.text ?? ""
-        reqModel.lastName = self.txtPassword.text ?? ""
+        reqModel.lastName = self.txtLastName.text ?? ""
         reqModel.mobileNo = self.txtPhone.text ?? ""
+        reqModel.profileImage = self.imgProfile.image
         
         self.profileUserModel.webserviceProfile(reqModel: reqModel)
     }

@@ -19,6 +19,9 @@ class ProfileUserModel{
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             
             if status{
+                if let obj = self.profileVC?.profileUpdateClosure{
+                    obj()
+                }
                 self.profileVC?.makeEditableTrue(self.profileVC?.navBtnProfile ?? UIButton())
                 userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 

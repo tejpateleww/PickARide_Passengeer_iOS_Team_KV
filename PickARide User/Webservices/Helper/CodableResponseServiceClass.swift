@@ -25,7 +25,7 @@ class CodableService {
                         var statusCode : Bool = false
                         
                         //MARK:- Response Data
-                        if  let responseData = data {
+                            if  let responseData = data {
                             
                             //MARK:- Response Dictionary
                             responseDic = getResponseDicFromData(responseData: responseData)
