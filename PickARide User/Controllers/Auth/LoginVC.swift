@@ -168,7 +168,7 @@ extension LoginVC: UITextFieldDelegate{
 
 //MARK:- Social Sign In
 extension LoginVC: SocialSignInDelegate{
-    func FatchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?) {
+    func FetchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?) {
         if let userObj = user{
             let reqModel = SocialLoginRequestModel()
             reqModel.socialId = userObj.userId

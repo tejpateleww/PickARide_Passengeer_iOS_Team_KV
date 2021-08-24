@@ -33,7 +33,7 @@ enum SocialType: String {
 }
 
 protocol SocialSignInDelegate{
-    func FatchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?)
+    func FetchUser(socialType: SocialType, success: Bool, user: SocialUser?, error: String?)
 }
 
 class FacebookLoginProvider {
@@ -49,12 +49,12 @@ class FacebookLoginProvider {
         loginManager.logIn(permissions: [.publicProfile, .email], viewController: viewController) { result in
             switch result {
             case .cancelled:
-                self.delegate?.FatchUser(socialType: .FaceBook, success: false, user: nil, error: "Cancelled")
+                self.delegate?.FetchUser(socialType: .FaceBook, success: false, user: nil, error: "Cancelled")
             case .failed(let error):
-                self.delegate?.FatchUser(socialType: .FaceBook, success: false, user: nil, error: error.localizedDescription)
+                self.delegate?.FetchUser(socialType: .FaceBook, success: false, user: nil, error: error.localizedDescription)
             case .success(_, _, let authToken):
                 self.getFBUserDetail(VC: viewController, token: authToken?.tokenString ?? "") { (user, error) in
-                    self.delegate?.FatchUser(socialType: .FaceBook, success: error == nil, user: user, error: error)
+                    self.delegate?.FetchUser(socialType: .FaceBook, success: error == nil, user: user, error: error)
                 }
             }
         }
@@ -102,12 +102,12 @@ extension GoogleLoginProvider: GIDSignInDelegate {
             let errorCode = (error as NSError).code
             if let signInError = GIDSignInErrorCode(rawValue: errorCode) {
                 if case .canceled = signInError {
-                    self.delegate?.FatchUser(socialType: .Google, success: false, user: nil, error: "Cancelled")
+                    self.delegate?.FetchUser(socialType: .Google, success: false, user: nil, error: "Cancelled")
                     return
                 }
             }
             
-            self.delegate?.FatchUser(socialType: .Google, success: false, user: nil, error: error.localizedDescription)
+            self.delegate?.FetchUser(socialType: .Google, success: false, user: nil, error: error.localizedDescription)
             return
         }
 
@@ -120,7 +120,7 @@ extension GoogleLoginProvider: GIDSignInDelegate {
         obj.lastName = user.profile.familyName ?? ""
         obj.profile = user.profile.imageURL(withDimension: 200)?.absoluteString ?? ""
 
-        self.delegate?.FatchUser(socialType: .Google, success: true, user: obj, error: nil)
+        self.delegate?.FetchUser(socialType: .Google, success: true, user: obj, error: nil)
     }
 }
 
@@ -152,7 +152,7 @@ class AppleSignInProvider: NSObject, ASAuthorizationControllerDelegate, ASAuthor
   @available(iOS 13.0, *)
      func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
          print(error.localizedDescription)
-        delegate?.FatchUser(socialType: .Apple, success: false, user: nil, error: error.localizedDescription)
+        delegate?.FetchUser(socialType: .Apple, success: false, user: nil, error: error.localizedDescription)
      }
      
      @available(iOS 13.0, *)
@@ -172,7 +172,7 @@ class AppleSignInProvider: NSObject, ASAuthorizationControllerDelegate, ASAuthor
             socialUser.email = appleUserEmail
             socialUser.userId = appleId
             socialUser.socialType = SocialType.Apple.rawValue
-            delegate?.FatchUser(socialType: .Apple, success: true, user: socialUser, error: nil)
+            delegate?.FetchUser(socialType: .Apple, success: true, user: socialUser, error: nil)
          }
          else if let passwordCredential = authorization.credential as? ASPasswordCredential {
              let appleUsername = passwordCredential.user
