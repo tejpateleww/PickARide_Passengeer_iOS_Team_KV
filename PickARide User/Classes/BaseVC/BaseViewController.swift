@@ -14,7 +14,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,7 +9,8 @@
 import UIKit
 
 class SettingVC: BaseViewController{
-        @IBOutlet weak var lblSettingsTitle: TitleLabel!
+    
+    @IBOutlet weak var lblSettingsTitle: TitleLabel!
     @IBOutlet weak var tblSettings: UITableView!
     @IBOutlet weak var lblLanguageTitle: themeLabel!
     @IBOutlet weak var txtLanguage: UITextField!
@@ -18,15 +19,17 @@ class SettingVC: BaseViewController{
     
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
+    var viewModelPlaces = AddPlaceViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        callApi()
         self.setLocalization()
         self.setUpValue()
-        addValuesInSettingList()
         self.tblSettings.reloadData()
         self.tblSettings.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,6 +48,14 @@ class SettingVC: BaseViewController{
         }
     }
 }
+
+extension SettingVC {
+    func callApi(){
+        self.viewModelPlaces.settingVc = self
+        self.viewModelPlaces.webserviceCallFavPlacesList()
+    }
+}
+
 
 //MARK:- Set Up UI
 extension SettingVC{
@@ -206,10 +217,10 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
             let settingObj = SettingData.SettingList[indexPath.section]
             let subSettingDataObj = settingObj.subData?[indexPath.row]
             
-            cell.CategoryImageView.image = subSettingDataObj?.titleImage
-            cell.CategoryImageView.superview?.isHidden = subSettingDataObj?.titleImage == nil
+            cell.CategoryImageView.image = UIImage(named: "")
+            cell.CategoryImageView.superview?.isHidden = false
             
-            cell.categoryName.text = subSettingDataObj?.titleName ?? ""
+            cell.categoryName.text = subSettingDataObj?.placeName ?? ""
             
             if indexPath.row == (settingObj.subData?.count ?? 0) - 1 {
                 cell.Seperator1.isHidden = true
@@ -249,6 +260,13 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
         default:
            break
         }
+    }
+    
+    func addValuesInSettingList(SavedPlaces:[PlaceData]){
+        SettingData.SettingList.append(SettingData())
+        SettingData.SettingList.append(SettingData(name: SettingsTitle.Favoutite, button: SettingsTitle.Add, subsetting:SavedPlaces))
+                //[SubSettingsData(name: SettingsTitle.Home, img: SettingImages.SettingHome), SubSettingsData(name: SettingsTitle.Work, img: SettingImages.SettingWork)]))
+        SettingData.SettingList.append(SettingData(button: SettingsTitle.MoreSavedPlaces, subsetting:[]))
     }
 }
 

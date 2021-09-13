@@ -8,6 +8,9 @@
 
 import UIKit
 import GooglePlaces
+import CoreLocation
+
+
 class ChooseDestinationVC: BaseViewController {
     
     @IBOutlet weak var tblPlacePicker: UITableView!
@@ -16,20 +19,47 @@ class ChooseDestinationVC: BaseViewController {
     @IBOutlet weak var tblPlacePickerBottom: NSLayoutConstraint!
     @IBOutlet weak var textFieldDestinationLocation: chooseLocationTextField!
     
-    var arrayForSavedPlaces : [String] = [SettingsTitle.Home,SettingsTitle.Work]
+    var arrayForSavedPlaces : [PlaceData] = [PlaceData]()
     var arrImage = [SettingImages.SettingHomeGray,SettingImages.SettingWorkGray]
-    
     var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
     var selectedTextField = 0
-    
+    let placesClient = GMSPlacesClient.shared()
+    var selectedIndex = 0
+    var selectedData : placePickerData!
+    var viewModelPlaces = AddPlaceViewModel()
     var openSelectTexiVC : (()->())?
+    var locationManager:CLLocationManager!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+             locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+
+            if CLLocationManager.locationServicesEnabled(){
+                locationManager.startUpdatingLocation()
+            }
+        
+        
+       
+//        let location  = CLLocationCoordinate2D(latitude: Singleton.sharedInstance.userCurrentLocation?.latitude ?? 0.0, longitude: Singleton.sharedInstance.userCurrentLocation?.longitude ?? 0.0)
+//
+//        let strAddress = Utilities.getAddressFromLatLon(pdblLatitude: "\(location.latitude)", withLongitude: "\(location.longitude)")
+//
+//
+//
+//
+//
+        //Utilities.getAddressFromLatLon(pdblLatitude: "\(Singleton.sharedInstance.userCurrentLocation?.latitude ?? 0.0)", withLongitude: "\(Singleton.sharedInstance.userCurrentLocation?.longitude ?? 0.0)")
+       
         self.setUpUI()
         self.setLocalization()
-        
+        self.callApi()
         var size = CGRect.zero
         size.size.height = .leastNormalMagnitude
         tblPlacePicker.tableHeaderView = UIView(frame: size)
@@ -41,7 +71,19 @@ class ChooseDestinationVC: BaseViewController {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
+    
+    
+    
+    
 }
+
+extension ChooseDestinationVC {
+    func callApi(){
+        self.viewModelPlaces.chooseDestinationVC = self
+        self.viewModelPlaces.webserviceCallFavPlacesList()
+    }
+}
+
 
 //MARK:- Methods
 extension ChooseDestinationVC{
@@ -115,7 +157,7 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
         switch indexPath.section {
         case 0:
             let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as? SavedCell ?? SavedCell()
-            cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row]
+            cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row].placeName
             cell.imgLocationType.image = arrImage[indexPath.row]
             
             if indexPath.row == arrayForSavedPlaces.count - 1 {
@@ -141,6 +183,7 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
             } else {
                 textFieldDestinationLocation.text = tableData[indexPath.row].primaryText
             }
+           
             textFieldDestinationLocation.resignFirstResponder()
             textFieldStartLocation.resignFirstResponder()
         }
@@ -176,6 +219,16 @@ extension ChooseDestinationVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
+    
+//    func getLocation() -> Bool {
+//        if Singleton.sharedInstance.userCurrentLocation == nil{
+//            self.locationManager = LocationService()
+//            self.locationManager?.startUpdatingLocation()
+//            return false
+//        }else{
+//            return true
+//        }
+//    }
 }
 
 //MARK:- Google AutoComplete Delegate
@@ -184,15 +237,45 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         tableData.removeAll()
         for prediction in predictions {
-            tableData.append(placePickerData(primary: prediction.attributedPrimaryText.string, secondary: prediction.attributedSecondaryText?.string ?? ""))
+            let place = prediction.placeID
+            GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: place)
+            
         }
 
         tblPlacePicker.reloadData()
     }
     
-    
+   
+    func GetPlaceDataByPlaceID(PlaceObj:GMSAutocompletePrediction,pPlaceID: String)
+       {
+         //  pPlaceID = "ChIJXbmAjccVrjsRlf31U1ZGpDM"
+           self.placesClient.lookUpPlaceID(pPlaceID, callback: { (place, error) -> Void in
 
-    func didFailAutocompleteWithError(_ error: Error) {
+               if let error = error {
+                   print("lookup place id query error: \(error.localizedDescription)")
+                   return
+               }
+
+           
+               if let place = place {
+                print("Place name \(String(describing: place.name))")
+                   print("Place address \(place.formattedAddress!)")
+                print("Place placeID \(String(describing: place.placeID))")
+                print("Place attributions \(String(describing: place.attributions))")
+                   print("\(place.coordinate.latitude)")
+                   print("\(place.coordinate.longitude)")
+                
+                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude))
+                self.tblPlacePicker.reloadData()
+                
+               } else {
+                   print("No place details for \(pPlaceID)")
+               }
+           })
+       }
+
+    
+        func didFailAutocompleteWithError(_ error: Error) {
         print(error.localizedDescription)
     }
 }
@@ -211,9 +294,54 @@ class SearchCell : UITableViewCell {
 class placePickerData {
     var primaryText = ""
     var secondaryText = ""
+    var placeName = ""
+    var location = ""
+    var lat = Double()
+    var lng = Double()
     
-    init(primary:String,secondary:String) {
+    init(PlaceName : String , Location : String ,primary:String,secondary:String,Lat:Double,Lng:Double) {
+        self.placeName = PlaceName
+        self.location = Location
+        self.lat = Lat
+        self.lng = Lng
         self.primaryText = primary
         self.secondaryText = secondary
     }
+}
+
+extension ChooseDestinationVC : CLLocationManagerDelegate {
+    
+    
+    //MARK: - location delegate methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation :CLLocation = locations[0] as CLLocation
+
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+
+        //self.labelLat.text = "\(userLocation.coordinate.latitude)"
+        //self.labelLongi.text = "\(userLocation.coordinate.longitude)"
+
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count>0{
+                let placemark = placemarks![0]
+                print(placemark.locality!)
+                print(placemark.administrativeArea!)
+                print(placemark.country!)
+
+                self.textFieldStartLocation.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+            }
+        }
+
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error \(error)")
+    }
+    
+    
 }

@@ -15,6 +15,7 @@ import GooglePlaces
 import SideMenuSwift
 
 extension AppDelegate{
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         
     }

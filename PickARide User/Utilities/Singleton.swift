@@ -19,6 +19,8 @@ class Singleton: NSObject{
     var UserProfilData : ProfileModel?
     var CountryList = [CountryDetilsModel]()
     var CardList = [CardDetailModel]()
+    var latitute = Double()
+    var longtitute = Double()
     
     var Api_Key = String()
     var DeviceType : String = "ios"

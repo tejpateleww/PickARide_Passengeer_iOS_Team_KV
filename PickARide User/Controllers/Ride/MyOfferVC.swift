@@ -17,6 +17,8 @@ class MyOfferVC: BaseViewController {
     
     var promoCodeUserModel = PromoViewModel()
     var promoCodeList = [PromoDetailsModel]()
+    var ObjValidPromo : PromoDetailsModel!
+    var PromoCodeValid : ((PromoDetailsModel)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +88,7 @@ extension MyOfferVC: UITableViewDelegate,UITableViewDataSource{
         let reqModel = CheckPromoReqModel()
         reqModel.promocode = obj.promocode ?? ""
         
-        self.promoCodeUserModel.webserviceCheckPromoCodeApi(reqModel: reqModel)
+        self.promoCodeUserModel.webserviceCheckPromoCodeApi(objPrmo: obj, reqModel: reqModel)
     }
 }
 

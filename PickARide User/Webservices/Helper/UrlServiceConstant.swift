@@ -54,6 +54,8 @@ class UrlConstant{
     static let EnterEmail = "UrlConstant_EnterEmailMessage".Localized()
     static let InvalidCardNumber = "UrlConstant_InvalidCardNumber".Localized()
     
+   
+    
 }
 
 let SessionExpiredResponseDic = [UrlConstant.ResponseMessage: UrlConstant.SessionExpired]

@@ -89,6 +89,11 @@ class SelectTaxiTypeVC: BaseViewController{
     
     @IBAction func btnOfferClick(_ sender: Any) {
         let controller = MyOfferVC.instantiate(fromAppStoryboard: .Main)
+        controller.PromoCodeValid = { (objPromo) in
+            self.btnPromo.isHidden = false
+            self.btnPromo.setTitle(objPromo.promocode, for: .normal)
+            
+        }
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

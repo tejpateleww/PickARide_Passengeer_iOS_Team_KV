@@ -20,11 +20,12 @@ class navigationCommonView: UIView {
 
     
     // MARK: - IBOutlets
-   
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         xibSetup()
+        UIView.animate(withDuration: 12.0, delay: 1, options: ([.curveLinear, .repeat]), animations: {() -> Void in
+            self.lblStartRideAddress.center = CGPoint(x: 0 - self.lblStartRideAddress.bounds.size.width / 2, y: self.lblStartRideAddress.center.y)
+                    }, completion:  { _ in })
       
     }
     

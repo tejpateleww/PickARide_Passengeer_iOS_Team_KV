@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import MKProgress
+import CoreLocation
+import GoogleMaps
 
 //import NVActivityIndicatorView
 
@@ -330,6 +332,106 @@ class Utilities:NSObject{
         //        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
         MKProgress.hide()
     }
+    
+    class func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String){
+            var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+            let lat: Double = Double("\(pdblLatitude)")!
+           
+            let lon: Double = Double("\(pdblLongitude)")!
+            
+            let ceo: CLGeocoder = CLGeocoder()
+            center.latitude = lat
+            center.longitude = lon
+
+            let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+
+
+            ceo.reverseGeocodeLocation(loc, completionHandler:
+                {(placemarks, error) in
+                    if (error != nil)
+                    {
+                        print("reverse geodcode fail: \(error!.localizedDescription)")
+                    }
+                    let pm = placemarks! as [CLPlacemark]
+
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                        print(pm.country)
+                        print(pm.locality)
+                        print(pm.subLocality)
+                        print(pm.thoroughfare)
+                        print(pm.postalCode)
+                        print(pm.subThoroughfare)
+                        var addressString : String = ""
+                        if pm.subLocality != nil {
+                            addressString = addressString + pm.subLocality! + ", "
+                        }
+                        if pm.thoroughfare != nil {
+                            addressString = addressString + pm.thoroughfare! + ", "
+                        }
+                        if pm.locality != nil {
+                            addressString = addressString + pm.locality! + ", "
+                        }
+                        if pm.country != nil {
+                            addressString = addressString + pm.country! + ", "
+                        }
+                        if pm.postalCode != nil {
+                            addressString = addressString + pm.postalCode! + " "
+                        }
+
+                        print(addressString)
+                  }
+            })
+
+        }
+    
+    class func getAddress(Lat:Double, Lng:Double) -> String {
+            var address: String = ""
+
+            let geoCoder = CLGeocoder()
+            let location = CLLocation(latitude: 23.071515774095147, longitude: 72.51778648815093)
+            //selectedLat and selectedLon are double values set by the app in a previous process
+
+            geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+
+                // Place details
+                var placeMark: CLPlacemark!
+                placeMark = placemarks?[0]
+
+                // Address dictionary
+                //print(placeMark.addressDictionary ?? "")
+
+                // Location name
+                if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+                    //print(locationName)
+                }
+
+                // Street address
+                if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
+                    //print(street)
+                }
+
+                // City
+                if let city = placeMark.addressDictionary!["City"] as? NSString {
+                    //print(city)
+                }
+
+                // Zip code
+                if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+                    //print(zip)
+                }
+
+                // Country
+                if let country = placeMark.addressDictionary!["Country"] as? NSString {
+                    //print(country)
+                }
+
+            })
+
+            return address;
+        }
+    
+    
     
     
     

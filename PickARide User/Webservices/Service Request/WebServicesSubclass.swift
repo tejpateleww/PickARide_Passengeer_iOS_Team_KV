@@ -140,4 +140,21 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    
+    class func AddPlaces(reqModel : AddPlacesReqModel , completion : @escaping (Bool,String,RootPlaces?,Any) -> ()) {
+        
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.addFavourite.rawValue, requestModel: reqModel, responseModel: RootPlaces.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func FavoritList(CustomerId : String , complition : @escaping (Bool,String,RootPlaces?,Any)->()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.FavoriteList.rawValue + "/\(CustomerId)", responseModel: RootPlaces.self) { (status, message, response, error) in
+            complition(status,message,response,error)
+        }
+    }
+
+    
+    
 }

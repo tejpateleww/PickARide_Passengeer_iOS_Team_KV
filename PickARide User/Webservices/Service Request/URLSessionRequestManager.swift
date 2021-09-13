@@ -36,17 +36,8 @@ class URLSessionRequestManager {
         request.allHTTPHeaderFields = BEARER_HEADER()
         
         print("the url is \(url) and the headers are \(BEARER_HEADER())")
-        
-        URLSession.shared.jsonDecodableTask(with: url) { (result: Result<C, Error>) in
-            switch result {
-            case .success(let person):
-                print("Person \(person.name)")
-            case .failure(let error):
-                print(error)
-            }
-        }.resume()
-        
     
+        
         
         
         CodableService.getResponseFromSession(request: request, codableObj: responseModel) { (status, apiMessage, obj, dic) in

@@ -12,9 +12,9 @@ import UIKit
 class SettingData {
     var titleName : String?
     var titleButton : String?
-    var subData : [SubSettingsData]?
+    var subData : [PlaceData]?
     
-    init(name:String? = "", button:String? = "", subsetting:[SubSettingsData] = []) {
+    init(name:String? = "", button:String? = "", subsetting:[PlaceData] = []) {
         self.titleName = name
         self.titleButton = button
         self.subData = subsetting
@@ -53,8 +53,4 @@ struct SettingsTitle {
     static let Language = "SettingsVC_Language".Localized()
 }
 
-func addValuesInSettingList(){
-    SettingData.SettingList.append(SettingData())
-    SettingData.SettingList.append(SettingData(name: SettingsTitle.Favoutite, button: SettingsTitle.Add, subsetting: [SubSettingsData(name: SettingsTitle.Home, img: SettingImages.SettingHome), SubSettingsData(name: SettingsTitle.Work, img: SettingImages.SettingWork)]))
-    SettingData.SettingList.append(SettingData(button: SettingsTitle.MoreSavedPlaces, subsetting: [SubSettingsData(name: SettingsTitle.PrivacyPolicy)]))
-}
+

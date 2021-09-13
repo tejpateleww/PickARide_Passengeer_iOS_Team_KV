@@ -147,6 +147,8 @@
 		6A4A9A80E727926791AFA6BB /* Pods_PickARide_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */; };
 		8133352125CBD68900CEA3C0 /* CommonWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */; };
 		816AEABD25CD047E00ABA5BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */; };
+		84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B726E778DC009AF6FC /* AddPlace.swift */; };
+		84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,6 +296,8 @@
 		64C68ADE241BBB2900B97B25 /* PickARide User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PickARide User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewVC.swift; sourceTree = "<group>"; };
 		816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84A495B726E778DC009AF6FC /* AddPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlace.swift; sourceTree = "<group>"; };
+		84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponseModel.swift; sourceTree = "<group>"; };
 		86784D51C37BBA35E10C918A /* Pods-ApiStructureModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApiStructureModule.release.xcconfig"; path = "Target Support Files/Pods-ApiStructureModule/Pods-ApiStructureModule.release.xcconfig"; sourceTree = "<group>"; };
 		880AEDFB25DBEC6C00A29928 /* PickARide User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PickARide User.entitlements"; sourceTree = "<group>"; };
 		8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickARide_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -567,6 +571,7 @@
 			children = (
 				1865081D26CD00F800C0757F /* BookingReqModel.swift */,
 				1865082126CD03CF00C0757F /* CancelTripReqModel.swift */,
+				84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 			children = (
 				1865082426CD0B8300C0757F /* BookingUserModel.swift */,
 				1865082726CD0BBD00C0757F /* CancelTripUserModel.swift */,
+				84A495B726E778DC009AF6FC /* AddPlace.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -1080,6 +1086,7 @@
 				180CC7F72590561E00799280 /* SettingVC.swift in Sources */,
 				180979A9258769A2002070A7 /* SplashVC.swift in Sources */,
 				181EBDB3258730B300C11C08 /* CustomSlider.swift in Sources */,
+				84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */,
 				18F9B705259350E100202DA6 /* UITableViewCell+Extension.swift in Sources */,
 				1865081E26CD00F800C0757F /* BookingReqModel.swift in Sources */,
 				1865082F26CD16BF00C0757F /* PromoCodeModel.swift in Sources */,
@@ -1138,6 +1145,7 @@
 				18F9B701259350E100202DA6 /* UIView+Extension.swift in Sources */,
 				185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */,
 				18F9B6FD259350E100202DA6 /* UIColor+Extension.swift in Sources */,
+				84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */,
 				1828A1BB26982369009ADA2A /* CardUserModel.swift in Sources */,
 				181EBDBB258730B300C11C08 /* RegisterVC.swift in Sources */,
 				18B365612694945400CE8E3D /* CardValidatorClass.swift in Sources */,

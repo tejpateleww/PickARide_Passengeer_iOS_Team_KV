@@ -17,3 +17,20 @@ class CancelTripReqModel : Encodable{
         case cancelReason = "cancel_reason"
     }
 }
+
+
+class AddPlacesReqModel : Encodable {
+    var customerId : String? 
+    var placeName : String?
+    var location : String?
+    var lat : Double?
+    var lng : Double?
+    
+    enum CodingKeys : String, CodingKey {
+        case customerId = "customer_id"
+        case placeName = "place_name"
+        case location = "location"
+        case lat = "lat"
+        case lng = "lng"
+    }
+}

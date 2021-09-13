@@ -45,6 +45,8 @@ class LoginResponseModel: Codable{
         message = try? values?.decodeIfPresent(String.self, forKey: .message)
         status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
     }
+    
+    
 }
 
 // MARK: - DataClass

@@ -66,7 +66,9 @@ enum ApiKey: String {
     case bookingRequest                       = "booking_request"
     case cancelTrip                           = "cancel_trip"
     case promocodeList                        = "promocode_list"
-    case checkPromocode                        = "check_promocode"
+    case checkPromocode                       = "check_promocode"
+    case addFavourite                         = "add_favourite_address"
+    case FavoriteList                         = "favourite_address_list"
 }
 
  

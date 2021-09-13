@@ -73,6 +73,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         
         self.currentLocation = location
         Singleton.sharedInstance.userCurrentLocation = location.coordinate
+    
         updateLocation(currentLocation: location)
     }
     

@@ -28,7 +28,7 @@ class PromoViewModel{
     }
     
     //MARK:-
-    func webserviceCheckPromoCodeApi(reqModel: CheckPromoReqModel){
+    func webserviceCheckPromoCodeApi(objPrmo :PromoDetailsModel ,reqModel: CheckPromoReqModel){
         Utilities.showHud()
         WebServiceSubClass.CheckPromoCodeApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
@@ -36,6 +36,11 @@ class PromoViewModel{
             
             if status{
                 DispatchQueue.main.async {
+                    if let validPromo = self.promoVC?.PromoCodeValid {
+                        validPromo(objPrmo)
+                    }
+                    self.promoVC?.navigationController?.popViewController(animated: true)
+                    
                     
                 }
             }

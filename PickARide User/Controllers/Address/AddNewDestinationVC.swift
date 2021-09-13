@@ -20,6 +20,11 @@ class AddNewDestinationVC: BaseViewController {
     
     var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
+    var viewModelPlaces = AddPlaceViewModel()
+    var selectedIndex = Int()
+    var selectedData : placePickerData!
+    let placesClient = GMSPlacesClient.shared()
+    
     
     override func viewDidLoad() {
         let s : String?
@@ -34,7 +39,20 @@ class AddNewDestinationVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.addNewPlace.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.add.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        navBtnDone.addTarget(self, action: #selector(navAddButtonClicked), for: .touchUpInside)
+          navBtnDone.addTarget(self, action: #selector(navAddButtonClicked), for: .touchUpInside)
+    }
+}
+
+extension AddNewDestinationVC {
+    func callApi(){
+        self.viewModelPlaces.AddPlaceVC = self
+        let reqModel = AddPlacesReqModel()
+        reqModel.customerId = Singleton.sharedInstance.UserId
+        reqModel.placeName = selectedData.primaryText
+        reqModel.location = selectedData.location
+        reqModel.lat = selectedData.lat
+        reqModel.lng = selectedData.lng
+            self.viewModelPlaces.webserviceCallAddPlaces(reqmodel: reqModel)
     }
 }
 
@@ -63,9 +81,40 @@ extension AddNewDestinationVC{
     }
     
     @objc func navAddButtonClicked(_ sender: UIButton) {
+        callApi()
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func GetPlaceDataByPlaceID(PlaceObj:GMSAutocompletePrediction,pPlaceID: String)
+       {
+         //  pPlaceID = "ChIJXbmAjccVrjsRlf31U1ZGpDM"
+           self.placesClient.lookUpPlaceID(pPlaceID, callback: { (place, error) -> Void in
+
+               if let error = error {
+                   print("lookup place id query error: \(error.localizedDescription)")
+                   return
+               }
+
+               if let place = place {
+                   print("Place name \(place.name)")
+                   print("Place address \(place.formattedAddress!)")
+                   print("Place placeID \(place.placeID)")
+                   print("Place attributions \(place.attributions)")
+                   print("\(place.coordinate.latitude)")
+                   print("\(place.coordinate.longitude)")
+                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude))
+                self.tblPlacePicker.reloadData()
+                
+               } else {
+                   print("No place details for \(pPlaceID)")
+               }
+           })
+       }
+
+    
+    
+    
 }
 
 //MARK:- TableView Delegate
@@ -108,7 +157,9 @@ extension AddNewDestinationVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        txtPlaceAddress.text = tableData[indexPath.row].primaryText
+        selectedIndex = indexPath.row
+        selectedData = tableData[selectedIndex]
+        txtPlaceAddress.text = tableData[selectedIndex].primaryText
         txtPlaceAddress.resignFirstResponder()
     }
 }
@@ -118,15 +169,15 @@ extension  AddNewDestinationVC: GMSAutocompleteFetcherDelegate{
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         tableData.removeAll()
         for prediction in predictions {
-            tableData.append(placePickerData(primary: prediction.attributedPrimaryText.string, secondary: prediction.attributedSecondaryText?.string ?? ""))
-            
+            GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: prediction.placeID)
         }
-        tblPlacePicker.reloadData()
+        
     }
     
     func didFailAutocompleteWithError(_ error: Error) {
         print(error.localizedDescription)
     }
+    
 }
 
 //MARK:- Textfield Delegate
