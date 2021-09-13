@@ -21,7 +21,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="khX-OQ-sIS">
                             <rect key="frame" x="25" y="0.0" width="364" height="44"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klu-2W-OlT" customClass="suggestedRidesLabel" customModule="PickARide_User" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klu-2W-OlT" customClass="themeMarqueeLabel" customModule="PickARide_User" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="164" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -50,7 +50,7 @@
                                         <constraint firstItem="V0s-nG-4qf" firstAttribute="centerX" secondItem="7v4-O3-DBp" secondAttribute="centerX" id="PTw-5J-UWM"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czx-wf-T4r" customClass="suggestedRidesLabel" customModule="PickARide_User" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czx-wf-T4r" customClass="themeMarqueeLabel" customModule="PickARide_User" customModuleProvider="target">
                                     <rect key="frame" x="200" y="0.0" width="164" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -110,6 +110,14 @@
             <point key="canvasLocation" x="89.855072463768124" y="111.83035714285714"/>
         </view>
     </objects>
+    <designables>
+        <designable name="Czx-wf-T4r">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="Klu-2W-OlT">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_destinationArrow" width="16" height="12"/>
         <systemColor name="systemBackgroundColor">

@@ -71,8 +71,6 @@ enum ApiKey: String {
     case FavoriteList                         = "favourite_address_list"
 }
 
- 
-
 enum SocketKeys: String {
     
     case KHostUrl                                 = "http://50.18.114.231:8080/"

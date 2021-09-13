@@ -17,8 +17,9 @@ class AddPlaceViewModel {
     func webserviceCallAddPlaces(reqmodel:AddPlacesReqModel){
         Utilities.showHud()
         WebServiceSubClass.AddPlaces(reqModel: reqmodel) { (status, message, response, error )in
+            Utilities.hideHud()
             if status {
-                Utilities.hideHud()
+              
                 Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: message, state: status ? .success : .failure)
                 
                 if status{
@@ -32,8 +33,9 @@ class AddPlaceViewModel {
     func webserviceCallFavPlacesList(){
         Utilities.showHud()
         WebServiceSubClass.FavoritList(CustomerId: Singleton.sharedInstance.UserId) { (status, message, response,error) in
+            Utilities.hideHud()
             if status {
-                Utilities.hideHud()
+              
                 print(response)
                 if status {
                     DispatchQueue.main.async {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MarqueeLabel
 
 class TitleLabel : UILabel {
     override func awakeFromNib() {
@@ -423,10 +424,34 @@ class suggestedRidesLabel : UILabel {
             self.font = CustomFont.regular.returnFont(15)
             self.textColor = colors.loginPlaceHolderColor.value
             self.textAlignment = .right
+         
         } else if isEndRideAddress {
             self.font = CustomFont.regular.returnFont(15)
             self.textColor = colors.loginPlaceHolderColor.value
             self.textAlignment = .left
+          
+        }
+    }
+}
+
+class themeMarqueeLabel : MarqueeLabel {
+
+    @IBInspectable var isStartRideAddress : Bool = false
+    @IBInspectable var isEndRideAddress : Bool = false
+    
+    override func awakeFromNib() {
+  
+      
+        if isStartRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .right
+         
+        } else if isEndRideAddress {
+            self.font = CustomFont.regular.returnFont(15)
+            self.textColor = colors.loginPlaceHolderColor.value
+            self.textAlignment = .left
+          
         }
     }
 }
