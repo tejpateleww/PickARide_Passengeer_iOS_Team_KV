@@ -19,6 +19,8 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var currentRideDetailContainerVW: UIView!
     @IBOutlet weak var currentRideDriverInfoContainerVW: UIView!
     
+    var SelectedLocationString : (String,String) = ("Pick Up","Destination")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +37,7 @@ class HomeVC: BaseViewController {
             self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
             self.setProfilePicture()
         }else{
-            self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Pick Up","Destination"], isTwoLabels: false)
+            self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [SelectedLocationString.0,SelectedLocationString.1], isTwoLabels: false)
         }
     }
     
@@ -87,11 +89,14 @@ extension HomeVC: UITextFieldDelegate{
         textField.resignFirstResponder()
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         
-        controller.openSelectTexiVC = {
+        controller.openSelectTexiVC = { (pickup,dropoff) in
+            self.SelectedLocationString = (pickup,dropoff)
             self.selectTexiVCContainerVW.isHidden = false
             self.bottomVWWhereAreYouGoing.isHidden = true
+            
         }
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
+//get_estimate_fare

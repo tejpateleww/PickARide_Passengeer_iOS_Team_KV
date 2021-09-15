@@ -172,6 +172,11 @@
 			<key>orderHint</key>
 			<integer>23</integer>
 		</dict>
+		<key>MarqueeLabel.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>34</integer>
+		</dict>
 		<key>Pods-PickARide User.xcscheme</key>
 		<dict>
 			<key>isShown</key>

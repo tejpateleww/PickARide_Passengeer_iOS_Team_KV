@@ -28,7 +28,7 @@ class ChooseDestinationVC: BaseViewController {
     var selectedIndex = 0
     var selectedData : placePickerData!
     var viewModelPlaces = AddPlaceViewModel()
-    var openSelectTexiVC : (()->())?
+    var openSelectTexiVC : ((String,String)->())?
     var locationManager:CLLocationManager!
 
     
@@ -182,6 +182,13 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
            
             textFieldDestinationLocation.resignFirstResponder()
             textFieldStartLocation.resignFirstResponder()
+            
+            if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
+                self.navigationController?.popViewController(animated: false)
+                if let obj = openSelectTexiVC{
+                    obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
+                }
+            }
         }
     }
     
@@ -207,7 +214,7 @@ extension ChooseDestinationVC: UITextFieldDelegate{
         if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
             self.navigationController?.popViewController(animated: false)
             if let obj = openSelectTexiVC{
-                obj()
+                obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
             }
         }
     }
@@ -329,8 +336,8 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
                 print(placemark.locality!)
                 print(placemark.administrativeArea!)
                 print(placemark.country!)
-
-                self.textFieldStartLocation.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+               
+                self.textFieldStartLocation.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
             }
         }
 
