@@ -21,6 +21,8 @@ class HomeVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        socketManageSetup()
         self.setLocalization()
         self.addObserver()
         self.txtFieldWhereAreYouGoing.delegate = self
@@ -35,6 +37,14 @@ class HomeVC: BaseViewController {
         }else{
             self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Pick Up","Destination"], isTwoLabels: false)
         }
+    }
+    
+    //MARK:- ===== socket setup Methods ==
+    func socketManageSetup(){
+        SocketIOManager.shared.establishConnection()
+        self.SocketOnMethods()
+       
+        
     }
 }
 

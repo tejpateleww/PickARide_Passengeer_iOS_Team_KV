@@ -22,8 +22,10 @@ target 'PickARide User' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Messaging'
-  
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   pod 'FormTextField'
+  pod 'SwiftyJSON', '4.0'
+
   
   # Pods for ApiStructureModulex
   

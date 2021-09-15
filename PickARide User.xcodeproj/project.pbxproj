@@ -149,6 +149,8 @@
 		816AEABD25CD047E00ABA5BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */; };
 		84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B726E778DC009AF6FC /* AddPlace.swift */; };
 		84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */; };
+		84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CE26F1B26700F14D95 /* SocketConnect.swift */; };
+		84AA62D126F1B26700F14D95 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -298,6 +300,8 @@
 		816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84A495B726E778DC009AF6FC /* AddPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlace.swift; sourceTree = "<group>"; };
 		84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponseModel.swift; sourceTree = "<group>"; };
+		84AA62CE26F1B26700F14D95 /* SocketConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnect.swift; sourceTree = "<group>"; };
+		84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		86784D51C37BBA35E10C918A /* Pods-ApiStructureModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApiStructureModule.release.xcconfig"; path = "Target Support Files/Pods-ApiStructureModule/Pods-ApiStructureModule.release.xcconfig"; sourceTree = "<group>"; };
 		880AEDFB25DBEC6C00A29928 /* PickARide User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PickARide User.entitlements"; sourceTree = "<group>"; };
 		8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickARide_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -388,6 +392,7 @@
 				187BC460268AD7EC00CAD121 /* AppDelegate+Methods.swift */,
 				187BC47A268AD96400CAD121 /* AppDelegate+Cycle.swift */,
 				187BC477268AD8A000CAD121 /* AppDelegate+PushNotification.swift */,
+				84AA62CD26F1B26700F14D95 /* SocketConnect */,
 				181EBD62258730B300C11C08 /* Models */,
 				187BC48B268ADAD400CAD121 /* ViewModel */,
 				181EBDBF2587310E00C11C08 /* Controllers */,
@@ -894,6 +899,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		84AA62CD26F1B26700F14D95 /* SocketConnect */ = {
+			isa = PBXGroup;
+			children = (
+				84AA62CE26F1B26700F14D95 /* SocketConnect.swift */,
+				84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */,
+			);
+			path = SocketConnect;
+			sourceTree = "<group>";
+		};
 		B7F05C3E06CAA5224C293454 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,6 +1098,7 @@
 				1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */,
 				1865083326CD17B400C0757F /* PromoViewModel.swift in Sources */,
 				180CC7F72590561E00799280 /* SettingVC.swift in Sources */,
+				84AA62D126F1B26700F14D95 /* SocketIOManager.swift in Sources */,
 				180979A9258769A2002070A7 /* SplashVC.swift in Sources */,
 				181EBDB3258730B300C11C08 /* CustomSlider.swift in Sources */,
 				84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */,
@@ -1164,6 +1179,7 @@
 				187BC461268AD7EC00CAD121 /* AppDelegate+Methods.swift in Sources */,
 				187A27F126805B1400F936B2 /* ConstanceEnums.swift in Sources */,
 				1848437D258B18340094480C /* HomeVC.swift in Sources */,
+				84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */,
 				1828A1C026983963009ADA2A /* WalletModel.swift in Sources */,
 				1865CF51267C763100379A40 /* WebServicesSubclass.swift in Sources */,
 				187BC497268AE1BB00CAD121 /* CountryModel.swift in Sources */,

@@ -71,10 +71,6 @@ class ChooseDestinationVC: BaseViewController {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
-    
-    
-    
-    
 }
 
 extension ChooseDestinationVC {
