@@ -16,7 +16,19 @@ enum APIEnvironment : String {
     case Development = "http://65.1.154.172/api/customer_api/"
     case Profilebu = "http://65.1.154.172/api/"
     case Live = "not provided"
-     
+    case GoogleMapKey = "AIzaSyDvJt3EcQPwKnsfIuOa0_9zd9P8L2FfUkE"
+            
+            //"AIzaSyDKJGsMhG1iL3NsqDb9PbQ4u1p_jLBB_FA"
+            
+            //"AIzaSyAJvNxPhmUUxSQde0KHkhaVC-K4ULjvrUY"
+            //"AIzaSyDvJt3EcQPwKnsfIuOa0_9zd9P8L2FfUkE"
+            //"AIzaSyDKJGsMhG1iL3NsqDb9PbQ4u1p_jLBB_FA"
+            //"AIzaSyD9aZBxr4MjVuneyUp4x969up5GUvTY6vk"
+            
+            //"AIzaSyDU7rSEixg3F-ceR5nz9JAcYxEw5J7hOEI"
+            
+    
+    
     static var baseURL: String{
         return APIEnvironment.environment.rawValue
     }
@@ -69,6 +81,16 @@ enum ApiKey: String {
     case checkPromocode                       = "check_promocode"
     case addFavourite                         = "add_favourite_address"
     case FavoriteList                         = "favourite_address_list"
+    case currentBooking                       = "current_booking"
+    case RatingReview                         = "review_rating"
+    case pastBookingHistory                   = "past_booking_history/"
+    case upcomingBookingHistory               = "upcoming_booking_history/"
+    case inProcessBookingHistory              = "in_process_booking_history/"
+    case acceptBookLaterRequest               = "accept_book_later_request"
+    case chatHistory                          = "chat_history/"
+
+
+            
 }
 
  

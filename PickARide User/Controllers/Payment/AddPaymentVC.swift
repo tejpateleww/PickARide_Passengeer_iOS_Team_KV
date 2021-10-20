@@ -17,10 +17,14 @@ class AddPaymentVC: BaseViewController{
     
     var cardDetails : [String] = []
     var isFromSideMenu = false
-    var selectedPaymentMethods = 1
+    var selectedPaymentMethods = NSNotFound
+    var selectCard = NSNotFound
     var isFromSchedulled : Bool = false
-    
+    var selectedTaxiType : EstimateFare!
     var addPaymentUserModel = CardUserModel()
+    var bookingReqModel = BookingReqModel()
+    var bookingAdded : (()->())?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,33 +61,23 @@ class AddPaymentVC: BaseViewController{
             
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
-            if isFromSchedulled{
-                let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-                controller.dismissedClosour = {
-                    let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
-                    self.navigationController?.pushViewController(controller, animated: true)
-                }
-                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-                let navigationController = UINavigationController(rootViewController: controller)
-                navigationController.modalPresentationStyle = .overCurrentContext
-                navigationController.modalTransitionStyle = .crossDissolve
-                navigationController.navigationBar.isHidden = true
-                self.navigationController?.pushViewController(controller, animated: true)
-            }else{
-                let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-                
-                controller.dismissedClosour = {
-                    self.navigationController?.popViewController(animated: false)
-                    NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
-                }
-                
-                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-                let navigationController = UINavigationController(rootViewController: controller)
-                navigationController.modalPresentationStyle = .overCurrentContext
-                navigationController.modalTransitionStyle = .crossDissolve
-                navigationController.navigationBar.isHidden = true
-                self.present(navigationController, animated: true, completion: nil)
+            
+            if selectCard == NSNotFound {
+                Toast.show(title: UrlConstant.Required, message: "Please select card", state: .failure)
+
             }
+            
+            else {
+                bookingReqModel.distance = "\(selectedTaxiType.distance ?? 0)"
+                bookingReqModel.estimatedFare = "\(selectedTaxiType.estimateTripFare ?? 0)"
+                bookingReqModel.noOfPassenger = selectedTaxiType.capacity
+                bookingReqModel.vehicleTypeId =  selectedTaxiType.vehicleTypeId
+                bookingReqModel.tripDuration =  "\(selectedTaxiType.durationInMinute ?? 0):\(selectedTaxiType.durationInSecond ?? 0)"
+                bookingReqModel.paymentType = selectedPaymentMethods == 0 ? "wallet": "card"
+                bookingReqModel.cardId = Singleton.sharedInstance.CardList[selectCard - 1].id
+                BookingRequestWebservice()
+            }
+            
         }
     }
     
@@ -94,10 +88,63 @@ class AddPaymentVC: BaseViewController{
             controller.addCardClosure = {
                 self.tblPaymentMethod.reloadData()
             }
-            
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
+    
+    //MARK:- ====== Booking Request Webservice call =======
+    func BookingRequestWebservice(){
+        Utilities.showHud()
+        WebServiceSubClass.BookingRequestApi(reqModel: bookingReqModel) { status, message, response, Error in
+            Utilities.hideHud()
+            if status {
+                print(response)
+                if self.isFromSchedulled{
+                    let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
+                    controller.dismissedClosour = {
+                        let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                    let navigationController = UINavigationController(rootViewController: controller)
+                    navigationController.modalPresentationStyle = .overCurrentContext
+                    navigationController.modalTransitionStyle = .crossDissolve
+                    navigationController.navigationBar.isHidden = true
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }else{
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    if let bookingSuccess = self.bookingAdded {
+                        bookingSuccess()
+                    }
+//                    let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
+//                    controller.dismissedClosour = {
+//                        if let bookingSuccess = self.bookingAdded {
+//                            bookingSuccess()
+//                        }
+//                        self.navigationController?.popViewController(animated: false)
+//                    }
+//                    controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+//                    let navigationController = UINavigationController(rootViewController: controller)
+//                    navigationController.modalPresentationStyle = .overCurrentContext
+//                    navigationController.modalTransitionStyle = .crossDissolve
+//                    navigationController.navigationBar.isHidden = true
+//                    self.present(navigationController, animated: true, completion: nil)
+                }
+            
+            }
+            else {
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
 
 //MARK:- Apis
@@ -164,7 +211,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
 
             let cell2 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell2.reuseIdentifier, for: indexPath) as? paymentMethodCell2 ?? paymentMethodCell2()
 
-            let isSelect = indexPath.row == selectedPaymentMethods
+            let isSelect = indexPath.row == selectCard
             cell2.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
             cell2.vWMain.layer.borderWidth = isSelect ? 1 : 0
             cell2.selectPaymentMethodButton.isHidden = !isSelect
@@ -186,7 +233,14 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }
-        selectedPaymentMethods = indexPath.row
+        if indexPath.row == 0 {
+            selectCard = NSNotFound
+            selectedPaymentMethods = indexPath.row
+        }
+        else {
+            selectedPaymentMethods = NSNotFound
+            selectCard = indexPath.row
+        }
         tblPaymentMethod.reloadData()
     }
     

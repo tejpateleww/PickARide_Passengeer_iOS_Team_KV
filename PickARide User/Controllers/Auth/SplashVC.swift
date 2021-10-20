@@ -50,7 +50,30 @@ extension SplashVC{
                             self.setRootViewController()
                         }
                     }
-                }else{
+                }
+                else if  let responseDic = error as? [String:Any], let _ = responseDic["app_links"]{
+ 
+                    guard  let obj = response else { return }
+                    if obj.appLinks?.count != 0 {
+                        guard let appLink = obj.appLinks else { return }
+                        for i in appLink {
+                            let name = i.name
+                            switch name{
+                            case "terms_and_condition" :
+                                Singleton.sharedInstance.termsConditionURL = i.url ?? ""
+                            case "privacy_policy" :
+                                Singleton.sharedInstance.PrivacyUrl = i.url ?? ""
+                            case "help" :
+                                Singleton.sharedInstance.HelpUrl = i.url ?? ""
+                            default:
+                                break
+                            }
+                        }
+                    }
+                    self.setRootViewController()
+                    
+                }
+                else{
                     self.setRootViewController()
                 }
             }else{

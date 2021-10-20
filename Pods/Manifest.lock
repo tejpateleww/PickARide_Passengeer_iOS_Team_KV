@@ -118,6 +118,7 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
   - IQKeyboardManagerSwift (6.3.0)
+  - MarqueeLabel (4.3.0)
   - MKProgress (1.1.0)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
@@ -134,6 +135,7 @@ PODS:
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
   - SwiftyJSON (4.0.0)
+  - UIView-Shimmer (1.0.4)
 
 DEPENDENCIES:
   - Cosmos (~> 23.0)
@@ -148,12 +150,14 @@ DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - IQKeyboardManagerSwift (= 6.3.0)
+  - MarqueeLabel
   - MKProgress
   - SDWebImage
   - SideMenuSwift
   - SkyFloatingLabelTextField
   - Socket.IO-Client-Swift (~> 15.2.0)
   - SwiftyJSON (= 4.0)
+  - UIView-Shimmer (~> 1.0)
 
 SPEC REPOS:
   trunk:
@@ -180,6 +184,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
+    - MarqueeLabel
     - MKProgress
     - nanopb
     - PromisesObjC
@@ -189,6 +194,7 @@ SPEC REPOS:
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftyJSON
+    - UIView-Shimmer
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
@@ -214,6 +220,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -223,7 +230,8 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 817fb5e56b1a156dffe1f065a93fd6a6e3f802a7
+PODFILE CHECKSUM: 475bd31d22ba14307986b26315ca2a377f59b66c
 
 COCOAPODS: 1.10.1

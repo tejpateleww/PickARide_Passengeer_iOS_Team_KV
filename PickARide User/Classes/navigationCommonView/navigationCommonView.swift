@@ -33,6 +33,13 @@ class navigationCommonView: UIView {
         selectTaxiVW.cornerRadius = 8
     }
     
+    //MARK:- ====== Btn Action Navigation =====
+    @IBAction func btnActionNavigation(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: .OpenLocationSelectionVC, object: nil, userInfo: nil)
+    }
+    
+    
     func xibSetup() {
         guard let view = loadViewFromNib() else { return }
         view.frame = bounds

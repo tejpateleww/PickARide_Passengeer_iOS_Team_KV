@@ -27,14 +27,25 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBOutlet weak var suggestedTexiView: suggestedTaxiView!
     @IBOutlet weak var suggestedVWBottomConstraint: NSLayoutConstraint!
     
-    var taxiData = [suggestRide]()
-    var selectedTaxi = 0
+    var taxiData = [EstimateFare]()
+    var selectedTaxi = NSNotFound
+    var bookingReqModel = BookingReqModel()
+    var navigateToCurrentLocation : (()->())?
+    var heightOfView = CGFloat()
+    var heightGet : ((CGFloat , Bool)->())? = nil
     
     var isExpandCategory:  Bool  = false {
         didSet {
             suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedTexiView.frame.height + topVW.frame.height + 60)
             self.tblSuggestedRides.isHidden = !isExpandCategory
             self.view.endEditing(true)
+            DispatchQueue.main.async {
+                self.heightOfView = self.isExpandCategory ? self.suggestedTexiView.frame.height + 40 : (self.suggestedTexiView.frame.height + self.suggestedVWBottomConstraint.constant)
+ 
+                if let height = self.heightGet {
+                    height(self.heightOfView, self.isExpandCategory)
+                }
+            }
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
             }) { (success) in
@@ -44,11 +55,16 @@ class SelectTaxiTypeVC: BaseViewController{
     }
     
     var closeBtnClosure : (()->())?
+    var bookingSucess : (()->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUPUI()
+       
+        registerNIB()
+        //tblSuggestedRides.register(UINib(nibName: "NoDataViewCell", bundle: nil), forCellReuseIdentifier: "NoDataViewCell")
+        
         self.setLocalization()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,8 +73,17 @@ class SelectTaxiTypeVC: BaseViewController{
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Pick Up","Destination"], isTwoLabels: false)
     }
     
+    
+    func registerNIB(){
+        tblSuggestedRides.register(UINib(nibName:NoDataTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: NoDataTableViewCell.reuseIdentifier)
+    }
+    
     @IBAction func btnCancel(_ sender: Any) {
-        appDel.navigateToMain()
+        
+        if let clicked = closeBtnClosure {
+            clicked()
+        }
+        
     }
 
     @IBAction func btnPromo(_ sender: Any) {
@@ -66,30 +91,64 @@ class SelectTaxiTypeVC: BaseViewController{
    
     @IBAction func btnScheduleClick(_ sender: Any) {
         
-        let controller = ScheduleRideVC.instantiate(fromAppStoryboard: .Main)
-        controller.setClosour = {
-            let vc : AddPaymentVC = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
-            vc.isFromSchedulled = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.modalPresentationStyle = .overCurrentContext
-        navigationController.modalTransitionStyle = .crossDissolve
-        navigationController.navigationBar.isHidden = true
-        self.present(navigationController, animated: true, completion: nil)
+//        if selectedTaxi == NSNotFound {
+//            Toast.show(title: UrlConstant.Required, message: "Please select taxi type", state: .failure)
+//
+//        }
+//        else {
+            let controller : ScheduleRideVC = ScheduleRideVC.instantiate(fromAppStoryboard: .Main)
+            controller.selectedTaxi = selectedTaxi
+            controller.setClosour = { (strDateTime , TaxiSelected) in
+                self.bookingReqModel.bookingType = BookingType.BookLater.rawValue
+                self.bookingReqModel.pickupDateTime = strDateTime
+                self.selectedTaxi = TaxiSelected
+                if self.selectedTaxi == NSNotFound {
+                    Toast.show(message: "Please select taxi type", state: .failure)
+                }
+                else {
+                    let vc : AddPaymentVC = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
+                    vc.selectedTaxiType = self.taxiData[self.selectedTaxi]
+                    vc.isFromSchedulled = true
+                    vc.bookingReqModel = self.bookingReqModel
+                    self.navigationController?.pushViewController(vc, animated: true)
+
+                }
+                
+            }
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.navigationBar.isHidden = true
+            self.present(navigationController, animated: true, completion: nil)
+        //}
     }
     
     @IBAction func btnBookNowClick(_ sender: Any) {
-        let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
-        controller.isFromSideMenu = false
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        if selectedTaxi == NSNotFound {
+            Toast.show(title: UrlConstant.Required, message: "Please select taxi type", state: .failure)
+
+        }
+        else {
+            let controller :AddPaymentVC  = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
+            controller.bookingAdded = {
+                if let bookingAdd = self.bookingSucess {
+                    bookingAdd()
+                }
+            }
+            bookingReqModel.bookingType = BookingType.BookNow.rawValue
+            controller.bookingReqModel = bookingReqModel
+            controller.isFromSideMenu = false
+            controller.selectedTaxiType = self.taxiData[self.selectedTaxi]
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func btnOfferClick(_ sender: Any) {
         let controller = MyOfferVC.instantiate(fromAppStoryboard: .Main)
         controller.PromoCodeValid = { (objPromo) in
+            self.bookingReqModel.promoCode = objPromo.promocode
             self.btnPromo.isHidden = false
             self.btnPromo.setTitle(objPromo.promocode, for: .normal)
             
@@ -100,21 +159,36 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBAction func btnCardPaymentClick(_ sender: Any) {
         
     }
+    
+    //MARK:- ==== Btn Action Current location ==
+    @IBAction func btnActionCurrentLocation(_ sender: UIButton) {
+        
+        if let getcurrentlocation = navigateToCurrentLocation {
+            getcurrentlocation()
+        }
+    }
+    
+    
 }
 
 //MARK:- Methods
 extension SelectTaxiTypeVC{
-    func setUPUI(){
-        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+    func setUPUI(isExpand : Bool){
         
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+       
+        tblSuggestedRides.rowHeight = UITableView.automaticDimension
+        tblSuggestedRides.estimatedRowHeight = 200
         
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-        
-        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+//        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
+//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+//
+//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+//
+//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+//
+//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
         tblSuggestedRides.reloadData()
-        
+        tblSuggestedRides.layoutIfNeeded()
         DispatchQueue.main.async { [self] in
             if taxiData.count > 2 {
                 tblSuggestedRidesHeight.constant = (tblSuggestedRides.contentSize.height / CGFloat(taxiData.count)) * 2
@@ -122,6 +196,7 @@ extension SelectTaxiTypeVC{
                 tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
             }
         }
+        isExpandCategory =  isExpand
         self.setupViewCategory()
     }
     
@@ -150,29 +225,32 @@ extension SelectTaxiTypeVC{
             case UISwipeGestureRecognizer.Direction.down:
                 print("Swiped down")
                 self.isExpandCategory = false
+                
             case UISwipeGestureRecognizer.Direction.up:
                 print("Swiped up")
                 self.isExpandCategory = true
-
+                
             default:
                 break
             }
         }
     }
     
-    @objc func setBottomViewOnclickofViewTop(){
-        self.isExpandCategory = !self.isExpandCategory
-    }
+//    @objc func setBottomViewOnclickofViewTop(){
+//        self.isExpandCategory = !self.isExpandCategory
+//    }
 }
 
 //MARK:- TableView Delegate
 extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taxiData.count
+        return taxiData.count != 0 ? taxiData.count : 1
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+     if taxiData.count != 0 {
         let cell = tblSuggestedRides.dequeueReusableCell(withIdentifier: suggestedVisitCell.reuseIdentifier, for: indexPath) as! suggestedVisitCell
         if indexPath.row == selectedTaxi {
             cell.suggestTaxiBackgroundView.backgroundColor = colors.white.value
@@ -186,18 +264,38 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
             cell.TaxiType.textColor = colors.loginPlaceHolderColor.value
         }
        
-        cell.TaxiType.text = taxiData[indexPath.row].taxiName?.uppercased()
-        cell.TotalSeat.text = taxiData[indexPath.row].taxiTotalCapacity
-        cell.SuggestedMoney.text = taxiData[indexPath.row].taxiPrice
-        cell.SuggestedTime.text = taxiData[indexPath.row].taxiComingTime
-        cell.TaxiImage.image = taxiData[indexPath.row].taxiImage
+        cell.TaxiType.text = taxiData[indexPath.row].vehicleTypeName.uppercased()
+        cell.TotalSeat.text = taxiData[indexPath.row].capacity + "seats"
+        let strEstimateFare = twoDecimals(number:taxiData[indexPath.row].estimateTripFare ?? 0)
+            //"\(taxiData[indexPath.row].estimateTripFare ?? 0)"
         
+        cell.SuggestedMoney.text = "$ \(strEstimateFare)"
+        cell.SuggestedTime.text = "1-\(taxiData[indexPath.row].driverReachInMinute ?? 0) min"
+        cell.TaxiImage.loadSDImage(imgUrl: taxiData[indexPath.row].image)
+
         return cell
+       }
+        
+     else{
+         let NoDatacell = self.tblSuggestedRides.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell
+         return NoDatacell
+     }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedTaxi = indexPath.row
-        tblSuggestedRides.reloadData()
+        if taxiData.count != 0 {
+            selectedTaxi = indexPath.row
+            tblSuggestedRides.reloadData()
+        }
+    }
+    
+    
+    func twoDecimals(number: Float) -> String{
+        return String(format: "%.2f", number)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return taxiData.count != 0 ? 100 : tblSuggestedRides.frame.height
     }
 }
  

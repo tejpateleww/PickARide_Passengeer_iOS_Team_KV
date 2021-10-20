@@ -20,8 +20,34 @@ enum PaymentType : String{
     case Card = "card"
 }
 
+
+
+//"booking_type:book_now OR book_later
+//customer_id:1
+//vehicle_type_id:1
+//pickup_location:Nikol Ahmedabad
+//dropoff_location:Bopal Ahmedabad
+//pickup_lat:23.0726365
+//pickup_lng:72.51641870000003
+//dropoff_lat:23.0499889
+//dropoff_lng:72.66996730000005
+//no_of_passenger:2
+//payment_type:cash OR wallet OR card
+//estimated_fare:2
+//trip_duration:10
+//distance:2
+//pickup_date_time:2021-08-16 15:04:32
+//promocode:Test"
+
+
 //MARK:- Booking Request Model
 class BookingReqModel : Encodable{
+    
+    var promoCode : String?
+    var pickupDateTime : String?
+    var distance : String?
+    var tripDuration : String?
+    var vehicleTypeId : String?
     var customerId : String? = Singleton.sharedInstance.UserId
     var bookingType : BookingType.RawValue? // book_now OR book_later
     var pickupAddress : String?
@@ -33,8 +59,16 @@ class BookingReqModel : Encodable{
     var noOfPassenger : String?
     var paymentType : PaymentType.RawValue? // cash OR wallet OR card
     var estimatedFare : String?
+    var cardId : String?
     
     enum CodingKeys: String, CodingKey {
+        
+        case cardId = "card_id"
+        case pickupDateTime = "pickup_date_time"
+        case promoCode = "promocode"
+        case distance = "distance"
+        case tripDuration = "trip_duration"
+        case vehicleTypeId = "vehicle_type_id"
         case customerId = "customer_id"
         case bookingType = "booking_type"
         case pickupAddress = "pickup_location"
@@ -48,6 +82,11 @@ class BookingReqModel : Encodable{
         case estimatedFare = "estimated_fare"
     }
 }
+
+
+
+
+
 
 //MARK:- Booking Response Model
 class BookingModel: Codable {
@@ -218,7 +257,7 @@ class CustomerInfoModel: Codable {
         case address, trash, status
         case referralCode = "referral_code"
         case createdAt = "created_at"
-        case rating
+        case rating = "rating"
     }
     
     required init(from decoder: Decoder) throws {

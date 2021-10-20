@@ -11,6 +11,8 @@ import Cosmos
 
 class CurrentRideDetailsVC: BaseViewController {
 
+    
+    @IBOutlet weak var imgDriver: UIImageView!
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
@@ -25,7 +27,15 @@ class CurrentRideDetailsVC: BaseViewController {
     @IBOutlet weak var lblAvgRating: UILabel!
     @IBOutlet weak var btnGoToRatings: UIButton!
     
-    var vehicalNumber = "ST3751"
+    
+    var objCurrentBooking : CurrentBookingData!
+    var objBookingInfo : BookingInfoData!
+    var vehicalNumber = ""
+    var heightGet : ((CGFloat , Bool)->())? = nil
+    var heightOfView = CGFloat()
+
+    
+    
     
     var isExpandCategory:  Bool  = false {
         didSet {
@@ -36,6 +46,13 @@ class CurrentRideDetailsVC: BaseViewController {
             self.lblAvgRating.isHidden = !isExpandCategory
             self.rideDetailsStkVWTopConstraint.constant = isExpandCategory ? 0 : 10
             self.view.endEditing(true)
+            DispatchQueue.main.async {
+                self.heightOfView = self.isExpandCategory ? self.mainVW.frame.height + 40 : (self.mainVW.frame.height + self.mainVWBottomConstraint.constant)
+ 
+                if let height = self.heightGet {
+                    height(self.heightOfView, self.isExpandCategory)
+                }
+            }
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
             }) { (success) in
@@ -48,7 +65,7 @@ class CurrentRideDetailsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpUI()
+       // self.setUpUI()
         self.setupViewCategory()
     }
     
@@ -62,15 +79,41 @@ class CurrentRideDetailsVC: BaseViewController {
     }
     
     @IBAction func btnProfileClicked(_ sender: Any) {
-        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(controller, animated: true)
+//        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 //MARK:- Set Up UI
 extension CurrentRideDetailsVC{
-    func setUpUI(){
-        self.setLabel()
+    func setUpUI(isFromApi : Bool){
+        
+        if isFromApi == true {
+            lblDriverName.text = (objCurrentBooking.driverInfo?.firstName ?? "") + " " + (objCurrentBooking.driverInfo?.lastName ?? "")
+            lblRidego.text = objCurrentBooking.driverVehicleInfo?.vehicleType ?? ""
+            self.imgDriver.loadSDImage(imgUrl: objCurrentBooking.driverInfo?.profileImage ?? "")
+            self.vehicalNumber = objCurrentBooking.driverVehicleInfo?.vehicleTypeManufacturerName ?? ""
+            self.lblVehicalData.text = (objCurrentBooking.driverVehicleInfo?.vehicleTypeManufacturerName ?? "" ) + " - " + (objCurrentBooking.driverVehicleInfo?.vehicleTypeModelName  ?? "")
+            self.lblAvgRating.text = "(\(objCurrentBooking.driverInfo?.rating ?? "0"))"
+            self.ratingsView.rating = objCurrentBooking.driverInfo?.rating?.toDouble() ?? 0.0
+            lblRidego.text = objCurrentBooking.driverVehicleInfo?.plateNumber
+            self.setLabel()
+        }
+        else {
+            lblDriverName.text = objBookingInfo.driverInfo.firstName + " " + objBookingInfo.driverInfo.lastName
+            lblRidego.text = objBookingInfo.driverVehicleInfo.vehicleType
+            self.imgDriver.loadSDImage(imgUrl: objBookingInfo.driverInfo.profileImage ?? "")
+            self.vehicalNumber = objBookingInfo.driverVehicleInfo.vehicleTypeManufacturerName
+            self.lblVehicalData.text = objBookingInfo.driverVehicleInfo.vehicleTypeManufacturerName + " - " + objBookingInfo.driverVehicleInfo.vehicleTypeModelName
+            self.lblAvgRating.text = "(\(objBookingInfo.driverInfo.rating ?? "0"))"
+            self.ratingsView.rating = objBookingInfo.driverInfo.rating.toDouble()
+            lblRidego.text = objBookingInfo.driverVehicleInfo.plateNumber
+            self.setLabel()
+        }
+        
+        
+        
+        
     }
     
     func setLabel() {

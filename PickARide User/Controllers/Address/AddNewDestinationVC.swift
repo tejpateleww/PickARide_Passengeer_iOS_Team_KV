@@ -111,10 +111,6 @@ extension AddNewDestinationVC{
                }
            })
        }
-
-    
-    
-    
 }
 
 //MARK:- TableView Delegate

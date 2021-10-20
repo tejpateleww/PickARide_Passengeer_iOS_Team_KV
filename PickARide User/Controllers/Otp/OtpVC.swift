@@ -25,6 +25,7 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
     var timer = Timer()
     
     var otpUserModel = OTPUserModel()
+    var registerUSerModel = RegisterUserModel()
     var registerReqModel = RegisterRequestModel()
     
     override func viewDidLoad() {
@@ -57,9 +58,10 @@ class OtpVC: BaseViewController, UITextFieldDelegate, OTPTextFieldDelegate {
         self.txtOtp.forEach { (textfield) in
             textfield.text = ""
         }
-        
+        callResendOTP()
         self.counter = 31
         self.reversetimer()
+        
     }
 }
 
@@ -191,10 +193,23 @@ extension OtpVC{
         return true
     }
     
+    //MARK:- ==== Register Api ===
     func callRegisterApi(){
         self.otpUserModel.otpVC = self
         self.otpUserModel.webserviceFinalRegister(reqModel: self.registerReqModel)
     }
+    
+    //MARK:- Resend OTP Webservice ======
+    func callResendOTP(){
+        self.registerUSerModel.otpVC = self
+        let otpReqModel = OTPRequestModel()
+        otpReqModel.email = registerReqModel.email
+        otpReqModel.phone = registerReqModel.phone
+        self.registerUSerModel.isFromOtp = true
+        registerUSerModel.webserviceOTP(reqModel: otpReqModel)
+    }
+    
+    
 }
 
 //MARK:- UITextFieldDelegate

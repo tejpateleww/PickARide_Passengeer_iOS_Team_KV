@@ -94,6 +94,10 @@ class themeButton : UIButton{
     @IBInspectable public var isRound: Bool = false
     @IBInspectable var isthemeBg : Bool = false
     
+    var activityIndicator: UIActivityIndicatorView!
+    var originalButtonText: String?
+    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -126,6 +130,56 @@ class themeButton : UIButton{
         }
     }
     
+    func showLoading() {
+            isEnabled = false
+            originalButtonText = self.titleLabel?.text
+
+            self.setTitle("", for: .normal)
+            if (activityIndicator == nil) {
+                activityIndicator = createActivityIndicator()
+            }
+
+            showSpinning()
+        }
+
+        func hideLoading() {
+            isEnabled = true
+            self.setTitle(originalButtonText, for: .normal)
+            activityIndicator.stopAnimating()
+        }
+
+    
+    private func createActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
+        return activityIndicator
+    }
+
+    private func showSpinning() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(activityIndicator)
+        centerActivityIndicatorInButton()
+        activityIndicator.startAnimating()
+    }
+
+    private func centerActivityIndicatorInButton() {
+        let xCenterConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: activityIndicator, attribute: .centerX, multiplier: 1, constant: 0)
+        self.addConstraint(xCenterConstraint)
+
+        let yCenterConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: activityIndicator, attribute: .centerY, multiplier: 1, constant: 0)
+        self.addConstraint(yCenterConstraint)
+    }
+
+    override var isEnabled: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.3) {
+                self.backgroundColor = self.isEnabled ? themeColor : themeColor
+            }
+        }
+    }
+
+    
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
 //    }
@@ -140,4 +194,39 @@ class themeButton : UIButton{
         self.layer.shadowPath = shadowPath.cgPath
     }
     
+    
+    
+}
+
+
+
+class CancelButton : UIButton
+{
+    @IBInspectable var isCancel : Bool = false
+    @IBInspectable var isNotCancel : Bool = false
+    @IBInspectable var Font_Size : CGFloat = 14.0
+    override func awakeFromNib() {
+        if isCancel{
+            self.layer.cornerRadius = 4
+            self.backgroundColor = UIColor(hexString: "#F4586C")
+            self.clipsToBounds = true
+            self.setTitleColor(colors.white.value, for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(Font_Size)
+        }else if isNotCancel{
+            self.layer.cornerRadius = 4
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.init(hexString: "#7F7F7F").cgColor
+            self.clipsToBounds = true
+            self.setTitleColor(UIColor.init(hexString: "#7F7F7F"), for: .normal)
+            self.titleLabel?.font = CustomFont.medium.returnFont(Font_Size)
+        }
+    }
+}
+class NoDataLabel : UILabel {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.textColor = themeColor
+        self.font = CustomFont.medium.returnFont(15.0)
+    }
 }

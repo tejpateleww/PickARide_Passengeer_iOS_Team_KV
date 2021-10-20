@@ -18,6 +18,12 @@ class CancelTripVC: BaseViewController {
     @IBOutlet weak var lblCancel: UILabel!
     @IBOutlet weak var btnCencel: cancelButton!
     
+    
+    var isFromApi = false
+    var objBookingInfo : BookingInfoData!
+    var objCurrentBooking : CurrentBookingData!
+    var mainVCTogo : (()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,6 +52,16 @@ class CancelTripVC: BaseViewController {
     
     @IBAction func btnCancelClick(_ sender: Any) {
         let controller = ReasonForCancelVC.instantiate(fromAppStoryboard: .Main)
+        controller.objBookingInfo = objBookingInfo
+        controller.objCurrentBooking = objCurrentBooking
+        controller.isFromApi = isFromApi
+        controller.NavigateToMainScreen = {
+            self.dismiss(animated: true, completion: nil)
+            if let mainVc = self.mainVCTogo {
+                mainVc()
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

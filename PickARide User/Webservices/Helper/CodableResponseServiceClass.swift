@@ -55,6 +55,7 @@ class CodableService {
                                 //MARK:- Session Expoire -> Do Force Logout
                             }else if httpResponse.statusCode == 403{
                                 completion(statusCode, UrlConstant.SessionExpired, nil, SessionExpiredResponseDic)
+                                appDel.dologout()
                                 
                                 //MARK:- Server Error
                             }else if httpResponse.statusCode == 500{
@@ -70,7 +71,7 @@ class CodableService {
     }
     
     class func getCodableObjectFromData<C:Codable>(jsonData: Data, codableObj: C.Type) -> C?{
-        let obj = try? JSONDecoder().decode(codableObj, from: jsonData)
+        let obj = try! JSONDecoder().decode(codableObj, from: jsonData)
         return obj
     }
     

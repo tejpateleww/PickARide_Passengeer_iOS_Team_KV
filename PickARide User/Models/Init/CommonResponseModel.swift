@@ -25,3 +25,14 @@ class CommonResponseModel : Codable {
     }
     
 }
+
+
+class LogoutReponseModel: Codable {
+    var status: Bool?
+    var message: String?
+    
+    init(status: Bool?, message: String?) {
+        self.status = status
+        self.message = message
+    }
+}

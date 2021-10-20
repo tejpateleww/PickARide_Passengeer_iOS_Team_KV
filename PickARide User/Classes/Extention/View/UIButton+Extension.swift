@@ -84,5 +84,6 @@ extension UIButton{
                                                                                        .foregroundColor: color,
                                                                                        .underlineStyle: NSUnderlineStyle.thick.rawValue]), for: .normal)
     }
+
 }
 
