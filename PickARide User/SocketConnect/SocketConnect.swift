@@ -15,8 +15,26 @@ struct socketApikeys {
     static let BaseUrl =  "http://65.1.154.172:8080"
     static let KCustomerID      = "customer_id"
     static let KConnectCustomer  = "connect_customer"
+    static let KGetEstimateFare = "get_estimate_fare"
+    static let KAcceptBookingRequest = "accept_booking_request"
+    static let KCancelTrip       = "cancel_trip"
+    static let KStartTrip        = "start_trip"
+    static let KCompleteTrip       = "complete_trip"
+    static let KPickupLat = "pickup_lat"
+    static let KPickupLng  = "pickup_lng"
+    static let KDropOffLat = "dropoff_lat"
+    static let KDropOffLng  = "dropoff_lng"
+    static let KdriverArrived  = "arrived_at_pickup_location"
+    static let KCancelBookingRequestBySystem = "cancelled_booking_request_by_system"
+    static let KLiveTracking = "live_tracking"
+    static let KstartTrip = "start_trip"
+    static let KNearByDriver = "near_by_driver"
+    static let KCurrentLat = "current_lat"
+    static let KCurrentLng  = "current_lng"
+    static let KVerifyCustomer = "verify_customer"
+    static let KSendMsg       = "send_message"
+     static let KReceiveMsg   = "receive_message"
         
-  
     
 }
 
@@ -75,9 +93,35 @@ extension HomeVC {
             SocketIOManager.shared.socketCall(for: socketApikeys.KConnectCustomer) { (json) in
                 
                 print(json)
-               
+                self.allSocketOffMethod()
+                self.onSocketGetEstimateFare()
+                self.onSocketAcceptDriverRequest()
+                self.onSocketCancellBySysteem()
+                self.OnSocketArrivedLocation()
+                self.OnSocketStartTrip()
+                self.OnSocketLiveTracking()
+                self.onSocketNearByDriver()
+                self.onSocketCancelTrip()
+                self.onsocketVerifyCustomer()
+                self.OnSocketCompleteTrip()
+              
             }
         }
+    
+    func allSocketOffMethod(){
+        SocketIOManager.shared.socket.off(socketApikeys.KCancelTrip)
+        SocketIOManager.shared.socket.off(socketApikeys.KdriverArrived)
+        SocketIOManager.shared.socket.off(socketApikeys.KGetEstimateFare)
+        SocketIOManager.shared.socket.off(socketApikeys.KAcceptBookingRequest)
+        SocketIOManager.shared.socket.off(socketApikeys.KdriverArrived)
+        SocketIOManager.shared.socket.off(socketApikeys.KStartTrip)
+        SocketIOManager.shared.socket.off(socketApikeys.KLiveTracking)
+        SocketIOManager.shared.socket.off(socketApikeys.KNearByDriver)
+        SocketIOManager.shared.socket.off(socketApikeys.KVerifyCustomer)
+        SocketIOManager.shared.socket.off(socketApikeys.KCompleteTrip)
+
+
+    }
     
 //    //MARK:- ======== On socket Track update location ======
 //    func onSocketTrackUpdateLocation(){

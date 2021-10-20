@@ -11,6 +11,7 @@ import Foundation
 class CancelTripUserModel{
     
     weak var cancelTripVC : ReasonForCancelVC? = nil
+    var DoneBtnClick : (()->())?
     
     func webserviceCancelTripApi(reqModel: CancelTripReqModel){
         Utilities.showHud()
@@ -19,7 +20,11 @@ class CancelTripUserModel{
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             
             if status{
-                appDel.navigateToMain()
+                if let clickedOnDone = self.DoneBtnClick {
+                    clickedOnDone()
+                }
+                
+
             }
         }
     }

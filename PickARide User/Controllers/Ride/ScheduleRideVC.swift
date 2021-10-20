@@ -11,8 +11,9 @@ import UIKit
 class ScheduleRideVC: BaseViewController {
 
     //MARK: -Properties
-    var setClosour : (() -> ())?
+    var setClosour : ((String , Int) -> ())?
     var selectedDate = ""
+    var selectedTaxi = NSNotFound
     //MARK: -IBOutlets
     
     @IBOutlet weak var btnSet: submitButton!
@@ -66,7 +67,7 @@ class ScheduleRideVC: BaseViewController {
 
            selectedDate = dateFormatter.string(from: scheduleDatePicker.date)
         if let click = self.setClosour {
-            click()
+            click(selectedDate, selectedTaxi)
         }
     }
     

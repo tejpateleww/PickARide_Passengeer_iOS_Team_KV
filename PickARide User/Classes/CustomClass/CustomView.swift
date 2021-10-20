@@ -442,3 +442,38 @@ class chatScreenView : UIView {
         
     }
 }
+
+class MarkerView: UIView {
+    @IBInspectable var markerImage: UIImage?
+    @IBInspectable var url : String!
+    override func awakeFromNib() {
+           super.awakeFromNib()
+       
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let imageview = UIImageView()
+//        if url != ""{
+//            let imgurl = URL(string: BaseUrl + url)
+//            imageview.kf.indicatorType = .activity
+//            imageview.kf.setImage(with: imgurl)
+//
+//        }else{
+//            imageview.image = UIImage(named: "Profile")
+//        }
+        imageview.image = markerImage
+        imageview.frame = self.frame
+        imageview.contentMode = .scaleAspectFit
+         imageview.cornerRadius = self.frame.size.height / 2
+//        imageview.borderWidth = 3
+//        imageview.borderColor = colors.white.value
+        imageview.clipsToBounds = true
+        self.cornerRadius = self.frame.size.height / 2
+//        self.borderWidth = 2
+//        self.borderColor = colors.TitleGreenColor.value
+        self.clipsToBounds = true
+        self.addSubview(imageview)
+    }
+}

@@ -17,6 +17,7 @@ enum ValidatorType {
     case password(field: String)
     case username(field: String)
     case requiredField(field: String)
+    case Location(field:String)
     case age
 }
 
@@ -27,6 +28,7 @@ enum VaildatorFactory {
         case .password(let fieldName): return PasswordValidator(fieldName)
         case .username(let fieldName): return UserNameValidator(fieldName)
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
+        case .Location(field: let fieldName): return RequiredLocationValidator(fieldName)
         case .age: return AgeValidator()
         }
     }
@@ -59,6 +61,23 @@ struct RequiredFieldValidator: ValidatorConvertible {
         return (true,"")
     }
 }
+
+
+struct RequiredLocationValidator: ValidatorConvertible {
+    private let fieldName: String
+    
+    init(_ field: String) {
+        fieldName = field
+    }
+    
+    func validated(_ value: String) -> (Bool, String) {
+        guard !value.isEmpty else {
+            return (false,ValidationError("Please " + fieldName).message)
+        }
+        return (true,"")
+    }
+}
+
 struct UserNameValidator: ValidatorConvertible {
     private let fieldName: String
     

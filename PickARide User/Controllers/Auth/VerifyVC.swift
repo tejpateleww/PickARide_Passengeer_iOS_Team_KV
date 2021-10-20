@@ -15,7 +15,6 @@ class VerifyVC: BaseViewController {
     var isFrmRegister = false
     
     //MARK: -IBOutlets
-    
     @IBOutlet weak var lblVerifyPhoneNumber: verifyVcLabel!
     @IBOutlet weak var lblCheckSMS: verifyVcLabel!
     @IBOutlet weak var textFieldOTP1: verifyPinTextField!
@@ -26,8 +25,12 @@ class VerifyVC: BaseViewController {
     @IBOutlet weak var btnRecendCode: ResendCodeButton!
     @IBOutlet weak var btnVerify: submitButton!
     
-    //MARK: -View Life Cycle Methods
     
+    var OTPUserModel = RegisterUserModel()
+    var registerReqModel = RegisterRequestModel()
+
+    
+    //MARK: -View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
@@ -39,6 +42,19 @@ class VerifyVC: BaseViewController {
         super.viewWillAppear(animated)
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
     }
+    
+    //MARK:- ====== Resend Btn Action
+    @IBAction func btnActionReSendCode(_ sender: UIButton) {
+        OTPUserModel.VerifyVc = self
+        let otpReqModel = OTPRequestModel()
+        otpReqModel.email = registerReqModel.email
+        otpReqModel.phone = registerReqModel.phone
+        self.OTPUserModel.isFromOtp = true
+        self.OTPUserModel.webserviceOTP(reqModel: otpReqModel)
+    }
+    
+    
+    
     
     @IBAction func Verify(_ sender: Any) {
         if isFrmRegister {
@@ -88,6 +104,11 @@ extension VerifyVC{
         textFieldOTP3.text = "6"
         textFieldOTP4.text = "8"
     }
+    
+    
+    
+    
+    
     
     func setLabel() {
         let attributedString = NSMutableAttributedString(string: lblCheckSMS.text!)

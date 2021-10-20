@@ -16,8 +16,10 @@ pod 'MarqueeLabel'
   pod 'SkyFloatingLabelTextField'
   pod 'MKProgress'
   
+  pod 'UIView-Shimmer', '~> 1.0'
+
   pod 'GoogleSignIn'
-  pod 'FBSDKLoginKit'
+  pod 'FBSDKLoginKit' 
   
   #Firebase
   pod 'Firebase'

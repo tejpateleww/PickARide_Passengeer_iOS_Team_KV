@@ -11,8 +11,8 @@ import UIKit
 class WebServiceSubClass{
 
     //MARK:- Init
-    class func InitApi(completion: @escaping (Bool,String,InitResponseModel?,Any) -> ()) {
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + "/" + Singleton.sharedInstance.UserId, responseModel: InitResponseModel.self) { (status, message, response, error) in
+    class func InitApi(completion: @escaping (Bool,String,RootInit?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.Init.rawValue + kAPPVesion + "/" + Singleton.sharedInstance.UserId, responseModel: RootInit.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -34,7 +34,7 @@ class WebServiceSubClass{
     }
     
     class func LogoutApi(completion: @escaping (Bool,String,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logout.rawValue + Singleton.sharedInstance.UserId, responseModel: [String:String].self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logout.rawValue + Singleton.sharedInstance.UserId, responseModel: CommonResponseModel.self) { (status, message, response, error) in
             completion(status, message, error)
         }
     }
@@ -155,6 +155,58 @@ class WebServiceSubClass{
         }
     }
 
+    class func UpComingBookingHistory(CustomerId:String, PageNo : Int , complition : @escaping (Bool,String,RootBookingHistory?,Any)->()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.upcomingBookingHistory.rawValue + "/\(CustomerId)/\(PageNo)", responseModel: RootBookingHistory.self) { status, message, response, error in
+            complition(status,message,response,error)
+        }
+    }
+    
+    class func GetRideHistoryApi(Page: String, completion: @escaping (Bool,String,PastBookingResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.pastBookingHistory.rawValue + Singleton.sharedInstance.UserId + "/" + Page, responseModel: PastBookingResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
     
     
+    class func AddReviewRating(reqModel : ReviewRatingModel , completion : @escaping (Bool,String,RootRating?,Any) -> ()) {
+        
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.RatingReview.rawValue, requestModel: reqModel, responseModel: RootRating.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func CurrentBookingHistory(CustomerId:String,complition : @escaping (Bool,String,RootCurrentBooking?,Any)->()){
+        
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.currentBooking.rawValue + "/\(CustomerId)", responseModel: RootCurrentBooking.self) { status, message, response, error in
+            complition(status,message,response,error)
+        }
+    }
+    
+    class func GetUpcomingRideApi(Page: String, completion: @escaping (Bool,String,PastBookingResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.upcomingBookingHistory.rawValue + Singleton.sharedInstance.UserId + "/" + Page, responseModel: PastBookingResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func GetInProcessBookingRideApi(Page: String, completion: @escaping (Bool,String,PastBookingResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.inProcessBookingHistory.rawValue + Singleton.sharedInstance.UserId + "/" + Page, responseModel: PastBookingResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func AcceptBookLaterAPI(reqModel : RidesRequestModel , completion: @escaping (Bool,String,LogoutReponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.acceptBookLaterRequest.rawValue, requestModel: reqModel, responseModel: LogoutReponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    class func GetChatHistoryApi(BookingID: String, completion: @escaping (Bool,String,chatHistoryModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.chatHistory.rawValue + BookingID, responseModel: chatHistoryModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    
+    
+
 }

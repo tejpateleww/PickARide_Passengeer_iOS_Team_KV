@@ -64,7 +64,6 @@
 		184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F72258CB29A00F60FFE /* ProfileVC.swift */; };
 		184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */; };
 		184C6F78258CB29C00F60FFE /* SavedPlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F74258CB29B00F60FFE /* SavedPlaceVC.swift */; };
-		184C6F79258CB29C00F60FFE /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F75258CB29C00F60FFE /* RideDetailsVC.swift */; };
 		184C6F7C258CB47300F60FFE /* CustomImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F7B258CB47300F60FFE /* CustomImageVIew.swift */; };
 		185CADBC25B58AE400082AFC /* ScheduleRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */; };
 		185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CADE225B5A64A00082AFC /* CurrentRideDriverInformationVC.swift */; };
@@ -89,7 +88,6 @@
 		18747063258B55AD0095546B /* ChooseDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747062258B55AD0095546B /* ChooseDestinationVC.swift */; };
 		18747077258B7AF70095546B /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747074258B7AF60095546B /* ForgotPasswordVC.swift */; };
 		18747078258B7AF70095546B /* MyOfferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747075258B7AF70095546B /* MyOfferVC.swift */; };
-		18747079258B7AF70095546B /* MyRidesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18747076258B7AF70095546B /* MyRidesVC.swift */; };
 		1877A639268C3B8B00041E6C /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877A638268C3B8B00041E6C /* OtpVC.swift */; };
 		1877A63B268C3C6F00041E6C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877A63A268C3C6F00041E6C /* Theme.swift */; };
 		187A27F126805B1400F936B2 /* ConstanceEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A27F026805B1400F936B2 /* ConstanceEnums.swift */; };
@@ -147,10 +145,76 @@
 		6A4A9A80E727926791AFA6BB /* Pods_PickARide_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */; };
 		8133352125CBD68900CEA3C0 /* CommonWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */; };
 		816AEABD25CD047E00ABA5BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */; };
+		845688B52704667A004D7782 /* NearByDrivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845688B42704667A004D7782 /* NearByDrivers.swift */; };
+		845688B92704824A004D7782 /* NoDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845688B72704824A004D7782 /* NoDataViewCell.swift */; };
+		845688BA2704824A004D7782 /* NoDataViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845688B82704824A004D7782 /* NoDataViewCell.xib */; };
+		845B77E427143D3A00DE5B26 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77E127143D3A00DE5B26 /* RideDetailsVC.swift */; };
+		845B77E627143D3A00DE5B26 /* MyRidesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77E327143D3A00DE5B26 /* MyRidesVC.swift */; };
+		845B77EA27144ABC00DE5B26 /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77E827144ABC00DE5B26 /* NoDataTableViewCell.swift */; };
+		845B77EB27144ABC00DE5B26 /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B77E927144ABC00DE5B26 /* NoDataTableViewCell.xib */; };
+		845B77F427144E0700DE5B26 /* PastBookingResDriverVehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77ED27144E0600DE5B26 /* PastBookingResDriverVehicleInfo.swift */; };
+		845B77F527144E0700DE5B26 /* PastBookingResDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77EE27144E0600DE5B26 /* PastBookingResDatum.swift */; };
+		845B77F627144E0700DE5B26 /* PastBookingResDriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77EF27144E0700DE5B26 /* PastBookingResDriverInfo.swift */; };
+		845B77F727144E0700DE5B26 /* PastBookingResVehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77F027144E0700DE5B26 /* PastBookingResVehicleType.swift */; };
+		845B77F827144E0700DE5B26 /* PastBookingResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77F127144E0700DE5B26 /* PastBookingResModel.swift */; };
+		845B77F927144E0700DE5B26 /* PastBookingResCustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77F227144E0700DE5B26 /* PastBookingResCustomerInfo.swift */; };
+		845B77FA27144E0700DE5B26 /* PastBookingResBookingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77F327144E0700DE5B26 /* PastBookingResBookingInfo.swift */; };
+		845B77FE27144ECF00DE5B26 /* RidesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77FC27144ECF00DE5B26 /* RidesViewModel.swift */; };
+		845B77FF27144ECF00DE5B26 /* RideDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B77FD27144ECF00DE5B26 /* RideDetailViewModel.swift */; };
+		845B7802271452DC00DE5B26 /* MyRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B7800271452DC00DE5B26 /* MyRideCell.swift */; };
+		845B7803271452DC00DE5B26 /* pastUpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B7801271452DC00DE5B26 /* pastUpcomingCell.swift */; };
+		845B7806271459AF00DE5B26 /* RidesReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B7805271459AF00DE5B26 /* RidesReqModel.swift */; };
+		8465256D27031BC300315AB6 /* NVActivityIndicatorAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254527031BC200315AB6 /* NVActivityIndicatorAnimationDelegate.swift */; };
+		8465256E27031BC300315AB6 /* NVActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254627031BC200315AB6 /* NVActivityIndicatorPresenter.swift */; };
+		8465256F27031BC300315AB6 /* NVActivityIndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254827031BC200315AB6 /* NVActivityIndicatorShape.swift */; };
+		8465257027031BC300315AB6 /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254927031BC300315AB6 /* NVActivityIndicatorView.swift */; };
+		8465257127031BC300315AB6 /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254A27031BC300315AB6 /* NVActivityIndicatorViewable.swift */; };
+		8465257227031BC300315AB6 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254C27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotate.swift */; };
+		8465257327031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254D27031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift */; };
+		8465257427031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254E27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
+		8465257527031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465254F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */; };
+		8465257627031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255027031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift */; };
+		8465257727031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255127031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */; };
+		8465257827031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255227031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */; };
+		8465257927031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255327031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */; };
+		8465257A27031BC300315AB6 /* NVActivityIndicatorAnimationBallScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255427031BC300315AB6 /* NVActivityIndicatorAnimationBallScale.swift */; };
+		8465257B27031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255527031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZag.swift */; };
+		8465257C27031BC300315AB6 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255627031BC300315AB6 /* NVActivityIndicatorAnimationBallBeat.swift */; };
+		8465257D27031BC300315AB6 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255727031BC300315AB6 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */; };
+		8465257E27031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255827031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRipple.swift */; };
+		8465257F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255927031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */; };
+		8465258027031BC300315AB6 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255A27031BC300315AB6 /* NVActivityIndicatorAnimationSquareSpin.swift */; };
+		8465258127031BC300315AB6 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255B27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotateChase.swift */; };
+		8465258227031BC300315AB6 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255C27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulse.swift */; };
+		8465258327031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255D27031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift */; };
+		8465258427031BC300315AB6 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255E27031BC300315AB6 /* NVActivityIndicatorAnimationAudioEqualizer.swift */; };
+		8465258527031BC300315AB6 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465255F27031BC300315AB6 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */; };
+		8465258627031BC300315AB6 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256027031BC300315AB6 /* NVActivityIndicatorAnimationBallGridBeat.swift */; };
+		8465258727031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256127031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */; };
+		8465258827031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256227031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift */; };
+		8465258927031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256327031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */; };
+		8465258A27031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256427031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift */; };
+		8465258B27031BC300315AB6 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256527031BC300315AB6 /* ActivityIndicatorViewController.swift */; };
+		8465258C27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256627031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseSync.swift */; };
+		8465258D27031BC300315AB6 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256727031BC300315AB6 /* NVActivityIndicatorAnimationCubeTransition.swift */; };
+		8465258E27031BC300315AB6 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256827031BC300315AB6 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */; };
+		8465258F27031BC300315AB6 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256927031BC300315AB6 /* NVActivityIndicatorAnimationLineScaleParty.swift */; };
+		8465259027031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256A27031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */; };
+		8465259127031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256B27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseRise.swift */; };
+		8465259227031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465256C27031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift */; };
+		8465259427031C7C00315AB6 /* ProgressPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465259327031C7C00315AB6 /* ProgressPopupVC.swift */; };
+		848DB97627018BBC00620055 /* BookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB97527018BBC00620055 /* BookingHistory.swift */; };
+		848DB9792701D07F00620055 /* AcceptBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB9782701D07F00620055 /* AcceptBooking.swift */; };
 		84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B726E778DC009AF6FC /* AddPlace.swift */; };
 		84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */; };
 		84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CE26F1B26700F14D95 /* SocketConnect.swift */; };
 		84AA62D126F1B26700F14D95 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */; };
+		84D50BCE2706E470000A29A0 /* ARCarMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D50BCD2706E470000A29A0 /* ARCarMovement.swift */; };
+		84D50BD12706FD8B000A29A0 /* ReviewRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D50BD02706FD8B000A29A0 /* ReviewRatingModel.swift */; };
+		84D6432927155A6300F11688 /* sendMessageReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432827155A6300F11688 /* sendMessageReqModel.swift */; };
+		84D6432D27155EFA00F11688 /* ChatResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432C27155EFA00F11688 /* ChatResponseModel.swift */; };
+		84D643302715679100F11688 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432F2715679100F11688 /* ChatViewModel.swift */; };
+		84F790C726F33E1A00D7A377 /* EstimateFare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F790C626F33E1A00D7A377 /* EstimateFare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,7 +276,6 @@
 		184C6F72258CB29A00F60FFE /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonForCancelVC.swift; sourceTree = "<group>"; };
 		184C6F74258CB29B00F60FFE /* SavedPlaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlaceVC.swift; sourceTree = "<group>"; };
-		184C6F75258CB29C00F60FFE /* RideDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		184C6F7B258CB47300F60FFE /* CustomImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageVIew.swift; sourceTree = "<group>"; };
 		185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRideVC.swift; sourceTree = "<group>"; };
 		185CADE225B5A64A00082AFC /* CurrentRideDriverInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRideDriverInformationVC.swift; sourceTree = "<group>"; };
@@ -238,7 +301,6 @@
 		18747062258B55AD0095546B /* ChooseDestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinationVC.swift; sourceTree = "<group>"; };
 		18747074258B7AF60095546B /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		18747075258B7AF70095546B /* MyOfferVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOfferVC.swift; sourceTree = "<group>"; };
-		18747076258B7AF70095546B /* MyRidesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesVC.swift; sourceTree = "<group>"; };
 		1877A638268C3B8B00041E6C /* OtpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
 		1877A63A268C3C6F00041E6C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		187A27F026805B1400F936B2 /* ConstanceEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstanceEnums.swift; sourceTree = "<group>"; };
@@ -298,10 +360,77 @@
 		64C68ADE241BBB2900B97B25 /* PickARide User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PickARide User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewVC.swift; sourceTree = "<group>"; };
 		816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		845688B42704667A004D7782 /* NearByDrivers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByDrivers.swift; sourceTree = "<group>"; };
+		845688B72704824A004D7782 /* NoDataViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataViewCell.swift; sourceTree = "<group>"; };
+		845688B82704824A004D7782 /* NoDataViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataViewCell.xib; sourceTree = "<group>"; };
+		845B77E127143D3A00DE5B26 /* RideDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
+		845B77E327143D3A00DE5B26 /* MyRidesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesVC.swift; sourceTree = "<group>"; };
+		845B77E827144ABC00DE5B26 /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
+		845B77E927144ABC00DE5B26 /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
+		845B77ED27144E0600DE5B26 /* PastBookingResDriverVehicleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResDriverVehicleInfo.swift; sourceTree = "<group>"; };
+		845B77EE27144E0600DE5B26 /* PastBookingResDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResDatum.swift; sourceTree = "<group>"; };
+		845B77EF27144E0700DE5B26 /* PastBookingResDriverInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResDriverInfo.swift; sourceTree = "<group>"; };
+		845B77F027144E0700DE5B26 /* PastBookingResVehicleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResVehicleType.swift; sourceTree = "<group>"; };
+		845B77F127144E0700DE5B26 /* PastBookingResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResModel.swift; sourceTree = "<group>"; };
+		845B77F227144E0700DE5B26 /* PastBookingResCustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResCustomerInfo.swift; sourceTree = "<group>"; };
+		845B77F327144E0700DE5B26 /* PastBookingResBookingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingResBookingInfo.swift; sourceTree = "<group>"; };
+		845B77FC27144ECF00DE5B26 /* RidesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidesViewModel.swift; sourceTree = "<group>"; };
+		845B77FD27144ECF00DE5B26 /* RideDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailViewModel.swift; sourceTree = "<group>"; };
+		845B7800271452DC00DE5B26 /* MyRideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRideCell.swift; sourceTree = "<group>"; };
+		845B7801271452DC00DE5B26 /* pastUpcomingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastUpcomingCell.swift; sourceTree = "<group>"; };
+		845B7805271459AF00DE5B26 /* RidesReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidesReqModel.swift; sourceTree = "<group>"; };
+		8465254527031BC200315AB6 /* NVActivityIndicatorAnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationDelegate.swift; sourceTree = "<group>"; };
+		8465254627031BC200315AB6 /* NVActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorPresenter.swift; sourceTree = "<group>"; };
+		8465254727031BC200315AB6 /* NVActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVActivityIndicatorView.h; sourceTree = "<group>"; };
+		8465254827031BC200315AB6 /* NVActivityIndicatorShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorShape.swift; sourceTree = "<group>"; };
+		8465254927031BC300315AB6 /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
+		8465254A27031BC300315AB6 /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
+		8465254C27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallRotate.swift; sourceTree = "<group>"; };
+		8465254D27031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallGridPulse.swift; sourceTree = "<group>"; };
+		8465254E27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
+		8465254F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotateMultiple.swift; sourceTree = "<group>"; };
+		8465255027031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallTrianglePath.swift; sourceTree = "<group>"; };
+		8465255127031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScalePulseOut.swift; sourceTree = "<group>"; };
+		8465255227031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineSpinFadeLoader.swift; sourceTree = "<group>"; };
+		8465255327031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallZigZagDeflect.swift; sourceTree = "<group>"; };
+		8465255427031BC300315AB6 /* NVActivityIndicatorAnimationBallScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScale.swift; sourceTree = "<group>"; };
+		8465255527031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallZigZag.swift; sourceTree = "<group>"; };
+		8465255627031BC300315AB6 /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
+		8465255727031BC300315AB6 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationSemiCircleSpin.swift; sourceTree = "<group>"; };
+		8465255827031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRipple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleRipple.swift; sourceTree = "<group>"; };
+		8465255927031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotatePulse.swift; sourceTree = "<group>"; };
+		8465255A27031BC300315AB6 /* NVActivityIndicatorAnimationSquareSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationSquareSpin.swift; sourceTree = "<group>"; };
+		8465255B27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotateChase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallRotateChase.swift; sourceTree = "<group>"; };
+		8465255C27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulse.swift; sourceTree = "<group>"; };
+		8465255D27031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBlank.swift; sourceTree = "<group>"; };
+		8465255E27031BC300315AB6 /* NVActivityIndicatorAnimationAudioEqualizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationAudioEqualizer.swift; sourceTree = "<group>"; };
+		8465255F27031BC300315AB6 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationTriangleSkewSpin.swift; sourceTree = "<group>"; };
+		8465256027031BC300315AB6 /* NVActivityIndicatorAnimationBallGridBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallGridBeat.swift; sourceTree = "<group>"; };
+		8465256127031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleMultiple.swift; sourceTree = "<group>"; };
+		8465256227031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScale.swift; sourceTree = "<group>"; };
+		8465256327031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleRippleMultiple.swift; sourceTree = "<group>"; };
+		8465256427031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationPacman.swift; sourceTree = "<group>"; };
+		8465256527031BC300315AB6 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
+		8465256627031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulseSync.swift; sourceTree = "<group>"; };
+		8465256727031BC300315AB6 /* NVActivityIndicatorAnimationCubeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationCubeTransition.swift; sourceTree = "<group>"; };
+		8465256827031BC300315AB6 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallSpinFadeLoader.swift; sourceTree = "<group>"; };
+		8465256927031BC300315AB6 /* NVActivityIndicatorAnimationLineScaleParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScaleParty.swift; sourceTree = "<group>"; };
+		8465256A27031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScalePulseOutRapid.swift; sourceTree = "<group>"; };
+		8465256B27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseRise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulseRise.swift; sourceTree = "<group>"; };
+		8465256C27031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationOrbit.swift; sourceTree = "<group>"; };
+		8465259327031C7C00315AB6 /* ProgressPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPopupVC.swift; sourceTree = "<group>"; };
+		848DB97527018BBC00620055 /* BookingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistory.swift; sourceTree = "<group>"; };
+		848DB9782701D07F00620055 /* AcceptBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptBooking.swift; sourceTree = "<group>"; };
 		84A495B726E778DC009AF6FC /* AddPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlace.swift; sourceTree = "<group>"; };
 		84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponseModel.swift; sourceTree = "<group>"; };
 		84AA62CE26F1B26700F14D95 /* SocketConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnect.swift; sourceTree = "<group>"; };
 		84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		84D50BCD2706E470000A29A0 /* ARCarMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCarMovement.swift; sourceTree = "<group>"; };
+		84D50BD02706FD8B000A29A0 /* ReviewRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingModel.swift; sourceTree = "<group>"; };
+		84D6432827155A6300F11688 /* sendMessageReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendMessageReqModel.swift; sourceTree = "<group>"; };
+		84D6432C27155EFA00F11688 /* ChatResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResponseModel.swift; sourceTree = "<group>"; };
+		84D6432F2715679100F11688 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		84F790C626F33E1A00D7A377 /* EstimateFare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateFare.swift; sourceTree = "<group>"; };
 		86784D51C37BBA35E10C918A /* Pods-ApiStructureModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApiStructureModule.release.xcconfig"; path = "Target Support Files/Pods-ApiStructureModule/Pods-ApiStructureModule.release.xcconfig"; sourceTree = "<group>"; };
 		880AEDFB25DBEC6C00A29928 /* PickARide User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PickARide User.entitlements"; sourceTree = "<group>"; };
 		8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickARide_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +473,8 @@
 		180979D325876C75002070A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84D50BCD2706E470000A29A0 /* ARCarMovement.swift */,
+				8465254427031BC200315AB6 /* Activity Indicator */,
 				180979D425876C75002070A7 /* Fonts */,
 			);
 			path = Resources;
@@ -413,6 +544,14 @@
 		181EBD62258730B300C11C08 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84D6432727155A6300F11688 /* Chat */,
+				845B7804271459AF00DE5B26 /* Rides */,
+				845B77EC27144E0600DE5B26 /* Past Booking History */,
+				84D50BCF2706FD63000A29A0 /* ReviewRating */,
+				845688B327046657004D7782 /* NearByDrivers */,
+				848DB9772701D03100620055 /* AcceptBooking */,
+				848DB97427018BA100620055 /* BookingHistory */,
+				84F790C526F33E0700D7A377 /* EstimateFare */,
 				181EBD63258730B300C11C08 /* Init */,
 				187BC491268ADE1500CAD121 /* Auth */,
 				1828A1B426981D0D009ADA2A /* Payment */,
@@ -490,6 +629,8 @@
 		181EBDBF2587310E00C11C08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				845B77E727144ABC00DE5B26 /* No Data Found Cell */,
+				845B77E027143D3A00DE5B26 /* My Rides */,
 				1877A637268C3B7D00041E6C /* Otp */,
 				1809799C25876896002070A7 /* Auth */,
 				1848437B258B17EC0094480C /* Main */,
@@ -537,6 +678,7 @@
 		1828A1C626985B4D009ADA2A /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				845688B62704824A004D7782 /* NoDataCell */,
 				1828A1CB26985EB0009ADA2A /* XibFiles */,
 				1828A1CA26985EA6009ADA2A /* XibViews */,
 				1828A1D126985FED009ADA2A /* XibIdentifire.swift */,
@@ -649,6 +791,8 @@
 		187BC48B268ADAD400CAD121 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				84D6432E2715679100F11688 /* ChatViewModel */,
+				845B77FB27144ECF00DE5B26 /* Past Ride History */,
 				187BC48C268ADAFC00CAD121 /* Auth */,
 				1828A1B926982340009ADA2A /* Payment */,
 				1865081C26CD00DB00C0757F /* Booking */,
@@ -738,7 +882,6 @@
 			isa = PBXGroup;
 			children = (
 				185CAE1425B5BD5A00082AFC /* PaymentSucessFullyVC.swift */,
-				184C6F75258CB29C00F60FFE /* RideDetailsVC.swift */,
 				18747075258B7AF70095546B /* MyOfferVC.swift */,
 				184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */,
 				180CC8122590CD9600799280 /* CurrentRideDetailsVC.swift */,
@@ -746,8 +889,8 @@
 				185CADFB25B5AD8800082AFC /* RatingYourTripVC.swift */,
 				180CC80F25909C9200799280 /* SelectTaxiTypeVC.swift */,
 				185CADBB25B58AE400082AFC /* ScheduleRideVC.swift */,
-				18747076258B7AF70095546B /* MyRidesVC.swift */,
 				18173EB8269C6A0F00B9F3D9 /* RideReceiptVC.swift */,
+				8465259327031C7C00315AB6 /* ProgressPopupVC.swift */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -899,6 +1042,144 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		845688B327046657004D7782 /* NearByDrivers */ = {
+			isa = PBXGroup;
+			children = (
+				845688B42704667A004D7782 /* NearByDrivers.swift */,
+			);
+			path = NearByDrivers;
+			sourceTree = "<group>";
+		};
+		845688B62704824A004D7782 /* NoDataCell */ = {
+			isa = PBXGroup;
+			children = (
+				845688B72704824A004D7782 /* NoDataViewCell.swift */,
+				845688B82704824A004D7782 /* NoDataViewCell.xib */,
+			);
+			path = NoDataCell;
+			sourceTree = "<group>";
+		};
+		845B77E027143D3A00DE5B26 /* My Rides */ = {
+			isa = PBXGroup;
+			children = (
+				845B77E127143D3A00DE5B26 /* RideDetailsVC.swift */,
+				845B7800271452DC00DE5B26 /* MyRideCell.swift */,
+				845B7801271452DC00DE5B26 /* pastUpcomingCell.swift */,
+				845B77E327143D3A00DE5B26 /* MyRidesVC.swift */,
+			);
+			path = "My Rides";
+			sourceTree = "<group>";
+		};
+		845B77E727144ABC00DE5B26 /* No Data Found Cell */ = {
+			isa = PBXGroup;
+			children = (
+				845B77E827144ABC00DE5B26 /* NoDataTableViewCell.swift */,
+				845B77E927144ABC00DE5B26 /* NoDataTableViewCell.xib */,
+			);
+			path = "No Data Found Cell";
+			sourceTree = "<group>";
+		};
+		845B77EC27144E0600DE5B26 /* Past Booking History */ = {
+			isa = PBXGroup;
+			children = (
+				845B77ED27144E0600DE5B26 /* PastBookingResDriverVehicleInfo.swift */,
+				845B77EE27144E0600DE5B26 /* PastBookingResDatum.swift */,
+				845B77EF27144E0700DE5B26 /* PastBookingResDriverInfo.swift */,
+				845B77F027144E0700DE5B26 /* PastBookingResVehicleType.swift */,
+				845B77F127144E0700DE5B26 /* PastBookingResModel.swift */,
+				845B77F227144E0700DE5B26 /* PastBookingResCustomerInfo.swift */,
+				845B77F327144E0700DE5B26 /* PastBookingResBookingInfo.swift */,
+			);
+			path = "Past Booking History";
+			sourceTree = "<group>";
+		};
+		845B77FB27144ECF00DE5B26 /* Past Ride History */ = {
+			isa = PBXGroup;
+			children = (
+				845B77FC27144ECF00DE5B26 /* RidesViewModel.swift */,
+				845B77FD27144ECF00DE5B26 /* RideDetailViewModel.swift */,
+			);
+			path = "Past Ride History";
+			sourceTree = "<group>";
+		};
+		845B7804271459AF00DE5B26 /* Rides */ = {
+			isa = PBXGroup;
+			children = (
+				845B7805271459AF00DE5B26 /* RidesReqModel.swift */,
+			);
+			path = Rides;
+			sourceTree = "<group>";
+		};
+		8465254427031BC200315AB6 /* Activity Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				8465254527031BC200315AB6 /* NVActivityIndicatorAnimationDelegate.swift */,
+				8465254627031BC200315AB6 /* NVActivityIndicatorPresenter.swift */,
+				8465254727031BC200315AB6 /* NVActivityIndicatorView.h */,
+				8465254827031BC200315AB6 /* NVActivityIndicatorShape.swift */,
+				8465254927031BC300315AB6 /* NVActivityIndicatorView.swift */,
+				8465254A27031BC300315AB6 /* NVActivityIndicatorViewable.swift */,
+				8465254B27031BC300315AB6 /* Animations */,
+			);
+			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
+		8465254B27031BC300315AB6 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				8465254C27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotate.swift */,
+				8465254D27031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift */,
+				8465254E27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotate.swift */,
+				8465254F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */,
+				8465255027031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift */,
+				8465255127031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */,
+				8465255227031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */,
+				8465255327031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */,
+				8465255427031BC300315AB6 /* NVActivityIndicatorAnimationBallScale.swift */,
+				8465255527031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZag.swift */,
+				8465255627031BC300315AB6 /* NVActivityIndicatorAnimationBallBeat.swift */,
+				8465255727031BC300315AB6 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */,
+				8465255827031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRipple.swift */,
+				8465255927031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */,
+				8465255A27031BC300315AB6 /* NVActivityIndicatorAnimationSquareSpin.swift */,
+				8465255B27031BC300315AB6 /* NVActivityIndicatorAnimationBallRotateChase.swift */,
+				8465255C27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulse.swift */,
+				8465255D27031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift */,
+				8465255E27031BC300315AB6 /* NVActivityIndicatorAnimationAudioEqualizer.swift */,
+				8465255F27031BC300315AB6 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */,
+				8465256027031BC300315AB6 /* NVActivityIndicatorAnimationBallGridBeat.swift */,
+				8465256127031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */,
+				8465256227031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift */,
+				8465256327031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */,
+				8465256427031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift */,
+				8465256527031BC300315AB6 /* ActivityIndicatorViewController.swift */,
+				8465256627031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseSync.swift */,
+				8465256727031BC300315AB6 /* NVActivityIndicatorAnimationCubeTransition.swift */,
+				8465256827031BC300315AB6 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */,
+				8465256927031BC300315AB6 /* NVActivityIndicatorAnimationLineScaleParty.swift */,
+				8465256A27031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */,
+				8465256B27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseRise.swift */,
+				8465256C27031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		848DB97427018BA100620055 /* BookingHistory */ = {
+			isa = PBXGroup;
+			children = (
+				848DB97527018BBC00620055 /* BookingHistory.swift */,
+			);
+			path = BookingHistory;
+			sourceTree = "<group>";
+		};
+		848DB9772701D03100620055 /* AcceptBooking */ = {
+			isa = PBXGroup;
+			children = (
+				848DB9782701D07F00620055 /* AcceptBooking.swift */,
+			);
+			path = AcceptBooking;
+			sourceTree = "<group>";
+		};
 		84AA62CD26F1B26700F14D95 /* SocketConnect */ = {
 			isa = PBXGroup;
 			children = (
@@ -906,6 +1187,39 @@
 				84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */,
 			);
 			path = SocketConnect;
+			sourceTree = "<group>";
+		};
+		84D50BCF2706FD63000A29A0 /* ReviewRating */ = {
+			isa = PBXGroup;
+			children = (
+				84D50BD02706FD8B000A29A0 /* ReviewRatingModel.swift */,
+			);
+			path = ReviewRating;
+			sourceTree = "<group>";
+		};
+		84D6432727155A6300F11688 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				84D6432827155A6300F11688 /* sendMessageReqModel.swift */,
+				84D6432C27155EFA00F11688 /* ChatResponseModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		84D6432E2715679100F11688 /* ChatViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D6432F2715679100F11688 /* ChatViewModel.swift */,
+			);
+			path = ChatViewModel;
+			sourceTree = "<group>";
+		};
+		84F790C526F33E0700D7A377 /* EstimateFare */ = {
+			isa = PBXGroup;
+			children = (
+				84F790C626F33E1A00D7A377 /* EstimateFare.swift */,
+			);
+			path = EstimateFare;
 			sourceTree = "<group>";
 		};
 		B7F05C3E06CAA5224C293454 /* Frameworks */ = {
@@ -1004,7 +1318,9 @@
 				180979E225876C75002070A7 /* Ubuntu-Bold.ttf in Resources */,
 				180979E025876C75002070A7 /* Ubuntu-LightItalic.ttf in Resources */,
 				180979E425876C75002070A7 /* Ubuntu-BoldItalic.ttf in Resources */,
+				845B77EB27144ABC00DE5B26 /* NoDataTableViewCell.xib in Resources */,
 				180979E125876C75002070A7 /* Ubuntu-Regular.ttf in Resources */,
+				845688BA2704824A004D7782 /* NoDataViewCell.xib in Resources */,
 				181EBDB8258730B300C11C08 /* LaunchScreen.storyboard in Resources */,
 				18173E8A269C04EB00B9F3D9 /* VKToolTip.xib in Resources */,
 				180979E325876C75002070A7 /* Ubuntu-MediumItalic.ttf in Resources */,
@@ -1079,18 +1395,23 @@
 			files = (
 				18F9B704259350E100202DA6 /* UIViewController+Extension.swift in Sources */,
 				185CADFD25B5AD8900082AFC /* RatingYourTripVC.swift in Sources */,
-				184C6F79258CB29C00F60FFE /* RideDetailsVC.swift in Sources */,
-				18747079258B7AF70095546B /* MyRidesVC.swift in Sources */,
 				187BC49D268AEFE200CAD121 /* SocialModel.swift in Sources */,
 				18747078258B7AF70095546B /* MyOfferVC.swift in Sources */,
 				185CAE1525B5BD5A00082AFC /* PaymentSucessFullyVC.swift in Sources */,
+				8465257D27031BC300315AB6 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
+				848DB9792701D07F00620055 /* AcceptBooking.swift in Sources */,
 				18F9B709259350E100202DA6 /* UISearchbar+Extension.swift in Sources */,
+				845B77F827144E0700DE5B26 /* PastBookingResModel.swift in Sources */,
 				1828A1D226985FED009ADA2A /* XibIdentifire.swift in Sources */,
 				181EBDB5258730B300C11C08 /* GradientButton.swift in Sources */,
 				18003585258A381A006BD68A /* NotificationVC.swift in Sources */,
+				8465257527031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
+				8465258527031BC300315AB6 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				187BC4FB268B1EC900CAD121 /* SocialSignInManager.swift in Sources */,
+				84D50BCE2706E470000A29A0 /* ARCarMovement.swift in Sources */,
 				18F9B6FE259350E100202DA6 /* UILabel+Extension.swift in Sources */,
 				18FBF094269D757600D5AF78 /* DateFormatsEnum.swift in Sources */,
+				84D6432D27155EFA00F11688 /* ChatResponseModel.swift in Sources */,
 				181EBD9F258730B300C11C08 /* Constants.swift in Sources */,
 				180979D125876C45002070A7 /* BaseViewController.swift in Sources */,
 				180CC8132590CD9700799280 /* CurrentRideDetailsVC.swift in Sources */,
@@ -1098,29 +1419,44 @@
 				1813E4C6258C6A4D00EE33CA /* AddPaymentVC.swift in Sources */,
 				1865083326CD17B400C0757F /* PromoViewModel.swift in Sources */,
 				180CC7F72590561E00799280 /* SettingVC.swift in Sources */,
+				8465258B27031BC300315AB6 /* ActivityIndicatorViewController.swift in Sources */,
 				84AA62D126F1B26700F14D95 /* SocketIOManager.swift in Sources */,
 				180979A9258769A2002070A7 /* SplashVC.swift in Sources */,
+				8465258227031BC300315AB6 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
 				181EBDB3258730B300C11C08 /* CustomSlider.swift in Sources */,
 				84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */,
 				18F9B705259350E100202DA6 /* UITableViewCell+Extension.swift in Sources */,
 				1865081E26CD00F800C0757F /* BookingReqModel.swift in Sources */,
+				8465258F27031BC300315AB6 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
+				848DB97627018BBC00620055 /* BookingHistory.swift in Sources */,
 				1865082F26CD16BF00C0757F /* PromoCodeModel.swift in Sources */,
 				1865CF56267C763100379A40 /* CodableResponseServiceClass.swift in Sources */,
 				185CADFC25B5AD8900082AFC /* CancelTripVC.swift in Sources */,
 				1877A639268C3B8B00041E6C /* OtpVC.swift in Sources */,
 				18FBF020269D3C1E00D5AF78 /* AMShimmer.swift in Sources */,
+				8465258027031BC300315AB6 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				181EBDA2258730B300C11C08 /* ImagePicker.swift in Sources */,
 				181EBDBC258730B300C11C08 /* AppDelegate.swift in Sources */,
 				1813E4C7258C6A4D00EE33CA /* AddCardVC.swift in Sources */,
 				1877A63B268C3C6F00041E6C /* Theme.swift in Sources */,
 				18F9B6FC259350E100202DA6 /* Colors.swift in Sources */,
+				8465258627031BC300315AB6 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
 				181EBDB7258730B300C11C08 /* AppInfo.swift in Sources */,
+				8465258127031BC300315AB6 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				1865082B26CD155300C0757F /* CommonResponseModel.swift in Sources */,
 				18E93C7926973F65003AB725 /* ProfileViewModel.swift in Sources */,
+				845B77F527144E0700DE5B26 /* PastBookingResDatum.swift in Sources */,
 				187BC47B268AD96400CAD121 /* AppDelegate+Cycle.swift in Sources */,
+				8465257927031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				18F9B6FB259350E100202DA6 /* AuthenticationToken.swift in Sources */,
+				845B7802271452DC00DE5B26 /* MyRideCell.swift in Sources */,
+				845688B52704667A004D7782 /* NearByDrivers.swift in Sources */,
+				8465258327031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
 				187BC49A268AE58800CAD121 /* RegisterModel.swift in Sources */,
+				8465257327031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
+				845B77E627143D3A00DE5B26 /* MyRidesVC.swift in Sources */,
 				181EBDA1258730B300C11C08 /* Singleton.swift in Sources */,
+				8465258C27031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				1865CF50267C763100379A40 /* URLSessionRequestManager.swift in Sources */,
 				18B365222694396800CE8E3D /* SettingsData.swift in Sources */,
 				1865CF55267C763100379A40 /* UploadMediaModel.swift in Sources */,
@@ -1128,7 +1464,10 @@
 				18B36567269494A100CE8E3D /* CardValidatorType.swift in Sources */,
 				18173EB9269C6A0F00B9F3D9 /* RideReceiptVC.swift in Sources */,
 				18F9B70A259350E100202DA6 /* Data+Extensions.swift in Sources */,
+				8465257E27031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				18747077258B7AF70095546B /* ForgotPasswordVC.swift in Sources */,
+				845B77F727144E0700DE5B26 /* PastBookingResVehicleType.swift in Sources */,
+				845B77FE27144ECF00DE5B26 /* RidesViewModel.swift in Sources */,
 				18F7FA4625AED38000F1F619 /* MenuViewController.swift in Sources */,
 				18F9B707259350E100202DA6 /* UITapGestureRecognizer+Extension.swift in Sources */,
 				181EBDA0258730B300C11C08 /* Utilities.swift in Sources */,
@@ -1136,7 +1475,13 @@
 				181EBDA5258730B300C11C08 /* Validators.swift in Sources */,
 				18F9B708259350E100202DA6 /* UITextField+Extension.swift in Sources */,
 				184C6F78258CB29C00F60FFE /* SavedPlaceVC.swift in Sources */,
+				845B77EA27144ABC00DE5B26 /* NoDataTableViewCell.swift in Sources */,
+				8465257027031BC300315AB6 /* NVActivityIndicatorView.swift in Sources */,
+				845B77F427144E0700DE5B26 /* PastBookingResDriverVehicleInfo.swift in Sources */,
+				84D50BD12706FD8B000A29A0 /* ReviewRatingModel.swift in Sources */,
+				8465258D27031BC300315AB6 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				181EBDB4258730B300C11C08 /* customTextField.swift in Sources */,
+				845B77E427143D3A00DE5B26 /* RideDetailsVC.swift in Sources */,
 				18747063258B55AD0095546B /* ChooseDestinationVC.swift in Sources */,
 				8133352125CBD68900CEA3C0 /* CommonWebViewVC.swift in Sources */,
 				18E93C7326973559003AB725 /* RegisterViewModel.swift in Sources */,
@@ -1144,6 +1489,7 @@
 				1813E4DC258C7F1700EE33CA /* WalletHistoryVC.swift in Sources */,
 				18FBF072269D740800D5AF78 /* String+DateFormats.swift in Sources */,
 				180CC7FA2590849600799280 /* AddNewDestinationVC.swift in Sources */,
+				845B77F627144E0700DE5B26 /* PastBookingResDriverInfo.swift in Sources */,
 				18F9B702259350E100202DA6 /* UIImage+Extension.swift in Sources */,
 				184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */,
 				18F9B6FF259350E100202DA6 /* String+Functionality.swift in Sources */,
@@ -1154,15 +1500,25 @@
 				18B365252694399B00CE8E3D /* SettingsCells.swift in Sources */,
 				18FDF55A25889A0E0084D40C /* ChangePasswordVC.swift in Sources */,
 				1865CF54267C763100379A40 /* apiPaths.swift in Sources */,
+				8465256D27031BC300315AB6 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
+				84D643302715679100F11688 /* ChatViewModel.swift in Sources */,
+				8465257127031BC300315AB6 /* NVActivityIndicatorViewable.swift in Sources */,
 				188677E82695A209007F17EE /* InitModel.swift in Sources */,
 				180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */,
+				845B77F927144E0700DE5B26 /* PastBookingResCustomerInfo.swift in Sources */,
 				1828A1C426983A84009ADA2A /* WalletUserModel.swift in Sources */,
+				8465258927031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				18F9B701259350E100202DA6 /* UIView+Extension.swift in Sources */,
 				185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */,
+				84D6432927155A6300F11688 /* sendMessageReqModel.swift in Sources */,
 				18F9B6FD259350E100202DA6 /* UIColor+Extension.swift in Sources */,
+				8465257A27031BC300315AB6 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
+				8465258A27031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */,
 				1828A1BB26982369009ADA2A /* CardUserModel.swift in Sources */,
+				8465259227031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				181EBDBB258730B300C11C08 /* RegisterVC.swift in Sources */,
+				8465259427031C7C00315AB6 /* ProgressPopupVC.swift in Sources */,
 				18B365612694945400CE8E3D /* CardValidatorClass.swift in Sources */,
 				187BC478268AD8A000CAD121 /* AppDelegate+PushNotification.swift in Sources */,
 				185CADBC25B58AE400082AFC /* ScheduleRideVC.swift in Sources */,
@@ -1172,36 +1528,58 @@
 				18F9B703259350E100202DA6 /* String+Operation.swift in Sources */,
 				18F9B70B259350E100202DA6 /* UICollectionViewCell+Extension.swift in Sources */,
 				1828A1B626981D2B009ADA2A /* CardModel.swift in Sources */,
+				8465258827031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
+				8465258727031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
+				845B7806271459AF00DE5B26 /* RidesReqModel.swift in Sources */,
 				184C6F7C258CB47300F60FFE /* CustomImageVIew.swift in Sources */,
 				18FDF5532588707F0084D40C /* customTextView.swift in Sources */,
 				181EBDBA258730B300C11C08 /* LoginVC.swift in Sources */,
+				8465256F27031BC300315AB6 /* NVActivityIndicatorShape.swift in Sources */,
 				18D177D92681D9110025271F /* ColorsTypes.swift in Sources */,
+				8465257227031BC300315AB6 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				187BC461268AD7EC00CAD121 /* AppDelegate+Methods.swift in Sources */,
 				187A27F126805B1400F936B2 /* ConstanceEnums.swift in Sources */,
+				8465257827031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				8465257727031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				1848437D258B18340094480C /* HomeVC.swift in Sources */,
 				84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */,
 				1828A1C026983963009ADA2A /* WalletModel.swift in Sources */,
+				8465257F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				1865CF51267C763100379A40 /* WebServicesSubclass.swift in Sources */,
+				8465258427031BC300315AB6 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
 				187BC497268AE1BB00CAD121 /* CountryModel.swift in Sources */,
+				8465256E27031BC300315AB6 /* NVActivityIndicatorPresenter.swift in Sources */,
 				18B365642694946D00CE8E3D /* MonthPickerView.swift in Sources */,
 				1865CF53267C763100379A40 /* RequestBodyParamService.swift in Sources */,
 				18F9B706259350E100202DA6 /* UIStoryboard+Extension.swift in Sources */,
+				8465257B27031BC300315AB6 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				180979F325876FA8002070A7 /* CustomButton.swift in Sources */,
 				18F9B700259350E100202DA6 /* UIButton+Extension.swift in Sources */,
 				18B364A7269411EA00CE8E3D /* PasswordModel.swift in Sources */,
 				180979AC25876AA2002070A7 /* AppStoryboards.swift in Sources */,
+				8465259027031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				18FDF55625887C530084D40C /* VerifyVC.swift in Sources */,
 				1865CF52267C763100379A40 /* UrlServiceConstant.swift in Sources */,
+				8465257627031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */,
 				18173E8E269C36AB00B9F3D9 /* LocationService.swift in Sources */,
 				187BC48F268ADDCD00CAD121 /* LoginViewModel.swift in Sources */,
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				1828A1CD26985ED6009ADA2A /* ToastMessageXib.swift in Sources */,
+				845B7803271452DC00DE5B26 /* pastUpcomingCell.swift in Sources */,
+				845688B92704824A004D7782 /* NoDataViewCell.swift in Sources */,
 				18F9B6FA259350E100202DA6 /* Fonts.swift in Sources */,
+				8465257C27031BC300315AB6 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				8465257427031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
+				8465258E27031BC300315AB6 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				18B364C52694121500CE8E3D /* PasswordViewModel.swift in Sources */,
 				181E433125B6BAAA00A76B36 /* ChatVC.swift in Sources */,
 				1865CF57267C763100379A40 /* Webservices+Extension.swift in Sources */,
+				84F790C726F33E1A00D7A377 /* EstimateFare.swift in Sources */,
+				845B77FF27144ECF00DE5B26 /* RideDetailViewModel.swift in Sources */,
+				845B77FA27144E0700DE5B26 /* PastBookingResBookingInfo.swift in Sources */,
+				8465259127031BC300315AB6 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

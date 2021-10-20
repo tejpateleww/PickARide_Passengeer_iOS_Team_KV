@@ -16,11 +16,14 @@ class ReasonForCancelVC: BaseViewController {
     //MARK: -Properties
     var reasonArray = ["Driver isn't here","Driver declined to come","Driver asking for more money"]
     let footerView = UIView()
-
+    var objBookingInfo : BookingInfoData!
+    var objCurrentBooking : CurrentBookingData!
     var isselected = true
     var selectIndex = 0
-    
     var cancelViewModel = CancelTripUserModel()
+    var isFromApi = false
+    var NavigateToMainScreen : (()->())?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +64,16 @@ extension ReasonForCancelVC{
         cancelViewModel.cancelTripVC = self
         
         let reqModel = CancelTripReqModel()
-        reqModel.bookingId = "5"
+        reqModel.bookingId = isFromApi == true ? objCurrentBooking.id : objBookingInfo.id
         reqModel.cancelReason = self.reasonArray.first ?? ""
         cancelViewModel.webserviceCancelTripApi(reqModel: reqModel)
+        cancelViewModel.DoneBtnClick  = {
+            self.dismiss(animated: true) {
+                if let mainScreenToGo = self.NavigateToMainScreen {
+                    mainScreenToGo()
+                }
+            }
+        }
     }
 }
 

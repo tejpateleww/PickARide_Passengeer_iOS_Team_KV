@@ -69,6 +69,9 @@
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd0-9I-Pt2">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <connections>
+                                <action selector="btnActionNavigation:" destination="iN0-l3-epB" eventType="touchUpInside" id="zwj-II-aaY"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

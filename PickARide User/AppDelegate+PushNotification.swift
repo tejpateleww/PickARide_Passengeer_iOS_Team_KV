@@ -11,8 +11,8 @@ import IQKeyboardManagerSwift
 import Firebase
 import UserNotifications
 import GoogleMaps
-import GooglePlaces
 import SideMenuSwift
+import FirebaseMessaging
 
 extension AppDelegate{
     func registerForPushNotifications() {

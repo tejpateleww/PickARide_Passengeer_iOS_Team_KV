@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class RegisterUserModel{
-    weak var registerVc : RegisterVC? = nil
     
+    weak var registerVc : RegisterVC? = nil
+    weak var otpVC : OtpVC? = nil
+    var isFromOtp = false
+    weak var VerifyVc : VerifyVC? = nil
     var registerReqModel = RegisterRequestModel()
     
     func webserviceOTP(reqModel: OTPRequestModel){
@@ -21,11 +24,18 @@ class RegisterUserModel{
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             
             if status{
-                let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
-                controller.isFrmRegister = true
-                controller.StringOTP = String(format: "%d", response?.otp ?? 0)
-                controller.registerReqModel = self.registerReqModel
-                self.registerVc?.navigationController?.pushViewController(controller, animated: true)
+                if self.isFromOtp == true {
+                    self.otpVC?.StringOTP = String(format: "%d", response?.otp ?? 0)
+                }
+                else {
+                    
+                    let controller = OtpVC.instantiate(fromAppStoryboard: .Login)
+                    controller.isFrmRegister = true
+                    controller.StringOTP = String(format: "%d", response?.otp ?? 0)
+                    controller.registerReqModel = self.registerReqModel
+                    self.registerVc?.navigationController?.pushViewController(controller, animated: true)
+                }
+             
             }
         }
     }

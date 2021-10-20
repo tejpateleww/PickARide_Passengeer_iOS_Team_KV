@@ -88,12 +88,12 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                 xibView.frame = CGRect(x: 0, y: 0, width: w, height: 44)
                 xibView.lblEndRideAddress.text = CommonViewTitles[1]
                 xibView.lblStartRideAddress.text = CommonViewTitles[0]
-                if !isDisableBack {
-                    xibView.btnNavigation.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-                }
+//                if !isDisableBack {
+//                    xibView.btnNavigation.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+//                }
                 xibView.addShadow()
                 viewForTop.addSubview(xibView)
-                controller.navigationItem.titleView?.backgroundColor = .red
+                controller.navigationItem.titleView?.backgroundColor = .clear
                 controller.navigationItem.titleView = viewForTop
             } else {
                 let label = UILabel()

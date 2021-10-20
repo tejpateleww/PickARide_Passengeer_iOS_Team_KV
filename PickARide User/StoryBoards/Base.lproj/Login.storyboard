@@ -586,7 +586,7 @@
                                                                 <rect key="frame" x="16" y="0.0" width="264" height="48"/>
                                                                 <color key="tintColor" name="ThemeColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="5JG-2z-zd1" id="pji-gl-xz3"/>
                                                                 </connections>
@@ -629,7 +629,7 @@
                                                     <constraint firstAttribute="height" constant="48" id="nre-B4-zLY"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By clicking &quot;Sign Up&quot; you agree to our terms and conditions as well as our privacy policy" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBh-Q7-UR8" customClass="signUPPageTextView" customModule="PickARide_User" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By continuing, I confirm that I have read &amp; agree to the Terms &amp; conditions and Privacy Policy" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBh-Q7-UR8">
                                                 <rect key="frame" x="16" y="394.5" width="382" height="54"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -877,6 +877,9 @@ Number</string>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xf-yb-hWe" customClass="ResendCodeButton" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="156" y="0.0" width="226" height="22"/>
                                                         <state key="normal" title="Resend Code"/>
+                                                        <connections>
+                                                            <action selector="btnActionReSendCode:" destination="NhO-bU-9oJ" eventType="touchUpInside" id="I08-Ic-Gsw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

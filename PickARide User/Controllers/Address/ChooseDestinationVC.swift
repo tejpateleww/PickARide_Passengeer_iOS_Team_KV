@@ -15,11 +15,12 @@ class ChooseDestinationVC: BaseViewController {
     
     @IBOutlet weak var tblPlacePicker: UITableView!
     @IBOutlet weak var textFieldStartLocation: chooseLocationTextField!
-    
     @IBOutlet weak var tblPlacePickerBottom: NSLayoutConstraint!
     @IBOutlet weak var textFieldDestinationLocation: chooseLocationTextField!
     
     var arrayForSavedPlaces : [PlaceData] = [PlaceData]()
+    var arrPickupPlace : [placePickerData] = [placePickerData]()
+    var arrDestinationPlace : [placePickerData] = [placePickerData]()
     var arrImage = [SettingImages.SettingHomeGray,SettingImages.SettingWorkGray]
     var tableData = [placePickerData]()
     var tableDataFetecher : GMSAutocompleteFetcher!
@@ -28,15 +29,15 @@ class ChooseDestinationVC: BaseViewController {
     var selectedIndex = 0
     var selectedData : placePickerData!
     var viewModelPlaces = AddPlaceViewModel()
-    var openSelectTexiVC : ((String,String)->())?
+    var openSelectTexiVC : ((placePickerData, placePickerData)->())?
     var locationManager:CLLocationManager!
-
+    var isFromSelectedLocation = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             locationManager = CLLocationManager()
+            locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
@@ -65,12 +66,62 @@ class ChooseDestinationVC: BaseViewController {
         tblPlacePicker.tableHeaderView = UIView(frame: size)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)) , name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.Done.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+          doneBtnTapped()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.cancel.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+       
+        if isFromSelectedLocation == true {
+            
+            textFieldStartLocation.text = arrPickupPlace[0].location
+            textFieldDestinationLocation.text = arrDestinationPlace[0].location
+        }
+
     }
+    
+    func doneBtnTapped(){
+        self.navBtnDone.addTarget(self, action: #selector(addTapped(sender:)), for: .touchUpInside)
+    }
+    
+    
+    
+    @objc func addTapped(sender: UIButton) {
+        if validation() {
+            if arrPickupPlace.count != 0 && arrDestinationPlace.count != 0 {
+                self.navigationController?.popViewController(animated: true)
+                if let selectedDropStart = openSelectTexiVC{
+                    selectedDropStart(arrPickupPlace[0],arrDestinationPlace[0])
+                }
+            }
+            
+        }
+        
+    }
+    
+    func validation()->Bool{
+        var strTitle : String?
+        let startLocation = textFieldStartLocation.validatedText(validationType:.Location(field: textFieldStartLocation.placeholder?.lowercased() ?? ""))
+        let destinationLocation = textFieldDestinationLocation.validatedText(validationType: .Location(field: textFieldDestinationLocation.placeholder?.lowercased() ?? ""))
+        
+        if !startLocation.0{
+            strTitle = startLocation.1
+        }else if !destinationLocation.0{
+            strTitle = destinationLocation.1
+        }
+        else if arrPickupPlace.count != 0 && arrDestinationPlace.count != 0 , arrPickupPlace[0].location == arrDestinationPlace[0].location {
+            strTitle = "Please select another location pickup and destination location should not same"
+        }
+        
+        if let str = strTitle{
+            Toast.show(title: UrlConstant.Required, message: str, state: .failure)
+            return false
+        }
+        
+        return true
+    }
+
 }
 
 extension ChooseDestinationVC {
@@ -85,6 +136,19 @@ extension ChooseDestinationVC {
 extension ChooseDestinationVC{
     func setUpUI(){
         self.tableDataFetecher = GMSAutocompleteFetcher()
+//        let filter = GMSAutocompleteFilter()
+//        filter.type = .geocode  //suitable filter type
+//        filter.country = "UK"
+//            //"US|UK|IN|SA|FR"
+            
+//            ""
+//        filter.country = "UK"
+//        filter.country = "IN"
+//        filter.country = "SA"
+//        filter.country = "FR"
+    
+       // tableDataFetecher.autocompleteFilter = filter
+
         self.tableDataFetecher.delegate = self
         
         self.tblPlacePicker.delegate = self
@@ -154,7 +218,7 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
         case 0:
             let cell = tblPlacePicker.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as? SavedCell ?? SavedCell()
             cell.savedPlaceName.text = arrayForSavedPlaces[indexPath.row].placeName
-            cell.imgLocationType.image = arrImage[indexPath.row]
+           // cell.imgLocationType.image = arrImage[indexPath.row].i
             
             if indexPath.row == arrayForSavedPlaces.count - 1 {
                 cell.Seperator1.isHidden = true
@@ -175,20 +239,33 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
             if selectedTextField == 0 {
-                textFieldStartLocation.text = tableData[indexPath.row].primaryText
+                arrPickupPlace.removeAll()
+                textFieldStartLocation.text = tableData[indexPath.row].location
+                self.arrPickupPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng))
             } else {
-                textFieldDestinationLocation.text = tableData[indexPath.row].primaryText
+                arrDestinationPlace.removeAll()
+                textFieldDestinationLocation.text = tableData[indexPath.row].location
+                self.arrDestinationPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng))
             }
            
             textFieldDestinationLocation.resignFirstResponder()
             textFieldStartLocation.resignFirstResponder()
             
-            if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
-                self.navigationController?.popViewController(animated: false)
-                if let obj = openSelectTexiVC{
-                    obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
-                }
+        }
+        else {
+            if selectedTextField == 0 {
+                arrPickupPlace.removeAll()
+                textFieldStartLocation.text = arrayForSavedPlaces[indexPath.row].placeName
+                self.arrPickupPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
+            } else {
+                arrDestinationPlace.removeAll()
+                textFieldDestinationLocation.text = arrayForSavedPlaces[indexPath.row].placeName
+                self.arrDestinationPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
             }
+           
+            textFieldDestinationLocation.resignFirstResponder()
+            textFieldStartLocation.resignFirstResponder()
+            
         }
     }
     
@@ -201,6 +278,7 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
 }
 
 //MARK:- UITextField Delegate
+
 extension ChooseDestinationVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         selectedTextField = textField == textFieldStartLocation ? 0 : 1
@@ -211,12 +289,12 @@ extension ChooseDestinationVC: UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
-            self.navigationController?.popViewController(animated: false)
-            if let obj = openSelectTexiVC{
-                obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
-            }
-        }
+//        if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
+//            self.navigationController?.popViewController(animated: false)
+//            if let obj = openSelectTexiVC{
+//                obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
+//            }
+//        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -251,7 +329,7 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
    
     func GetPlaceDataByPlaceID(PlaceObj:GMSAutocompletePrediction,pPlaceID: String)
        {
-         //  pPlaceID = "ChIJXbmAjccVrjsRlf31U1ZGpDM"
+         
            self.placesClient.lookUpPlaceID(pPlaceID, callback: { (place, error) -> Void in
 
                if let error = error {
@@ -276,9 +354,7 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
                }
            })
        }
-
-    
-        func didFailAutocompleteWithError(_ error: Error) {
+     func didFailAutocompleteWithError(_ error: Error) {
         print(error.localizedDescription)
     }
 }
@@ -338,9 +414,15 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
                 print(placemark.country!)
                
                 self.textFieldStartLocation.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
+                self.arrPickupPlace.removeAll()
+                self.arrPickupPlace.append(placePickerData(PlaceName: self.textFieldStartLocation.text ??
+                                        "", Location: self.textFieldStartLocation.text ??
+                                            "", primary: "", secondary: "", Lat: userLocation.coordinate.latitude, Lng: userLocation.coordinate.longitude))
             }
+            
         }
 
+        locationManager.stopUpdatingLocation()
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")

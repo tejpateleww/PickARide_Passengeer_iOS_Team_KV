@@ -11,4 +11,6 @@ import Foundation
 extension Notification.Name {
     static let OpenCurrentRideDriverInfoVC = NSNotification.Name("OpenCurrentRideDriverInfoVC")
     static let OpenCurrentRideDetailsVC = NSNotification.Name("OpenCurrentRideDetailsVC")
+    static let OpenLocationSelectionVC = NSNotification.Name("OpenLocationSelection")
+    static let CancelCompleteTRip = NSNotification.Name("CancelCompleteTRip")
 }

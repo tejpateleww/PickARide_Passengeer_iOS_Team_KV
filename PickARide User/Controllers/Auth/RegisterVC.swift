@@ -39,6 +39,11 @@ class RegisterVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.isScrollEnabled = false //to have own size and behave like a label
+        textView.delegate = self
+        SetupAttributedTermsCondition()
         self.setUpUI()
         self.setLocalization()
     }
@@ -61,6 +66,57 @@ class RegisterVC: BaseViewController {
                 self.callOtpApi()
             }
         }
+    }
+    
+    //MARK:- === Terms And Contion Button Setup =====
+    func SetupAttributedTermsCondition(){
+        
+     
+        
+        let attributedText = NSMutableAttributedString(attributedString: textView.attributedText!)
+
+        // Use NSString so the result of rangeOfString is an NSRange.
+        let text = textView.text! as NSString
+
+        // Find the range of each element to modify.
+        let boldRange = text.range(of: "Terms & conditions")
+        let boldFont = CustomFont.bold.returnFont(14.0)
+        
+        let boldRange1 = text.range(of: "Privacy Policy")
+        let boldFont1 = CustomFont.bold.returnFont(14.0)
+        
+        
+        attributedText.addAttribute(NSAttributedString.Key.link, value: "privacypolicy", range:boldRange1)
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: boldRange)
+//
+        attributedText.addAttribute(NSAttributedString.Key.font, value: boldFont1, range: boldRange1)
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.green, range: boldRange1)
+        
+        // Handle bold
+        attributedText.addAttribute(NSAttributedString.Key.font, value: boldFont, range: boldRange)
+        
+        attributedText.addAttribute(NSAttributedString.Key.link, value: "termsandconditions", range:boldRange)
+
+        
+        
+        let smallRangeAnd = text.range(of: " and ")
+        let smallFontAnd = CustomFont.regular.returnFont(14.0)
+        
+        
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray, range: smallRangeAnd)
+        attributedText.addAttribute(NSAttributedString.Key.font, value: smallFontAnd, range: smallRangeAnd)
+    
+        // Handle small.
+        let smallRange = text.range(of: "By continuing, I confirm that I have read & agree to the ")
+        let smallFont = CustomFont.regular.returnFont(14.0)
+        
+
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray, range: smallRange)
+        attributedText.addAttribute(NSAttributedString.Key.font, value: smallFont, range: smallRange)
+        
+        textView.attributedText = attributedText
+       
+        
     }
 }
 
@@ -115,6 +171,7 @@ extension RegisterVC{
         
         textView.delegate = self
         btnSignUP.setTitle("SignUpPage_btnSIgnUP".Localized(), for: .normal)
+        
     }
     
     @objc func showHidePassword(_ sender : UIButton) {
@@ -203,15 +260,31 @@ extension RegisterVC{
 extension RegisterVC: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
+    
         let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)
-        if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
+        
+        if URL.absoluteString == "privacypolicy" {
             print("Print termsAndConditions")
+            controller.strUrl = Singleton.sharedInstance.termsConditionURL
             controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
-        } else if (URL.absoluteString ==  "SignUpPage_textViewText4".Localized().replacingOccurrences(of: " ", with: "")) {
-            print("Print privacypolicy")
-            controller.strNavTitle = "SignUpPage_textViewText4".Localized().capitalized
+        }
+        else if URL.absoluteString == "termsandconditions" {
+            print("Print termsAndConditions")
+            controller.strUrl = Singleton.sharedInstance.termsConditionURL
+            controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
         }
         
+        
+//        if (URL.absoluteString ==  "SignUpPage_textViewText2".Localized().replacingOccurrences(of: " ", with: "")) {
+//            print("Print termsAndConditions")
+//            controller.strUrl = Singleton.sharedInstance.termsConditionURL
+//            controller.strNavTitle = "SignUpPage_textViewText2".Localized().capitalized
+//        } else if (URL.absoluteString ==  "SignUpPage_textViewText4".Localized().replacingOccurrences(of: " ", with: "")) {
+//            print("Print privacypolicy")
+//            controller.strUrl = Singleton.sharedInstance.PrivacyUrl
+//            controller.strNavTitle = "SignUpPage_textViewText4".Localized().capitalized
+//        }
+//
         self.navigationController?.pushViewController(controller, animated: true)
         return false
     }

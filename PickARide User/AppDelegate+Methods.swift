@@ -69,6 +69,8 @@ extension AppDelegate{
     }
     
     func dologout(){
+        clearData()
+        self.navigateToLogin()
         
     }
 }

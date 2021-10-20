@@ -37,9 +37,7 @@ class URLSessionRequestManager {
         
         print("the url is \(url) and the headers are \(BEARER_HEADER())")
     
-        
-        
-        
+    
         CodableService.getResponseFromSession(request: request, codableObj: responseModel) { (status, apiMessage, obj, dic) in
             DispatchQueue.main.async {
                 completion(status, apiMessage,obj,dic)

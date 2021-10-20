@@ -15,13 +15,15 @@ class Singleton: NSObject{
     var UserId = String()
     
     //Objects
-    var AppInitModel : InitResponseModel?
+    var AppInitModel : RootInit?
     var UserProfilData : ProfileModel?
     var CountryList = [CountryDetilsModel]()
     var CardList = [CardDetailModel]()
     var latitute = Double()
     var longtitute = Double()
-    
+    var PrivacyUrl = String()
+    var HelpUrl = String()
+    var termsConditionURL = String()
     var Api_Key = String()
     var DeviceType : String = "ios"
     var DeviceToken : String = ""
