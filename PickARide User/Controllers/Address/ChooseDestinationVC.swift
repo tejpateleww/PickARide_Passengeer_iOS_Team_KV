@@ -281,6 +281,7 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
 
 extension ChooseDestinationVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
         selectedTextField = textField == textFieldStartLocation ? 0 : 1
     }
     
@@ -413,11 +414,14 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
                 print(placemark.administrativeArea!)
                 print(placemark.country!)
                
-                self.textFieldStartLocation.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
-                self.arrPickupPlace.removeAll()
-                self.arrPickupPlace.append(placePickerData(PlaceName: self.textFieldStartLocation.text ??
-                                        "", Location: self.textFieldStartLocation.text ??
-                                            "", primary: "", secondary: "", Lat: userLocation.coordinate.latitude, Lng: userLocation.coordinate.longitude))
+                if self.textFieldStartLocation.text == "" {
+                    self.textFieldStartLocation.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
+                    self.arrPickupPlace.removeAll()
+                    self.arrPickupPlace.append(placePickerData(PlaceName: self.textFieldStartLocation.text ??
+                                            "", Location: self.textFieldStartLocation.text ??
+                                                "", primary: "", secondary: "", Lat: userLocation.coordinate.latitude, Lng: userLocation.coordinate.longitude))
+                }
+               
             }
             
         }

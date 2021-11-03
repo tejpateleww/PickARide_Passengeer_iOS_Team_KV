@@ -16,7 +16,7 @@ enum APIEnvironment : String {
     case Development = "http://65.1.154.172/api/customer_api/"
     case Profilebu = "http://65.1.154.172/api/"
     case Live = "not provided"
-    case GoogleMapKey = "AIzaSyDvJt3EcQPwKnsfIuOa0_9zd9P8L2FfUkE"
+    case GoogleMapKey = "AIzaSyD9IuC2O3dbiKoMZ5bwvLJdttBCuO-1-Rc"
             
             //"AIzaSyDKJGsMhG1iL3NsqDb9PbQ4u1p_jLBB_FA"
             

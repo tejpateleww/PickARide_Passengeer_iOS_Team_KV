@@ -366,7 +366,8 @@ extension HomeVC{
     //MARK:- ========= On Socket Call Near By Driver ======
     func onSocketNearByDriver(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KNearByDriver) { json in
-            print(json)
+            print("ATDebug :: \(#function) \n \(json)" )
+          
             let objDict = json[0]
             let objDriver = RootNearByDrivers(fromJson: objDict)
             if objDriver.drivers.count != 0 {
@@ -680,6 +681,7 @@ extension HomeVC{
 extension HomeVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
+        
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         controller.openSelectTexiVC = { (pickup,dropoff) in
             
@@ -706,7 +708,7 @@ extension HomeVC: UITextFieldDelegate{
 //            let currentMarker = GMSMarker()
 //            currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
 //            let markerView = MarkerView()
-//            markerView.markerImage = UIImage(named: "imgGreen")
+//            markerView.markerImage = UIImage(named: "iconCurrentLocPin")
 //            markerView.layoutSubviews()
 //            currentMarker.iconView = markerView
 //            currentMarker.map = self.mapVw
@@ -773,17 +775,19 @@ extension HomeVC: UITextFieldDelegate{
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
         let markerView = MarkerView()
-        markerView.markerImage = UIImage(named: "imgGreen")
+        markerView.markerImage = UIImage(named: "iconCurrentLocPin")
         markerView.layoutSubviews()
+        currentMarker.userData = "currentMarker"
         currentMarker.iconView = markerView
         currentMarker.map = self.mapVw
-        
+        self.mapVw.delegate = self
         
         let destinationMarker = GMSMarker()
         destinationMarker.position = CLLocationCoordinate2D(latitude: dropoff.lat, longitude: dropoff.lng)
         let markerView1 = MarkerView()
         markerView1.markerImage = UIImage(named: "ic_DropOff")
         markerView1.layoutSubviews()
+        destinationMarker.userData = "destinationMarker"
         destinationMarker.iconView = markerView1
         destinationMarker.map = self.mapVw
         
@@ -807,9 +811,46 @@ extension HomeVC: UITextFieldDelegate{
     }
     
     
-    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
+    {
+        if marker.userData as? String ?? "" == "currentMarker" {
+            let controller = PickupViewController.instantiate(fromAppStoryboard: .Main)
+            controller.pinnedLocation = marker.position
+           
+            controller.dropOffData = arrDestinationPlace
+            controller.openSelectTexiVC = { (pickup,dropoff) in
+                self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
+                
+                
+                
+                guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
+                print(NavVc.children[0].children)
+                guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
+                    return
+                }
+                guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+                    return
+                }
+            
+                guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+                    return
+                }
+                
+                taxitypeVC.selectedTaxi = NSNotFound
+                
+                
+
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
+            print("ATDebug :: currentMarker tappend ")
+        } else if marker.userData as? String ?? "" == "destinationMarker" {
+            print("ATDebug :: destinationMarker tappend ")
+        }
+        return true
+    }
     
     @objc func openLocationSelection(){
+        
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
         controller.isFromSelectedLocation = true
         controller.arrPickupPlace = arrPickupPlace
@@ -817,6 +858,24 @@ extension HomeVC: UITextFieldDelegate{
         
         controller.openSelectTexiVC = { (pickup,dropoff) in
             self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
+            
+            
+            
+            guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
+            print(NavVc.children[0].children)
+            guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
+                return
+            }
+            guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+                return
+            }
+        
+            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+                return
+            }
+            
+            taxitypeVC.selectedTaxi = NSNotFound
+            
 
         }
         self.navigationController?.pushViewController(controller, animated: true)
@@ -846,6 +905,7 @@ extension HomeVC: UITextFieldDelegate{
     //MARK:- ===== On Socket Estimate Fare =====
     func onSocketGetEstimateFare(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { (json) in
+            print("ATDebug :: \(#function)")
             print(json)
             let objDictJson = json[0]
             print(objDictJson)
@@ -876,7 +936,7 @@ extension HomeVC: UITextFieldDelegate{
                 return
             }
             taxitypeVC.closeBtnClosure = {
-                
+               
                 self.currentLocationSetup()
                 
             }
@@ -1112,7 +1172,7 @@ extension HomeVC : CLLocationManagerDelegate {
               //  CurrentLocMarker.snippet = "Your Location"
                 
                 let markerView2 = MarkerView()
-                markerView2.markerImage = UIImage(named: "imgGreen")
+                markerView2.markerImage = UIImage(named: "iconCurrentLocPin")
                 markerView2.layoutSubviews()
                 
                 CurrentLocMarker.iconView = markerView2

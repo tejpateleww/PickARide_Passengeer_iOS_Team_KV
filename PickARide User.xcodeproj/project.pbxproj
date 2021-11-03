@@ -60,6 +60,7 @@
 		1828A1C826985B75009ADA2A /* ToastMessageXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828A1C726985B75009ADA2A /* ToastMessageXib.xib */; };
 		1828A1CD26985ED6009ADA2A /* ToastMessageXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1CC26985ED6009ADA2A /* ToastMessageXib.swift */; };
 		1828A1D226985FED009ADA2A /* XibIdentifire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1D126985FED009ADA2A /* XibIdentifire.swift */; };
+		182CA282272298B20018A8AF /* PickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CA281272298B20018A8AF /* PickupViewController.swift */; };
 		1848437D258B18340094480C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848437C258B18340094480C /* HomeVC.swift */; };
 		184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F72258CB29A00F60FFE /* ProfileVC.swift */; };
 		184C6F77258CB29C00F60FFE /* ReasonForCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */; };
@@ -272,6 +273,7 @@
 		1828A1C726985B75009ADA2A /* ToastMessageXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastMessageXib.xib; sourceTree = "<group>"; };
 		1828A1CC26985ED6009ADA2A /* ToastMessageXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageXib.swift; sourceTree = "<group>"; };
 		1828A1D126985FED009ADA2A /* XibIdentifire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibIdentifire.swift; sourceTree = "<group>"; };
+		182CA281272298B20018A8AF /* PickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewController.swift; sourceTree = "<group>"; };
 		1848437C258B18340094480C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		184C6F72258CB29A00F60FFE /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		184C6F73258CB29A00F60FFE /* ReasonForCancelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonForCancelVC.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				18D5972226864440006D6D7A /* Profile */,
 				18D5972926864572006D6D7A /* Notification */,
 				18D5972A2686459F006D6D7A /* Common */,
+				182CA281272298B20018A8AF /* PickupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1565,6 +1568,7 @@
 				18173E8E269C36AB00B9F3D9 /* LocationService.swift in Sources */,
 				187BC48F268ADDCD00CAD121 /* LoginViewModel.swift in Sources */,
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
+				182CA282272298B20018A8AF /* PickupViewController.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				1828A1CD26985ED6009ADA2A /* ToastMessageXib.swift in Sources */,
 				845B7803271452DC00DE5B26 /* pastUpcomingCell.swift in Sources */,

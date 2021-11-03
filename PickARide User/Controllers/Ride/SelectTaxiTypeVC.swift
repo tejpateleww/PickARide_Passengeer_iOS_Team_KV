@@ -53,7 +53,7 @@ class SelectTaxiTypeVC: BaseViewController{
             }
         }
     }
-    
+   
     var closeBtnClosure : (()->())?
     var bookingSucess : (()->())?
     
@@ -79,7 +79,7 @@ class SelectTaxiTypeVC: BaseViewController{
     }
     
     @IBAction func btnCancel(_ sender: Any) {
-        
+        selectedTaxi = NSNotFound
         if let clicked = closeBtnClosure {
             clicked()
         }
@@ -252,17 +252,7 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
         
      if taxiData.count != 0 {
         let cell = tblSuggestedRides.dequeueReusableCell(withIdentifier: suggestedVisitCell.reuseIdentifier, for: indexPath) as! suggestedVisitCell
-        if indexPath.row == selectedTaxi {
-            cell.suggestTaxiBackgroundView.backgroundColor = colors.white.value
-            cell.suggestTaxiBackgroundView.layer.borderWidth = 1
-            cell.TaxiType.textColor = colors.submitButtonColor.value
-            
-            
-        } else {
-            cell.suggestTaxiBackgroundView.backgroundColor = UIColor(hexString: "#000000").withAlphaComponent(0.03)
-            cell.suggestTaxiBackgroundView.layer.borderWidth = 0
-            cell.TaxiType.textColor = colors.loginPlaceHolderColor.value
-        }
+       
        
         cell.TaxiType.text = taxiData[indexPath.row].vehicleTypeName.uppercased()
         cell.TotalSeat.text = taxiData[indexPath.row].capacity + "seats"
@@ -272,7 +262,22 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
         cell.SuggestedMoney.text = "$ \(strEstimateFare)"
         cell.SuggestedTime.text = "1-\(taxiData[indexPath.row].driverReachInMinute ?? 0) min"
         cell.TaxiImage.loadSDImage(imgUrl: taxiData[indexPath.row].image)
-
+         
+         cell.suggestTaxiBackgroundView.backgroundColor = (indexPath.row == selectedTaxi) ? colors.white.value : UIColor(hexString: "#000000").withAlphaComponent(0.03)
+         cell.suggestTaxiBackgroundView.layer.borderWidth = (indexPath.row == selectedTaxi) ? 1  : 0
+         cell.TaxiType.textColor = (indexPath.row == selectedTaxi) ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
+       
+         
+//         if taxiData[indexPath.row].isSelected {
+//             cell.suggestTaxiBackgroundView.backgroundColor = colors.white.value
+//             cell.suggestTaxiBackgroundView.layer.borderWidth = 1
+//             cell.TaxiType.textColor = colors.submitButtonColor.value
+//         }
+//          else {
+//             cell.suggestTaxiBackgroundView.backgroundColor = UIColor(hexString: "#000000").withAlphaComponent(0.03)
+//             cell.suggestTaxiBackgroundView.layer.borderWidth = 0
+//             cell.TaxiType.textColor = colors.loginPlaceHolderColor.value
+//         }
         return cell
        }
         
@@ -284,8 +289,17 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if taxiData.count != 0 {
+           
+                                              
             selectedTaxi = indexPath.row
+          //  tblSuggestedRides.reloadRows(at: [indexPath], with: .automatic)
+//            DispatchQueue.main.async {
+              //  self.tblSuggestedRides.reloadData()
+//            }
+            
             tblSuggestedRides.reloadData()
+          
+            
         }
     }
     

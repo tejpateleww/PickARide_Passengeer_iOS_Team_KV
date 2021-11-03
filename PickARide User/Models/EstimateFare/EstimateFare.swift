@@ -104,7 +104,6 @@ class EstimateFare : Codable{
     var image : String!
     var vehicleTypeId : String!
     var vehicleTypeName : String!
-
     /**
      * Instantiate the instance using the passed json values to set the properties values
      */
