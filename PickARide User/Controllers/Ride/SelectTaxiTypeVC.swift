@@ -61,12 +61,7 @@ class SelectTaxiTypeVC: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Tej's Code
-        self.btnBookNow.isUserInteractionEnabled = false
-        self.btnBookNow.alpha = 0.5
-        // Tej's Code Comp
-       
+
         registerNIB()
         //tblSuggestedRides.register(UINib(nibName: "NoDataViewCell", bundle: nil), forCellReuseIdentifier: "NoDataViewCell")
         
@@ -74,10 +69,16 @@ class SelectTaxiTypeVC: BaseViewController{
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["Pick Up","Destination"], isTwoLabels: false)
+        
+        // Tej's Code
+        self.btnBookNow.isUserInteractionEnabled = false
+        self.btnBookNow.alpha = 0.5
+        // Tej's Code Comp
     }
     
     
@@ -200,6 +201,9 @@ extension SelectTaxiTypeVC{
         
         arrPrimary.append(contentsOf: arrSecondary)
         self.taxiData.append(contentsOf: arrPrimary)
+        if(self.taxiData.count == 0){
+            self.taxiData = self.allTaxiData
+        }
         // Tej's Code Comp
         
 
@@ -295,10 +299,10 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
          cell.TaxiType.textColor = (indexPath.row == selectedTaxi) ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
          
          // Tej's Code
+         cell.vwBottom.isHidden = true
          for i in self.availableTaxi{
              if(i.vehicleTypeId == self.taxiData[indexPath.row].vehicleTypeId){
                  cell.vwBottom.isHidden = false
-                 break
              }else{
                  cell.vwBottom.isHidden = true
              }
