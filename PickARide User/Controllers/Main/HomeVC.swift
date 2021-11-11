@@ -41,6 +41,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     var timer : Timer?
     var nearByDrivers = [Driver]()
     var arrTaxiData = [EstimateFare]()
+    var arrAllTaxiData = [EstimateFare]()
     var Driverplacemarker : GMSMarker!
     var CurrentPlaceMarker : GMSMarker!
     var isStartTrip = false
@@ -962,12 +963,12 @@ extension HomeVC: UITextFieldDelegate{
             }
             self.navigationBarSetup()
             taxitypeVC.bookingReqModel = self.bookingReqModel
-            
-            
+
             if self.nearByDrivers.count != 0 {
                 var arrTaxiTypes = [String]()
                 
                 self.arrTaxiData.removeAll()
+                
                 arrTaxiTypes.removeAll()
                 
                 let taxitypes = self.nearByDrivers.map{$0.vehicleTypeId}
@@ -990,11 +991,19 @@ extension HomeVC: UITextFieldDelegate{
                     }
                 }
                 
+                // Tej's Code
+                self.arrAllTaxiData.removeAll()
+                for j in objjson.estimateFare {
+                    self.arrAllTaxiData.append(j)
+                }
+                // Tej's Code Comp
+                
                 print(self.isFirstTimeLoadView)
+                taxitypeVC.taxiData = self.arrTaxiData
+                taxitypeVC.availableTaxi = self.arrTaxiData
+                taxitypeVC.allTaxiData = self.arrAllTaxiData
                 taxitypeVC.setUPUI(isExpand: self.isFirstTimeLoadView)
             
-                taxitypeVC.taxiData = self.arrTaxiData
-                
                 taxitypeVC.heightGet = { (height , isExpand) in
                     self.isFirstTimeLoadView = isExpand
                     self.conHeightOfTaxi.constant = height
@@ -1002,7 +1011,17 @@ extension HomeVC: UITextFieldDelegate{
             }
             
             else {
+                
+                // Tej's Code
+                self.arrAllTaxiData.removeAll()
+                for j in objjson.estimateFare {
+                    self.arrAllTaxiData.append(j)
+                }
+                taxitypeVC.allTaxiData = self.arrAllTaxiData
+                // Tej's Code Comp
+                
                 taxitypeVC.setUPUI(isExpand: self.isFirstTimeLoadView)
+                
                 //Toast.show(message: "No drivers available", state: .failure)
                 taxitypeVC.heightGet = { (height , isExpand) in
                     self.isFirstTimeLoadView = isExpand

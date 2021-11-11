@@ -27,6 +27,8 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBOutlet weak var suggestedTexiView: suggestedTaxiView!
     @IBOutlet weak var suggestedVWBottomConstraint: NSLayoutConstraint!
     
+    var availableTaxi = [EstimateFare]()
+    var allTaxiData = [EstimateFare]()
     var taxiData = [EstimateFare]()
     var selectedTaxi = NSNotFound
     var bookingReqModel = BookingReqModel()
@@ -59,6 +61,11 @@ class SelectTaxiTypeVC: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Tej's Code
+        self.btnBookNow.isUserInteractionEnabled = false
+        self.btnBookNow.alpha = 0.5
+        // Tej's Code Comp
        
         registerNIB()
         //tblSuggestedRides.register(UINib(nibName: "NoDataViewCell", bundle: nil), forCellReuseIdentifier: "NoDataViewCell")
@@ -173,9 +180,29 @@ class SelectTaxiTypeVC: BaseViewController{
 
 //MARK:- Methods
 extension SelectTaxiTypeVC{
+    
     func setUPUI(isExpand : Bool){
         
-       
+        // Tej's Code
+        self.taxiData.removeAll()
+        var arrPrimary = [EstimateFare]()
+        var arrSecondary = [EstimateFare]()
+        
+        for i in self.allTaxiData{
+            for j in self.availableTaxi{
+                if(i.vehicleTypeId == j.vehicleTypeId){
+                    arrPrimary.append(i)
+                }else{
+                    arrSecondary.append(i)
+                }
+            }
+        }
+        
+        arrPrimary.append(contentsOf: arrSecondary)
+        self.taxiData.append(contentsOf: arrPrimary)
+        // Tej's Code Comp
+        
+
         tblSuggestedRides.rowHeight = UITableView.automaticDimension
         tblSuggestedRides.estimatedRowHeight = 200
         
@@ -266,6 +293,18 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
          cell.suggestTaxiBackgroundView.backgroundColor = (indexPath.row == selectedTaxi) ? colors.white.value : UIColor(hexString: "#000000").withAlphaComponent(0.03)
          cell.suggestTaxiBackgroundView.layer.borderWidth = (indexPath.row == selectedTaxi) ? 1  : 0
          cell.TaxiType.textColor = (indexPath.row == selectedTaxi) ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
+         
+         // Tej's Code
+         for i in self.availableTaxi{
+             if(i.vehicleTypeId == self.taxiData[indexPath.row].vehicleTypeId){
+                 cell.vwBottom.isHidden = false
+                 break
+             }else{
+                 cell.vwBottom.isHidden = true
+             }
+         }
+         // Tej's Code Comp
+        
        
          
 //         if taxiData[indexPath.row].isSelected {
@@ -289,6 +328,20 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if taxiData.count != 0 {
+            
+            // Tej's Code
+            let selected = self.taxiData[indexPath.row]
+            for i in self.availableTaxi{
+                if(i.vehicleTypeId == selected.vehicleTypeId){
+                    self.btnBookNow.isUserInteractionEnabled = true
+                    self.btnBookNow.alpha = 1
+                    break
+                }else{
+                    self.btnBookNow.isUserInteractionEnabled = false
+                    self.btnBookNow.alpha = 0.5
+                }
+            }
+            // Tej's Code Comp
            
                                               
             selectedTaxi = indexPath.row
@@ -321,6 +374,8 @@ class suggestedVisitCell : UITableViewCell {
     @IBOutlet weak var SuggestedMoney: suggestedRidesLabel!
     @IBOutlet weak var SuggestedTime: suggestedRidesLabel!
     @IBOutlet weak var TaxiImage: UIImageView!
+    @IBOutlet weak var vwBottom: UIView!
+    
 }
 
 class suggestRide {
