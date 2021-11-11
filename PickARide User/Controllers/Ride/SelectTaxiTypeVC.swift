@@ -187,23 +187,35 @@ extension SelectTaxiTypeVC{
         // Tej's Code
         self.taxiData.removeAll()
         var arrPrimary = [EstimateFare]()
-        var arrSecondary = [EstimateFare]()
+        var arrSecondary = self.allTaxiData
         
         for i in self.allTaxiData{
             for j in self.availableTaxi{
                 if(i.vehicleTypeId == j.vehicleTypeId){
                     arrPrimary.append(i)
-                }else{
-                    arrSecondary.append(i)
+                    break
                 }
             }
         }
+        print(arrPrimary)
+        
+        for index in stride(from: 0, to: arrPrimary.count, by: 1) {
+           for j in stride(from: 0, to: arrSecondary.count, by: 1) {
+                if(arrPrimary[index].vehicleTypeId == arrSecondary[j].vehicleTypeId){
+                    arrSecondary.remove(at: j)
+                    break
+                }
+            }
+        }
+  
+        print(arrSecondary)
         
         arrPrimary.append(contentsOf: arrSecondary)
         self.taxiData.append(contentsOf: arrPrimary)
         if(self.taxiData.count == 0){
             self.taxiData = self.allTaxiData
         }
+        
         // Tej's Code Comp
         
 
@@ -300,12 +312,8 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
          
          // Tej's Code
          cell.vwBottom.isHidden = true
-         for i in self.availableTaxi{
-             if(i.vehicleTypeId == self.taxiData[indexPath.row].vehicleTypeId){
-                 cell.vwBottom.isHidden = false
-             }else{
-                 cell.vwBottom.isHidden = true
-             }
+         if(indexPath.row == self.availableTaxi.count - 1){
+             cell.vwBottom.isHidden = false
          }
          // Tej's Code Comp
         
@@ -396,3 +404,4 @@ class suggestRide {
         self.taxiImage = img
     }
 }
+
