@@ -72,7 +72,11 @@ class AddPaymentVC: BaseViewController{
                 bookingReqModel.estimatedFare = "\(selectedTaxiType.estimateTripFare ?? 0)"
                 bookingReqModel.noOfPassenger = selectedTaxiType.capacity
                 bookingReqModel.vehicleTypeId =  selectedTaxiType.vehicleTypeId
-                bookingReqModel.tripDuration =  "\(selectedTaxiType.durationInMinute ?? 0):\(selectedTaxiType.durationInSecond ?? 0)"
+               
+                let Time = "\(selectedTaxiType.durationInMinute ?? 0):\(selectedTaxiType.durationInSecond ?? 0)"
+                let newString = Time.replacingOccurrences(of: ":", with: ".", options: .literal, range: nil)
+                
+                bookingReqModel.tripDuration = String((Double(newString)?.round(to: 2))!) // "\(selectedTaxiType.durationInMinute ?? 0):\(Double(selectedTaxiType.durationInSecond ?? 0).round(to: 2))"
                 bookingReqModel.paymentType = selectedPaymentMethods == 0 ? "wallet": "card"
                 bookingReqModel.cardId = Singleton.sharedInstance.CardList[selectCard - 1].id
                 BookingRequestWebservice()
@@ -139,12 +143,6 @@ class AddPaymentVC: BaseViewController{
             }
         }
     }
-    
-    
-    
-    
-    
-    
 }
 
 //MARK:- Apis
@@ -258,6 +256,13 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
         }
         
         return indexPath.row == 0 ? nil : UISwipeActionsConfiguration(actions: [deleteAction, cancelAction])
+    }
+}
+
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return Darwin.round(self * divisor) / divisor
     }
 }
 

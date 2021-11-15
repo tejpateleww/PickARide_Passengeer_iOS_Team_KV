@@ -157,7 +157,7 @@ extension ChooseDestinationVC{
         self.textFieldDestinationLocation.delegate = self
         
         self.textFieldStartLocation.delegate = self
-        self.textFieldStartLocation.becomeFirstResponder()
+        self.textFieldDestinationLocation.becomeFirstResponder()
     }
     
     func setLocalization() {

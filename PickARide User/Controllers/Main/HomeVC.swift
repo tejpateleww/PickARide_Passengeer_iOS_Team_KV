@@ -371,6 +371,7 @@ extension HomeVC{
           
             let objDict = json[0]
             let objDriver = RootNearByDrivers(fromJson: objDict)
+            print(objDriver.drivers.count)
             if objDriver.drivers.count != 0 {
                 self.nearByDrivers = objDriver.drivers
               //  self.NearByDriversSetup(Drivers: self.nearByDrivers)
@@ -391,9 +392,9 @@ extension HomeVC{
                 
                 
                 if taxitypeVC.selectedTaxi == NSNotFound {
-                        if SocketIOManager.shared.socket.status == .connected {
-                            self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng)
-                        }
+                    if SocketIOManager.shared.socket.status == .connected {
+                        self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng)
+                    }
                 }
                 
             }

@@ -62,9 +62,7 @@ class SelectTaxiTypeVC: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registerNIB()
-        //tblSuggestedRides.register(UINib(nibName: "NoDataViewCell", bundle: nil), forCellReuseIdentifier: "NoDataViewCell")
-        
+        self.registerNIB()
         self.setLocalization()
         
     }
@@ -78,6 +76,7 @@ class SelectTaxiTypeVC: BaseViewController{
         // Tej's Code
         self.btnBookNow.isUserInteractionEnabled = false
         self.btnBookNow.alpha = 0.5
+        self.tblSuggestedRides.showsVerticalScrollIndicator = false
         // Tej's Code Comp
     }
     
@@ -183,6 +182,8 @@ class SelectTaxiTypeVC: BaseViewController{
 extension SelectTaxiTypeVC{
     
     func setUPUI(isExpand : Bool){
+        
+        print("availableTaxi : \(self.availableTaxi)")
         
         // Tej's Code
         self.taxiData.removeAll()
@@ -296,7 +297,6 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
      if taxiData.count != 0 {
         let cell = tblSuggestedRides.dequeueReusableCell(withIdentifier: suggestedVisitCell.reuseIdentifier, for: indexPath) as! suggestedVisitCell
        
-       
         cell.TaxiType.text = taxiData[indexPath.row].vehicleTypeName.uppercased()
         cell.TotalSeat.text = taxiData[indexPath.row].capacity + "seats"
         let strEstimateFare = twoDecimals(number:taxiData[indexPath.row].estimateTripFare ?? 0)
@@ -312,8 +312,10 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
          
          // Tej's Code
          cell.vwBottom.isHidden = true
+         cell.vWBottomHeight.constant = 0
          if(indexPath.row == self.availableTaxi.count - 1){
              cell.vwBottom.isHidden = false
+             cell.vWBottomHeight.constant = 10
          }
          // Tej's Code Comp
         
@@ -343,6 +345,7 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
             
             // Tej's Code
             let selected = self.taxiData[indexPath.row]
+            
             for i in self.availableTaxi{
                 if(i.vehicleTypeId == selected.vehicleTypeId){
                     self.btnBookNow.isUserInteractionEnabled = true
@@ -387,6 +390,7 @@ class suggestedVisitCell : UITableViewCell {
     @IBOutlet weak var SuggestedTime: suggestedRidesLabel!
     @IBOutlet weak var TaxiImage: UIImageView!
     @IBOutlet weak var vwBottom: UIView!
+    @IBOutlet weak var vWBottomHeight: NSLayoutConstraint!
     
 }
 
