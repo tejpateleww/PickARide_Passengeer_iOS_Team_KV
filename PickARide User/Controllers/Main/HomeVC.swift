@@ -49,7 +49,8 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     var oldCoordinate: CLLocationCoordinate2D!
     var arrMarkers = [GMSMarker]()
     var isFirstTimeLoadView = true
-    
+    var arrTaxiTypes = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -126,8 +127,6 @@ extension HomeVC{
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDetailsVC), name: .OpenCurrentRideDetailsVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openLocationSelection), name: .OpenLocationSelectionVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.CancelCompleteTrip), name: .CancelCompleteTRip, object: nil)
-        
-        
     }
     
     @objc func CancelCompleteTrip(){
@@ -376,6 +375,9 @@ extension HomeVC{
                 self.nearByDrivers = objDriver.drivers
               //  self.NearByDriversSetup(Drivers: self.nearByDrivers)
             }
+            else {
+                self.nearByDrivers.removeAll()
+            }
             if self.selectTexiVCContainerVW.isHidden == false {
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
                 print(NavVc.children[0].children)
@@ -391,11 +393,11 @@ extension HomeVC{
                 }
                 
                 
-                if taxitypeVC.selectedTaxi == NSNotFound {
+               // if taxitypeVC.selectedTaxi == NSNotFound {
                     if SocketIOManager.shared.socket.status == .connected {
                         self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng)
                     }
-                }
+              //  }
                 
             }
         }
@@ -475,11 +477,7 @@ extension HomeVC{
                     let update = GMSCameraUpdate.fit(bounds, withPadding: 17)
                     self.mapVw.animate(with: update)
             
-            
-//
-                self.getPolylineRoute(from: CLLocationCoordinate2D(latitude:Singleton.sharedInstance.latitute, longitude:Singleton.sharedInstance.longtitute), to: CLLocationCoordinate2D(latitude:lat, longitude:lng))
-                
-                
+                 self.getPolylineRoute(from: CLLocationCoordinate2D(latitude:Singleton.sharedInstance.latitute, longitude:Singleton.sharedInstance.longtitute), to: CLLocationCoordinate2D(latitude:lat, longitude:lng))
             }
         }
     }
@@ -794,7 +792,7 @@ extension HomeVC: UITextFieldDelegate{
         destinationMarker.map = self.mapVw
         
         
-           let mapInsets = UIEdgeInsets(top: 50, left: 0.0, bottom: self.conHeightOfTaxi.constant, right: 0.0)
+        let mapInsets = UIEdgeInsets(top: 50, left: 0.0, bottom: 50, right: 0.0)
             self.mapVw.padding = mapInsets
            self.arrMarkers.removeAll()
             self.arrMarkers.append(currentMarker)
@@ -840,8 +838,6 @@ extension HomeVC: UITextFieldDelegate{
                 
                 taxitypeVC.selectedTaxi = NSNotFound
                 
-                
-
             }
             self.navigationController?.pushViewController(controller, animated: true)
             print("ATDebug :: currentMarker tappend ")
@@ -966,11 +962,10 @@ extension HomeVC: UITextFieldDelegate{
             taxitypeVC.bookingReqModel = self.bookingReqModel
 
             if self.nearByDrivers.count != 0 {
-                var arrTaxiTypes = [String]()
                 
                 self.arrTaxiData.removeAll()
                 
-                arrTaxiTypes.removeAll()
+                self.arrTaxiTypes.removeAll()
                 
                 let taxitypes = self.nearByDrivers.map{$0.vehicleTypeId}
                
@@ -978,11 +973,11 @@ extension HomeVC: UITextFieldDelegate{
         
                 for obj in taxitypes {
                     for j in obj!{
-                        arrTaxiTypes.append(j)
+                        self.arrTaxiTypes.append(j)
                     }
                 }
                 
-                let arrunique = Array(Set(arrTaxiTypes))
+                let arrunique = Array(Set(self.arrTaxiTypes))
 
                 for i in arrunique {
                     for j in objjson.estimateFare {
@@ -1013,12 +1008,17 @@ extension HomeVC: UITextFieldDelegate{
             
             else {
                 
+                self.arrTaxiTypes.removeAll()
+                self.arrTaxiData.removeAll()
+                self.nearByDrivers.removeAll()
                 // Tej's Code
                 self.arrAllTaxiData.removeAll()
                 for j in objjson.estimateFare {
                     self.arrAllTaxiData.append(j)
                 }
                 taxitypeVC.allTaxiData = self.arrAllTaxiData
+                taxitypeVC.taxiData = self.arrTaxiData
+                taxitypeVC.availableTaxi = self.arrTaxiData
                 // Tej's Code Comp
                 
                 taxitypeVC.setUPUI(isExpand: self.isFirstTimeLoadView)

@@ -11,6 +11,7 @@ import GoogleMaps
 
 class SelectTaxiTypeVC: BaseViewController{
    
+    //MARK:- ====== Outlets ======
     @IBOutlet weak var lblCardPayment: suggestedRidesLabel!
     @IBOutlet weak var lblSuggestedRide: suggestedRidesLabel!
     @IBOutlet weak var btnCardPayment: UIButton!
@@ -21,12 +22,12 @@ class SelectTaxiTypeVC: BaseViewController{
     @IBOutlet weak var btnPromo: UIButton!
     @IBOutlet weak var btnCancelPromo: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
-    
-    //Gesture
     @IBOutlet weak var topVW: UIView!
     @IBOutlet weak var suggestedTexiView: suggestedTaxiView!
     @IBOutlet weak var suggestedVWBottomConstraint: NSLayoutConstraint!
     
+    
+    //MARK:- ===== Variables ==========
     var availableTaxi = [EstimateFare]()
     var allTaxiData = [EstimateFare]()
     var taxiData = [EstimateFare]()
@@ -35,7 +36,6 @@ class SelectTaxiTypeVC: BaseViewController{
     var navigateToCurrentLocation : (()->())?
     var heightOfView = CGFloat()
     var heightGet : ((CGFloat , Bool)->())? = nil
-    
     var isExpandCategory:  Bool  = false {
         didSet {
             suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedTexiView.frame.height + topVW.frame.height + 60)
@@ -55,19 +55,18 @@ class SelectTaxiTypeVC: BaseViewController{
             }
         }
     }
-   
     var closeBtnClosure : (()->())?
     var bookingSucess : (()->())?
     
+    
+    //MARK:- ======== View Controller Life cycle ====
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.registerNIB()
         self.setLocalization()
-        
     }
     
-    
+    //MARK:- =====
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
@@ -118,9 +117,7 @@ class SelectTaxiTypeVC: BaseViewController{
                     vc.isFromSchedulled = true
                     vc.bookingReqModel = self.bookingReqModel
                     self.navigationController?.pushViewController(vc, animated: true)
-
                 }
-                
             }
             controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             let navigationController = UINavigationController(rootViewController: controller)
@@ -140,6 +137,9 @@ class SelectTaxiTypeVC: BaseViewController{
         else {
             let controller :AddPaymentVC  = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
             controller.bookingAdded = {
+                self.selectedTaxi = NSNotFound
+                Singleton.sharedInstance.selectedTaxiId = "0"
+                
                 if let bookingAdd = self.bookingSucess {
                     bookingAdd()
                 }
@@ -216,21 +216,27 @@ extension SelectTaxiTypeVC{
         if(self.taxiData.count == 0){
             self.taxiData = self.allTaxiData
         }
+        for i in 0..<taxiData.count{
+            if taxiData[i].vehicleTypeId == Singleton.sharedInstance.selectedTaxiId{
+                taxiData[i].isSelcted = true
+                 selectedTaxi = i
+            }
+        }
         
-        // Tej's Code Comp
-        
-
+        for i in self.availableTaxi{
+            if(i.vehicleTypeId == Singleton.sharedInstance.selectedTaxiId){
+                self.btnBookNow.isUserInteractionEnabled = true
+                self.btnBookNow.alpha = 1
+                break
+            }else{
+                self.btnBookNow.isUserInteractionEnabled = false
+                self.btnBookNow.alpha = 0.5
+            }
+        }
+    
         tblSuggestedRides.rowHeight = UITableView.automaticDimension
         tblSuggestedRides.estimatedRowHeight = 200
-        
-//        taxiData.append(suggestRide(name: "TAXI/CAB", capacity: "4 Seats", price: "$25.50", Time: "1-4 min", img: UIImage(named: "ic_dummyTexi1")!))
-//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-//
-//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-//
-//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
-//
-//        taxiData.append(suggestRide(name: "Basic", capacity: "4 Seats", price: "$35.00", Time: "1-5 min", img: UIImage(named: "ic_dummyTexi2")!))
+
         tblSuggestedRides.reloadData()
         tblSuggestedRides.layoutIfNeeded()
         DispatchQueue.main.async { [self] in
@@ -279,7 +285,6 @@ extension SelectTaxiTypeVC{
             }
         }
     }
-    
 //    @objc func setBottomViewOnclickofViewTop(){
 //        self.isExpandCategory = !self.isExpandCategory
 //    }
@@ -289,11 +294,9 @@ extension SelectTaxiTypeVC{
 extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taxiData.count != 0 ? taxiData.count : 1
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
      if taxiData.count != 0 {
         let cell = tblSuggestedRides.dequeueReusableCell(withIdentifier: suggestedVisitCell.reuseIdentifier, for: indexPath) as! suggestedVisitCell
        
@@ -306,9 +309,13 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
         cell.SuggestedTime.text = "1-\(taxiData[indexPath.row].driverReachInMinute ?? 0) min"
         cell.TaxiImage.loadSDImage(imgUrl: taxiData[indexPath.row].image)
          
-         cell.suggestTaxiBackgroundView.backgroundColor = (indexPath.row == selectedTaxi) ? colors.white.value : UIColor(hexString: "#000000").withAlphaComponent(0.03)
-         cell.suggestTaxiBackgroundView.layer.borderWidth = (indexPath.row == selectedTaxi) ? 1  : 0
-         cell.TaxiType.textColor = (indexPath.row == selectedTaxi) ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
+//         cell.suggestTaxiBackgroundView.backgroundColor = (indexPath.row == selectedTaxi) ? colors.white.value : UIColor(hexString: "#000000").withAlphaComponent(0.03)
+//         cell.suggestTaxiBackgroundView.layer.borderWidth = (indexPath.row == selectedTaxi) ? 1  : 0
+//         cell.TaxiType.textColor = (indexPath.row == selectedTaxi) ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
+        
+        cell.suggestTaxiBackgroundView.backgroundColor = taxiData[indexPath.row].isSelcted == true ? colors.white.value : UIColor(hexString: "#000000").withAlphaComponent(0.03)
+        cell.suggestTaxiBackgroundView.layer.borderWidth = taxiData[indexPath.row].isSelcted == true ? 1  : 0
+        cell.TaxiType.textColor = taxiData[indexPath.row].isSelcted == true ? colors.submitButtonColor.value : colors.loginPlaceHolderColor.value
          
          // Tej's Code
          cell.vwBottom.isHidden = true
@@ -318,9 +325,6 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
              cell.vWBottomHeight.constant = 10
          }
          // Tej's Code Comp
-        
-       
-         
 //         if taxiData[indexPath.row].isSelected {
 //             cell.suggestTaxiBackgroundView.backgroundColor = colors.white.value
 //             cell.suggestTaxiBackgroundView.layer.borderWidth = 1
@@ -343,9 +347,14 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if taxiData.count != 0 {
             
-            // Tej's Code
+            for i in taxiData {
+                i.isSelcted = false
+            }
+            selectedTaxi = indexPath.row
+            Singleton.sharedInstance.selectedTaxiId = "0"
             let selected = self.taxiData[indexPath.row]
-            
+            Singleton.sharedInstance.selectedTaxiId = selected.vehicleTypeId
+            taxiData[selectedTaxi].isSelcted = true
             for i in self.availableTaxi{
                 if(i.vehicleTypeId == selected.vehicleTypeId){
                     self.btnBookNow.isUserInteractionEnabled = true
@@ -356,18 +365,14 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
                     self.btnBookNow.alpha = 0.5
                 }
             }
-            // Tej's Code Comp
-           
-                                              
-            selectedTaxi = indexPath.row
+            
+            
           //  tblSuggestedRides.reloadRows(at: [indexPath], with: .automatic)
 //            DispatchQueue.main.async {
               //  self.tblSuggestedRides.reloadData()
 //            }
             
             tblSuggestedRides.reloadData()
-          
-            
         }
     }
     

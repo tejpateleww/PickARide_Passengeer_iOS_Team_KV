@@ -136,6 +136,7 @@ class AddPaymentVC: BaseViewController{
 //                    navigationController.navigationBar.isHidden = true
 //                    self.present(navigationController, animated: true, completion: nil)
                 }
+               
             
             }
             else {

@@ -201,16 +201,16 @@ extension CurrentRideDriverInformationVC{
             }
             else {
                 if objCurrentBooking.tripDuration != "" , objCurrentBooking.tripDuration != nil{
-                    if objCurrentBooking.tripDuration?.contains(":") == true{
-                        let splitStrDuration = objCurrentBooking.tripDuration?.split(separator: ":")
-                        totalMinut = Int(splitStrDuration?[0] ?? "") ?? 0
-                        totalSecond = Int(splitStrDuration?[1] ?? "") ?? 0
-                        
-                    }
-                 else {
-                    totalMinut = Int(objCurrentBooking.tripDuration ?? "") ?? 0
-                    totalSecond = 0
-                    }
+//                    if objCurrentBooking.tripDuration?.contains(":") == true{
+//                        let splitStrDuration = objCurrentBooking.tripDuration?.split(separator: ":")
+//                        totalMinut = Int(splitStrDuration?[0] ?? "") ?? 0
+//                        totalSecond = Int(splitStrDuration?[1] ?? "") ?? 0
+//
+//                    }
+//                 else {
+                    //totalMinut = Int(objCurrentBooking.tripDuration ?? "") ?? 0
+                    totalSecond = 30
+                   // }
                     startTimer()
                     
                 }
@@ -234,10 +234,20 @@ extension CurrentRideDriverInformationVC{
                 timer?.invalidate()
             }
             else {
-                let splitStrDuration = objBookingInfo.tripDuration.split(separator: ":")
-                totalMinut = Int(splitStrDuration[0]) ?? 0
-                totalSecond = Int(splitStrDuration[1]) ?? 0
+            if objBookingInfo.tripDuration != "" , objBookingInfo.tripDuration != nil{
+//                if objBookingInfo.tripDuration?.contains(":") == true{
+//                    let splitStrDuration = objBookingInfo.tripDuration?.split(separator: ":")
+//                    totalMinut = Int(splitStrDuration?[0] ?? "") ?? 0
+//                    totalSecond = Int(splitStrDuration?[1] ?? "") ?? 0
+//
+//                }
+//             else {
+               // totalMinut = Int(objBookingInfo.tripDuration ?? "") ?? 0
+                totalSecond = 30
+                //}
                 startTimer()
+                
+              }
             }
             self.setLabel()
         }

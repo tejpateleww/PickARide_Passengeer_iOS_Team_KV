@@ -7,7 +7,17 @@
 //
 
 import UIKit
+
 extension UITextField{
+    
+    //MARK:- ===== Set Cursor Position end Of The text ======
+    func setCursorPosition(Textfield:UITextField,View:UIView){
+        let point = CGPoint(x: View.bounds.maxX, y: View.bounds.height / 2)
+        if let textPosition = Textfield.closestPosition(to: point) {
+            Textfield.selectedTextRange = Textfield.textRange(from: textPosition, to: textPosition)
+        }
+    }
+   
     //MARK:- Placeholder Color
    @IBInspectable var placeHolderColor: UIColor? {
         get {
@@ -43,3 +53,4 @@ extension UITextField{
         self.rightViewMode = .always
     }
 }
+

@@ -11,13 +11,10 @@ import UIKit
 class RegisterVC: BaseViewController {
     
     @IBOutlet weak var lblSignUP: registerScreenLabel!
-    
     @IBOutlet weak var lblFirstNameTitle: ProfileLabel!
     @IBOutlet weak var txtFirstName: UITextField!
-    
     @IBOutlet weak var lblLastNameTitle: ProfileLabel!
     @IBOutlet weak var txtLastName: UITextField!
-    
     @IBOutlet weak var lblEmailTitle: ProfileLabel!
     @IBOutlet weak var txtEmail: UITextField!
     

@@ -104,6 +104,7 @@ class EstimateFare : Codable{
     var image : String!
     var vehicleTypeId : String!
     var vehicleTypeName : String!
+    var isSelcted : Bool!
     /**
      * Instantiate the instance using the passed json values to set the properties values
      */
@@ -120,6 +121,7 @@ class EstimateFare : Codable{
         image = json["image"].stringValue
         vehicleTypeId = json["vehicle_type_id"].stringValue
         vehicleTypeName = json["vehicle_type_name"].stringValue
+        isSelcted = false
     }
 
    

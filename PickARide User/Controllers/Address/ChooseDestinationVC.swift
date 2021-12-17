@@ -95,9 +95,7 @@ class ChooseDestinationVC: BaseViewController {
                     selectedDropStart(arrPickupPlace[0],arrDestinationPlace[0])
                 }
             }
-            
         }
-        
     }
     
     func validation()->Bool{
@@ -283,11 +281,13 @@ extension ChooseDestinationVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         selectedTextField = textField == textFieldStartLocation ? 0 : 1
+        let endPosition = textField.endOfDocument
+        textField.selectedTextRange = textField.textRange(from: endPosition, to: endPosition)
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        tableDataFetecher.sourceTextHasChanged(textField.text)
-    }
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        tableDataFetecher.sourceTextHasChanged(textField.text)
+//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        if textFieldStartLocation.text != "" && textFieldDestinationLocation.text != "" {
@@ -296,6 +296,13 @@ extension ChooseDestinationVC: UITextFieldDelegate{
 //                obj(textFieldStartLocation.text ?? "",textFieldDestinationLocation.text ?? "")
 //            }
 //        }
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+            tableDataFetecher.sourceTextHasChanged(textField.text)
+
+        let newPosition = textField.endOfDocument
+        textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -311,6 +318,8 @@ extension ChooseDestinationVC: UITextFieldDelegate{
 //            return true
 //        }
 //    }
+    
+    
 }
 
 //MARK:- Google AutoComplete Delegate
@@ -321,16 +330,13 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
         for prediction in predictions {
             let place = prediction.placeID
             GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: place)
-            
         }
-
         tblPlacePicker.reloadData()
     }
     
    
     func GetPlaceDataByPlaceID(PlaceObj:GMSAutocompletePrediction,pPlaceID: String)
        {
-         
            self.placesClient.lookUpPlaceID(pPlaceID, callback: { (place, error) -> Void in
 
                if let error = error {

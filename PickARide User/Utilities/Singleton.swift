@@ -27,6 +27,7 @@ class Singleton: NSObject{
     var Api_Key = String()
     var DeviceType : String = "ios"
     var DeviceToken : String = ""
+    var selectedTaxiId = String()
     
     //MARK:- User' Custom Details
     var userCurrentLocation : CLLocationCoordinate2D?
