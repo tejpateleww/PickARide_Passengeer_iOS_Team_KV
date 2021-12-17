@@ -1,9 +1,4 @@
-//
-//  apiPaths.swift
-//  Danfo_Rider
-//
-//  Created by Hiral Jotaniya on 04/06/21.
-//
+
 
 import Foundation
 
@@ -12,9 +7,9 @@ typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 enum APIEnvironment : String {
  
 //Development URL : Pick A Ride Customer
-    case AssetsUrl = "http://65.1.154.172/"
+    //case AssetsUrl = "http://65.1.154.172/"
     case Development = "http://65.1.154.172/api/customer_api/"
-    case Profilebu = "http://65.1.154.172/api/"
+    case Profilebu = "http://65.1.154.172/"
     case Live = "not provided"
     case GoogleMapKey = "AIzaSyD9IuC2O3dbiKoMZ5bwvLJdttBCuO-1-Rc"
             
@@ -27,8 +22,6 @@ enum APIEnvironment : String {
             
             //"AIzaSyDU7rSEixg3F-ceR5nz9JAcYxEw5J7hOEI"
             
-    
-    
     static var baseURL: String{
         return APIEnvironment.environment.rawValue
     }
@@ -89,8 +82,6 @@ enum ApiKey: String {
     case acceptBookLaterRequest               = "accept_book_later_request"
     case chatHistory                          = "chat_history/"
 
-
-            
 }
 
  

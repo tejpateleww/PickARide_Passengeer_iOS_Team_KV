@@ -11,6 +11,7 @@ import UIKit
 
 class ProfileVC: BaseViewController {
     
+    //MARK:- ==== Outlets =========
     @IBOutlet weak var imgProfile: ProfileView!
     @IBOutlet weak var btnProfile: UIButton!
     @IBOutlet weak var lblTitle: ProfileLabel!
@@ -30,15 +31,15 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var btnPasword: UIButton!
     @IBOutlet weak var txtCountryCode: ProfileTextField!
     
+    //MARK:- ===== Variables ======
     var currentEditStatus = false
     var imagePicker : ImagePicker?
     var selectedImage : UIImage?
-    
     var pickerView = UIPickerView()
     var selectedIndexOfPicker = Int()
     var profileUserModel = ProfileUserModel()
-    
     var profileUpdateClosure : (() -> ())?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,10 +73,12 @@ class ProfileVC: BaseViewController {
         self.imagePicker?.present(from: self.imgProfile, image: self.imgProfile.image ?? UIImage())
     }
     
+    //MARK:- === Edit Profile Clicked =====
     @IBAction func btnEditProfileClicked(_ sender: Any) {
         appDel.navigateToMain()
     }
     
+    //MARK:- ==== Password Click =====
     @IBAction func btnPasswordClicked(_ sender: Any) {
         let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
         controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
@@ -91,6 +94,7 @@ class ProfileVC: BaseViewController {
         self.present(navigationController, animated: true, completion: nil)
     }
     
+    //MARK:- ==== Btn Action Save =====
     @IBAction func btnSave(_ sender: Any) {
         if self.validation(){
             self.callUpdateProfileApi()
@@ -179,6 +183,7 @@ extension ProfileVC{
         self.txtCountryCode.endEditing(true)
     }
     
+    //MARK:- ===== Set Profile Info ======
     func setUserProfileInfo(){
         let authUser = Singleton.sharedInstance.UserProfilData
         
@@ -216,10 +221,10 @@ extension ProfileVC{
             Toast.show(title: UrlConstant.Required, message: str, state: .failure)
             return false
         }
-        
         return true
     }
     
+    //MARK:- ==== Update Profile WebService =====
     func callUpdateProfileApi(){
         self.profileUserModel.profileVC = self
         
@@ -257,6 +262,7 @@ extension ProfileVC: UITextFieldDelegate{
     }
 }
 
+//MARK:- === ImagePicker Delegate ======
 extension ProfileVC: ImagePickerDelegate {
     
     func didSelect(image: UIImage?, button SelectedTag:Int) {

@@ -10,6 +10,7 @@ import UIKit
 
 class MyRideCell: UITableViewCell{
     
+    //MARK: - ====== Outlets ========
     @IBOutlet weak var lblDate: themeLabel!
     @IBOutlet weak var lblAddress: themeLabel!
     @IBOutlet weak var lblAmount: themeLabel!
@@ -23,8 +24,10 @@ class MyRideCell: UITableViewCell{
     @IBOutlet weak var stackButtonsHeight: NSLayoutConstraint!
     @IBOutlet weak var imgStatus: UIImageView!
     
+    //MARK:- ====== Variables =======
     var AcceptTapped : (()->()) = { }
     var RejectTapped : (()->()) = { }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,10 +40,13 @@ class MyRideCell: UITableViewCell{
         // Configure the view for the selected state
     }
     
+    
+    //MARK:- ===== Btn Action Accept =====
     @IBAction func btnAcceptAction(_ sender: Any) {
         self.AcceptTapped()
     }
     
+    //MARK:- ===== Reject Btn Action ======
     @IBAction func btnRejectAction(_ sender: Any) {
         self.RejectTapped()
     }

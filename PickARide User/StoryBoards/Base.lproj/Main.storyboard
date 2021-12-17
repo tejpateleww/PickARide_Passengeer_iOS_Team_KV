@@ -6309,8 +6309,22 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-yp-pYu">
                                                                                         <rect key="frame" x="0.0" y="13" width="187" height="47"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Ja-XSx" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUr-VO-Qfk" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                <nil key="textColor"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                                <userDefinedRuntimeAttributes>
+                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                        <real key="value" value="16"/>
+                                                                                                    </userDefinedRuntimeAttribute>
+                                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                        <color key="value" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                    </userDefinedRuntimeAttribute>
+                                                                                                </userDefinedRuntimeAttributes>
+                                                                                            </label>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Ja-XSx" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                                                <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -6321,20 +6335,6 @@
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isbold" value="YES"/>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                                                         <color key="value" red="0.15686274510000001" green="0.1843137255" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                                    </userDefinedRuntimeAttribute>
-                                                                                                </userDefinedRuntimeAttributes>
-                                                                                            </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUr-VO-Qfk" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                                <nil key="textColor"/>
-                                                                                                <nil key="highlightedColor"/>
-                                                                                                <userDefinedRuntimeAttributes>
-                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                                        <real key="value" value="16"/>
-                                                                                                    </userDefinedRuntimeAttribute>
-                                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                                        <color key="value" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
@@ -6354,8 +6354,22 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4cB-fz-OFy">
                                                                                         <rect key="frame" x="0.0" y="13" width="187" height="47"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-aF-8QU" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-iw-fty" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                <nil key="textColor"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                                <userDefinedRuntimeAttributes>
+                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                        <real key="value" value="16"/>
+                                                                                                    </userDefinedRuntimeAttribute>
+                                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                        <color key="value" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                    </userDefinedRuntimeAttribute>
+                                                                                                </userDefinedRuntimeAttributes>
+                                                                                            </label>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-aF-8QU" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                                                <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -6366,20 +6380,6 @@
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isbold" value="YES"/>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                                                         <color key="value" red="0.15686274510000001" green="0.1843137255" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                                    </userDefinedRuntimeAttribute>
-                                                                                                </userDefinedRuntimeAttributes>
-                                                                                            </label>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-iw-fty" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="26.5" width="187" height="20.5"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                                <nil key="textColor"/>
-                                                                                                <nil key="highlightedColor"/>
-                                                                                                <userDefinedRuntimeAttributes>
-                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                                        <real key="value" value="16"/>
-                                                                                                    </userDefinedRuntimeAttribute>
-                                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                                        <color key="value" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
@@ -7298,12 +7298,12 @@
                     <connections>
                         <outlet property="imgRatedProfile" destination="d7h-Bs-z2B" id="jcR-K0-BNH"/>
                         <outlet property="imgYourRatedProfile" destination="5O3-PJ-kYM" id="ciH-MP-Dly"/>
-                        <outlet property="lblAddres" destination="Urg-3B-XwB" id="azc-zd-NsW"/>
-                        <outlet property="lblArea" destination="fqU-CU-chH" id="9bi-Ev-9V8"/>
                         <outlet property="lblDateTime" destination="r6L-N9-7Ag" id="ghZ-ZW-58A"/>
+                        <outlet property="lblDestination" destination="fqU-CU-chH" id="8me-Qb-kVY"/>
                         <outlet property="lblDiscount" destination="CCW-xc-86f" id="fZ6-Fs-Oo1"/>
                         <outlet property="lblDiscription" destination="22I-2i-DDW" id="Z1d-7r-tW3"/>
                         <outlet property="lblDistance" destination="FQ4-aF-8QU" id="LsZ-5i-vKd"/>
+                        <outlet property="lblPickUp" destination="Urg-3B-XwB" id="8bq-Th-X6j"/>
                         <outlet property="lblPrice" destination="O6g-74-Il8" id="R4n-bF-K2R"/>
                         <outlet property="lblRatedName" destination="y0l-B7-Att" id="ZFx-eq-Hif"/>
                         <outlet property="lblRideFares" destination="WX2-wM-HPa" id="JbF-Pb-X6Y"/>
@@ -7479,7 +7479,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seattle - 280 Hemlock Ln" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig1-Re-Nbv" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                    <rect key="frame" x="32" y="199" width="231" height="92"/>
+                                                                    <rect key="frame" x="32" y="199" width="211" height="92"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -7511,7 +7511,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-sn-Qw6" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                    <rect key="frame" x="268" y="174.5" width="60" height="16"/>
+                                                                    <rect key="frame" x="248" y="174.5" width="80" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -7525,9 +7525,9 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6Z-qc-WJW" customClass="themeLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                    <rect key="frame" x="268" y="195.5" width="60" height="21.5"/>
+                                                                    <rect key="frame" x="248" y="195.5" width="80" height="21.5"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="60" id="pgV-Dz-zMu"/>
+                                                                        <constraint firstAttribute="width" constant="80" id="pgV-Dz-zMu"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                     <nil key="textColor"/>
@@ -7861,7 +7861,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seattle - 280 Hemlock Ln" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-y4-T2e" customClass="RideDetailLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="32" y="196.5" width="233" height="16"/>
+                                                                <rect key="frame" x="32" y="196.5" width="193" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -7894,7 +7894,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGn-dq-CbF" customClass="RideDetailLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="270" y="174.5" width="60" height="16"/>
+                                                                <rect key="frame" x="230" y="174.5" width="100" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -7909,9 +7909,9 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$25.50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-Ej-mOw" customClass="RideDetailLabel" customModule="PickARide_User" customModuleProvider="target">
-                                                                <rect key="frame" x="270" y="195.5" width="60" height="21.5"/>
+                                                                <rect key="frame" x="230" y="195.5" width="100" height="21.5"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="60" id="fxm-BY-m3q"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="fxm-BY-m3q"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <nil key="textColor"/>
@@ -8156,7 +8156,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isName" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rated You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgY-Fs-lvC" customClass="RideDetailLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Rated" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgY-Fs-lvC" customClass="RideDetailLabel" customModule="PickARide_User" customModuleProvider="target">
                                                         <rect key="frame" x="63" y="465.5" width="61.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="textColor"/>

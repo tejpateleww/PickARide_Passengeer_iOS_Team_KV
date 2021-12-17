@@ -11,12 +11,11 @@ import UIKit
 import Cosmos
 class RideReceiptDetailsVC: BaseViewController {
 
+    //MARK:- ====== Outlets =======
     @IBOutlet weak var stackViewRating: UIView!
     @IBOutlet weak var vwRatingTop: NSLayoutConstraint!
     @IBOutlet weak var vwRatingBottom: NSLayoutConstraint!
     @IBOutlet weak var lblDiscription: themeLabel!
-    @IBOutlet weak var lblAddres: themeLabel!
-    @IBOutlet weak var lblArea: themeLabel!
     @IBOutlet weak var lblPrice: themeLabel!
     @IBOutlet weak var lblTime: themeLabel!
     @IBOutlet weak var lblDistance: themeLabel!
@@ -36,9 +35,16 @@ class RideReceiptDetailsVC: BaseViewController {
     @IBOutlet weak var lblDiscount: themeLabel!
     @IBOutlet weak var lblTopupAdded: themeLabel!
     @IBOutlet weak var lblYourPayment: themeLabel!
+    @IBOutlet weak var lblDestination: themeLabel!
+    @IBOutlet weak var lblPickUp: themeLabel!
     
+    
+    //MARK:- ===== Variables =====
     var isFromPastRide = Bool()
+    var objDetail : BookingDetails?
     
+    
+    //MARK:- ===== ViewController Life cycle =====
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -51,6 +57,14 @@ class RideReceiptDetailsVC: BaseViewController {
         self.navBtnDone.addTarget(self, action: #selector(goToHelpScreen), for: .touchUpInside)
     }
     
+    
+    
+    //MARK:- ===== Data Setup ====
+    func DataSetup(){
+        lblTax.text = objDetail?.tax
+        lblTaxiFee.text = objDetail?.bookingFee
+        lblTime.text = objDetail?.bookingTime
+    }
 }
 
 //MARK:- Methods

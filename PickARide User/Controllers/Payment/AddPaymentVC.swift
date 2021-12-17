@@ -10,11 +10,14 @@ import UIKit
 
 class AddPaymentVC: BaseViewController{
     
+    //MARK:- ===== Outlets =======
     @IBOutlet weak var tblPaymentMethod: UITableView!
     @IBOutlet weak var btnAddCard: submitButton!
     @IBOutlet weak var lblTitle: TitleLabel!
     @IBOutlet weak var lblNoDataFound: themeLabel!
     
+    
+    //MARK:- ===== Variables =======
     var cardDetails : [String] = []
     var isFromSideMenu = false
     var selectedPaymentMethods = NSNotFound
@@ -26,6 +29,7 @@ class AddPaymentVC: BaseViewController{
     var bookingAdded : (()->())?
     
     
+    //MARK:- ===== View Controller Life Cycle =======
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLocalization()
@@ -33,15 +37,13 @@ class AddPaymentVC: BaseViewController{
         if Singleton.sharedInstance.CardList.count == 0{
             self.callCardListApi()
         }
-        
         self.tblPaymentMethod.reloadData()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.payment.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
+            navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
     func setLocalization() {
@@ -85,6 +87,7 @@ class AddPaymentVC: BaseViewController{
         }
     }
     
+    //MARK:- ===== Payment btn click =======
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if !isFromSideMenu{
             let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
@@ -193,7 +196,6 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
 
         var cell = UITableViewCell()
         if indexPath.row == 0 {

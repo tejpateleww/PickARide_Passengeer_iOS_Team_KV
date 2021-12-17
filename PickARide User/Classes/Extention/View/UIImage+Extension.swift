@@ -115,7 +115,7 @@ extension UIImage{
 }
 
 extension UIImageView{
-    func loadSDImage(prefixStr: String = APIEnvironment.AssetsUrl.rawValue, imgUrl : String, isUserProfile: Bool = true){
+    func loadSDImage(prefixStr: String = APIEnvironment.Profilebu.rawValue, imgUrl : String, isUserProfile: Bool = true){
         let url = URL(string: prefixStr + imgUrl)
         let placeHolderImg = isUserProfile ? UserPlaceHolder : GallaryPlaceHolder
         self.sd_setImage(with: url, placeholderImage: placeHolderImg, options: .refreshCached, completed: nil)
@@ -123,7 +123,7 @@ extension UIImageView{
 }
 
 extension UIButton{
-    func loadSDImage(prefixStr: String = APIEnvironment.AssetsUrl.rawValue, imgUrl : String, isUserProfile: Bool = true){
+    func loadSDImage(prefixStr: String = APIEnvironment.Profilebu.rawValue, imgUrl : String, isUserProfile: Bool = true){
         let url = URL(string: prefixStr + imgUrl)
         let placeHolderImg = isUserProfile ? UserPlaceHolder : GallaryPlaceHolder
         self.sd_setImage(with: url, for: .normal, placeholderImage: placeHolderImg, options: .refreshCached, completed: nil)

@@ -116,8 +116,6 @@ class SelectDestinationLabel : UILabel {
             self.font = CustomFont.regular.returnFont(18)
             self.textColor = colors.phoneNumberColor.value
         }
-        
-        
     }
 }
 class ForgotPasswordLabel : UILabel {
@@ -216,7 +214,6 @@ class addPaymentlable : UILabel {
             self.textColor = colors.phoneNumberColor.value
             self.textAlignment = .left
         }
-        
     }
 }
 class walletHistoryLabel : UILabel {
@@ -342,8 +339,8 @@ class RideDetailLabel : UILabel{
             self.font = CustomFont.regular.returnFont(13)
             self.textColor = colors.loginPlaceHolderColor.value
         }else if isPrice{
-            self.font = CustomFont.regular.returnFont(13)
-            self.textColor = UIColor(hexString: "#ACB1C0")
+            self.font = CustomFont.bold.returnFont(13)
+            self.textColor = UIColor(hexString: "#222B45")
         } else if isTotal{
             self.font = CustomFont.bold.returnFont(18)
             self.textColor = colors.loginPlaceHolderColor.value

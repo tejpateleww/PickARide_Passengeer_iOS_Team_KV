@@ -15,16 +15,17 @@ class Preferences {
     var enableTransitionAnimation = false
 }
 
+//MARK;- ==== Menu View controller ======
 class MenuViewController: UIViewController {
     
     @IBOutlet weak var btnProfile: UIButton!
     @IBOutlet weak var userProfile: UIImageView!
     @IBOutlet weak var lblUserName: menuLabel!
     @IBOutlet weak var lblUserEmail: menuLabel!
-    
-    var selectedMenuClosure : (() -> ())?
-    var isDarkModeEnabled = false
-    var selectedMenuIndex = 0
+    @IBOutlet weak var selectionTableViewHeader: UILabel!
+    @IBOutlet weak var lblLegal: versionLabel!
+    @IBOutlet weak var lblVersion: versionLabel!
+    @IBOutlet weak var selectionMenuTrailingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var tblSidemenuData: UITableView! {
         didSet {
@@ -34,18 +35,15 @@ class MenuViewController: UIViewController {
         }
     }
     
-    
-    @IBOutlet weak var selectionTableViewHeader: UILabel!
-    
-    @IBOutlet weak var lblLegal: versionLabel!
-    @IBOutlet weak var lblVersion: versionLabel!
-    
-    @IBOutlet weak var selectionMenuTrailingConstraint: NSLayoutConstraint!
+    var selectedMenuClosure : (() -> ())?
+    var isDarkModeEnabled = false
+    var selectedMenuIndex = 0
     private var themeColor = UIColor.white
-    
     var myimgarr = [#imageLiteral(resourceName: "imgHome"),#imageLiteral(resourceName: "imgMyrides"),#imageLiteral(resourceName: "imgPayment"),#imageLiteral(resourceName: "imgNotification"),#imageLiteral(resourceName: "imgSettings"),#imageLiteral(resourceName: "imgAddFrind"),#imageLiteral(resourceName: "imgHelp"),#imageLiteral(resourceName: "imgLogout")]
     var myarray = [MyType]()
     let mylblarr = [MyType.Home.value,MyType.MyRides.value,MyType.PaymentMethods.value,MyType.Notification.value,MyType.Settings.value,MyType.InviteaFrind.value,MyType.Help.value,MyType.Logout.value]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

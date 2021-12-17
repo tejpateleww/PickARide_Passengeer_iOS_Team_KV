@@ -149,7 +149,7 @@ extension MyRidesVC : UITableViewDelegate,UITableViewDataSource {
                 
                 cell.lblAddress.text = dict.bookingInfo?.pickupLocation ?? ""
                 cell.lblRideName.text = dict.bookingInfo?.vehicleName ?? ""
-                cell.lblAmount.text = "$\(dict.bookingInfo?.driverAmount ?? "0")"
+                cell.lblAmount.text = "$\(dict.bookingInfo?.estimatedFare ?? "0")"
                 
                 cell.AcceptTapped = {
                     print("Accept called....")

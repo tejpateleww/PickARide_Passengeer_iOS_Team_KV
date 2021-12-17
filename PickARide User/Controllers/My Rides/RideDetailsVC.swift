@@ -15,7 +15,7 @@ protocol AcceptBookingReqDelgate {
 
 class RideDetailsVC: BaseViewController {
 
-    //MARK: -IBActions
+    //MARK: ===== Outlets =========
     @IBOutlet weak var stackviewRecieptBottom: NSLayoutConstraint!
     @IBOutlet weak var stackviewRecieptTop: NSLayoutConstraint!
     @IBOutlet weak var stackviewRecieptHeight: NSLayoutConstraint!
@@ -46,19 +46,21 @@ class RideDetailsVC: BaseViewController {
     var rideDeatilViewModel = RideDeatilViewModel()
     var delegate : AcceptBookingReqDelgate?
 
+    
     //MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.prepareView()
         self.setupData()
     }
 
     //MARK: - Custom methods
     func prepareView(){
+        self.btnAccept.isHidden = true
+        self.btnReject.isHidden = true
+        self.btnRepeateRide.isHidden = true
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rideDetails.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-    
-
+        
         let BookingStatus = self.PastBookingData?.bookingInfo?.status ?? ""
         let BookingType = self.PastBookingData?.bookingInfo?.bookingType ?? ""
 
@@ -75,7 +77,6 @@ class RideDetailsVC: BaseViewController {
                 self.btnReceipt.isHidden = false
                 self.stackviewRecieptHeight.constant = 40
             }
-
             let timestamp: TimeInterval =  Double(self.PastBookingData?.bookingInfo?.acceptTime ?? "") ?? 0.0
             let date = Date(timeIntervalSince1970: timestamp)
             let formatedDate = date.timeAgoSinceDate(isForNotification: false)
@@ -84,7 +85,7 @@ class RideDetailsVC: BaseViewController {
         }else if(self.isFromInprogress){
             self.btnReject.setTitle("CANCEL", for: .normal)
             self.btnReject.isHidden = (BookingType == "book_later") ? true : false
-            self.stackviewRecieptHeight.constant = (BookingType == "book_later") ? 0 : 40
+            self.stackviewRecieptHeight.constant = (BookingType == "book_later") ? 0 : 0
             self.btnReceipt.isHidden = true
             self.btnAccept.isHidden = true
             self.btnRepeateRide.isHidden = true
@@ -96,23 +97,23 @@ class RideDetailsVC: BaseViewController {
             self.lblTime.text = formatedDate
 
         }else{
-            self.btnAccept.isHidden = false
-            self.btnReject.isHidden = false
+            self.btnAccept.isHidden = true
+            self.btnReject.isHidden = true
             self.btnReceipt.isHidden = true
             self.btnRepeateRide.isHidden = true
             self.imgStatus.image = #imageLiteral(resourceName: "Pending")
-
+            self.stackviewRecieptHeight.constant = 0
             let timestamp: TimeInterval =  Double(self.PastBookingData?.bookingInfo?.pickupDateTime ?? "") ?? 0.0
             let date = Date(timeIntervalSince1970: timestamp)
             let formatedDate = date.timeAgoSinceDate(isForNotification: false)
             self.lblTime.text = formatedDate
         }
-
         self.shadowView(view: MyOfferView)
         self.MyOfferView.layer.cornerRadius = 4
         self.ratingVw.isUserInteractionEnabled = false
     }
 
+    //MARK:- ====== Data Setup ======
     func setupData(){
         if(self.PastBookingData != nil){
 
@@ -123,24 +124,21 @@ class RideDetailsVC: BaseViewController {
                 self.lblRidigo.text = "\(self.PastBookingData?.bookingInfo?.vehicleName ?? "")(\(self.PastBookingData?.driverVehicleInfo?.plateNumber ?? "")"
                 self.lblCarName.text = " - \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeModelName ?? ""))"
             }
-
-            self.lblPrice.text = "$\(self.PastBookingData?.bookingInfo?.driverAmount ?? "0")"
+            self.lblPrice.text = "$\(self.PastBookingData?.bookingInfo?.estimatedFare ?? "0")"
             self.lblAddress.text = self.PastBookingData?.bookingInfo?.pickupLocation ?? ""
             self.lblPickupLocation.text = self.PastBookingData?.bookingInfo?.pickupLocation ?? ""
             self.lblDestLocation.text = self.PastBookingData?.bookingInfo?.dropoffLocation ?? ""
-
-
-            let strUrl = "\(APIEnvironment.Profilebu.rawValue)" + "\(self.PastBookingData?.customerInfo?.profileImage ?? "")"
+            let strUrl = "\(APIEnvironment.Profilebu.rawValue)" + "\(self.PastBookingData?.driverInfo?.profileImage ?? "")"
             let strURl = URL(string: strUrl)
             self.imgProfilw.sd_imageIndicator = SDWebImageActivityIndicator.gray
             self.imgProfilw.sd_setImage(with: strURl, placeholderImage: UIImage(named: "user_placeholder"), options: .refreshCached, completed: nil)
-
-            let custName = (self.PastBookingData?.customerInfo?.firstName ?? "")! + " " + (self.PastBookingData?.customerInfo?.lastName ?? "")!
+            let custName = (self.PastBookingData?.driverInfo?.firstName ?? "")! + " " + (self.PastBookingData?.driverInfo?.lastName ?? "")!
             self.lblRideCustomerName.text = custName
-            self.ratingVw.rating = Double(self.PastBookingData?.customerInfo?.rating ?? "0.0") ?? 0.0
+            self.ratingVw.rating = Double(self.PastBookingData?.driverInfo?.rating ?? "0.0") ?? 0.0
         }
     }
 
+    //MARK:- ==== View Shadow ======
     func shadowView(view : UIView){
         view.layer.shadowColor = UIColor.gray.cgColor
         view.layer.shadowOpacity = 0.3
@@ -148,20 +146,24 @@ class RideDetailsVC: BaseViewController {
         view.layer.shadowRadius = 4
     }
 
+    //MARK:- ======= Cancel Ride =====
     func cancelRide() {
         NotificationCenter.default.post(name: Notification.Name("CancelTripFromDetail"), object: nil)
       //  self.navigationController?.popToViewController(HomeVC.self)
     }
 
+    //MARK:- ===== Reject Ride =====
     func rejectRide() {
         print("reject ride..")
     }
 
+    //MARK:- ===== Accept Ride =====
     func acceptRide() {
         print("accept ride..")
         self.callAcceptBookingRideAPI(Id: self.PastBookingData?.bookingInfo?.id ?? "")
     }
 
+    //MARK:- ===== Back action =====
     func popBack(){
         self.delegate?.onAcceptBookingReq()
         self.navigationController?.popViewController(animated: true)
@@ -186,7 +188,6 @@ class RideDetailsVC: BaseViewController {
     @IBAction func btnRejectAction(_ sender: Any) {
         if(self.isFromInprogress){self.cancelRide()}else{self.rejectRide()}
     }
-
 }
 
 
