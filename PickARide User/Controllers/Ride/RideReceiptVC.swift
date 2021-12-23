@@ -37,6 +37,7 @@ class RideReceiptDetailsVC: BaseViewController {
     @IBOutlet weak var lblYourPayment: themeLabel!
     @IBOutlet weak var lblDestination: themeLabel!
     @IBOutlet weak var lblPickUp: themeLabel!
+    @IBOutlet weak var lblName: themeLabel!
     
     
     //MARK:- ===== Variables =====
@@ -44,10 +45,12 @@ class RideReceiptDetailsVC: BaseViewController {
     var objDetail : BookingDetails?
     
     
+    
     //MARK:- ===== ViewController Life cycle =====
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
+        self.DataSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,12 +61,19 @@ class RideReceiptDetailsVC: BaseViewController {
     }
     
     
-    
     //MARK:- ===== Data Setup ====
     func DataSetup(){
+        lblPickUp.text = objDetail?.pickupLocation
+        lblDestination.text = objDetail?.dropoffLocation
         lblTax.text = objDetail?.tax
         lblTaxiFee.text = objDetail?.bookingFee
         lblTime.text = objDetail?.bookingTime
+        let timestamp: TimeInterval =  Double(objDetail?.acceptTime ?? "") ?? 0.0
+        let date = Date(timeIntervalSince1970: timestamp)
+        let formatedDate = date.timeAgoSinceDate(isForNotification: false)
+        self.lblDateTime.text = formatedDate
+        lblRideType.text = objDetail?.vehicleType?.name
+//        self.lblCarName.text = " - \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeModelName ?? ""))"
     }
 }
 
@@ -81,6 +91,7 @@ extension RideReceiptDetailsVC{
         lblDiscription.attributedText = attributedString
     }
     
+    //MARK:- ===== Go To Help Screen =====
     @objc func goToHelpScreen(){
         let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)
         controller.strNavTitle = UrlConstant.Help

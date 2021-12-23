@@ -37,7 +37,10 @@ class RideDetailsVC: BaseViewController {
     @IBOutlet weak var btnAccept: themeButton!
     @IBOutlet weak var btnReject: CancelButton!
     @IBOutlet weak var imgStatus: UIImageView!
-
+    @IBOutlet weak var viewProfile: UIView!
+    
+    
+    
     //MARK: - Variables
     var isFromUpcomming : Bool = false
     var isFromPast : Bool = false
@@ -77,6 +80,7 @@ class RideDetailsVC: BaseViewController {
                 self.btnReceipt.isHidden = false
                 self.stackviewRecieptHeight.constant = 40
             }
+            self.viewProfile.isHidden = false
             let timestamp: TimeInterval =  Double(self.PastBookingData?.bookingInfo?.acceptTime ?? "") ?? 0.0
             let date = Date(timeIntervalSince1970: timestamp)
             let formatedDate = date.timeAgoSinceDate(isForNotification: false)
@@ -90,13 +94,14 @@ class RideDetailsVC: BaseViewController {
             self.btnAccept.isHidden = true
             self.btnRepeateRide.isHidden = true
             self.imgStatus.image = #imageLiteral(resourceName: "OnGoing")
-
+            self.viewProfile.isHidden = false
             let timestamp: TimeInterval =  Double(self.PastBookingData?.bookingInfo?.bookingTime ?? "") ?? 0.0
             let date = Date(timeIntervalSince1970: timestamp)
             let formatedDate = date.timeAgoSinceDate(isForNotification: false)
             self.lblTime.text = formatedDate
 
         }else{
+            self.viewProfile.isHidden = true
             self.btnAccept.isHidden = true
             self.btnReject.isHidden = true
             self.btnReceipt.isHidden = true
@@ -179,6 +184,7 @@ class RideDetailsVC: BaseViewController {
     }
 
     @IBAction func btnHelpTap(_ sender: Any) {
+        
     }
 
     @IBAction func btnAcceptAction(_ sender: Any) {
@@ -198,6 +204,7 @@ extension RideDetailsVC{
         self.rideDeatilViewModel.rideDetailsVC = self
         let reqModel = RidesRequestModel()
         reqModel.bookingId = Id
+        
         self.rideDeatilViewModel.webserviceAcceptBookingRideAPI(reqModel: reqModel)
     }
 }

@@ -66,9 +66,7 @@ class AddPaymentVC: BaseViewController{
             
             if selectCard == NSNotFound {
                 Toast.show(title: UrlConstant.Required, message: "Please select card", state: .failure)
-
             }
-            
             else {
                 bookingReqModel.distance = "\(selectedTaxiType.distance ?? 0)"
                 bookingReqModel.estimatedFare = "\(selectedTaxiType.estimateTripFare ?? 0)"
