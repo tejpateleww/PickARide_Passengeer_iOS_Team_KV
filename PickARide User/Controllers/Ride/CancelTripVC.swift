@@ -19,7 +19,7 @@ class CancelTripVC: BaseViewController {
     @IBOutlet weak var lblCancel: UILabel!
     @IBOutlet weak var btnCencel: cancelButton!
     
-    
+    //MARK:- ====== Variables  =======
     var isFromApi = false
     var objBookingInfo : BookingInfoData!
     var objCurrentBooking : CurrentBookingData!
@@ -48,7 +48,6 @@ class CancelTripVC: BaseViewController {
     override func viewDidLayoutSubviews() {
         self.viewBG.layer.cornerRadius = 10
         self.viewBG.clipsToBounds = true
-        
     }
     
     @IBAction func btnCancelClick(_ sender: Any) {

@@ -146,6 +146,8 @@
 		6A4A9A80E727926791AFA6BB /* Pods_PickARide_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */; };
 		8133352125CBD68900CEA3C0 /* CommonWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */; };
 		816AEABD25CD047E00ABA5BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */; };
+		8446793D277B1C1600B1DB9C /* NotificationRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446793C277B1C1600B1DB9C /* NotificationRequestModel.swift */; };
+		8446793F277B1F9500B1DB9C /* NotificationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446793E277B1F9500B1DB9C /* NotificationResponseModel.swift */; };
 		845688B52704667A004D7782 /* NearByDrivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845688B42704667A004D7782 /* NearByDrivers.swift */; };
 		845688B92704824A004D7782 /* NoDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845688B72704824A004D7782 /* NoDataViewCell.swift */; };
 		845688BA2704824A004D7782 /* NoDataViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845688B82704824A004D7782 /* NoDataViewCell.xib */; };
@@ -206,6 +208,14 @@
 		8465259427031C7C00315AB6 /* ProgressPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465259327031C7C00315AB6 /* ProgressPopupVC.swift */; };
 		848DB97627018BBC00620055 /* BookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB97527018BBC00620055 /* BookingHistory.swift */; };
 		848DB9792701D07F00620055 /* AcceptBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DB9782701D07F00620055 /* AcceptBooking.swift */; };
+		84A1953B2782F09800B73216 /* SelectTaxiTypes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1953A2782F09800B73216 /* SelectTaxiTypes.xib */; };
+		84A1953D2782F0A500B73216 /* SelectTaxiTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1953C2782F0A500B73216 /* SelectTaxiTypes.swift */; };
+		84A195402782F81600B73216 /* CurrrentRideDriverInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1953F2782F81600B73216 /* CurrrentRideDriverInfo.xib */; };
+		84A195422782F82E00B73216 /* CurrrentRideDriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A195412782F82E00B73216 /* CurrrentRideDriverInfo.swift */; };
+		84A195452782F9F500B73216 /* CurrentRideDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A195442782F9F500B73216 /* CurrentRideDetail.xib */; };
+		84A195472782FA0200B73216 /* CurrentRideDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A195462782FA0200B73216 /* CurrentRideDetail.swift */; };
+		84A1954A2783001400B73216 /* TaxiTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A195482783001400B73216 /* TaxiTypeCell.swift */; };
+		84A1954B2783001400B73216 /* TaxiTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A195492783001400B73216 /* TaxiTypeCell.xib */; };
 		84A495B826E778DC009AF6FC /* AddPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B726E778DC009AF6FC /* AddPlace.swift */; };
 		84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */; };
 		84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CE26F1B26700F14D95 /* SocketConnect.swift */; };
@@ -363,6 +373,8 @@
 		64C68ADE241BBB2900B97B25 /* PickARide User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PickARide User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8133352025CBD68900CEA3C0 /* CommonWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewVC.swift; sourceTree = "<group>"; };
 		816AEABC25CD047E00ABA5BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8446793C277B1C1600B1DB9C /* NotificationRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequestModel.swift; sourceTree = "<group>"; };
+		8446793E277B1F9500B1DB9C /* NotificationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseModel.swift; sourceTree = "<group>"; };
 		845688B42704667A004D7782 /* NearByDrivers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByDrivers.swift; sourceTree = "<group>"; };
 		845688B72704824A004D7782 /* NoDataViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataViewCell.swift; sourceTree = "<group>"; };
 		845688B82704824A004D7782 /* NoDataViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataViewCell.xib; sourceTree = "<group>"; };
@@ -424,6 +436,14 @@
 		8465259327031C7C00315AB6 /* ProgressPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPopupVC.swift; sourceTree = "<group>"; };
 		848DB97527018BBC00620055 /* BookingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistory.swift; sourceTree = "<group>"; };
 		848DB9782701D07F00620055 /* AcceptBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptBooking.swift; sourceTree = "<group>"; };
+		84A1953A2782F09800B73216 /* SelectTaxiTypes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTaxiTypes.xib; sourceTree = "<group>"; };
+		84A1953C2782F0A500B73216 /* SelectTaxiTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTaxiTypes.swift; sourceTree = "<group>"; };
+		84A1953F2782F81600B73216 /* CurrrentRideDriverInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrrentRideDriverInfo.xib; sourceTree = "<group>"; };
+		84A195412782F82E00B73216 /* CurrrentRideDriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrrentRideDriverInfo.swift; sourceTree = "<group>"; };
+		84A195442782F9F500B73216 /* CurrentRideDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentRideDetail.xib; sourceTree = "<group>"; };
+		84A195462782FA0200B73216 /* CurrentRideDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRideDetail.swift; sourceTree = "<group>"; };
+		84A195482783001400B73216 /* TaxiTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTypeCell.swift; sourceTree = "<group>"; };
+		84A195492783001400B73216 /* TaxiTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxiTypeCell.xib; sourceTree = "<group>"; };
 		84A495B726E778DC009AF6FC /* AddPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlace.swift; sourceTree = "<group>"; };
 		84A495B926E780DE009AF6FC /* PlacesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResponseModel.swift; sourceTree = "<group>"; };
 		84AA62CE26F1B26700F14D95 /* SocketConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnect.swift; sourceTree = "<group>"; };
@@ -527,13 +547,14 @@
 				187BC460268AD7EC00CAD121 /* AppDelegate+Methods.swift */,
 				187BC47A268AD96400CAD121 /* AppDelegate+Cycle.swift */,
 				187BC477268AD8A000CAD121 /* AppDelegate+PushNotification.swift */,
+				84A195382782F05400B73216 /* Views */,
 				84AA62CD26F1B26700F14D95 /* SocketConnect */,
 				181EBD62258730B300C11C08 /* Models */,
 				187BC48B268ADAD400CAD121 /* ViewModel */,
 				181EBDBF2587310E00C11C08 /* Controllers */,
 				1865CF45267C763100379A40 /* Webservices */,
-				181EBD6D258730B300C11C08 /* Utilities */,
 				181EBD74258730B300C11C08 /* Validation */,
+				181EBD6D258730B300C11C08 /* Utilities */,
 				181EBD76258730B300C11C08 /* Classes */,
 				181EBDC12587312600C11C08 /* StoryBoards */,
 				1828A1C626985B4D009ADA2A /* Xib */,
@@ -548,6 +569,7 @@
 		181EBD62258730B300C11C08 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8446793B277B1BF700B1DB9C /* Notifications */,
 				84D6432727155A6300F11688 /* Chat */,
 				845B7804271459AF00DE5B26 /* Rides */,
 				845B77EC27144E0600DE5B26 /* Past Booking History */,
@@ -1048,6 +1070,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8446793B277B1BF700B1DB9C /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				8446793C277B1C1600B1DB9C /* NotificationRequestModel.swift */,
+				8446793E277B1F9500B1DB9C /* NotificationResponseModel.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		845688B327046657004D7782 /* NearByDrivers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1186,6 +1217,45 @@
 			path = AcceptBooking;
 			sourceTree = "<group>";
 		};
+		84A195382782F05400B73216 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84A195432782F9D400B73216 /* CurrentRideDetail */,
+				84A1953E2782F6D600B73216 /* CurrentRide */,
+				84A195392782F07700B73216 /* TaxiType */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84A195392782F07700B73216 /* TaxiType */ = {
+			isa = PBXGroup;
+			children = (
+				84A1953A2782F09800B73216 /* SelectTaxiTypes.xib */,
+				84A1953C2782F0A500B73216 /* SelectTaxiTypes.swift */,
+				84A195482783001400B73216 /* TaxiTypeCell.swift */,
+				84A195492783001400B73216 /* TaxiTypeCell.xib */,
+			);
+			path = TaxiType;
+			sourceTree = "<group>";
+		};
+		84A1953E2782F6D600B73216 /* CurrentRide */ = {
+			isa = PBXGroup;
+			children = (
+				84A1953F2782F81600B73216 /* CurrrentRideDriverInfo.xib */,
+				84A195412782F82E00B73216 /* CurrrentRideDriverInfo.swift */,
+			);
+			path = CurrentRide;
+			sourceTree = "<group>";
+		};
+		84A195432782F9D400B73216 /* CurrentRideDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84A195442782F9F500B73216 /* CurrentRideDetail.xib */,
+				84A195462782FA0200B73216 /* CurrentRideDetail.swift */,
+			);
+			path = CurrentRideDetail;
+			sourceTree = "<group>";
+		};
 		84AA62CD26F1B26700F14D95 /* SocketConnect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1314,8 +1384,10 @@
 				180979F525877CA0002070A7 /* Login.storyboard in Resources */,
 				180979E725876C75002070A7 /* UFL.txt in Resources */,
 				180979DF25876C75002070A7 /* Ubuntu-Medium.ttf in Resources */,
+				84A1953B2782F09800B73216 /* SelectTaxiTypes.xib in Resources */,
 				181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */,
 				181EBDB9258730B300C11C08 /* Main.storyboard in Resources */,
+				84A195452782F9F500B73216 /* CurrentRideDetail.xib in Resources */,
 				180979FD25877CCE002070A7 /* Localizable.strings in Resources */,
 				180979E625876C75002070A7 /* Ubuntu-Light.ttf in Resources */,
 				1828A1C826985B75009ADA2A /* ToastMessageXib.xib in Resources */,
@@ -1325,6 +1397,8 @@
 				180979E025876C75002070A7 /* Ubuntu-LightItalic.ttf in Resources */,
 				180979E425876C75002070A7 /* Ubuntu-BoldItalic.ttf in Resources */,
 				845B77EB27144ABC00DE5B26 /* NoDataTableViewCell.xib in Resources */,
+				84A1954B2783001400B73216 /* TaxiTypeCell.xib in Resources */,
+				84A195402782F81600B73216 /* CurrrentRideDriverInfo.xib in Resources */,
 				180979E125876C75002070A7 /* Ubuntu-Regular.ttf in Resources */,
 				845688BA2704824A004D7782 /* NoDataViewCell.xib in Resources */,
 				181EBDB8258730B300C11C08 /* LaunchScreen.storyboard in Resources */,
@@ -1458,6 +1532,7 @@
 				845B7802271452DC00DE5B26 /* MyRideCell.swift in Sources */,
 				845688B52704667A004D7782 /* NearByDrivers.swift in Sources */,
 				8465258327031BC300315AB6 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
+				84A1953D2782F0A500B73216 /* SelectTaxiTypes.swift in Sources */,
 				187BC49A268AE58800CAD121 /* RegisterModel.swift in Sources */,
 				8465257327031BC300315AB6 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				845B77E627143D3A00DE5B26 /* MyRidesVC.swift in Sources */,
@@ -1491,6 +1566,7 @@
 				18747063258B55AD0095546B /* ChooseDestinationVC.swift in Sources */,
 				8133352125CBD68900CEA3C0 /* CommonWebViewVC.swift in Sources */,
 				18E93C7326973559003AB725 /* RegisterViewModel.swift in Sources */,
+				84A1954A2783001400B73216 /* TaxiTypeCell.swift in Sources */,
 				187A27F326805B5800F936B2 /* Toast.swift in Sources */,
 				1813E4DC258C7F1700EE33CA /* WalletHistoryVC.swift in Sources */,
 				18FBF072269D740800D5AF78 /* String+DateFormats.swift in Sources */,
@@ -1522,6 +1598,7 @@
 				8465258A27031BC300315AB6 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				84A495BA26E780DE009AF6FC /* PlacesResponseModel.swift in Sources */,
 				1828A1BB26982369009ADA2A /* CardUserModel.swift in Sources */,
+				8446793F277B1F9500B1DB9C /* NotificationResponseModel.swift in Sources */,
 				8465259227031BC300315AB6 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				181EBDBB258730B300C11C08 /* RegisterVC.swift in Sources */,
 				8465259427031C7C00315AB6 /* ProgressPopupVC.swift in Sources */,
@@ -1535,6 +1612,7 @@
 				18F9B70B259350E100202DA6 /* UICollectionViewCell+Extension.swift in Sources */,
 				1828A1B626981D2B009ADA2A /* CardModel.swift in Sources */,
 				8465258827031BC300315AB6 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
+				84A195422782F82E00B73216 /* CurrrentRideDriverInfo.swift in Sources */,
 				8465258727031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				845B7806271459AF00DE5B26 /* RidesReqModel.swift in Sources */,
 				184C6F7C258CB47300F60FFE /* CustomImageVIew.swift in Sources */,
@@ -1547,6 +1625,7 @@
 				187A27F126805B1400F936B2 /* ConstanceEnums.swift in Sources */,
 				8465257827031BC300315AB6 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				8465257727031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
+				8446793D277B1C1600B1DB9C /* NotificationRequestModel.swift in Sources */,
 				1848437D258B18340094480C /* HomeVC.swift in Sources */,
 				84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */,
 				1828A1C026983963009ADA2A /* WalletModel.swift in Sources */,
@@ -1569,6 +1648,7 @@
 				8465257627031BC300315AB6 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				184C6F76258CB29C00F60FFE /* ProfileVC.swift in Sources */,
 				18173E8E269C36AB00B9F3D9 /* LocationService.swift in Sources */,
+				84A195472782FA0200B73216 /* CurrentRideDetail.swift in Sources */,
 				187BC48F268ADDCD00CAD121 /* LoginViewModel.swift in Sources */,
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
 				182CA282272298B20018A8AF /* PickupViewController.swift in Sources */,

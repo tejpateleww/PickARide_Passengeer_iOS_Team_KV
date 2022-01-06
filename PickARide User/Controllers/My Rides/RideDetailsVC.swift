@@ -143,7 +143,7 @@ class RideDetailsVC: BaseViewController {
         }
     }
 
-    //MARK:- ==== View Shadow ======
+    //MARK:- ==== View Shadow ======x
     func shadowView(view : UIView){
         view.layer.shadowColor = UIColor.gray.cgColor
         view.layer.shadowOpacity = 0.3
@@ -177,6 +177,7 @@ class RideDetailsVC: BaseViewController {
     //MARK: - Button action methods
     @IBAction func btnReceiptTap(_ sender: Any) {
         let vc : RideReceiptDetailsVC = RideReceiptDetailsVC.instantiate(fromAppStoryboard: .Main)
+        vc.objDetail = PastBookingData
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -196,15 +197,12 @@ class RideDetailsVC: BaseViewController {
     }
 }
 
-
 //MARK:- Api Calls
 extension RideDetailsVC{
-
     func callAcceptBookingRideAPI(Id : String){
         self.rideDeatilViewModel.rideDetailsVC = self
         let reqModel = RidesRequestModel()
         reqModel.bookingId = Id
-        
         self.rideDeatilViewModel.webserviceAcceptBookingRideAPI(reqModel: reqModel)
     }
 }

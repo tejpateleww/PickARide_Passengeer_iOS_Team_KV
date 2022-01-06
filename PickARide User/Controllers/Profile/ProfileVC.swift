@@ -247,7 +247,6 @@ extension ProfileVC: UITextFieldDelegate{
                 return false
             }
         }
-        
         return true
     }
     
@@ -257,9 +256,8 @@ extension ProfileVC: UITextFieldDelegate{
             let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
             return string == "" || newString.length <= ((textField == txtPhone) ? MAX_PHONE_DIGITS : TEXTFIELD_MaximumLimit)
         }
-        
         return true
-    }
+     }
 }
 
 //MARK:- === ImagePicker Delegate ======

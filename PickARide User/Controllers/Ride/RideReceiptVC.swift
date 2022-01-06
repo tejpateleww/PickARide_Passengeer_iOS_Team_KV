@@ -42,7 +42,7 @@ class RideReceiptDetailsVC: BaseViewController {
     
     //MARK:- ===== Variables =====
     var isFromPastRide = Bool()
-    var objDetail : BookingDetails?
+    var objDetail : PastBookingResDatum?
     
     
     
@@ -60,19 +60,22 @@ class RideReceiptDetailsVC: BaseViewController {
         self.navBtnDone.addTarget(self, action: #selector(goToHelpScreen), for: .touchUpInside)
     }
     
-    
+
     //MARK:- ===== Data Setup ====
     func DataSetup(){
-        lblPickUp.text = objDetail?.pickupLocation
-        lblDestination.text = objDetail?.dropoffLocation
-        lblTax.text = objDetail?.tax
-        lblTaxiFee.text = objDetail?.bookingFee
-        lblTime.text = objDetail?.bookingTime
-        let timestamp: TimeInterval =  Double(objDetail?.acceptTime ?? "") ?? 0.0
+        lblPickUp.text = objDetail?.bookingInfo?.pickupLocation
+        lblDestination.text = objDetail?.bookingInfo?.dropoffLocation
+        lblTax.text = objDetail?.bookingInfo?.tax?.toCurrencyString()
+        lblTaxiFee.text = objDetail?.bookingInfo?.bookingFee?.toCurrencyString()
+        lblTime.text = objDetail?.bookingInfo?.tripDuration?.secondsToTimeFormate()
+        let timestamp: TimeInterval =  Double(objDetail?.bookingInfo?.arrivedTime ?? "") ?? 0.0
         let date = Date(timeIntervalSince1970: timestamp)
         let formatedDate = date.timeAgoSinceDate(isForNotification: false)
         self.lblDateTime.text = formatedDate
         lblRideType.text = objDetail?.vehicleType?.name
+        lblPrice.text = objDetail?.bookingInfo?.baseFare?.toCurrencyString()
+        lblYourPayment.text = objDetail?.bookingInfo?.grandTotal?.toCurrencyString()
+        
 //        self.lblCarName.text = " - \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeModelName ?? ""))"
     }
 }

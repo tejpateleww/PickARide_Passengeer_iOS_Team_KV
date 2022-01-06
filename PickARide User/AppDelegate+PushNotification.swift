@@ -63,16 +63,98 @@ extension AppDelegate{
         print(#function, notification)
         let content = notification.request.content
         let userInfo = notification.request.content.userInfo
+        
         print(userInfo)
         print(appDel.window?.rootViewController?.navigationController?.children.first as Any)
         
         NotificationCenter.default.post(name: NotificationBadges, object: content)
-        completionHandler([.alert, .sound])
+       // completionHandler([.alert, .sound])
+        print(#function, notification)
+        
+        
+        if let mainDic = userInfo as? [String: Any]{
+            
+            let pushObj = NotificationObjectModel()
+            if let bookingId = mainDic["gcm.notification.booking_id"]{
+                pushObj.booking_id = bookingId as? String ?? ""
+            }
+            if let type = mainDic["gcm.notification.type"]{
+                pushObj.type = type as? String ?? ""
+            }
+            if let title = mainDic["title"]{
+                pushObj.title = title as? String ?? ""
+            }
+            if let text = mainDic["text"]{
+                pushObj.text = text as? String ?? ""
+            }
+            
+            AppDelegate.pushNotificationObj = pushObj
+            AppDelegate.pushNotificationType = pushObj.type
+            
+            if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
+                completionHandler([.alert, .sound])
+                appDel.dologout()
+                return
+            }
+            if pushObj.type == NotificationTypes.chat.rawValue {
+                if let navVc = (appDel.window?.rootViewController as? UINavigationController)?.children.first?.children.first as? UINavigationController{
+                    if let chatVc = navVc.topViewController as? ChatVC {
+                        return
+                    }
+                    else {
+                        completionHandler([.alert, .sound])
+                    }
+                }
+            }
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        print(userInfo)
-        completionHandler()
+        print("USER INFo : ",userInfo)
+        
+        if let mainDic = userInfo as? [String: Any]{
+            
+            let pushObj = NotificationObjectModel()
+            if let bookingId = mainDic["gcm.notification.booking_id"]{
+                pushObj.booking_id = bookingId as? String ?? ""
+            }
+            if let type = mainDic["gcm.notification.type"]{
+                pushObj.type = type as? String ?? ""
+            }
+            if let title = mainDic["title"]{
+                pushObj.title = title as? String ?? ""
+            }
+            if let text = mainDic["text"]{
+                pushObj.text = text as? String ?? ""
+            }
+            
+            AppDelegate.pushNotificationObj = pushObj
+            AppDelegate.pushNotificationType = pushObj.type
+            
+            if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
+                appDel.dologout()
+                completionHandler()
+                return
+            }
+        }
     }
+}
+
+extension Notification.Name {
+    static let sessionExpire = NSNotification.Name("Logout")
+    //static let refreshHomeScreen = NSNotification.Name("refreshHomeScreen")
+}
+
+enum NotificationTypes : String {
+    case notifLoggedOut = "logout"
+    case newBooking = "newBooking"
+    case chat = "chat_notification"
+}
+
+class NotificationObjectModel: Codable {
+    var booking_id: String?
+    var type: String?
+    var title: String?
+    var text: String?
 }

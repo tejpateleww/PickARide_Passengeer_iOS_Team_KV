@@ -13,9 +13,9 @@ class LoginUserModel{
     weak var loginVC : LoginVC? = nil
     
     func webserviceLogin(reqModel: LoginRequestModel){
-        Utilities.showHud()
+//        Utilities.showHud()
         WebServiceSubClass.LoginApi(reqModel: reqModel) { (status, apiMessage, response, error) in
-            Utilities.hideHud()
+//            Utilities.hideHud()
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             if status{
                 userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
@@ -34,6 +34,8 @@ class LoginUserModel{
                 }
                 
                 appDel.navigateToMain()
+                
+            }else{
             }
         }
     }
@@ -43,8 +45,9 @@ class LoginUserModel{
         
         WebServiceSubClass.SocialLoginApi(reqModel: reqModel) { (status, apiMessage, response, error) in
             Utilities.hideHud()
-            Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
-            if status{
+            if !status{
+                Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+            }else{
                 userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
                 userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 
@@ -59,7 +62,6 @@ class LoginUserModel{
                 if let userID = response?.data?.id{
                     Singleton.sharedInstance.UserId = userID
                 }
-                
                 appDel.navigateToMain()
             }
         }

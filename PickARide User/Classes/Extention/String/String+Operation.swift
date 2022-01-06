@@ -146,9 +146,9 @@ extension Date {
                 
             }else{
                 if isForNotification{
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    dateFormatter.dateFormat = "dd MMM yyyy"
                 }else{
-                    dateFormatter.dateFormat = "yyyy-MM-dd, h:mm a"
+                    dateFormatter.dateFormat = "dd MMM yyyy,h:mm a"
                 }
                 return dateFormatter.string(from: self)
             }
@@ -202,7 +202,7 @@ extension Double {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale(identifier: "en_KE")
+        currencyFormatter.locale = Locale(identifier: "en_US")
         let priceString = currencyFormatter.string(from: NSNumber(value: self))!
         return priceString
     }

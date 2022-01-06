@@ -1,24 +1,22 @@
 //
-//  CurrentRideDetailsViewController.swift
+//  CurrentRideDetail.swift
 //  PickARide User
 //
-//  Created by Apple on 21/12/20.
-//  Copyright © 2020 EWW071. All rights reserved.
+//  Created by Admin on 03/01/22.
+//  Copyright © 2022 EWW071. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Cosmos
 
-class CurrentRideDetailsVC: BaseViewController {
+class CurrentRideDetail : UIView {
     
     @IBOutlet weak var imgDriver: UIImageView!
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
-    @IBOutlet weak var vwMain: suggestedTaxiView!
-    @IBOutlet weak var btnCancel: UIButton!
-    @IBOutlet weak var topVW: UIView!
-    @IBOutlet weak var mainVW: suggestedTaxiView!
+    @IBOutlet weak var mainVW: UIView!
     @IBOutlet weak var mainVWBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var driverProfileOuterVW: UIView!
     @IBOutlet weak var rideDetailsStkVWTopConstraint: NSLayoutConstraint!
@@ -40,16 +38,16 @@ class CurrentRideDetailsVC: BaseViewController {
             self.ratingsView.isHidden = !isExpandCategory
             self.lblAvgRating.isHidden = !isExpandCategory
             self.rideDetailsStkVWTopConstraint.constant = isExpandCategory ? 0 : 10
-            self.view.endEditing(true)
+           // self.view.endEditing(true)
             DispatchQueue.main.async {
                 self.heightOfView = self.isExpandCategory ? self.mainVW.frame.height + 40 : (self.mainVW.frame.height + self.mainVWBottomConstraint.constant)
- 
+                
                 if let height = self.heightGet {
                     height(self.heightOfView, self.isExpandCategory)
                 }
             }
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
-                self.view.layoutIfNeeded()
+                //self.view.layoutIfNeeded()
             }) { (success) in
                 
             }
@@ -58,16 +56,12 @@ class CurrentRideDetailsVC: BaseViewController {
     
     var closeBtnClosure : (()->())?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       // self.setUpUI()
+    override func draw(_ rect: CGRect) {
         self.setupViewCategory()
+       // self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
-    }
+
     
     @IBAction func btnCancel(_ sender: Any) {
         appDel.navigateToMain()
@@ -84,13 +78,9 @@ class CurrentRideDetailsVC: BaseViewController {
     }
     
     @IBAction func btnProfileClicked(_ sender: Any) {
-//        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
-//        self.navigationController?.pushViewController(controller, animated: true)
+        //        let controller = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
+        //        self.navigationController?.pushViewController(controller, animated: true)
     }
-}
-
-//MARK:- Set Up UI
-extension CurrentRideDetailsVC{
     func setUpUI(isFromApi : Bool){
         
         if isFromApi == true {
@@ -126,16 +116,16 @@ extension CurrentRideDetailsVC{
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.loginPlaceHolderColor.value, range: NSMakeRange(0, attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.phoneNumberColor.value , range: range)
         lblVehicalData.attributedText = attributedString
-    } 
+    }
     
     func setupViewCategory() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-        self.topVW.addGestureRecognizer(swipeUp)
-
+       // self.topVW.addGestureRecognizer(swipeUp)
+        
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        self.topVW.addGestureRecognizer(swipeDown)
+       // self.topVW.addGestureRecognizer(swipeDown)
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -144,11 +134,11 @@ extension CurrentRideDetailsVC{
             case UISwipeGestureRecognizer.Direction.down:
                 print("Swiped down")
                 self.isExpandCategory = false
-
+                
             case UISwipeGestureRecognizer.Direction.up:
                 print("Swiped up")
                 self.isExpandCategory = true
-
+                
             default:
                 break
             }

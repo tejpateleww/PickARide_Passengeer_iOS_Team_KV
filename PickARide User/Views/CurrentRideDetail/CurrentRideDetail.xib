@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurrentRideDetail" customModule="PickARide_User" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1120" height="245"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uka-6F-yIV">
+                    <rect key="frame" x="0.0" y="0.0" width="1120" height="208"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Efy-hj-oFV">
+                            <rect key="frame" x="0.0" y="0.0" width="1120" height="208"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngR-Su-or9">
+                                    <rect key="frame" x="372.5" y="0.0" width="375" height="128"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zx0-4h-ram">
+                                            <rect key="frame" x="137.5" y="10" width="100" height="108"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbo-e7-dEa" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CAJ-yK-fFU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="50"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="B4s-sT-xbH"/>
+                                                        <constraint firstItem="CAJ-yK-fFU" firstAttribute="top" secondItem="Kbo-e7-dEa" secondAttribute="top" id="BG2-UA-jIC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="CAJ-yK-fFU" secondAttribute="bottom" id="KWm-IA-jo5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CAJ-yK-fFU" secondAttribute="trailing" id="XUL-xv-0qS"/>
+                                                        <constraint firstAttribute="height" constant="100" id="bvc-rd-JqX"/>
+                                                        <constraint firstItem="CAJ-yK-fFU" firstAttribute="leading" secondItem="Kbo-e7-dEa" secondAttribute="leading" id="sPb-8v-M2M"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundView" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yj8-Qo-tKk" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
+                                                    <rect key="frame" x="3.5" y="88" width="93.5" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RIDEGO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBD-MN-BzJ" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                            <rect key="frame" x="16" y="0.0" width="61.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRideGO" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="jBD-MN-BzJ" firstAttribute="leading" secondItem="yj8-Qo-tKk" secondAttribute="leading" constant="16" id="38O-RU-PxU"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Wo6-Q1-Asp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="jBD-MN-BzJ" secondAttribute="bottom" id="bS4-1W-qbR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="jBD-MN-BzJ" secondAttribute="trailing" constant="16" id="dhJ-h2-WrV"/>
+                                                        <constraint firstItem="jBD-MN-BzJ" firstAttribute="top" secondItem="yj8-Qo-tKk" secondAttribute="top" id="eSN-d9-z63"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRIDEGOBgVIew" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="yj8-Qo-tKk" firstAttribute="centerX" secondItem="Kbo-e7-dEa" secondAttribute="centerX" id="7tk-Lw-78t"/>
+                                                <constraint firstItem="Kbo-e7-dEa" firstAttribute="centerX" secondItem="zx0-4h-ram" secondAttribute="centerX" id="FUP-dV-plU"/>
+                                                <constraint firstAttribute="bottom" secondItem="yj8-Qo-tKk" secondAttribute="bottom" id="Fog-Eo-FvN"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kbo-e7-dEa" secondAttribute="trailing" id="TtP-cU-N2O"/>
+                                                <constraint firstItem="Kbo-e7-dEa" firstAttribute="leading" secondItem="zx0-4h-ram" secondAttribute="leading" id="ltT-f2-oRN"/>
+                                                <constraint firstItem="yj8-Qo-tKk" firstAttribute="top" secondItem="Kbo-e7-dEa" secondAttribute="bottom" constant="-12" id="wCJ-rL-xSa"/>
+                                                <constraint firstItem="Kbo-e7-dEa" firstAttribute="top" secondItem="zx0-4h-ram" secondAttribute="top" id="yx1-gz-DzR"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="zx0-4h-ram" firstAttribute="centerX" secondItem="ngR-Su-or9" secondAttribute="centerX" id="Hl2-jo-kkc"/>
+                                        <constraint firstItem="zx0-4h-ram" firstAttribute="top" secondItem="ngR-Su-or9" secondAttribute="top" constant="10" id="wvs-Pc-iZ4"/>
+                                        <constraint firstAttribute="bottom" secondItem="zx0-4h-ram" secondAttribute="bottom" constant="10" id="y1J-zY-3Gc"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connor Chavez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81R-AF-sPk" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                    <rect key="frame" x="501.5" y="132" width="117" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="Ud5-a3-fRg"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isDriveName" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6zI-uj-el8">
+                                    <rect key="frame" x="494.5" y="161" width="131" height="18"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-cQ-tXB" customClass="CosmosView" customModule="Cosmos">
+                                            <rect key="frame" x="0.0" y="1.5" width="90" height="15"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="DsB-2a-aYF"/>
+                                                <constraint firstAttribute="height" constant="15" id="K2d-63-dee"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                    <real key="value" value="13.33"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                                    <real key="value" value="11"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="textMargin">
+                                                    <real key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                    <integer key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="FillStar"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(4.0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kn-TK-IMS">
+                                            <rect key="frame" x="95" y="0.5" width="31" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" name="ThemeGray"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G5-GI-ahN">
+                                            <rect key="frame" x="131" y="0.0" width="0.0" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" id="WNW-Zh-knU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="oky-5W-bAC"/>
+                                    </constraints>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ST3751 - Toyota Vios" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrr-h7-F3z" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                    <rect key="frame" x="479" y="183" width="162" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="lyZ-eV-rsl"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCarNumber" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQm-0s-ds9">
+                            <rect key="frame" x="510" y="10" width="100" height="100"/>
+                            <connections>
+                                <action selector="btnProfileClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Rm-ZZ-jhF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Efy-hj-oFV" firstAttribute="top" secondItem="uka-6F-yIV" secondAttribute="top" id="Is6-oc-S3y"/>
+                        <constraint firstItem="aQm-0s-ds9" firstAttribute="leading" secondItem="Kbo-e7-dEa" secondAttribute="leading" id="LIC-88-C8E"/>
+                        <constraint firstItem="aQm-0s-ds9" firstAttribute="top" secondItem="Kbo-e7-dEa" secondAttribute="top" id="R49-Zd-GZc"/>
+                        <constraint firstItem="Efy-hj-oFV" firstAttribute="leading" secondItem="uka-6F-yIV" secondAttribute="leading" id="bAy-uN-PET"/>
+                        <constraint firstItem="aQm-0s-ds9" firstAttribute="trailing" secondItem="Kbo-e7-dEa" secondAttribute="trailing" id="bay-VN-cSj"/>
+                        <constraint firstAttribute="bottom" secondItem="Efy-hj-oFV" secondAttribute="bottom" id="gc6-qj-CBX"/>
+                        <constraint firstAttribute="trailing" secondItem="Efy-hj-oFV" secondAttribute="trailing" id="m2N-19-Njh"/>
+                        <constraint firstItem="aQm-0s-ds9" firstAttribute="bottom" secondItem="Kbo-e7-dEa" secondAttribute="bottom" id="n2i-ZL-c0l"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="uka-6F-yIV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Q8k-fu-V4S"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uka-6F-yIV" secondAttribute="trailing" id="a81-Lm-88S"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uka-6F-yIV" secondAttribute="bottom" constant="3" id="ytx-02-5bf"/>
+                <constraint firstItem="uka-6F-yIV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zsT-AV-e8k"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnGoToRatings" destination="aQm-0s-ds9" id="0eI-c6-Rdk"/>
+                <outlet property="driverProfileOuterVW" destination="ngR-Su-or9" id="oWQ-aY-jOh"/>
+                <outlet property="imgDriver" destination="CAJ-yK-fFU" id="24c-3N-qSY"/>
+                <outlet property="lblAvgRating" destination="1Kn-TK-IMS" id="esn-Os-D1I"/>
+                <outlet property="lblDriverName" destination="81R-AF-sPk" id="W04-Yf-UqS"/>
+                <outlet property="lblRidego" destination="jBD-MN-BzJ" id="2wh-AA-ar6"/>
+                <outlet property="lblVehicalData" destination="Vrr-h7-F3z" id="1QX-hd-1aa"/>
+                <outlet property="mainVW" destination="uka-6F-yIV" id="EHO-Ee-nXk"/>
+                <outlet property="ratingsView" destination="L3p-cQ-tXB" id="Dda-ra-dTR"/>
+            </connections>
+            <point key="canvasLocation" x="568.1159420289855" y="-179.12946428571428"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="L3p-cQ-tXB">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="FillStar" width="27" height="27"/>
+        <image name="StarEmpty" width="27" height="27"/>
+        <image name="user_placeholder" width="341" height="341"/>
+        <namedColor name="ThemeGray">
+            <color red="0.49799999594688416" green="0.49799999594688416" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

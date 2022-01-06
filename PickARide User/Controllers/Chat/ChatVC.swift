@@ -329,14 +329,11 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
             
             let isDriver = obj?.receiverType ?? "" == "driver"
             if(isDriver){
-                
                 let cell = tblChat.dequeueReusableCell(withIdentifier: chatSenderCell.reuseIdentifier) as! chatSenderCell
                 cell.selectionStyle = .none
                 cell.lblSenderMessage.text = obj?.message ?? ""
                 return cell
-                
             }else{
-                
                 let cell = tblChat.dequeueReusableCell(withIdentifier: chatReciverCell.reuseIdentifier) as! chatReciverCell
                 cell.selectionStyle = .none
                 cell.lblReciverMessage.text = obj?.message ?? ""

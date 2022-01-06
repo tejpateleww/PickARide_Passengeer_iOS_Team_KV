@@ -9,8 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-
-
 class RootDrivers : Codable{
 
     var estimateFare : [EstimateFare]!
@@ -123,6 +121,4 @@ class EstimateFare : Codable{
         vehicleTypeName = json["vehicle_type_name"].stringValue
         isSelcted = false
     }
-
-   
 }

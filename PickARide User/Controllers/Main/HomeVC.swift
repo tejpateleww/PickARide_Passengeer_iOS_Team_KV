@@ -3,7 +3,7 @@
 //  PickARide User
 //
 //  Created by Apple on 17/12/20.
-//  Copyright © 2020 EWW071. All rights reserved.
+//  Copyright © 2020` `EWW071. All rights reserved.
 //
 
 import UIKit
@@ -17,6 +17,8 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var mainVW: UIView!
     @IBOutlet weak var mapVw: GMSMapView!
     @IBOutlet weak var txtFieldWhereAreYouGoing: leftSideImageTextField!
+    @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var bottomVWWhereAreYouGoing: UIView!
     @IBOutlet weak var selectTexiVCContainerVW: UIView!
     @IBOutlet weak var currentRideDetailContainerVW: UIView!
@@ -24,8 +26,20 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var conHeightOfCurrentDriverDetail: NSLayoutConstraint!
     @IBOutlet weak var conHeightOfTaxi: NSLayoutConstraint!
     @IBOutlet weak var conHeightOfCurrentRideDriverInfo: NSLayoutConstraint!
-    
-    
+    @IBOutlet weak var botomContentView: UIView!
+    @IBOutlet weak var conBottomOfContainerView: NSLayoutConstraint!
+    @IBOutlet weak var containerTopView: UIView!{
+        didSet {
+            let directions: [UISwipeGestureRecognizer.Direction] = [.up, .down]
+            for direction in directions {
+                let gesture = UISwipeGestureRecognizer(target: self, action: #selector(panAction(_:)))
+                gesture.direction = direction
+                containerTopView.addGestureRecognizer(gesture)
+            }
+            containerTopView.isUserInteractionEnabled = true
+            containerTopView.layoutIfNeeded()
+        }
+    }
     
     
     //MARK:- ======== Variables ========
@@ -48,31 +62,25 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     var arrMarkers = [GMSMarker]()
     var isFirstTimeLoadView = true
     var arrTaxiTypes = [String]()
+    var isCameraAnimation = false
+    lazy var taxiTypeView : SelectTaxiTypes = SelectTaxiTypes.fromNib()
+    lazy var currentRideDetailView : CurrentRideDetail = CurrentRideDetail.fromNib()
+    lazy var currentRideInfoView : CurrrentRideDriverInfo = CurrrentRideDriverInfo.fromNib()
 
     
     //MARK:- ===== View Controller LifeCycle ====
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("UpdateProfile"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateProfilePic), name: NSNotification.Name("UpdateProfile"), object: nil)
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
-        }
-        navigationBarSetup()
-        socketManageSetup()
-        self.setLocalization()
-        self.addObserver()
-        self.txtFieldWhereAreYouGoing.delegate = self
-        WebserviceCallCurrentBooking()
+         getFirstView()
+         self.mapVw.settings.consumesGesturesInView = false
+         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panHandler(_:)))
+         self.mapVw.addGestureRecognizer(panGesture)
+         socketManageSetup()
+         self.addObserver()
+         WebserviceCallCurrentBooking()
     }
     
-
     deinit {
         print("Remove object")
     }
@@ -80,7 +88,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         
+        navigationBarSetup()
     }
     
     
@@ -94,23 +102,113 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     }
     
     
-    //MARK:- ==== NavigationBar Setup =====
-    func navigationBarSetup(){
-        self.navigationController?.navigationBar.isHidden = false
-        if self.selectTexiVCContainerVW.isHidden{
-            self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-            self.setProfilePicture()
-        }else{
-            self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [SelectedLocationString.0,SelectedLocationString.1], isTwoLabels: false)
+    @objc func panAction(_ sender: UISwipeGestureRecognizer){
+        switch sender.direction {
+        case .down:
+            hideBottomView(true)
+        case .up:
+            hideBottomView(false)
+        default:
+            break
         }
     }
     
+    @objc func hideBottomView(_ hide: Bool){
+        conBottomOfContainerView.constant = hide ? -botomContentView.bounds.height : 0
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    public func getFirstView() {
+        self.txtFieldWhereAreYouGoing.delegate = self
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+
+        if CLLocationManager.locationServicesEnabled(){
+            self.locationManager.startUpdatingLocation()
+        }
+        self.setLocalization()
+        self.navigationBarSetup()
+        containerTopView.isHidden = true
+        botomContentView.removeAllSubviews()
+        conBottomOfContainerView.constant = 0
+        self.bottomVWWhereAreYouGoing.isHidden = false
+    }
+    
+    @objc private func panHandler(_ pan : UIPanGestureRecognizer){
+            if pan.state == .ended && isCameraAnimation == true{
+                isCameraAnimation = false
+                let mapSize = self.mapVw.frame.size
+                let point = CGPoint(x: mapSize.width/2, y: mapSize.height/2)
+                let newCoordinate = self.mapVw.projection.coordinate(for: point)
+                print(newCoordinate)
+                 //do task here
+            }
+        }
+    
+    @IBAction func btnActionshare(_ sender: UIButton) {
+        
+    }
+    
+    //MARK:- ==== NavigationBar Setup =====
+    func navigationBarSetup(){
+        self.navigationController?.navigationBar.isHidden = false
+        if self.containerTopView.isHidden == false{
+         let  arrselctTaxitype = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
+            if arrselctTaxitype.count != 0 {
+                self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [SelectedLocationString.0,SelectedLocationString.1], isTwoLabels: false)
+                }
+            else {
+                self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+                self.setProfilePicture()
+            }
+        }
+        else{
+            self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+            self.setProfilePicture()
+
+        }
+    }
     
     //MARK:- ===== socket setup Methods ==
     func socketManageSetup(){
         SocketIOManager.shared.establishConnection()
         self.SocketOnMethods()
     }
+    
+    
+    @IBAction func btnCancel(_ sender: Any) {
+        if self.containerTopView.isHidden == false {
+        
+         let arrSubView : [UIView] = self.botomContentView.subviews.compactMap({$0})
+            if arrSubView.count != 0 {
+                switch arrSubView[0] {
+                case is SelectTaxiTypes:
+                    guard let taxitypeVC : SelectTaxiTypes =  arrSubView[0] as? SelectTaxiTypes else {
+                           return
+                     }
+                     taxitypeVC.removeSelection()
+                     
+                default:
+                    break
+                }
+                self.botomContentView.removeAllSubviews()
+                self.containerTopView.isHidden = true
+                self.bottomVWWhereAreYouGoing.isHidden = false
+                self.currentLocationSetup()
+            }
+         
+      }
+    }
+    
+    //MARK:- ==== Btn Action Current location ==
+    @IBAction func btnActionCurrentLocation(_ sender: UIButton) {
+       setCurrentLocationClicked()
+    }
+    
 }
 
 //MARK:- Methods
@@ -126,6 +224,8 @@ extension HomeVC{
     }
     
     func addObserver(){
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("UpdateProfile"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProfilePic), name: NSNotification.Name("UpdateProfile"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDriverInfoVC), name: .OpenCurrentRideDriverInfoVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDetailsVC), name: .OpenCurrentRideDetailsVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openLocationSelection), name: .OpenLocationSelectionVC, object: nil)
@@ -137,9 +237,16 @@ extension HomeVC{
     }
     
     @objc func openCurrentRideDriverInfoVC(){
-        self.bottomVWWhereAreYouGoing.isHidden = true
-        self.selectTexiVCContainerVW.isHidden = true
-        self.currentRideDriverInfoContainerVW.isHidden = false
+            btnCancel.isHidden = true
+            btnShare.isHidden = false
+            self.botomContentView.removeAllSubviews()
+            self.containerTopView.isHidden = false
+            self.bottomVWWhereAreYouGoing.isHidden = true
+            self.botomContentView.customAddSubview(self.currentRideInfoView)
+    
+//        self.bottomVWWhereAreYouGoing.isHidden = true
+//        self.selectTexiVCContainerVW.isHidden = true
+//        self.currentRideDriverInfoContainerVW.isHidden = false
     }
     
     
@@ -179,22 +286,26 @@ extension HomeVC{
         guard let homeVC = objhomeVC.children[0] as? HomeVC else {
             return
         }
-    
-        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
-            return
-        }
+        
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo })
+            guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView[0] as? CurrrentRideDriverInfo else { return }
+        
+//        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
+//            return
+//        }
         driverInfoVC.objBookingInfo = obj.bookingInfo
         driverInfoVC.setUpUI(isFromArrived: false, isFromApi: false)
         driverInfoVC.heightGet = { (height , isExpand) in
             self.conHeightOfCurrentRideDriverInfo.constant = height
+         }
         }
     }
-    
     
     //MARK:- ======= Driver request accest Setup =====
     func WebServiceDriverRequestAccept(obj:RootCurrentBooking){
         NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
-    
         print((appDel.window?.rootViewController as! UINavigationController).children)
         print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
         guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
@@ -205,15 +316,24 @@ extension HomeVC{
         guard let homeVC = objhomeVC.children[0] as? HomeVC else {
             return
         }
-    
-        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
-            return
-        }
         
-        driverInfoVC.objCurrentBooking = obj.data
-        driverInfoVC.setUpUI(isFromArrived: false, isFromApi: true)
-        driverInfoVC.heightGet = { (height , isExpand) in
-            self.conHeightOfCurrentRideDriverInfo.constant = height
+//       guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
+//            return
+//        }
+        
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo})
+         guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView[0] as? CurrrentRideDriverInfo else { return }
+        
+//        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
+//            return
+//        }
+            driverInfoVC.objCurrentBooking = obj.data
+            driverInfoVC.setUpUI(isFromArrived: false, isFromApi: true)
+            driverInfoVC.heightGet = { (height , isExpand) in
+                self.conHeightOfCurrentRideDriverInfo.constant = height
+            }
         }
     }
     
@@ -229,24 +349,11 @@ extension HomeVC{
                 
                 self.isFirstTimeLoadView = true
                 self.mapVw.clear()
-                self.bottomVWWhereAreYouGoing.isHidden = false
-                self.selectTexiVCContainerVW.isHidden = true
-                self.currentRideDriverInfoContainerVW.isHidden = true
-                self.currentRideDetailContainerVW.isHidden = true
-               
-                self.locationManager = CLLocationManager()
-                self.locationManager.delegate = self
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                self.locationManager.requestAlwaysAuthorization()
-
-                if CLLocationManager.locationServicesEnabled(){
-                    self.locationManager.startUpdatingLocation()
-                }
-                
-                self.navigationBarSetup()
-                
-                self.setLocalization()
-                self.txtFieldWhereAreYouGoing.delegate = self
+                self.getFirstView()
+//                self.bottomVWWhereAreYouGoing.isHidden = false
+//                self.selectTexiVCContainerVW.isHidden = true
+//                self.currentRideDriverInfoContainerVW.isHidden = true
+//                self.currentRideDetailContainerVW.isHidden = true
             })
         }
     }
@@ -278,21 +385,22 @@ extension HomeVC{
             return
         }
     
-        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
-            return
-        }
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo})
+         guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView[0] as? CurrrentRideDriverInfo else { return }
         
         driverInfoVC.objBookingInfo = obj.bookingInfo
         driverInfoVC.setUpUI(isFromArrived: true, isFromApi: false)
         driverInfoVC.heightGet = { (height , isExpand) in
             self.conHeightOfCurrentDriverDetail.constant = height
         }
+       }
     }
     
     //MARK:- ========= Arrived Driver Setup ========
     func WebserviceArrivedDriverSetup(obj : RootCurrentBooking) {
         NotificationCenter.default.post(name: .OpenCurrentRideDriverInfoVC, object: nil)
-    
         print((appDel.window?.rootViewController as! UINavigationController).children)
         print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
         guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
@@ -303,15 +411,20 @@ extension HomeVC{
         guard let homeVC = objhomeVC.children[0] as? HomeVC else {
             return
         }
-    
-        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
-            return
-        }
+//        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
+//            return
+//        }
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo })
+            guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView[0] as? CurrrentRideDriverInfo else { return }
+        
         
         driverInfoVC.objCurrentBooking = obj.data
         driverInfoVC.setUpUI(isFromArrived: true, isFromApi: true)
         driverInfoVC.heightGet = { (height , isExpand) in
             self.conHeightOfCurrentDriverDetail.constant = height
+         }
         }
     }
     
@@ -323,23 +436,18 @@ extension HomeVC{
            
             Toast.show(message: objDict["message"].stringValue, state: .success)
             self.currentLocationSetup()
-        
         }
     }
     
     //MARK:- ======= Emit Socket Call Near by Driver=========
     func emitSocketNearByDriver(){
-        
         let param = [
             socketApikeys.KCustomerID : Singleton.sharedInstance.UserId,
             socketApikeys.KCurrentLat : Singleton.sharedInstance.latitute,
             socketApikeys.KCurrentLng : Singleton.sharedInstance.longtitute,
-        
         ] as [String:Any]
-        
         SocketIOManager.shared.socketEmit(for: socketApikeys.KNearByDriver, with: param)
     }
-    
     
     //MARK: ===== start timer for update location =======
     func startTimer() {
@@ -355,8 +463,7 @@ extension HomeVC{
          })
         }
       }
-    
-    
+
     //MARK:- ========= On Socket Call Near By Driver ======
     func onSocketNearByDriver(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KNearByDriver) { json in
@@ -372,7 +479,10 @@ extension HomeVC{
             else {
                 self.nearByDrivers.removeAll()
             }
-            if self.selectTexiVCContainerVW.isHidden == false {
+            //if self.selectTexiVCContainerVW.isHidden == false {
+            let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
+            if  arrselctTaxitype.count != 0 {
+
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
                 print(NavVc.children[0].children)
                 guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
@@ -381,19 +491,17 @@ extension HomeVC{
                 guard let homeVC = objhomeVC.children[0] as? HomeVC else {
                     return
                 }
-            
-                guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
-                    return
-                }
-                
+//                guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+//                    return
+//                }
                 
                // if taxitypeVC.selectedTaxi == NSNotFound {
                     if SocketIOManager.shared.socket.status == .connected {
                         self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng)
                     }
+                }
             }
-        }
-    }
+         }
     
     //MARK:- ===== Near By Drivers Display ========
     func NearByDriversSetup(Drivers: [Driver]){
@@ -473,7 +581,6 @@ extension HomeVC{
         }
     }
     
-    
     //MARK:- ===== Update placemark ======
     func updateMarker(lat:Double , lng : Double){
         DispatchQueue.main.async {
@@ -490,8 +597,10 @@ extension HomeVC{
             self.moveMent?.arCarMovement(marker: self.Driverplacemarker!, oldCoordinate: self.oldCoordinate, newCoordinate: newCoordinate, mapView: self.mapVw, bearing: Float(0))
             self.oldCoordinate = newCoordinate
             
-            let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 17)
-            self.mapVw.animate(to: camera)
+            if self.isCameraAnimation == true {
+                let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 17)
+                self.mapVw.animate(to: camera)
+            }
         }
     }
     
@@ -505,12 +614,14 @@ extension HomeVC{
             self.presentedViewController?.dismiss(animated: true, completion: nil)
             Toast.show(message: objDict["message"].stringValue, state: .success)
 
-            self.bottomVWWhereAreYouGoing.isHidden = true
-            self.selectTexiVCContainerVW.isHidden = true
-            self.currentRideDriverInfoContainerVW.isHidden = true
-            self.currentRideDetailContainerVW.isHidden = true
-            
-            
+//            self.bottomVWWhereAreYouGoing.isHidden = true
+//            self.selectTexiVCContainerVW.isHidden = true
+//            self.currentRideDriverInfoContainerVW.isHidden = true
+//            self.currentRideDetailContainerVW.isHidden = true
+//
+            self.containerTopView.isHidden = true
+            self.botomContentView.removeAllSubviews()
+            self.botomContentView.isHidden = true
             let obj = RootBookingRequestAccept(fromJson: objDict)
             let ratingReviewVC :RatingYourTripVC  = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
             ratingReviewVC.objBookingInfo = obj.bookingInfo
@@ -557,9 +668,14 @@ extension HomeVC{
             return
         }
     
-        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
-            return
-        }
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrentRideDetail})
+         guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView[0] as? CurrentRideDetail else { return }
+        
+//        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
+//            return
+//        }
         self.isStartTrip = true
         isFirtLocation = true
         self.mapVw.clear()
@@ -582,12 +698,11 @@ extension HomeVC{
         currentMarker.iconView = CurrentmarkerView
         currentMarker.map = self.mapVw
         
-        
         self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0), to: CLLocationCoordinate2D(latitude: Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0))
         
         driverInfoVC.objCurrentBooking = obj.data
         driverInfoVC.setUpUI(isFromApi: true)
-
+        }
     }
     
     
@@ -604,10 +719,16 @@ extension HomeVC{
         guard let homeVC = objhomeVC.children[0] as? HomeVC else {
             return
         }
+        
+        if self.containerTopView.isHidden == false {
+        
+         let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrentRideDetail })
+            guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView[0] as? CurrentRideDetail else { return }
+        
     
-        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
-            return
-        }
+//        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
+//            return
+//        }
         self.isStartTrip = true
         isFirtLocation = true
         self.mapVw.clear()
@@ -620,8 +741,6 @@ extension HomeVC{
         DrivermarkerView.layoutSubviews()
         self.Driverplacemarker.iconView = DrivermarkerView
         self.Driverplacemarker.map = self.mapVw
-        
-        
         
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.dropoffLat) ?? 0.0, longitude: Double(obj.bookingInfo.dropoffLng) ?? 0.0)
@@ -636,6 +755,7 @@ extension HomeVC{
         
         driverInfoVC.objBookingInfo = obj.bookingInfo
         driverInfoVC.setUpUI(isFromApi: false)
+        }
     }
     
     
@@ -648,14 +768,20 @@ extension HomeVC{
             Toast.show(message: dictjson["message"].stringValue + dictjson["otp"].stringValue, state: .info)
         }
     }
-    
 
+    
     //MARK:- ==== Open Current Ride Detail ======
     @objc func openCurrentRideDetailsVC(){
+        btnCancel.isHidden = true
+        btnShare.isHidden = false
+        self.botomContentView.removeAllSubviews()
+        self.containerTopView.isHidden = false
         self.bottomVWWhereAreYouGoing.isHidden = true
-        self.selectTexiVCContainerVW.isHidden = true
-        self.currentRideDriverInfoContainerVW.isHidden = true
-        self.currentRideDetailContainerVW.isHidden = false
+        self.botomContentView.customAddSubview(self.currentRideDetailView)
+//        self.bottomVWWhereAreYouGoing.isHidden = true
+//        self.selectTexiVCContainerVW.isHidden = true
+//        self.currentRideDriverInfoContainerVW.isHidden = true
+//        self.currentRideDetailContainerVW.isHidden = false
     }
 }
 
@@ -773,11 +899,10 @@ extension HomeVC: UITextFieldDelegate{
         destinationMarker.userData = "destinationMarker"
         destinationMarker.iconView = markerView1
         destinationMarker.map = self.mapVw
-        
-        
-        let mapInsets = UIEdgeInsets(top: 50, left: 0.0, bottom: 50, right: 0.0)
+
+         let mapInsets = UIEdgeInsets(top: 50, left: 15, bottom: self.selectTexiVCContainerVW.frame.height, right: 15)
             self.mapVw.padding = mapInsets
-           self.arrMarkers.removeAll()
+            self.arrMarkers.removeAll()
             self.arrMarkers.append(currentMarker)
             self.arrMarkers.append(destinationMarker)
             var bounds = GMSCoordinateBounds()
@@ -788,6 +913,12 @@ extension HomeVC: UITextFieldDelegate{
     
             let update = GMSCameraUpdate.fit(bounds, withPadding: 17)
             self.mapVw.animate(with: update)
+        
+           delay(seconds: 5) {
+            
+            let camera = GMSCameraPosition.camera(withLatitude: pickup.lat, longitude: pickup.lng, zoom: 20);
+                self.mapVw.camera = camera
+          }
 
           self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng), to: CLLocationCoordinate2D(latitude: dropoff.lat, longitude: dropoff.lng))
        }
@@ -811,10 +942,15 @@ extension HomeVC: UITextFieldDelegate{
                 guard let homeVC = objhomeVC.children[0] as? HomeVC else {
                     return
                 }
-                guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
-                    return
+//                guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+//                    return
+//                }
+//
+                let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
+                if  arrselctTaxitype.count != 0 {
+                     arrselctTaxitype[0].selectedTaxi = NSNotFound
                 }
-                taxitypeVC.selectedTaxi = NSNotFound
+               
             }
             self.navigationController?.pushViewController(controller, animated: true)
             print("ATDebug :: currentMarker tappend ")
@@ -822,7 +958,7 @@ extension HomeVC: UITextFieldDelegate{
             print("ATDebug :: destinationMarker tappend ")
            }
            return true
-    }
+       }
     
     
     //MARK:- ====== Open Location Selection =======
@@ -834,9 +970,6 @@ extension HomeVC: UITextFieldDelegate{
         
         controller.openSelectTexiVC = { (pickup,dropoff) in
             self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
-            
-            
-            
             guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
             print(NavVc.children[0].children)
             guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
@@ -846,11 +979,16 @@ extension HomeVC: UITextFieldDelegate{
                 return
             }
         
-            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
-                return
-            }
+//            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+//                return
+//            }
             
-            taxitypeVC.selectedTaxi = NSNotFound
+            let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
+            if  arrselctTaxitype.count != 0 {
+                arrselctTaxitype[0].selectedTaxi = NSNotFound
+            }
+           
+            
         }
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -886,13 +1024,14 @@ extension HomeVC: UITextFieldDelegate{
             let objjson = RootDrivers(fromJson: objDictJson)
             
             DispatchQueue.main.async {
+                self.btnCancel.isHidden = false
+                self.btnShare.isHidden = true
+               // self.selectTexiVCContainerVW.isHidden = false
+                self.containerTopView.isHidden = false
                 self.bottomVWWhereAreYouGoing.isHidden = true
-                self.selectTexiVCContainerVW.isHidden = false
-                self.currentRideDriverInfoContainerVW.isHidden = true
-                self.currentRideDetailContainerVW.isHidden = true
+                self.botomContentView.customAddSubview(self.taxiTypeView)
                 
             }
-            
             print(objjson)
             print((appDel.window?.rootViewController as! UINavigationController).children)
             print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
@@ -905,20 +1044,20 @@ extension HomeVC: UITextFieldDelegate{
                 return
             }
         
-            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
-                return
-            }
-            taxitypeVC.closeBtnClosure = {
-               
-                self.currentLocationSetup()
-                
+//            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
+//                return
+//            }
+            
+            if self.containerTopView.isHidden == false {
+            
+             let  arrselctTaxitype  = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
+            guard let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0] as? SelectTaxiTypes else {
+                    return
             }
             
             taxitypeVC.bookingSucess = {
                 self.bottomVWWhereAreYouGoing.isHidden = true
-                self.selectTexiVCContainerVW.isHidden = true
-                self.currentRideDriverInfoContainerVW.isHidden = true
-                self.currentRideDetailContainerVW.isHidden = true
+                self.containerTopView.isHidden = true
                 self.navigationBarSetup()
                 
                 let popupVc : ProgressPopupVC = ProgressPopupVC.instantiate(fromAppStoryboard: .Main)
@@ -930,9 +1069,7 @@ extension HomeVC: UITextFieldDelegate{
                 self.present(navigationController, animated: true, completion: nil)
                 
             }
-            taxitypeVC.navigateToCurrentLocation = {
-                self.locationManager.startUpdatingLocation()
-            }
+            
             self.navigationBarSetup()
             taxitypeVC.bookingReqModel = self.bookingReqModel
 
@@ -1006,9 +1143,9 @@ extension HomeVC: UITextFieldDelegate{
                // taxitypeVC.taxiData = objjson.estimateFare
             }
            // taxitypeVC.tblSuggestedRides.reloadData()
+         }
         }
     }
-    
     
     //MARK:- ====== Current Booking =======
     func WebserviceCallCurrentBooking(){
@@ -1019,6 +1156,7 @@ extension HomeVC: UITextFieldDelegate{
                 print(response ?? Data())
             
                 if response?.data != nil {
+                   
                     let obj = response?.data
                     if obj?.pickupTime != nil && obj?.pickupTime != "" {
                         
@@ -1033,12 +1171,11 @@ extension HomeVC: UITextFieldDelegate{
                 }
             }
         }
-        
     }
-    
     
     //MARK:- ===== Current locationSetup =====
     func currentLocationSetup(){
+        startTimer()
         isFirstTimeLoadView = true
         self.mapVw.clear()
         CurrentPlaceMarker = nil
@@ -1046,25 +1183,13 @@ extension HomeVC: UITextFieldDelegate{
         self.Driverplacemarker = nil
         self.isFirtLocation = false
         self.isStartTrip = false
-
-        self.bottomVWWhereAreYouGoing.isHidden = false
-        self.selectTexiVCContainerVW.isHidden = true
-        self.currentRideDriverInfoContainerVW.isHidden = true
-        self.currentRideDetailContainerVW.isHidden = true
+        getFirstView()
+        
+        
+//        self.selectTexiVCContainerVW.isHidden = true
+//        self.currentRideDriverInfoContainerVW.isHidden = true
+//        self.currentRideDetailContainerVW.isHidden = true
        
-        self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
-
-        if CLLocationManager.locationServicesEnabled(){
-            self.locationManager.startUpdatingLocation()
-        }
-        
-        self.navigationBarSetup()
-        
-        self.setLocalization()
-        self.txtFieldWhereAreYouGoing.delegate = self
     }
     
     
@@ -1092,14 +1217,11 @@ extension HomeVC: UITextFieldDelegate{
                                 }
                                 return
                             }
-
                             if (routes.count > 0) {
                                 let overview_polyline = routes[0] as? NSDictionary
                                 let dictPolyline = overview_polyline?["overview_polyline"] as? NSDictionary
 
                                 let points = dictPolyline?.object(forKey: "points") as? String
-
-                                
 
                                 DispatchQueue.main.async {
                                     self.showPath(polyStr: points!)
@@ -1135,11 +1257,22 @@ extension HomeVC: UITextFieldDelegate{
 //            self.mapVw.animate(with: GMSCameraUpdate.fit(bounds))
         }
     
-
+    //MARK:- ====== current location Camera setup ====
+    func setCurrentLocationClicked(){
+        isCameraAnimation = true
+        let camera = GMSCameraPosition.camera(withLatitude: Singleton.sharedInstance.latitute, longitude: Singleton.sharedInstance.longtitute, zoom: 13)
+            mapVw?.camera = camera
+            mapVw?.animate(to: camera)
+    }
 }
 
 extension HomeVC : CLLocationManagerDelegate {
-
+    
+    func delay(seconds: Double, closure: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            closure()
+        }
+      }
     
     //MARK: - location delegate methods
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -1150,9 +1283,6 @@ extension HomeVC : CLLocationManagerDelegate {
         
         Singleton.sharedInstance.latitute = userLocation.coordinate.latitude
         Singleton.sharedInstance.longtitute = userLocation.coordinate.longitude
-
-        //self.labelLat.text = "\(userLocation.coordinate.latitude)"
-        //self.labelLongi.text = "\(userLocation.coordinate.longitude)"
         
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
 
@@ -1191,12 +1321,9 @@ extension HomeVC : CLLocationManagerDelegate {
                 self.txtFieldWhereAreYouGoing.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
             }
         }
-
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-    
 }
 

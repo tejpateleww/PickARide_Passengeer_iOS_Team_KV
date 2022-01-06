@@ -206,7 +206,10 @@ class WebServiceSubClass{
         }
     }
     
-    
-    
-
+    class func notificationList(reqModel : NotiificationRequestModel , completion: @escaping (Bool,String,RootNotification?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.notificationList.rawValue, requestModel: reqModel, responseModel: RootNotification.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+     
 }

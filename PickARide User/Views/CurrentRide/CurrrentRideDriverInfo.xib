@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurrrentRideDriverInfo" customModule="PickARide_User" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="977" height="415"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7J-H5-uhj">
+                    <rect key="frame" x="0.0" y="0.0" width="977" height="415"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WE FOUND YOU A DRIVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqw-Cc-dWC" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="977" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="X4c-ga-pcJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isWeFoundTitle" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbX-ma-SGS">
+                            <rect key="frame" x="372" y="40" width="233" height="20.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver will pickup you in " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipC-r2-SRf" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="183.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRemaningTimeTitle" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 02:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2m-8p-zK5" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                    <rect key="frame" x="183.5" y="0.0" width="49.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRemainigTime" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-7y-YQe" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
+                            <rect key="frame" x="438.5" y="81.5" width="100" height="100"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2bG-0C-gvU">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="AddBorder" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="50"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWm-pK-EzY">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="2bG-0C-gvU" firstAttribute="top" secondItem="Rhd-7y-YQe" secondAttribute="top" id="HtZ-Jh-LKh"/>
+                                <constraint firstAttribute="bottom" secondItem="2bG-0C-gvU" secondAttribute="bottom" id="LEN-vn-ZxE"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="leading" secondItem="2bG-0C-gvU" secondAttribute="leading" id="LUe-su-dis"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="top" secondItem="2bG-0C-gvU" secondAttribute="top" id="Lov-Y8-qnX"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="width" secondItem="2bG-0C-gvU" secondAttribute="width" id="OBf-pr-M7Y"/>
+                                <constraint firstAttribute="trailing" secondItem="2bG-0C-gvU" secondAttribute="trailing" id="OSg-88-LNP"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="trailing" secondItem="2bG-0C-gvU" secondAttribute="trailing" id="gzw-KM-bcG"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="height" secondItem="2bG-0C-gvU" secondAttribute="height" id="hSL-Sn-g8j"/>
+                                <constraint firstAttribute="height" constant="100" id="myU-p9-nb4"/>
+                                <constraint firstItem="2bG-0C-gvU" firstAttribute="leading" secondItem="Rhd-7y-YQe" secondAttribute="leading" id="oB5-Id-AmH"/>
+                                <constraint firstItem="KWm-pK-EzY" firstAttribute="bottom" secondItem="2bG-0C-gvU" secondAttribute="bottom" id="tna-6b-5yQ"/>
+                                <constraint firstAttribute="width" constant="100" id="yfn-qf-S5z"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundView" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POi-eq-HbT" customClass="currentRideView" customModule="PickARide_User" customModuleProvider="target">
+                            <rect key="frame" x="442" y="169.5" width="93.5" height="20"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RIDEGO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz4-b3-Z3R" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="0.0" width="61.5" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRideGO" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Dz4-b3-Z3R" firstAttribute="top" secondItem="POi-eq-HbT" secondAttribute="top" id="9Ys-6B-qma"/>
+                                <constraint firstAttribute="height" constant="20" id="Myu-l4-bmr"/>
+                                <constraint firstAttribute="bottom" secondItem="Dz4-b3-Z3R" secondAttribute="bottom" id="TcI-w8-vGL"/>
+                                <constraint firstItem="Dz4-b3-Z3R" firstAttribute="leading" secondItem="POi-eq-HbT" secondAttribute="leading" constant="16" id="ezJ-JS-7GU"/>
+                                <constraint firstAttribute="trailing" secondItem="Dz4-b3-Z3R" secondAttribute="trailing" constant="16" id="vXH-Oe-wLr"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRIDEGOBgVIew" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connor Chavez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvJ-C7-oki" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                            <rect key="frame" x="430" y="204.5" width="117" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isDriveName" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qjr-cW-txO">
+                            <rect key="frame" x="425.5" y="230" width="126" height="33.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcC-YG-cId" customClass="CosmosView" customModule="Cosmos">
+                                    <rect key="frame" x="0.0" y="9.5" width="90" height="15"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="Qhn-8d-1aH"/>
+                                        <constraint firstAttribute="width" constant="90" id="XCE-rQ-y4u"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                            <real key="value" value="13.33"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                            <real key="value" value="11"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="textMargin">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                            <integer key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="FillStar"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(4.0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-N9-bXC">
+                                    <rect key="frame" x="95" y="8.5" width="31" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" name="ThemeGray"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ST3751 - Toyota Vios" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmg-Te-GXy" customClass="currentRideLabel" customModule="PickARide_User" customModuleProvider="target">
+                            <rect key="frame" x="407.5" y="273.5" width="162" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isCarNumber" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="gEo-dU-uTz">
+                            <rect key="frame" x="369.5" y="334" width="238" height="46"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AID-GJ-bQm">
+                                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="46" id="T62-if-x7G"/>
+                                        <constraint firstAttribute="height" constant="46" id="kcQ-OC-wu8"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_call"/>
+                                    <connections>
+                                        <action selector="btnCallClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="d9S-jt-zb4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Uo-Cc1">
+                                    <rect key="frame" x="96" y="0.0" width="46" height="46"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="5DT-eX-dji"/>
+                                        <constraint firstAttribute="width" constant="46" id="BOt-Se-r4t"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_message"/>
+                                    <connections>
+                                        <action selector="btnMessageClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="fKK-sV-2nx"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-oN-dU3">
+                                    <rect key="frame" x="192" y="0.0" width="46" height="46"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="46" id="Yav-4r-lm2"/>
+                                        <constraint firstAttribute="height" constant="46" id="sAk-vw-NPs"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_CancelRide"/>
+                                    <connections>
+                                        <action selector="btnCancelClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="QvJ-Cb-rWq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKe-L0-O9T">
+                            <rect key="frame" x="0.0" y="0.0" width="977" height="315"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="lqw-Cc-dWC" secondAttribute="trailing" id="49f-BE-0pd"/>
+                        <constraint firstItem="KKe-L0-O9T" firstAttribute="top" secondItem="I7J-H5-uhj" secondAttribute="top" id="4tw-8F-Eem"/>
+                        <constraint firstItem="lqw-Cc-dWC" firstAttribute="top" secondItem="I7J-H5-uhj" secondAttribute="top" id="6br-7O-3fb"/>
+                        <constraint firstItem="Rhd-7y-YQe" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="By7-SV-yBE"/>
+                        <constraint firstItem="KKe-L0-O9T" firstAttribute="leading" secondItem="I7J-H5-uhj" secondAttribute="leading" id="GHd-t3-DKX"/>
+                        <constraint firstItem="Rhd-7y-YQe" firstAttribute="top" secondItem="SbX-ma-SGS" secondAttribute="bottom" constant="21" id="GkQ-9Z-qs1"/>
+                        <constraint firstItem="POi-eq-HbT" firstAttribute="top" secondItem="Rhd-7y-YQe" secondAttribute="bottom" constant="-12" id="H2M-RA-1VQ"/>
+                        <constraint firstAttribute="trailing" secondItem="KKe-L0-O9T" secondAttribute="trailing" id="JDz-R5-k9I"/>
+                        <constraint firstItem="SbX-ma-SGS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I7J-H5-uhj" secondAttribute="leading" id="KS4-La-eOj"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SbX-ma-SGS" secondAttribute="trailing" id="L3w-1o-cmN"/>
+                        <constraint firstItem="Hmg-Te-GXy" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="MeD-sR-5j1"/>
+                        <constraint firstItem="gEo-dU-uTz" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="N2q-yr-TS9"/>
+                        <constraint firstItem="XvJ-C7-oki" firstAttribute="top" secondItem="POi-eq-HbT" secondAttribute="bottom" constant="15" id="NbE-I1-mqO"/>
+                        <constraint firstItem="Qjr-cW-txO" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="POI-4w-lXU"/>
+                        <constraint firstAttribute="bottom" secondItem="KKe-L0-O9T" secondAttribute="bottom" constant="100" id="Tlt-0V-ZsO"/>
+                        <constraint firstItem="SbX-ma-SGS" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="VtZ-1Z-c0Y"/>
+                        <constraint firstItem="lqw-Cc-dWC" firstAttribute="leading" secondItem="I7J-H5-uhj" secondAttribute="leading" id="WpP-pB-GnF"/>
+                        <constraint firstItem="SbX-ma-SGS" firstAttribute="top" secondItem="lqw-Cc-dWC" secondAttribute="bottom" id="ek3-VE-f6J"/>
+                        <constraint firstItem="Qjr-cW-txO" firstAttribute="top" secondItem="XvJ-C7-oki" secondAttribute="bottom" constant="5" id="gcb-6w-07d"/>
+                        <constraint firstItem="POi-eq-HbT" firstAttribute="centerX" secondItem="Rhd-7y-YQe" secondAttribute="centerX" id="ghK-HR-XBu"/>
+                        <constraint firstItem="Qjr-cW-txO" firstAttribute="bottom" secondItem="Hmg-Te-GXy" secondAttribute="top" constant="-10" id="pnC-yI-Gbo"/>
+                        <constraint firstItem="XvJ-C7-oki" firstAttribute="centerX" secondItem="I7J-H5-uhj" secondAttribute="centerX" id="u5H-Qa-TOp"/>
+                        <constraint firstAttribute="bottom" secondItem="gEo-dU-uTz" secondAttribute="bottom" constant="35" id="yXb-oL-1CG"/>
+                        <constraint firstItem="gEo-dU-uTz" firstAttribute="top" secondItem="Hmg-Te-GXy" secondAttribute="bottom" constant="40" id="yc6-PC-FzN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="I7J-H5-uhj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="25Q-oN-85h"/>
+                <constraint firstAttribute="bottom" secondItem="I7J-H5-uhj" secondAttribute="bottom" id="Jdl-yb-98V"/>
+                <constraint firstItem="I7J-H5-uhj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="exn-fw-95A"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I7J-H5-uhj" secondAttribute="trailing" id="nkc-Gq-x2q"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imgDriver" destination="2bG-0C-gvU" id="bkL-Pg-7kc"/>
+                <outlet property="lblDriverName" destination="XvJ-C7-oki" id="Eey-Tz-sFY"/>
+                <outlet property="lblDriverPickUpMsg" destination="ipC-r2-SRf" id="iab-6L-Y7l"/>
+                <outlet property="lblRating" destination="D4D-N9-bXC" id="OIy-Ht-WIT"/>
+                <outlet property="lblRidego" destination="Dz4-b3-Z3R" id="FUw-n8-ALG"/>
+                <outlet property="lblTime" destination="F2m-8p-zK5" id="bVf-k9-C2Z"/>
+                <outlet property="lblVehicalData" destination="Hmg-Te-GXy" id="yXn-D7-hSA"/>
+                <outlet property="mainVWBottomConstraint" destination="Jdl-yb-98V" id="2n9-fc-7Q9"/>
+                <outlet property="viewRating" destination="xcC-YG-cId" id="tTj-vo-SP7"/>
+                <outlet property="vwMain" destination="I7J-H5-uhj" id="9US-mJ-oSh"/>
+            </connections>
+            <point key="canvasLocation" x="465.94202898550731" y="-127.56696428571428"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="xcC-YG-cId">
+            <size key="intrinsicContentSize" width="82.649999999999991" height="13.33"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="FillStar" width="27" height="27"/>
+        <image name="StarEmpty" width="27" height="27"/>
+        <image name="ic_CancelRide" width="46" height="46"/>
+        <image name="ic_call" width="46" height="46"/>
+        <image name="ic_message" width="46" height="46"/>
+        <image name="user_placeholder" width="341" height="341"/>
+        <namedColor name="ThemeGray">
+            <color red="0.49799999594688416" green="0.49799999594688416" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

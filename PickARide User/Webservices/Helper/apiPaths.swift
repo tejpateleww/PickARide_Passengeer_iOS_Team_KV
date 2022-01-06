@@ -81,6 +81,7 @@ enum ApiKey: String {
     case inProcessBookingHistory              = "in_process_booking_history/"
     case acceptBookLaterRequest               = "accept_book_later_request"
     case chatHistory                          = "chat_history/"
+    case notificationList                     = "notification_list"
 
 }
 

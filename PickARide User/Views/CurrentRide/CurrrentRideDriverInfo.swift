@@ -1,23 +1,22 @@
 //
-//  CurrentRideDriverInformationVC.swift
+//  CurrrentRideDriverInfo.swift
 //  PickARide User
 //
-//  Created by Apple on 18/01/21.
-//  Copyright © 2021 EWW071. All rights reserved.
+//  Created by Admin on 03/01/22.
+//  Copyright © 2022 EWW071. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Cosmos
 
-class CurrentRideDriverInformationVC: BaseViewController {
+class CurrrentRideDriverInfo : UIView {
     
+    //MARK:- ==== Outlets ========
     @IBOutlet weak var lblDriverName: currentRideLabel!
     @IBOutlet weak var lblRidego: currentRideLabel!
     @IBOutlet weak var lblVehicalData: currentRideLabel!
     @IBOutlet weak var vwMain: suggestedTaxiView!
-    @IBOutlet weak var btnCancel: UIButton!
-    @IBOutlet weak var mainVW: suggestedTaxiView!
-    @IBOutlet weak var topVW: UIView!
     @IBOutlet weak var mainVWBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblDriverPickUpMsg: currentRideLabel!
     @IBOutlet weak var lblRating: UILabel!
@@ -26,7 +25,6 @@ class CurrentRideDriverInformationVC: BaseViewController {
     @IBOutlet weak var lblTime: currentRideLabel!
     
     
-    //MARK:- ====== Variables ======
     var timer : Timer?
     var isFromCheckOrder = false
     var toatalRemainingSeconds = Int()
@@ -40,9 +38,11 @@ class CurrentRideDriverInformationVC: BaseViewController {
     var isFromApi = false
     var heightOfView = CGFloat()
     var heightGet : ((CGFloat , Bool)->())? = nil
+
+    
     var isExpandCategory:  Bool  = false {
         didSet {
-            mainVWBottomConstraint.constant = isExpandCategory ? 0 : (-mainVW.frame.height + topVW.frame.height + 60)
+          //  mainVWBottomConstraint.constant = isExpandCategory ? 0 : (-mainVW.frame.height + topVW.frame.height + 60)
             self.lblDriverPickUpMsg.superview?.isHidden = !isExpandCategory
             
             DispatchQueue.main.async {
@@ -53,31 +53,31 @@ class CurrentRideDriverInformationVC: BaseViewController {
                 }
             }
             
-            self.view.endEditing(true)
+           // self.view.endEditing(true)
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
-                self.view.layoutIfNeeded()
+                //self.view.layoutIfNeeded()
             }) { (success) in
                 
             }
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupViewCategory()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        vwMain.addGestureRecognizer(tap)
-        
+    override func draw(_ rect: CGRect) {
     }
+     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
-    }
-    
-    @IBAction func btnCancel(_ sender: Any) {
-        appDel.navigateToMain()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        self.setupViewCategory()
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+//        vwMain.addGestureRecognizer(tap)
+//
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: ["J'Adore Interiors","280 Hemlock Ln"], isTwoLabels: false, isDisableBack: true)
+//    }
     
     @IBAction func btnProfileClicked(_ sender: Any) {
        // NotificationCenter.default.post(name: .OpenCurrentRideDetailsVC, object: nil)
@@ -88,27 +88,25 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnCallClick(_ sender: Any) {
-        self.view.endEditing(true)
+      //  self.view.endEditing(true)
         Utilities.makePhoneCall(phone: "9876543210")
     }
-    
-    
-    @IBAction func btnActionCurrentLocation(_ sender: UIButton) {
+   
+    @IBAction func btnMessageClick(_ sender: Any) {
         guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
         print(NavVc.children[0].children)
-        if let objhomeVC = NavVc.children[0].children[0] as? UINavigationController  {
-            if let homeVC = objhomeVC.children[0] as? HomeVC {
-                homeVC.setCurrentLocationClicked()
-            }
+        guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
+            return
         }
-    }
-    
-    @IBAction func btnMessageClick(_ sender: Any) {
+        guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+            return
+        }
+        
         let controller : ChatVC = ChatVC.instantiate(fromAppStoryboard: .Main)
         controller.currentBookingModel = objBookingInfo
         controller.isFromApi = isFromApi
         controller.objCurrentBooking = objCurrentBooking
-        self.navigationController?.pushViewController(controller, animated: true)
+        homeVC.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnprofileClicked(_ sender: Any) {
@@ -117,19 +115,32 @@ class CurrentRideDriverInformationVC: BaseViewController {
     }
     
     @IBAction func btnCancelClick(_ sender: Any) {
+        
+        guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
+        print(NavVc.children[0].children)
+        guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
+            return
+        }
+        guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+            return
+        }
+        
+
         let controller = CancelTripVC.instantiate(fromAppStoryboard: .Main)
         controller.objBookingInfo = objBookingInfo
         controller.objCurrentBooking = objCurrentBooking
         controller.isFromApi = isFromApi
         controller.mainVCTogo = {
-            self.dismiss(animated: true, completion: nil)
+            
+            homeVC.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
              NotificationCenter.default.post(name: .CancelCompleteTRip, object: nil, userInfo: nil)
 
         }
         let navigationController = UINavigationController(rootViewController: controller)
         navigationController.modalPresentationStyle = .overCurrentContext
         navigationController.modalTransitionStyle = .crossDissolve
-        self.present(navigationController, animated: true, completion: nil)
+        homeVC.present(navigationController, animated: true, completion: nil)
     }
     
     func UpdatestartTimer(){
@@ -181,10 +192,6 @@ class CurrentRideDriverInformationVC: BaseViewController {
         return String(format: "%02d:%02d", prodMinutes, prodSeconds)
  }
     
-}
-
-//MARK:- Methods
-extension CurrentRideDriverInformationVC{
     func setUpUI(isFromArrived : Bool , isFromApi : Bool){
         self.isFromApi = isFromApi
         if isFromApi == true {
@@ -265,15 +272,7 @@ extension CurrentRideDriverInformationVC{
         lblVehicalData.attributedText = attributedString
     }
     
-    func setupViewCategory() {
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-        swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-        self.topVW.addGestureRecognizer(swipeUp)
-
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        self.topVW.addGestureRecognizer(swipeDown)
-    }
+  
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -295,3 +294,4 @@ extension CurrentRideDriverInformationVC{
         self.isExpandCategory = !self.isExpandCategory
     }
 }
+

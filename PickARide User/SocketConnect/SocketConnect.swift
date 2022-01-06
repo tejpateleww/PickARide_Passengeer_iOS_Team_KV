@@ -33,7 +33,7 @@ struct socketApikeys {
     static let KCurrentLng  = "current_lng"
     static let KVerifyCustomer = "verify_customer"
     static let KSendMsg       = "send_message"
-     static let KReceiveMsg   = "receive_message"
+    static let KReceiveMsg   = "receive_message"
         
     
 }

@@ -75,8 +75,6 @@ class SocketIOManager: NSObject {
         print ("Parameter Emitted for key - \(key) :: \(parameter)")
     }
     
-    
-    
     func dataSerializationToJson(data: [Any],_ description : String = "") -> (status: Bool, json: JSON){
         let json = JSON(data)
 //        print (description, ": \(json)")
