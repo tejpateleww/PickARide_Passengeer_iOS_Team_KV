@@ -85,3 +85,9 @@ enum viewComponentsTags : Int{
 enum webserviceResponse {
     case gotData , initial
 }
+
+
+enum RegisterListTextFieldTag: Int {
+    case countryCode = 100
+    case cityName = 200
+}

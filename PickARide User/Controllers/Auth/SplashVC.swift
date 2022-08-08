@@ -18,6 +18,7 @@ class SplashVC: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
             self.webserviceGetCountryList()
+            self.webserviceGetCityList()
             self.webserviceGetCardList()
         }
         
@@ -98,6 +99,10 @@ extension SplashVC{
     
     func webserviceGetCountryList(){
         WebServiceSubClass.GetCountryList {_, _, _, _ in}
+    }
+    
+    func webserviceGetCityList(){
+        WebServiceSubClass.GetCityList {_, _, _, _ in}
     }
     
     func webserviceGetCardList(){

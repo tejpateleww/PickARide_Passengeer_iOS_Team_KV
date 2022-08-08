@@ -18,6 +18,7 @@ class Singleton: NSObject{
     var AppInitModel : RootInit?
     var UserProfilData : ProfileModel?
     var CountryList = [CountryDetilsModel]()
+    var CityList = [CityDetailsModel]()
     var CardList = [CardDetailModel]()
     var latitute = Double()
     var longtitute = Double()

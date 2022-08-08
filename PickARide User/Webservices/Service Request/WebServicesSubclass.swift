@@ -26,6 +26,15 @@ class WebServiceSubClass{
         }
     }
     
+    class func GetCityList(completion: @escaping (Bool,String,CityListModel?,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getCityList.rawValue, responseModel: CityListModel.self) { (status, message, response, error) in
+            if status{
+                Singleton.sharedInstance.CityList = response?.data ?? []
+            }
+            completion(status, message, response, error)
+        }
+    }
+    
     //MARK:- Auth
     class func LoginApi(reqModel: LoginRequestModel, completion: @escaping (Bool,String,LoginResponseModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.login.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self) { (status, message, response, error) in

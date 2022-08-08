@@ -50,6 +50,7 @@ class RegisterRequestModel: Encodable{
     var address : String?
     var countryCode : String?
     var countryId : String?
+    var cityId: String?
     var deviceType : String? = Singleton.sharedInstance.DeviceType
     var deviceToken : String? = Singleton.sharedInstance.DeviceToken
     var latitude : String? = Singleton.sharedInstance.locationString().latitude
@@ -70,5 +71,6 @@ class RegisterRequestModel: Encodable{
         case address = "address"
         case countryCode = "country_code"
         case countryId = "country_id"
+        case cityId = "city_id"
     }
 }

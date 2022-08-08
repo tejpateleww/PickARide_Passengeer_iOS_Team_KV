@@ -69,7 +69,7 @@ class LoginVC: UIViewController {
         if self.getLocation(){
             return
             
-            if sender.tag == 0{
+            if sender.tag == 0 {
                 let faceBookSignInManager = FacebookLoginProvider(self)
                 faceBookSignInManager.delegate = self
                 faceBookSignInManager.fetchToken(from: self)

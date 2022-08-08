@@ -53,6 +53,7 @@ enum APIEnvironment : String {
 enum ApiKey: String {
     case Init                                 = "init/ios/"
     case getCountryList                       = "country_list"
+    case getCityList                          = "city_list"
     case login                                = "login"
     case registerOTP                          = "register_otp"
     case uploadDocs                           = "upload_docs"
