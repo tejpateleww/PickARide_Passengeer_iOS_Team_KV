@@ -33,32 +33,6 @@ class CountryListModel: Codable {
     }
 }
 
-
-// City Model
-class CityListModel: Codable {
-    let status: Bool?
-    let message: String?
-    let data: [CityDetailsModel]?
-    
-    init(status: Bool, message: String, data: [CityDetailsModel]) {
-        self.status = status
-        self.message = message
-        self.data = data
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case data = "data"
-        case message = "message"
-        case status = "status"
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        data = try? values?.decodeIfPresent([CityDetailsModel].self, forKey: .data)
-        message = try? values?.decodeIfPresent(String.self, forKey: .message)
-        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
-    }
-}
 class CountryDetilsModel: Codable {
     let id, name, shortName, countryCode: String?
     let currency, status: String?
@@ -90,12 +64,37 @@ class CountryDetilsModel: Codable {
     }
 }
 
+// City Model
+class CityListModel: Codable {
+    let status: Bool?
+    let message: String?
+    let data: [CityDetailsModel]?
+    
+    init(status: Bool, message: String, data: [CityDetailsModel]) {
+        self.status = status
+        self.message = message
+        self.data = data
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case data = "data"
+        case message = "message"
+        case status = "status"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        data = try? values?.decodeIfPresent([CityDetailsModel].self, forKey: .data)
+        message = try? values?.decodeIfPresent(String.self, forKey: .message)
+        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+    }
+}
 
 class CityDetailsModel: Codable {
 
   var id, cityName, lat, lang: String?
   var status, trash, createdAt: String?
-  var countryCode: String?
+  var countryCode, countryId: String?
   
   enum CodingKeys: String, CodingKey {
     case id        = "id"
@@ -106,6 +105,7 @@ class CityDetailsModel: Codable {
     case trash     = "trash"
     case createdAt = "created_at"
     case countryCode = "country_code"
+    case countryId = "country_id"
   }
 
   required init(from decoder: Decoder) throws {
@@ -118,6 +118,7 @@ class CityDetailsModel: Codable {
     trash     = try? values?.decodeIfPresent(String.self , forKey: .trash)
     createdAt = try? values?.decodeIfPresent(String.self , forKey: .createdAt)
     countryCode  = try? values?.decodeIfPresent(String.self , forKey: .countryCode)
+    countryId  = try? values?.decodeIfPresent(String.self , forKey: .countryId)
   }
 
   init() {

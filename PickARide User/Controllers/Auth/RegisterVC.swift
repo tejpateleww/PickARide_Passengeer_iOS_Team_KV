@@ -228,7 +228,7 @@ extension RegisterVC{
         finalRegisterReqModel.gender = ""
         finalRegisterReqModel.address = ""
         finalRegisterReqModel.countryCode = Singleton.sharedInstance.CityList[cityNameSelectedIndex].countryCode
-        finalRegisterReqModel.countryId =  ""
+        finalRegisterReqModel.countryId =  Singleton.sharedInstance.CityList[cityNameSelectedIndex].countryId
         //Singleton.sharedInstance.CountryList[countryCodeSelectedIndex].id
         finalRegisterReqModel.cityId = Singleton.sharedInstance.CityList[cityNameSelectedIndex].id
         
