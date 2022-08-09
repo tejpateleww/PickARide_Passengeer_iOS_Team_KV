@@ -145,7 +145,10 @@ extension RegisterVC{
         
         lblEmailTitle.text = "LoginScreen_lblEmail".Localized()
         txtEmail.placeholder = "SignUpPage_textFieldEmail_place".Localized()
-        
+
+        lblCityNameTitle.text = "SignUpPage_lblCityName".Localized()
+        txtCityName.placeholder = "SignUpPage_textFieldCityName".Localized()
+
         lblCountryCode.text = "SignUpPage_lblCountryCode".Localized()
         txtPhoneNumber.placeholder = "SignUpPage_textFieldPhoneNumbaer_place".Localized()
         

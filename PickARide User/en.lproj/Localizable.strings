@@ -35,7 +35,8 @@
 "SignUpPage_textViewText3" = " as well as our ";
 "SignUpPage_textViewText4" = "Privacy Policy";
 "SignUpPage_btnSIgnUP" = "SIGN UP";
-
+"SignUpPage_lblCityName" = "CITY";
+"SignUpPage_textFieldCityName" = "City name";
 
 //VerifyVC_
 
