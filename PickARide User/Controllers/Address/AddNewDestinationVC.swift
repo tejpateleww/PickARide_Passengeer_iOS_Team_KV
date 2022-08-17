@@ -103,7 +103,9 @@ extension AddNewDestinationVC{
                    print("Place attributions \(place.attributions)")
                    print("\(place.coordinate.latitude)")
                    print("\(place.coordinate.longitude)")
-                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude))
+                   let cityName = place.addressComponents?.first(where: { $0.type == "locality" })?.name ?? ""
+
+                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude, cityName: cityName))
                 self.tblPlacePicker.reloadData()
                 
                } else {

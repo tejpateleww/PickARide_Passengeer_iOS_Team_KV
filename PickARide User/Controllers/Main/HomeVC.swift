@@ -497,7 +497,7 @@ extension HomeVC{
                 
                // if taxitypeVC.selectedTaxi == NSNotFound {
                     if SocketIOManager.shared.socket.status == .connected {
-                        self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng)
+                        self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
                     }
                 }
             }
@@ -878,7 +878,7 @@ extension HomeVC: UITextFieldDelegate{
         self.SelectedLocationString = (pickup.location,dropoff.location)
         if SocketIOManager.shared.socket.status == .connected {
             
-            self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng)
+            self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         
         let currentMarker = GMSMarker()
@@ -999,17 +999,17 @@ extension HomeVC: UITextFieldDelegate{
 //    dropoff_lat
 //    dropoff_lng"
     //MARK:- ===== Emit socket EstimateFare =====
-    func emitSocketEstimateFare(PickupLat : Double , PickupLng : Double , DropOfLat : Double , DropOfLng : Double){
+    func emitSocketEstimateFare(PickupLat : Double , PickupLng : Double , DropOfLat : Double , DropOfLng : Double, CityName: String){
         
         let param = [
             socketApikeys.KCustomerID : Singleton.sharedInstance.UserId,
             socketApikeys.KPickupLat : PickupLat,
             socketApikeys.KPickupLng : PickupLng,
             socketApikeys.KDropOffLat : DropOfLat,
-            socketApikeys.KDropOffLng : DropOfLng
-        
+            socketApikeys.KDropOffLng : DropOfLng,
+            socketApikeys.KCityName: CityName
         ] as [String:Any]
-        
+        print("param \(param)")
         SocketIOManager.shared.socketEmit(for: socketApikeys.KGetEstimateFare, with: param)
     }
     

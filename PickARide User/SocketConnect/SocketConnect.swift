@@ -24,6 +24,7 @@ struct socketApikeys {
     static let KPickupLng  = "pickup_lng"
     static let KDropOffLat = "dropoff_lat"
     static let KDropOffLng  = "dropoff_lng"
+    static let KCityName = "city_name"
     static let KdriverArrived  = "arrived_at_pickup_location"
     static let KCancelBookingRequestBySystem = "cancelled_booking_request_by_system"
     static let KLiveTracking = "live_tracking"

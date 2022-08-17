@@ -239,11 +239,11 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
             if selectedTextField == 0 {
                 arrPickupPlace.removeAll()
                 textFieldStartLocation.text = tableData[indexPath.row].location
-                self.arrPickupPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng))
+                self.arrPickupPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng,cityName: tableData[indexPath.row].cityName))
             } else {
                 arrDestinationPlace.removeAll()
                 textFieldDestinationLocation.text = tableData[indexPath.row].location
-                self.arrDestinationPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng))
+                self.arrDestinationPlace.append(placePickerData(PlaceName:tableData[indexPath.row].placeName, Location: tableData[indexPath.row].location, primary: tableData[indexPath.row].primaryText, secondary: tableData[indexPath.row].secondaryText, Lat: tableData[indexPath.row].lat, Lng:tableData[indexPath.row].lng, cityName: tableData[indexPath.row].cityName))
             }
            
             textFieldDestinationLocation.resignFirstResponder()
@@ -254,11 +254,13 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
             if selectedTextField == 0 {
                 arrPickupPlace.removeAll()
                 textFieldStartLocation.text = arrayForSavedPlaces[indexPath.row].placeName
-                self.arrPickupPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
+                // Note: Uncomment it
+                // self.arrPickupPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue, cityName: arrayForSavedPlaces[indexPath.row].))
             } else {
                 arrDestinationPlace.removeAll()
                 textFieldDestinationLocation.text = arrayForSavedPlaces[indexPath.row].placeName
-                self.arrDestinationPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
+                // Note: Uncomment it
+                // self.arrDestinationPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
             }
            
             textFieldDestinationLocation.resignFirstResponder()
@@ -353,7 +355,9 @@ extension ChooseDestinationVC: GMSAutocompleteFetcherDelegate{
                    print("\(place.coordinate.latitude)")
                    print("\(place.coordinate.longitude)")
                 
-                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude))
+                   let cityName = place.addressComponents?.first(where: { $0.type == "locality" })?.name ?? ""
+                   print("cityName: \(cityName)")
+                   self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude, cityName: cityName))
                 self.tblPlacePicker.reloadData()
                 
                } else {
@@ -384,14 +388,16 @@ class placePickerData {
     var location = ""
     var lat = Double()
     var lng = Double()
+    var cityName = ""
     
-    init(PlaceName : String , Location : String ,primary:String,secondary:String,Lat:Double,Lng:Double) {
+    init(PlaceName : String , Location : String ,primary:String,secondary:String,Lat:Double,Lng:Double, cityName: String) {
         self.placeName = PlaceName
         self.location = Location
         self.lat = Lat
         self.lng = Lng
         self.primaryText = primary
         self.secondaryText = secondary
+        self.cityName = cityName
     }
 }
 
@@ -416,6 +422,7 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
             let placemark = placemarks! as [CLPlacemark]
             if placemark.count>0{
                 let placemark = placemarks![0]
+                let city = placemark.locality ?? ""
                 print(placemark.locality!)
                 print(placemark.administrativeArea!)
                 print(placemark.country!)
@@ -425,7 +432,10 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
                     self.arrPickupPlace.removeAll()
                     self.arrPickupPlace.append(placePickerData(PlaceName: self.textFieldStartLocation.text ??
                                             "", Location: self.textFieldStartLocation.text ??
-                                                "", primary: "", secondary: "", Lat: userLocation.coordinate.latitude, Lng: userLocation.coordinate.longitude))
+                                                "", primary: "", secondary: "",
+                                                Lat: userLocation.coordinate.latitude,
+                                                Lng: userLocation.coordinate.longitude,
+                                                cityName: city))
                 }
                
             }
