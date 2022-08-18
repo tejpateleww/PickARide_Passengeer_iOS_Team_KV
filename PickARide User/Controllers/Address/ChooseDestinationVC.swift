@@ -254,18 +254,15 @@ extension ChooseDestinationVC: UITableViewDelegate,UITableViewDataSource{
             if selectedTextField == 0 {
                 arrPickupPlace.removeAll()
                 textFieldStartLocation.text = arrayForSavedPlaces[indexPath.row].placeName
-                // Note: Uncomment it
-                // self.arrPickupPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue, cityName: arrayForSavedPlaces[indexPath.row].))
+                 self.arrPickupPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue, cityName: arrayForSavedPlaces[indexPath.row].cityName ?? ""))
             } else {
                 arrDestinationPlace.removeAll()
                 textFieldDestinationLocation.text = arrayForSavedPlaces[indexPath.row].placeName
-                // Note: Uncomment it
-                // self.arrDestinationPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue))
+                self.arrDestinationPlace.append(placePickerData(PlaceName:arrayForSavedPlaces[indexPath.row].location ?? "", Location: arrayForSavedPlaces[indexPath.row].placeName ?? "", primary: "", secondary: "", Lat:(arrayForSavedPlaces[indexPath.row].lat! as NSString).doubleValue, Lng:(arrayForSavedPlaces[indexPath.row].lng! as NSString).doubleValue, cityName: arrayForSavedPlaces[indexPath.row].cityName ?? ""))
             }
            
             textFieldDestinationLocation.resignFirstResponder()
             textFieldStartLocation.resignFirstResponder()
-            
         }
     }
     

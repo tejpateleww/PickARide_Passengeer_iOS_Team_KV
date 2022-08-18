@@ -25,6 +25,7 @@ class AddPlacesReqModel : Encodable {
     var location : String?
     var lat : Double?
     var lng : Double?
+    var cityName: String?
     
     enum CodingKeys : String, CodingKey {
         case customerId = "customer_id"
@@ -32,5 +33,6 @@ class AddPlacesReqModel : Encodable {
         case location = "location"
         case lat = "lat"
         case lng = "lng"
+        case cityName = "city_name"
     }
 }

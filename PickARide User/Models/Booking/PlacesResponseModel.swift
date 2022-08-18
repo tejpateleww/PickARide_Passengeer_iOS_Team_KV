@@ -38,7 +38,8 @@ class PlaceData : Codable {
         let lng : String?
         let location : String?
         let placeName : String?
-
+        let cityName: String?
+    
         enum CodingKeys: String, CodingKey {
             case createdAt = "created_at"
             case customerId = "customer_id"
@@ -47,6 +48,7 @@ class PlaceData : Codable {
             case lng = "lng"
             case location = "location"
             case placeName = "place_name"
+            case cityName = "city_name"
         }
     
 
@@ -59,9 +61,10 @@ class PlaceData : Codable {
         lng = try? values?.decodeIfPresent(String.self, forKey: .lng)
         location = try? values?.decodeIfPresent(String.self, forKey: .location)
         placeName = try? values?.decodeIfPresent(String.self, forKey: .placeName)
+        cityName = try? values?.decodeIfPresent(String.self, forKey: .cityName)
     }
 //
-    init?(customerId:String,CreatedAt:String,placename:String,placeid:String,Lat:String,Lng:String,Location:String) {
+    init?(customerId:String,CreatedAt:String,placename:String,placeid:String,Lat:String,Lng:String,Location:String, cityName: String) {
         self.customerId = customerId
         self.createdAt = CreatedAt
         self.placeName = placename
@@ -69,6 +72,7 @@ class PlaceData : Codable {
         self.lat = Lat
         self.lng = Lng
         self.location = Location
+        self.cityName = cityName
     }
    
     

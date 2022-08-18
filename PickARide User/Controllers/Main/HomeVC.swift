@@ -450,8 +450,13 @@ extension HomeVC{
     }
     
     //MARK: ===== start timer for update location =======
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
     func startTimer() {
-        if(timer == nil){
+        stopTimer()
+//        if(timer == nil){
         timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
              print(timer)
             if  SocketIOManager.shared.socket.status == .connected {
@@ -461,7 +466,7 @@ extension HomeVC{
                 print("lat \(Singleton.sharedInstance.latitute) , long : \(Singleton.sharedInstance.longtitute)")
             }
          })
-        }
+//        }
       }
 
     //MARK:- ========= On Socket Call Near By Driver ======
@@ -496,8 +501,7 @@ extension HomeVC{
 //                }
                 
                // if taxitypeVC.selectedTaxi == NSNotFound {
-                    if SocketIOManager.shared.socket.status == .connected {
-                        self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
+                if SocketIOManager.shared.socket.status == .connected     {                    self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
                     }
                 }
             }
@@ -880,7 +884,7 @@ extension HomeVC: UITextFieldDelegate{
             
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
-        
+        startTimer()
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
         let markerView = MarkerView()

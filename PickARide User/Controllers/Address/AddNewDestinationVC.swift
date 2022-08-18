@@ -52,7 +52,8 @@ extension AddNewDestinationVC {
         reqModel.location = selectedData.location
         reqModel.lat = selectedData.lat
         reqModel.lng = selectedData.lng
-            self.viewModelPlaces.webserviceCallAddPlaces(reqmodel: reqModel)
+        reqModel.cityName = selectedData.cityName
+        self.viewModelPlaces.webserviceCallAddPlaces(reqmodel: reqModel)
     }
 }
 
@@ -165,11 +166,15 @@ extension AddNewDestinationVC: UITableViewDelegate,UITableViewDataSource{
 //MARK:- GMSAutocompleteFetcher Delegate
 extension  AddNewDestinationVC: GMSAutocompleteFetcherDelegate{
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
-        tableData.removeAll()
-        for prediction in predictions {
-            GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: prediction.placeID)
+        print("Prediction count: \(predictions.count)")
+        if predictions.count > 0 {
+            tableData.removeAll()
+            for prediction in predictions {
+                GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: prediction.placeID)
+            }
+        } else {
+            print("predictions are 0")
         }
-        
     }
     
     func didFailAutocompleteWithError(_ error: Error) {
