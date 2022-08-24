@@ -60,6 +60,7 @@ class BookingReqModel : Encodable{
     var paymentType : PaymentType.RawValue? // cash OR wallet OR card
     var estimatedFare : String?
     var cardId : String?
+    var cityName: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -80,13 +81,9 @@ class BookingReqModel : Encodable{
         case noOfPassenger = "no_of_passenger"
         case paymentType = "payment_type"
         case estimatedFare = "estimated_fare"
+        case cityName = "city_name"
     }
 }
-
-
-
-
-
 
 //MARK:- Booking Response Model
 class BookingModel: Codable {

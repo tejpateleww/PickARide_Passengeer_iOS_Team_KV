@@ -460,9 +460,7 @@ extension HomeVC{
         timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
              print(timer)
             if  SocketIOManager.shared.socket.status == .connected {
-                if SocketIOManager.shared.socket.status == .connected {
                     self.emitSocketNearByDriver()
-                }
                 print("lat \(Singleton.sharedInstance.latitute) , long : \(Singleton.sharedInstance.longtitute)")
             }
          })
@@ -486,8 +484,7 @@ extension HomeVC{
             }
             //if self.selectTexiVCContainerVW.isHidden == false {
             let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
-            if  arrselctTaxitype.count != 0 {
-
+              if  arrselctTaxitype.count != 0 {
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
                 print(NavVc.children[0].children)
                 guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
@@ -873,6 +870,7 @@ extension HomeVC: UITextFieldDelegate{
         self.bookingReqModel.pickupLongitude = "\(pickup.lng)"
         self.bookingReqModel.dropoffLatitude = "\(dropoff.lat)"
         self.bookingReqModel.dropoffLongitude = "\(dropoff.lng)"
+        self.bookingReqModel.cityName = arrDestinationPlace.first?.cityName ?? ""
         
         self.mapVw.clear()
         self.isFirstTimeLoadView = true
