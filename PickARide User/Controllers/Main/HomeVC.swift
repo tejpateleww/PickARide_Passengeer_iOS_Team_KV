@@ -879,7 +879,6 @@ extension HomeVC: UITextFieldDelegate{
         
         self.SelectedLocationString = (pickup.location,dropoff.location)
         if SocketIOManager.shared.socket.status == .connected {
-            
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         startTimer()

@@ -19,7 +19,8 @@ pod 'MarqueeLabel'
   pod 'UIView-Shimmer', '~> 1.0'
 
   pod 'GoogleSignIn'
-  pod 'FBSDKLoginKit' 
+  pod 'FBSDKLoginKit', '~>  9.0.1'
+
   
   #Firebase
   pod 'Firebase'

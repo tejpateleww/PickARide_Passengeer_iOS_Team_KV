@@ -54,12 +54,12 @@ class LoginUserModel{
                 Singleton.sharedInstance.UserProfilData = response?.data
                 userDefaults.setUserData()
                 
-                if let apikey = response?.data?.xAPIKey{
+                if let apikey = response?.data?.xAPIKey {
                     Singleton.sharedInstance.Api_Key = apikey
                     userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 }
                 
-                if let userID = response?.data?.id{
+                if let userID = response?.data?.id {
                     Singleton.sharedInstance.UserId = userID
                 }
                 appDel.navigateToMain()

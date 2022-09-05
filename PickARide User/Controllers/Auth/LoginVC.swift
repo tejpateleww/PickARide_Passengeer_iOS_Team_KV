@@ -67,7 +67,7 @@ class LoginVC: UIViewController {
         print(#function)
         
         if self.getLocation(){
-            return
+//            return
             
             if sender.tag == 0 {
                 let faceBookSignInManager = FacebookLoginProvider(self)
@@ -177,7 +177,6 @@ extension LoginVC: SocialSignInDelegate{
             reqModel.lastName = userObj.lastName
             reqModel.email = userObj.email
             reqModel.userName = userObj.email
-            
             self.callSocialLoginApi(reqModel: reqModel)
         }
     }

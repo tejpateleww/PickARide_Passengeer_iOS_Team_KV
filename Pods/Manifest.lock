@@ -139,7 +139,7 @@ PODS:
 
 DEPENDENCIES:
   - Cosmos (~> 23.0)
-  - FBSDKLoginKit
+  - FBSDKLoginKit (~> 9.0.1)
   - Firebase
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -232,6 +232,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 475bd31d22ba14307986b26315ca2a377f59b66c
+PODFILE CHECKSUM: 8fb6992f693940c202a060c51d592a68bc31bca9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
