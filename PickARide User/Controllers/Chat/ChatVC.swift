@@ -27,8 +27,8 @@ class ChatVC: BaseViewController {
     var objCurrentBooking : CurrentBookingData!
     var currentBookingModel : BookingInfoData?
     var arrayChatHistory = [chatHistoryData]()
-    var filterListArr : [String: [chatHistoryData]] = [String(): [chatHistoryData]()]
-    var filterKeysArr : [Date] = [Date]()
+//    var filterListArr : [chatHistoryData] = [chatHistoryData]()
+//    var filterKeysArr : [Date] = [Date]()
     var oldChatSectionTitle = Date()
     var oldChatId = String()
     var MessageArray = [ChatConversation]()
@@ -131,29 +131,31 @@ class ChatVC: BaseViewController {
     
     
     func filterArrayData(isFromDidLoad: Bool){
-        self.filterListArr.removeAll()
-        self.filterKeysArr.removeAll()
-        self.arrayChatHistory.sort(by: {$0.createdAt!.compare($1.createdAt!) == .orderedAscending})
-        for each in self.arrayChatHistory{
-            let dateField = each.createdAt?.serverDateStringToDateType1?.Date_In_DD_MM_YYYY_FORMAT ?? String ()
-            if filterListArr.keys.contains(dateField){
-                filterListArr[dateField]?.append(each)
-            }else{
-                filterListArr[dateField] = [each]
-                self.filterKeysArr.append(each.createdAt?.serverDateStringToDateType1 ?? Date())
-            }
-        }
-        self.filterKeysArr.sort(by: <)
+//        self.filterListArr.removeAll()
+//        self.filterKeysArr.removeAll()
+//        self.arrayChatHistory.sort(by: {$0.createdAt!.compare($1.createdAt!) == .orderedAscending})
+//        for each in self.arrayChatHistory{
+//            let dateField = each.createdAt?.serverDateStringToDateType1?.Date_In_DD_MM_YYYY_FORMAT ?? String ()
+//            if filterListArr.keys.contains(dateField){
+//                filterListArr[dateField]?.append(each)
+//            }else{
+//                filterListArr[dateField] = [each]
+//                self.filterKeysArr.append(each.createdAt?.serverDateStringToDateType1 ?? Date())
+//            }
+//            filterListArr.append(each)
+//        }
+//        self.filterKeysArr.sort(by: <)
         isFromDidLoad ? self.scrollToBottom() : self.scrollAt()
     }
     
     func scrollToBottom(){
         DispatchQueue.main.async {
             if self.arrayChatHistory.count > 0 {
-                let list = self.filterListArr[self.filterKeysArr.last?.Date_In_DD_MM_YYYY_FORMAT ?? String ()]
+//                let list = self.arrayChatHistory[self.filterKeysArr.last?.Date_In_DD_MM_YYYY_FORMAT ?? String ()]
                 
-                let rowIndex = list?.count == 0 ? 0 : ((list?.count ?? 0) - 1)
-                let indexPath = IndexPath(row: rowIndex, section: self.filterKeysArr.count - 1)
+                let rowIndex = 0
+                //list?.count == 0 ? 0 : ((list?.count ?? 0) - 1)
+                let indexPath = IndexPath(row: rowIndex, section: self.arrayChatHistory.count - 1)
                 self.tblChat.reloadData()
                 self.tblChat.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
@@ -162,9 +164,12 @@ class ChatVC: BaseViewController {
     
     func scrollAt(){
         if self.arrayChatHistory.count > 0 {
-            let list = self.filterListArr[oldChatSectionTitle.Date_In_DD_MM_YYYY_FORMAT ?? ""]
-            let row = list?.firstIndex(where: {$0.id == oldChatId}) ?? 0
-            let section = self.filterKeysArr.firstIndex(where: {$0.Date_In_DD_MM_YYYY_FORMAT == oldChatSectionTitle.Date_In_DD_MM_YYYY_FORMAT}) ?? 0
+            let list = self.arrayChatHistory
+            //[oldChatSectionTitle.Date_In_DD_MM_YYYY_FORMAT ?? ""]
+            let row = 0
+            //list?.firstIndex(where: {$0.id == oldChatId}) ?? 0
+            let section = list.firstIndex(where: {$0.id == oldChatId}) ?? 0
+            //self.filterKeysArr.firstIndex(where: {$0.Date_In_DD_MM_YYYY_FORMAT == oldChatSectionTitle.Date_In_DD_MM_YYYY_FORMAT}) ?? 0
             let indexPath = IndexPath(row: row, section: section)
             self.tblChat.reloadData()
             self.tblChat.scrollToRow(at: indexPath, at: .top, animated: false)
@@ -279,19 +284,19 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.arrayChatHistory.count > 0 {
-            return self.filterKeysArr.count
+            return self.arrayChatHistory.count
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.arrayChatHistory.count > 0 {
-            let strDate = self.filterKeysArr[section].Date_In_DD_MM_YYYY_FORMAT ?? ""
-            return self.filterListArr[strDate]?.count ?? 0
-        } else {
+//        if self.filterListArr.count > 0 {
+//            let strDate = self.filterListArr[section]
+//            return self.filterListArr[strDate]?.count ?? 0
+//        } else {
             return 1
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -308,8 +313,10 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
             lblDate.layer.cornerRadius = lblDate.frame.height/2.0
             lblDate.layer.masksToBounds = true
             
-            let obj = self.filterKeysArr[section]
-            lblDate.text = obj.timeAgoSinceDate(isForNotification: true)
+            let obj = self.arrayChatHistory[section]
+            lblDate.text = obj.createdAt
+            //            lblDate.text = obj.timeAgoSinceDate(isForNotification: true)
+
             
             lblDate.textAlignment = .center
             lblDate.font = CustomFont.regular.returnFont(12.0)
@@ -324,19 +331,19 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if(self.arrayChatHistory.count > 0){
-            let strDateTitle = self.filterKeysArr[indexPath.section].Date_In_DD_MM_YYYY_FORMAT ?? ""
-            let obj = self.filterListArr[strDateTitle]?[indexPath.row]
-            
-            let isDriver = obj?.receiverType ?? "" == "driver"
+//            let strDateTitle = self.arrayChatHistory[indexPath.section].Date_In_DD_MM_YYYY_FORMAT ?? ""
+//            let obj = self.filterListArr[strDateTitle]?[indexPath.row]
+            let obj = arrayChatHistory[indexPath.section]
+            let isDriver = obj.receiverType ?? "" == "driver"
             if(isDriver){
                 let cell = tblChat.dequeueReusableCell(withIdentifier: chatSenderCell.reuseIdentifier) as! chatSenderCell
                 cell.selectionStyle = .none
-                cell.lblSenderMessage.text = obj?.message ?? ""
+                cell.lblSenderMessage.text = obj.message ?? ""
                 return cell
             }else{
                 let cell = tblChat.dequeueReusableCell(withIdentifier: chatReciverCell.reuseIdentifier) as! chatReciverCell
                 cell.selectionStyle = .none
-                cell.lblReciverMessage.text = obj?.message ?? ""
+                cell.lblReciverMessage.text = obj.message ?? ""
                 return cell
             }
         }else{
