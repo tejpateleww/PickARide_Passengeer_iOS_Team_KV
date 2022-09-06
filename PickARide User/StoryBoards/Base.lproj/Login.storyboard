@@ -212,7 +212,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-cf-LYS">
                                                 <rect key="frame" x="106.5" y="591" width="201" height="59"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-3b-S2m" userLabel="View - Apple">
                                                         <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-R2-jfp">
@@ -234,10 +234,10 @@
                                                             <constraint firstAttribute="trailing" secondItem="iHy-R2-jfp" secondAttribute="trailing" id="pNP-zH-qXj"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-R3-9Nm">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-R3-9Nm" userLabel="View - Facebook">
                                                         <rect key="frame" x="71" y="0.0" width="59" height="59"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-ht-jNE">
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-ht-jNE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                                 <state key="normal" image="ic_Facebook"/>
                                                                 <connections>
@@ -255,10 +255,10 @@
                                                             <constraint firstAttribute="bottom" secondItem="hgh-ht-jNE" secondAttribute="bottom" id="nBl-Ze-TEj"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-ON-8kM">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-ON-8kM" userLabel="View - Google">
                                                         <rect key="frame" x="142" y="0.0" width="59" height="59"/>
                                                         <subviews>
-                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-F4-uSt">
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-F4-uSt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                                                 <state key="normal" image="ic_Google"/>
                                                                 <connections>

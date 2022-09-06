@@ -5,6 +5,8 @@ import UserNotifications
 import GoogleMaps
 import GooglePlaces
 import SideMenuSwift
+import GoogleSignIn
+
 
 
 @UIApplicationMain
@@ -26,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         FirebaseApp.configure()
         GMSServices.provideAPIKey(APIEnvironment.GoogleMapKey.rawValue)
         GMSPlacesClient.provideAPIKey(APIEnvironment.GoogleMapKey.rawValue)
+        GIDSignIn.sharedInstance().clientID = APIEnvironment.GoogleServicesClientId.rawValue
+        GIDSignIn.sharedInstance()?.delegate = self
         
         SideMenuController.preferences.basic.menuWidth = UIScreen.main.bounds.width - 100
         SideMenuController.preferences.basic.defaultCacheKey = "0"
@@ -38,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
-    }  
+    }
+
 }
 
+extension AppDelegate: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {}
+  
+}

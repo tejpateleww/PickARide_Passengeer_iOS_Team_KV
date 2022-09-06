@@ -83,15 +83,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "41130731-5309-4211-A42F-05D4E405ECC2"
+            uuid = "5EF81FED-54E1-4E1C-BC3F-1634A494C91C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PickARide User/Controllers/Auth/LoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "btnSocialRequests(_:)"
             landmarkType = "7">
          </BreakpointContent>

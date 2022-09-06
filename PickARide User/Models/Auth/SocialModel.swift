@@ -21,6 +21,9 @@ class SocialLoginRequestModel: Encodable{
     var deviceToken : String? = Singleton.sharedInstance.DeviceToken
     var latitude : String? = Singleton.sharedInstance.locationString().latitude
     var longitude : String? = Singleton.sharedInstance.locationString().longitude
+    var cityId : String = ""
+    var countryId : String = ""
+
     
     enum CodingKeys: String, CodingKey {
         case socialId = "social_id"
@@ -34,5 +37,15 @@ class SocialLoginRequestModel: Encodable{
         case userName = "username"
         case email = "email"
         case mobileNo = "mobile_no"
+        case cityId = "city_id"
+        case countryId = "country_id"
+    }
+}
+
+class AppleDetailsRequestModel: Encodable{
+    var socialId : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case socialId = "social_id"
     }
 }

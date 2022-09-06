@@ -24,6 +24,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btnSIgnUP: loginScreenButton!
     
     var loginUserModel = LoginUserModel()
+    var appleSignInManager : AppleSignInProvider?
     var googleSignInManager : GoogleLoginProvider?
     var locationManager : LocationService?
     
@@ -65,11 +66,11 @@ class LoginVC: UIViewController {
     @IBAction func btnSocialRequests(_ sender: UIButton) {
         self.view.endEditing(true)
         print(#function)
-        
         if self.getLocation(){
-//            return
-            
             if sender.tag == 0 {
+                self.appleSignInManager = AppleSignInProvider()
+                self.appleSignInManager?.delegate = self
+            } else if sender.tag == 1 {
                 let faceBookSignInManager = FacebookLoginProvider(self)
                 faceBookSignInManager.delegate = self
                 faceBookSignInManager.fetchToken(from: self)
@@ -151,6 +152,13 @@ extension LoginVC{
         self.loginUserModel.loginVC = self
         self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
     }
+    
+    func callAppleDetailsApi(socialId: String){
+        self.loginUserModel.loginVC = self
+        let reqModel = AppleDetailsRequestModel()
+        reqModel.socialId = socialId
+        self.loginUserModel.webserviceAppleDetails(reqModel: reqModel)
+    }
 }
 //MARK:- TextField Delegate
 extension LoginVC: UITextFieldDelegate{
@@ -161,7 +169,6 @@ extension LoginVC: UITextFieldDelegate{
             let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
             return string == "" || newString.length <= TEXTFIELD_MaximumLimit
         }
-        
         return true
     }
 }
@@ -177,7 +184,16 @@ extension LoginVC: SocialSignInDelegate{
             reqModel.lastName = userObj.lastName
             reqModel.email = userObj.email
             reqModel.userName = userObj.email
-            self.callSocialLoginApi(reqModel: reqModel)
+            
+            if socialType == .Apple {
+                if let email = userObj.email , email != ""{
+                    self.callSocialLoginApi(reqModel: reqModel)
+                } else{
+                    self.callAppleDetailsApi(socialId: userObj.userId)
+                }
+            } else {
+                self.callSocialLoginApi(reqModel: reqModel)
+            }
         }
     }
 }

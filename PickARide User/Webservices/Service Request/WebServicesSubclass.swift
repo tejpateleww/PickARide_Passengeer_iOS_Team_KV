@@ -66,6 +66,12 @@ class WebServiceSubClass{
         }
     }
     
+    class func AppleDetailsApi(reqModel : AppleDetailsRequestModel , completion: @escaping (Bool,String,AppleDetailsResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.appleDetails.rawValue, requestModel: reqModel, responseModel: AppleDetailsResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     class func ForgotPasswordApi(reqModel : ForgotPasswordReqModel , completion: @escaping (Bool,String,PasswordResponseModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.forgotPassword.rawValue, requestModel: reqModel, responseModel: PasswordResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)

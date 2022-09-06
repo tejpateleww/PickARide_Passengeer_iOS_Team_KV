@@ -19,7 +19,7 @@ enum MessageAlertState {
 
 class Toast {
     
-    static func show(title: String = "" ,delay :Double = 1.5,  message: String, state : MessageAlertState ,  completion: (() -> Void)? = nil) {
+    static func show(title: String = "" ,delay :Double = 3.0,  message: String, state : MessageAlertState ,  completion: (() -> Void)? = nil) {
         guard let window = UIApplication.shared.keyWindow else { return}
         
         let toastContainer = UIView(frame: CGRect())

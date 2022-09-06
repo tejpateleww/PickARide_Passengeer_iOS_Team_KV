@@ -66,4 +66,27 @@ class LoginUserModel{
             }
         }
     }
+    
+    func webserviceAppleDetails(reqModel: AppleDetailsRequestModel){
+        Utilities.showHud()
+        
+        WebServiceSubClass.AppleDetailsApi(reqModel: reqModel) { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if !status{
+                //Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+                Utilities.ShowAlert(OfMessage: apiMessage)
+            }else{
+
+                let reqModel = SocialLoginRequestModel()
+                reqModel.socialId = response?.data?.id ?? ""
+                reqModel.socialType = SocialType.Apple.rawValue
+                reqModel.firstName = response?.data?.name ?? ""
+                reqModel.lastName = ""
+                reqModel.email = response?.data?.email ?? ""
+                reqModel.userName = response?.data?.email ?? ""
+
+                self.webserviceSocialLogin(reqModel: reqModel)
+            }
+        }
+    }
 }

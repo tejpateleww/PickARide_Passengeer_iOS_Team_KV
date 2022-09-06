@@ -18,8 +18,36 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb681350633223618</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.698692323787-fg3kv77dtedba29pgdqo6njvdson79qq</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>681350633223618</string>
+	<key>FacebookClientToken</key>
+	<string>85e98241067a7f3c5ccee6b8d95440f4</string>
+	<key>FacebookDisplayName</key>
+	<string>Pick A Ride</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -70,25 +98,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb681350633223618</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>681350633223618</string>
-    <key>FacebookClientToken</key>
-    <string>85e98241067a7f3c5ccee6b8d95440f4</string>
-    <key>FacebookDisplayName</key>
-    <string>Pick A Ride</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-share-api</string>
-    </array>
 </dict>
 </plist>

@@ -4,7 +4,7 @@ platform :ios, '12.0'
 target 'PickARide User' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-pod 'MarqueeLabel'
+  pod 'MarqueeLabel'
 
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'SDWebImage'
@@ -21,7 +21,6 @@ pod 'MarqueeLabel'
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit', '~>  9.0.1'
 
-  
   #Firebase
   pod 'Firebase'
   pod 'Firebase/Analytics'

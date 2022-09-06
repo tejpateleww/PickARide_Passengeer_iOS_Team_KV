@@ -9,7 +9,6 @@ import Foundation
 import AuthenticationServices
 import GoogleSignIn
 import FBSDKLoginKit
-import AuthenticationServices
 
 class SocialUser: Codable{
     var userId : String = ""
@@ -133,10 +132,15 @@ class AppleSignInProvider: NSObject, ASAuthorizationControllerDelegate, ASAuthor
         super.init()
         if #available(iOS 13.0, *) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+//        let passwordProvider = ASAuthorizationPasswordProvider()
+
+            let appleIdReq = appleIDProvider.createRequest()
+            appleIdReq.requestedScopes = [.fullName, .email]
+            
+//            let passwordReq =  passwordProvider.createRequest()
+//        request.requestedScopes = [.fullName, .email]
         
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        let authorizationController = ASAuthorizationController(authorizationRequests: [appleIdReq])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()

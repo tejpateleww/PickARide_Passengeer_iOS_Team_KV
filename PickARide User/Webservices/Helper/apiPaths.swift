@@ -12,6 +12,7 @@ enum APIEnvironment : String {
     case Profilebu = "http://65.1.154.172/"
     case Live = "not provided"
     case GoogleMapKey = "AIzaSyD9IuC2O3dbiKoMZ5bwvLJdttBCuO-1-Rc"
+    case GoogleServicesClientId = "698692323787-fg3kv77dtedba29pgdqo6njvdson79qq.apps.googleusercontent.com"
             
             //"AIzaSyDKJGsMhG1iL3NsqDb9PbQ4u1p_jLBB_FA"
             
@@ -59,6 +60,7 @@ enum ApiKey: String {
     case uploadDocs                           = "upload_docs"
     case register                             = "register"
     case socialLogin                          = "social_login"
+    case appleDetails                         = "apple_details"
     case updateProfile                        = "profile_update"
     case changePassword                       = "change_password"
     case forgotPassword                       = "forgot_password"
