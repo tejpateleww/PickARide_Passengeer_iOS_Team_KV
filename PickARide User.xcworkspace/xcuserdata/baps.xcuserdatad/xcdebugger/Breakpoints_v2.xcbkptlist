@@ -83,16 +83,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5EF81FED-54E1-4E1C-BC3F-1634A494C91C"
+            uuid = "A713E082-733D-49D4-80BF-FF31B0BAD8D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PickARide User/Controllers/Auth/LoginVC.swift"
+            filePath = "PickARide User/ViewModel/Auth/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "btnSocialRequests(_:)"
+            landmarkName = "webserviceSocialLogin(reqModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23BB325A-2556-4BD1-BC88-1C31BCB67167"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickARide User/ViewModel/Auth/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "webserviceSocialLogin(reqModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -43,7 +43,10 @@ class LoginUserModel{
     func webserviceSocialLogin(reqModel: SocialLoginRequestModel){
         Utilities.showHud()
         
-        WebServiceSubClass.SocialLoginApi(reqModel: reqModel) { (status, apiMessage, response, error) in
+        WebServiceSubClass.SocialLoginApi(reqModel: reqModel) { [weak self] (status, apiMessage, response, error) in
+            guard let self = self else {
+                return
+            }
             Utilities.hideHud()
             if !status{
                 Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
@@ -62,7 +65,13 @@ class LoginUserModel{
                 if let userID = response?.data?.id {
                     Singleton.sharedInstance.UserId = userID
                 }
-                appDel.navigateToMain()
+                let cityId = response?.data?.cityId ?? ""
+                let cityName = response?.data?.cityName ?? ""
+                if cityId.isEmptyOrWhitespace() || cityName.isEmptyOrWhitespace() {
+                    self.loginVC?.showCityList()
+                } else {
+                    appDel.navigateToMain()
+                }
             }
         }
     }
@@ -80,8 +89,11 @@ class LoginUserModel{
                 let reqModel = SocialLoginRequestModel()
                 reqModel.socialId = response?.data?.id ?? ""
                 reqModel.socialType = SocialType.Apple.rawValue
-                reqModel.firstName = response?.data?.name ?? ""
-                reqModel.lastName = ""
+                let nameArray = (response?.data?.name ?? "").components(separatedBy: " ")
+                let fName = nameArray.first ?? ""
+                let lName = nameArray.count > 1 ? nameArray[1] : ""
+                reqModel.firstName = fName
+                reqModel.lastName = lName
                 reqModel.email = response?.data?.email ?? ""
                 reqModel.userName = response?.data?.email ?? ""
 

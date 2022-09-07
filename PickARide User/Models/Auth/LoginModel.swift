@@ -95,7 +95,7 @@ class AppleDetailsSubModel: Codable{
 // MARK: - DataClass
 class ProfileModel: Codable {
     var id, companyID, firstName, lastName: String?
-    var email, countryID, cityId, countryCode, mobileNo: String?
+    var email, countryID, cityId, cityName,countryCode, mobileNo: String?
     var dob, gender, walletBalance, deviceType: String?
     var deviceToken, lat, lng, qrCode: String?
     var profileImage, socialID, socialType, rememberToken: String?
@@ -108,9 +108,10 @@ class ProfileModel: Codable {
         case firstName = "first_name"
         case lastName = "last_name"
         case email
-        case countryID = "country_id"
         case countryCode = "country_code"
         case cityId = "city_id"
+        case countryID = "country_id"
+        case cityName = "city_name"
         case mobileNo = "mobile_no"
         case dob, gender
         case walletBalance = "wallet_balance"
@@ -136,6 +137,7 @@ class ProfileModel: Codable {
         countryCode = try? values?.decodeIfPresent(String.self, forKey: .countryCode)
         countryID = try? values?.decodeIfPresent(String.self, forKey: .countryID)
         cityId = try? values?.decodeIfPresent(String.self, forKey: .cityId)
+        cityName = try? values?.decodeIfPresent(String.self, forKey: .cityName)
         createdAt = try? values?.decodeIfPresent(String.self, forKey: .createdAt)
         deviceToken = try? values?.decodeIfPresent(String.self, forKey: .deviceToken)
         deviceType = try? values?.decodeIfPresent(String.self, forKey: .deviceType)

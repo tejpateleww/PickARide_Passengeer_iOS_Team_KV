@@ -28,10 +28,16 @@ class LoginVC: UIViewController {
     var googleSignInManager : GoogleLoginProvider?
     var locationManager : LocationService?
     
+    var cityNameSelectedIndex = 0
+    let viewForPicker = UIView()
+    let pickerViewForCityName = UIPickerView()
+    let pickerToolBar = UIToolbar()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let _ = self.getLocation()
         self.setupLocalization()
+        setUpCityPicker()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
@@ -84,6 +90,8 @@ class LoginVC: UIViewController {
 
 //MARK: Other Methods
 extension LoginVC{
+   
+    
     func setupLocalization() {
         lblSignIN.text = "LoginScreen_lblSignIN".Localized()
         lblWelcomeBack.text = "LoginScreen_lblWelcomeBack".Localized()
@@ -197,3 +205,156 @@ extension LoginVC: SocialSignInDelegate{
         }
     }
 }
+
+// MARK: - Country Code/City Name
+extension LoginVC {
+    
+    func setUpCityPicker() {
+        
+        viewForPicker.frame = CGRect(x: 0, y: 0, width: ScreenSize.SCREEN_WIDTH, height:  pickerViewForCityName.frame.height + 44.0)
+        let pickerView = pickerViewForCityName
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        pickerToolBar.barStyle = UIBarStyle.default
+        pickerToolBar.barTintColor = .black
+        pickerToolBar.barTintColor = .white
+        pickerToolBar.tintColor = themeColor
+        pickerToolBar.sizeToFit()
+        let done = UIBarButtonItem(title: "NavigationButton_btnDone".Localized(), style: .plain, target: self, action: #selector(doneAction))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel = UIBarButtonItem(title: "UrlConstant_Cancel".Localized(), style: .plain, target: self, action: #selector(cancelAction))
+        pickerToolBar.setItems([cancel,space,done], animated: false)
+        
+        var pickerToolBarFrame = pickerToolBar.frame
+        pickerToolBarFrame.origin.x = 0.0
+        pickerToolBarFrame.origin.y = 0.0
+        pickerToolBarFrame.size.width = ScreenSize.SCREEN_WIDTH
+        pickerToolBarFrame.size.height = 44.0
+        pickerToolBar.frame = pickerToolBarFrame
+        viewForPicker.addSubview(pickerToolBar)
+        
+        var pickerRect = pickerViewForCityName.frame
+        pickerRect.origin.x = 0.0
+        pickerRect.origin.y = 44.0
+        pickerViewForCityName.frame = pickerRect
+        viewForPicker.addSubview(pickerViewForCityName)
+        viewForPicker.backgroundColor = UIColor.lightGray
+
+    }
+    
+    func showCityList() {
+        if Singleton.sharedInstance.CityList.count == 0 {
+            WebServiceSubClass.GetCityList { [weak self] _, _, _, _ in
+                guard let self = self else {
+                    return
+                }
+                self.showCityNamePicker()
+            }
+        }else{
+            self.showCityNamePicker()
+        }
+    }
+   
+    
+    func showCityNamePicker() {
+           var pickerRect = viewForPicker.frame
+           pickerRect.origin.x = 0.0
+           pickerRect.origin.y = ScreenSize.SCREEN_HEIGHT
+            viewForPicker.frame = pickerRect
+           view.addSubview(viewForPicker)
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0, options: .curveLinear,
+                       animations: { [weak self] in
+            guard let self = self else {
+                return
+            }
+            var pickerRect = self.viewForPicker.frame
+            pickerRect.origin.x = 0.0
+            pickerRect.origin.y = ScreenSize.SCREEN_HEIGHT - pickerRect.height
+            self.viewForPicker.frame = pickerRect
+        }, completion: nil)
+    }
+    
+    func hidePicker() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0, options: .curveLinear,
+                       animations: { [weak self] in
+            guard let self = self else {
+                return
+            }
+            var pickerRect = self.viewForPicker.frame
+            pickerRect.origin.x = 0.0
+            pickerRect.origin.y = ScreenSize.SCREEN_HEIGHT
+            self.viewForPicker.frame = pickerRect
+        }, completion: nil)
+    }
+    /// When pciker view for countrycode  list and city list closes
+    /// - Parameter sender: Bar button item for picker view tol bar
+    @objc func cancelAction(_ sender: UIBarButtonItem) {
+//        view.endEditing(true)
+        hidePicker()
+    }
+
+    /// When pciker view for countrycode  list and city list closes
+    /// - Parameter sender: Bar button item for picker view tol bar
+    @objc func doneAction(_ sender: UIBarButtonItem) {
+//        if sender.tag == RegisterListTextFieldTag.countryCode.rawValue {
+//            countryCodeSelectedIndex = pickerViewForCountryCode.selectedRow(inComponent: 0)
+//           showCountryCodeFromList()
+//        } else {
+            // City list
+            cityNameSelectedIndex = pickerViewForCityName.selectedRow(inComponent: 0)
+            hidePicker()
+//        }
+//        view.endEditing(true)
+    }
+    
+//    func showCountryCodeFromList() {
+//        print(#function)
+//        if Singleton.sharedInstance.CountryList.count == 0 {
+//            WebServiceSubClass.GetCountryList { [weak self] _, _, _, _ in
+//                guard let self = self else {
+//                    return
+//                }
+//                self.txtCountryCode.text = Singleton.sharedInstance.CountryList.count > 0 ? Singleton.sharedInstance.CountryList[self.countryCodeSelectedIndex].countryCode : ""
+//            }
+//        }else{
+//            self.txtCountryCode.text = Singleton.sharedInstance.CountryList.count > 0 ? Singleton.sharedInstance.CountryList[countryCodeSelectedIndex].countryCode : ""
+//        }
+//    }
+    
+}
+
+//MARK:- Country Code Picker Set Up
+extension LoginVC : UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        if pickerView == pickerViewForCountryCode {
+//            return Singleton.sharedInstance.CountryList.count
+//        } else {
+        //if pickerView.tag == RegisterListTextFieldTag.cityName.rawValue {
+            return Singleton.sharedInstance.CityList.count
+//        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        if pickerView == pickerViewForCountryCode {
+//            return (Singleton.sharedInstance.CountryList[row].countryCode ?? "") + " - " + (Singleton.sharedInstance.CountryList[row].name ?? "")
+//        } else {
+            return (Singleton.sharedInstance.CityList[row].cityName)
+//        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        if pickerView.tag == RegisterListTextFieldTag.countryCode.rawValue {
+//        } else {
+//            cityNameSelectedIndex = row
+//        }
+    }
+}
+
