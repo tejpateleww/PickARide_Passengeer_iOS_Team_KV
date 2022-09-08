@@ -27,15 +27,14 @@ class ChatVC: BaseViewController {
     var objCurrentBooking : CurrentBookingData!
     var currentBookingModel : BookingInfoData?
     var arrayChatHistory = [chatHistoryData]()
+    let DispatcherConstant = "dispatcher"
 //    var filterListArr : [chatHistoryData] = [chatHistoryData]()
 //    var filterKeysArr : [Date] = [Date]()
     var oldChatSectionTitle = Date()
     var oldChatId = String()
     var MessageArray = [ChatConversation]()
     var isFromApi = false
-
-    
-    
+    var isFromChatSupport = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +76,17 @@ class ChatVC: BaseViewController {
             reqModel.message = self.txtSendMessage.text ?? ""
             reqModel.sender_id = Singleton.sharedInstance.UserId
             reqModel.sender_type = "customer"
-            reqModel.receiver_id = isFromApi == true ? objCurrentBooking.driverInfo?.id ?? "0" : "\(currentBookingModel?.driverInfo.id ?? 0)"
-            reqModel.receiver_type = "driver"
-            reqModel.booking_id = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
+            if isFromChatSupport {
+                reqModel.receiver_id = "123" // Dispatcher id
+                reqModel.receiver_type = DispatcherConstant
+                reqModel.booking_id = "1"
+
+            } else {
+                reqModel.receiver_id = isFromApi == true ? objCurrentBooking.driverInfo?.id ?? "0" : "\(currentBookingModel?.driverInfo.id ?? 0)"
+                reqModel.receiver_type = "driver"
+                reqModel.booking_id = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
+            }
+            
             
             let param = reqModel.generatPostParams()
             if SocketIOManager.shared.socket.status == .connected {
@@ -102,9 +109,15 @@ class ChatVC: BaseViewController {
         let chatObj : chatHistoryData = chatHistoryData()
         
         chatObj.id = String(Int.random(in: 1...9999999))
-        chatObj.bookingId = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
+        if isFromChatSupport {
+            chatObj.bookingId = "1"
+            chatObj.receiverId =  "123"
+        } else {
+            chatObj.bookingId = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
+            chatObj.receiverId =  isFromApi == true ? objCurrentBooking.driverInfo?.id ?? "0" : "\(currentBookingModel?.driverInfo.id ?? 0)"
+        }
         chatObj.message =  self.txtSendMessage.text ?? ""
-        chatObj.receiverId =  isFromApi == true ? objCurrentBooking.driverInfo?.id ?? "0" : "\(currentBookingModel?.driverInfo.id ?? 0)"
+      
         chatObj.receiverType = "driver"
         chatObj.senderId =  Singleton.sharedInstance.UserId
         chatObj.senderType = "customer"
@@ -235,8 +248,13 @@ extension ChatVC{
     
     func callChatHistoryAPI(){
         self.chatViewModel.ChatCV = self
-        let Id = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
-        self.chatViewModel.webserviceGetChatHistoryAPI(strBookingID: Id)
+        if isFromChatSupport {
+            let Id = " 1"
+            self.chatViewModel.webserviceGetChatHistoryAPI(strBookingID: Id)
+        } else {
+            let Id = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
+            self.chatViewModel.webserviceGetChatHistoryAPI(strBookingID: Id)
+        }
     }
     
 }
@@ -255,19 +273,23 @@ extension ChatVC{
     
     func setSenderProfileInfo(){
         self.navigationItem.titleView = vwNavBar
-        
-        let custName = isFromApi == true ? (self.objCurrentBooking?.driverInfo?.firstName)! + " " + (self.objCurrentBooking?.driverInfo?.lastName)! :
-            (self.currentBookingModel?.driverInfo?.firstName)! + " " + (self.currentBookingModel?.driverInfo?.lastName)!
-        self.lblName.text = custName
-        let NumberPlate = isFromApi == true ?  "\(self.objCurrentBooking?.driverVehicleInfo?.plateNumber ?? "") - \(self.objCurrentBooking?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.objCurrentBooking?.driverVehicleInfo?.vehicleTypeModelName ?? "")" :
+        if isFromChatSupport {
+           
+        } else {
+            let custName = isFromApi == true ? (self.objCurrentBooking?.driverInfo?.firstName)! + " " + (self.objCurrentBooking?.driverInfo?.lastName)! :
+                (self.currentBookingModel?.driverInfo?.firstName)! + " " + (self.currentBookingModel?.driverInfo?.lastName)!
+            self.lblName.text = custName
+            let NumberPlate = isFromApi == true ?  "\(self.objCurrentBooking?.driverVehicleInfo?.plateNumber ?? "") - \(self.objCurrentBooking?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.objCurrentBooking?.driverVehicleInfo?.vehicleTypeModelName ?? "")" :
+                
+                 "\(self.currentBookingModel?.driverVehicleInfo?.plateNumber ?? "") - \(self.currentBookingModel?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.currentBookingModel?.driverVehicleInfo?.vehicleTypeModelName ?? "")"
+            self.lblInfo.text = NumberPlate
             
-             "\(self.currentBookingModel?.driverVehicleInfo?.plateNumber ?? "") - \(self.currentBookingModel?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.currentBookingModel?.driverVehicleInfo?.vehicleTypeModelName ?? "")"
-        self.lblInfo.text = NumberPlate
-        
-        
-        let strUrl = isFromApi == true ? "\(APIEnvironment.Profilebu.rawValue)" + "\(self.objCurrentBooking.driverInfo?.profileImage ?? "")" :  "\(APIEnvironment.Profilebu.rawValue)" + "\(self.currentBookingModel?.driverInfo.profileImage ?? "")"
-        let strURl = URL(string: strUrl)
-        self.navBtnProfile.sd_setImage(with: strURl, for: .normal, placeholderImage:UIImage(named: "user_placeholder") , options: [], context: nil)
+            
+            let strUrl = isFromApi == true ? "\(APIEnvironment.Profilebu.rawValue)" + "\(self.objCurrentBooking.driverInfo?.profileImage ?? "")" :  "\(APIEnvironment.Profilebu.rawValue)" + "\(self.currentBookingModel?.driverInfo.profileImage ?? "")"
+            let strURl = URL(string: strUrl)
+            self.navBtnProfile.sd_setImage(with: strURl, for: .normal, placeholderImage:UIImage(named: "user_placeholder") , options: [], context: nil)
+        }
+
 //        self.imgProfilw.sd_imageIndicator = SDWebImageActivityIndicator.gray
         
     }

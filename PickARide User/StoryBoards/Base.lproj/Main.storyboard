@@ -26,7 +26,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvD-Kn-bBa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRC-yp-6Ce" userLabel="Button - Customer support">
+                                        <rect key="frame" x="217" y="218" width="143" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Customer Support"/>
+                                        <connections>
+                                            <action selector="btnActionChatSupport:" destination="7cV-Eh-A8u" eventType="touchUpInside" id="8XJ-Tf-yFJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvD-Kn-bBa" userLabel="Button - Current location">
                                         <rect key="frame" x="323" y="492" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="9dg-4T-Qfm"/>
@@ -190,6 +198,8 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MRC-yp-6Ce" secondAttribute="trailing" constant="15" id="0cH-9b-I7e"/>
+                                    <constraint firstItem="MRC-yp-6Ce" firstAttribute="centerY" secondItem="ZMM-W0-Uy5" secondAttribute="centerY" constant="-100" id="5nA-bJ-vps"/>
                                     <constraint firstItem="aTu-R3-lgb" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="6An-G2-i5k"/>
                                     <constraint firstItem="LG1-2q-Xxb" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="7a7-yG-glI"/>
                                     <constraint firstItem="7aL-40-OfG" firstAttribute="leading" secondItem="ZMM-W0-Uy5" secondAttribute="leading" id="BLW-L3-idk"/>
@@ -8503,7 +8513,7 @@
         <image name="imgDollar" width="8" height="14"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="14" height="16"/>
+        <image name="imgHome" width="23" height="19.5"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <image name="user_placeholder" width="341" height="341"/>

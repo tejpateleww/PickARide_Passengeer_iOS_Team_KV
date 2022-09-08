@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     static var pushNotificationObj : NotificationObjectModel?
     static var pushNotificationType : String?
-    
-    
+    var dispatcherId: String?
+  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         IQKeyboardManager.shared.enable = true

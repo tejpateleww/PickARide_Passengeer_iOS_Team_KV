@@ -209,7 +209,7 @@ extension CurrentRideDriverInformationVC{
 //                    if objCurrentBooking.tripDuration?.contains(":") == true{
 //                        let splitStrDuration = objCurrentBooking.tripDuration?.split(separator: ":")
 //                        totalMinut = Int(splitStrDuration?[0] ?? "") ?? 0
-//                        totalSecond = Int(splitStrDuration?[1] ?? "") ?? 0
+//                        totalSecond = Int (splitStrDuration?[1] ?? "") ?? 0
 //                    }
 //                 else {
                     //totalMinut = Int(objCurrentBooking.tripDuration ?? "") ?? 0

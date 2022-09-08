@@ -150,9 +150,15 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
         }
     
     @IBAction func btnActionshare(_ sender: UIButton) {
-        
     }
     
+    @IBAction func btnActionChatSupport(_ sender: Any) {
+        let controller : ChatVC = ChatVC.instantiate(fromAppStoryboard: .Main)
+        controller.isFromChatSupport = true
+        self.navigationController?.pushViewController(controller, animated: true)
+
+    }
+
     //MARK:- ==== NavigationBar Setup =====
     func navigationBarSetup(){
         self.navigationController?.navigationBar.isHidden = false
