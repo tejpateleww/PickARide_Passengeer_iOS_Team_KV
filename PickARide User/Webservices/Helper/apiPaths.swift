@@ -60,6 +60,7 @@ enum ApiKey: String {
     case uploadDocs                           = "upload_docs"
     case register                             = "register"
     case socialLogin                          = "social_login"
+    case socialUpdate                         = "social_update"
     case appleDetails                         = "apple_details"
     case updateProfile                        = "profile_update"
     case changePassword                       = "change_password"

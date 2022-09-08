@@ -24,12 +24,12 @@ class LoginUserModel{
                 Singleton.sharedInstance.UserProfilData = response?.data
                 userDefaults.setUserData()
                 
-                if let apikey = response?.data?.xAPIKey{
+                if let apikey = response?.data?.xAPIKey {
                     Singleton.sharedInstance.Api_Key = apikey
                     userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 }
                 
-                if let userID = response?.data?.id{
+                if let userID = response?.data?.id {
                     Singleton.sharedInstance.UserId = userID
                 }
                 
@@ -51,20 +51,8 @@ class LoginUserModel{
             if !status{
                 Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             }else{
-                userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
-                userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
-                
-                Singleton.sharedInstance.UserProfilData = response?.data
-                userDefaults.setUserData()
-                
-                if let apikey = response?.data?.xAPIKey {
-                    Singleton.sharedInstance.Api_Key = apikey
-                    userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
-                }
-                
-                if let userID = response?.data?.id {
-                    Singleton.sharedInstance.UserId = userID
-                }
+                self.savePreferrences(response: response)
+
                 let cityId = response?.data?.cityId ?? ""
                 let cityName = response?.data?.cityName ?? ""
                 if cityId.isEmptyOrWhitespace() || cityName.isEmptyOrWhitespace() {
@@ -75,6 +63,40 @@ class LoginUserModel{
             }
         }
     }
+    
+    func webserviceSocialUpdate(reqModel: SocialUpdateRequestModel) {
+        Utilities.showHud()
+        
+        WebServiceSubClass.SocialUpdateApi(reqModel: reqModel) { [weak self] (status, apiMessage, response, error) in
+            guard let self = self else {
+                return
+            }
+            Utilities.hideHud()
+            if !status{
+                Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
+            }else{
+                self.savePreferrences(response: response)
+            }
+        }
+    }
+    
+    func savePreferrences(response: LoginResponseModel?) {
+        userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
+        userDefaults.setValue(response?.data?.xAPIKey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+        
+        Singleton.sharedInstance.UserProfilData = response?.data
+        userDefaults.setUserData()
+        
+        if let apikey = response?.data?.xAPIKey {
+            Singleton.sharedInstance.Api_Key = apikey
+            userDefaults.setValue(apikey, forKey: UserDefaultsKey.X_API_KEY.rawValue)
+        }
+        
+        if let userID = response?.data?.id {
+            Singleton.sharedInstance.UserId = userID
+        }
+    }
+
     
     func webserviceAppleDetails(reqModel: AppleDetailsRequestModel){
         Utilities.showHud()

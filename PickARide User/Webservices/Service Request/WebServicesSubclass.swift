@@ -66,6 +66,12 @@ class WebServiceSubClass{
         }
     }
     
+    class func SocialUpdateApi(reqModel : SocialUpdateRequestModel , completion: @escaping (Bool,String,LoginResponseModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.socialUpdate.rawValue, requestModel: reqModel, responseModel: LoginResponseModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     class func AppleDetailsApi(reqModel : AppleDetailsRequestModel , completion: @escaping (Bool,String,AppleDetailsResponseModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.appleDetails.rawValue, requestModel: reqModel, responseModel: AppleDetailsResponseModel.self) { (status, message, response, error) in
             completion(status, message, response, error)

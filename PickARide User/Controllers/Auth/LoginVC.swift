@@ -37,7 +37,6 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         let _ = self.getLocation()
         self.setupLocalization()
-        setUpCityPicker()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
     }
     
@@ -161,6 +160,13 @@ extension LoginVC{
         self.loginUserModel.webserviceSocialLogin(reqModel: reqModel)
     }
     
+    func callSocialUpdateApi() {
+        let socialUpdatereqModel = SocialUpdateRequestModel()
+        socialUpdatereqModel.cityId = Singleton.sharedInstance.CityList[cityNameSelectedIndex].id
+        socialUpdatereqModel.countryId = Singleton.sharedInstance.CityList[cityNameSelectedIndex].countryId
+        self.loginUserModel.webserviceSocialUpdate(reqModel: socialUpdatereqModel)
+    }
+    
     func callAppleDetailsApi(socialId: String){
         self.loginUserModel.loginVC = self
         let reqModel = AppleDetailsRequestModel()
@@ -211,7 +217,10 @@ extension LoginVC {
     
     func setUpCityPicker() {
         
-        viewForPicker.frame = CGRect(x: 0, y: 0, width: ScreenSize.SCREEN_WIDTH, height:  pickerViewForCityName.frame.height + 44.0)
+        viewForPicker.frame = CGRect(x: 0,
+                                     y: 0,
+                                     width: ScreenSize.SCREEN_WIDTH,
+                                     height:  pickerViewForCityName.frame.height + 44.0)
         let pickerView = pickerViewForCityName
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -227,24 +236,24 @@ extension LoginVC {
         let cancel = UIBarButtonItem(title: "UrlConstant_Cancel".Localized(), style: .plain, target: self, action: #selector(cancelAction))
         pickerToolBar.setItems([cancel,space,done], animated: false)
         
-        var pickerToolBarFrame = pickerToolBar.frame
-        pickerToolBarFrame.origin.x = 0.0
-        pickerToolBarFrame.origin.y = 0.0
-        pickerToolBarFrame.size.width = ScreenSize.SCREEN_WIDTH
-        pickerToolBarFrame.size.height = 44.0
-        pickerToolBar.frame = pickerToolBarFrame
+        pickerToolBar.frame = CGRect(x: 0.0,
+                                     y: 0.0,
+                                        width: ScreenSize.SCREEN_WIDTH,
+                                     height: 44.0)
         viewForPicker.addSubview(pickerToolBar)
         
-        var pickerRect = pickerViewForCityName.frame
-        pickerRect.origin.x = 0.0
-        pickerRect.origin.y = 44.0
-        pickerViewForCityName.frame = pickerRect
+        pickerViewForCityName.frame = CGRect(x: 0.0,
+                                y: 44.0,
+                                width: ScreenSize.SCREEN_WIDTH,
+                                height: pickerViewForCityName.frame.height)
         viewForPicker.addSubview(pickerViewForCityName)
-        viewForPicker.backgroundColor = UIColor.lightGray
-
+        viewForPicker.backgroundColor = UIColor.white
     }
     
     func showCityList() {
+        if pickerToolBar.superview == nil {
+            setUpCityPicker()
+        }
         if Singleton.sharedInstance.CityList.count == 0 {
             WebServiceSubClass.GetCityList { [weak self] _, _, _, _ in
                 guard let self = self else {
@@ -300,30 +309,11 @@ extension LoginVC {
     /// When pciker view for countrycode  list and city list closes
     /// - Parameter sender: Bar button item for picker view tol bar
     @objc func doneAction(_ sender: UIBarButtonItem) {
-//        if sender.tag == RegisterListTextFieldTag.countryCode.rawValue {
-//            countryCodeSelectedIndex = pickerViewForCountryCode.selectedRow(inComponent: 0)
-//           showCountryCodeFromList()
-//        } else {
-            // City list
             cityNameSelectedIndex = pickerViewForCityName.selectedRow(inComponent: 0)
             hidePicker()
-//        }
-//        view.endEditing(true)
+            // Call social update api
+        self.callSocialUpdateApi()
     }
-    
-//    func showCountryCodeFromList() {
-//        print(#function)
-//        if Singleton.sharedInstance.CountryList.count == 0 {
-//            WebServiceSubClass.GetCountryList { [weak self] _, _, _, _ in
-//                guard let self = self else {
-//                    return
-//                }
-//                self.txtCountryCode.text = Singleton.sharedInstance.CountryList.count > 0 ? Singleton.sharedInstance.CountryList[self.countryCodeSelectedIndex].countryCode : ""
-//            }
-//        }else{
-//            self.txtCountryCode.text = Singleton.sharedInstance.CountryList.count > 0 ? Singleton.sharedInstance.CountryList[countryCodeSelectedIndex].countryCode : ""
-//        }
-//    }
     
 }
 

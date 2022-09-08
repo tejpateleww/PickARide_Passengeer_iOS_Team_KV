@@ -42,6 +42,19 @@ class SocialLoginRequestModel: Encodable{
     }
 }
 
+class SocialUpdateRequestModel: Encodable {
+    var customerId : String = Singleton.sharedInstance.UserId
+    var cityId : String?
+    var countryId: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case customerId = "customer_id"
+        case cityId = "city_id"
+        case countryId = "country_id"
+    }
+}
+
+
 class AppleDetailsRequestModel: Encodable{
     var socialId : String?
     
