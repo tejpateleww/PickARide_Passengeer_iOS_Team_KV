@@ -76,6 +76,7 @@ class LoginUserModel{
                 Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             }else{
                 self.savePreferrences(response: response)
+                appDel.navigateToMain()
             }
         }
     }

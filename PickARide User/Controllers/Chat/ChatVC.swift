@@ -27,7 +27,7 @@ class ChatVC: BaseViewController {
     var objCurrentBooking : CurrentBookingData!
     var currentBookingModel : BookingInfoData?
     var arrayChatHistory = [chatHistoryData]()
-    let DispatcherConstant = "dispatcher"
+    let CONST_DISPATCHER = "dispatcher"
 //    var filterListArr : [chatHistoryData] = [chatHistoryData]()
 //    var filterKeysArr : [Date] = [Date]()
     var oldChatSectionTitle = Date()
@@ -77,8 +77,8 @@ class ChatVC: BaseViewController {
             reqModel.sender_id = Singleton.sharedInstance.UserId
             reqModel.sender_type = "customer"
             if isFromChatSupport {
-                reqModel.receiver_id = "123" // Dispatcher id
-                reqModel.receiver_type = DispatcherConstant
+                reqModel.receiver_id = Singleton.sharedInstance.UserProfilData?.dispatcherId ?? "" // Dispatcher id
+                reqModel.receiver_type = CONST_DISPATCHER
                 reqModel.booking_id = "1"
 
             } else {
@@ -111,14 +111,16 @@ class ChatVC: BaseViewController {
         chatObj.id = String(Int.random(in: 1...9999999))
         if isFromChatSupport {
             chatObj.bookingId = "1"
-            chatObj.receiverId =  "123"
+            chatObj.receiverId =  Singleton.sharedInstance.UserProfilData?.dispatcherId ?? ""
+            chatObj.receiverType = CONST_DISPATCHER
         } else {
             chatObj.bookingId = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
             chatObj.receiverId =  isFromApi == true ? objCurrentBooking.driverInfo?.id ?? "0" : "\(currentBookingModel?.driverInfo.id ?? 0)"
+            chatObj.receiverType = "driver"
+
         }
         chatObj.message =  self.txtSendMessage.text ?? ""
       
-        chatObj.receiverType = "driver"
         chatObj.senderId =  Singleton.sharedInstance.UserId
         chatObj.senderType = "customer"
       
@@ -249,8 +251,9 @@ extension ChatVC{
     func callChatHistoryAPI(){
         self.chatViewModel.ChatCV = self
         if isFromChatSupport {
-            let Id = " 1"
-            self.chatViewModel.webserviceGetChatHistoryAPI(strBookingID: Id)
+            let chatRequestModel = DispatcherChatRequestModel()
+            chatRequestModel.dispatcherId = Singleton.sharedInstance.UserProfilData?.dispatcherId ?? ""
+            self.chatViewModel.webserviceDispatcherChatHistoryAPI(requestModel: chatRequestModel)
         } else {
             let Id = isFromApi == true ? objCurrentBooking.id ?? "" : self.currentBookingModel?.id ?? ""
             self.chatViewModel.webserviceGetChatHistoryAPI(strBookingID: Id)
@@ -356,8 +359,9 @@ extension ChatVC: UITableViewDelegate,UITableViewDataSource{
 //            let strDateTitle = self.arrayChatHistory[indexPath.section].Date_In_DD_MM_YYYY_FORMAT ?? ""
 //            let obj = self.filterListArr[strDateTitle]?[indexPath.row]
             let obj = arrayChatHistory[indexPath.section]
-            let isDriver = obj.receiverType ?? "" == "driver"
-            if(isDriver){
+            let isDriver = (obj.receiverType ?? "") == "driver"
+            let isDispatcher = (obj.receiverType ?? "") == CONST_DISPATCHER
+            if(isDriver || isDispatcher){
                 let cell = tblChat.dequeueReusableCell(withIdentifier: chatSenderCell.reuseIdentifier) as! chatSenderCell
                 cell.selectionStyle = .none
                 cell.lblSenderMessage.text = obj.message ?? ""

@@ -227,6 +227,15 @@ class WebServiceSubClass{
         }
     }
     
+    class func DispatcherChatHistoryApi(requestModel: DispatcherChatRequestModel,
+                                           completion: @escaping (Bool,String,chatHistoryModel?,Any) -> ()) {
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.dispatcherChatHistory.rawValue,
+                                                 requestModel: requestModel,
+                                                 responseModel: chatHistoryModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     class func notificationList(reqModel : NotiificationRequestModel , completion: @escaping (Bool,String,RootNotification?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.notificationList.rawValue, requestModel: reqModel, responseModel: RootNotification.self) { (status, message, response, error) in
             completion(status, message, response, error)

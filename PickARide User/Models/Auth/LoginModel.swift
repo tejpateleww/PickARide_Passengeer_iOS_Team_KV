@@ -94,7 +94,7 @@ class AppleDetailsSubModel: Codable{
 
 // MARK: - DataClass
 class ProfileModel: Codable {
-    var id, companyID, firstName, lastName: String?
+    var id, companyID, firstName, lastName, dispatcherId: String?
     var email, countryID, cityId, cityName,countryCode, mobileNo: String?
     var dob, gender, walletBalance, deviceType: String?
     var deviceToken, lat, lng, qrCode: String?
@@ -128,6 +128,7 @@ class ProfileModel: Codable {
         case createdAt = "created_at"
         case rating
         case xAPIKey = "x-api-key"
+        case dispatcherId = "dispatcher_id"
     }
     
     required init(from decoder: Decoder) throws {
@@ -161,6 +162,7 @@ class ProfileModel: Codable {
         trash = try? values?.decodeIfPresent(String.self, forKey: .trash)
         walletBalance = try? values?.decodeIfPresent(String.self, forKey: .walletBalance)
         xAPIKey = try? values?.decodeIfPresent(String.self, forKey: .xAPIKey)
+        dispatcherId = try? values?.decodeIfPresent(String.self, forKey: .dispatcherId)
     }
     
 }

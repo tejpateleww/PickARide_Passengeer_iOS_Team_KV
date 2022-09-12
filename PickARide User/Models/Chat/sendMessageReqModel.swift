@@ -25,6 +25,17 @@ class sendMessageReqModel1 : Encodable{
     }
 }
 
+class DispatcherChatRequestModel : Encodable{
+    var customerID : String? = Singleton.sharedInstance.UserId
+    var dispatcherId: String?
+   
+    enum CodingKeys: String, CodingKey {
+        case customerID = "customer_id"
+        case dispatcherId = "dispatcher_id"
+     }
+}
+
+
 class sendMessageReqModel : RequestModel {
     var sender_id : String = ""
     var receiver_id : String = ""

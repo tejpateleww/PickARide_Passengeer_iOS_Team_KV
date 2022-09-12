@@ -8,6 +8,10 @@
 
 import Foundation
 
+class BlankRequestModel: Encodable {
+    
+}
+
 class CancelTripReqModel : Encodable{
     var bookingId : String?
     var cancelReason : String?
