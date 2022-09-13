@@ -152,12 +152,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnActionshare(_ sender: UIButton) {
     }
     
-    @IBAction func btnActionChatSupport(_ sender: Any) {
-        let controller : ChatVC = ChatVC.instantiate(fromAppStoryboard: .Main)
-        controller.isFromChatSupport = true
-        self.navigationController?.pushViewController(controller, animated: true)
-
-    }
+    
 
     //MARK:- ==== NavigationBar Setup =====
     func navigationBarSetup(){
@@ -168,12 +163,12 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
                 self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.CommonView.value, leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [SelectedLocationString.0,SelectedLocationString.1], isTwoLabels: false)
                 }
             else {
-                self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+                self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.chatSupport.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
                 self.setProfilePicture()
             }
         }
         else{
-            self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+            self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.chatSupport.value, leftImage: NavItemsLeft.menu.value, rightImages: [NavItemsRight.userProfile.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
             self.setProfilePicture()
 
         }

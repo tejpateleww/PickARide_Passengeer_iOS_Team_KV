@@ -49,6 +49,32 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
    //     controller.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: (controller.navigationController?.navigationBar.frame.size.width)!, height: 48)
         if naviTitle == NavTitles.Home.value {
             controller.navigationItem.titleView = UIView()
+        } else if naviTitle == NavTitles.chatSupport.value {
+            let chatSupportButton = UIButton(frame: CGRect(x: 0.0,
+                                                           y: 0.0,
+                                                           width: 150.0,
+                                                           height: 44.0))
+            chatSupportButton.backgroundColor = colors.submitButtonColor.value
+            chatSupportButton.layer.cornerRadius = 5.0
+            chatSupportButton.layer.masksToBounds = true
+            
+            chatSupportButton.setImage(UIImage(named: "ic_chat_button"),
+                                       for: .normal)
+            chatSupportButton.imageView?.contentMode = .scaleAspectFit
+            chatSupportButton.tintColor = .white
+            chatSupportButton.imageEdgeInsets = UIEdgeInsets(top: 10.0,
+                                                             left: 6.0,
+                                                             bottom: 10.0,
+                                                             right: 12.0)
+            
+            chatSupportButton.setTitleColorFont(title: "Chat Support",
+                                                color: .white,
+                                                font: CustomFont.medium.returnFont(16.0))
+            chatSupportButton.addTarget(self,
+                                        action: #selector(openChatSupportScreen(_:)),
+                                        for: .touchUpInside)
+            
+            controller.navigationItem.titleView = chatSupportButton
         } else {
             if isTwoLabels {
                 let label = UILabel()
@@ -389,6 +415,13 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
 //        }
 //
 //    }
+    
+    @objc func openChatSupportScreen(_ sender: UIButton?) {
+      
+        let controller : ChatVC = ChatVC.instantiate(fromAppStoryboard: .Main)
+        controller.isFromChatSupport = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func OpenSideMenu(_ sender: UIButton?) {
       

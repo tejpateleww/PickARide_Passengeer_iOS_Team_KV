@@ -117,7 +117,6 @@ class Toast {
                     if let comp = completion{
                         comp()
                     }
-                    
                 }
             })
         }

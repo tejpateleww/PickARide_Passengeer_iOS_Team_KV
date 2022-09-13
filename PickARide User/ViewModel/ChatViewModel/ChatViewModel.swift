@@ -13,8 +13,9 @@ class ChatViewModel{
     weak var ChatCV : ChatVC? = nil
     
     func webserviceGetChatHistoryAPI(strBookingID:String){
-
+        Utilities.showHud()
         WebServiceSubClass.GetChatHistoryApi(BookingID: strBookingID){ (status, apiMessage, response, error) in
+            Utilities.hideHud()
             self.ChatCV?.tblChat.isHidden = false
             if status{
                 self.ChatCV?.arrayChatHistory = response?.data ?? []
@@ -28,8 +29,10 @@ class ChatViewModel{
     }
     
     func webserviceDispatcherChatHistoryAPI(requestModel: DispatcherChatRequestModel){
+        Utilities.showHud()
         WebServiceSubClass.DispatcherChatHistoryApi(requestModel: requestModel) { (status, apiMessage, response, error) in
             self.ChatCV?.tblChat.isHidden = false
+            Utilities.hideHud()
             if status{
                 self.ChatCV?.arrayChatHistory = response?.data ?? []
                 self.ChatCV?.filterArrayData(isFromDidLoad: true)

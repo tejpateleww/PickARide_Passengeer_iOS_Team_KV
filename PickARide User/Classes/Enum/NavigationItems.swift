@@ -55,12 +55,13 @@ enum NavItemsRight {
     }
 }
 enum NavTitles {
-    case none, signUp, Home, forgotPassword, verify, viewProfile, editProfile, myRides, rideDetails, payment , addCard, notification, reasonForCancle, rating, CommonView, setting, addNewPlace, savedPlaces, wallet, myOffers
+    case none, signUp, Home, chatSupport, forgotPassword, verify, viewProfile, editProfile, myRides, rideDetails, payment , addCard, notification, reasonForCancle, rating, CommonView, setting, addNewPlace, savedPlaces, wallet, myOffers
     
     var value:String {
         switch self {
         case .none: return ""
         case .Home: return ""
+        case .chatSupport: return "Chat Support"
         case .signUp:
             return "NavigationTitle_SignUp".Localized()
         case .forgotPassword:

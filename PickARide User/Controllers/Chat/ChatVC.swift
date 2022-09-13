@@ -277,7 +277,9 @@ extension ChatVC{
     func setSenderProfileInfo(){
         self.navigationItem.titleView = vwNavBar
         if isFromChatSupport {
-           
+            self.navBtnProfile.setImage(UIImage(named: "ic_message"), for: .normal)
+            self.lblName.text = "Chat Support"
+            self.lblInfo.text = ""
         } else {
             let custName = isFromApi == true ? (self.objCurrentBooking?.driverInfo?.firstName)! + " " + (self.objCurrentBooking?.driverInfo?.lastName)! :
                 (self.currentBookingModel?.driverInfo?.firstName)! + " " + (self.currentBookingModel?.driverInfo?.lastName)!
