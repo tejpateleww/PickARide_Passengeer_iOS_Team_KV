@@ -82,7 +82,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func updateLocation(currentLocation: CLLocation){
-
         guard let delegate = self.delegate else {
             return
         }
@@ -91,7 +90,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func updateLocationDidFailWithError(error: Error) {
-        
         guard let delegate = self.delegate else {
             return
         }

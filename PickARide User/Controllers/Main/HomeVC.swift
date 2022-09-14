@@ -89,12 +89,13 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBarSetup()
+        startTimer(timeInterval: 5.0)
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startTimer()
+//        startTimer()
     }
     
     @objc func updateProfilePic(){
@@ -452,13 +453,14 @@ extension HomeVC{
     
     //MARK: ===== start timer for update location =======
     func stopTimer() {
+        print(#function)
         timer?.invalidate()
         timer = nil
     }
-    func startTimer() {
+    func startTimer(timeInterval: Double = 10.0) {
         stopTimer()
 //        if(timer == nil){
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
              print(timer)
             if  SocketIOManager.shared.socket.status == .connected {
                     self.emitSocketNearByDriver()
@@ -484,6 +486,7 @@ extension HomeVC{
                 self.nearByDrivers.removeAll()
             }
             //if self.selectTexiVCContainerVW.isHidden == false {
+            self.botomContentView.customAddSubview(self.taxiTypeView)
             let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
               if  arrselctTaxitype.count != 0 {
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
@@ -499,7 +502,11 @@ extension HomeVC{
 //                }
                 
                // if taxitypeVC.selectedTaxi == NSNotFound {
-                if SocketIOManager.shared.socket.status == .connected     {                    self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
+                if SocketIOManager.shared.socket.status == .connected     {
+                        if self.arrPickupPlace.count > 0 &&
+                            self.arrDestinationPlace.count > 0 {
+                                self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
+                        }
                     }
                 }
             }
@@ -882,6 +889,7 @@ extension HomeVC: UITextFieldDelegate{
         if SocketIOManager.shared.socket.status == .connected {
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
+        
         startTimer()
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
@@ -1020,6 +1028,10 @@ extension HomeVC: UITextFieldDelegate{
         SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { (json) in
             print("ATDebug :: \(#function)")
             print(json)
+            guard json.count > 0 else {
+                print("estimated fare jason not found correctly")
+                return
+            }
             let objDictJson = json[0]
             print(objDictJson)
             
@@ -1054,6 +1066,7 @@ extension HomeVC: UITextFieldDelegate{
             
              let  arrselctTaxitype  = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
             guard let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0] as? SelectTaxiTypes else {
+                    print("Taxi type not found, stil, drivers not found")
                     return
             }
             
