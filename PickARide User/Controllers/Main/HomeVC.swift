@@ -89,7 +89,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBarSetup()
-        startTimer(timeInterval: 5.0)
+        startTimerNearByDriver(timeInterval: 5.0)
     }
     
     
@@ -254,8 +254,17 @@ extension HomeVC{
     
     //MARK:- ====== On socket Accept driver request =====
     func onSocketAcceptDriverRequest(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KAcceptBookingRequest) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KAcceptBookingRequest) { [weak self] json in
+            guard let self = self else {
+                print("Oops, self not found")
+                return
+            }
             print(json)
+            guard json.count > 0 else {
+                print("\(#function) Improper json")
+                return
+            }
+            self.stopTimerNearByDriver()
             let objDictJson = json[0]
             print(objDictJson)
             
@@ -342,7 +351,16 @@ extension HomeVC{
     
     //MARK:- ====== On socket Cancell by system  =======
     func onSocketCancellBySysteem(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelBookingRequestBySystem) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelBookingRequestBySystem) { [weak self] json in
+            guard let self = self else {
+                print("oops, \(#function) self not found")
+                return
+            }
+            guard json.count > 0 else {
+                print("\(#function) improper json")
+                return
+            }
+            self.startTimerNearByDriver(timeInterval: 5.0)
             print(json)
             let objDict = json[0]
             
@@ -432,10 +450,18 @@ extension HomeVC{
     
     //MARK:- ======= Cancel Trip Socket Implementation =====
     func onSocketCancelTrip(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelTrip) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelTrip) { [weak self] json in
+            guard let self = self else {
+                print("\(#function), self not found")
+                return
+            }
+            guard json.count > 0 else {
+                print("\(#function) improper json")
+                return
+            }
+            self.startTimerNearByDriver(timeInterval: 5.0)
             print(json)
             let objDict = json[0]
-           
             Toast.show(message: objDict["message"].stringValue, state: .success)
             self.currentLocationSetup()
         }
@@ -452,13 +478,29 @@ extension HomeVC{
     }
     
     //MARK: ===== start timer for update location =======
-    func stopTimer() {
+    /* Stop timer
+       driver accepted - on socaket
+       on socket live tracking
+       on sokcet start trip
+       on socket live tracking
+     web servive current booking - if current booking is there
+     */
+    func stopTimerNearByDriver() {
         print(#function)
         timer?.invalidate()
         timer = nil
     }
-    func startTimer(timeInterval: Double = 10.0) {
-        stopTimer()
+    
+    /* Start timer
+       viewWillAppear - app starts
+       after selected destination -  CurrenDestinationRouteSetup
+       onSocketCancellBySysteem
+        onSocketCancelTrip
+        on complete trip
+        web servive current booking - if no current booking
+     */
+    func startTimerNearByDriver(timeInterval: Double = 10.0) {
+        stopTimerNearByDriver()
 //        if(timer == nil){
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
              print(timer)
@@ -540,8 +582,17 @@ extension HomeVC{
     
     //MARK:- ======= On Socket Live Tracking =====
     func OnSocketLiveTracking(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KLiveTracking) { json in
-            print(json)
+        SocketIOManager.shared.socketCall(for: socketApikeys.KLiveTracking) { [weak self] json in
+            guard let self = self else {
+                print("\(#function), self not found")
+                return
+            }
+            guard json.count > 0 else {
+                print("\(#function) improper json")
+                return
+            }
+            self.stopTimerNearByDriver()
+            
             let objdict = json[0]
             print(objdict)
             let objdriverLocation = objdict["current_location"]
@@ -615,11 +666,21 @@ extension HomeVC{
     
     //MARK:- ====== On Socket Complete Trip =====
     func OnSocketCompleteTrip(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KCompleteTrip) { json in
-              print(json)
+        SocketIOManager.shared.socketCall(for: socketApikeys.KCompleteTrip) { [weak self] json in
+            guard let self = self else {
+                print("\(#function), self not found")
+                return
+            }
+            guard json.count > 0 else {
+                print("\(#function) improper json")
+                return
+            }
+            
+             print(json)
              let objDict = json[0]
              print(objDict)
-            
+            self.startTimerNearByDriver(timeInterval: 5.0)
+
             self.presentedViewController?.dismiss(animated: true, completion: nil)
             Toast.show(message: objDict["message"].stringValue, state: .success)
 
@@ -652,13 +713,21 @@ extension HomeVC{
     
     //MARK:- === On Socket Start Trip =======
     func OnSocketStartTrip(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KStartTrip) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KStartTrip) { [weak self] json in
+            guard let self = self else {
+                print("\(#function), self not found")
+                return
+            }
+            guard json.count > 0 else {
+                print("\(#function) improper json")
+                return
+            }
+            self.stopTimerNearByDriver()
             print(json)
             let objDict = json[0]
             print(objDict)
             let obj = RootBookingRequestAccept(fromJson: objDict)
             print(obj)
-
             self.StartRideSetup(obj: obj)
         }
     }
@@ -890,7 +959,7 @@ extension HomeVC: UITextFieldDelegate{
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         
-        startTimer()
+        startTimerNearByDriver()
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
         let markerView = MarkerView()
@@ -1065,7 +1134,8 @@ extension HomeVC: UITextFieldDelegate{
             if self.containerTopView.isHidden == false {
             
              let  arrselctTaxitype  = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
-            guard let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0] as? SelectTaxiTypes else {
+                guard arrselctTaxitype.count > 0,
+                       let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0] as? SelectTaxiTypes else {
                     print("Taxi type not found, stil, drivers not found")
                     return
             }
@@ -1165,23 +1235,29 @@ extension HomeVC: UITextFieldDelegate{
     //MARK:- ====== Current Booking =======
     func WebserviceCallCurrentBooking(){
         
-        WebServiceSubClass.CurrentBookingHistory(CustomerId: Singleton.sharedInstance.UserId) { status, msg, response, error in
+        WebServiceSubClass.CurrentBookingHistory(CustomerId: Singleton.sharedInstance.UserId) { [weak self] status, msg, response, error in
+            guard let self = self else {
+                print("\(#function) self not found")
+                return
+            }
 
             if status {
                 print(response ?? Data())
-            
                 if response?.data != nil {
-                   
                     let obj = response?.data
                     if obj?.pickupTime != nil && obj?.pickupTime != "" {
-                        
+                        self.stopTimerNearByDriver()
                         self.WebserviceStartRideSetup(obj: response!)
                     }
                      else if obj?.arrivedTime != nil && obj?.arrivedTime != "" {
+                         self.stopTimerNearByDriver()
                         self.WebserviceArrivedDriverSetup(obj: response!)
                     }
                     else if obj?.acceptTime != nil && obj?.acceptTime != ""{
+                        self.stopTimerNearByDriver()
                         self.WebServiceDriverRequestAccept(obj: response!)
+                    }else {
+                        self.startTimerNearByDriver(timeInterval: 5.0)
                     }
                 }
             }
@@ -1190,7 +1266,7 @@ extension HomeVC: UITextFieldDelegate{
     
     //MARK:- ===== Current locationSetup =====
     func currentLocationSetup(){
-        startTimer()
+        startTimerNearByDriver()
         isFirstTimeLoadView = true
         self.mapVw.clear()
         CurrentPlaceMarker = nil

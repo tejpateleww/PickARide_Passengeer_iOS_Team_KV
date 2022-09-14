@@ -222,7 +222,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                     Utilities.showHud()
                     WebServiceSubClass.LogoutApi { (status, apimessage, error) in
                         Utilities.hideHud()
-                        homeVC?.stopTimer()
+                        homeVC?.stopTimerNearByDriver()
                         userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
                         appDel.navigateToLogin()
                     }
