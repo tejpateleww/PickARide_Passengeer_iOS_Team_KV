@@ -959,9 +959,12 @@ extension HomeVC: UITextFieldDelegate{
         self.navigationBarSetup()
         
         self.SelectedLocationString = (pickup.location,dropoff.location)
+        
+        
+        // On writing below line, it will open container view - //Arpit
+        self.botomContentView.customAddSubview(self.taxiTypeView)
         if SocketIOManager.shared.socket.status == .connected {
-            // On writing below line, it will open container view - //Arpit
-            self.botomContentView.customAddSubview(self.taxiTypeView)
+           
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         

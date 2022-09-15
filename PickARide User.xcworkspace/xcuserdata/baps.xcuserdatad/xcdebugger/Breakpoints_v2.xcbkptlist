@@ -30,8 +30,8 @@
             filePath = "PickARide User/Controllers/Main/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1040"
-            endingLineNumber = "1040"
+            startingLineNumber = "1043"
+            endingLineNumber = "1043"
             landmarkName = "mapView(_:didTap:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "PickARide User/Controllers/Main/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1078"
-            endingLineNumber = "1078"
+            startingLineNumber = "1081"
+            endingLineNumber = "1081"
             landmarkName = "openLocationSelection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,8 +218,8 @@
             filePath = "PickARide User/Controllers/Main/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1205"
-            endingLineNumber = "1205"
+            startingLineNumber = "1208"
+            endingLineNumber = "1208"
             landmarkName = "onSocketGetEstimateFare()"
             landmarkType = "7">
          </BreakpointContent>
