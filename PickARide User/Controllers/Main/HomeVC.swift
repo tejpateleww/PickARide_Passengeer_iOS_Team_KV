@@ -134,6 +134,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
         self.setLocalization()
         self.navigationBarSetup()
         containerTopView.isHidden = true
+        print("#BottomContentSubView - \(#function) - Remove all")
         botomContentView.removeAllSubviews()
         conBottomOfContainerView.constant = 0
         self.bottomVWWhereAreYouGoing.isHidden = false
@@ -184,7 +185,6 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func btnCancel(_ sender: Any) {
         if self.containerTopView.isHidden == false {
-        
          let arrSubView : [UIView] = self.botomContentView.subviews.compactMap({$0})
             if arrSubView.count != 0 {
                 switch arrSubView[0] {
@@ -193,16 +193,15 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
                            return
                      }
                      taxitypeVC.removeSelection()
-                     
                 default:
                     break
                 }
+                print("\(#function) BottomContentSubViews - Remove all")
                 self.botomContentView.removeAllSubviews()
                 self.containerTopView.isHidden = true
                 self.bottomVWWhereAreYouGoing.isHidden = false
                 self.currentLocationSetup()
             }
-         
       }
     }
     
@@ -369,6 +368,7 @@ extension HomeVC{
                 
                 self.isFirstTimeLoadView = true
                 self.mapVw.clear()
+                
                 self.getFirstView()
 //                self.bottomVWWhereAreYouGoing.isHidden = false
 //                self.selectTexiVCContainerVW.isHidden = true
@@ -502,8 +502,9 @@ extension HomeVC{
     func startTimerNearByDriver(timeInterval: Double = 10.0) {
         stopTimerNearByDriver()
 //        if(timer == nil){
+        print(#function)
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
-             print(timer)
+             print("timer")
             if  SocketIOManager.shared.socket.status == .connected {
                     self.emitSocketNearByDriver()
                 print("lat \(Singleton.sharedInstance.latitute) , long : \(Singleton.sharedInstance.longtitute)")
@@ -515,9 +516,10 @@ extension HomeVC{
     //MARK:- ========= On Socket Call Near By Driver ======
     func onSocketNearByDriver(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KNearByDriver) { json in
-            print("ATDebug :: \(#function) \n \(json)" )
+//            print("ATDebug :: \(#function) \n \(json)" )
           
             let objDict = json[0]
+            //1. Filling near by drivers
             let objDriver = RootNearByDrivers(fromJson: objDict)
             print(objDriver.drivers.count)
             if objDriver.drivers.count != 0 {
@@ -527,12 +529,11 @@ extension HomeVC{
             else {
                 self.nearByDrivers.removeAll()
             }
-            //if self.selectTexiVCContainerVW.isHidden == false {
-            self.botomContentView.customAddSubview(self.taxiTypeView)
+            //2. If taxi types are found then emit estimated fare socket
             let arrselctTaxitype = self.botomContentView.subviews.compactMap{ $0 as? SelectTaxiTypes }
               if  arrselctTaxitype.count != 0 {
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
-                print(NavVc.children[0].children)
+//                print(NavVc.children[0].children)
                 guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
                     return
                 }
@@ -550,7 +551,9 @@ extension HomeVC{
                                 self.emitSocketEstimateFare(PickupLat:self.arrPickupPlace[0].lat, PickupLng:self.arrPickupPlace[0].lng, DropOfLat: self.arrDestinationPlace[0].lat, DropOfLng:self.arrDestinationPlace[0].lng, CityName: self.arrDestinationPlace[0].cityName)
                         }
                     }
-                }
+              } else {
+                  print("\(#function) - #BottomContentSubView - Select taxi types not found")
+              }
             }
          }
     
@@ -594,7 +597,7 @@ extension HomeVC{
             self.stopTimerNearByDriver()
             
             let objdict = json[0]
-            print(objdict)
+//            print(objdict)
             let objdriverLocation = objdict["current_location"]
             let lat = objdriverLocation[1].rawValue as! Double
             let lng = objdriverLocation[0].rawValue as! Double
@@ -936,6 +939,7 @@ extension HomeVC: UITextFieldDelegate{
     
     //MARK:- ===== Current destination Route =====
     func CurrenDestinationRouteSetup(pickup:placePickerData,dropoff:placePickerData){
+        print(#function)
         self.arrPickupPlace.removeAll()
         self.arrDestinationPlace.removeAll()
         self.arrPickupPlace.append(pickup)
@@ -956,6 +960,8 @@ extension HomeVC: UITextFieldDelegate{
         
         self.SelectedLocationString = (pickup.location,dropoff.location)
         if SocketIOManager.shared.socket.status == .connected {
+            // On writing below line, it will open container view - //Arpit
+            self.botomContentView.customAddSubview(self.taxiTypeView)
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         
@@ -1095,31 +1101,29 @@ extension HomeVC: UITextFieldDelegate{
     //MARK:- ===== On Socket Estimate Fare =====
     func onSocketGetEstimateFare(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { (json) in
-            print("ATDebug :: \(#function)")
+//            print("ATDebug :: \(#function)")
             print(json)
             guard json.count > 0 else {
                 print("estimated fare jason not found correctly")
                 return
             }
             let objDictJson = json[0]
-            print(objDictJson)
-            
+//            print(objDictJson)
+//
             let objjson = RootDrivers(fromJson: objDictJson)
-            
+            //1. Showing views
             DispatchQueue.main.async {
                 self.btnCancel.isHidden = false
                 self.btnShare.isHidden = true
                // self.selectTexiVCContainerVW.isHidden = false
                 self.containerTopView.isHidden = false
                 self.bottomVWWhereAreYouGoing.isHidden = true
-                self.botomContentView.customAddSubview(self.taxiTypeView)
-                
             }
             print(objjson)
-            print((appDel.window?.rootViewController as! UINavigationController).children)
-            print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
+//            print((appDel.window?.rootViewController as! UINavigationController).children)
+//            print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
             guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
-            print(NavVc.children[0].children)
+//            print(NavVc.children[0].children)
             guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
                 return
             }
@@ -1166,7 +1170,7 @@ extension HomeVC: UITextFieldDelegate{
                 
                 let taxitypes = self.nearByDrivers.map{$0.vehicleTypeId}
                
-                print(taxitypes.compactMap{$0})
+//                print(taxitypes.compactMap{$0})
         
                 for obj in taxitypes {
                     for j in obj!{
@@ -1227,7 +1231,7 @@ extension HomeVC: UITextFieldDelegate{
                 }
                // taxitypeVC.taxiData = objjson.estimateFare
             }
-           // taxitypeVC.tblSuggestedRides.reloadData()
+            taxitypeVC.tblSuggestedRides.reloadData()
          }
         }
     }

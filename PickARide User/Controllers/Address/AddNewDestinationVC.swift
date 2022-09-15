@@ -99,16 +99,19 @@ extension AddNewDestinationVC{
 
                if let place = place {
                    print("Place name \(place.name)")
-                   print("Place address \(place.formattedAddress!)")
-                   print("Place placeID \(place.placeID)")
-                   print("Place attributions \(place.attributions)")
-                   print("\(place.coordinate.latitude)")
-                   print("\(place.coordinate.longitude)")
+//                   print("Place address \(place.formattedAddress!)")
+//                   print("Place placeID \(place.placeID)")
+//                   print("Place attributions \(place.attributions)")
+//                   print("\(place.coordinate.latitude)")
+//                   print("\(place.coordinate.longitude)")
                    let cityName = place.addressComponents?.first(where: { $0.type == "locality" })?.name ?? ""
-
-                self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude, cityName: cityName))
-                self.tblPlacePicker.reloadData()
-                
+                   // Need to put in code in dsiaptch queu
+                   DispatchQueue.main.async {
+                       self.tableData.removeAll()
+                       self.tableData.append(placePickerData(PlaceName: place.name ?? "", Location: place.formattedAddress ?? "", primary:PlaceObj.attributedPrimaryText.string , secondary: PlaceObj.attributedSecondaryText?.string ?? "", Lat: place.coordinate.latitude, Lng: place.coordinate.longitude, cityName: cityName))
+                       self.tblPlacePicker.reloadData()
+                   }
+                 
                } else {
                    print("No place details for \(pPlaceID)")
                }
@@ -168,7 +171,6 @@ extension  AddNewDestinationVC: GMSAutocompleteFetcherDelegate{
     func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         print("Prediction count: \(predictions.count)")
         if predictions.count > 0 {
-            tableData.removeAll()
             for prediction in predictions {
                 GetPlaceDataByPlaceID(PlaceObj: prediction, pPlaceID: prediction.placeID)
             }

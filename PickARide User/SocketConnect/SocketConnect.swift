@@ -53,26 +53,29 @@ extension HomeVC {
         // ----------------------------------------------------
         /// Socket On All
         func SocketOnMethods() {
-            
+            Utilities.showHud()
             //        if !SocketIOManager.shared.isSocketOn {
             SocketIOManager.shared.socket.on(clientEvent: .disconnect) { (data, ack) in
                 print ("socket is disconnected please reconnect")
                 // SwiftMessages.hideAll()
                 SocketIOManager.shared.isSocketOn = false
+                Utilities.hideHud()
             }
             
             SocketIOManager.shared.socket.on(clientEvent: .reconnect) { (data, ack) in
                 print ("socket is reconnected")
                 SocketIOManager.shared.isSocketOn = true
+                Utilities.hideHud()
+
                 
             }
             
             SocketIOManager.shared.socket.on(clientEvent: .connect) { (data, ack) in
                 print ("socket connected")
                 SocketIOManager.shared.isSocketOn = true
-                self.emitSocket_UserConnect()
+                // hiding loading hud in on socket connected method
                 self.onSocketConnectUser()
-
+                self.emitSocket_UserConnect()
             }
             //Connect User On Socket
             SocketIOManager.shared.establishConnection()
@@ -92,7 +95,7 @@ extension HomeVC {
         // Socket On Connect User
         func onSocketConnectUser() {
             SocketIOManager.shared.socketCall(for: socketApikeys.KConnectCustomer) { (json) in
-                
+                Utilities.hideHud()
                 print(json)
                 self.allSocketOffMethod()
                 self.onSocketGetEstimateFare()
