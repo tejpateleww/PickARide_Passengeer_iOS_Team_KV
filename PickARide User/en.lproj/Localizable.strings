@@ -179,7 +179,6 @@
 "ProfileVC_textFieldPhoneNumber" = "Phone";
 "ProfileVC_lblPassword" = "PASSWORD";
 "ProfileVC_textFieldPassword" = "xxxxxxxx";
-
 //SettingsVC_
 "SettingsVC_lblTitle" = "Settings";
 "SettingsVC_Favourites" = "Favourites";

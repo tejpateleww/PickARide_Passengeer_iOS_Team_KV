@@ -2570,7 +2570,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbP-kD-Wxj" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66J-D3-YJZ">
                                                         <rect key="frame" x="0.0" y="20" width="375" height="70"/>
@@ -2649,7 +2649,7 @@
                                                             <constraint firstAttribute="height" constant="70" id="ia4-jm-yw3"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMQ-7p-313">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMQ-7p-313" userLabel="View - Name">
                                                         <rect key="frame" x="0.0" y="110" width="375" height="70"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oez-0Z-zx2">
@@ -2757,7 +2757,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="Oez-0Z-zx2" secondAttribute="trailing" constant="16" id="z60-OG-eh9"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-nM-xs1">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-nM-xs1" userLabel="View - Email">
                                                         <rect key="frame" x="0.0" y="196" width="375" height="70"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="uWy-F3-lBh">
@@ -2818,8 +2818,69 @@
                                                             <constraint firstItem="uWy-F3-lBh" firstAttribute="top" secondItem="Pc4-nM-xs1" secondAttribute="top" id="yI0-VU-aSV"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qT8-vf-rma">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rD2-9J-Mpz" userLabel="View - City">
                                                         <rect key="frame" x="0.0" y="282" width="375" height="70"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HnY-NT-VZM">
+                                                                <rect key="frame" x="16" y="0.0" width="343" height="70"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-Db-56V" customClass="ProfileLabel" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="17"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="17" id="Ofo-eW-vPN"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isProfileLabel" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-Ul-GXq" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="23" width="343" height="47"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CITY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ws-pu-hYP" customClass="ProfileTextField" customModule="PickARide_User" customModuleProvider="target">
+                                                                                <rect key="frame" x="16" y="12" width="311" height="23"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ImgRightArrow"/>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="OOL-4n-Wig" id="1SZ-sX-NND"/>
+                                                                                </connections>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="tintColor" name="ThemeColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="9Ws-pu-hYP" firstAttribute="top" secondItem="EZr-Ul-GXq" secondAttribute="top" constant="12" id="BCS-d0-kLW"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="9Ws-pu-hYP" secondAttribute="trailing" constant="16" id="bfl-JO-QRz"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="9Ws-pu-hYP" secondAttribute="bottom" constant="12" id="kfL-Mr-atN"/>
+                                                                            <constraint firstItem="9Ws-pu-hYP" firstAttribute="leading" secondItem="EZr-Ul-GXq" secondAttribute="leading" constant="16" id="xRF-5s-Gyk"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isViewRadius" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="EZr-Ul-GXq" firstAttribute="leading" secondItem="HnY-NT-VZM" secondAttribute="leading" id="070-wX-HeQ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="EZr-Ul-GXq" secondAttribute="trailing" id="xO8-mK-Igl"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="HnY-NT-VZM" secondAttribute="trailing" constant="16" id="40I-Fj-mf6"/>
+                                                            <constraint firstAttribute="bottom" secondItem="HnY-NT-VZM" secondAttribute="bottom" id="VQq-7T-oNG"/>
+                                                            <constraint firstItem="HnY-NT-VZM" firstAttribute="top" secondItem="rD2-9J-Mpz" secondAttribute="top" id="Zzn-jX-RP2"/>
+                                                            <constraint firstItem="HnY-NT-VZM" firstAttribute="leading" secondItem="rD2-9J-Mpz" secondAttribute="leading" constant="16" id="bYN-6S-WyD"/>
+                                                            <constraint firstAttribute="height" constant="70" id="iYn-LW-eiW"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qT8-vf-rma">
+                                                        <rect key="frame" x="0.0" y="368" width="375" height="70"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Cob-5s-Siz">
                                                                 <rect key="frame" x="16" y="0.0" width="343" height="70"/>
@@ -2842,7 +2903,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef6-cA-189" customClass="viewBorder" customModule="PickARide_User" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="47"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="eFe-Y5-rjw">
+                                                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_DownReg" translatesAutoresizingMaskIntoConstraints="NO" id="eFe-Y5-rjw">
                                                                                         <rect key="frame" x="69" y="16" width="15" height="15"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="15" id="tSC-aE-my6"/>
@@ -2922,7 +2983,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4U-nX-UJ9">
-                                                        <rect key="frame" x="16" y="368" width="343" height="70"/>
+                                                        <rect key="frame" x="16" y="454" width="343" height="70"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fQw-7h-Qdt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
@@ -3002,13 +3063,16 @@
                                                     <constraint firstItem="TMQ-7p-313" firstAttribute="leading" secondItem="nbP-kD-Wxj" secondAttribute="leading" id="ClZ-EB-PAl"/>
                                                     <constraint firstItem="B4U-nX-UJ9" firstAttribute="leading" secondItem="nbP-kD-Wxj" secondAttribute="leading" constant="16" id="EmE-qm-qpj"/>
                                                     <constraint firstItem="66J-D3-YJZ" firstAttribute="leading" secondItem="nbP-kD-Wxj" secondAttribute="leading" id="IwX-S8-EBO"/>
+                                                    <constraint firstItem="rD2-9J-Mpz" firstAttribute="leading" secondItem="nbP-kD-Wxj" secondAttribute="leading" id="LlM-iu-Qct"/>
                                                     <constraint firstAttribute="trailing" secondItem="TMQ-7p-313" secondAttribute="trailing" id="OgW-PF-jn4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rD2-9J-Mpz" secondAttribute="trailing" id="QyQ-SI-lcn"/>
                                                     <constraint firstAttribute="trailing" secondItem="qT8-vf-rma" secondAttribute="trailing" id="U6I-F5-HGJ"/>
                                                     <constraint firstItem="66J-D3-YJZ" firstAttribute="top" secondItem="nbP-kD-Wxj" secondAttribute="top" constant="20" id="YyX-d4-763"/>
-                                                    <constraint firstItem="qT8-vf-rma" firstAttribute="top" secondItem="Pc4-nM-xs1" secondAttribute="bottom" constant="16" id="ibu-7c-W3K"/>
+                                                    <constraint firstItem="qT8-vf-rma" firstAttribute="top" secondItem="rD2-9J-Mpz" secondAttribute="bottom" constant="16" id="oHi-zx-5Pt"/>
                                                     <constraint firstItem="TMQ-7p-313" firstAttribute="top" secondItem="66J-D3-YJZ" secondAttribute="bottom" constant="20" id="qUH-Ec-uos"/>
                                                     <constraint firstItem="B4U-nX-UJ9" firstAttribute="top" secondItem="qT8-vf-rma" secondAttribute="bottom" constant="16" id="x6d-Y4-jvx"/>
                                                     <constraint firstAttribute="trailing" secondItem="B4U-nX-UJ9" secondAttribute="trailing" constant="16" id="x8A-bi-H5A"/>
+                                                    <constraint firstItem="rD2-9J-Mpz" firstAttribute="top" secondItem="Pc4-nM-xs1" secondAttribute="bottom" constant="16" id="xGB-gx-eeR"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -3048,12 +3112,14 @@
                         <outlet property="btnProfile" destination="BC3-P2-EV3" id="MQw-gh-Gfq"/>
                         <outlet property="btnSave" destination="oYt-61-zhj" id="RhB-Ms-tkR"/>
                         <outlet property="imgProfile" destination="zOc-OD-Ilz" id="CzL-a6-3rg"/>
+                        <outlet property="lblCity" destination="g2h-Db-56V" id="QfX-mz-WbO"/>
                         <outlet property="lblEmail" destination="WPl-o5-O8l" id="s8m-T4-Ajd"/>
                         <outlet property="lblFirstName" destination="BTd-98-Yiv" id="2hY-eq-CMD"/>
                         <outlet property="lblLastName" destination="arZ-wr-uC3" id="1w8-ws-FFf"/>
                         <outlet property="lblPassword" destination="bmR-Ba-RCm" id="lli-al-4vW"/>
                         <outlet property="lblPhoneNumber" destination="WCt-NV-bc3" id="8Xb-Tl-BWL"/>
                         <outlet property="lblTitle" destination="vEV-fB-6Jd" id="UJR-ur-726"/>
+                        <outlet property="txtCity" destination="9Ws-pu-hYP" id="9pI-2Z-iJn"/>
                         <outlet property="txtCountryCode" destination="DGo-a4-WhU" id="76x-Gx-4HU"/>
                         <outlet property="txtEmail" destination="rfb-7i-82d" id="fA1-AG-Pc4"/>
                         <outlet property="txtFirstName" destination="12o-D4-097" id="Xth-2p-f3r"/>
@@ -3063,7 +3129,6 @@
                         <outletCollection property="textFieldCollection" destination="12o-D4-097" collectionClass="NSMutableArray" id="hpT-21-21s"/>
                         <outletCollection property="textFieldCollection" destination="i6S-oW-qcD" collectionClass="NSMutableArray" id="sgE-sc-Oek"/>
                         <outletCollection property="textFieldCollection" destination="rfb-7i-82d" collectionClass="NSMutableArray" id="Myc-hJ-Tfj"/>
-                        <outletCollection property="textFieldCollection" destination="BAh-QV-2e0" collectionClass="NSMutableArray" id="2d5-qj-hl9"/>
                         <outletCollection property="textFieldCollection" destination="vMR-Rb-X2W" collectionClass="NSMutableArray" id="YPf-TB-hDm"/>
                         <outletCollection property="textFieldCollection" destination="DGo-a4-WhU" collectionClass="NSMutableArray" id="RcO-Rw-T13"/>
                     </connections>
@@ -8503,7 +8568,7 @@
         <image name="imgDollar" width="8" height="14"/>
         <image name="imgDots" width="2" height="26"/>
         <image name="imgGreen" width="12" height="12"/>
-        <image name="imgHome" width="14" height="16"/>
+        <image name="imgHome" width="23" height="19.5"/>
         <image name="imgMap" width="312" height="123"/>
         <image name="imgRight" width="8" height="14"/>
         <image name="user_placeholder" width="341" height="341"/>

@@ -30,6 +30,8 @@ class ProfileVC: BaseViewController {
     @IBOutlet var textFieldCollection: [ProfileTextField]!
     @IBOutlet weak var btnPasword: UIButton!
     @IBOutlet weak var txtCountryCode: ProfileTextField!
+    @IBOutlet weak var lblCity: ProfileLabel!
+    @IBOutlet weak var txtCity: ProfileTextField!
     
     //MARK:- ===== Variables ======
     var currentEditStatus = false
@@ -129,10 +131,22 @@ extension ProfileVC{
         
         self.txtCountryCode.inputAccessoryView = toolBar
         if Singleton.sharedInstance.CountryList.count == 0{
-            WebServiceSubClass.GetCountryList {_, _, _, _ in}
+            WebServiceSubClass.GetCountryList { [weak self] _, _, _, _ in
+                guard let self = self else {
+                    return
+                }
+                self.showCountryCode()
+            }
         }else{
-            self.txtCountryCode.text = Singleton.sharedInstance.CountryList[selectedIndexOfPicker].countryCode
+           showCountryCode()
         }
+    }
+    
+    func showCountryCode() {
+        let countryId = Singleton.sharedInstance.UserProfilData?.countryID ?? ""
+        self.txtCountryCode.text = (Singleton.sharedInstance.CountryList.first(where: {
+            $0.id == countryId
+        })?.countryCode) ?? ""
     }
     
     @objc func makeEditableTrue(_ sender: UIButton) {
@@ -153,6 +167,10 @@ extension ProfileVC{
         }
         
         self.txtEmail.isEnabled = false
+        self.txtCity.isEnabled = false
+        self.txtCountryCode.isEnabled = false
+        self.txtPhone.isEnabled = false
+        
         self.btnPasword.isUserInteractionEnabled = sender.isSelected
         self.btnProfile.isUserInteractionEnabled = sender.isSelected
         self.btnCamera.isHidden = !sender.isSelected
@@ -168,6 +186,8 @@ extension ProfileVC{
         txtLastName.placeholder = "ProfileVC_textFieldLastName".Localized()
         lblEmail.text = "ProfileVC_lblEmail".Localized()
         txtEmail.placeholder = "ProfileVC_textFieldEmail".Localized()
+        lblCity.text = "SignUpPage_lblCityName".Localized()
+        txtCity.placeholder = "ProfileVC_textFieldEmail".Localized()
         lblPhoneNumber.text = "SignUpPage_lblCountryCode".Localized()
         txtPhone.placeholder = "ProfileVC_textFieldPhoneNumber".Localized()
         lblPassword.text = "ProfileVC_lblPassword".Localized()
@@ -190,7 +210,8 @@ extension ProfileVC{
         self.txtFirstName.text = authUser?.firstName?.capitalized
         self.txtLastName.text = authUser?.lastName?.capitalized
         self.txtEmail.text = authUser?.email ?? ""
-        self.txtCountryCode.text = authUser?.countryCode ?? DefaultCouuntryCode
+        self.txtCity.text = authUser?.cityName ?? ""
+//        self.txtCountryCode.text = authUser?.countryCode ?? DefaultCouuntryCode
         self.txtPhone.text = authUser?.mobileNo ?? ""
         self.imgProfile.loadSDImage(imgUrl: authUser?.profileImage ?? "")
     }
