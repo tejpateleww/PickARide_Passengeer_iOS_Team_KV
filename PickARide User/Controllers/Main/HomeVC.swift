@@ -960,11 +960,10 @@ extension HomeVC: UITextFieldDelegate{
         
         self.SelectedLocationString = (pickup.location,dropoff.location)
         
-        
         // On writing below line, it will open container view - //Arpit
         self.botomContentView.customAddSubview(self.taxiTypeView)
         if SocketIOManager.shared.socket.status == .connected {
-           
+           print("Estiamted fare pop up first time")
             self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng, CityName: dropoff.cityName )
         }
         
@@ -1105,7 +1104,8 @@ extension HomeVC: UITextFieldDelegate{
     func onSocketGetEstimateFare(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { (json) in
 //            print("ATDebug :: \(#function)")
-            print(json)
+            print("Estimated fare pop up socket on call")
+            //print(json)
             guard json.count > 0 else {
                 print("estimated fare jason not found correctly")
                 return
@@ -1115,13 +1115,13 @@ extension HomeVC: UITextFieldDelegate{
 //
             let objjson = RootDrivers(fromJson: objDictJson)
             //1. Showing views
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.btnCancel.isHidden = false
                 self.btnShare.isHidden = true
                // self.selectTexiVCContainerVW.isHidden = false
                 self.containerTopView.isHidden = false
                 self.bottomVWWhereAreYouGoing.isHidden = true
-            }
+//            }
             print(objjson)
 //            print((appDel.window?.rootViewController as! UINavigationController).children)
 //            print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
@@ -1211,7 +1211,6 @@ extension HomeVC: UITextFieldDelegate{
             }
             
             else {
-                
                 self.arrTaxiTypes.removeAll()
                 self.arrTaxiData.removeAll()
                 self.nearByDrivers.removeAll()
@@ -1235,7 +1234,9 @@ extension HomeVC: UITextFieldDelegate{
                // taxitypeVC.taxiData = objjson.estimateFare
             }
             taxitypeVC.tblSuggestedRides.reloadData()
-         }
+            }else {
+                print("top view is still hidden")
+            }
         }
     }
     
