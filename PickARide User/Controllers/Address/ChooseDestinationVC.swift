@@ -416,16 +416,22 @@ extension ChooseDestinationVC : CLLocationManagerDelegate {
             if (error != nil){
                 print("error in reverseGeocode")
             }
-            let placemark = placemarks! as [CLPlacemark]
-            if placemark.count>0{
-                let placemark = placemarks![0]
-                let city = placemark.locality ?? ""
-                print(placemark.locality!)
-                print(placemark.administrativeArea!)
-                print(placemark.country!)
+            guard let placemarks = placemarks as? [CLPlacemark] else {
+                print("Placemark not found")
+                return
+            }
+            if placemarks.count>0{
+                guard let myPlacemark = placemarks[0] as? CLPlacemark else {
+                    print("Placemark is added")
+                    return
+                }
+                let city = myPlacemark.locality ?? ""
+//                print(placemark.locality ?? "")
+//                print(placemark.administrativeArea ?? "")
+//                print(placemark.country!)
                
                 if self.textFieldStartLocation.text == "" {
-                    self.textFieldStartLocation.text = "\(placemark.name ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.subThoroughfare ?? ""), \(placemark.subLocality ?? ""), \(placemark.locality ?? ""), \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
+                    self.textFieldStartLocation.text = "\(myPlacemark.name ?? ""), \(myPlacemark.thoroughfare ?? ""), \(myPlacemark.subThoroughfare ?? ""), \(myPlacemark.subLocality ?? ""), \(myPlacemark.locality ?? ""), \(myPlacemark.postalCode ?? ""), \(myPlacemark.country ?? "")"
                     self.arrPickupPlace.removeAll()
                     self.arrPickupPlace.append(placePickerData(PlaceName: self.textFieldStartLocation.text ??
                                             "", Location: self.textFieldStartLocation.text ??

@@ -25,7 +25,8 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
     @IBOutlet weak var topVW: UIView!
     @IBOutlet weak var suggestedTexiView: suggestedTaxiView!
     @IBOutlet weak var suggestedVWBottomConstraint: NSLayoutConstraint!
-    
+    let heightCell: CGFloat = 100.0
+
     
     //MARK:- ===== Variables ==========
     var availableTaxi = [EstimateFare]()
@@ -41,13 +42,14 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
             suggestedVWBottomConstraint.constant = isExpandCategory ? 0 : (-suggestedTexiView.frame.height + topVW.frame.height + 60)
             self.tblSuggestedRides.isHidden = !isExpandCategory
           //  self.view.endEditing(true)
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.heightOfView = self.isExpandCategory ? self.suggestedTexiView.frame.height + 40 : (self.suggestedTexiView.frame.height + 40 + self.suggestedVWBottomConstraint.constant)
- 
+                
+                print("heightOfView: \(self.heightOfView), isExpandCategory \(self.isExpandCategory)")
                 if let height = self.heightGet {
                     height(self.heightOfView, self.isExpandCategory)
                 }
-            }
+//            }
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 //self.view.layoutIfNeeded()
             }) { (success) in
@@ -261,16 +263,17 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
             }
         }
     
-        tblSuggestedRides.rowHeight = UITableView.automaticDimension
-        tblSuggestedRides.estimatedRowHeight = 200
+//        tblSuggestedRides.rowHeight = UITableView.automaticDimension
+//        tblSuggestedRides.estimatedRowHeight = 200
 
         tblSuggestedRides.reloadData()
         tblSuggestedRides.layoutIfNeeded()
         DispatchQueue.main.async { [self] in
+            let tableHeight = heightCell * CGFloat(taxiData.count)
             if taxiData.count > 2 {
-                tblSuggestedRidesHeight.constant = (tblSuggestedRides.contentSize.height / CGFloat(taxiData.count)) * 2
+                tblSuggestedRidesHeight.constant = heightCell * 2
             } else {
-                tblSuggestedRidesHeight.constant = tblSuggestedRides.contentSize.height
+                tblSuggestedRidesHeight.constant = tableHeight
             }
         }
         isExpandCategory =  isExpand
@@ -367,7 +370,7 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
          return NoDatacell
      }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if taxiData.count != 0 {
             
@@ -406,6 +409,6 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return taxiData.count != 0 ? 100 : tblSuggestedRides.frame.height
+        return taxiData.count != 0 ? heightCell : tblSuggestedRides.frame.height
     }
 }

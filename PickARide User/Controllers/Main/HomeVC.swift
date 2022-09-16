@@ -1122,7 +1122,7 @@ extension HomeVC: UITextFieldDelegate{
                 self.containerTopView.isHidden = false
                 self.bottomVWWhereAreYouGoing.isHidden = true
 //            }
-            print(objjson)
+//            print(objjson)
 //            print((appDel.window?.rootViewController as! UINavigationController).children)
 //            print((appDel.window?.rootViewController as! UINavigationController).children[0].children)
             guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
