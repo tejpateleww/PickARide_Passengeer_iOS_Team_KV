@@ -78,13 +78,15 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tripCode = nil
-         getFirstView()
-         self.mapVw.settings.consumesGesturesInView = false
-         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panHandler(_:)))
-         self.mapVw.addGestureRecognizer(panGesture)
-         socketManageSetup()
-         self.addObserver()
-         WebserviceCallCurrentBooking()
+        getFirstView()
+        moveMent = ARCarMovement()
+        moveMent?.delegate = self
+        self.mapVw.settings.consumesGesturesInView = false
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panHandler(_:)))
+        self.mapVw.addGestureRecognizer(panGesture)
+        socketManageSetup()
+        self.addObserver()
+        WebserviceCallCurrentBooking()
     }
     
     deinit {
@@ -352,6 +354,22 @@ extension HomeVC{
 //        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
 //            return
 //        }
+            self.Driverplacemarker = GMSMarker()
+            self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0)
+            self.Driverplacemarker.icon =  UIImage(named: "car")
+            self.Driverplacemarker.map = self.mapVw
+            
+        
+            let currentMarker = GMSMarker()
+            currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0)
+            let CurrentmarkerView = MarkerView()
+                CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
+            CurrentmarkerView.layoutSubviews()
+            currentMarker.iconView = CurrentmarkerView
+            currentMarker.map = self.mapVw
+            
+            self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0), to: CLLocationCoordinate2D(latitude: Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0))
+            
             driverInfoVC.objCurrentBooking = obj.data
             driverInfoVC.setUpUI(isFromArrived: false, isFromApi: true)
             driverInfoVC.heightGet = { [unowned self] (height , isExpand) in
@@ -618,8 +636,7 @@ extension HomeVC{
             
             if self.isFirtLocation == true || self.isStartTrip == true{
                 self.updateMarker(lat: lat, lng: lng)
-            }
-            else if self.isFirtLocation == false{
+            }else if self.isFirtLocation == false{
                 self.isFirtLocation = true
                 self.mapVw.clear()
                 
@@ -662,22 +679,22 @@ extension HomeVC{
     func updateMarker(lat:Double , lng : Double){
         DispatchQueue.main.async {
             
-            if(self.oldCoordinate == nil){
-                self.oldCoordinate = CLLocationCoordinate2DMake(lat, lng)
-            }
-            if(self.Driverplacemarker == nil){
-                self.Driverplacemarker = GMSMarker(position: self.oldCoordinate)
-                self.Driverplacemarker?.icon = UIImage(named: "car")
-                self.Driverplacemarker?.map = self.mapVw
-            }
-            let newCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(lat), CLLocationDegrees(lng))
-            self.moveMent?.arCarMovement(marker: self.Driverplacemarker!, oldCoordinate: self.oldCoordinate, newCoordinate: newCoordinate, mapView: self.mapVw, bearing: Float(0))
-            self.oldCoordinate = newCoordinate
+            let newCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: lat) ?? 0.00, longitude:CLLocationDegrees(exactly: lng) ?? 0.00)
             
-            if self.isCameraAnimation == true {
-                let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 17)
-                self.mapVw.animate(to: camera)
+            guard let destinationMarker = self.Driverplacemarker  else {
+                return
             }
+            if self.oldCoordinate != nil {
+                CATransaction.begin()
+                CATransaction.setValue(4, forKey: kCATransactionAnimationDuration)
+            }
+            let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 17)
+            self.mapVw.animate(to: camera)
+            self.moveMent?.arCarMovement(marker: destinationMarker, oldCoordinate: self.oldCoordinate ?? newCoordinate, newCoordinate: newCoordinate, mapView: self.mapVw)
+            if self.oldCoordinate != nil {
+                CATransaction.commit()
+            }
+            self.oldCoordinate = newCoordinate
         }
     }
     
@@ -775,12 +792,7 @@ extension HomeVC{
         self.mapVw.clear()
         self.Driverplacemarker = GMSMarker()
         self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0)
-        let DrivermarkerView = MarkerView()
-        DrivermarkerView.markerImage = UIImage(named: "car")
-        self.Driverplacemarker.title = ""
-        self.Driverplacemarker.snippet = ""
-        DrivermarkerView.layoutSubviews()
-        self.Driverplacemarker.iconView = DrivermarkerView
+        self.Driverplacemarker.icon =  UIImage(named: "car")
         self.Driverplacemarker.map = self.mapVw
         
     
@@ -826,15 +838,13 @@ extension HomeVC{
         self.isStartTrip = true
         isFirtLocation = true
         self.mapVw.clear()
-        self.Driverplacemarker = GMSMarker()
-        self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.pickupLat) ?? 0.0, longitude: Double(obj.bookingInfo.pickupLng) ?? 0.0)
-        let DrivermarkerView = MarkerView()
-        DrivermarkerView.markerImage = UIImage(named: "car")
-        self.Driverplacemarker.title = ""
-        self.Driverplacemarker.snippet = ""
-        DrivermarkerView.layoutSubviews()
-        self.Driverplacemarker.iconView = DrivermarkerView
-        self.Driverplacemarker.map = self.mapVw
+//        self.Driverplacemarker = GMSMarker()
+//        self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.pickupLat) ?? 0.0, longitude: Double(obj.bookingInfo.pickupLng) ?? 0.0)
+//        let DrivermarkerView = MarkerView()
+//        DrivermarkerView.markerImage = UIImage(named: "car")
+//        DrivermarkerView.layoutSubviews()
+//        self.Driverplacemarker.iconView = DrivermarkerView
+//        self.Driverplacemarker.map = self.mapVw
         
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.dropoffLat) ?? 0.0, longitude: Double(obj.bookingInfo.dropoffLng) ?? 0.0)
@@ -1387,5 +1397,12 @@ extension HomeVC : CLLocationManagerDelegate {
 extension GMSMarker {
    static var themeMarkerImage: UIImage {
         GMSMarker.markerImage(with: ThemeColorEnum.Theme.rawValue)
+    }
+}
+
+extension HomeVC: ARCarMovementDelegate {
+    func arCarMovementMoved(_ Marker: GMSMarker) {
+//        Driverplacemarker = Marker
+//        Driverplacemarker?.map = mapVw
     }
 }

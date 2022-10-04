@@ -66,6 +66,7 @@ extension WalletHistoryVC{
                 self.walletObj = response
                 self.lblTotalMoney.text = response?.walletBalance?.toCurrencyString()
                 Singleton.sharedInstance.availableWalletBalance = response?.walletBalance
+                Singleton.sharedInstance.UserProfilData?.walletBalance = response?.walletBalance
                 self.tblWalletHistory.reloadData()
             }
             

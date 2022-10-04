@@ -43,7 +43,7 @@ class AddPaymentVC: BaseViewController{
             self.callCardListApi()
         }
         tblPaymentMethod.registerNibWithCellType(CreditCardCell.self)
-        
+        tblPaymentMethod.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +116,7 @@ class AddPaymentVC: BaseViewController{
             Utilities.hideHud()
             if status {
                 print(response)
+                Toast.show(message: message, state: .success)
                 if self.isFromSchedulled{
                     let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
                     controller.dismissedClosour = { [unowned self] in
@@ -152,7 +153,7 @@ class AddPaymentVC: BaseViewController{
             
             }
             else {
-                
+                Toast.show(message: message, state: .failure)
             }
         }
     }
