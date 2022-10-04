@@ -40,10 +40,10 @@ class LoginResponseModel: Codable{
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        data = try? values?.decodeIfPresent(ProfileModel.self, forKey: .data)
-        message = try? values?.decodeIfPresent(String.self, forKey: .message)
-        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        data = try? values.decode(ProfileModel.self, forKey: .data)
+        message = try? values.decode(String.self, forKey: .message)
+        status = try? values.decode(Bool.self, forKey: .status)
     }
 }
 
@@ -59,10 +59,10 @@ class AppleDetailsResponseModel: Codable{
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        data = try? values?.decodeIfPresent(AppleDetailsSubModel.self, forKey: .data)
-        message = try? values?.decodeIfPresent(String.self, forKey: .message)
-        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        data = try? values.decode(AppleDetailsSubModel.self, forKey: .data)
+        message = try? values.decode(String.self, forKey: .message)
+        status = try? values.decode(Bool.self, forKey: .status)
     }
 }
 
@@ -82,12 +82,12 @@ class AppleDetailsSubModel: Codable{
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        id = try? values?.decodeIfPresent(String.self, forKey: .id)
-        token = try? values?.decodeIfPresent(String.self, forKey: .token)
-        email = try? values?.decodeIfPresent(String.self, forKey: .email)
-        name = try? values?.decodeIfPresent(String.self, forKey: .name)
-        date = try? values?.decodeIfPresent(String.self, forKey: .date)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try? values.decode(String.self, forKey: .id)
+        token = try? values.decode(String.self, forKey: .token)
+        email = try? values.decode(String.self, forKey: .email)
+        name = try? values.decode(String.self, forKey: .name)
+        date = try? values.decode(String.self, forKey: .date)
     }
 }
 
@@ -100,7 +100,7 @@ class ProfileModel: Codable {
     var deviceToken, lat, lng, qrCode: String?
     var profileImage, socialID, socialType, rememberToken: String?
     var address, trash, status, referralCode: String?
-    var createdAt, rating, xAPIKey: String?
+    var createdAt, rating, xAPIKey, currencySymbol: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -129,40 +129,42 @@ class ProfileModel: Codable {
         case rating
         case xAPIKey = "x-api-key"
         case dispatcherId = "dispatcher_id"
+        case currencySymbol = "currency_symbol"
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        address = try? values?.decodeIfPresent(String.self, forKey: .address)
-        companyID = try? values?.decodeIfPresent(String.self, forKey: .companyID)
-        countryCode = try? values?.decodeIfPresent(String.self, forKey: .countryCode)
-        countryID = try? values?.decodeIfPresent(String.self, forKey: .countryID)
-        cityId = try? values?.decodeIfPresent(String.self, forKey: .cityId)
-        cityName = try? values?.decodeIfPresent(String.self, forKey: .cityName)
-        createdAt = try? values?.decodeIfPresent(String.self, forKey: .createdAt)
-        deviceToken = try? values?.decodeIfPresent(String.self, forKey: .deviceToken)
-        deviceType = try? values?.decodeIfPresent(String.self, forKey: .deviceType)
-        dob = try? values?.decodeIfPresent(String.self, forKey: .dob)
-        email = try? values?.decodeIfPresent(String.self, forKey: .email)
-        firstName = try? values?.decodeIfPresent(String.self, forKey: .firstName)
-        gender = try? values?.decodeIfPresent(String.self, forKey: .gender)
-        id = try? values?.decodeIfPresent(String.self, forKey: .id)
-        lastName = try? values?.decodeIfPresent(String.self, forKey: .lastName)
-        lat = try? values?.decodeIfPresent(String.self, forKey: .lat)
-        lng = try? values?.decodeIfPresent(String.self, forKey: .lng)
-        mobileNo = try? values?.decodeIfPresent(String.self, forKey: .mobileNo)
-        profileImage = try? values?.decodeIfPresent(String.self, forKey: .profileImage)
-        qrCode = try? values?.decodeIfPresent(String.self, forKey: .qrCode)
-        rating = try? values?.decodeIfPresent(String.self, forKey: .rating)
-        referralCode = try? values?.decodeIfPresent(String.self, forKey: .referralCode)
-        rememberToken = try? values?.decodeIfPresent(String.self, forKey: .rememberToken)
-        socialID = try? values?.decodeIfPresent(String.self, forKey: .socialID)
-        socialType = try? values?.decodeIfPresent(String.self, forKey: .socialType)
-        status = try? values?.decodeIfPresent(String.self, forKey: .status)
-        trash = try? values?.decodeIfPresent(String.self, forKey: .trash)
-        walletBalance = try? values?.decodeIfPresent(String.self, forKey: .walletBalance)
-        xAPIKey = try? values?.decodeIfPresent(String.self, forKey: .xAPIKey)
-        dispatcherId = try? values?.decodeIfPresent(String.self, forKey: .dispatcherId)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        address = try? values.decode(String.self, forKey: .address)
+        companyID = try? values.decode(String.self, forKey: .companyID)
+        countryCode = try? values.decode(String.self, forKey: .countryCode)
+        countryID = try? values.decode(String.self, forKey: .countryID)
+        cityId = try? values.decode(String.self, forKey: .cityId)
+        cityName = try? values.decode(String.self, forKey: .cityName)
+        createdAt = try? values.decode(String.self, forKey: .createdAt)
+        deviceToken = try? values.decode(String.self, forKey: .deviceToken)
+        deviceType = try? values.decode(String.self, forKey: .deviceType)
+        dob = try? values.decode(String.self, forKey: .dob)
+        email = try? values.decode(String.self, forKey: .email)
+        firstName = try? values.decode(String.self, forKey: .firstName)
+        gender = try? values.decode(String.self, forKey: .gender)
+        id = try? values.decode(String.self, forKey: .id)
+        lastName = try? values.decode(String.self, forKey: .lastName)
+        lat = try? values.decode(String.self, forKey: .lat)
+        lng = try? values.decode(String.self, forKey: .lng)
+        mobileNo = try? values.decode(String.self, forKey: .mobileNo)
+        profileImage = try? values.decode(String.self, forKey: .profileImage)
+        qrCode = try? values.decode(String.self, forKey: .qrCode)
+        rating = try? values.decode(String.self, forKey: .rating)
+        referralCode = try? values.decode(String.self, forKey: .referralCode)
+        rememberToken = try? values.decode(String.self, forKey: .rememberToken)
+        socialID = try? values.decode(String.self, forKey: .socialID)
+        socialType = try? values.decode(String.self, forKey: .socialType)
+        status = try? values.decode(String.self, forKey: .status)
+        trash = try? values.decode(String.self, forKey: .trash)
+        walletBalance = try? values.decode(String.self, forKey: .walletBalance)
+        xAPIKey = try? values.decode(String.self, forKey: .xAPIKey)
+        dispatcherId = try? values.decode(String.self, forKey: .dispatcherId)
+        currencySymbol = try? values.decode(String.self, forKey: .currencySymbol)
     }
     
 }

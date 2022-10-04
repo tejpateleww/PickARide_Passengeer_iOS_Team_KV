@@ -13,6 +13,7 @@ enum AppStoryboard : String {
     
     case Main
     case Login
+    case Payment
     
     
     var instance : UIStoryboard {

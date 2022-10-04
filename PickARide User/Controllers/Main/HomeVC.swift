@@ -28,6 +28,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var conHeightOfCurrentRideDriverInfo: NSLayoutConstraint!
     @IBOutlet weak var botomContentView: UIView!
     @IBOutlet weak var conBottomOfContainerView: NSLayoutConstraint!
+    @IBOutlet weak var codeButton: UIButton!
     @IBOutlet weak var containerTopView: UIView!{
         didSet {
             let directions: [UISwipeGestureRecognizer.Direction] = [.up, .down]
@@ -66,12 +67,17 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     lazy var taxiTypeView : SelectTaxiTypes = SelectTaxiTypes.fromNib()
     lazy var currentRideDetailView : CurrentRideDetail = CurrentRideDetail.fromNib()
     lazy var currentRideInfoView : CurrrentRideDriverInfo = CurrrentRideDriverInfo.fromNib()
-
+    var tripCode: String? {
+        didSet {
+            self.codeButton.isHidden = tripCode == nil
+            self.codeButton.setTitle("Code: \(self.tripCode ?? "")", for: .normal)
+        }
+    }
     
     //MARK:- ===== View Controller LifeCycle ====
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        tripCode = nil
          getFirstView()
          self.mapVw.settings.consumesGesturesInView = false
          let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panHandler(_:)))
@@ -178,8 +184,8 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK:- ===== socket setup Methods ==
     func socketManageSetup(){
-        SocketIOManager.shared.establishConnection()
         self.SocketOnMethods()
+        SocketIOManager.shared.establishConnection()
     }
     
     
@@ -225,12 +231,19 @@ extension HomeVC{
     }
     
     func addObserver(){
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("UpdateProfile"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfilePic), name: NSNotification.Name("UpdateProfile"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDriverInfoVC), name: .OpenCurrentRideDriverInfoVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openCurrentRideDetailsVC), name: .OpenCurrentRideDetailsVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.openLocationSelection), name: .OpenLocationSelectionVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.CancelCompleteTrip), name: .CancelCompleteTRip, object: nil)
+    }
+    
+    func removeObserver() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("UpdateProfile"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: .OpenCurrentRideDriverInfoVC, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .OpenCurrentRideDetailsVC, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .OpenLocationSelectionVC, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .CancelCompleteTRip, object: nil)
     }
     
     @objc func CancelCompleteTrip(){
@@ -269,7 +282,7 @@ extension HomeVC{
             
             self.presentedViewController?.dismiss(animated: true, completion: nil)
             let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-            controller.dismissedClosour = {
+            controller.dismissedClosour = { [unowned self] in
                 let obj = RootBookingRequestAccept(fromJson: objDictJson)
                 print(obj)
                 self.DriverRequestAccept(obj: obj)
@@ -293,21 +306,21 @@ extension HomeVC{
         guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
             return
         }
-        guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+        guard objhomeVC.children[0] is HomeVC else {
             return
         }
         
         if self.containerTopView.isHidden == false {
         
          let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo })
-            guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView[0] as? CurrrentRideDriverInfo else { return }
+            guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView.first else { return }
         
 //        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
 //            return
 //        }
         driverInfoVC.objBookingInfo = obj.bookingInfo
         driverInfoVC.setUpUI(isFromArrived: false, isFromApi: false)
-        driverInfoVC.heightGet = { (height , isExpand) in
+        driverInfoVC.heightGet = { [unowned self] (height , isExpand) in
             self.conHeightOfCurrentRideDriverInfo.constant = height
          }
         }
@@ -341,7 +354,7 @@ extension HomeVC{
 //        }
             driverInfoVC.objCurrentBooking = obj.data
             driverInfoVC.setUpUI(isFromArrived: false, isFromApi: true)
-            driverInfoVC.heightGet = { (height , isExpand) in
+            driverInfoVC.heightGet = { [unowned self] (height , isExpand) in
                 self.conHeightOfCurrentRideDriverInfo.constant = height
             }
         }
@@ -363,7 +376,7 @@ extension HomeVC{
             print(json)
             let objDict = json[0]
             
-            self.presentedViewController?.dismiss(animated: true, completion: {
+            self.presentedViewController?.dismiss(animated: true, completion: { [unowned self] in
                 Toast.show(message: objDict["message"].stringValue, state: .failure)
                 
                 self.isFirstTimeLoadView = true
@@ -380,12 +393,12 @@ extension HomeVC{
     
     //MARK:- ====On socket driver arrived =====
     func OnSocketArrivedLocation(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KdriverArrived) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KdriverArrived) { [weak self] json in
             print(json)
             let objDictjson = json[0]
             let obj = RootBookingRequestAccept(fromJson: objDictjson)
             print(obj)
-            self.ArrivedDriverSetup(obj: obj)
+            self?.ArrivedDriverSetup(obj: obj)
         }
     }
     
@@ -412,7 +425,7 @@ extension HomeVC{
         
         driverInfoVC.objBookingInfo = obj.bookingInfo
         driverInfoVC.setUpUI(isFromArrived: true, isFromApi: false)
-        driverInfoVC.heightGet = { (height , isExpand) in
+        driverInfoVC.heightGet = { [unowned self] (height , isExpand) in
             self.conHeightOfCurrentDriverDetail.constant = height
         }
        }
@@ -442,7 +455,7 @@ extension HomeVC{
         
         driverInfoVC.objCurrentBooking = obj.data
         driverInfoVC.setUpUI(isFromArrived: true, isFromApi: true)
-        driverInfoVC.heightGet = { (height , isExpand) in
+        driverInfoVC.heightGet = { [unowned self] (height , isExpand) in
             self.conHeightOfCurrentDriverDetail.constant = height
          }
         }
@@ -515,9 +528,11 @@ extension HomeVC{
 
     //MARK:- ========= On Socket Call Near By Driver ======
     func onSocketNearByDriver(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KNearByDriver) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KNearByDriver) { [weak self] json in
 //            print("ATDebug :: \(#function) \n \(json)" )
-          
+            guard let self = self else {
+                return
+            }
             let objDict = json[0]
             //1. Filling near by drivers
             let objDriver = RootNearByDrivers(fromJson: objDict)
@@ -586,8 +601,7 @@ extension HomeVC{
     //MARK:- ======= On Socket Live Tracking =====
     func OnSocketLiveTracking(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KLiveTracking) { [weak self] json in
-            guard let self = self else {
-                print("\(#function), self not found")
+            guard let self = self, self.isStartTrip else {
                 return
             }
             guard json.count > 0 else {
@@ -612,7 +626,7 @@ extension HomeVC{
                 let currentMarker = GMSMarker()
                 currentMarker.position = CLLocationCoordinate2D(latitude:Singleton.sharedInstance.latitute, longitude: Singleton.sharedInstance.longtitute)
                 let CurrentmarkerView = MarkerView()
-                CurrentmarkerView.markerImage = UIImage(named: "ic_DropOff")
+                CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
                 CurrentmarkerView.layoutSubviews()
                 currentMarker.iconView = CurrentmarkerView
                 currentMarker.map = self.mapVw
@@ -698,10 +712,8 @@ extension HomeVC{
             let obj = RootBookingRequestAccept(fromJson: objDict)
             let ratingReviewVC :RatingYourTripVC  = RatingYourTripVC.instantiate(fromAppStoryboard: .Main)
             ratingReviewVC.objBookingInfo = obj.bookingInfo
-            ratingReviewVC.skipBtnClicked = {
-                self.dismiss(animated: true) {
-                    self.currentLocationSetup()
-                }
+            ratingReviewVC.skipBtnClicked = { [weak self] in
+                self?.currentLocationSetup()
             }
             ratingReviewVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 //            let navigationController = UINavigationController(rootViewController: ratingReviewVC)
@@ -717,6 +729,7 @@ extension HomeVC{
     //MARK:- === On Socket Start Trip =======
     func OnSocketStartTrip(){
         SocketIOManager.shared.socketCall(for: socketApikeys.KStartTrip) { [weak self] json in
+            self?.tripCode = nil
             guard let self = self else {
                 print("\(#function), self not found")
                 return
@@ -774,7 +787,7 @@ extension HomeVC{
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0)
         let CurrentmarkerView = MarkerView()
-        CurrentmarkerView.markerImage = UIImage(named: "ic_DropOff")
+            CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
         CurrentmarkerView.layoutSubviews()
         currentMarker.iconView = CurrentmarkerView
         currentMarker.map = self.mapVw
@@ -826,7 +839,7 @@ extension HomeVC{
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.dropoffLat) ?? 0.0, longitude: Double(obj.bookingInfo.dropoffLng) ?? 0.0)
         let CurrentmarkerView = MarkerView()
-        CurrentmarkerView.markerImage = UIImage(named: "ic_DropOff")
+            CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
         CurrentmarkerView.layoutSubviews()
         currentMarker.iconView = CurrentmarkerView
         currentMarker.map = self.mapVw
@@ -842,11 +855,19 @@ extension HomeVC{
     
     //MARK:- ===== On Socket Verify Customer ====
     func onsocketVerifyCustomer(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KVerifyCustomer) { json in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KVerifyCustomer) { [weak self] json in
+            guard let self = self else {
+                return
+            }
              print(json)
              let dictjson = json[0]
              print(dictjson)
-            Toast.show(message: dictjson["message"].stringValue + dictjson["otp"].stringValue, state: .info)
+           // let message = dictjson["message"].stringValue
+          //  let message2 = dictjson["message2"].stringValue
+            let otp = dictjson["otp"].stringValue
+          //  let finalMessage = [message, otp, message2].joined(separator: "\n")
+            self.tripCode = otp
+           // Utilities.displayAlert(finalMessage)
         }
     }
 
@@ -873,65 +894,8 @@ extension HomeVC: UITextFieldDelegate{
         textField.resignFirstResponder()
         
         let controller = ChooseDestinationVC.instantiate(fromAppStoryboard: .Main)
-        controller.openSelectTexiVC = { (pickup,dropoff) in
-            
+        controller.openSelectTexiVC = { [unowned self] (pickup,dropoff) in
             self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
-            
-//            self.arrPickupPlace.removeAll()
-//            self.arrDestinationPlace.removeAll()
-//            self.arrPickupPlace.append(pickup)
-//            self.arrDestinationPlace.append(dropoff)
-//
-//
-//            self.bookingReqModel.pickupAddress = pickup.location
-//            self.bookingReqModel.dropoffAddress = dropoff.location
-//            self.bookingReqModel.pickupLatitude = "\(pickup.lat)"
-//            self.bookingReqModel.pickupLongitude = "\(pickup.lng)"
-//            self.bookingReqModel.dropoffLatitude = "\(dropoff.lat)"
-//            self.bookingReqModel.dropoffLongitude = "\(dropoff.lng)"
-//
-//            self.mapVw.clear()
-//            self.isFirtLocation = true
-//            self.selectTexiVCContainerVW.isHidden = false
-//            self.navigationBarSetup()
-//
-//            let currentMarker = GMSMarker()
-//            currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
-//            let markerView = MarkerView()
-//            markerView.markerImage = UIImage(named: "iconCurrentLocPin")
-//            markerView.layoutSubviews()
-//            currentMarker.iconView = markerView
-//            currentMarker.map = self.mapVw
-//
-//
-//            let destinationMarker = GMSMarker()
-//            destinationMarker.position = CLLocationCoordinate2D(latitude: dropoff.lat, longitude: dropoff.lng)
-//            let markerView1 = MarkerView()
-//            markerView1.markerImage = UIImage(named: "ic_DropOff")
-//            markerView1.layoutSubviews()
-//            destinationMarker.iconView = markerView1
-//            destinationMarker.map = self.mapVw
-//
-//            let mapInsets = UIEdgeInsets(top: 20, left: 0.0, bottom: self.conHeightOfTaxi.constant, right: 0.0)
-//                self.mapVw.padding = mapInsets
-//
-//                 self.arrMarkers.append(currentMarker)
-//                self.arrMarkers.append(destinationMarker)
-//                var bounds = GMSCoordinateBounds()
-//                for marker in self.arrMarkers
-//                {
-//                    bounds = bounds.includingCoordinate(marker.position)
-//                }
-//                let update = GMSCameraUpdate.fit(bounds, withPadding: 80)
-//                self.mapVw.animate(with: update)
-//
-//
-//            self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng), to: CLLocationCoordinate2D(latitude: dropoff.lat, longitude: dropoff.lng))
-//
-//            self.SelectedLocationString = (pickup.location,dropoff.location)
-//            if SocketIOManager.shared.socket.status == .connected {
-//                self.emitSocketEstimateFare(PickupLat: pickup.lat, PickupLng: pickup.lng, DropOfLat: dropoff.lat, DropOfLng: dropoff.lng)
-//            }
         }
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -981,7 +945,7 @@ extension HomeVC: UITextFieldDelegate{
         let destinationMarker = GMSMarker()
         destinationMarker.position = CLLocationCoordinate2D(latitude: dropoff.lat, longitude: dropoff.lng)
         let markerView1 = MarkerView()
-        markerView1.markerImage = UIImage(named: "ic_DropOff")
+        markerView1.markerImage = GMSMarker.themeMarkerImage
         markerView1.layoutSubviews()
         destinationMarker.userData = "destinationMarker"
         destinationMarker.iconView = markerView1
@@ -1018,7 +982,7 @@ extension HomeVC: UITextFieldDelegate{
             controller.pinnedLocation = marker.position
            
             controller.dropOffData = arrDestinationPlace
-            controller.openSelectTexiVC = { (pickup,dropoff) in
+            controller.openSelectTexiVC = { [unowned self] (pickup,dropoff) in
                 self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
                 
                 guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
@@ -1055,7 +1019,7 @@ extension HomeVC: UITextFieldDelegate{
         controller.arrPickupPlace = arrPickupPlace
         controller.arrDestinationPlace = arrDestinationPlace
         
-        controller.openSelectTexiVC = { (pickup,dropoff) in
+        controller.openSelectTexiVC = { [unowned self] (pickup,dropoff) in
             self.CurrenDestinationRouteSetup(pickup: pickup, dropoff: dropoff)
             guard let NavVc = appDel.window?.rootViewController as? UINavigationController else {return}
             print(NavVc.children[0].children)
@@ -1102,8 +1066,11 @@ extension HomeVC: UITextFieldDelegate{
     
     //MARK:- ===== On Socket Estimate Fare =====
     func onSocketGetEstimateFare(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { (json) in
+        SocketIOManager.shared.socketCall(for: socketApikeys.KGetEstimateFare) { [weak self] (json) in
 //            print("ATDebug :: \(#function)")
+            guard let self = self else {
+                return
+            }
             print("Estimated fare pop up socket on call")
             //print(json)
             guard json.count > 0 else {
@@ -1130,24 +1097,16 @@ extension HomeVC: UITextFieldDelegate{
             guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
                 return
             }
-            guard let homeVC = objhomeVC.children[0] as? HomeVC else {
-                return
-            }
-        
-//            guard let taxitypeVC = homeVC.children[2] as? SelectTaxiTypeVC else {
-//                return
-//            }
-            
+           
             if self.containerTopView.isHidden == false {
-            
-             let  arrselctTaxitype  = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
-                guard arrselctTaxitype.count > 0,
-                       let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0] as? SelectTaxiTypes else {
+                
+                let  arrselctTaxitype  = self.botomContentView.subviews.compactMap({$0 as? SelectTaxiTypes })
+                guard arrselctTaxitype.count > 0 else {
                     print("Taxi type not found, stil, drivers not found")
                     return
-            }
-            
-            taxitypeVC.bookingSucess = {
+                }
+            let taxitypeVC : SelectTaxiTypes = arrselctTaxitype[0]
+            taxitypeVC.bookingSucess = { [unowned self] in
                 self.bottomVWWhereAreYouGoing.isHidden = true
                 self.containerTopView.isHidden = true
                 self.navigationBarSetup()
@@ -1204,7 +1163,7 @@ extension HomeVC: UITextFieldDelegate{
                 taxitypeVC.allTaxiData = self.arrAllTaxiData
                 taxitypeVC.setUPUI(isExpand: self.isFirstTimeLoadView)
             
-                taxitypeVC.heightGet = { (height , isExpand) in
+                taxitypeVC.heightGet = { [unowned self] (height , isExpand) in
                     self.isFirstTimeLoadView = isExpand
                     self.conHeightOfTaxi.constant = height
                 }
@@ -1227,7 +1186,7 @@ extension HomeVC: UITextFieldDelegate{
                 taxitypeVC.setUPUI(isExpand: self.isFirstTimeLoadView)
                 
                 //Toast.show(message: "No drivers available", state: .failure)
-                taxitypeVC.heightGet = { (height , isExpand) in
+                taxitypeVC.heightGet = { [unowned self] (height , isExpand) in
                     self.isFirstTimeLoadView = isExpand
                     self.conHeightOfTaxi.constant = height
                 }
@@ -1245,7 +1204,6 @@ extension HomeVC: UITextFieldDelegate{
         
         WebServiceSubClass.CurrentBookingHistory(CustomerId: Singleton.sharedInstance.UserId) { [weak self] status, msg, response, error in
             guard let self = self else {
-                print("\(#function) self not found")
                 return
             }
 
@@ -1283,7 +1241,7 @@ extension HomeVC: UITextFieldDelegate{
         self.isFirtLocation = false
         self.isStartTrip = false
         getFirstView()
-        
+        tripCode = nil
         
 //        self.selectTexiVCContainerVW.isHidden = true
 //        self.currentRideDriverInfoContainerVW.isHidden = true
@@ -1426,3 +1384,8 @@ extension HomeVC : CLLocationManagerDelegate {
     }
 }
 
+extension GMSMarker {
+   static var themeMarkerImage: UIImage {
+        GMSMarker.markerImage(with: ThemeColorEnum.Theme.rawValue)
+    }
+}

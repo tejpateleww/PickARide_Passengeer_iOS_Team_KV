@@ -56,7 +56,6 @@
 		1828A1B626981D2B009ADA2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1B526981D2B009ADA2A /* CardModel.swift */; };
 		1828A1BB26982369009ADA2A /* CardUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1BA26982369009ADA2A /* CardUserModel.swift */; };
 		1828A1C026983963009ADA2A /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1BF26983963009ADA2A /* WalletModel.swift */; };
-		1828A1C426983A84009ADA2A /* WalletUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1C326983A84009ADA2A /* WalletUserModel.swift */; };
 		1828A1C826985B75009ADA2A /* ToastMessageXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828A1C726985B75009ADA2A /* ToastMessageXib.xib */; };
 		1828A1CD26985ED6009ADA2A /* ToastMessageXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1CC26985ED6009ADA2A /* ToastMessageXib.swift */; };
 		1828A1D226985FED009ADA2A /* XibIdentifire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828A1D126985FED009ADA2A /* XibIdentifire.swift */; };
@@ -221,12 +220,19 @@
 		84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CE26F1B26700F14D95 /* SocketConnect.swift */; };
 		84AA62D126F1B26700F14D95 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */; };
 		84BD8B2E276CB6EF0069A5CA /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD8B2D276CB6EF0069A5CA /* DateFormatterHelper.swift */; };
+		84CCFF0128DAD27B0041F7D7 /* AddWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCFF0028DAD27B0041F7D7 /* AddWalletVC.swift */; };
+		84CCFF0528DADAC60041F7D7 /* CreditCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCFF0328DADAC60041F7D7 /* CreditCardCell.swift */; };
+		84CCFF0628DADAC60041F7D7 /* CreditCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CCFF0428DADAC60041F7D7 /* CreditCardCell.xib */; };
+		84CCFF0828DAE4D80041F7D7 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCFF0728DAE4D80041F7D7 /* ContentSizedTableView.swift */; };
 		84D50BCE2706E470000A29A0 /* ARCarMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D50BCD2706E470000A29A0 /* ARCarMovement.swift */; };
 		84D50BD12706FD8B000A29A0 /* ReviewRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D50BD02706FD8B000A29A0 /* ReviewRatingModel.swift */; };
 		84D6432927155A6300F11688 /* sendMessageReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432827155A6300F11688 /* sendMessageReqModel.swift */; };
 		84D6432D27155EFA00F11688 /* ChatResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432C27155EFA00F11688 /* ChatResponseModel.swift */; };
 		84D643302715679100F11688 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6432F2715679100F11688 /* ChatViewModel.swift */; };
 		84F790C726F33E1A00D7A377 /* EstimateFare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F790C626F33E1A00D7A377 /* EstimateFare.swift */; };
+		84F8021C28D9D8A000A1212F /* RideHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8021A28D9D8A000A1212F /* RideHistoryCell.swift */; };
+		84F8021D28D9D8A000A1212F /* RideHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F8021B28D9D8A000A1212F /* RideHistoryCell.xib */; };
+		84F8021F28D9EFB500A1212F /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8021E28D9EFB500A1212F /* Payment.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -280,7 +286,6 @@
 		1828A1B526981D2B009ADA2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		1828A1BA26982369009ADA2A /* CardUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUserModel.swift; sourceTree = "<group>"; };
 		1828A1BF26983963009ADA2A /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
-		1828A1C326983A84009ADA2A /* WalletUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUserModel.swift; sourceTree = "<group>"; };
 		1828A1C726985B75009ADA2A /* ToastMessageXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastMessageXib.xib; sourceTree = "<group>"; };
 		1828A1CC26985ED6009ADA2A /* ToastMessageXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageXib.swift; sourceTree = "<group>"; };
 		1828A1D126985FED009ADA2A /* XibIdentifire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibIdentifire.swift; sourceTree = "<group>"; };
@@ -449,12 +454,19 @@
 		84AA62CE26F1B26700F14D95 /* SocketConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnect.swift; sourceTree = "<group>"; };
 		84AA62CF26F1B26700F14D95 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		84BD8B2D276CB6EF0069A5CA /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
+		84CCFF0028DAD27B0041F7D7 /* AddWalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWalletVC.swift; sourceTree = "<group>"; };
+		84CCFF0328DADAC60041F7D7 /* CreditCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardCell.swift; sourceTree = "<group>"; };
+		84CCFF0428DADAC60041F7D7 /* CreditCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCardCell.xib; sourceTree = "<group>"; };
+		84CCFF0728DAE4D80041F7D7 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		84D50BCD2706E470000A29A0 /* ARCarMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCarMovement.swift; sourceTree = "<group>"; };
 		84D50BD02706FD8B000A29A0 /* ReviewRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingModel.swift; sourceTree = "<group>"; };
 		84D6432827155A6300F11688 /* sendMessageReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendMessageReqModel.swift; sourceTree = "<group>"; };
 		84D6432C27155EFA00F11688 /* ChatResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResponseModel.swift; sourceTree = "<group>"; };
 		84D6432F2715679100F11688 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		84F790C626F33E1A00D7A377 /* EstimateFare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateFare.swift; sourceTree = "<group>"; };
+		84F8021A28D9D8A000A1212F /* RideHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideHistoryCell.swift; sourceTree = "<group>"; };
+		84F8021B28D9D8A000A1212F /* RideHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RideHistoryCell.xib; sourceTree = "<group>"; };
+		84F8021E28D9EFB500A1212F /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		86784D51C37BBA35E10C918A /* Pods-ApiStructureModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApiStructureModule.release.xcconfig"; path = "Target Support Files/Pods-ApiStructureModule/Pods-ApiStructureModule.release.xcconfig"; sourceTree = "<group>"; };
 		880AEDFB25DBEC6C00A29928 /* PickARide User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PickARide User.entitlements"; sourceTree = "<group>"; };
 		8EBBDA5B2CE69A77C3CB8964 /* Pods_PickARide_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickARide_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -648,6 +660,7 @@
 				180979F225876FA7002070A7 /* CustomButton.swift */,
 				18FDF5522588707F0084D40C /* customTextView.swift */,
 				184C6F7B258CB47300F60FFE /* CustomImageVIew.swift */,
+				84CCFF0728DAE4D80041F7D7 /* ContentSizedTableView.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -680,6 +693,7 @@
 				181EBD8C258730B300C11C08 /* LaunchScreen.storyboard */,
 				181EBD8E258730B300C11C08 /* Main.storyboard */,
 				180979F725877CA0002070A7 /* Login.storyboard */,
+				84F8021E28D9EFB500A1212F /* Payment.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -697,7 +711,6 @@
 			isa = PBXGroup;
 			children = (
 				1828A1BA26982369009ADA2A /* CardUserModel.swift */,
-				1828A1C326983A84009ADA2A /* WalletUserModel.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -928,6 +941,7 @@
 				1813E4C5258C6A4D00EE33CA /* AddCardVC.swift */,
 				1813E4C4258C6A4D00EE33CA /* AddPaymentVC.swift */,
 				1813E4DB258C7F1700EE33CA /* WalletHistoryVC.swift */,
+				84CCFF0028DAD27B0041F7D7 /* AddWalletVC.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1099,6 +1113,7 @@
 		845B77E027143D3A00DE5B26 /* My Rides */ = {
 			isa = PBXGroup;
 			children = (
+				84F8021928D9D86F00A1212F /* RideHistoryCell */,
 				845B77E127143D3A00DE5B26 /* RideDetailsVC.swift */,
 				845B7800271452DC00DE5B26 /* MyRideCell.swift */,
 				845B7801271452DC00DE5B26 /* pastUpcomingCell.swift */,
@@ -1220,6 +1235,7 @@
 		84A195382782F05400B73216 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84CCFF0228DADA680041F7D7 /* CreditCardCell */,
 				84A195432782F9D400B73216 /* CurrentRideDetail */,
 				84A1953E2782F6D600B73216 /* CurrentRide */,
 				84A195392782F07700B73216 /* TaxiType */,
@@ -1265,6 +1281,15 @@
 			path = SocketConnect;
 			sourceTree = "<group>";
 		};
+		84CCFF0228DADA680041F7D7 /* CreditCardCell */ = {
+			isa = PBXGroup;
+			children = (
+				84CCFF0328DADAC60041F7D7 /* CreditCardCell.swift */,
+				84CCFF0428DADAC60041F7D7 /* CreditCardCell.xib */,
+			);
+			path = CreditCardCell;
+			sourceTree = "<group>";
+		};
 		84D50BCF2706FD63000A29A0 /* ReviewRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -1296,6 +1321,15 @@
 				84F790C626F33E1A00D7A377 /* EstimateFare.swift */,
 			);
 			path = EstimateFare;
+			sourceTree = "<group>";
+		};
+		84F8021928D9D86F00A1212F /* RideHistoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				84F8021A28D9D8A000A1212F /* RideHistoryCell.swift */,
+				84F8021B28D9D8A000A1212F /* RideHistoryCell.xib */,
+			);
+			path = RideHistoryCell;
 			sourceTree = "<group>";
 		};
 		B7F05C3E06CAA5224C293454 /* Frameworks */ = {
@@ -1387,8 +1421,10 @@
 				84A1953B2782F09800B73216 /* SelectTaxiTypes.xib in Resources */,
 				181E432E25B68DC600A76B36 /* navigationCommonView.xib in Resources */,
 				181EBDB9258730B300C11C08 /* Main.storyboard in Resources */,
+				84F8021F28D9EFB500A1212F /* Payment.storyboard in Resources */,
 				84A195452782F9F500B73216 /* CurrentRideDetail.xib in Resources */,
 				180979FD25877CCE002070A7 /* Localizable.strings in Resources */,
+				84CCFF0628DADAC60041F7D7 /* CreditCardCell.xib in Resources */,
 				180979E625876C75002070A7 /* Ubuntu-Light.ttf in Resources */,
 				1828A1C826985B75009ADA2A /* ToastMessageXib.xib in Resources */,
 				1809799A25876869002070A7 /* Assets.xcassets in Resources */,
@@ -1402,6 +1438,7 @@
 				180979E125876C75002070A7 /* Ubuntu-Regular.ttf in Resources */,
 				845688BA2704824A004D7782 /* NoDataViewCell.xib in Resources */,
 				181EBDB8258730B300C11C08 /* LaunchScreen.storyboard in Resources */,
+				84F8021D28D9D8A000A1212F /* RideHistoryCell.xib in Resources */,
 				18173E8A269C04EB00B9F3D9 /* VKToolTip.xib in Resources */,
 				180979E325876C75002070A7 /* Ubuntu-MediumItalic.ttf in Resources */,
 			);
@@ -1490,6 +1527,7 @@
 				187BC4FB268B1EC900CAD121 /* SocialSignInManager.swift in Sources */,
 				84D50BCE2706E470000A29A0 /* ARCarMovement.swift in Sources */,
 				18F9B6FE259350E100202DA6 /* UILabel+Extension.swift in Sources */,
+				84CCFF0828DAE4D80041F7D7 /* ContentSizedTableView.swift in Sources */,
 				18FBF094269D757600D5AF78 /* DateFormatsEnum.swift in Sources */,
 				84D6432D27155EFA00F11688 /* ChatResponseModel.swift in Sources */,
 				181EBD9F258730B300C11C08 /* Constants.swift in Sources */,
@@ -1588,7 +1626,6 @@
 				188677E82695A209007F17EE /* InitModel.swift in Sources */,
 				180CC81025909C9200799280 /* SelectTaxiTypeVC.swift in Sources */,
 				845B77F927144E0700DE5B26 /* PastBookingResCustomerInfo.swift in Sources */,
-				1828A1C426983A84009ADA2A /* WalletUserModel.swift in Sources */,
 				8465258927031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				18F9B701259350E100202DA6 /* UIView+Extension.swift in Sources */,
 				185CADE325B5A64A00082AFC /* CurrentRideDriverInformationVC.swift in Sources */,
@@ -1615,6 +1652,7 @@
 				84A195422782F82E00B73216 /* CurrrentRideDriverInfo.swift in Sources */,
 				8465258727031BC300315AB6 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				845B7806271459AF00DE5B26 /* RidesReqModel.swift in Sources */,
+				84CCFF0128DAD27B0041F7D7 /* AddWalletVC.swift in Sources */,
 				184C6F7C258CB47300F60FFE /* CustomImageVIew.swift in Sources */,
 				18FDF5532588707F0084D40C /* customTextView.swift in Sources */,
 				181EBDBA258730B300C11C08 /* LoginVC.swift in Sources */,
@@ -1627,6 +1665,7 @@
 				8465257727031BC300315AB6 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				8446793D277B1C1600B1DB9C /* NotificationRequestModel.swift in Sources */,
 				1848437D258B18340094480C /* HomeVC.swift in Sources */,
+				84F8021C28D9D8A000A1212F /* RideHistoryCell.swift in Sources */,
 				84AA62D026F1B26700F14D95 /* SocketConnect.swift in Sources */,
 				1828A1C026983963009ADA2A /* WalletModel.swift in Sources */,
 				8465257F27031BC300315AB6 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
@@ -1651,6 +1690,7 @@
 				84A195472782FA0200B73216 /* CurrentRideDetail.swift in Sources */,
 				187BC48F268ADDCD00CAD121 /* LoginViewModel.swift in Sources */,
 				181E432B25B68DB700A76B36 /* navigationCommonView.swift in Sources */,
+				84CCFF0528DADAC60041F7D7 /* CreditCardCell.swift in Sources */,
 				182CA282272298B20018A8AF /* PickupViewController.swift in Sources */,
 				180979ED25876E77002070A7 /* CustomLabel.swift in Sources */,
 				1828A1CD26985ED6009ADA2A /* ToastMessageXib.swift in Sources */,
@@ -1836,11 +1876,11 @@
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.4;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8L8KR4GKUG;
 				INFOPLIST_FILE = "PickARide User/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1862,11 +1902,11 @@
 				CODE_SIGN_ENTITLEMENTS = "PickARide User/PickARide User.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.4;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8L8KR4GKUG;
 				INFOPLIST_FILE = "PickARide User/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

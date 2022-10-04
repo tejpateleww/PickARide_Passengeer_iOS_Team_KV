@@ -93,9 +93,8 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
     
     func removeSelection(){
         selectedTaxi = NSNotFound
-        if let clicked = closeBtnClosure {
-            clicked()
-        }
+        closeBtnClosure?()
+        
     }
     
     
@@ -112,7 +111,10 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
 //        else {
             let controller : ScheduleRideVC = ScheduleRideVC.instantiate(fromAppStoryboard: .Main)
             controller.selectedTaxi = selectedTaxi
-            controller.setClosour = { (strDateTime , TaxiSelected) in
+            controller.setClosour = { [weak self] (strDateTime , TaxiSelected) in
+                guard let self = self else {
+                    return
+                }
                 self.bookingReqModel.bookingType = BookingType.BookLater.rawValue
                 self.bookingReqModel.pickupDateTime = strDateTime
                 self.selectedTaxi = TaxiSelected
@@ -120,7 +122,7 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
                     Toast.show(message: "Please select taxi type", state: .failure)
                 }
                 else {
-                    let vc : AddPaymentVC = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
+                    let vc = AddPaymentVC.newInstance
                     vc.selectedTaxiType = self.taxiData[self.selectedTaxi]
                     vc.isFromSchedulled = true
                     vc.bookingReqModel = self.bookingReqModel
@@ -160,8 +162,8 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
             Toast.show(title: UrlConstant.Required, message: "Please select taxi type", state: .failure)
         }
         else {
-            let controller :AddPaymentVC  = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
-            controller.bookingAdded = {
+            let controller: AddPaymentVC  = .newInstance
+            controller.bookingAdded = { [unowned self] in
                 self.selectedTaxi = NSNotFound
                 Singleton.sharedInstance.selectedTaxiId = "0"
                 
@@ -187,7 +189,7 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
     
     @IBAction func btnOfferClick(_ sender: Any) {
         let controller = MyOfferVC.instantiate(fromAppStoryboard: .Main)
-        controller.PromoCodeValid = { (objPromo) in
+        controller.PromoCodeValid = { [unowned self] (objPromo) in
             self.bookingReqModel.promoCode = objPromo.promocode
             self.btnPromo.isHidden = false
             self.btnPromo.setTitle(objPromo.promocode, for: .normal)
@@ -332,7 +334,7 @@ class SelectTaxiTypes : UIView , UITableViewDataSource , UITableViewDelegate{
         let strEstimateFare = twoDecimals(number:taxiData[indexPath.row].estimateTripFare ?? 0)
             //"\(taxiData[indexPath.row].estimateTripFare ?? 0)"
         
-        cell.SuggestedMoney.text = "$ \(strEstimateFare)"
+         cell.SuggestedMoney.text = strEstimateFare.toCurrencyString()
         cell.SuggestedTime.text = "1-\(taxiData[indexPath.row].driverReachInMinute ?? 0) min"
         cell.TaxiImage.loadSDImage(imgUrl: taxiData[indexPath.row].image)
          

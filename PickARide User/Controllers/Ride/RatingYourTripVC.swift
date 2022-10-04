@@ -52,18 +52,12 @@ class RatingYourTripVC: BaseViewController {
     }
     
     @IBAction func btnSubmitReviewClicked(_ sender: Any) {
-        if txtReview.text.isEmptyOrWhitespace() {
-            Toast.show(message: "Please enter review", state: .failure)
-        }
-        else {
-            webServiceCallAddRating()
-        }
+        webServiceCallAddRating()
     }
     
     @IBAction func btnSkip(_ sender: Any) {
-        if let BtnClicked = skipBtnClicked {
-            BtnClicked()
-        }
+        skipBtnClicked?()
+        self.dismiss(animated: true)
     }
     
     
@@ -108,9 +102,8 @@ extension RatingYourTripVC{
         WebServiceSubClass.AddReviewRating(reqModel: reqmodel) { Status, msg, response, error in
             print(response)
             Toast.show(message: msg, state: .success)
-            if let BtnClicked = self.skipBtnClicked {
-                BtnClicked()
-            }
+            self.skipBtnClicked?()
+            self.dismiss(animated: true)
         }
        
     }

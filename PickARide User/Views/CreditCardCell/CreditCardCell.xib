@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreditCardCell" rowHeight="146" id="KGk-i7-Jjw" customClass="CreditCardCell" customModule="PickARide_User" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="146"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="441" height="146"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdb-Jd-3t4" customClass="PaymentView" customModule="PickARide_User" customModuleProvider="target">
+                        <rect key="frame" x="16" y="8" width="409" height="90"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEl-gl-wWu">
+                                <rect key="frame" x="22" y="28" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tEl-gl-wWu" secondAttribute="height" multiplier="1:1" id="7eq-Q7-WP7"/>
+                                    <constraint firstAttribute="height" constant="34" id="rA2-WB-1ll"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuW-5w-whU" customClass="addPaymentlable" customModule="PickARide_User" customModuleProvider="target">
+                                <rect key="frame" x="84.5" y="21" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="aC6-GX-roH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCardNumber" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu2-Ja-0IS" customClass="addPaymentlable" customModule="PickARide_User" customModuleProvider="target">
+                                <rect key="frame" x="84.5" y="49" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="EM2-9M-sA5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isExpires" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gt-Yv-BP8">
+                                <rect key="frame" x="359" y="28" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2gt-Yv-BP8" secondAttribute="height" multiplier="1:1" id="8Zk-gk-MS0"/>
+                                </constraints>
+                                <state key="normal" image="ic_paymentSelected"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Xu2-Ja-0IS" secondAttribute="bottom" constant="21" id="2Ta-Bl-T4a"/>
+                            <constraint firstItem="Xu2-Ja-0IS" firstAttribute="top" secondItem="vuW-5w-whU" secondAttribute="bottom" constant="8" id="4R7-4o-Xjj"/>
+                            <constraint firstAttribute="trailing" secondItem="2gt-Yv-BP8" secondAttribute="trailing" constant="16" id="Acg-ns-Hwe"/>
+                            <constraint firstItem="vuW-5w-whU" firstAttribute="leading" secondItem="tEl-gl-wWu" secondAttribute="trailing" constant="28.600000000000001" id="Svb-Qs-URI"/>
+                            <constraint firstItem="vuW-5w-whU" firstAttribute="top" secondItem="mdb-Jd-3t4" secondAttribute="top" constant="21" id="UsN-Ps-Rrx"/>
+                            <constraint firstItem="2gt-Yv-BP8" firstAttribute="bottom" secondItem="tEl-gl-wWu" secondAttribute="bottom" id="ao4-hu-k6j"/>
+                            <constraint firstItem="2gt-Yv-BP8" firstAttribute="top" secondItem="tEl-gl-wWu" secondAttribute="top" id="bPz-jK-WK4"/>
+                            <constraint firstItem="Xu2-Ja-0IS" firstAttribute="leading" secondItem="vuW-5w-whU" secondAttribute="leading" id="u5P-4k-dmP"/>
+                            <constraint firstItem="tEl-gl-wWu" firstAttribute="leading" secondItem="mdb-Jd-3t4" secondAttribute="leading" constant="22" id="xdS-qD-46l"/>
+                            <constraint firstItem="tEl-gl-wWu" firstAttribute="centerY" secondItem="mdb-Jd-3t4" secondAttribute="centerY" id="yU3-VA-fYd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mdb-Jd-3t4" secondAttribute="trailing" constant="16" id="KuB-DF-ZqW"/>
+                    <constraint firstItem="mdb-Jd-3t4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ort-QK-cGE"/>
+                    <constraint firstItem="mdb-Jd-3t4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SCi-8Q-mRH"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mdb-Jd-3t4" secondAttribute="bottom" constant="8" id="hCo-L9-Ijh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblExpiresDate" destination="Xu2-Ja-0IS" id="4jd-jD-AJp"/>
+                <outlet property="lblcardDetails" destination="vuW-5w-whU" id="fFa-xd-WZ2"/>
+                <outlet property="paymentMethodImageView" destination="tEl-gl-wWu" id="jRv-aW-DEm"/>
+                <outlet property="selectPaymentMethodButton" destination="2gt-Yv-BP8" id="AgW-MD-y8v"/>
+                <outlet property="vWMain" destination="mdb-Jd-3t4" id="68h-fc-eSE"/>
+            </connections>
+            <point key="canvasLocation" x="219.56521739130437" y="158.70535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_paymentSelected" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

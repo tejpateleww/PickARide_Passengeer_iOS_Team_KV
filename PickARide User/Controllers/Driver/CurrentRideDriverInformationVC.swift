@@ -121,7 +121,7 @@ class CurrentRideDriverInformationVC: BaseViewController {
         controller.objBookingInfo = objBookingInfo
         controller.objCurrentBooking = objCurrentBooking
         controller.isFromApi = isFromApi
-        controller.mainVCTogo = {
+        controller.mainVCTogo = { [unowned self] in
             self.dismiss(animated: true, completion: nil)
              NotificationCenter.default.post(name: .CancelCompleteTRip, object: nil, userInfo: nil)
 

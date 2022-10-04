@@ -38,6 +38,10 @@ class LoginVC: UIViewController {
         let _ = self.getLocation()
         self.setupLocalization()
         self.txtPassword.setPasswordVisibility(vc: self, action: #selector(self.showHidePassword(_:)))
+#if targetEnvironment(simulator)
+        txtEmail.text = "grng@grr.la"
+        txtPassword.text = "vyas1313"
+#endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +61,7 @@ class LoginVC: UIViewController {
     
     @IBAction func btnSignInClicked(_ sender: Any) {
         if self.validation(){
-            if self.getLocation(){
-                self.callLoginApi()
-            }
+            self.callLoginApi()
         }
     }
     
@@ -71,18 +73,16 @@ class LoginVC: UIViewController {
     @IBAction func btnSocialRequests(_ sender: UIButton) {
         self.view.endEditing(true)
         print(#function)
-        if self.getLocation(){
-            if sender.tag == 0 {
-                self.appleSignInManager = AppleSignInProvider()
-                self.appleSignInManager?.delegate = self
-            } else if sender.tag == 1 {
-                let faceBookSignInManager = FacebookLoginProvider(self)
-                faceBookSignInManager.delegate = self
-                faceBookSignInManager.fetchToken(from: self)
-            }else{
-                self.googleSignInManager = GoogleLoginProvider(self)
-                self.googleSignInManager?.delegate = self
-            }
+        if sender.tag == 0 {
+            self.appleSignInManager = AppleSignInProvider()
+            self.appleSignInManager?.delegate = self
+        } else if sender.tag == 1 {
+            let faceBookSignInManager = FacebookLoginProvider(self)
+            faceBookSignInManager.delegate = self
+            faceBookSignInManager.fetchToken(from: self)
+        }else{
+            self.googleSignInManager = GoogleLoginProvider(self)
+            self.googleSignInManager?.delegate = self
         }
     }
 }
@@ -113,13 +113,10 @@ extension LoginVC{
         self.txtPassword.isSecureTextEntry = sender.isSelected
     }
     
-    func getLocation() -> Bool {
+    func getLocation() {
         if Singleton.sharedInstance.userCurrentLocation == nil{
             self.locationManager = LocationService()
             self.locationManager?.startUpdatingLocation()
-            return false
-        }else{
-            return true
         }
     }
 }

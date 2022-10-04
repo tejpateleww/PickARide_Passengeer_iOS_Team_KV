@@ -86,9 +86,8 @@ class SelectTaxiTypeVC: BaseViewController{
     
     @IBAction func btnCancel(_ sender: Any) {
         selectedTaxi = NSNotFound
-        if let clicked = closeBtnClosure {
-            clicked()
-        }
+        closeBtnClosure?()
+        
         
     }
 
@@ -104,7 +103,7 @@ class SelectTaxiTypeVC: BaseViewController{
 //        else {
             let controller : ScheduleRideVC = ScheduleRideVC.instantiate(fromAppStoryboard: .Main)
             controller.selectedTaxi = selectedTaxi
-            controller.setClosour = { (strDateTime , TaxiSelected) in
+            controller.setClosour = { [unowned self] (strDateTime , TaxiSelected) in
                 self.bookingReqModel.bookingType = BookingType.BookLater.rawValue
                 self.bookingReqModel.pickupDateTime = strDateTime
                 self.selectedTaxi = TaxiSelected
@@ -112,7 +111,7 @@ class SelectTaxiTypeVC: BaseViewController{
                     Toast.show(message: "Please select taxi type", state: .failure)
                 }
                 else {
-                    let vc : AddPaymentVC = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
+                    let vc : AddPaymentVC = AddPaymentVC.newInstance
                     vc.selectedTaxiType = self.taxiData[self.selectedTaxi]
                     vc.isFromSchedulled = true
                     vc.bookingReqModel = self.bookingReqModel
@@ -135,8 +134,8 @@ class SelectTaxiTypeVC: BaseViewController{
 
         }
         else {
-            let controller :AddPaymentVC  = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
-            controller.bookingAdded = {
+            let controller :AddPaymentVC = AddPaymentVC.newInstance
+            controller.bookingAdded = { [unowned self] in
                 self.selectedTaxi = NSNotFound
                 Singleton.sharedInstance.selectedTaxiId = "0"
                 
@@ -154,7 +153,7 @@ class SelectTaxiTypeVC: BaseViewController{
     
     @IBAction func btnOfferClick(_ sender: Any) {
         let controller = MyOfferVC.instantiate(fromAppStoryboard: .Main)
-        controller.PromoCodeValid = { (objPromo) in
+        controller.PromoCodeValid = { [unowned self] (objPromo) in
             self.bookingReqModel.promoCode = objPromo.promocode
             self.btnPromo.isHidden = false
             self.btnPromo.setTitle(objPromo.promocode, for: .normal)
@@ -303,7 +302,7 @@ extension SelectTaxiTypeVC: UITableViewDelegate,UITableViewDataSource {
         let strEstimateFare = twoDecimals(number:taxiData[indexPath.row].estimateTripFare ?? 0)
             //"\(taxiData[indexPath.row].estimateTripFare ?? 0)"
         
-        cell.SuggestedMoney.text = "$ \(strEstimateFare)"
+         cell.SuggestedMoney.text = strEstimateFare.toCurrencyString()
         cell.SuggestedTime.text = "1-\(taxiData[indexPath.row].driverReachInMinute ?? 0) min"
         cell.TaxiImage.loadSDImage(imgUrl: taxiData[indexPath.row].image)
          

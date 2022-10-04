@@ -67,7 +67,7 @@ extension ReasonForCancelVC{
         reqModel.bookingId = isFromApi == true ? objCurrentBooking.id : objBookingInfo.id
         reqModel.cancelReason = self.reasonArray.first ?? ""
         cancelViewModel.webserviceCancelTripApi(reqModel: reqModel)
-        cancelViewModel.DoneBtnClick  = {
+        cancelViewModel.DoneBtnClick  = { [unowned self] in
             self.dismiss(animated: true) {
                 if let mainScreenToGo = self.NavigateToMainScreen {
                     mainScreenToGo()

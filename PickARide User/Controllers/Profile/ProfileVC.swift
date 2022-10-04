@@ -85,7 +85,7 @@ class ProfileVC: BaseViewController {
         let controller = ChangePasswordVC.instantiate(fromAppStoryboard: .Login)
         controller.submitButtonText = "ChangePassword_btnChangePassword".Localized()
         controller.isChangePassword = true
-        controller.btnSubmitClosure = {
+        controller.btnSubmitClosure = { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
         controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)

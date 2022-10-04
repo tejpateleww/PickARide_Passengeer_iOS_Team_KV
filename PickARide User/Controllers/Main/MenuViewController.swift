@@ -212,18 +212,21 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             homeVC?.navigationController?.pushViewController(controller, animated: true)
             
         } else if strCellItemTitle == MyType.PaymentMethods.value {
-            let controller = AddPaymentVC.instantiate(fromAppStoryboard: .Main)
+            let controller = AddPaymentVC.newInstance
             controller.isFromSideMenu = true
             homeVC?.navigationController?.pushViewController(controller, animated: true)
             
         } else if strCellItemTitle == MyType.Logout.value {
-            Utilities.showAlertWithTitleFromVC(vc: self, title: UrlConstant.Logout, message: UrlConstant.LogoutMessage, buttons: [UrlConstant.Ok,UrlConstant.Cancel], isOkRed: false) { (ind) in
+            Utilities.showAlertWithTitleFromVC(vc: self, title: UrlConstant.Logout, message: UrlConstant.LogoutMessage, buttons: [UrlConstant.Ok,UrlConstant.Cancel], isOkRed: false) {  (ind) in
                 if ind == 0{
+                    homeVC?.removeObserver()
                     Utilities.showHud()
                     WebServiceSubClass.LogoutApi { (status, apimessage, error) in
                         Utilities.hideHud()
                         homeVC?.stopTimerNearByDriver()
                         userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+                        SocketIOManager.shared.socket.disconnect()
+                        Singleton.sharedInstance.clearSingletonClass()
                         appDel.navigateToLogin()
                     }
                 }

@@ -36,6 +36,18 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
     
     func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, CommonViewTitles : [String], isTwoLabels:Bool, isDisableBack:Bool = false)
     {
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            if isTranslucent {
+                appearance.configureWithTransparentBackground()
+            } else {
+                appearance.configureWithOpaqueBackground()
+            }
+            appearance.shadowColor = .clear
+            controller.navigationController?.navigationBar.standardAppearance = appearance
+            controller.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
         controller.navigationController?.navigationBar.isOpaque = false
@@ -153,7 +165,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
             } else if leftImage == NavItemsLeft.menu.value {
                 let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
                 btnLeft.setImage(UIImage.init(named: "ic_menu"), for: .normal)
-                btnLeft.layer.setValue(controller, forKey: "controller")
                 btnLeft.addTarget(self, action: #selector(self.btMenuAction), for: .touchUpInside)
                 
                 btnLeft.shadow = true
@@ -169,7 +180,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                 
                 btnLeftBar.style = .plain
                 controller.navigationItem.leftBarButtonItem = btnLeftBar
-                
             } else if leftImage == NavItemsLeft.cancel.value {
                 let btnLeftBar = UIBarButtonItem(image: UIImage(named: "ic_Cancel"), style: .plain, target: self, action: #selector(self.btnBackAction))
                 btnLeftBar.tintColor = .black
@@ -178,8 +188,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
             } else if leftImage == NavItemsLeft.cancelWhite.value {
                 let btnLeft = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 btnLeft.setImage(UIImage.init(named: "ic_cancelWhite"), for: .normal)
-                btnLeft.layer.setValue(controller, forKey: "controller")
-                
                 btnLeft.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
                 let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
                 LeftView.addSubview(btnLeft)
@@ -207,7 +215,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     btnLogin.titleLabel?.font = CustomFont.bold.returnFont(18)
                     btnLogin.setTitleColor(colors.submitButtonColor.value, for: .normal)
                     btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    btnLogin.layer.setValue(controller, forKey: "controller")
                     viewLogin.addSubview(btnLogin)
 
                 
@@ -222,8 +229,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnProfile.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
                     navBtnProfile.setImage(UIImage.init(named: "ic_ProfileEdit"), for: .normal)
                    
-                   // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnProfile.layer.setValue(controller, forKey: "controller")
                     viewProfile.addSubview(navBtnProfile)
 
                     navBtnProfile.layer.shadowColor = colors.black.value.cgColor
@@ -248,7 +253,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnProfile.shadow = true
 //                    navBtnProfile.addTarget(self, action: #selector(EditUserProfile(_:)), for: .touchUpInside)
                    // btnProfile.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnProfile.layer.setValue(controller, forKey: "controller")
                     viewProfileEdit.addSubview(navBtnProfile)
 
 
@@ -265,7 +269,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnDone.layer.setValue(controller, forKey: "controller")
                     viewDone.addSubview(navBtnDone)
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
@@ -281,7 +284,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnDone.layer.setValue(controller, forKey: "controller")
                     viewDone.addSubview(navBtnDone)
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
@@ -297,7 +299,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnDone.layer.setValue(controller, forKey: "controller")
                     viewDone.addSubview(navBtnDone)
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
@@ -313,7 +314,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
                     navBtnDone.setTitleColor(colors.submitButtonColor.value, for: .normal)
                    
                    // btnLogin.addTarget(self, action: #selector(openLoginVC(_:)), for: .touchUpInside)
-                    navBtnDone.layer.setValue(controller, forKey: "controller")
                     viewDone.addSubview(navBtnDone)
 
                     let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: viewDone)
@@ -323,26 +323,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
             }
             controller.navigationItem.rightBarButtonItems = arrButtons
         }
-        
-        
-        /*
-        if rightImage != "" {
-            
-            let btnRight = UIButton.init()
-            btnRight.setImage(UIImage.init(named: rightImage), for: .normal)
-            btnRight.layer.setValue(controller, forKey: "controller")
-            
-//            if rightImage == iconWhiteCall {
-                btnRight.addTarget(self, action: #selector(self.btnCallAction), for: .touchUpInside)
-//            }
-            
-            let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: btnRight)
-            btnRightBar.style = .plain
-            controller.navigationItem.rightBarButtonItem = btnRightBar
-            
-        }
-        */
-        
     }
     
     func UpdateView() {
@@ -385,37 +365,6 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
         }
     }
     
-//    @objc func  EditProfileViewController(_ sender: UIButton?) {
-//        guard let ProfilePage = sender?.layer.value(forKey: "controller") as? ProfileViewController else {
-//            return
-//        }
-//        ProfilePage.EditTapped()
-//    }
-    
-//    @objc func  ShowTickets(_ sender: UIButton?) {
-//        guard let controller = sender?.layer.value(forKey: "controller") as? GenerateTicketVC else {
-//            return
-//        }
-//        let TickelistPage:MyTicketVC = UIViewController.viewControllerInstance(storyBoard: AppStoryboards.Help)
-//        controller.navigationController?.pushViewController(TickelistPage, animated: true)
-//    }
-    
-//    @objc func  SelectPremium(_ sender: UIButton?) {
-////        guard sender == UIButton else {
-////            return
-////        }
-//        self.btnPremium.isSelected = !self.btnPremium.isSelected
-//        self.isPremiumBooking = self.btnPremium.isSelected
-//        if self.btnPremium.isSelected {
-//
-//            let  infoPopup:HeaderWithDescription = UIViewController.viewControllerInstance(storyBoard: AppStoryboards.CustomPopup)
-//            infoPopup.Title = "Premium Search"
-//            infoPopup.Desc = UtilityClass.GetPremiumDesc()
-//        appDel.window?.rootViewController?.present(infoPopup, animated: true, completion: nil)
-//        }
-//
-//    }
-    
     @objc func openChatSupportScreen(_ sender: UIButton?) {
       
         let controller : ChatVC = ChatVC.instantiate(fromAppStoryboard: .Main)
@@ -425,44 +374,29 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
     
     @objc func OpenSideMenu(_ sender: UIButton?) {
       
-//        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        let vc = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SideMenuVC.storyboardID)
-//        let navController = UINavigationController.init(rootViewController: vc)
-//        navController.modalPresentationStyle = .overFullScreen
-//        navController.navigationController?.modalTransitionStyle = .crossDissolve
-//        controller?.present(navController, animated: false, completion: nil)
     }
     @objc func openLoginVC(_ sender: UIButton?) {
-        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        let notifVc = AppStoryboard.Login.instance.instantiateViewController(withIdentifier: NotificationsListVC.storyboardID)
-        controller?.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     @objc func OpenMailVC(_ sender: UIButton?) {
    
 //        controller?.navigationController?.pushViewController(docInfoVc, animated: true)
     }
     
     @objc func OpenNotificationsVC(_ sender: UIButton?) {
-//        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        let notifVc = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: NotificationsListVC.storyboardID)
-//        controller?.navigationController?.pushViewController(notifVc, animated: true)
+
     }
     
     @objc func OpenOtherProfileVC(_ sender: UIButton?) {
-//        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        let notifVc = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
-//        controller?.navigationController?.pushViewController(notifVc, animated: true)
+
     }
     
     @objc func OpenChatVC(_ sender: UIButton?) {
-//            let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//            let chatVc = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: MedicalFollowUpChatVC.storyboardID)
-           // controller?.navigationController?.pushViewController(chatVc, animated: true)
+
         }
     @objc func OpenEditProfileVC(_ sender: UIButton?) {
-//        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        let notifVc = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ProfileVC.storyboardID)
-//        controller?.navigationController?.pushViewController(notifVc, animated: true)
+
     }
     @objc func EditUserProfile(_ sender: UIButton?) {
         let controller = ProfileVC.instantiate(fromAppStoryboard: .Main)
@@ -470,22 +404,15 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
     }
     @objc func DismissViewController (_ sender: UIButton?)
     {
-        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-        controller?.navigationController?.dismiss(animated: true, completion: nil)
+        
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @objc func poptoViewController (_ sender: UIButton?)
-    {
-        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-        controller?.navigationController?.popViewController(animated: true)
+    @objc func poptoViewController (_ sender: UIButton?) {
+        self.navigationController?.popViewController(animated: true)
     }
-    @objc func OpenMenuViewController (_ sender: UIButton?)
-    {
-       
-//        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-//        controller?.frostedViewController.view.endEditing(true)
-//        controller?.frostedViewController.presentMenuViewController()
-        //        controller?.sideMenuViewController?._presentLeftMenuViewController()
+    @objc func OpenMenuViewController (_ sender: UIButton?) {
+
     }
     
     
@@ -557,8 +484,8 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate, UIGes
     
     @objc func btMenuAction (_ sender: UIButton?) {
 //    @objc func btMenuAction() {
-        let controller = sender?.layer.value(forKey: "controller") as? UIViewController
-        controller?.sideMenuController?.revealMenu()
+        
+        self.sideMenuController?.revealMenu()
     }
     
     @objc func btnSkipAction() {

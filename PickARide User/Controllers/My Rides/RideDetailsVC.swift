@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import Cosmos
+import GoogleMaps
 
 protocol AcceptBookingReqDelgate {
     func onAcceptBookingReq()
@@ -17,15 +18,12 @@ class RideDetailsVC: BaseViewController {
 
     //MARK: ===== Outlets =========
     @IBOutlet weak var stackviewRecieptBottom: NSLayoutConstraint!
-    @IBOutlet weak var stackviewRecieptTop: NSLayoutConstraint!
     @IBOutlet weak var stackviewRecieptHeight: NSLayoutConstraint!
     @IBOutlet weak var vwMap: UIView!
     @IBOutlet weak var lblTime: RideDetailLabel!
-    @IBOutlet weak var imgMapView: UIImageView!
     @IBOutlet weak var MyOfferView: UIView!
     @IBOutlet weak var lblRidigo: RideDetailLabel!
     @IBOutlet weak var lblCarName: RideDetailLabel!
-    @IBOutlet weak var lblAddress: RideDetailLabel!
     @IBOutlet weak var lblPrice: RideDetailLabel!
     @IBOutlet weak var lblPickupLocation: RideDetailLabel!
     @IBOutlet weak var lblDestLocation: RideDetailLabel!
@@ -38,7 +36,7 @@ class RideDetailsVC: BaseViewController {
     @IBOutlet weak var btnReject: CancelButton!
     @IBOutlet weak var imgStatus: UIImageView!
     @IBOutlet weak var viewProfile: UIView!
-    
+    lazy var mapView = GMSMapView(frame: .zero)
     
     
     //MARK: - Variables
@@ -63,19 +61,19 @@ class RideDetailsVC: BaseViewController {
         self.btnReject.isHidden = true
         self.btnRepeateRide.isHidden = true
         self.setNavigationBarInViewController(controller: self, naviColor: colors.submitButtonColor.value, naviTitle: NavTitles.rideDetails.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
-        
-        let BookingStatus = self.PastBookingData?.bookingInfo?.status ?? ""
+        setMap()
+        let BookingStatus = self.PastBookingData?.bookingInfo?.status
         let BookingType = self.PastBookingData?.bookingInfo?.bookingType ?? ""
 
         if(self.isFromPast){
             self.btnAccept.isHidden = true
             self.btnReject.isHidden = true
             self.btnRepeateRide.isHidden = true
-            if(BookingStatus == "canceled"){
+            if(BookingStatus == .canceled){
                 self.imgStatus.image = #imageLiteral(resourceName: "Cancel")
                 self.btnReceipt.isHidden = true
                 self.stackviewRecieptHeight.constant = 0
-            }else if(BookingStatus == "completed"){
+            }else if(BookingStatus == .canceled){
                 self.imgStatus.image = #imageLiteral(resourceName: "Completed")
                 self.btnReceipt.isHidden = false
                 self.stackviewRecieptHeight.constant = 40
@@ -129,8 +127,7 @@ class RideDetailsVC: BaseViewController {
                 self.lblRidigo.text = "\(self.PastBookingData?.bookingInfo?.vehicleName ?? "")(\(self.PastBookingData?.driverVehicleInfo?.plateNumber ?? "")"
                 self.lblCarName.text = " - \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeModelName ?? ""))"
             }
-            self.lblPrice.text = "$\(self.PastBookingData?.bookingInfo?.estimatedFare ?? "0")"
-            self.lblAddress.text = self.PastBookingData?.bookingInfo?.pickupLocation ?? ""
+            self.lblPrice.text = self.PastBookingData?.bookingInfo?.estimatedFare?.toCurrencyString()
             self.lblPickupLocation.text = self.PastBookingData?.bookingInfo?.pickupLocation ?? ""
             self.lblDestLocation.text = self.PastBookingData?.bookingInfo?.dropoffLocation ?? ""
             let strUrl = "\(APIEnvironment.Profilebu.rawValue)" + "\(self.PastBookingData?.driverInfo?.profileImage ?? "")"
@@ -141,6 +138,96 @@ class RideDetailsVC: BaseViewController {
             self.lblRideCustomerName.text = custName
             self.ratingVw.rating = Double(self.PastBookingData?.driverInfo?.rating ?? "0.0") ?? 0.0
         }
+    }
+    
+    func setMap() {
+        guard let info = self.PastBookingData?.bookingInfo else {
+            return
+        }
+        
+        vwMap.addSubview(mapView)
+        mapView.setAllSideContraints(.zero)
+        guard let pickup = info.pickupCoordinate, let drop = info.dropOffCoordinate else {
+            return
+        }
+        fetchRoute(pickup: pickup, drop: drop)
+        let bounds = GMSCoordinateBounds(coordinate: pickup, coordinate: drop)
+        let cameraWithPadding: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 40.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.mapView.animate(with: cameraWithPadding)
+            let pickUpMarker = GMSMarker(position: pickup)
+            pickUpMarker.icon = UIImage(named: "iconCurrentLocPin")
+            pickUpMarker.map = self.mapView
+            let dropOffMarker = GMSMarker(position: drop)
+            dropOffMarker.icon = GMSMarker.themeMarkerImage
+            dropOffMarker.map = self.mapView
+        }
+    }
+    
+    func fetchRoute(pickup: CLLocationCoordinate2D, drop: CLLocationCoordinate2D) {
+        
+        let CurrentLatLong = "\(pickup.latitude),\(pickup.longitude)"
+        let DestinationLatLong = "\(drop.latitude),\(drop.longitude)"
+        let param = "origin=\(CurrentLatLong)&destination=\(DestinationLatLong)&mode=driving&key=\(APIEnvironment.GoogleMapKey.rawValue)"
+        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?\(param)")!
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url, completionHandler: {(data, response, error) in
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let jsonResult = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]?,
+                    let jsonResponse = jsonResult else {
+                print("error in JSONSerialization")
+                return
+            }
+            
+            guard let status = jsonResponse["status"] as? String else {
+                return
+            }
+            
+            if(status == "REQUEST_DENIED" || status == "ZERO_RESULTS"){
+                print("Map Error : \(jsonResponse["error_message"] as? String ?? "REQUEST_DENIED")")
+                return
+            }
+            
+            guard let routes = jsonResponse["routes"] as? [Any] else {
+                return
+            }
+            
+            guard let route = routes[0] as? [String: Any] else {
+                return
+            }
+            
+            // For polyline
+            guard let overview_polyline = route["overview_polyline"] as? [String: Any] else {
+                return
+            }
+            
+            guard let polyLineString = overview_polyline["points"] as? String else {
+                return
+            }
+            
+
+            
+            //Call this method to draw path on map
+            DispatchQueue.main.async {
+                self.drawPath(from: polyLineString)
+            }
+        })
+        task.resume()
+    }
+    
+    func drawPath(from polyStr: String){
+        let path = GMSPath(fromEncodedPath: polyStr)!
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeWidth = 3.0
+        polyline.strokeColor = UIColor.black
+        polyline.map = self.mapView
     }
 
     //MARK:- ==== View Shadow ======x

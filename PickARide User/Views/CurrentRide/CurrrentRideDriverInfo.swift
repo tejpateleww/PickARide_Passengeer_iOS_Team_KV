@@ -57,7 +57,7 @@ class CurrrentRideDriverInfo : UIView {
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 //self.view.layoutIfNeeded()
             }) { (success) in
-                
+                 
             }
         }
     }
@@ -130,12 +130,10 @@ class CurrrentRideDriverInfo : UIView {
         controller.objBookingInfo = objBookingInfo
         controller.objCurrentBooking = objCurrentBooking
         controller.isFromApi = isFromApi
-        controller.mainVCTogo = {
-            
-            homeVC.dismiss(animated: true, completion: nil)
+        controller.mainVCTogo = { [weak homeVC] in
+            homeVC?.dismiss(animated: true, completion: nil)
             //self.dismiss(animated: true, completion: nil)
              NotificationCenter.default.post(name: .CancelCompleteTRip, object: nil, userInfo: nil)
-
         }
         let navigationController = UINavigationController(rootViewController: controller)
         navigationController.modalPresentationStyle = .overCurrentContext

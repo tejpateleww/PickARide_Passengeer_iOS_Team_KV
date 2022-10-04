@@ -14,19 +14,31 @@ class WalletHistoryVC: BaseViewController{
     @IBOutlet weak var lblPaymentMethod: TitleLabel!
     @IBOutlet weak var tblWalletHistory: UITableView!
     @IBOutlet weak var lblNoDataFound: themeLabel!
-    
-    var walletUserModel = WalletUserModel()
+
     var walletObj : WalletHistoryModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setLocalization()
         self.callApi()
     }
     
+    lazy var addWalletButton = UIButton(type: .system)
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.wallet.value, leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        addWalletButton.addTarget(self, action: #selector(self.addWalletTapped), for: .touchUpInside)
+        addWalletButton.setTitle("Add Wallet", for: .normal)
+        addWalletButton.setTitleColor(ThemeColorEnum.Theme.rawValue, for: .normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWalletButton)
+        self.lblTotalMoney.text = Singleton.sharedInstance.availableWalletBalance?.toCurrencyString()
+    }
+    
+    @objc private func addWalletTapped() {
+        let vc = AddWalletVC.instantiate(fromAppStoryboard: .Payment)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -41,10 +53,28 @@ extension WalletHistoryVC{
 
 //MARK:- Apis
 extension WalletHistoryVC{
+    
     func callApi(){
-        self.walletUserModel.walletHistoryVC = self
-        
-        self.walletUserModel.webserviceWalletHistory(reqModel: WalletHistoryRequestModel())
+        self.webserviceWalletHistory(reqModel: WalletHistoryRequestModel())
+    }
+    
+    func webserviceWalletHistory(reqModel: WalletHistoryRequestModel){
+        Utilities.showHud()
+        WebServiceSubClass.WalletHistoryApi(reqModel: reqModel) { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status{
+                self.walletObj = response
+                self.lblTotalMoney.text = response?.walletBalance?.toCurrencyString()
+                Singleton.sharedInstance.availableWalletBalance = response?.walletBalance
+                self.tblWalletHistory.reloadData()
+            }
+            
+            self.lblNoDataFound.isHidden = response?.data?.count != 0
+        }
+    }
+    
+    func webserviceAddMoneyA(reqModel: AddMoneyRequestModel){
+        Utilities.showHud()
     }
 }
 

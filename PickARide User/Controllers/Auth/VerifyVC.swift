@@ -65,7 +65,7 @@ class VerifyVC: BaseViewController {
             controller.submitButtonText = "ChangePassword_btnSetPassword".Localized()
             controller.isChangePassword = false
             
-            controller.btnSubmitClosure = {
+            controller.btnSubmitClosure = { 
                 userDefaults.setValue(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
                 appDel.navigateToLogin()
             }

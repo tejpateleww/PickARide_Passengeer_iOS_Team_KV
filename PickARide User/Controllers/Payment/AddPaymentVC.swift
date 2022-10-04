@@ -10,6 +10,10 @@ import UIKit
 
 class AddPaymentVC: BaseViewController{
     
+    static var newInstance: AddPaymentVC {
+        AddPaymentVC.instantiate(fromAppStoryboard: .Payment)
+    }
+    
     //MARK:- ===== Outlets =======
     @IBOutlet weak var tblPaymentMethod: UITableView!
     @IBOutlet weak var btnAddCard: submitButton!
@@ -29,6 +33,7 @@ class AddPaymentVC: BaseViewController{
     var bookingAdded : (()->())?
     
     
+    
     //MARK:- ===== View Controller Life Cycle =======
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +42,14 @@ class AddPaymentVC: BaseViewController{
         if Singleton.sharedInstance.CardList.count == 0{
             self.callCardListApi()
         }
-        self.tblPaymentMethod.reloadData()
+        tblPaymentMethod.registerNibWithCellType(CreditCardCell.self)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.payment.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: true, CommonViewTitles: [], isTwoLabels: false)
+        self.tblPaymentMethod.reloadData()
+        setNavigationBarInViewController(controller: self, naviColor: colors.appColor.value, naviTitle: NavTitles.payment.value, leftImage: isFromSideMenu ? NavItemsLeft.back.value : NavItemsLeft.cancel.value, rightImages: [isFromSideMenu ? NavItemsRight.none.value : NavItemsRight.addCard.value], isTranslucent: false, CommonViewTitles: [], isTwoLabels: false)
             navBtnDone.addTarget(self, action: #selector(btnDonePaymentClicked(_:)), for: .touchUpInside)
     }
     
@@ -55,42 +62,46 @@ class AddPaymentVC: BaseViewController{
     //MARK: -btnAction
     @IBAction func placeOrderBtn(_ sender: submitButton) {
         if isFromSideMenu{
-            let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            let controller = AddCardVC.instantiate(fromAppStoryboard: .Payment)
             
-            controller.addCardClosure = {
+            controller.addCardClosure = { [unowned self] in
                 self.tblPaymentMethod.reloadData()
             }
             
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
-            
-            if selectCard == NSNotFound {
-                Toast.show(title: UrlConstant.Required, message: "Please select card", state: .failure)
+            guard selectedPaymentMethods == 0 || selectedPaymentMethods == 1 else {
+                Toast.show(title: UrlConstant.Required, message: "Please select payment option", state: .failure)
+                return
             }
-            else {
-                bookingReqModel.distance = "\(selectedTaxiType.distance ?? 0)"
-                bookingReqModel.estimatedFare = "\(selectedTaxiType.estimateTripFare ?? 0)"
-                bookingReqModel.noOfPassenger = selectedTaxiType.capacity
-                bookingReqModel.vehicleTypeId =  selectedTaxiType.vehicleTypeId
-               
-                let Time = "\(selectedTaxiType.durationInMinute ?? 0):\(selectedTaxiType.durationInSecond ?? 0)"
-                let newString = Time.replacingOccurrences(of: ":", with: ".", options: .literal, range: nil)
-                
-                bookingReqModel.tripDuration = String((Double(newString)?.round(to: 2))!) // "\(selectedTaxiType.durationInMinute ?? 0):\(Double(selectedTaxiType.durationInSecond ?? 0).round(to: 2))"
-                bookingReqModel.paymentType = selectedPaymentMethods == 0 ? "wallet": "card"
-                bookingReqModel.cardId = Singleton.sharedInstance.CardList[selectCard - 1].id
-                BookingRequestWebservice()
-            }
+            bookingReqModel.distance = "\(selectedTaxiType.distance ?? 0)"
+            bookingReqModel.estimatedFare = "\(selectedTaxiType.estimateTripFare ?? 0)"
+            bookingReqModel.noOfPassenger = selectedTaxiType.capacity
+            bookingReqModel.vehicleTypeId =  selectedTaxiType.vehicleTypeId
+           
+            let Time = "\(selectedTaxiType.durationInMinute ?? 0):\(selectedTaxiType.durationInSecond ?? 0)"
+            let newString = Time.replacingOccurrences(of: ":", with: ".", options: .literal, range: nil)
             
+            bookingReqModel.tripDuration = String((Double(newString)?.round(to: 2))!)
+            if selectedPaymentMethods == 1 {
+                if selectCard == NSNotFound {
+                    Toast.show(title: UrlConstant.Required, message: "Please select card", state: .failure)
+                    return
+                } else {
+                    bookingReqModel.cardId = Singleton.sharedInstance.CardList[selectCard - 1].id
+                }
+            }
+            bookingReqModel.paymentType = selectedPaymentMethods == 0 ? "wallet": "card"
+            BookingRequestWebservice()
         }
     }
     
     //MARK:- ===== Payment btn click =======
     @IBAction func btnDonePaymentClicked(_ sender: submitButton) {
         if !isFromSideMenu{
-            let controller = AddCardVC.instantiate(fromAppStoryboard: .Main)
+            let controller = AddCardVC.instantiate(fromAppStoryboard: .Payment)
             
-            controller.addCardClosure = {
+            controller.addCardClosure = { [unowned self] in
                 self.tblPaymentMethod.reloadData()
             }
             self.navigationController?.pushViewController(controller, animated: true)
@@ -107,7 +118,7 @@ class AddPaymentVC: BaseViewController{
                 print(response)
                 if self.isFromSchedulled{
                     let controller = PaymentSucessFullyVC.instantiate(fromAppStoryboard: .Main)
-                    controller.dismissedClosour = {
+                    controller.dismissedClosour = { [unowned self] in
                         let controller = MyRidesVC.instantiate(fromAppStoryboard: .Main)
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
@@ -201,24 +212,15 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
 
             cell1.paymentImageView.image = getCardTypeImage(type: PaymentsCardsTypesName.wallet.rawValue)
             cell1.lblWallet.text = "AddCardVC_lblWallet".Localized()
-            cell1.lblwalletBalance.text = Singleton.sharedInstance.UserProfilData?.walletBalance ?? "0"
+            cell1.lblwalletBalance.text = Singleton.sharedInstance.UserProfilData?.walletBalance?.toCurrencyString()
             cell1.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
             cell1.vWMain.layer.borderWidth = indexPath.row == selectedPaymentMethods ? 1 : 0
             cell = cell1
         } else {
             let obj = Singleton.sharedInstance.CardList[indexPath.row - 1]
-
-            let cell2 = tblPaymentMethod.dequeueReusableCell(withIdentifier: paymentMethodCell2.reuseIdentifier, for: indexPath) as? paymentMethodCell2 ?? paymentMethodCell2()
-
+            let cell2 = tblPaymentMethod.dequeueReusableCell(withIdentifier: CreditCardCell.className, for: indexPath) as! CreditCardCell
             let isSelect = indexPath.row == selectCard
-            cell2.vWMain.layer.borderColor = colors.submitButtonColor.value.cgColor
-            cell2.vWMain.layer.borderWidth = isSelect ? 1 : 0
-            cell2.selectPaymentMethodButton.isHidden = !isSelect
-
-            cell2.paymentMethodImageView.image = getCardTypeImage(type: obj.cardType ?? "")
-            cell2.lblcardDetails.text = obj.formatedCardNo ?? ""
-            cell2.lblExpiresDate.text = "\(UrlConstant.Expiry) \(obj.expiryMonth ?? "")/\(obj.expiryYear ?? "")"
-
+            cell2.configCell(obj, isSelected: isSelect)
             cell = cell2
         }
         return cell
@@ -228,7 +230,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFromSideMenu{
             if indexPath.row == 0 {
-                let controller = WalletHistoryVC.instantiate(fromAppStoryboard: .Main)
+                let controller = WalletHistoryVC.instantiate(fromAppStoryboard: .Payment)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -237,7 +239,7 @@ extension AddPaymentVC: UITableViewDelegate,UITableViewDataSource {
             selectedPaymentMethods = indexPath.row
         }
         else {
-            selectedPaymentMethods = NSNotFound
+            selectedPaymentMethods = 1
             selectCard = indexPath.row
         }
         tblPaymentMethod.reloadData()
@@ -274,12 +276,4 @@ class paymentMethodCell1 : UITableViewCell {
     @IBOutlet weak var lblWallet: addPaymentlable!
     @IBOutlet weak var lblwalletBalance: addPaymentlable!
     @IBOutlet weak var paymentImageView: UIImageView!
-}
-
-class paymentMethodCell2 : UITableViewCell {
-    @IBOutlet weak var vWMain: PaymentView!
-    @IBOutlet weak var selectPaymentMethodButton: UIButton!
-    @IBOutlet weak var paymentMethodImageView: UIImageView!
-    @IBOutlet weak var lblExpiresDate: addPaymentlable!
-    @IBOutlet weak var lblcardDetails: addPaymentlable!
 }

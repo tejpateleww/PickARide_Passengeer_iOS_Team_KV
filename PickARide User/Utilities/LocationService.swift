@@ -6,7 +6,7 @@ import Foundation
 import CoreLocation
 import UIKit
 
-protocol LocationServiceDelegate {
+protocol LocationServiceDelegate: AnyObject {
     func tracingLocation(currentLocation: CLLocation)
     func tracingLocationDidFailWithError(error: Error)
 }
@@ -22,7 +22,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
-    var delegate: LocationServiceDelegate?
+    weak var delegate: LocationServiceDelegate? = nil
 
     override init() {
         super.init()

@@ -55,7 +55,7 @@ class CancelTripVC: BaseViewController {
         controller.objBookingInfo = objBookingInfo
         controller.objCurrentBooking = objCurrentBooking
         controller.isFromApi = isFromApi
-        controller.NavigateToMainScreen = {
+        controller.NavigateToMainScreen = { [unowned self] in
             self.dismiss(animated: true, completion: nil)
             if let mainVc = self.mainVCTogo {
                 mainVc()

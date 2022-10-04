@@ -29,6 +29,18 @@ class Singleton: NSObject{
     var DeviceType : String = "ios"
     var DeviceToken : String = ""
     var selectedTaxiId = String()
+    var currencySymbol: String {
+        UserDefaults.standard.getUserData()?.currencySymbol ?? ""
+    }
+    
+    var availableWalletBalance: String? {
+        set {
+            UserProfilData?.walletBalance = newValue
+        }
+        get {
+            UserProfilData?.walletBalance
+        }
+    }
     
     //MARK:- User' Custom Details
     var userCurrentLocation : CLLocationCoordinate2D?

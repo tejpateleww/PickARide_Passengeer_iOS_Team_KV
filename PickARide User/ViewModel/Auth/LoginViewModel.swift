@@ -13,9 +13,9 @@ class LoginUserModel{
     weak var loginVC : LoginVC? = nil
     
     func webserviceLogin(reqModel: LoginRequestModel){
-//        Utilities.showHud()
+        Utilities.showHud()
         WebServiceSubClass.LoginApi(reqModel: reqModel) { (status, apiMessage, response, error) in
-//            Utilities.hideHud()
+            Utilities.hideHud()
             Toast.show(title: status ? UrlConstant.Success : UrlConstant.Failed, message: apiMessage, state: status ? .success : .failure)
             if status{
                 userDefaults.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)

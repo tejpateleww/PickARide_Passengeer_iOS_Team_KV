@@ -43,6 +43,8 @@
 	<string>85e98241067a7f3c5ccee6b8d95440f4</string>
 	<key>FacebookDisplayName</key>
 	<string>Pick A Ride</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

@@ -53,7 +53,7 @@ extension HomeVC {
         // ----------------------------------------------------
         /// Socket On All
         func SocketOnMethods() {
-            Utilities.showHud()
+            // Utilities.showHud()
             //        if !SocketIOManager.shared.isSocketOn {
             SocketIOManager.shared.socket.on(clientEvent: .disconnect) { (data, ack) in
                 print ("socket is disconnected please reconnect")
@@ -70,12 +70,15 @@ extension HomeVC {
                 
             }
             
-            SocketIOManager.shared.socket.on(clientEvent: .connect) { (data, ack) in
+            SocketIOManager.shared.socket.on(clientEvent: .connect) { [weak self] (data, ack) in
                 print ("socket connected")
                 SocketIOManager.shared.isSocketOn = true
                 // hiding loading hud in on socket connected method
-                self.onSocketConnectUser()
-                self.emitSocket_UserConnect()
+                DispatchQueue.main.async {
+                    self?.onSocketConnectUser()
+                    self?.emitSocket_UserConnect()
+                }
+                
             }
             //Connect User On Socket
             SocketIOManager.shared.establishConnection()
@@ -83,25 +86,23 @@ extension HomeVC {
         
         // Socket Emit Connect user
         func emitSocket_UserConnect(){
-            let param = [
-                
-                socketApikeys.KCustomerID : Singleton.sharedInstance.UserId ?? ""
-                
-                
-                ] as [String : Any]
+            let param = [socketApikeys.KCustomerID : Singleton.sharedInstance.UserId] as [String : Any]
             SocketIOManager.shared.socketEmit(for: socketApikeys.KConnectCustomer, with: param)
         }
         
         // Socket On Connect User
         func onSocketConnectUser() {
-            SocketIOManager.shared.socketCall(for: socketApikeys.KConnectCustomer) { (json) in
+            SocketIOManager.shared.socketCall(for: socketApikeys.KConnectCustomer) { [weak self] (json) in
                 Utilities.hideHud()
                 print(json)
+                guard let self = self else {
+                    return
+                }
                 self.allSocketOffMethod()
                 self.onSocketGetEstimateFare()
                 self.onSocketAcceptDriverRequest()
                 self.onSocketCancellBySysteem()
-                self.OnSocketArrivedLocation()
+                self.OnSocketArrivedLocation()//
                 self.OnSocketStartTrip()
                 self.OnSocketLiveTracking()
                 self.onSocketNearByDriver()

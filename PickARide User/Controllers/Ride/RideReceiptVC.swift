@@ -31,9 +31,9 @@ class RideReceiptDetailsVC: BaseViewController {
     @IBOutlet weak var lblRideFares: themeLabel!
     @IBOutlet weak var lblTaxiFee: themeLabel!
     @IBOutlet weak var lblTax: themeLabel!
-    @IBOutlet weak var lblTolls: themeLabel!
+    @IBOutlet weak var lblDistanceFare: themeLabel!
     @IBOutlet weak var lblDiscount: themeLabel!
-    @IBOutlet weak var lblTopupAdded: themeLabel!
+    @IBOutlet weak var lblDurationFare: themeLabel!
     @IBOutlet weak var lblYourPayment: themeLabel!
     @IBOutlet weak var lblDestination: themeLabel!
     @IBOutlet weak var lblPickUp: themeLabel!
@@ -63,19 +63,27 @@ class RideReceiptDetailsVC: BaseViewController {
 
     //MARK:- ===== Data Setup ====
     func DataSetup(){
-        lblPickUp.text = objDetail?.bookingInfo?.pickupLocation
-        lblDestination.text = objDetail?.bookingInfo?.dropoffLocation
-        lblTax.text = objDetail?.bookingInfo?.tax?.toCurrencyString()
-        lblTaxiFee.text = objDetail?.bookingInfo?.bookingFee?.toCurrencyString()
-        lblTime.text = objDetail?.bookingInfo?.tripDuration?.secondsToTimeFormate()
-        let timestamp: TimeInterval =  Double(objDetail?.bookingInfo?.arrivedTime ?? "") ?? 0.0
+        guard let object = objDetail, let bookingInfo = object.bookingInfo else {
+            return
+        }
+        lblRideFares.text = bookingInfo.baseFare?.toCurrencyString()
+        lblPickUp.text = bookingInfo.pickupLocation
+        lblDestination.text = bookingInfo.dropoffLocation
+        lblTax.text = bookingInfo.tax?.toCurrencyString()
+        lblTaxiFee.text = bookingInfo.bookingFee?.toCurrencyString()
+        lblTime.text = bookingInfo.tripDuration?.secondsToTimeFormate()
+        let timestamp: TimeInterval =  Double(bookingInfo.arrivedTime ?? "") ?? 0.0
         let date = Date(timeIntervalSince1970: timestamp)
         let formatedDate = date.timeAgoSinceDate(isForNotification: false)
         self.lblDateTime.text = formatedDate
-        lblRideType.text = objDetail?.vehicleType?.name
-        lblPrice.text = objDetail?.bookingInfo?.baseFare?.toCurrencyString()
-        lblYourPayment.text = objDetail?.bookingInfo?.grandTotal?.toCurrencyString()
-        
+        lblRideType.text = object.vehicleType?.name
+        lblPrice.text = bookingInfo.grandTotal?.toCurrencyString()
+        lblYourPayment.text = bookingInfo.grandTotal?.toCurrencyString()
+        lblDistanceFare.text = bookingInfo.distanceFare?.toCurrencyString()
+        lblDurationFare.text = bookingInfo.durationFare?.toCurrencyString()
+        lblDiscount.text = bookingInfo.discount?.toCurrencyString()
+        lblDistance.text = bookingInfo.distance?.toDistanceString()
+        lblServiceType.text = object.driverVehicleInfo?.vehicleTypeManufacturerName
 //        self.lblCarName.text = " - \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeManufacturerName ?? "") \(self.PastBookingData?.driverVehicleInfo?.vehicleTypeModelName ?? ""))"
     }
 }

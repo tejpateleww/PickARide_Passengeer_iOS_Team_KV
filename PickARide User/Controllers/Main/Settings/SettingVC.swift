@@ -217,7 +217,7 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
             let settingObj = SettingData.SettingList[indexPath.section]
             let subSettingDataObj = settingObj.subData?[indexPath.row]
             
-            cell.CategoryImageView.image = UIImage(named: "")
+            //cell.CategoryImageView.image = UIImage(named: "")
             cell.CategoryImageView.superview?.isHidden = false
             
             cell.categoryName.text = subSettingDataObj?.placeName ?? ""
@@ -239,7 +239,7 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
         case 0:
             let controller = ProfileVC.instantiate(fromAppStoryboard: .Main)
             
-            controller.profileUpdateClosure = {
+            controller.profileUpdateClosure = { [unowned self] in
                 DispatchQueue.main.async {
                     self.tblSettings.reloadData()
                 }
@@ -249,8 +249,7 @@ extension SettingVC: UITableViewDelegate,UITableViewDataSource {
             break
         case 1:
             NotificationCenter.default.post(name: NotificationRefreshSideMenu, object: nil)
-            let controller = HomeVC.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.navigationController?.popViewController(animated: true)
            break
         case 2:
             let controller = CommonWebViewVC.instantiate(fromAppStoryboard: .Main)

@@ -90,6 +90,17 @@ extension UIView {
         layer.shadowRadius = shadowRadius
     }
     
+    func setAllSideContraints(_ insets: UIEdgeInsets) {
+        guard let view = superview else {
+            return
+        }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top).isActive = true
+        leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left).isActive = true
+        rightAnchor.constraint(equalTo: view.rightAnchor, constant: insets.right).isActive = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom).isActive = true
+    }
+    
 }
 
 extension UIView{

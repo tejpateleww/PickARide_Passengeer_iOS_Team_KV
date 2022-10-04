@@ -104,22 +104,22 @@ class WalletDetails: Codable {
 }
 
 //MARK:- Add Money Request Model
-class AddMoneyRequestModel: Encodable {
-    var customerId: String? = Singleton.sharedInstance.UserId
-    var cardId: String?
-    var amount: String?
+struct AddMoneyRequestModel: Encodable {
+    var customerId: String = Singleton.sharedInstance.UserId
+    let cardId: String
+    let amount: String
     
     enum CodingKeys: String, CodingKey {
         case customerId = "customer_id"
         case cardId = "card_id"
-        case amount = "amount"
+        case amount
     }
 }
 
 //MARK:- Add Money Response Model
 class AddMoneyResponseModel: Codable {
     let status: Bool?
-    let walletBalance: Float?
+    let walletBalance: Double?
     let message: String?
     
     enum CodingKeys: String, CodingKey {
@@ -128,16 +128,16 @@ class AddMoneyResponseModel: Codable {
         case message
     }
     
-    init(status: Bool, walletBalance: Float, message: String) {
+    init(status: Bool, walletBalance: Double, message: String) {
         self.status = status
         self.walletBalance = walletBalance
         self.message = message
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        message = try? values?.decodeIfPresent(String.self, forKey: .message)
-        status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
-        walletBalance = try? values?.decodeIfPresent(Float.self, forKey: .walletBalance)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        message = try? values.decode(String.self, forKey: .message)
+        status = try? values.decode(Bool.self, forKey: .status)
+        walletBalance = try? values.decode(Double.self, forKey: .walletBalance)
     }
 }
