@@ -21,6 +21,7 @@ let AppURL = "itms-apps://itunes.apple.com/app/id1488928328"
 let plus = "+"
 let minus = "-"
 let DefaultCouuntryCode = "+1"
+var isGotCancelled: Bool = false
 
 let themeColor = hexStringToUIColor(hex: "2ab6b6")
 let themeColorOrange = hexStringToUIColor(hex: "ff8b7b")

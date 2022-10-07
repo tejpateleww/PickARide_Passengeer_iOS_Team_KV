@@ -123,7 +123,7 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @objc func hideBottomView(_ hide: Bool){
-        conBottomOfContainerView.constant = hide ? -botomContentView.bounds.height : 0
+        conBottomOfContainerView.constant = hide ? (-botomContentView.bounds.height + 15) : 0
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
             self.view.layoutIfNeeded()
         })
@@ -138,6 +138,16 @@ class HomeVC: BaseViewController, GMSMapViewDelegate {
 
         if CLLocationManager.locationServicesEnabled(){
             self.locationManager.startUpdatingLocation()
+            let center = CLLocationCoordinate2D(latitude: Singleton.sharedInstance.latitute, longitude: Singleton.sharedInstance.longtitute)
+            // self.mapVw.isMyLocationEnabled = true
+            isFirstTimeLoadView = true
+            CurrentPlaceMarker = GMSMarker()
+            let markerView2 = MarkerView()
+            markerView2.markerImage = UIImage(named: "iconCurrentLocPin")
+            markerView2.layoutSubviews()
+            self.CurrentPlaceMarker.position = center
+            CurrentPlaceMarker.iconView = markerView2
+            CurrentPlaceMarker.map = self.mapVw
         }
         self.setLocalization()
         self.navigationBarSetup()
@@ -268,16 +278,8 @@ extension HomeVC{
     
     //MARK:- ====== On socket Accept driver request =====
     func onSocketAcceptDriverRequest(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KAcceptBookingRequest) { [weak self] json in
-            guard let self = self else {
-                print("Oops, self not found")
-                return
-            }
+        SocketIOManager.shared.socketCall(for: socketApikeys.KAcceptBookingRequest) { json in
             print(json)
-            guard json.count > 0 else {
-                print("\(#function) Improper json")
-                return
-            }
             self.stopTimerNearByDriver()
             let objDictJson = json[0]
             print(objDictJson)
@@ -316,7 +318,23 @@ extension HomeVC{
         
          let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrrentRideDriverInfo })
             guard let driverInfoVC : CurrrentRideDriverInfo = arrdriverInfoView.first else { return }
+            CurrentPlaceMarker.map = nil
+            mapVw.clear()
+            self.Driverplacemarker = GMSMarker()
+            self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo?.driverInfo?.lat ?? "") ?? 0.0, longitude: Double(obj.bookingInfo?.driverInfo?.lng ?? "") ?? 0.0)
+            self.Driverplacemarker.icon =  UIImage(named: "car")
+            self.Driverplacemarker.map = self.mapVw
+            
         
+            let currentMarker = GMSMarker()
+            currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.bookingInfo?.pickupLng ?? "") ?? 0.0)
+            let CurrentmarkerView = MarkerView()
+            CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
+            CurrentmarkerView.layoutSubviews()
+            currentMarker.iconView = CurrentmarkerView
+            currentMarker.map = self.mapVw
+            
+            self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: Double(obj.bookingInfo?.driverInfo?.lat ?? "") ?? 0.0, longitude: Double(obj.bookingInfo?.driverInfo?.lng ?? "") ?? 0.0), to: CLLocationCoordinate2D(latitude: Double(obj.bookingInfo?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.bookingInfo?.pickupLng ?? "") ?? 0.0))
 //        guard let driverInfoVC = homeVC.children[0] as? CurrentRideDriverInformationVC else {
 //            return
 //        }
@@ -355,20 +373,20 @@ extension HomeVC{
 //            return
 //        }
             self.Driverplacemarker = GMSMarker()
-            self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0)
+            self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.driverInfo?.lat ?? "") ?? 0.0, longitude: Double(obj.data?.driverInfo?.lng ?? "") ?? 0.0)
             self.Driverplacemarker.icon =  UIImage(named: "car")
             self.Driverplacemarker.map = self.mapVw
             
         
             let currentMarker = GMSMarker()
-            currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0)
+            currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0)
             let CurrentmarkerView = MarkerView()
                 CurrentmarkerView.markerImage = GMSMarker.themeMarkerImage
             CurrentmarkerView.layoutSubviews()
             currentMarker.iconView = CurrentmarkerView
             currentMarker.map = self.mapVw
             
-            self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0), to: CLLocationCoordinate2D(latitude: Double(obj.data?.dropoffLat ?? "") ?? 0.0, longitude: Double(obj.data?.dropoffLng ?? "") ?? 0.0))
+            self.getPolylineRoute(from: CLLocationCoordinate2D(latitude: Double(obj.data?.driverInfo?.lat ?? "") ?? 0.0, longitude: Double(obj.data?.driverInfo?.lng ?? "") ?? 0.0), to: CLLocationCoordinate2D(latitude: Double(obj.data?.pickupLat ?? "") ?? 0.0, longitude: Double(obj.data?.pickupLng ?? "") ?? 0.0))
             
             driverInfoVC.objCurrentBooking = obj.data
             driverInfoVC.setUpUI(isFromArrived: false, isFromApi: true)
@@ -381,31 +399,21 @@ extension HomeVC{
     
     //MARK:- ====== On socket Cancell by system  =======
     func onSocketCancellBySysteem(){
-        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelBookingRequestBySystem) { [weak self] json in
-            guard let self = self else {
-                print("oops, \(#function) self not found")
-                return
-            }
-            guard json.count > 0 else {
-                print("\(#function) improper json")
-                return
-            }
-            self.startTimerNearByDriver(timeInterval: 5.0)
+        SocketIOManager.shared.socketCall(for: socketApikeys.KCancelBookingRequestBySystem) { json in
             print(json)
-            let objDict = json[0]
-            
-            self.presentedViewController?.dismiss(animated: true, completion: { [unowned self] in
-                Toast.show(message: objDict["message"].stringValue, state: .failure)
-                
-                self.isFirstTimeLoadView = true
-                self.mapVw.clear()
-                
-                self.getFirstView()
-//                self.bottomVWWhereAreYouGoing.isHidden = false
-//                self.selectTexiVCContainerVW.isHidden = true
-//                self.currentRideDriverInfoContainerVW.isHidden = true
-//                self.currentRideDetailContainerVW.isHidden = true
-            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                print(json)
+                let objDict = json[0]
+                isGotCancelled = true
+                self.presentedViewController?.dismiss(animated: true, completion: { [unowned self] in
+                    Toast.show(message: objDict["message"].stringValue, state: .failure)
+                    
+                    self.isFirstTimeLoadView = true
+                    self.mapVw.clear()
+                    self.startTimerNearByDriver(timeInterval: 5.0)
+                    self.getFirstView()
+                })
+            }
         }
     }
     
@@ -775,14 +783,14 @@ extension HomeVC{
         guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
             return
         }
-        guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+        guard objhomeVC.children[0] is HomeVC else {
             return
         }
     
         if self.containerTopView.isHidden == false {
         
          let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrentRideDetail})
-         guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView[0] as? CurrentRideDetail else { return }
+            guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView.first else { return }
         
 //        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
 //            return
@@ -822,14 +830,14 @@ extension HomeVC{
         guard let objhomeVC = NavVc.children[0].children[0] as? UINavigationController else {
             return
         }
-        guard let homeVC = objhomeVC.children[0] as? HomeVC else {
+        guard objhomeVC.children[0] is HomeVC else {
             return
         }
         
         if self.containerTopView.isHidden == false {
         
          let  arrdriverInfoView  = self.botomContentView.subviews.compactMap({$0 as? CurrentRideDetail })
-            guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView[0] as? CurrentRideDetail else { return }
+            guard let driverInfoVC : CurrentRideDetail = arrdriverInfoView.first else { return }
         
     
 //        guard let driverInfoVC = homeVC.children[1] as? CurrentRideDetailsVC else {
@@ -838,13 +846,13 @@ extension HomeVC{
         self.isStartTrip = true
         isFirtLocation = true
         self.mapVw.clear()
-//        self.Driverplacemarker = GMSMarker()
-//        self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.pickupLat) ?? 0.0, longitude: Double(obj.bookingInfo.pickupLng) ?? 0.0)
-//        let DrivermarkerView = MarkerView()
-//        DrivermarkerView.markerImage = UIImage(named: "car")
-//        DrivermarkerView.layoutSubviews()
-//        self.Driverplacemarker.iconView = DrivermarkerView
-//        self.Driverplacemarker.map = self.mapVw
+        self.Driverplacemarker = GMSMarker()
+        self.Driverplacemarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.pickupLat) ?? 0.0, longitude: Double(obj.bookingInfo.pickupLng) ?? 0.0)
+        let DrivermarkerView = MarkerView()
+        DrivermarkerView.markerImage = UIImage(named: "car")
+        DrivermarkerView.layoutSubviews()
+        self.Driverplacemarker.iconView = DrivermarkerView
+        self.Driverplacemarker.map = self.mapVw
         
         let currentMarker = GMSMarker()
         currentMarker.position = CLLocationCoordinate2D(latitude:Double(obj.bookingInfo.dropoffLat) ?? 0.0, longitude: Double(obj.bookingInfo.dropoffLng) ?? 0.0)
@@ -942,14 +950,14 @@ extension HomeVC: UITextFieldDelegate{
         }
         
         startTimerNearByDriver()
-        let currentMarker = GMSMarker()
-        currentMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
+        CurrentPlaceMarker = GMSMarker()
+        CurrentPlaceMarker.position = CLLocationCoordinate2D(latitude: pickup.lat, longitude: pickup.lng)
         let markerView = MarkerView()
         markerView.markerImage = UIImage(named: "iconCurrentLocPin")
         markerView.layoutSubviews()
-        currentMarker.userData = "currentMarker"
-        currentMarker.iconView = markerView
-        currentMarker.map = self.mapVw
+        CurrentPlaceMarker.userData = "currentMarker"
+        CurrentPlaceMarker.iconView = markerView
+        CurrentPlaceMarker.map = self.mapVw
         self.mapVw.delegate = self
         
         let destinationMarker = GMSMarker()
@@ -964,7 +972,7 @@ extension HomeVC: UITextFieldDelegate{
          let mapInsets = UIEdgeInsets(top: 50, left: 15, bottom: self.selectTexiVCContainerVW.frame.height, right: 15)
             self.mapVw.padding = mapInsets
             self.arrMarkers.removeAll()
-            self.arrMarkers.append(currentMarker)
+            self.arrMarkers.append(CurrentPlaceMarker)
             self.arrMarkers.append(destinationMarker)
             var bounds = GMSCoordinateBounds()
             for marker in self.arrMarkers
@@ -1350,27 +1358,9 @@ extension HomeVC : CLLocationManagerDelegate {
         
         Singleton.sharedInstance.latitute = userLocation.coordinate.latitude
         Singleton.sharedInstance.longtitute = userLocation.coordinate.longitude
-        
-        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-
         let camera = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, zoom: 13);
-            self.mapVw.camera = camera
-           // self.mapVw.isMyLocationEnabled = true
-                isFirstTimeLoadView = true
-                mapVw.clear()
-                //Current Location pin setup
-                let CurrentLocMarker = GMSMarker()
-                CurrentLocMarker.position = center
-              //  CurrentLocMarker.snippet = "Your Location"
-                
-                let markerView2 = MarkerView()
-                markerView2.markerImage = UIImage(named: "iconCurrentLocPin")
-                markerView2.layoutSubviews()
-                
-                CurrentLocMarker.iconView = markerView2
-                CurrentLocMarker.map = self.mapVw
-                self.mapVw.selectedMarker = CurrentLocMarker
-    
+        self.mapVw.camera = camera
+        
             locationManager.stopUpdatingLocation()
 
         let geocoder = CLGeocoder()
